@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePolicyTable extends Migration
+class CreatePolicyFieldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreatePolicyTable extends Migration
      */
     public function up()
     {
-        Schema::create('policies', function (Blueprint $table) {
+        Schema::create('policy_fields', function (Blueprint $table) {
             $table->id();
-            $table->string('policynumber');
+            $table->string('name');
+            $table->text('value');
+            $table->foreignId('policy_id')->constrained();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreatePolicyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('policy');
+        Schema::dropIfExists('policy_fields');
     }
 }

@@ -16,8 +16,8 @@ class CreateHolderPolicyTable extends Migration
         Schema::create('holder_policy', function (Blueprint $table) {
             $table->primary(['holder_id', 'policy_id']);
 
-            $table->foreignId('holder_id')->constrained()->onDelete('cascade');
-            $table->foreignId('policy_id')->constrained()->onDelete('cascade');
+            $table->foreignId('holder_id')->constrained();
+            $table->foreignId('policy_id')->constrained();
             $table->timestamps();
         });
     }

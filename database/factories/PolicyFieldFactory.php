@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Policy;
+use App\Models\PolicyField;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PolicyFactory extends Factory
+class PolicyFieldFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Policy::class;
+    protected $model = PolicyField::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,8 @@ class PolicyFactory extends Factory
     public function definition()
     {
         return [
-            'policynumber' => $this->faker->regexify('[A-Za-z0-9]{5}')
+            'name' => $this->faker->word,
+            'value' => $this->faker->word
         ];
     }
 }
