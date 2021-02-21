@@ -58,4 +58,16 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public const ROLES = [
+        1 => 'user',
+        2 => 'moderator',
+        3 => 'admin',
+    ];
+
+    public function role()
+    {
+        // dd($this->role_id);
+        return self::ROLES[$this->role_id];
+    }
 }
