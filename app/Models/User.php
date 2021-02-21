@@ -67,7 +67,11 @@ class User extends Authenticatable
 
     public function role()
     {
-        // dd($this->role_id);
         return self::ROLES[$this->role_id];
+    }
+
+    public function isAdmin()
+    {
+        return $this->role() == 'admin';
     }
 }
