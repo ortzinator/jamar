@@ -22516,6 +22516,9 @@ var _hoisted_8 = {
 var _hoisted_9 = {
   "class": "border-t"
 };
+var _hoisted_10 = {
+  "class": "mt-6 -mb-1 flex flex-wrap"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
@@ -22575,7 +22578,44 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         )])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))])])])])];
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.holders.links, function (link) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+          key: link.id
+        }, [link.url === null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+          key: 0,
+          "class": ["mr-1 mb-1 px-4 py-3 text-sm border rounded text-gray-400", {
+            'ml-auto': link.label === 'Next'
+          }]
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+          innerHTML: link.label
+        }, null, 8
+        /* PROPS */
+        , ["innerHTML"])], 2
+        /* CLASS */
+        )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
+          key: 1,
+          "class": ["mr-1 mb-1 px-4 py-3 text-sm border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500", {
+            'bg-white': link.active,
+            'ml-auto': link.label === 'Next'
+          }],
+          href: link.url
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+              innerHTML: link.label
+            }, null, 8
+            /* PROPS */
+            , ["innerHTML"])];
+          }),
+          _: 2
+          /* DYNAMIC */
+
+        }, 1032
+        /* PROPS, DYNAMIC_SLOTS */
+        , ["class", "href"]))]);
+      }), 128
+      /* KEYED_FRAGMENT */
+      ))])])])];
     }),
     _: 1
     /* STABLE */
