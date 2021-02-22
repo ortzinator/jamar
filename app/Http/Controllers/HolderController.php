@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Holder;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class HolderController extends Controller
 {
@@ -19,7 +20,12 @@ class HolderController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Holders/Index', [
+            'filters' => request()->all('search', 'trashed'),
+            'holders' => Holder::orderBy('name')
+            ->filter(request()->only('search', 'trashed'))
+            ->paginate()
+        ]);
     }
 
     /**

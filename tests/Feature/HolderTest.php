@@ -34,7 +34,26 @@ class HolderTest extends TestCase
     {
         $this->signIn(true);
 
+        Holder::factory(3)->create();
+
         $this->get(route('holders'))
-            ->assertStatus(200);
+            ->assertPropCount('holders.data', 3);
+    }
+
+    public function test_can_search_for_holders()
+    {
+        $this->signIn(true);
+        $this->withoutExceptionHandling();
+
+        $holder = Holder::factory()->create(['name' => 'John Doe']);
+        Holder::factory()->create(['name' => 'Jane Doe']);
+
+        $this->get('holders?search=John')
+            ->assertStatus(200)
+            ->assertPropValue('filters.search', 'John')
+            ->assertPropCount('holders.data', 1)
+            ->assertPropValue('holders.data', function ($holders) use ($holder) {
+                $this->assertEquals($holder->address, $holders[0]['address']);
+            });
     }
 }
