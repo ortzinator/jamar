@@ -6,18 +6,26 @@
             </h2>
         </template>
 
-        <div>
-            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <div class="mb-4">
                 <input
                     type="text"
                     v-model="searchTerm"
                     placeholder="Search..."
+                    class="border-0 shadow rounded"
                 />
+                <button
+                    class="ml-3 text-sm text-gray-500 hover:text-gray-700 focus:text-indigo-500"
+                    type="button"
+                    @click="reset"
+                >
+                    Reset
+                </button>
             </div>
-            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <div class="">
                 <div class="shadow rounded bg-white">
                     <table class="w-full">
-                        <tr>
+                        <tr class="text-left">
                             <th class="px-6 pt-6 pb-4">Name</th>
                             <th class="px-6 pt-6 pb-4">Address</th>
                         </tr>
@@ -70,6 +78,11 @@ export default {
                 };
                 this.$inertia.reload(options);
             }, 200),
+        },
+    },
+    methods: {
+        reset() {
+            this.searchTerm = "";
         },
     },
 };
