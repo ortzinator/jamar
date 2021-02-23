@@ -26,10 +26,17 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
 
-Route::get('holders', [HolderController::class, 'index'])
-    ->middleware(['auth:sanctum'])
-    ->name('holders');
+    Route::get('holders', [HolderController::class, 'index'])
+        ->name('holders');
+
+    Route::get('/holders/{holder}/edit', [HolderController::class, 'edit'])
+        ->name('holders.edit');
+
+    Route::post('/holders/{holder}', [HolderController::class, 'update'])
+        ->name('holders.update');
+});

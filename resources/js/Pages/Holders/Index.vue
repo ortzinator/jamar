@@ -32,42 +32,39 @@
                         <tr v-for="holder in holders.data" :key="holder.id">
                             <td class="border-t">
                                 <inertia-link
-                                    href="#"
+                                    :href="route('holders.edit', holder.id)"
                                     class="px-6 py-4 flex items-center focus:text-indigo-500"
                                     >{{ holder.name }}</inertia-link
                                 >
                             </td>
                             <td class="border-t">
                                 <inertia-link
-                                    href="#"
+                                    :href="route('holders.edit', holder.id)"
                                     class="px-6 py-4 flex items-center focus:text-indigo-500"
                                     >{{ holder.address }}</inertia-link
                                 >
                             </td>
+                            <td class="border-t w-px">
+                                <inertia-link
+                                    class="px-4 flex items-center"
+                                    :href="route('holders.edit', holder.id)"
+                                    tabindex="-1"
+                                >
+                                    <icon
+                                        name="cheveron-right"
+                                        class="block w-6 h-6 fill-gray-400"
+                                    />
+                                </inertia-link>
+                            </td>
+                        </tr>
+                        <tr v-if="holders.data.length === 0">
+                            <td class="border-t px-6 py-4" colspan="4">
+                                No policyholders found.
+                            </td>
                         </tr>
                     </table>
                 </div>
-                <div class="mt-6 -mb-1 flex flex-wrap">
-                    <div v-for="link in holders.links" :key="link.id">
-                        <div
-                            v-if="link.url === null"
-                            class="mr-1 mb-1 px-4 py-3 text-sm border rounded text-gray-400"
-                            :class="{ 'ml-auto': link.label === 'Next' }"
-                        >
-                            <span v-html="link.label"></span>
-                        </div>
-                        <inertia-link
-                            v-else
-                            class="mr-1 mb-1 px-4 py-3 text-sm border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
-                            :class="{
-                                'bg-white': link.active,
-                                'ml-auto': link.label === 'Next',
-                            }"
-                            :href="link.url"
-                            ><span v-html="link.label"></span
-                        ></inertia-link>
-                    </div>
-                </div>
+                <pagination :links="holders.links"></pagination>
             </div>
         </div>
     </app-layout>
@@ -75,6 +72,8 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
+import Pagination from "@/Shared/Pagination";
+import Icon from "@/Shared/Icon";
 import throttle from "lodash/throttle";
 
 export default {
@@ -82,6 +81,8 @@ export default {
 
     components: {
         AppLayout,
+        Pagination,
+        Icon,
     },
 
     data() {
