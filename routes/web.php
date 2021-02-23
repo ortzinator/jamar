@@ -37,6 +37,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/holders/{holder}/edit', [HolderController::class, 'edit'])
         ->name('holders.edit');
 
-    Route::post('/holders/{holder}', [HolderController::class, 'update'])
+    Route::put('/holders/{holder}', [HolderController::class, 'update'])
         ->name('holders.update');
 });

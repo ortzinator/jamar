@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Holder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class HolderController extends Controller
@@ -50,17 +51,6 @@ class HolderController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Holder  $holder
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Holder $holder)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Holder  $holder
@@ -68,7 +58,7 @@ class HolderController extends Controller
      */
     public function edit(Holder $holder)
     {
-        //
+        return Inertia::render('Holders/Edit', ['holder' => $holder->toArray()]);
     }
 
     /**
@@ -80,7 +70,16 @@ class HolderController extends Controller
      */
     public function update(Request $request, Holder $holder)
     {
-        //
+        $request->validate([
+            'name' => ['required'],
+            'address' => ['required']
+        ]);
+
+        $holder->update($request->only(['name', 'address']));
+
+        $request->session()->flash('flash.banner', _('Policyholder updated'));
+
+        return Redirect::back();
     }
 
     /**

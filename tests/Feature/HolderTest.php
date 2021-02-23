@@ -56,4 +56,20 @@ class HolderTest extends TestCase
                 $this->assertEquals($holder->address, $holders[0]['address']);
             });
     }
+
+    public function test_an_admin_can_edit_holders()
+    {
+        $this->signIn(true);
+        $this->withoutExceptionHandling();
+
+        $holder = Holder::factory()->create(['name' => 'John Doe']);
+
+        $this->get(route('holders.edit', $holder->id))
+            ->assertStatus(200);
+
+        $this->put(route('holders.update', $holder->id), ['name' => 'Jane Doe', 'address' => $holder->address])
+            ->assertRedirect(route('holders.edit', $holder->id));
+
+        $this->assertEquals('Jane Doe', $holder->fresh()->name);
+    }
 }

@@ -9,6 +9,8 @@ class Holder extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function policies()
     {
         return $this->belongsToMany(Policy::class)->withTimestamps();
