@@ -37,7 +37,7 @@ class HolderTest extends TestCase
         Holder::factory(3)->create();
 
         $this->get(route('holders'))
-            ->assertPropCount('holders.data', 3);
+            ->assertPropCount(3, 'holders.data');
     }
 
     public function test_can_search_for_holders()
@@ -50,11 +50,11 @@ class HolderTest extends TestCase
 
         $this->get('holders?search=John')
             ->assertStatus(200)
-            ->assertPropValue('filters.search', 'John')
-            ->assertPropCount('holders.data', 1)
-            ->assertPropValue('holders.data', function ($holders) use ($holder) {
+            ->assertPropValue('John', 'filters.search')
+            ->assertPropCount(1, 'holders.data')
+            ->assertPropValue(function ($holders) use ($holder) {
                 $this->assertEquals($holder->address, $holders[0]['address']);
-            });
+            }, 'holders.data');
     }
 
     public function test_an_admin_can_edit_holders()
@@ -71,5 +71,30 @@ class HolderTest extends TestCase
             ->assertRedirect(route('holders.edit', $holder->id));
 
         $this->assertEquals('Jane Doe', $holder->fresh()->name);
+    }
+
+    public function test_cannot_view_deleted_holders()
+    {
+        $this->signIn(true);
+
+        $holders = Holder::factory(4)->create(['name' => 'John Doe']);
+        $holders->first()->delete();
+
+        $this->get(route('holders'))
+            ->assertStatus(200)
+            ->assertPropCount(3, 'holders.data');
+    }
+
+    public function test_can_search_by_deleted_holders()
+    {
+        $this->signIn(true);
+        $this->withoutExceptionHandling();
+
+        $holders = Holder::factory(4)->create(['name' => 'John Doe']);
+        $holders->first()->delete();
+
+        $this->get('holders?trashed=with')
+            ->assertStatus(200)
+            ->assertPropCount(4, 'holders.data');
     }
 }

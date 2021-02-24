@@ -19,12 +19,12 @@ class HolderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return Inertia::render('Holders/Index', [
-            'filters' => request()->all('search', 'trashed'),
+            'filters' => $request->all('search', 'trashed'),
             'holders' => Holder::orderBy('name')
-            ->filter(request()->only('search', 'trashed'))
+            ->filter($request->only('search', 'trashed'))
             ->paginate()
         ]);
     }

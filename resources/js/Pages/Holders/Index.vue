@@ -7,13 +7,23 @@
         </template>
 
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div class="mb-4">
-                <input
-                    type="text"
-                    v-model="searchTerm"
-                    placeholder="Search..."
-                    class="border-0 shadow rounded"
-                />
+            <div class="flex mb-4">
+                <div class="flex shadow rounded">
+                    <select
+                        v-model="searchForm.trashed"
+                        class="border-0 border-gray-200 border-r rounded-l text-gray-500"
+                    >
+                        <option :value="null">Filter...</option>
+                        <option value="with">With Trashed</option>
+                        <option value="only">Only Trashed</option>
+                    </select>
+                    <input
+                        type="text"
+                        v-model="searchForm.search"
+                        placeholder="Search..."
+                        class="border-0 rounded-r"
+                    />
+                </div>
                 <button
                     class="ml-3 text-sm text-gray-500 hover:text-gray-700 focus:text-indigo-500"
                     type="button"
@@ -52,7 +62,7 @@
                                 >
                                     <icon
                                         name="cheveron-right"
-                                        class="block w-6 h-6 fill-gray-400"
+                                        class="block fill-current h-6 text-gray-400 w-6"
                                     />
                                 </inertia-link>
                             </td>
@@ -74,7 +84,11 @@
 import AppLayout from "@/Layouts/AppLayout";
 import Pagination from "@/Shared/Pagination";
 import Icon from "@/Shared/Icon";
+import JetCheckbox from "@/Jetstream/Checkbox";
+
 import throttle from "lodash/throttle";
+import pickBy from "lodash/pickBy";
+import { useForm } from "@inertiajs/inertia-vue3";
 
 export default {
     props: { sessions: Object, holders: Object, filters: Object },
@@ -83,28 +97,42 @@ export default {
         AppLayout,
         Pagination,
         Icon,
+        JetCheckbox,
     },
+    setup(props) {
+        const searchForm = useForm({
+            search: props.filters.search,
+            trashed: props.filters.trashed,
+        });
 
-    data() {
-        return {
-            searchTerm: this.filters.search,
-        };
+        return { searchForm };
     },
-
+    computed: {
+        formVals() {
+            return {
+                search: this.searchForm.search,
+                trashed: this.searchForm.trashed,
+            };
+        },
+    },
     watch: {
-        searchTerm: {
-            handler: throttle(function (value) {
-                let options = {
-                    data: { search: value },
-                    only: ["holders"],
-                };
-                this.$inertia.reload(options);
-            }, 200),
+        formVals() {
+            this.refreshSearch();
         },
     },
     methods: {
+        refreshSearch: throttle(function () {
+            console.log(this.formVals);
+            this.searchForm
+                .transform((data) => pickBy(data))
+                .get("/holders", {
+                    only: ["holders"],
+                    preserveState: true,
+                    preserveScroll: true,
+                });
+        }, 200),
         reset() {
-            this.searchTerm = "";
+            this.searchForm.reset();
         },
     },
 };

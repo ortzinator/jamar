@@ -39,4 +39,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::put('/holders/{holder}', [HolderController::class, 'update'])
         ->name('holders.update');
+
+    Route::delete('holders/{contact}', [HolderController::class, 'destroy'])
+        ->name('holders.destroy');
 });

@@ -27,12 +27,12 @@ abstract class TestCase extends BaseTestCase
         });
 
         TestResponse::macro('assertHasProp', function ($key) {
-            Assert::assertTrue(Arr::has($this->props(), $key));
+            Assert::assertTrue(Arr::has($this->props(), $key), 'The given prop was not found');
 
             return $this;
         });
 
-        TestResponse::macro('assertPropValue', function ($key, $value) {
+        TestResponse::macro('assertPropValue', function ($value, $key) {
             $this->assertHasProp($key);
 
             if (is_callable($value)) {
@@ -44,7 +44,7 @@ abstract class TestCase extends BaseTestCase
             return $this;
         });
 
-        TestResponse::macro('assertPropCount', function ($key, $count) {
+        TestResponse::macro('assertPropCount', function ($count, $key) {
             $this->assertHasProp($key);
 
             Assert::assertCount($count, $this->props($key));
