@@ -7,6 +7,7 @@ use App\Models\Policy;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class HolderTest extends TestCase
@@ -96,5 +97,23 @@ class HolderTest extends TestCase
         $this->get('holders?trashed=with')
             ->assertStatus(200)
             ->assertPropCount(4, 'holders.data');
+    }
+
+    public function test_holder_can_be_deleted()
+    {
+        $this->signIn(true);
+        $this->withoutExceptionHandling();
+
+        $holder = Holder::factory()->create();
+
+        $path = route('holders.edit', $holder->id) . '?trashed=with';
+
+        $this->get($path);
+
+        $this->delete(route('holders.destroy', $holder->id))
+            ->assertRedirect($path);
+
+        $this->get($path)
+            ->assertPropNotNull('holder.deleted_at');
     }
 }

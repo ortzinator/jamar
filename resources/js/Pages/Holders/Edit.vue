@@ -10,9 +10,20 @@
             {{ form.name }}
         </h1>
         <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+            <div
+                v-if="holder.deleted_at"
+                class="bg-yellow-200 flex items-center justify-between p-5 pl-8"
+            >
+                <div class="flex">
+                    <icon name="trash" class="h-5 mr-2 w-5" />
+                    This policyholder is deleted
+                </div>
+                <button class="btn hover:underline" @click="restore">
+                    Restore
+                </button>
+            </div>
             <form @submit.prevent="updateHolder">
                 <div class="p-8 -mr-6 -mb-8">
-                    <div v-if="form.processing">SENDING</div>
                     <div class="mr-5 mb-5">
                         <jet-label for="name" value="Name"></jet-label>
                         <jet-input
@@ -75,6 +86,7 @@
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
+import Icon from "@/Shared/Icon";
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
 import JetInputError from "@/Jetstream/InputError";
@@ -82,7 +94,13 @@ import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
     layout: AppLayout,
-    components: { JetInput, JetLabel, JetInputError, JetValidationErrors },
+    components: {
+        Icon,
+        JetInput,
+        JetLabel,
+        JetInputError,
+        JetValidationErrors,
+    },
     props: {
         errors: Object,
         holder: Object,
@@ -104,6 +122,17 @@ export default {
     methods: {
         updateHolder() {
             this.form.put(this.route("holders.update", this.holder.id));
+        },
+        destroy() {
+            //TODO check if holder is associated with a policy
+            if (confirm("Are you sure you want to delete this policyholder?")) {
+                this.form.delete(this.route("holders.destroy", this.holder.id));
+            }
+        },
+        restore() {
+            if (confirm("Are you sure you want to restore this contact?")) {
+                this.form.put(this.route("holders.restore", this.holder.id));
+            }
         },
     },
 };

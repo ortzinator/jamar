@@ -33,4 +33,9 @@ class Holder extends Model
             }
         });
     }
+
+    public function resolveRouteBinding($id, $field = null)
+    {
+        return $this->withTrashed()->findOrFail($id);
+    }
 }

@@ -122,7 +122,6 @@ export default {
     },
     methods: {
         refreshSearch: throttle(function () {
-            console.log(this.formVals);
             this.searchForm
                 .transform((data) => pickBy(data))
                 .get("/holders", {

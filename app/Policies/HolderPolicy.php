@@ -22,6 +22,7 @@ class HolderPolicy
         if ($user->isAdmin()) {
             return true;
         }
+        return null;
     }
 
     /**

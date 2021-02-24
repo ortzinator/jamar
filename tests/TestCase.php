@@ -32,6 +32,14 @@ abstract class TestCase extends BaseTestCase
             return $this;
         });
 
+        TestResponse::macro('assertPropNotNull', function ($key) {
+            $this->assertHasProp($key);
+
+            Assert::assertNotNull($this->props($key));
+
+            return $this;
+        });
+
         TestResponse::macro('assertPropValue', function ($value, $key) {
             $this->assertHasProp($key);
 
