@@ -107,5 +107,11 @@ export default {
             return this.$page.props.jetstream.flash?.banner || "";
         },
     },
+
+    watch: {
+        "$page.props.jetstream.flash"() {
+            this.show = true;
+        },
+    },
 };
 </script>

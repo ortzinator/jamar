@@ -17383,6 +17383,11 @@ __webpack_require__.r(__webpack_exports__);
 
       return ((_this$$page$props$jet2 = this.$page.props.jetstream.flash) === null || _this$$page$props$jet2 === void 0 ? void 0 : _this$$page$props$jet2.banner) || "";
     }
+  },
+  watch: {
+    "$page.props.jetstream.flash": function $pagePropsJetstreamFlash() {
+      this.show = true;
+    }
   }
 });
 
