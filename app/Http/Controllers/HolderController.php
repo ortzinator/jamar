@@ -77,9 +77,7 @@ class HolderController extends Controller
 
         $holder->update($request->only(['name', 'address']));
 
-        $request->session()->flash('flash.banner', _('Policyholder updated'));
-
-        return Redirect::back();
+        return Redirect::back()->banner(_('Policyholder updated'));
     }
 
     /**
@@ -91,14 +89,12 @@ class HolderController extends Controller
     public function destroy(Holder $holder)
     {
         $holder->delete();
-        request()->session()->flash('flash.banner', _('Policyholder deleted'));
-        return Redirect::back();
+        return Redirect::back()->banner(_('Policyholder deleted'));
     }
     
     public function restore(Holder $holder)
     {
         $holder->restore();
-        request()->session()->flash('flash.banner', _('Policyholder restored'));
-        return Redirect::back();
+        return Redirect::back()->banner(_('Policyholder restored'));
     }
 }
