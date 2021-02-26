@@ -16,46 +16,46 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        TestResponse::macro('props', function ($key = null) {
+        TestResponse::macro('props', function ($propKey = null) {
             $props = json_decode(json_encode($this->original->getData()['page']['props']), JSON_OBJECT_AS_ARRAY);
 
-            if ($key) {
-                return Arr::get($props, $key);
+            if ($propKey) {
+                return Arr::get($props, $propKey);
             }
 
             return $props;
         });
 
-        TestResponse::macro('assertHasProp', function ($key) {
-            Assert::assertTrue(Arr::has($this->props(), $key), 'The given prop was not found');
+        TestResponse::macro('assertPropExists', function ($propKey) {
+            Assert::assertTrue(Arr::has($this->props(), $propKey), 'The given prop was not found');
 
             return $this;
         });
 
-        TestResponse::macro('assertPropNotNull', function ($key) {
-            $this->assertHasProp($key);
+        TestResponse::macro('assertPropNotNull', function ($propKey) {
+            $this->assertPropExists($propKey);
 
-            Assert::assertNotNull($this->props($key));
+            Assert::assertNotNull($this->props($propKey));
 
             return $this;
         });
 
-        TestResponse::macro('assertPropValue', function ($value, $key) {
-            $this->assertHasProp($key);
+        TestResponse::macro('assertPropEquals', function ($expected, $propKey) {
+            $this->assertPropExists($propKey);
 
-            if (is_callable($value)) {
-                $value($this->props($key));
+            if (is_callable($expected)) {
+                $expected($this->props($propKey));
             } else {
-                Assert::assertEquals($this->props($key), $value);
+                Assert::assertEquals($this->props($propKey), $expected);
             }
 
             return $this;
         });
 
-        TestResponse::macro('assertPropCount', function ($count, $key) {
-            $this->assertHasProp($key);
+        TestResponse::macro('assertPropCount', function ($count, $propKey) {
+            $this->assertPropExists($propKey);
 
-            Assert::assertCount($count, $this->props($key));
+            Assert::assertCount($count, $this->props($propKey));
 
             return $this;
         });

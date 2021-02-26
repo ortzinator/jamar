@@ -51,9 +51,9 @@ class HolderTest extends TestCase
 
         $this->get('holders?search=John')
             ->assertStatus(200)
-            ->assertPropValue('John', 'filters.search')
+            ->assertPropEquals('John', 'filters.search')
             ->assertPropCount(1, 'holders.data')
-            ->assertPropValue(function ($holders) use ($holder) {
+            ->assertPropEquals(function ($holders) use ($holder) {
                 $this->assertEquals($holder->address, $holders[0]['address']);
             }, 'holders.data');
     }

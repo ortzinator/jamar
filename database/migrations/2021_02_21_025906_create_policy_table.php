@@ -15,7 +15,8 @@ class CreatePolicyTable extends Migration
     {
         Schema::create('policies', function (Blueprint $table) {
             $table->id();
-            $table->string('policynumber');
+            $table->string('number');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

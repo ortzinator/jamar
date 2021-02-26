@@ -22,7 +22,7 @@ class PolicyFactory extends Factory
     public function definition()
     {
         return [
-            'policynumber' => $this->faker->regexify('[A-Za-z0-9]{5}')
+            'number' => $this->faker->regexify('[A-Za-z0-9]{5}')
         ];
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HolderController;
+use App\Http\Controllers\PolicyController;
+use App\Http\Controllers\PolicyFieldController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,13 +38,22 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/holders/{holder}/edit', [HolderController::class, 'edit'])
         ->name('holders.edit');
-
+        
     Route::put('/holders/{holder}', [HolderController::class, 'update'])
         ->name('holders.update');
         
     Route::delete('holders/{holder}', [HolderController::class, 'destroy'])
         ->name('holders.destroy');
-
+        
     Route::put('holders/{holder}/restore', [HolderController::class, 'restore'])
         ->name('holders.restore');
+
+    //Policy
+    Route::get('/policies/{policy}/edit', [PolicyController::class, 'edit'])
+        ->name('policies.edit');
+        
+    //PoliyFields
+    Route::post('/policyfield/store', [PolicyFieldController::class, 'store'])
+        ->name('policyfield.store');
+        
 });

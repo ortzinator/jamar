@@ -9,6 +9,8 @@ class Policy extends Model
 {
     use HasFactory;
 
+    protected $with = ['fields'];
+
     public function holders()
     {
         return $this->belongsToMany(Holder::class)->withTimestamps();
