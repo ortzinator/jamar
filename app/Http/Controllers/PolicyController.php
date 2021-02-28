@@ -47,7 +47,10 @@ class PolicyController extends Controller
      */
     public function edit(Policy $policy)
     {
-        return Inertia::render('Policies/Edit', ['policy' => $policy->toArray()]);
+        return Inertia::render('Policies/Edit', [
+            'policy' => $policy,
+            'fields' => $policy->fields
+        ]);
     }
 
     /**
