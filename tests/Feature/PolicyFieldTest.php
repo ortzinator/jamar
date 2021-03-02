@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Policy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Inertia\Testing\Assert;
 use Tests\TestCase;
 
 class PolicyFieldTest extends TestCase
@@ -24,6 +25,8 @@ class PolicyFieldTest extends TestCase
         ])->assertRedirect();
         
         $this->get(route('policies.edit', $policy->id))
-            ->assertPropCount(1, 'policy.fields');
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('policy.fields', 1)
+            );
     }
 }

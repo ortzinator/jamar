@@ -7,6 +7,7 @@ use App\Models\Policy;
 use App\Models\PolicyField;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Inertia\Testing\Assert;
 use Tests\TestCase;
 
 class PolicyTest extends TestCase
@@ -32,14 +33,14 @@ class PolicyTest extends TestCase
         $policy->addField(PolicyField::factory()->makeOne()->toArray());
         $policy->addField(PolicyField::factory()->makeOne()->toArray());
         $policy->addField(PolicyField::factory()->makeOne()->toArray());
-        // dd($policy->fresh()->toJson());
+        
         $policy->refresh();
-        $this->assertCount(4, $policy->fields);
 
         $this->get(route('policies.edit', $policy->id))
-            ->assertStatus(200)
-            ->assertPropExists('policy')
-            ->assertPropExists('policy.number')
-            ->assertPropCount(4, 'policy.fields');
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('policy')
+                ->has('policy.number')
+                ->has('policy.fields', 4)
+            );
     }
 }
