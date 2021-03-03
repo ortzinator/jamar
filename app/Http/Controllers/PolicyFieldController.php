@@ -85,6 +85,7 @@ class PolicyFieldController extends Controller
      */
     public function destroy(PolicyField $policyField)
     {
-        //
+        $policyField->delete();
+        return Redirect::back()->banner(_('Policy field deleted'));
     }
 }
