@@ -67,14 +67,13 @@
                 >
                     Delete policy
                 </button>
-                <button
-                    :loading="sending"
+                <loading-button
                     class="btn btn-primary ml-auto"
                     type="submit"
-                    :disabled="policyForm.processing"
+                    :loading="policyForm.processing"
                 >
                     Update policy
-                </button>
+                </loading-button>
             </div>
         </div>
     </div>

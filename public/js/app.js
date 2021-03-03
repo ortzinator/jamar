@@ -19425,12 +19425,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       //Only show the loading spinner icon if the request has taken longer than 100ms
-      if (val === true) {
-        lodash_delay__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-          return _this.loading ? _this.delayedLoading = true : false;
-        }, 100);
-      } else {
+      if (val === false) {
+        //If no longer loading, disable spinner immediately
         this.delayedLoading = false;
+      } else {
+        lodash_delay__WEBPACK_IMPORTED_MODULE_1___default()(function () {
+          return _this.delayedLoading = val ? true : false;
+        }, 100);
       }
     }
   }
@@ -23223,6 +23224,9 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var _hoisted_13 = {
   "class": "px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
 };
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
@@ -23237,6 +23241,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_policy_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("policy-field");
 
   var _component_new_policy_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("new-policy-field");
+
+  var _component_loading_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("loading-button");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     "class": "text-indigo-400 hover:text-indigo-600",
@@ -23312,14 +23318,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[5] || (_cache[5] = function () {
       return $options.destroy && $options.destroy.apply($options, arguments);
     })
-  }, " Delete policy ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-    loading: $data.sending,
+  }, " Delete policy ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
     "class": "btn btn-primary ml-auto",
     type: "submit",
-    disabled: $setup.policyForm.processing
-  }, " Update policy ", 8
+    loading: $setup.policyForm.processing
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_14];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
   /* PROPS */
-  , ["loading", "disabled"])])])]);
+  , ["loading"])])])]);
 }
 
 /***/ }),
@@ -24924,7 +24936,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     disabled: $props.loading,
-    "class": "flex items-center",
+    "class": "flex items-center disabled:opacity-50",
     onClick: _cache[1] || (_cache[1] = function () {
       return _ctx.showEdit && _ctx.showEdit.apply(_ctx, arguments);
     })

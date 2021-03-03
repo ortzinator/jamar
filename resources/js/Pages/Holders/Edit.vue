@@ -69,14 +69,13 @@
                     >
                         Delete holder
                     </button>
-                    <button
-                        :loading="sending"
+                    <loading-button
                         class="btn btn-primary ml-auto"
                         type="submit"
-                        :disabled="form.processing"
+                        :loading="form.processing"
                     >
                         Update holder
-                    </button>
+                    </loading-button>
                 </div>
             </form>
         </div>
@@ -87,6 +86,8 @@
 import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
 import Icon from "@/Shared/Icon";
+import LoadingButton from "@/Shared/LoadingButton";
+
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
 import JetInputError from "@/Jetstream/InputError";
@@ -100,6 +101,7 @@ export default {
         JetLabel,
         JetInputError,
         JetValidationErrors,
+        LoadingButton,
     },
     props: {
         errors: Object,
@@ -113,11 +115,6 @@ export default {
         });
 
         return { form };
-    },
-    data() {
-        return {
-            sending: false,
-        };
     },
     methods: {
         updateHolder() {

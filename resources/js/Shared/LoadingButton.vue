@@ -1,5 +1,9 @@
 <template>
-    <button :disabled="loading" class="flex items-center" @click="showEdit">
+    <button
+        :disabled="loading"
+        class="flex items-center disabled:opacity-50"
+        @click="showEdit"
+    >
         <icon
             v-if="delayedLoading"
             name="spinner"
@@ -23,13 +27,11 @@ export default {
     watch: {
         loading(val) {
             //Only show the loading spinner icon if the request has taken longer than 100ms
-            if (val === true) {
-                delay(
-                    () => (this.loading ? (this.delayedLoading = true) : false),
-                    100
-                );
-            } else {
+            if (val === false) {
+                //If no longer loading, disable spinner immediately
                 this.delayedLoading = false;
+            } else {
+                delay(() => (this.delayedLoading = val ? true : false), 100);
             }
         },
     },
