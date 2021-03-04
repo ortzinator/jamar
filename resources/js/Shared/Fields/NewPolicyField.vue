@@ -18,14 +18,20 @@
                 class="w-full"
             />
         </div>
-        <button class="btn mt-4 hover:underline" @click="processForm">
+        <loading-button
+            class="btn mt-4 hover:underline"
+            :loading="newFieldForm.processing"
+            @click="processForm"
+        >
             Add Field
-        </button>
+        </loading-button>
     </div>
 </template>
 
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
+
+import LoadingButton from "@/Shared/LoadingButton";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
@@ -39,6 +45,7 @@ export default {
         JetLabel,
         JetInputError,
         JetValidationErrors,
+        LoadingButton,
     },
     setup(props) {
         const newFieldForm = useForm({
@@ -49,16 +56,11 @@ export default {
 
         return { newFieldForm };
     },
-    watch: {
-        "newFieldForm.wasSuccessful"() {
-            if (this.newFieldForm.wasSuccessful === true) {
-                this.newFieldForm.reset();
-            }
-        },
-    },
     methods: {
         processForm() {
-            this.newFieldForm.post(route("policyfield.store"));
+            this.newFieldForm.post(route("policyfield.store"), {
+                onSuccess: () => this.newFieldForm.reset(),
+            });
         },
     },
 };

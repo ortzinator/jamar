@@ -21,39 +21,20 @@
                         Restore
                     </button>
                 </div>
-                <form @submit.prevent="updatePolicy">
-                    <jet-label for="number" value="Policy Number" />
-                    <jet-input
-                        v-model="policyForm.number"
-                        id="name"
-                        type="text"
-                        class="block w-full"
-                    />
-                    <jet-input-error :message="policyForm.errors.number" />
-                    <div v-if="fieldsData.length === 0">No fields found</div>
-                    <div v-else class="mr-5 mb-5">
-                        <div class="border-b font-bold my-5 pb-2 text-gray-700">
-                            Custom Fields
-                        </div>
-                        <div
-                            v-for="field in fieldsData"
-                            :key="field.id"
-                            class=""
-                        >
-                            <policy-field
-                                :field="field"
-                                :policy="policy"
-                                class="flex items-center mb-5 space-x-6"
-                            ></policy-field>
-                        </div>
-                    </div>
-                    <new-policy-field
-                        v-if="fieldFormShown"
-                        :policy="policy"
-                        class="flex mb-5 p-5 rounded space-x-4 bg-blue-100 border border-blue-200"
-                    />
-                    <button @click="fieldFormShown = true">+ Field</button>
-                </form>
+
+                <jet-label for="number" value="Policy Number" />
+                <jet-input
+                    v-model="policyForm.number"
+                    id="name"
+                    type="text"
+                    class="block w-full"
+                />
+                <jet-input-error :message="policyForm.errors.number" />
+
+                <policy-fields-list
+                    :fields="fieldsData"
+                    :policy="policy"
+                ></policy-fields-list>
             </div>
             <div
                 class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
@@ -71,6 +52,7 @@
                     class="btn btn-primary ml-auto"
                     type="submit"
                     :loading="policyForm.processing"
+                    @click="updatePolicy"
                 >
                     Update policy
                 </loading-button>
@@ -83,8 +65,8 @@
 import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
 import Icon from "@/Shared/Icon";
-import PolicyField from "@/Shared/PolicyField";
-import NewPolicyField from "@/Shared/NewPolicyField";
+import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
+import LoadingButton from "@/Shared/LoadingButton";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
@@ -99,8 +81,8 @@ export default {
         JetLabel,
         JetInputError,
         JetValidationErrors,
-        PolicyField,
-        NewPolicyField,
+        PolicyFieldsList,
+        LoadingButton,
     },
     props: {
         errors: Object,
@@ -129,11 +111,11 @@ export default {
     },
     methods: {
         updatePolicy() {
-            // this.policyForm.put(this.route("policies.update", this.policy.id));
+            this.policyForm.put(this.route("policies.update", this.policy.id));
         },
         destroy() {
             //TODO check if holder is associated with a policy
-            if (confirm("Are you sure you want to delete this policyholder?")) {
+            if (confirm("Are you sure you want to delete this policy?")) {
                 // this.policyForm.delete(this.route("policies.destroy", this.policy.id));
             }
         },
