@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Policy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class PolicyController extends Controller
@@ -62,7 +63,14 @@ class PolicyController extends Controller
      */
     public function update(Request $request, Policy $policy)
     {
-        //
+        $request->validate([
+            'number' => ['required']
+        ]);
+
+        $policy->update([
+            'number' => $request['number']
+        ]);
+        return Redirect::back()->banner('Policy updated');
     }
 
     /**

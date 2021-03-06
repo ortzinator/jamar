@@ -43,4 +43,42 @@ class PolicyTest extends TestCase
                 ->has('policy.fields', 4)
             );
     }
+
+    public function test_an_admin_can_edit_policies()
+    {
+        $this->signIn(true);
+        // $this->withoutExceptionHandling();
+
+        $policy = Policy::factory()->create();
+        $policy->addField(PolicyField::factory()->makeOne()->toArray());
+        $policy->addField(PolicyField::factory()->makeOne()->toArray());
+
+        $policy->refresh();
+
+        $this->put(route('policies.update', $policy->id), [
+            'number' => 'NBT8730'
+        ]);
+
+        $this->get(route('policies.edit', $policy->id))
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('policy.number', 'NBT8730')
+            );
+
+        //TODO: Edit fields
+    }
+
+    public function test_a_number_is_required()
+    {
+        $this->signIn(true);
+        $this->withoutExceptionHandling();
+
+        $policy = Policy::factory()->create();
+
+        $this->put(route('policies.update', $policy->id), [
+            'number' => 'f'
+        ])
+        ->assertInertia(fn (Assert $page) => $page
+            ->missing('errors')
+        );
+    }
 }

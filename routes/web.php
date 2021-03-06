@@ -19,13 +19,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    // return Inertia::render('Welcome', [
-    //     'canLogin' => Route::has('login'),
-    //     'canRegister' => Route::has('register'),
-    //     'laravelVersion' => Application::VERSION,
-    //     'phpVersion' => PHP_VERSION,
-    // ]);
-    return redirect('/login');
+    return redirect('/dashboard');
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -33,6 +27,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
+    // Holders
     Route::get('holders', [HolderController::class, 'index'])
         ->name('holders');
 
@@ -48,9 +43,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('holders/{holder}/restore', [HolderController::class, 'restore'])
         ->name('holders.restore');
 
-    //Policy
+    // Policy
     Route::get('/policies/{policy}/edit', [PolicyController::class, 'edit'])
         ->name('policies.edit');
+
+    Route::put('/policies/{policy}', [PolicyController::class, 'update'])
+        ->name('policies.update');
         
     //PolicyFields
     Route::post('/policyfield', [PolicyFieldController::class, 'store'])

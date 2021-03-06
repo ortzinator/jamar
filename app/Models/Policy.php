@@ -9,6 +9,8 @@ class Policy extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $with = ['fields'];
 
     public function holders()

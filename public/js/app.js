@@ -19454,16 +19454,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["field", "policy"],
+  components: {
+    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_0__.default
+  },
   data: function data() {
     return {
-      showButtons: false
+      showButtons: false,
+      confirming: false
     };
   },
   methods: {
     deleteField: function deleteField() {
-      this.$inertia["delete"](route("policyfield.destroy", this.field.id));
+      // this.$inertia.delete(route("policyfield.destroy", this.field.id));
+      this.confirming = false;
     }
   }
 });
@@ -24829,15 +24836,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Field ");
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete this field? ");
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_jet_confirmation_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-confirmation-modal");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
-    onMouseenter: _cache[3] || (_cache[3] = function ($event) {
+    onMouseenter: _cache[6] || (_cache[6] = function ($event) {
       return $data.showButtons = true;
     }),
-    onMouseleave: _cache[4] || (_cache[4] = function ($event) {
+    onMouseleave: _cache[7] || (_cache[7] = function ($event) {
       return $data.showButtons = false;
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_confirmation_modal, {
+    show: $data.confirming,
+    onClose: _cache[3] || (_cache[3] = function ($event) {
+      return $data.confirming = false;
+    })
+  }, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_1];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_2];
+    }),
+    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        "class": "btn",
+        onClick: _cache[1] || (_cache[1] = function ($event) {
+          return $data.confirming = false;
+        })
+      }, "Cancel"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        "class": "btn btn-danger ml-2",
+        onClick: _cache[2] || (_cache[2] = function () {
+          return $options.deleteField && $options.deleteField.apply($options, arguments);
+        })
+      }, " Delete Field ")];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
     textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.name),
     "class": "border border-gray-300 px-4 py-2 rounded shadow-sm"
   }, null, 8
@@ -24849,13 +24893,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["textContent"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     "class": "btn-sm btn-primary mr-2",
-    onClick: _cache[1] || (_cache[1] = function () {
+    onClick: _cache[4] || (_cache[4] = function () {
       return _ctx.showEdit && _ctx.showEdit.apply(_ctx, arguments);
     })
   }, " Edit "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     "class": "btn-sm btn-danger mr-2",
-    onClick: _cache[2] || (_cache[2] = function () {
-      return $options.deleteField && $options.deleteField.apply($options, arguments);
+    onClick: _cache[5] || (_cache[5] = function ($event) {
+      return $data.confirming = true;
     })
   }, " Delete ")], 512
   /* NEED_PATCH */
