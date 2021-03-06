@@ -70,15 +70,12 @@ class PolicyTest extends TestCase
     public function test_a_number_is_required()
     {
         $this->signIn(true);
-        $this->withoutExceptionHandling();
 
         $policy = Policy::factory()->create();
 
         $this->put(route('policies.update', $policy->id), [
-            'number' => 'f'
+            'number' => ''
         ])
-        ->assertInertia(fn (Assert $page) => $page
-            ->missing('errors')
-        );
+        ->assertSessionHasErrors();
     }
 }
