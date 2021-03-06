@@ -18874,7 +18874,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     restore: function restore() {
-      if (confirm("Are you sure you want to restore this contact?")) {// this.policyForm.put(this.route("policies.restore", this.policy.id));
+      if (confirm("Are you sure you want to restore this policy?")) {// this.policyForm.put(this.route("policies.restore", this.policy.id));
       }
     }
   }
@@ -19460,23 +19460,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["field", "policy"],
   components: {
-    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_0__.default
+    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_1__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default
+  },
+  setup: function setup(props) {
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
+      value: props.field.value,
+      id: props.field.id
+    });
+    return {
+      form: form
+    };
   },
   data: function data() {
     return {
       showButtons: false,
-      confirming: false
+      confirming: false,
+      editing: false
     };
   },
   methods: {
     deleteField: function deleteField() {
-      // this.$inertia.delete(route("policyfield.destroy", this.field.id));
+      this.$inertia["delete"](route("policyfield.destroy", this.field.id));
       this.confirming = false;
+    },
+    submit: function submit() {
+      this.form.post(route("policyfield.update", this.field.id));
+      this.editing = false;
     }
   }
 });
@@ -24920,11 +24939,13 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_confirmation_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-confirmation-modal");
 
+  var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
-    onMouseenter: _cache[5] || (_cache[5] = function ($event) {
+    onMouseenter: _cache[7] || (_cache[7] = function ($event) {
       return $data.showButtons = true;
     }),
-    onMouseleave: _cache[6] || (_cache[6] = function ($event) {
+    onMouseleave: _cache[8] || (_cache[8] = function ($event) {
       return $data.showButtons = false;
     }),
     "class": "grid grid-cols-9 gap-5 mb-5"
@@ -24963,14 +24984,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "px-4 py-2 rounded col-span-4"
   }, null, 8
   /* PROPS */
-  , ["textContent"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.value),
-    "class": "bg-gray-200 px-4 py-2 col-span-4 font-mono"
+  , ["textContent"]), $data.editing ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_input, {
+    key: 0,
+    modelValue: $setup.form.value,
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $setup.form.value = $event;
+    }),
+    id: "value",
+    type: "text",
+    "class": "col-span-4 font-mono",
+    onKeyup: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)($options.submit, ["enter"])
   }, null, 8
   /* PROPS */
-  , ["textContent"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  , ["modelValue", "onKeyup"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+    key: 1,
+    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.value),
+    "class": "bg-gray-200 px-4 py-2 col-span-4 font-mono",
+    onClick: _cache[5] || (_cache[5] = function ($event) {
+      return $data.editing = true;
+    })
+  }, null, 8
+  /* PROPS */
+  , ["textContent"])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     "class": "btn-sm btn-danger mr-2 col-span-1",
-    onClick: _cache[4] || (_cache[4] = function ($event) {
+    onClick: _cache[6] || (_cache[6] = function ($event) {
       return $data.confirming = true;
     })
   }, " Delete ", 512
@@ -25009,11 +25046,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_4 = {
-  "class": ""
-};
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Field ");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Field ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_policy_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("policy-field");
@@ -25022,7 +25055,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("icon");
 
-  return $props.fields.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, "No fields found")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.fields, function (field) {
+  return $props.fields.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, "No fields found")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [_hoisted_3, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.fields, function (field) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_policy_field, {
       key: field.id,
       field: field,
@@ -25033,7 +25066,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["field", "policy"]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), $data.fieldFormShown ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_new_policy_field, {
+  )), $data.fieldFormShown ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_new_policy_field, {
     key: 0,
     policy: $props.policy,
     "class": "flex mb-5 p-5 rounded space-x-4 bg-blue-100 border border-blue-200 shadow-lg"
@@ -25048,7 +25081,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_icon, {
     name: "plus-circle",
     "class": "h-5 w-5 mr-2"
-  }), _hoisted_5])]));
+  }), _hoisted_4])]));
 }
 
 /***/ }),

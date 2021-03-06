@@ -56,5 +56,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::delete('/policyfield/{policyField}', [PolicyFieldController::class, 'destroy'])
         ->name('policyfield.destroy');
+
+    Route::post('/policyfield/{policyField}', [PolicyFieldController::class, 'update'])
+        ->name('policyfield.update');
         
 });

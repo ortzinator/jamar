@@ -74,7 +74,13 @@ class PolicyFieldController extends Controller
      */
     public function update(Request $request, PolicyField $policyField)
     {
-        //
+        //TODO: Validation?
+
+        $policyField->update([
+            'value' => $request['value']
+        ]);
+
+        return Redirect::back()->banner('Field updated');
     }
 
     /**

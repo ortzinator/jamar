@@ -21,9 +21,19 @@
         </jet-confirmation-modal>
 
         <div v-text="field.name" class="px-4 py-2 rounded col-span-4"></div>
+        <jet-input
+            v-if="editing"
+            v-model="form.value"
+            id="value"
+            type="text"
+            class="col-span-4 font-mono"
+            @keyup.enter="submit"
+        />
         <div
+            v-else
             v-text="field.value"
             class="bg-gray-200 px-4 py-2 col-span-4 font-mono"
+            @click="editing = true"
         ></div>
         <button
             class="btn-sm btn-danger mr-2 col-span-1"
@@ -36,21 +46,37 @@
 </template>
 
 <script>
+import { useForm } from "@inertiajs/inertia-vue3";
+
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
+import JetInput from "@/Jetstream/Input";
 
 export default {
     props: ["field", "policy"],
-    components: { JetConfirmationModal },
+    components: { JetConfirmationModal, JetInput },
+    setup(props) {
+        const form = useForm({
+            value: props.field.value,
+            id: props.field.id,
+        });
+
+        return { form };
+    },
     data() {
         return {
             showButtons: false,
             confirming: false,
+            editing: false,
         };
     },
     methods: {
         deleteField() {
-            // this.$inertia.delete(route("policyfield.destroy", this.field.id));
+            this.$inertia.delete(route("policyfield.destroy", this.field.id));
             this.confirming = false;
+        },
+        submit() {
+            this.form.post(route("policyfield.update", this.field.id));
+            this.editing = false;
         },
     },
 };

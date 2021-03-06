@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Policy;
+use App\Models\PolicyField;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Inertia\Testing\Assert;
@@ -28,5 +29,27 @@ class PolicyFieldTest extends TestCase
             ->assertInertia(fn (Assert $page) => $page
                 ->has('policy.fields', 1)
             );
+    }
+
+    public function test_policyfields_can_be_edited()
+    {
+        $this->signIn(true);
+
+        /**  @var Policy $policy */
+        $policy = Policy::factory()->create();
+
+        /**  @var PolicyField $policyField */
+        $policyField = PolicyField::factory()->for($policy)->create();
+        $policy->refresh();
+
+        $this->post(route('policyfield.update', $policyField->id), [
+            'value' => 'foobar'
+        ]);
+        
+        $this->get(route('policies.edit', $policy->id))
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('policy.fields.0.value', 'foobar')
+            );
+
     }
 }

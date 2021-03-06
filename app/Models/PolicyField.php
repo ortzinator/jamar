@@ -10,4 +10,9 @@ class PolicyField extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function policy()
+    {
+        return $this->belongsTo(Policy::class);
+    }
 }

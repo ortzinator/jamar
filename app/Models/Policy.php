@@ -18,6 +18,11 @@ class Policy extends Model
         return $this->belongsToMany(Holder::class)->withTimestamps();
     }
 
+    /**
+     * @param array $field
+     * 
+     * @return PolicyField
+     */
     public function addField($field)
     {
         return $this->fields()->create($field);

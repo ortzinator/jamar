@@ -120,7 +120,7 @@ export default {
             }
         },
         restore() {
-            if (confirm("Are you sure you want to restore this contact?")) {
+            if (confirm("Are you sure you want to restore this policy?")) {
                 // this.policyForm.put(this.route("policies.restore", this.policy.id));
             }
         },
