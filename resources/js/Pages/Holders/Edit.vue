@@ -18,7 +18,10 @@
                     <icon name="trash" class="h-5 mr-2 w-5" />
                     This policyholder is deleted
                 </div>
-                <button class="btn hover:underline" @click="restore">
+                <button
+                    class="btn hover:underline"
+                    @click="confirmingRestore = true"
+                >
                     Restore
                 </button>
             </div>
@@ -65,7 +68,7 @@
                         class="text-red-600 hover:underline"
                         tabindex="-1"
                         type="button"
-                        @click="destroy"
+                        @click="confirmingDelete = true"
                     >
                         Delete holder
                     </button>
@@ -79,6 +82,48 @@
                 </div>
             </form>
         </div>
+
+        <jet-confirmation-modal
+            :show="confirmingRestore"
+            @close="confirmingRestore = false"
+        >
+            <template #title> Restore Policyholder </template>
+
+            <template #content>
+                Are you sure you want to restore this policyholder?
+            </template>
+
+            <template #footer>
+                <button class="btn" @click="confirmingRestore = false">
+                    Cancel
+                </button>
+
+                <button class="btn btn-danger ml-2" @click="restore">
+                    Restore
+                </button>
+            </template>
+        </jet-confirmation-modal>
+
+        <jet-confirmation-modal
+            :show="confirmingDelete"
+            @close="confirmingDelete = false"
+        >
+            <template #title> Delete Policyholder </template>
+
+            <template #content>
+                Are you sure you want to delete the Policyholder?
+            </template>
+
+            <template #footer>
+                <button class="btn" @click="confirmingDelete = false">
+                    Cancel
+                </button>
+
+                <button class="btn btn-danger ml-2" @click="destroy">
+                    Delete Field
+                </button>
+            </template>
+        </jet-confirmation-modal>
     </div>
 </template>
 
@@ -92,6 +137,7 @@ import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
 import JetInputError from "@/Jetstream/InputError";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 
 export default {
     layout: AppLayout,
@@ -102,6 +148,7 @@ export default {
         JetInputError,
         JetValidationErrors,
         LoadingButton,
+        JetConfirmationModal,
     },
     props: {
         errors: Object,
@@ -116,20 +163,23 @@ export default {
 
         return { form };
     },
+    data() {
+        return {
+            confirmingDelete: false,
+            confirmingRestore: false,
+        };
+    },
     methods: {
         updateHolder() {
             this.form.put(this.route("holders.update", this.holder.id));
         },
         destroy() {
-            //TODO check if holder is associated with a policy
-            if (confirm("Are you sure you want to delete this policyholder?")) {
-                this.form.delete(this.route("holders.destroy", this.holder.id));
-            }
+            this.form.delete(this.route("holders.destroy", this.holder.id));
+            this.confirmingDelete = false;
         },
         restore() {
-            if (confirm("Are you sure you want to restore this contact?")) {
-                this.form.put(this.route("holders.restore", this.holder.id));
-            }
+            this.form.put(this.route("holders.restore", this.holder.id));
+            this.confirmingRestore = false;
         },
     },
 };

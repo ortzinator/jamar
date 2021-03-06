@@ -18661,6 +18661,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
 /* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
+
 
 
 
@@ -18677,7 +18679,8 @@ __webpack_require__.r(__webpack_exports__);
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__.default,
     JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_6__.default,
     JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_7__.default,
-    LoadingButton: _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_3__.default
+    LoadingButton: _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_8__.default
   },
   props: {
     errors: Object,
@@ -18693,20 +18696,23 @@ __webpack_require__.r(__webpack_exports__);
       form: form
     };
   },
+  data: function data() {
+    return {
+      confirmingDelete: false,
+      confirmingRestore: false
+    };
+  },
   methods: {
     updateHolder: function updateHolder() {
       this.form.put(this.route("holders.update", this.holder.id));
     },
     destroy: function destroy() {
-      //TODO check if holder is associated with a policy
-      if (confirm("Are you sure you want to delete this policyholder?")) {
-        this.form["delete"](this.route("holders.destroy", this.holder.id));
-      }
+      this.form["delete"](this.route("holders.destroy", this.holder.id));
+      this.confirmingDelete = false;
     },
     restore: function restore() {
-      if (confirm("Are you sure you want to restore this contact?")) {
-        this.form.put(this.route("holders.restore", this.holder.id));
-      }
+      this.form.put(this.route("holders.restore", this.holder.id));
+      this.confirmingRestore = false;
     }
   }
 });
@@ -22931,6 +22937,14 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update holder ");
 
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Restore Policyholder ");
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to restore this policyholder? ");
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Policyholder ");
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete the Policyholder? ");
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
@@ -22943,6 +22957,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_input_error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input-error");
 
   var _component_loading_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("loading-button");
+
+  var _component_jet_confirmation_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-confirmation-modal");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     "class": "text-indigo-400 hover:text-indigo-600",
@@ -22963,8 +22979,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "h-5 mr-2 w-5"
   }), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     "class": "btn hover:underline",
-    onClick: _cache[1] || (_cache[1] = function () {
-      return $options.restore && $options.restore.apply($options, arguments);
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $data.confirmingRestore = true;
     })
   }, " Restore ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
     onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
@@ -23010,8 +23026,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "text-red-600 hover:underline",
     tabindex: "-1",
     type: "button",
-    onClick: _cache[4] || (_cache[4] = function () {
-      return $options.destroy && $options.destroy.apply($options, arguments);
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $data.confirmingDelete = true;
     })
   }, " Delete holder ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
     "class": "btn btn-primary ml-auto",
@@ -23028,7 +23044,67 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["loading"])])], 32
   /* HYDRATE_EVENTS */
-  )])]);
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_confirmation_modal, {
+    show: $data.confirmingRestore,
+    onClose: _cache[8] || (_cache[8] = function ($event) {
+      return $data.confirmingRestore = false;
+    })
+  }, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_14];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_15];
+    }),
+    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        "class": "btn",
+        onClick: _cache[6] || (_cache[6] = function ($event) {
+          return $data.confirmingRestore = false;
+        })
+      }, " Cancel "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        "class": "btn btn-danger ml-2",
+        onClick: _cache[7] || (_cache[7] = function () {
+          return $options.restore && $options.restore.apply($options, arguments);
+        })
+      }, " Restore ")];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_confirmation_modal, {
+    show: $data.confirmingDelete,
+    onClose: _cache[11] || (_cache[11] = function ($event) {
+      return $data.confirmingDelete = false;
+    })
+  }, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_16];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_17];
+    }),
+    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        "class": "btn",
+        onClick: _cache[9] || (_cache[9] = function ($event) {
+          return $data.confirmingDelete = false;
+        })
+      }, " Cancel "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        "class": "btn btn-danger ml-2",
+        onClick: _cache[10] || (_cache[10] = function () {
+          return $options.destroy && $options.destroy.apply($options, arguments);
+        })
+      }, " Delete Field ")];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show"])]);
 }
 
 /***/ }),
