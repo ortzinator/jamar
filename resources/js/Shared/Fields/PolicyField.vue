@@ -1,5 +1,9 @@
 <template>
-    <div @mouseenter="showButtons = true" @mouseleave="showButtons = false">
+    <div
+        @mouseenter="showButtons = true"
+        @mouseleave="showButtons = false"
+        class="grid grid-cols-9 gap-5 mb-5"
+    >
         <jet-confirmation-modal :show="confirming" @close="confirming = false">
             <template #title> Delete Field </template>
 
@@ -16,22 +20,18 @@
             </template>
         </jet-confirmation-modal>
 
-        <div
-            v-text="field.name"
-            class="border border-gray-300 px-4 py-2 rounded shadow-sm"
-        ></div>
+        <div v-text="field.name" class="px-4 py-2 rounded col-span-4"></div>
         <div
             v-text="field.value"
-            class="border border-gray-300 px-4 py-2 rounded shadow-sm"
+            class="bg-gray-200 px-4 py-2 col-span-4 font-mono"
         ></div>
-        <div v-show="showButtons">
-            <button class="btn-sm btn-primary mr-2" @click="showEdit">
-                Edit
-            </button>
-            <button class="btn-sm btn-danger mr-2" @click="confirming = true">
-                Delete
-            </button>
-        </div>
+        <button
+            class="btn-sm btn-danger mr-2 col-span-1"
+            @click="confirming = true"
+            v-show="showButtons"
+        >
+            Delete
+        </button>
     </div>
 </template>
 

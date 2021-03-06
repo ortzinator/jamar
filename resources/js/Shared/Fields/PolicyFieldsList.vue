@@ -4,11 +4,13 @@
         <div class="border-b font-bold my-5 pb-2 text-gray-700">
             Custom Fields
         </div>
-        <div v-for="field in fields" :key="field.id" class="">
+        <div class="">
             <policy-field
+                v-for="field in fields"
+                :key="field.id"
                 :field="field"
                 :policy="policy"
-                class="flex items-center mb-5 space-x-6"
+                class=""
             ></policy-field>
         </div>
         <new-policy-field
