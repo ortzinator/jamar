@@ -24999,7 +24999,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["modelValue", "onKeyup"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
     key: 1,
     textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.field.value),
-    "class": "bg-gray-200 px-4 py-2 col-span-4 font-mono",
+    "class": "bg-gray-200 px-4 py-2 col-span-4 font-mono cursor-pointer",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $data.editing = true;
     })

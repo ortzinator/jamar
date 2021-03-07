@@ -32,7 +32,7 @@
         <div
             v-else
             v-text="field.value"
-            class="bg-gray-200 px-4 py-2 col-span-4 font-mono"
+            class="bg-gray-200 px-4 py-2 col-span-4 font-mono cursor-pointer"
             @click="editing = true"
         ></div>
         <button
