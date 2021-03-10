@@ -14,9 +14,14 @@ class PolicyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return Inertia::render('Policies/Index', [
+            'filters' => $request->all('search', 'trashed'),
+            'policies' => Policy::orderBy('number')
+            ->filter($request->only('search', 'trashed'))
+            ->paginate()
+        ]);
     }
 
     public function show(Policy $policy)

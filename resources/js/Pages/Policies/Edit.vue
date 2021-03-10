@@ -8,28 +8,42 @@
             {{ policyForm.name }}
         </h1>
         <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
-            <div class="p-5">
-                <div
-                    v-if="policy.deleted_at"
-                    class="bg-yellow-200 flex items-center justify-between pl-8"
-                >
-                    <div class="flex">
-                        <icon name="trash" class="h-5 mr-2 w-5" />
-                        This policy is deleted
-                    </div>
-                    <button class="btn hover:underline" @click="restore">
-                        Restore
-                    </button>
+            <div
+                v-if="policy.deleted_at"
+                class="bg-yellow-200 flex items-center justify-between p-5 pl-8"
+            >
+                <div class="flex">
+                    <icon name="trash" class="h-5 mr-2 w-5" />
+                    This policy is deleted
                 </div>
+                <button class="btn hover:underline" @click="restore">
+                    Restore
+                </button>
+            </div>
 
-                <jet-label for="number" value="Policy Number" />
-                <jet-input
-                    v-model="policyForm.number"
-                    id="name"
-                    type="text"
-                    class="block w-full"
-                />
-                <jet-input-error :message="policyForm.errors.number" />
+            <div
+                v-if="policy.holders.length === 0"
+                class="bg-red-200 flex items-center justify-between p-5 pl-8"
+            >
+                <div class="flex items-center">
+                    <icon name="danger" class="h-6 mr-2 w-6" />
+                    <div class="text-lg">
+                        This policy does not have any policyholders
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-8">
+                <div class="mb-5">
+                    <jet-label for="number" value="Policy Number" />
+                    <jet-input
+                        v-model="policyForm.number"
+                        id="name"
+                        type="text"
+                        class="block w-full"
+                    />
+                    <jet-input-error :message="policyForm.errors.number" />
+                </div>
 
                 <policy-fields-list
                     :fields="fieldsData"

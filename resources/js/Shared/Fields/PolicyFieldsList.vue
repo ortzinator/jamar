@@ -1,5 +1,7 @@
 <template>
-    <div v-if="fields.length === 0">No fields found</div>
+    <div v-if="fields.length === 0" class="bg-yellow-100 p-5 rounded">
+        No fields found
+    </div>
     <div v-else class="mr-5 mb-5">
         <div class="border-b font-bold my-5 pb-2 text-gray-700">
             Custom Fields

@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Holders
+                policies
             </h2>
         </template>
 
@@ -36,39 +36,21 @@
                 <div class="shadow rounded bg-white">
                     <table class="w-full">
                         <tr class="text-left">
-                            <th class="px-6 pt-6 pb-4">Name</th>
-                            <th class="px-6 pt-6 pb-4">Address</th>
-                            <th class="px-6 pt-6 pb-4">Policy</th>
+                            <th class="px-6 pt-6 pb-4">Number</th>
                             <th></th>
                         </tr>
-                        <tr v-for="holder in holders.data" :key="holder.id">
+                        <tr v-for="policy in policies.data" :key="policy.id">
                             <td class="border-t">
                                 <inertia-link
-                                    :href="route('holders.edit', holder.id)"
+                                    :href="route('policies.edit', policy.id)"
                                     class="px-6 py-4 flex items-center focus:text-indigo-500"
-                                    >{{ holder.name }}</inertia-link
-                                >
-                            </td>
-                            <td class="border-t">
-                                <inertia-link
-                                    :href="route('holders.edit', holder.id)"
-                                    class="px-6 py-4 flex items-center focus:text-indigo-500"
-                                    >{{ holder.address }}</inertia-link
-                                >
-                            </td>
-                            <td class="border-t">
-                                <inertia-link
-                                    href="#"
-                                    class="px-6 py-4 flex items-center focus:text-indigo-500"
-                                    ><span v-if="holder.policies"
-                                        >YES</span
-                                    ></inertia-link
+                                    >{{ policy.number }}</inertia-link
                                 >
                             </td>
                             <td class="border-t w-px">
                                 <inertia-link
                                     class="px-4 flex items-center"
-                                    :href="route('holders.edit', holder.id)"
+                                    :href="route('policies.edit', policy.id)"
                                     tabindex="-1"
                                 >
                                     <icon
@@ -78,14 +60,14 @@
                                 </inertia-link>
                             </td>
                         </tr>
-                        <tr v-if="holders.data.length === 0">
+                        <tr v-if="policies.data.length === 0">
                             <td class="border-t px-6 py-4" colspan="4">
-                                No policyholders found.
+                                No policypolicies found.
                             </td>
                         </tr>
                     </table>
                 </div>
-                <pagination :links="holders.links"></pagination>
+                <pagination :links="policies.links"></pagination>
             </div>
         </div>
     </app-layout>
@@ -102,7 +84,7 @@ import pickBy from "lodash/pickBy";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 export default {
-    props: { sessions: Object, holders: Object, filters: Object },
+    props: { sessions: Object, policies: Object, filters: Object },
 
     components: {
         AppLayout,
@@ -135,8 +117,8 @@ export default {
         refreshSearch: throttle(function () {
             this.searchForm
                 .transform((data) => pickBy(data))
-                .get("/holders", {
-                    only: ["holders"],
+                .get("/policies", {
+                    only: ["policies"],
                     preserveState: true,
                     preserveScroll: true,
                 });

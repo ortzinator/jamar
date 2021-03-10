@@ -26,8 +26,8 @@
                 </button>
             </div>
             <form @submit.prevent="updateHolder">
-                <div class="p-8 -mr-6 -mb-8">
-                    <div class="mr-5 mb-5">
+                <div class="p-8">
+                    <div class="mb-5">
                         <jet-label for="name" value="Name"></jet-label>
                         <jet-input
                             v-model="form.name"
@@ -39,14 +39,8 @@
                             :message="form.errors.name"
                         ></jet-input-error>
                     </div>
-                    <div class="mr-5 mb-5">
+                    <div class="mb-5">
                         <jet-label for="address" value="Address"></jet-label>
-                        <!-- <textarea
-                            v-model="form.address"
-                            id="address"
-                            type="text"
-                            class="block w-full"
-                        /> -->
                         <textarea
                             name="address"
                             id="address"

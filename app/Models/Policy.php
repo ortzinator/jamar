@@ -11,7 +11,22 @@ class Policy extends Model
 
     protected $guarded = [];
 
-    protected $with = ['fields'];
+    protected $with = ['fields', 'holders'];
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? null, function ($query, $search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('number', 'like', '%'.$search.'%');
+            });
+        })->when($filters['trashed'] ?? null, function ($query, $trashed) {
+            if ($trashed === 'with') {
+                $query->withTrashed();
+            } elseif ($trashed === 'only') {
+                $query->onlyTrashed();
+            }
+        });
+    }
 
     public function holders()
     {
