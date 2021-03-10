@@ -17,7 +17,6 @@ class CreateHolderTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('address');
-            $table->bigInteger('policy')->nullable();
             $table->softDeletes();
             
             $table->timestamps();
