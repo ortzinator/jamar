@@ -15,15 +15,6 @@ class HolderTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_a_holder_can_have_policies()
-    {
-        $holder = Holder::factory()->create();
-        $holder->policies()->attach(Policy::factory()->create());
-        $holder->policies()->attach(Policy::factory()->create());
-
-        $this->assertCount(2, $holder->policies);
-    }
-
     public function test_holders_cannot_be_viewed_by_non_admins()
     {
         $this->signIn();
