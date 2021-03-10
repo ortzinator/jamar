@@ -23613,7 +23613,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
   "class": "font-semibold text-xl text-gray-800 leading-tight"
-}, " policies ", -1
+}, " Policies ", -1
 /* HOISTED */
 );
 
@@ -23676,7 +23676,7 @@ var _hoisted_14 = {
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
   "class": "border-t px-6 py-4",
   colspan: "4"
-}, " No policypolicies found. ", -1
+}, " No policies found. ", -1
 /* HOISTED */
 );
 
