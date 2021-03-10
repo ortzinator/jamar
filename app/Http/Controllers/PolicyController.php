@@ -19,6 +19,11 @@ class PolicyController extends Controller
         //
     }
 
+    public function show(Policy $policy)
+    {
+        # code...
+    }
+
     /**
      * Show the form for creating a new resource.
      *
