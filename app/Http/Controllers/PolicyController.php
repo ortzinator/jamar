@@ -36,7 +36,7 @@ class PolicyController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Policies/Create');
     }
 
     /**

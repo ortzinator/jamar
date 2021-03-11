@@ -48,7 +48,10 @@
                 <policy-fields-list
                     :fields="fieldsData"
                     :policy="policy"
+                    class="mb-5"
                 ></policy-fields-list>
+
+                <add-policyholder></add-policyholder>
             </div>
             <div
                 class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
@@ -80,6 +83,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
 import Icon from "@/Shared/Icon";
 import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
+import AddPolicyholder from "@/Shared/Policyholder/AddPolicyholder";
 import LoadingButton from "@/Shared/LoadingButton";
 
 import JetInput from "@/Jetstream/Input";
@@ -97,6 +101,7 @@ export default {
         JetValidationErrors,
         PolicyFieldsList,
         LoadingButton,
+        AddPolicyholder,
     },
     props: {
         errors: Object,

@@ -34,10 +34,11 @@
             </div>
             <div class="">
                 <div class="shadow rounded bg-white">
-                    <table class="w-full">
+                    <table class="w-full table-fixed">
                         <tr class="text-left">
-                            <th class="px-6 pt-6 pb-4">Number</th>
-                            <th></th>
+                            <th class="px-6 pt-6 pb-4 w-4/12">Number</th>
+                            <th class="px-6 pt-6 pb-4 w-7/12">Holders</th>
+                            <th class="w-1/12"></th>
                         </tr>
                         <tr v-for="policy in policies.data" :key="policy.id">
                             <td class="border-t">
@@ -46,6 +47,23 @@
                                     class="px-6 py-4 flex items-center focus:text-indigo-500"
                                     >{{ policy.number }}</inertia-link
                                 >
+                            </td>
+                            <td class="border-t">
+                                <inertia-link
+                                    :href="route('policies.edit', policy.id)"
+                                    class="px-6 py-4 flex items-center focus:text-indigo-500"
+                                >
+                                    <div
+                                        v-if="policy.holders.length === 0"
+                                        class="flex text-red-600"
+                                    >
+                                        <icon
+                                            name="danger"
+                                            class="h-6 mr-2 w-6"
+                                        />
+                                        No policyholders found
+                                    </div>
+                                </inertia-link>
                             </td>
                             <td class="border-t w-px">
                                 <inertia-link
