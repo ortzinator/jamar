@@ -51,7 +51,11 @@
                     class="mb-5"
                 ></policy-fields-list>
 
-                <add-policyholder></add-policyholder>
+                <select-policyholder
+                    :policy="policy"
+                    :holder="holders"
+                    @selected="holderSelected"
+                ></select-policyholder>
             </div>
             <div
                 class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
@@ -83,7 +87,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
 import Icon from "@/Shared/Icon";
 import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
-import AddPolicyholder from "@/Shared/Policyholder/AddPolicyholder";
+import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
 import LoadingButton from "@/Shared/LoadingButton";
 
 import JetInput from "@/Jetstream/Input";
@@ -101,12 +105,13 @@ export default {
         JetValidationErrors,
         PolicyFieldsList,
         LoadingButton,
-        AddPolicyholder,
+        SelectPolicyholder,
     },
     props: {
         errors: Object,
         policy: Object,
         fields: Array,
+        holders: Array,
     },
     remember: "policyForm",
     setup(props) {
@@ -142,6 +147,9 @@ export default {
             if (confirm("Are you sure you want to restore this policy?")) {
                 // this.policyForm.put(this.route("policies.restore", this.policy.id));
             }
+        },
+        holderSelected(holder) {
+            console.log(holder);
         },
     },
 };

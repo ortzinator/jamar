@@ -97,7 +97,7 @@ import Pagination from "@/Shared/Pagination";
 import Icon from "@/Shared/Icon";
 import JetCheckbox from "@/Jetstream/Checkbox";
 
-import throttle from "lodash/throttle";
+import debounce from "lodash/debounce";
 import pickBy from "lodash/pickBy";
 import { useForm } from "@inertiajs/inertia-vue3";
 
@@ -132,7 +132,7 @@ export default {
         },
     },
     methods: {
-        refreshSearch: throttle(function () {
+        refreshSearch: debounce(function () {
             this.searchForm
                 .transform((data) => pickBy(data))
                 .get("/policies", {

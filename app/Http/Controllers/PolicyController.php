@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Holder;
 use App\Models\Policy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -34,9 +35,13 @@ class PolicyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return Inertia::render('Policies/Create');
+        return Inertia::render('Policies/Create', [
+            'holders' => Inertia::lazy(fn () => Holder::orderBy('name')
+                ->filter($request->only('search', 'trashed'))
+            )
+        ]);
     }
 
     /**

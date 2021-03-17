@@ -21,6 +21,11 @@ class HolderController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->expectsJson()) {
+            return Holder::orderBy('name')
+                ->filter($request->only('search', 'trashed'))->limit(5)->get();
+        }
+
         return Inertia::render('Holders/Index', [
             'filters' => $request->all('search', 'trashed'),
             'holders' => Holder::orderBy('name')
