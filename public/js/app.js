@@ -18791,7 +18791,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     }, 200),
     reset: function reset() {
-      this.searchForm.reset();
+      this.searchForm.search = "";
+      this.searchForm.trashed = null;
     }
   }
 });
@@ -18985,7 +18986,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     }, 200),
     reset: function reset() {
-      this.searchForm.reset();
+      this.searchForm.search = "";
+      this.searchForm.trashed = null;
     }
   }
 });
@@ -23451,7 +23453,7 @@ var _hoisted_17 = {
 };
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
-  "class": "border-t px-6 py-4",
+  "class": "border-t px-6 py-4 text-gray-400",
   colspan: "4"
 }, " No policyholders found. ", -1
 /* HOISTED */

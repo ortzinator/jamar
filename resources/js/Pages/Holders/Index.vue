@@ -79,7 +79,10 @@
                             </td>
                         </tr>
                         <tr v-if="holders.data.length === 0">
-                            <td class="border-t px-6 py-4" colspan="4">
+                            <td
+                                class="border-t px-6 py-4 text-gray-400"
+                                colspan="4"
+                            >
                                 No policyholders found.
                             </td>
                         </tr>
@@ -142,7 +145,8 @@ export default {
                 });
         }, 200),
         reset() {
-            this.searchForm.reset();
+            this.searchForm.search = "";
+            this.searchForm.trashed = null;
         },
     },
 };

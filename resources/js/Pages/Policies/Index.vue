@@ -142,7 +142,8 @@ export default {
                 });
         }, 200),
         reset() {
-            this.searchForm.reset();
+            this.searchForm.search = "";
+            this.searchForm.trashed = null;
         },
     },
 };
