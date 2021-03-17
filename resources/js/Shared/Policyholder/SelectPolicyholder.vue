@@ -73,6 +73,7 @@ export default {
                 this.cancelSource.cancel();
             }
             this.cancelSource = axios.CancelToken.source();
+
             if (this.searchTerm === "") {
                 this.results = [];
                 return;
