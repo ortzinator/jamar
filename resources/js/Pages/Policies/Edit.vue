@@ -54,7 +54,7 @@
                 <holder-list
                     v-if="policyForm.holders.length > 0"
                     :holders="policyForm.holders"
-                    class="border border-gray-200 mb-5"
+                    class="mb-5"
                     >Policyholders</holder-list
                 >
 
