@@ -72,7 +72,7 @@ class PolicyTest extends TestCase
 
         $this->put(route('policies.update', $policy->id), [
             'number' => $policy->number,
-            'holders' => $holders->pluck('id')->toArray()
+            'holders' => $holders->toArray()
         ]);
 
         $this->get(route('policies.edit', $policy->id))
