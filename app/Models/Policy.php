@@ -47,4 +47,14 @@ class Policy extends Model
     {
         return $this->hasMany(PolicyField::class);
     }
+
+    /**
+     * @param int $holderId The ID of the Holder you want to attach
+     * 
+     * @return void
+     */
+    public function attachHolder($holderId)
+    {
+        $this->holders()->attach($holderId);
+    }
 }

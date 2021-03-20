@@ -44,7 +44,7 @@
                         <tr v-for="holder in holders.data" :key="holder.id">
                             <td class="border-t">
                                 <inertia-link
-                                    :href="route('holders.edit', holder.id)"
+                                    :href="holder.link"
                                     class="px-6 py-4 flex items-center focus:text-indigo-500"
                                     >{{ holder.name }}</inertia-link
                                 >

@@ -22,7 +22,7 @@
             </div>
 
             <div
-                v-if="policy.holders.length === 0"
+                v-if="policyForm.holders.length === 0"
                 class="bg-red-200 flex items-center justify-between p-5 pl-8"
             >
                 <div class="flex items-center">
@@ -51,9 +51,15 @@
                     class="mb-5"
                 ></policy-fields-list>
 
+                <holder-list
+                    v-if="policyForm.holders.length > 0"
+                    :holders="policyForm.holders"
+                    class="border border-gray-200 mb-5"
+                    >Policyholders</holder-list
+                >
+
                 <select-policyholder
                     :policy="policy"
-                    :holder="holders"
                     @selected="holderSelected"
                 ></select-policyholder>
             </div>
@@ -87,6 +93,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
 import Icon from "@/Shared/Icon";
 import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
+import HolderList from "@/Shared/Policyholder/HolderList";
 import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
 import LoadingButton from "@/Shared/LoadingButton";
 
@@ -104,6 +111,7 @@ export default {
         JetInputError,
         JetValidationErrors,
         PolicyFieldsList,
+        HolderList,
         LoadingButton,
         SelectPolicyholder,
     },
@@ -111,12 +119,12 @@ export default {
         errors: Object,
         policy: Object,
         fields: Array,
-        holders: Array,
     },
-    remember: "policyForm",
+    // remember: "policyForm",
     setup(props) {
         const policyForm = useForm({
             number: props.policy.number,
+            holders: props.policy.holders,
         });
 
         return { policyForm };
@@ -149,7 +157,7 @@ export default {
             }
         },
         holderSelected(holder) {
-            console.log(holder);
+            this.policyForm.holders.push(holder);
         },
     },
 };

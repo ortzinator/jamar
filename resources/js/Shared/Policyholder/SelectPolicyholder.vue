@@ -44,7 +44,7 @@ import Icon from "@/Shared/Icon";
 import LoadingButton from "@/Shared/LoadingButton";
 
 export default {
-    props: { policy: Object, holders: { type: Array, default: [] } },
+    props: { policy: Object },
     emits: ["selected"],
     components: {
         JetInput,

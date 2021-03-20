@@ -12,10 +12,17 @@ class Holder extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+    
+    protected $appends = ['link'];
 
     public function policies()
     {
         return $this->belongsToMany(Policy::class)->withTimestamps();
+    }
+
+    public function getLinkAttribute()
+    {
+        return url("/holders/{$this->id}/edit");
     }
 
     public function scopeFilter($query, array $filters)

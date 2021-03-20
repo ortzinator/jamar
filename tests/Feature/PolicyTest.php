@@ -35,7 +35,7 @@ class PolicyTest extends TestCase
             );
     }
 
-    public function test_an_admin_can_edit_policies()
+    public function test_an_admin_can_add_fields_to_a_policy()
     {
         $this->signIn(true);
         // $this->withoutExceptionHandling();
@@ -54,8 +54,32 @@ class PolicyTest extends TestCase
             ->assertInertia(fn (Assert $page) => $page
                 ->where('policy.number', 'NBT8730')
             );
+    }
 
-        //TODO: Edit fields
+    public function test_can_add_holders_to_a_policy()
+    {
+        $this->signIn(true);
+        $this->withoutExceptionHandling();
+
+        /**  @var Policy $policy */
+        $policy = Policy::factory()->create();
+        $policy->addField(PolicyField::factory()->makeOne()->toArray());
+
+        $policy->refresh();
+
+        /**  @var \Illuminate\Database\Eloquent\Collection $holders */
+        $holders = Holder::factory(3)->create();
+
+        $this->put(route('policies.update', $policy->id), [
+            'number' => $policy->number,
+            'holders' => $holders->pluck('id')->toArray()
+        ]);
+
+        $this->get(route('policies.edit', $policy->id))
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('policy.holders', 3)
+            );
+        
     }
 
     public function test_a_number_is_required()

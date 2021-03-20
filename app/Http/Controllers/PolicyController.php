@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Holder;
 use App\Models\Policy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -79,8 +80,14 @@ class PolicyController extends Controller
     public function update(Request $request, Policy $policy)
     {
         $request->validate([
-            'number' => ['required']
+            'number' => ['required'],
+            'holders' => ['array']
         ]);
+
+        if ($request->has('holders')) {
+            $holders = Arr::pluck($request['holders'], 'id');
+            $policy->holders()->sync($holders);
+        }
 
         $policy->update([
             'number' => $request['number']
