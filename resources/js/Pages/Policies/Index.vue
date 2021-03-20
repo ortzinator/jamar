@@ -63,6 +63,11 @@
                                         />
                                         No policyholders found
                                     </div>
+                                    <div
+                                        v-else
+                                        v-text="policy.holderNamesPreview"
+                                        class="overflow-ellipsis overflow-hidden whitespace-nowrap"
+                                    ></div>
                                 </inertia-link>
                             </td>
                             <td class="border-t w-px">
@@ -99,6 +104,7 @@ import JetCheckbox from "@/Jetstream/Checkbox";
 
 import throttle from "lodash/throttle";
 import pickBy from "lodash/pickBy";
+import loTruncate from "lodash/truncate";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 export default {
@@ -144,6 +150,12 @@ export default {
         reset() {
             this.searchForm.search = "";
             this.searchForm.trashed = null;
+        },
+        truncate(str) {
+            return loTruncate(str, {
+                length: 50,
+                separator: "...",
+            });
         },
     },
 };

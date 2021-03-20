@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Policy extends Model
 {
@@ -12,6 +13,8 @@ class Policy extends Model
     protected $guarded = [];
 
     protected $with = ['fields', 'holders'];
+
+    protected $appends = ['holderNamesPreview'];
 
     public function scopeFilter($query, array $filters)
     {
@@ -31,6 +34,11 @@ class Policy extends Model
     public function holders()
     {
         return $this->belongsToMany(Holder::class)->withTimestamps();
+    }
+
+    public function getHolderNamesPreviewAttribute()
+    {
+        return Str::limit($this->holders->implode('name', ', '), 100);
     }
 
     /**

@@ -19,4 +19,13 @@ class PolicyTest extends TestCase
 
         $this->assertCount(2, $policy->holders);
     }
+
+    public function test_a_policy_has_a_pretty_one_line_list_of_holders()
+    {
+        $policy = Policy::factory()->create();
+        $policy->holders()->attach(Holder::factory()->create(['name' => 'John Doe']));
+        $policy->holders()->attach(Holder::factory()->create(['name' => 'Jane Doe']));
+
+        $this->assertEquals('John Doe, Jane Doe', $policy->holderNamesPreview);
+    }
 }
