@@ -12,7 +12,7 @@ class Policy extends Model
 
     protected $guarded = [];
 
-    protected $with = ['fields', 'holders'];
+    protected $with = ['fields'];
 
     protected $appends = ['holderNamesPreview'];
 

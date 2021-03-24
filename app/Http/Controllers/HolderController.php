@@ -30,6 +30,7 @@ class HolderController extends Controller
             'filters' => $request->all('search', 'trashed'),
             'holders' => Holder::orderBy('name')
             ->filter($request->only('search', 'trashed'))
+            ->with('policies')
             ->paginate()
         ]);
     }

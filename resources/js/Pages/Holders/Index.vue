@@ -38,7 +38,7 @@
                         <tr class="text-left">
                             <th class="px-6 pt-6 pb-4">Name</th>
                             <th class="px-6 pt-6 pb-4">Address</th>
-                            <th class="px-6 pt-6 pb-4">Policy</th>
+                            <th class="px-6 pt-6 pb-4">Policies</th>
                             <th></th>
                         </tr>
                         <tr v-for="holder in holders.data" :key="holder.id">
@@ -51,24 +51,26 @@
                             </td>
                             <td class="border-t">
                                 <inertia-link
-                                    :href="route('holders.edit', holder.id)"
+                                    :href="holderLink(holder.id)"
                                     class="px-6 py-4 flex items-center focus:text-indigo-500"
                                     >{{ holder.address }}</inertia-link
                                 >
                             </td>
                             <td class="border-t">
                                 <inertia-link
-                                    href="#"
+                                    :href="holderLink(holder.id)"
                                     class="px-6 py-4 flex items-center focus:text-indigo-500"
-                                    ><span v-if="holder.policies"
-                                        >YES</span
-                                    ></inertia-link
                                 >
+                                    <span
+                                        v-if="holder.policies.length > 0"
+                                        v-text="holder.policies.length"
+                                    ></span
+                                ></inertia-link>
                             </td>
                             <td class="border-t w-px">
                                 <inertia-link
                                     class="px-4 flex items-center"
-                                    :href="route('holders.edit', holder.id)"
+                                    :href="holderLink(holder.id)"
                                     tabindex="-1"
                                 >
                                     <icon
@@ -147,6 +149,9 @@ export default {
         reset() {
             this.searchForm.search = "";
             this.searchForm.trashed = null;
+        },
+        holderLink(id) {
+            return route("holders.edit", id);
         },
     },
 };
