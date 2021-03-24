@@ -22,7 +22,8 @@ class HolderController extends Controller
     public function index(Request $request)
     {
         if ($request->expectsJson()) {
-            return Holder::orderBy('name')
+            return Holder::select('id', 'name')
+                ->orderBy('name')
                 ->filter($request->only('search', 'trashed'))->limit(5)->get();
         }
 

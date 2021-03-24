@@ -93,4 +93,37 @@ class PolicyTest extends TestCase
         ])
         ->assertSessionHasErrors();
     }
+
+    public function test_can_search_policies()
+    {
+        $this->signIn(true);
+
+        $policy = Policy::factory()->create(['number' => '1234']);
+        Policy::factory(10)->create();
+
+        $this->get('policies/?search=1234')
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('policies.data', 1)
+            );
+    }
+
+    public function test_can_search_trashed_policies()
+    {
+        $this->signIn(true);
+        $this->withExceptionHandling();
+
+        $policy = Policy::factory()->create(['number' => '1234']);
+        $policy->delete();
+        Policy::factory(10)->create();
+
+        $this->get('policies/?search=1234')
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('policies.data', 0)
+            );
+
+        $this->get('policies/?search=1234&trashed=with')
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('policies.data', 1)
+            );
+    }
 }
