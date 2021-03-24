@@ -38,11 +38,20 @@
                     <jet-label for="number" value="Policy Number" />
                     <jet-input
                         v-model="policyForm.number"
-                        id="name"
+                        id="number"
                         type="text"
                         class="block w-full"
                     />
                     <jet-input-error :message="policyForm.errors.number" />
+                </div>
+
+                <div class="mb-5">
+                    <jet-label for="date_issued" value="Date Issued" />
+                    <div
+                        v-text="ago"
+                        id="date_issued"
+                        class="block border border-gray-300 p-2 rounded w-full"
+                    />
                 </div>
 
                 <policy-fields-list
@@ -139,6 +148,15 @@ export default {
     watch: {
         fields() {
             this.fieldsData = this.fields;
+        },
+    },
+    computed: {
+        ago() {
+            const options = { year: "numeric", month: "long", day: "numeric" };
+            return new Date(this.policy.created_at).toLocaleDateString(
+                undefined,
+                options
+            );
         },
     },
     methods: {
