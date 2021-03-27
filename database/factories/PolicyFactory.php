@@ -22,7 +22,9 @@ class PolicyFactory extends Factory
     public function definition()
     {
         return [
-            'number' => $this->faker->regexify('[A-Za-z0-9]{5}')
+            'number' => $this->faker->regexify('[A-Za-z0-9]{5}'),
+            'period_start' => now(),
+            'period_end' => now()->addDays(rand(5, 10))
         ];
     }
 }

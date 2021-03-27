@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Holder;
 use App\Models\Policy;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redirect;
@@ -65,10 +66,9 @@ class PolicyController extends Controller
     public function edit(Policy $policy)
     {
         return Inertia::render('Policies/Edit', [
-            'policy' => $policy->loadMissing(['holders' => function ($query) {
-                $query->select('name', 'id');
-            }]),
-            'fields' => $policy->fields
+            'policy' => $policy,
+            'fields' => $policy->fields,
+            'holders' => $policy->holders
         ]);
     }
 
@@ -83,7 +83,9 @@ class PolicyController extends Controller
     {
         $request->validate([
             'number' => ['required'],
-            'holders' => ['array']
+            'holders' => ['array'],
+            'period_start' => ['date'],
+            'period_end' => ['date'],
         ]);
 
         if ($request->has('holders')) {
@@ -92,7 +94,9 @@ class PolicyController extends Controller
         }
 
         $policy->update([
-            'number' => $request['number']
+            'number' => $request['number'],
+            'period_start' => new Carbon($request['range.start']),
+            'period_end' => new Carbon($request['range.end']),
         ]);
         return Redirect::back()->banner('Policy updated');
     }

@@ -53,7 +53,13 @@
                         type="text"
                         class="block w-full"
                     />
-                    <date-picker v-model="policy.created_at" />
+                </div>
+
+                <div class="mb-5">
+                    <div class="text-gray-600 text-sm text-left">
+                        Period of Insurance
+                    </div>
+                    <date-range v-model="policyForm.range" />
                 </div>
 
                 <policy-fields-list
@@ -107,7 +113,7 @@ import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
 import HolderList from "@/Shared/Policyholder/HolderList";
 import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
 import LoadingButton from "@/Shared/LoadingButton";
-import { Calendar, DatePicker } from "v-calendar";
+import DateRange from "@/Shared/DateRange";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
@@ -126,18 +132,22 @@ export default {
         HolderList,
         LoadingButton,
         SelectPolicyholder,
-        Calendar,
-        DatePicker,
+        DateRange,
     },
     props: {
         errors: Object,
         policy: Object,
         fields: Array,
+        holders: Array,
     },
     setup(props) {
         const policyForm = useForm({
             number: props.policy.number,
-            holders: props.policy.holders,
+            holders: [],
+            range: {
+                start: props.policy.period_start,
+                end: props.policy.period_end,
+            },
         });
 
         return { policyForm };
@@ -147,7 +157,6 @@ export default {
             sending: false,
             fieldFormShown: false,
             fieldsData: this.fields,
-            date: new Date(),
         };
     },
     watch: {
