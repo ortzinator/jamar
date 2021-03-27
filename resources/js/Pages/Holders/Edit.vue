@@ -148,7 +148,6 @@ export default {
         errors: Object,
         holder: Object,
     },
-    remember: "form",
     setup(props) {
         const form = useForm({
             name: props.holder.name,

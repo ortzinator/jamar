@@ -47,11 +47,13 @@
 
                 <div class="mb-5">
                     <jet-label for="date_issued" value="Date Issued" />
-                    <div
-                        v-text="ago"
+                    <jet-input
+                        v-model="policy.created_at"
                         id="date_issued"
-                        class="block border border-gray-300 p-2 rounded w-full"
+                        type="text"
+                        class="block w-full"
                     />
+                    <date-picker v-model="policy.created_at" />
                 </div>
 
                 <policy-fields-list
@@ -105,6 +107,7 @@ import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
 import HolderList from "@/Shared/Policyholder/HolderList";
 import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
 import LoadingButton from "@/Shared/LoadingButton";
+import { Calendar, DatePicker } from "v-calendar";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
@@ -123,13 +126,14 @@ export default {
         HolderList,
         LoadingButton,
         SelectPolicyholder,
+        Calendar,
+        DatePicker,
     },
     props: {
         errors: Object,
         policy: Object,
         fields: Array,
     },
-    // remember: "policyForm",
     setup(props) {
         const policyForm = useForm({
             number: props.policy.number,
@@ -143,6 +147,7 @@ export default {
             sending: false,
             fieldFormShown: false,
             fieldsData: this.fields,
+            date: new Date(),
         };
     },
     watch: {
