@@ -67,4 +67,9 @@ class Policy extends Model
     {
         $this->holders()->attach($holderId);
     }
+
+    public function resolveRouteBinding($id, $field = null)
+    {
+        return $this->withTrashed()->findOrFail($id);
+    }
 }
