@@ -13,7 +13,7 @@
                 class="bg-yellow-200 flex items-center justify-between p-5 pl-8"
             >
                 <div class="flex">
-                    <icon name="trash" class="h-5 mr-2 w-5" />
+                    <trash-icon class="h-5 mr-2 w-5" />
                     This policy is deleted
                 </div>
                 <button class="btn hover:underline" @click="restore">
@@ -26,7 +26,7 @@
                 class="bg-red-200 flex items-center justify-between p-5 pl-8"
             >
                 <div class="flex items-center">
-                    <icon name="danger" class="h-6 mr-2 w-6" />
+                    <exclamation-icon class="h-5 mr-2 w-5" />
                     <div class="text-lg">
                         This policy does not have any policyholders
                     </div>
@@ -47,11 +47,11 @@
 
                 <div class="mb-5">
                     <jet-label for="date_issued" value="Date Issued" />
-                    <jet-input
-                        v-model="policy.created_at"
+                    <input
                         id="date_issued"
                         type="text"
                         class="block w-full"
+                        readonly
                     />
                 </div>
 
@@ -108,7 +108,8 @@
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
-import Icon from "@/Shared/Icon";
+import { ExclamationIcon } from "@heroicons/vue/outline";
+import { TrashIcon } from "@heroicons/vue/outline";
 import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
 import HolderList from "@/Shared/Policyholder/HolderList";
 import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
@@ -123,7 +124,8 @@ import JetValidationErrors from "@/Jetstream/ValidationErrors";
 export default {
     layout: AppLayout,
     components: {
-        Icon,
+        ExclamationIcon,
+        TrashIcon,
         JetInput,
         JetLabel,
         JetInputError,
@@ -164,15 +166,6 @@ export default {
             this.fieldsData = this.fields;
         },
     },
-    computed: {
-        ago() {
-            const options = { year: "numeric", month: "long", day: "numeric" };
-            return new Date(this.policy.created_at).toLocaleDateString(
-                undefined,
-                options
-            );
-        },
-    },
     methods: {
         updatePolicy() {
             this.policyForm.put(this.route("policies.update", this.policy.id));
@@ -190,6 +183,10 @@ export default {
         },
         holderSelected(holder) {
             this.policyForm.holders.push(holder);
+        },
+        formatDate(date) {
+            const options = { year: "numeric", month: "long", day: "numeric" };
+            return new Date(date).toLocaleDateString(undefined, options);
         },
     },
 };

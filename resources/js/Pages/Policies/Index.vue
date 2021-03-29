@@ -51,15 +51,14 @@
                             <td class="border-t">
                                 <inertia-link
                                     :href="route('policies.edit', policy.id)"
-                                    class="px-6 py-4 flex items-center focus:text-indigo-500"
+                                    class="px-6 py-4 flex focus:text-indigo-500"
                                 >
                                     <div
                                         v-if="policy.holders.length === 0"
-                                        class="flex text-red-600"
+                                        class="flex text-red-600 items-center"
                                     >
-                                        <icon
-                                            name="danger"
-                                            class="h-6 mr-2 w-6"
+                                        <exclamation-icon
+                                            class="h-5 mr-2 w-5"
                                         />
                                         No policyholders found
                                     </div>
@@ -76,9 +75,8 @@
                                     :href="route('policies.edit', policy.id)"
                                     tabindex="-1"
                                 >
-                                    <icon
-                                        name="cheveron-right"
-                                        class="block fill-current h-6 text-gray-400 w-6"
+                                    <chevron-right-icon
+                                        class="block h-5 text-gray-400 w-5"
                                     />
                                 </inertia-link>
                             </td>
@@ -99,8 +97,9 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import Pagination from "@/Shared/Pagination";
-import Icon from "@/Shared/Icon";
 import JetCheckbox from "@/Jetstream/Checkbox";
+import { ExclamationIcon } from "@heroicons/vue/outline";
+import { ChevronRightIcon } from "@heroicons/vue/outline";
 
 import throttle from "lodash/throttle";
 import pickBy from "lodash/pickBy";
@@ -113,8 +112,9 @@ export default {
     components: {
         AppLayout,
         Pagination,
-        Icon,
         JetCheckbox,
+        ExclamationIcon,
+        ChevronRightIcon,
     },
     setup(props) {
         const searchForm = useForm({

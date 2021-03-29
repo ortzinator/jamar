@@ -15,7 +15,7 @@
                 class="bg-yellow-200 flex items-center justify-between p-5 pl-8"
             >
                 <div class="flex">
-                    <icon name="trash" class="h-5 mr-2 w-5" />
+                    <trash-icon class="h-5 mr-2 w-5" />
                     This policyholder is deleted
                 </div>
                 <button
@@ -124,8 +124,8 @@
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
-import Icon from "@/Shared/Icon";
 import LoadingButton from "@/Shared/LoadingButton";
+import { TrashIcon } from "@heroicons/vue/outline";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
@@ -136,13 +136,13 @@ import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 export default {
     layout: AppLayout,
     components: {
-        Icon,
         JetInput,
         JetLabel,
         JetInputError,
         JetValidationErrors,
         LoadingButton,
         JetConfirmationModal,
+        TrashIcon,
     },
     props: {
         errors: Object,

@@ -73,9 +73,8 @@
                                     :href="holderLink(holder.id)"
                                     tabindex="-1"
                                 >
-                                    <icon
-                                        name="cheveron-right"
-                                        class="block fill-current h-6 text-gray-400 w-6"
+                                    <chevron-right-icon
+                                        class="block h-5 text-gray-400 w-5"
                                     />
                                 </inertia-link>
                             </td>
@@ -99,8 +98,8 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import Pagination from "@/Shared/Pagination";
-import Icon from "@/Shared/Icon";
 import JetCheckbox from "@/Jetstream/Checkbox";
+import { ChevronRightIcon } from "@heroicons/vue/outline";
 
 import throttle from "lodash/throttle";
 import pickBy from "lodash/pickBy";
@@ -112,8 +111,8 @@ export default {
     components: {
         AppLayout,
         Pagination,
-        Icon,
         JetCheckbox,
+        ChevronRightIcon,
     },
     setup(props) {
         const searchForm = useForm({

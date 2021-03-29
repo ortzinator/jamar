@@ -25,18 +25,18 @@
             type="button"
             class="flex items-center"
         >
-            <icon name="plus-circle" class="h-5 w-5 mr-2" /> Field
+            <plus-circle-icon class="h-5 w-5 mr-2" /> Field
         </button>
     </div>
 </template>
 <script>
 import NewPolicyField from "@/Shared/Fields/NewPolicyField";
 import PolicyField from "@/Shared/Fields/PolicyField";
-import Icon from "@/Shared/Icon";
+import { PlusCircleIcon } from "@heroicons/vue/outline";
 
 export default {
     props: { fields: Array, policy: Object },
-    components: { NewPolicyField, PolicyField, Icon },
+    components: { NewPolicyField, PolicyField, PlusCircleIcon },
     data() {
         return {
             fieldFormShown: false,
