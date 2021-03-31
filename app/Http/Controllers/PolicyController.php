@@ -109,6 +109,13 @@ class PolicyController extends Controller
      */
     public function destroy(Policy $policy)
     {
-        //
+        $policy->delete();
+        return Redirect::back()->banner(_('Policy deleted'));
+    }
+
+    public function restore(Policy $policy)
+    {
+        $policy->restore();
+        return Redirect::back()->banner(_('Policy restored'));
     }
 }

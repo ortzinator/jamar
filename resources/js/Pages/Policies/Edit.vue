@@ -173,12 +173,16 @@ export default {
         destroy() {
             //TODO check if holder is associated with a policy
             if (confirm("Are you sure you want to delete this policy?")) {
-                // this.policyForm.delete(this.route("policies.destroy", this.policy.id));
+                this.policyForm.delete(
+                    this.route("policies.destroy", this.policy.id)
+                );
             }
         },
         restore() {
             if (confirm("Are you sure you want to restore this policy?")) {
-                // this.policyForm.put(this.route("policies.restore", this.policy.id));
+                this.policyForm.put(
+                    this.route("policies.restore", this.policy.id)
+                );
             }
         },
         holderSelected(holder) {

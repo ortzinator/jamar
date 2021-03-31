@@ -58,6 +58,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::put('/policies/{policy}', [PolicyController::class, 'update'])
         ->name('policies.update');
+
+    Route::put('policys/{policy}/restore', [PolicyController::class, 'restore'])
+        ->name('policies.restore');
+
+    Route::delete('policys/{policy}', [PolicyController::class, 'destroy'])
+        ->name('policies.destroy');
         
     //PolicyFields
     Route::post('/policyfield', [PolicyFieldController::class, 'store'])

@@ -29922,11 +29922,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     destroy: function destroy() {
       //TODO check if holder is associated with a policy
-      if (confirm("Are you sure you want to delete this policy?")) {// this.policyForm.delete(this.route("policies.destroy", this.policy.id));
+      if (confirm("Are you sure you want to delete this policy?")) {
+        this.policyForm["delete"](this.route("policies.destroy", this.policy.id));
       }
     },
     restore: function restore() {
-      if (confirm("Are you sure you want to restore this policy?")) {// this.policyForm.put(this.route("policies.restore", this.policy.id));
+      if (confirm("Are you sure you want to restore this policy?")) {
+        this.policyForm.put(this.route("policies.restore", this.policy.id));
       }
     },
     holderSelected: function holderSelected(holder) {
