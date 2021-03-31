@@ -22,9 +22,9 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
             'policies' => Policy::orderBy('created_at')
-            ->with('holders')
-            ->filter($request->only('search', 'trashed'))
-            ->paginate()
+                ->with('holders')
+                ->filter($request->only('search', 'trashed'))
+                ->paginate()
         ]);
     }
 
