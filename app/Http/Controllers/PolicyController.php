@@ -22,6 +22,7 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
             'policies' => Policy::orderBy('number')
+            ->with('holders')
             ->filter($request->only('search', 'trashed'))
             ->paginate()
         ]);
@@ -67,8 +68,7 @@ class PolicyController extends Controller
     {
         return Inertia::render('Policies/Edit', [
             'policy' => $policy,
-            'fields' => $policy->fields,
-            'holders' => $policy->holders
+            'fields' => $policy->fields
         ]);
     }
 

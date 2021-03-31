@@ -14,8 +14,6 @@ class Policy extends Model
 
     protected $guarded = [];
 
-    protected $with = ['fields'];
-
     protected $appends = ['holderNamesPreview'];
 
     public function scopeFilter($query, array $filters)

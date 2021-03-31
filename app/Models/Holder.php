@@ -15,6 +15,8 @@ class Holder extends Model
     
     protected $appends = ['link'];
 
+    protected $hidden = ['pivot'];
+
     public function policies()
     {
         return $this->belongsToMany(Policy::class)->withTimestamps();
