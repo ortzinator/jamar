@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class Policy extends Model
@@ -36,9 +37,21 @@ class Policy extends Model
         return $this->belongsToMany(Holder::class)->withTimestamps();
     }
 
+    public function cacheKey()
+    {
+        return sprintf(
+            "%s/%s-%s",
+            $this->getTable(),
+            $this->getKey(),
+            $this->updated_at->timestamp
+        );
+    }
+
     public function getHolderNamesPreviewAttribute()
     {
-        return Str::limit($this->holders->implode('name', ', '), 100);
+        return Cache::remember($this->cacheKey() . ':holder_names', 15, function() {
+            return Str::limit($this->holders->implode('name', ', '), 100);
+        });
     }
 
     /**
