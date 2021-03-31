@@ -29966,10 +29966,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var lodash_pickBy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/pickBy */ "./node_modules/lodash/pickBy.js");
 /* harmony import */ var lodash_pickBy__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_pickBy__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var lodash_truncate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/truncate */ "./node_modules/lodash/truncate.js");
-/* harmony import */ var lodash_truncate__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_truncate__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 
 
 
@@ -29992,7 +29989,7 @@ __webpack_require__.r(__webpack_exports__);
     ChevronRightIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_3__.ChevronRightIcon
   },
   setup: function setup(props) {
-    var searchForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm)({
+    var searchForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_6__.useForm)({
       search: props.filters.search,
       trashed: props.filters.trashed
     });
@@ -30027,11 +30024,13 @@ __webpack_require__.r(__webpack_exports__);
       this.searchForm.search = "";
       this.searchForm.trashed = null;
     },
-    truncate: function truncate(str) {
-      return lodash_truncate__WEBPACK_IMPORTED_MODULE_6___default()(str, {
-        length: 50,
-        separator: "..."
-      });
+    formatDate: function formatDate(date) {
+      var options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      };
+      return new Date(date).toLocaleDateString(undefined, options);
     }
   }
 });
@@ -35004,8 +35003,10 @@ var _hoisted_10 = {
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", {
   "class": "text-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "px-6 pt-6 pb-4 w-4/12"
+  "class": "px-6 pt-6 pb-4 w-2/12"
 }, "Number"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+  "class": "px-6 pt-6 pb-4 w-2/12"
+}, "Date Issued"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
   "class": "px-6 pt-6 pb-4 w-7/12"
 }, "Holders"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
   "class": "w-1/12"
@@ -35020,20 +35021,23 @@ var _hoisted_13 = {
   "class": "border-t"
 };
 var _hoisted_14 = {
+  "class": "border-t"
+};
+var _hoisted_15 = {
   key: 0,
   "class": "flex text-red-600 items-center"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No policyholders found ");
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No policyholders found ");
 
-var _hoisted_16 = {
+var _hoisted_17 = {
   "class": "border-t w-px"
 };
-var _hoisted_17 = {
+var _hoisted_18 = {
   key: 0
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
   "class": "border-t px-6 py-4",
   colspan: "4"
 }, " No policies found. ", -1
@@ -35097,12 +35101,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS, DYNAMIC_SLOTS */
         , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
           href: _ctx.route('policies.edit', policy.id),
+          "class": "px-6 py-4 flex items-center focus:text-indigo-500",
+          title: new Date(policy.created_at).toLocaleString()
+        }, {
+          "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatDate(policy.created_at)), 1
+            /* TEXT */
+            )];
+          }),
+          _: 2
+          /* DYNAMIC */
+
+        }, 1032
+        /* PROPS, DYNAMIC_SLOTS */
+        , ["href", "title"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+          href: _ctx.route('policies.edit', policy.id),
           "class": "px-6 py-4 flex focus:text-indigo-500"
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [policy.holders.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
+            return [policy.holders.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
               "class": "h-5 mr-2 w-5"
-            }), _hoisted_15])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+            }), _hoisted_16])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
               key: 1,
               textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(policy.holderNamesPreview),
               "class": "overflow-ellipsis overflow-hidden whitespace-nowrap"
@@ -35115,7 +35134,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         }, 1032
         /* PROPS, DYNAMIC_SLOTS */
-        , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+        , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
           "class": "px-4 flex items-center",
           href: _ctx.route('policies.edit', policy.id),
           tabindex: "-1"
@@ -35133,7 +35152,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["href"])])]);
       }), 128
       /* KEYED_FRAGMENT */
-      )), $props.policies.data.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tr", _hoisted_17, [_hoisted_18])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination, {
+      )), $props.policies.data.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tr", _hoisted_18, [_hoisted_19])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination, {
         links: $props.policies.links
       }, null, 8
       /* PROPS */
@@ -39811,50 +39830,6 @@ module.exports = arraySome;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_asciiSize.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_asciiSize.js ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var baseProperty = __webpack_require__(/*! ./_baseProperty */ "./node_modules/lodash/_baseProperty.js");
-
-/**
- * Gets the size of an ASCII `string`.
- *
- * @private
- * @param {string} string The string inspect.
- * @returns {number} Returns the string size.
- */
-var asciiSize = baseProperty('length');
-
-module.exports = asciiSize;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_asciiToArray.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_asciiToArray.js ***!
-  \**********************************************/
-/***/ ((module) => {
-
-/**
- * Converts an ASCII `string` to an array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the converted array.
- */
-function asciiToArray(string) {
-  return string.split('');
-}
-
-module.exports = asciiToArray;
-
-
-/***/ }),
-
 /***/ "./node_modules/lodash/_assignValue.js":
 /*!*********************************************!*\
   !*** ./node_modules/lodash/_assignValue.js ***!
@@ -40403,34 +40378,6 @@ module.exports = baseIsNative;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseIsRegExp.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_baseIsRegExp.js ***!
-  \**********************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
-    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
-
-/** `Object#toString` result references. */
-var regexpTag = '[object RegExp]';
-
-/**
- * The base implementation of `_.isRegExp` without Node.js optimizations.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a regexp, else `false`.
- */
-function baseIsRegExp(value) {
-  return isObjectLike(value) && baseGetTag(value) == regexpTag;
-}
-
-module.exports = baseIsRegExp;
-
-
-/***/ }),
-
 /***/ "./node_modules/lodash/_baseIsTypedArray.js":
 /*!**************************************************!*\
   !*** ./node_modules/lodash/_baseIsTypedArray.js ***!
@@ -40910,47 +40857,6 @@ module.exports = baseSetToString;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseSlice.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_baseSlice.js ***!
-  \*******************************************/
-/***/ ((module) => {
-
-/**
- * The base implementation of `_.slice` without an iteratee call guard.
- *
- * @private
- * @param {Array} array The array to slice.
- * @param {number} [start=0] The start position.
- * @param {number} [end=array.length] The end position.
- * @returns {Array} Returns the slice of `array`.
- */
-function baseSlice(array, start, end) {
-  var index = -1,
-      length = array.length;
-
-  if (start < 0) {
-    start = -start > length ? 0 : (length + start);
-  }
-  end = end > length ? length : end;
-  if (end < 0) {
-    end += length;
-  }
-  length = start > end ? 0 : ((end - start) >>> 0);
-  start >>>= 0;
-
-  var result = Array(length);
-  while (++index < length) {
-    result[index] = array[index + start];
-  }
-  return result;
-}
-
-module.exports = baseSlice;
-
-
-/***/ }),
-
 /***/ "./node_modules/lodash/_baseTimes.js":
 /*!*******************************************!*\
   !*** ./node_modules/lodash/_baseTimes.js ***!
@@ -41102,34 +41008,6 @@ function castPath(value, object) {
 }
 
 module.exports = castPath;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_castSlice.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_castSlice.js ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var baseSlice = __webpack_require__(/*! ./_baseSlice */ "./node_modules/lodash/_baseSlice.js");
-
-/**
- * Casts `array` to a slice if it's needed.
- *
- * @private
- * @param {Array} array The array to inspect.
- * @param {number} start The start position.
- * @param {number} [end=array.length] The end position.
- * @returns {Array} Returns the cast slice.
- */
-function castSlice(array, start, end) {
-  var length = array.length;
-  end = end === undefined ? length : end;
-  return (!start && end >= length) ? array : baseSlice(array, start, end);
-}
-
-module.exports = castSlice;
 
 
 /***/ }),
@@ -41926,42 +41804,6 @@ function hasPath(object, path, hasFunc) {
 }
 
 module.exports = hasPath;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_hasUnicode.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_hasUnicode.js ***!
-  \********************************************/
-/***/ ((module) => {
-
-/** Used to compose unicode character classes. */
-var rsAstralRange = '\\ud800-\\udfff',
-    rsComboMarksRange = '\\u0300-\\u036f',
-    reComboHalfMarksRange = '\\ufe20-\\ufe2f',
-    rsComboSymbolsRange = '\\u20d0-\\u20ff',
-    rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
-    rsVarRange = '\\ufe0e\\ufe0f';
-
-/** Used to compose unicode capture groups. */
-var rsZWJ = '\\u200d';
-
-/** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */
-var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
-
-/**
- * Checks if `string` contains Unicode symbols.
- *
- * @private
- * @param {string} string The string to inspect.
- * @returns {boolean} Returns `true` if a symbol is found, else `false`.
- */
-function hasUnicode(string) {
-  return reHasUnicode.test(string);
-}
-
-module.exports = hasUnicode;
 
 
 /***/ }),
@@ -43224,62 +43066,6 @@ module.exports = stackSet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_stringSize.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_stringSize.js ***!
-  \********************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var asciiSize = __webpack_require__(/*! ./_asciiSize */ "./node_modules/lodash/_asciiSize.js"),
-    hasUnicode = __webpack_require__(/*! ./_hasUnicode */ "./node_modules/lodash/_hasUnicode.js"),
-    unicodeSize = __webpack_require__(/*! ./_unicodeSize */ "./node_modules/lodash/_unicodeSize.js");
-
-/**
- * Gets the number of symbols in `string`.
- *
- * @private
- * @param {string} string The string to inspect.
- * @returns {number} Returns the string size.
- */
-function stringSize(string) {
-  return hasUnicode(string)
-    ? unicodeSize(string)
-    : asciiSize(string);
-}
-
-module.exports = stringSize;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_stringToArray.js":
-/*!***********************************************!*\
-  !*** ./node_modules/lodash/_stringToArray.js ***!
-  \***********************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var asciiToArray = __webpack_require__(/*! ./_asciiToArray */ "./node_modules/lodash/_asciiToArray.js"),
-    hasUnicode = __webpack_require__(/*! ./_hasUnicode */ "./node_modules/lodash/_hasUnicode.js"),
-    unicodeToArray = __webpack_require__(/*! ./_unicodeToArray */ "./node_modules/lodash/_unicodeToArray.js");
-
-/**
- * Converts `string` to an array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the converted array.
- */
-function stringToArray(string) {
-  return hasUnicode(string)
-    ? unicodeToArray(string)
-    : asciiToArray(string);
-}
-
-module.exports = stringToArray;
-
-
-/***/ }),
-
 /***/ "./node_modules/lodash/_stringToPath.js":
 /*!**********************************************!*\
   !*** ./node_modules/lodash/_stringToPath.js ***!
@@ -43380,110 +43166,6 @@ function toSource(func) {
 }
 
 module.exports = toSource;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_unicodeSize.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_unicodeSize.js ***!
-  \*********************************************/
-/***/ ((module) => {
-
-/** Used to compose unicode character classes. */
-var rsAstralRange = '\\ud800-\\udfff',
-    rsComboMarksRange = '\\u0300-\\u036f',
-    reComboHalfMarksRange = '\\ufe20-\\ufe2f',
-    rsComboSymbolsRange = '\\u20d0-\\u20ff',
-    rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
-    rsVarRange = '\\ufe0e\\ufe0f';
-
-/** Used to compose unicode capture groups. */
-var rsAstral = '[' + rsAstralRange + ']',
-    rsCombo = '[' + rsComboRange + ']',
-    rsFitz = '\\ud83c[\\udffb-\\udfff]',
-    rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')',
-    rsNonAstral = '[^' + rsAstralRange + ']',
-    rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}',
-    rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
-    rsZWJ = '\\u200d';
-
-/** Used to compose unicode regexes. */
-var reOptMod = rsModifier + '?',
-    rsOptVar = '[' + rsVarRange + ']?',
-    rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
-    rsSeq = rsOptVar + reOptMod + rsOptJoin,
-    rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
-
-/** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
-var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
-
-/**
- * Gets the size of a Unicode `string`.
- *
- * @private
- * @param {string} string The string inspect.
- * @returns {number} Returns the string size.
- */
-function unicodeSize(string) {
-  var result = reUnicode.lastIndex = 0;
-  while (reUnicode.test(string)) {
-    ++result;
-  }
-  return result;
-}
-
-module.exports = unicodeSize;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/_unicodeToArray.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash/_unicodeToArray.js ***!
-  \************************************************/
-/***/ ((module) => {
-
-/** Used to compose unicode character classes. */
-var rsAstralRange = '\\ud800-\\udfff',
-    rsComboMarksRange = '\\u0300-\\u036f',
-    reComboHalfMarksRange = '\\ufe20-\\ufe2f',
-    rsComboSymbolsRange = '\\u20d0-\\u20ff',
-    rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
-    rsVarRange = '\\ufe0e\\ufe0f';
-
-/** Used to compose unicode capture groups. */
-var rsAstral = '[' + rsAstralRange + ']',
-    rsCombo = '[' + rsComboRange + ']',
-    rsFitz = '\\ud83c[\\udffb-\\udfff]',
-    rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')',
-    rsNonAstral = '[^' + rsAstralRange + ']',
-    rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}',
-    rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
-    rsZWJ = '\\u200d';
-
-/** Used to compose unicode regexes. */
-var reOptMod = rsModifier + '?',
-    rsOptVar = '[' + rsVarRange + ']?',
-    rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
-    rsSeq = rsOptVar + reOptMod + rsOptJoin,
-    rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
-
-/** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
-var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
-
-/**
- * Converts a Unicode `string` to an array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the converted array.
- */
-function unicodeToArray(string) {
-  return string.match(reUnicode) || [];
-}
-
-module.exports = unicodeToArray;
 
 
 /***/ }),
@@ -44270,43 +43952,6 @@ function isObjectLike(value) {
 }
 
 module.exports = isObjectLike;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/isRegExp.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/isRegExp.js ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var baseIsRegExp = __webpack_require__(/*! ./_baseIsRegExp */ "./node_modules/lodash/_baseIsRegExp.js"),
-    baseUnary = __webpack_require__(/*! ./_baseUnary */ "./node_modules/lodash/_baseUnary.js"),
-    nodeUtil = __webpack_require__(/*! ./_nodeUtil */ "./node_modules/lodash/_nodeUtil.js");
-
-/* Node.js helper references. */
-var nodeIsRegExp = nodeUtil && nodeUtil.isRegExp;
-
-/**
- * Checks if `value` is classified as a `RegExp` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a regexp, else `false`.
- * @example
- *
- * _.isRegExp(/abc/);
- * // => true
- *
- * _.isRegExp('/abc/');
- * // => false
- */
-var isRegExp = nodeIsRegExp ? baseUnary(nodeIsRegExp) : baseIsRegExp;
-
-module.exports = isRegExp;
 
 
 /***/ }),
@@ -61985,104 +61630,6 @@ module.exports = throttle;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/toFinite.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/toFinite.js ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var toNumber = __webpack_require__(/*! ./toNumber */ "./node_modules/lodash/toNumber.js");
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0,
-    MAX_INTEGER = 1.7976931348623157e+308;
-
-/**
- * Converts `value` to a finite number.
- *
- * @static
- * @memberOf _
- * @since 4.12.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted number.
- * @example
- *
- * _.toFinite(3.2);
- * // => 3.2
- *
- * _.toFinite(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toFinite(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toFinite('3.2');
- * // => 3.2
- */
-function toFinite(value) {
-  if (!value) {
-    return value === 0 ? value : 0;
-  }
-  value = toNumber(value);
-  if (value === INFINITY || value === -INFINITY) {
-    var sign = (value < 0 ? -1 : 1);
-    return sign * MAX_INTEGER;
-  }
-  return value === value ? value : 0;
-}
-
-module.exports = toFinite;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/toInteger.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/toInteger.js ***!
-  \******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var toFinite = __webpack_require__(/*! ./toFinite */ "./node_modules/lodash/toFinite.js");
-
-/**
- * Converts `value` to an integer.
- *
- * **Note:** This method is loosely based on
- * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted integer.
- * @example
- *
- * _.toInteger(3.2);
- * // => 3
- *
- * _.toInteger(Number.MIN_VALUE);
- * // => 0
- *
- * _.toInteger(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toInteger('3.2');
- * // => 3
- */
-function toInteger(value) {
-  var result = toFinite(value),
-      remainder = result % 1;
-
-  return result === result ? (remainder ? result - remainder : result) : 0;
-}
-
-module.exports = toInteger;
-
-
-/***/ }),
-
 /***/ "./node_modules/lodash/toNumber.js":
 /*!*****************************************!*\
   !*** ./node_modules/lodash/toNumber.js ***!
@@ -62193,127 +61740,6 @@ function toString(value) {
 }
 
 module.exports = toString;
-
-
-/***/ }),
-
-/***/ "./node_modules/lodash/truncate.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/truncate.js ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var baseToString = __webpack_require__(/*! ./_baseToString */ "./node_modules/lodash/_baseToString.js"),
-    castSlice = __webpack_require__(/*! ./_castSlice */ "./node_modules/lodash/_castSlice.js"),
-    hasUnicode = __webpack_require__(/*! ./_hasUnicode */ "./node_modules/lodash/_hasUnicode.js"),
-    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
-    isRegExp = __webpack_require__(/*! ./isRegExp */ "./node_modules/lodash/isRegExp.js"),
-    stringSize = __webpack_require__(/*! ./_stringSize */ "./node_modules/lodash/_stringSize.js"),
-    stringToArray = __webpack_require__(/*! ./_stringToArray */ "./node_modules/lodash/_stringToArray.js"),
-    toInteger = __webpack_require__(/*! ./toInteger */ "./node_modules/lodash/toInteger.js"),
-    toString = __webpack_require__(/*! ./toString */ "./node_modules/lodash/toString.js");
-
-/** Used as default options for `_.truncate`. */
-var DEFAULT_TRUNC_LENGTH = 30,
-    DEFAULT_TRUNC_OMISSION = '...';
-
-/** Used to match `RegExp` flags from their coerced string values. */
-var reFlags = /\w*$/;
-
-/**
- * Truncates `string` if it's longer than the given maximum string length.
- * The last characters of the truncated string are replaced with the omission
- * string which defaults to "...".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category String
- * @param {string} [string=''] The string to truncate.
- * @param {Object} [options={}] The options object.
- * @param {number} [options.length=30] The maximum string length.
- * @param {string} [options.omission='...'] The string to indicate text is omitted.
- * @param {RegExp|string} [options.separator] The separator pattern to truncate to.
- * @returns {string} Returns the truncated string.
- * @example
- *
- * _.truncate('hi-diddly-ho there, neighborino');
- * // => 'hi-diddly-ho there, neighbo...'
- *
- * _.truncate('hi-diddly-ho there, neighborino', {
- *   'length': 24,
- *   'separator': ' '
- * });
- * // => 'hi-diddly-ho there,...'
- *
- * _.truncate('hi-diddly-ho there, neighborino', {
- *   'length': 24,
- *   'separator': /,? +/
- * });
- * // => 'hi-diddly-ho there...'
- *
- * _.truncate('hi-diddly-ho there, neighborino', {
- *   'omission': ' [...]'
- * });
- * // => 'hi-diddly-ho there, neig [...]'
- */
-function truncate(string, options) {
-  var length = DEFAULT_TRUNC_LENGTH,
-      omission = DEFAULT_TRUNC_OMISSION;
-
-  if (isObject(options)) {
-    var separator = 'separator' in options ? options.separator : separator;
-    length = 'length' in options ? toInteger(options.length) : length;
-    omission = 'omission' in options ? baseToString(options.omission) : omission;
-  }
-  string = toString(string);
-
-  var strLength = string.length;
-  if (hasUnicode(string)) {
-    var strSymbols = stringToArray(string);
-    strLength = strSymbols.length;
-  }
-  if (length >= strLength) {
-    return string;
-  }
-  var end = length - stringSize(omission);
-  if (end < 1) {
-    return omission;
-  }
-  var result = strSymbols
-    ? castSlice(strSymbols, 0, end).join('')
-    : string.slice(0, end);
-
-  if (separator === undefined) {
-    return result + omission;
-  }
-  if (strSymbols) {
-    end += (result.length - end);
-  }
-  if (isRegExp(separator)) {
-    if (string.slice(end).search(separator)) {
-      var match,
-          substring = result;
-
-      if (!separator.global) {
-        separator = RegExp(separator.source, toString(reFlags.exec(separator)) + 'g');
-      }
-      separator.lastIndex = 0;
-      while ((match = separator.exec(substring))) {
-        var newEnd = match.index;
-      }
-      result = result.slice(0, newEnd === undefined ? end : newEnd);
-    }
-  } else if (string.indexOf(baseToString(separator), end) != end) {
-    var index = result.lastIndexOf(separator);
-    if (index > -1) {
-      result = result.slice(0, index);
-    }
-  }
-  return result + omission;
-}
-
-module.exports = truncate;
 
 
 /***/ }),

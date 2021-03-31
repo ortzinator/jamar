@@ -36,7 +36,8 @@
                 <div class="shadow rounded bg-white">
                     <table class="w-full table-fixed">
                         <tr class="text-left">
-                            <th class="px-6 pt-6 pb-4 w-4/12">Number</th>
+                            <th class="px-6 pt-6 pb-4 w-2/12">Number</th>
+                            <th class="px-6 pt-6 pb-4 w-2/12">Date Issued</th>
                             <th class="px-6 pt-6 pb-4 w-7/12">Holders</th>
                             <th class="w-1/12"></th>
                         </tr>
@@ -46,6 +47,20 @@
                                     :href="route('policies.edit', policy.id)"
                                     class="px-6 py-4 flex items-center focus:text-indigo-500"
                                     >{{ policy.number }}</inertia-link
+                                >
+                            </td>
+                            <td class="border-t">
+                                <inertia-link
+                                    :href="route('policies.edit', policy.id)"
+                                    class="px-6 py-4 flex items-center focus:text-indigo-500"
+                                    :title="
+                                        new Date(
+                                            policy.created_at
+                                        ).toLocaleString()
+                                    "
+                                    >{{
+                                        formatDate(policy.created_at)
+                                    }}</inertia-link
                                 >
                             </td>
                             <td class="border-t">
@@ -103,7 +118,6 @@ import { ChevronRightIcon } from "@heroicons/vue/outline";
 
 import throttle from "lodash/throttle";
 import pickBy from "lodash/pickBy";
-import loTruncate from "lodash/truncate";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 export default {
@@ -151,11 +165,9 @@ export default {
             this.searchForm.search = "";
             this.searchForm.trashed = null;
         },
-        truncate(str) {
-            return loTruncate(str, {
-                length: 50,
-                separator: "...",
-            });
+        formatDate(date) {
+            const options = { year: "numeric", month: "long", day: "numeric" };
+            return new Date(date).toLocaleDateString(undefined, options);
         },
     },
 };
