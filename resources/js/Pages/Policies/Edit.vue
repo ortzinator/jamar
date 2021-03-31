@@ -145,7 +145,7 @@ export default {
     setup(props) {
         const policyForm = useForm({
             number: props.policy.number,
-            holders: [],
+            holders: props.policy.holders,
             range: {
                 start: props.policy.period_start,
                 end: props.policy.period_end,
