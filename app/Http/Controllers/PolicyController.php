@@ -67,7 +67,9 @@ class PolicyController extends Controller
     public function edit(Policy $policy)
     {
         return Inertia::render('Policies/Edit', [
-            'policy' => $policy,
+            'policy' => $policy->load(['holders' => function($query) {
+                $query->select(['name', 'id']);
+            }]),
             'fields' => $policy->fields
         ]);
     }

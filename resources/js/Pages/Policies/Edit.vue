@@ -46,13 +46,21 @@
                 </div>
 
                 <div class="mb-5">
-                    <jet-label for="date_issued" value="Date Issued" />
-                    <input
-                        id="date_issued"
-                        type="text"
-                        class="block w-full"
-                        readonly
-                    />
+                    <jet-label value="Date Issued" />
+                    <date-picker
+                        v-model="policyForm.created_at"
+                        mode="dateTime"
+                    >
+                        <template v-slot="{ inputValue }">
+                            <jet-input
+                                :value="inputValue"
+                                id="number"
+                                type="text"
+                                class="block w-full text-gray-400"
+                                readonly
+                            />
+                        </template>
+                    </date-picker>
                 </div>
 
                 <div class="mb-5">
@@ -115,6 +123,7 @@ import HolderList from "@/Shared/Policyholder/HolderList";
 import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
 import LoadingButton from "@/Shared/LoadingButton";
 import DateRange from "@/Shared/DateRange";
+import { DatePicker } from "v-calendar";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
@@ -135,6 +144,7 @@ export default {
         LoadingButton,
         SelectPolicyholder,
         DateRange,
+        DatePicker,
     },
     props: {
         errors: Object,
@@ -143,9 +153,11 @@ export default {
         holders: Array,
     },
     setup(props) {
+        // console.log(props.toString());
         const policyForm = useForm({
             number: props.policy.number,
             holders: props.policy.holders,
+            created_at: props.policy.created_at,
             range: {
                 start: props.policy.period_start,
                 end: props.policy.period_end,

@@ -16,8 +16,8 @@ class CreatePolicyTable extends Migration
         Schema::create('policies', function (Blueprint $table) {
             $table->id();
             $table->string('number');
-            $table->dateTime('period_start');
-            $table->dateTime('period_end');
+            $table->timestamp('period_start');
+            $table->timestamp('period_end');
             $table->softDeletes();
             $table->timestamps();
         });

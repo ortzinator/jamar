@@ -29853,10 +29853,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Policyholder_SelectPolicyholder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Shared/Policyholder/SelectPolicyholder */ "./resources/js/Shared/Policyholder/SelectPolicyholder.vue");
 /* harmony import */ var _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Shared/LoadingButton */ "./resources/js/Shared/LoadingButton.vue");
 /* harmony import */ var _Shared_DateRange__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Shared/DateRange */ "./resources/js/Shared/DateRange.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
-/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+/* harmony import */ var v_calendar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! v-calendar */ "./node_modules/v-calendar/lib/esm/index.js");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+
 
 
 
@@ -29875,15 +29877,16 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     ExclamationIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__.ExclamationIcon,
     TrashIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_2__.TrashIcon,
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_8__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_9__.default,
-    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_10__.default,
-    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_11__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_9__.default,
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_10__.default,
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_11__.default,
+    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_12__.default,
     PolicyFieldsList: _Shared_Fields_PolicyFieldsList__WEBPACK_IMPORTED_MODULE_3__.default,
     HolderList: _Shared_Policyholder_HolderList__WEBPACK_IMPORTED_MODULE_4__.default,
     LoadingButton: _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_6__.default,
     SelectPolicyholder: _Shared_Policyholder_SelectPolicyholder__WEBPACK_IMPORTED_MODULE_5__.default,
-    DateRange: _Shared_DateRange__WEBPACK_IMPORTED_MODULE_7__.default
+    DateRange: _Shared_DateRange__WEBPACK_IMPORTED_MODULE_7__.default,
+    DatePicker: v_calendar__WEBPACK_IMPORTED_MODULE_8__.DatePicker
   },
   props: {
     errors: Object,
@@ -29892,9 +29895,11 @@ __webpack_require__.r(__webpack_exports__);
     holders: Array
   },
   setup: function setup(props) {
+    // console.log(props.toString());
     var policyForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
       number: props.policy.number,
       holders: props.policy.holders,
+      created_at: props.policy.created_at,
       range: {
         start: props.policy.period_start,
         end: props.policy.period_end
@@ -34792,33 +34797,23 @@ var _hoisted_13 = {
 var _hoisted_14 = {
   "class": "mb-5"
 };
-
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-  id: "date_issued",
-  type: "text",
-  "class": "block w-full",
-  readonly: ""
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_16 = {
+var _hoisted_15 = {
   "class": "mb-5"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "text-gray-600 text-sm text-left"
 }, " Period of Insurance ", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Policyholders");
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Policyholders");
 
-var _hoisted_19 = {
+var _hoisted_18 = {
   "class": "px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -34832,6 +34827,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
 
   var _component_jet_input_error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input-error");
+
+  var _component_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-picker");
 
   var _component_date_range = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-range");
 
@@ -34882,11 +34879,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-    "for": "date_issued",
     value: "Date Issued"
-  }), _hoisted_15]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
-    modelValue: $setup.policyForm.range,
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
+    modelValue: $setup.policyForm.created_at,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $setup.policyForm.created_at = $event;
+    }),
+    mode: "dateTime"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
+      var inputValue = _ref.inputValue;
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        value: inputValue,
+        id: "number",
+        type: "text",
+        "class": "block w-full text-gray-400",
+        readonly: ""
+      }, null, 8
+      /* PROPS */
+      , ["value"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
+    modelValue: $setup.policyForm.range,
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.policyForm.range = $event;
     })
   }, null, 8
@@ -34903,7 +34923,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mb-5"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_18];
+      return [_hoisted_17];
     }),
     _: 1
     /* STABLE */
@@ -34915,12 +34935,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSelected: $options.holderSelected
   }, null, 8
   /* PROPS */
-  , ["policy", "onSelected"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [!$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+  , ["policy", "onSelected"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [!$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     key: 0,
     "class": "text-red-600 hover:underline",
     tabindex: "-1",
     type: "button",
-    onClick: _cache[4] || (_cache[4] = function () {
+    onClick: _cache[5] || (_cache[5] = function () {
       return $options.destroy && $options.destroy.apply($options, arguments);
     })
   }, " Delete policy ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
@@ -34930,7 +34950,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: $options.updatePolicy
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_20];
+      return [_hoisted_19];
     }),
     _: 1
     /* STABLE */
@@ -36575,16 +36595,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "mb-5"
-};
-var _hoisted_2 = {
   "class": "flex flex-col sm:flex-row justify-start items-center"
 };
-var _hoisted_3 = {
+var _hoisted_2 = {
   "class": "relative flex-grow"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
   "class": "text-gray-600 w-4 h-full mx-2 absolute pointer-events-none",
   fill: "none",
   "stroke-linecap": "round",
@@ -36598,7 +36615,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "flex-shrink-0 m-2"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
   "class": "w-4 h-4 stroke-current text-gray-600",
@@ -36612,11 +36629,11 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_6 = {
+var _hoisted_5 = {
   "class": "relative flex-grow"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
   "class": "text-gray-600 w-4 h-full mx-2 absolute pointer-events-none",
   fill: "none",
   "stroke-linecap": "round",
@@ -36633,7 +36650,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-picker");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_date_picker, {
     modelValue: $options.value,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $options.value = $event;
@@ -36648,12 +36665,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       var inputValue = _ref.inputValue,
           inputEvents = _ref.inputEvents,
           isDragging = _ref.isDragging;
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
         "class": ["flex-grow pl-8 pr-2 py-1 bg-gray-100 border rounded w-full", isDragging ? 'text-gray-600' : 'text-gray-900'],
         value: inputValue.start
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toHandlers)(inputEvents.start)), null, 16
       /* FULL_PROPS */
-      , ["value"])]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+      , ["value"])]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
         "class": ["flex-grow pl-8 pr-2 py-1 bg-gray-100 border rounded w-full", isDragging ? 'text-gray-600' : 'text-gray-900'],
         value: inputValue.end
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toHandlers)(inputEvents.end)), null, 16
@@ -36665,7 +36682,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue", "masks", "min-date"])]);
+  , ["modelValue", "masks", "min-date"]);
 }
 
 /***/ }),
