@@ -28,4 +28,40 @@ class PolicyTest extends TestCase
 
         $this->assertEquals('John Doe, Jane Doe', $policy->holderNamesPreview);
     }
+
+    public function test_a_policy_can_filter_by_expired()
+    {
+        Policy::factory()->create([
+            'number' => 'valid',
+            'period_start' => now()->subDays(10),
+            'period_end' => now()->addDays(2)
+        ]);
+
+        Policy::factory()->create([
+            'number' => 'expired',
+            'period_start' => now()->subDays(10),
+            'period_end' => now()->subDays(1)
+        ]);
+
+        $list = Policy::expired()->get();
+
+        $this->assertCount(1, $list);
+    }
+
+    public function test_a_policy_fan_filter_expiring_soon()
+    {
+        Policy::factory()->create([
+            'period_start' => now()->subDays(100),
+            'period_end' => now()->addDays(1)
+        ]);
+
+        Policy::factory()->create([
+            'period_start' => now()->subDays(100),
+            'period_end' => now()->addDays(10)
+        ]);
+
+        $list = Policy::expiringSoon()->get();
+
+        $this->assertCount(1, $list);
+    }
 }

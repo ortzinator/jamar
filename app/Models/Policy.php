@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -82,5 +83,15 @@ class Policy extends Model
     public function resolveRouteBinding($id, $field = null)
     {
         return $this->withTrashed()->findOrFail($id);
+    }
+
+    public function scopeExpired(Builder $query)
+    {
+        $query->whereDate('period_end', '<', now());
+    }
+
+    public function scopeExpiringSoon(Builder $query)
+    {
+        $query->whereDate('period_end', '<', now()->addDays(7));
     }
 }
