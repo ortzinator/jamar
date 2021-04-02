@@ -18,6 +18,7 @@ class CreatePolicyTable extends Migration
             $table->string('number');
             $table->timestamp('period_start');
             $table->timestamp('period_end');
+            $table->timestamp('cancelled_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

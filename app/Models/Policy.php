@@ -94,4 +94,19 @@ class Policy extends Model
     {
         $query->whereDate('period_end', '<', now()->addDays(7));
     }
+
+    public function cancel()
+    {
+        $this->update(['cancelled_at' => now()]);
+    }
+
+    public function isCancelled()
+    {
+        return $this->cancelled_at != null;
+    }
+
+    public function scopeCancelled($query)
+    {
+        $query->whereNotNull('cancelled_at');
+    }
 }

@@ -64,4 +64,22 @@ class PolicyTest extends TestCase
 
         $this->assertCount(1, $list);
     }
+
+    public function test_a_policy_can_be_cancelled()
+    {
+        $policy = Policy::factory()->create();
+        $policy->cancel();
+
+        $this->assertTrue($policy->isCancelled());
+    }
+
+    public function test_can_filter_cancelled_policies()
+    {
+        Policy::factory()->create()->cancel();
+        Policy::factory()->create();
+
+        $list = Policy::cancelled()->get();
+
+        $this->assertCount(1, $list);
+    }
 }
