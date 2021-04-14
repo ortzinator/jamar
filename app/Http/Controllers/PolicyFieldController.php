@@ -37,6 +37,7 @@ class PolicyFieldController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO: Validation?
         $policy = Policy::findOrFail($request['policy_id']);
 
         $policy->addField($request->only('name', 'value'));

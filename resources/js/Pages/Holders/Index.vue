@@ -7,30 +7,38 @@
         </template>
 
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div class="flex mb-4">
-                <div class="flex shadow rounded">
-                    <select
-                        v-model="searchForm.trashed"
-                        class="border-0 border-gray-200 border-r rounded-l text-gray-500"
+            <div class="flex mb-4 justify-between">
+                <div class="flex">
+                    <div class="flex shadow rounded">
+                        <select
+                            v-model="searchForm.trashed"
+                            class="border-0 border-gray-200 border-r rounded-l text-gray-500"
+                        >
+                            <option :value="null">Filter...</option>
+                            <option value="with">With Trashed</option>
+                            <option value="only">Only Trashed</option>
+                        </select>
+                        <input
+                            type="text"
+                            v-model="searchForm.search"
+                            placeholder="Search..."
+                            class="border-0 rounded-r"
+                        />
+                    </div>
+                    <button
+                        class="ml-3 text-sm text-gray-500 hover:text-gray-700 focus:text-indigo-500"
+                        type="button"
+                        @click="reset"
                     >
-                        <option :value="null">Filter...</option>
-                        <option value="with">With Trashed</option>
-                        <option value="only">Only Trashed</option>
-                    </select>
-                    <input
-                        type="text"
-                        v-model="searchForm.search"
-                        placeholder="Search..."
-                        class="border-0 rounded-r"
-                    />
+                        Reset
+                    </button>
                 </div>
-                <button
-                    class="ml-3 text-sm text-gray-500 hover:text-gray-700 focus:text-indigo-500"
-                    type="button"
-                    @click="reset"
+                <inertia-link
+                    class="btn btn-primary"
+                    :href="route('holders.create')"
                 >
-                    Reset
-                </button>
+                    New Policyholder
+                </inertia-link>
             </div>
             <div class="">
                 <div class="shadow rounded bg-white">

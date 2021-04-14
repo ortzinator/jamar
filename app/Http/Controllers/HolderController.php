@@ -43,7 +43,7 @@ class HolderController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Holders/Create');
     }
 
     /**
@@ -54,7 +54,12 @@ class HolderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Holder::create($request->validate([
+            'name' => ['required', 'min:3'],
+            'address' => ['required', 'min:3']
+        ]));
+
+        return Redirect::route('holders')->banner(_('Policyholder added'));
     }
 
     /**

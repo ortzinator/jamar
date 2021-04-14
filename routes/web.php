@@ -30,6 +30,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Holders
     Route::get('holders', [HolderController::class, 'index'])
         ->name('holders');
+        
+    Route::get('holders/create', [HolderController::class, 'create'])
+        ->name('holders.create');
+        
+    Route::post('holders', [HolderController::class, 'store'])
+        ->name('holders.store');
 
     Route::get('/holders/{holder}/edit', [HolderController::class, 'edit'])
         ->name('holders.edit');
