@@ -30589,6 +30589,15 @@ __webpack_require__.r(__webpack_exports__);
       set: function set(value) {
         this.$emit("update:modelValue", value);
       }
+    },
+    minDate: function minDate() {
+      var now = new Date();
+
+      if (new Date(this.modelValue.start) < now) {
+        return this.modelValue.start;
+      }
+
+      return now;
     }
   }
 });
@@ -34891,7 +34900,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       var inputValue = _ref.inputValue;
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         value: inputValue,
-        id: "number",
+        id: "created_at",
         type: "text",
         "class": "block w-full text-gray-400",
         readonly: ""
@@ -36659,7 +36668,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     masks: $data.masks,
     "is-range": "",
     "is-required": "",
-    "min-date": new Date()
+    "min-date": $options.minDate
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
       var inputValue = _ref.inputValue,

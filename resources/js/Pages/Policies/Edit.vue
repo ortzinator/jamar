@@ -54,7 +54,7 @@
                         <template v-slot="{ inputValue }">
                             <jet-input
                                 :value="inputValue"
-                                id="number"
+                                id="created_at"
                                 type="text"
                                 class="block w-full text-gray-400"
                                 readonly

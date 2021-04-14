@@ -5,7 +5,7 @@
         :masks="masks"
         is-range
         is-required
-        :min-date="new Date()"
+        :min-date="minDate"
     >
         <template v-slot="{ inputValue, inputEvents, isDragging }">
             <div class="flex flex-col sm:flex-row justify-start items-center">
@@ -93,6 +93,13 @@ export default {
             set(value) {
                 this.$emit("update:modelValue", value);
             },
+        },
+        minDate() {
+            var now = new Date();
+            if (new Date(this.modelValue.start) < now) {
+                return this.modelValue.start;
+            }
+            return now;
         },
     },
 };
