@@ -17,6 +17,7 @@ class CreatePolicyFieldsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('value');
+            $table->boolean('is_protected')->default(true);
             $table->foreignId('policy_id')->constrained();
             $table->timestamps();
         });

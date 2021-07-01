@@ -11,6 +11,10 @@ class PolicyField extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'is_protected' => 'boolean',
+    ];
+
     public function policy()
     {
         return $this->belongsTo(Policy::class);

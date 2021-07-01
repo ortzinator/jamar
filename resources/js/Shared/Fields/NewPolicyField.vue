@@ -1,66 +1,81 @@
 <template>
     <div>
-        <div class="flex-auto">
-            <jet-label for="number" value="Field Name" />
-            <jet-input
-                v-model="newFieldForm.name"
-                id="name"
-                type="text"
-                class="w-full"
-            />
+        <div class="flex space-x-4 mb-4">
+            <div class="flex-auto">
+                <jet-label for="number" value="Field Name" />
+                <jet-input
+                    v-model="field.name"
+                    id="name"
+                    type="text"
+                    class="w-full"
+                />
+            </div>
+            <div class="flex-auto">
+                <jet-label for="number" value="Field Value" />
+                <jet-input
+                    v-model="field.value"
+                    id="value"
+                    type="text"
+                    class="w-full"
+                />
+            </div>
+            <button
+                class="btn mt-4 hover:underline"
+                type="button"
+                @click="add()"
+            >
+                Add Field
+            </button>
         </div>
-        <div class="flex-auto">
-            <jet-label for="number" value="Field Value" />
-            <jet-input
-                v-model="newFieldForm.value"
-                id="value"
-                type="text"
-                class="w-full"
-            />
+        <div v-if="errors.length" class="text-red-500">
+            <ul>
+                <li v-for="(error, index) in errors" :key="`error-${index}`">
+                    {{ error }}
+                </li>
+            </ul>
         </div>
-        <loading-button
-            class="btn mt-4 hover:underline"
-            :loading="newFieldForm.processing"
-            @click="processForm"
-        >
-            Add Field
-        </loading-button>
     </div>
 </template>
 
 <script>
-import { useForm } from "@inertiajs/inertia-vue3";
-
-import LoadingButton from "@/Shared/LoadingButton";
-
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
-import JetInputError from "@/Jetstream/InputError";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
-    props: ["policy"],
+    emits: ["added"],
     components: {
         JetInput,
         JetLabel,
-        JetInputError,
-        JetValidationErrors,
-        LoadingButton,
     },
-    setup(props) {
-        const newFieldForm = useForm({
-            name: "",
-            value: "",
-            policy_id: props.policy.id,
-        });
-
-        return { newFieldForm };
+    data() {
+        return {
+            field: {
+                name: null,
+                value: null,
+            },
+            errors: [],
+        };
     },
     methods: {
-        processForm() {
-            this.newFieldForm.post(route("policyfield.store"), {
-                onSuccess: () => this.newFieldForm.reset(),
-            });
+        add() {
+            if (!this.validate()) return;
+            this.$emit("added", this.field);
+            this.reset();
+        },
+        reset() {
+            this.field = {
+                name: null,
+                value: null,
+            };
+        },
+        validate() {
+            this.errors = [];
+
+            if (this.field.name) {
+                return true;
+            } else {
+                this.errors.push("Field name is required");
+            }
         },
     },
 };

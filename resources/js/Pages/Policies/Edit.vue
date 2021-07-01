@@ -150,7 +150,6 @@ export default {
         errors: Object,
         policy: Object,
         fields: Array,
-        holders: Array,
     },
     setup(props) {
         // console.log(props.toString());

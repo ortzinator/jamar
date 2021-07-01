@@ -55,7 +55,13 @@ class PolicyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->only('fields');
+        // dd($fields);
+        $request->validate([
+            'number' => ['required'],
+            'fields.*.name' => ['required'],
+            'fields.*.value' => ['min:2'],
+        ]);
     }
 
     /**

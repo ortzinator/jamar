@@ -23,7 +23,17 @@ class PolicyFieldFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'value' => $this->faker->word
+            'value' => $this->faker->word,
+            'is_protected' => true,
         ];
+    }
+
+    public function custom()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_protected' => false,
+            ];
+        });
     }
 }

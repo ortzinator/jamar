@@ -1,27 +1,74 @@
 <template>
-    <div v-if="fields.length === 0" class="bg-yellow-100 p-3 text-sm rounded">
-        No custom fields found
-    </div>
-    <div v-else class="mr-5 mb-5">
-        <div class="border-b font-bold my-5 pb-2 text-gray-700">
-            Custom Fields
+    <div>
+        <div
+            v-if="fields.length === 0 && editable"
+            class="bg-yellow-100 p-3 text-sm rounded"
+        >
+            No custom fields found
+        </div>
+        <div v-else class="mr-5 mb-5">
+            <div
+                v-if="editable"
+                class="border-b font-bold my-5 pb-2 text-gray-700"
+            >
+                Custom Fields
+            </div>
+
+            <policy-field
+                v-for="field in fields"
+                :key="field.id"
+                :field="field"
+                class=""
+            ></policy-field>
+
+            <button
+                class="btn-sm btn-danger mr-2 col-span-1"
+                @click="confirmingDeleteField = true"
+                v-show="fieldHover"
+            >
+                Delete
+            </button>
+
+            <jet-confirmation-modal
+                :show="confirmingDeleteField"
+                @close="confirmingDeleteField = false"
+            >
+                <template #title> Delete Field </template>
+
+                <template #content>
+                    Are you sure you want to delete this field?
+                </template>
+
+                <template #footer>
+                    <button class="btn" @click="confirmingDeleteField = false">
+                        Cancel
+                    </button>
+
+                    <button
+                        class="btn btn-danger ml-2"
+                        @click="(field) => $emit('delete', field)"
+                    >
+                        Delete Field
+                    </button>
+                </template>
+            </jet-confirmation-modal>
         </div>
 
-        <policy-field
-            v-for="field in fields"
-            :key="field.id"
-            :field="field"
-            :policy="policy"
-            class=""
-        ></policy-field>
-
         <new-policy-field
-            v-if="fieldFormShown"
-            :policy="policy"
-            class="flex mb-5 p-5 rounded space-x-4 bg-blue-100 border border-blue-200 shadow-lg"
+            v-if="fieldFormShown && editable"
+            @added="(field) => $emit('fieldAdded', field)"
+            class="
+                mb-5
+                p-5
+                rounded
+                bg-blue-100
+                border border-blue-200
+                shadow-lg
+            "
         />
         <button
             @click="fieldFormShown = true"
+            v-if="!fieldFormShown && editable"
             type="button"
             class="flex items-center"
         >
@@ -33,13 +80,21 @@
 import NewPolicyField from "@/Shared/Fields/NewPolicyField";
 import PolicyField from "@/Shared/Fields/PolicyField";
 import { PlusCircleIcon } from "@heroicons/vue/outline";
+import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 
 export default {
-    props: { fields: Array, policy: Object },
-    components: { NewPolicyField, PolicyField, PlusCircleIcon },
+    props: { fields: Array, editable: { default: true } },
+    emits: ["fieldAdded"],
+    components: {
+        NewPolicyField,
+        PolicyField,
+        PlusCircleIcon,
+        JetConfirmationModal,
+    },
     data() {
         return {
             fieldFormShown: false,
+            confirmingDeleteField: false,
         };
     },
 };

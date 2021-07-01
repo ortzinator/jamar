@@ -55,6 +55,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/policies/create', [PolicyController::class, 'create'])
         ->name('policies.create');
+
+    Route::post('/policies', [PolicyController::class, 'store'])
+        ->name('policies.store');
         
     Route::get('/policies/{policy}', [PolicyController::class, 'show'])
         ->name('policies.show');
