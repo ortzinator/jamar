@@ -29450,7 +29450,8 @@ __webpack_require__.r(__webpack_exports__);
       range: {
         start: props.policy.period_start,
         end: props.policy.period_end
-      }
+      },
+      fields: props.policy.fields
     });
     return {
       policyForm: policyForm
@@ -29459,14 +29460,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       sending: false,
-      fieldFormShown: false,
-      fieldsData: this.fields
+      fieldFormShown: false
     };
-  },
-  watch: {
-    fields: function fields() {
-      this.fieldsData = this.fields;
-    }
   },
   methods: {
     updatePolicy: function updatePolicy() {
@@ -34619,12 +34614,14 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Policyholders");
 
 var _hoisted_18 = {
-  "class": "px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
+  "class": "\n                    px-8\n                    py-4\n                    bg-gray-100\n                    border-t border-gray-200\n                    flex\n                    items-center\n                "
 };
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
   var _component_trash_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("trash-icon");
@@ -34721,8 +34718,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_policy_fields_list, {
-    fields: $data.fieldsData,
+    fields: $setup.policyForm.fields,
     policy: $props.policy,
+    onFieldAdded: _cache[5] || (_cache[5] = function (field) {
+      return _this.policyForm.fields.push(field);
+    }),
     "class": "mb-5"
   }, null, 8
   /* PROPS */
@@ -34749,7 +34749,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "text-red-600 hover:underline",
     tabindex: "-1",
     type: "button",
-    onClick: _cache[5] || (_cache[5] = function () {
+    onClick: _cache[6] || (_cache[6] = function () {
       return $options.destroy && $options.destroy.apply($options, arguments);
     })
   }, " Delete policy ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
@@ -36639,7 +36639,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 8
   /* PROPS */
-  , ["textContent"]))], 32
+  , ["textContent"])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "delButton")], 32
   /* HYDRATE_EVENTS */
   );
 }
@@ -36687,24 +36687,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_plus_circle_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("plus-circle-icon");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [$props.fields.length === 0 && $props.editable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, " No custom fields found ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [$props.editable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, " Custom Fields ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.fields, function (field) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [$props.fields.length === 0 && $props.editable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, " No policy fields found ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [$props.editable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, " Policy Fields ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.fields, function (field) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_policy_field, {
       key: field.id,
       field: field,
       "class": ""
-    }, null, 8
-    /* PROPS */
+    }, {
+      delButton: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+          "class": "btn-sm btn-danger mr-2 col-span-1",
+          onClick: _cache[1] || (_cache[1] = function ($event) {
+            return $data.confirmingDeleteField = true;
+          })
+        }, " Delete ", 512
+        /* NEED_PATCH */
+        ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, true]])];
+      }),
+      _: 2
+      /* DYNAMIC */
+
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
     , ["field"]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-    "class": "btn-sm btn-danger mr-2 col-span-1",
-    onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $data.confirmingDeleteField = true;
-    })
-  }, " Delete ", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.fieldHover]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_confirmation_modal, {
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_confirmation_modal, {
     show: $data.confirmingDeleteField,
     onClose: _cache[4] || (_cache[4] = function ($event) {
       return $data.confirmingDeleteField = false;

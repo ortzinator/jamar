@@ -94,6 +94,8 @@ class PolicyController extends Controller
             'holders' => ['array'],
             'period_start' => ['date'],
             'period_end' => ['date'],
+            'fields.*.name' => ['required'],
+            'fields.*.value' => ['min:2'],
         ]);
 
         if ($request->has('holders')) {
@@ -105,6 +107,7 @@ class PolicyController extends Controller
             'number' => $request['number'],
             'period_start' => new Carbon($request['range.start']),
             'period_end' => new Carbon($request['range.end']),
+            'fields' => $request['fields'],
         ]);
         return Redirect::back()->banner('Policy updated');
     }

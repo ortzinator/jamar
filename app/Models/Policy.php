@@ -18,6 +18,8 @@ class Policy extends Model
 
     protected $appends = ['holderNamesPreview'];
 
+    protected $casts = ['fields' => 'array'];
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
@@ -53,21 +55,6 @@ class Policy extends Model
         return Cache::remember($this->cacheKey() . ':holder_names', 15, function() {
             return Str::limit($this->holders->implode('name', ', '), 100);
         });
-    }
-
-    /**
-     * @param array $field
-     * 
-     * @return PolicyField
-     */
-    public function addField($field)
-    {
-        return $this->fields()->create($field);
-    }
-
-    public function fields()
-    {
-        return $this->hasMany(PolicyField::class);
     }
 
     /**

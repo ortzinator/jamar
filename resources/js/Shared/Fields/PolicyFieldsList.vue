@@ -4,14 +4,14 @@
             v-if="fields.length === 0 && editable"
             class="bg-yellow-100 p-3 text-sm rounded"
         >
-            No custom fields found
+            No policy fields found
         </div>
         <div v-else class="mr-5 mb-5">
             <div
                 v-if="editable"
                 class="border-b font-bold my-5 pb-2 text-gray-700"
             >
-                Custom Fields
+                Policy Fields
             </div>
 
             <policy-field
@@ -19,15 +19,17 @@
                 :key="field.id"
                 :field="field"
                 class=""
-            ></policy-field>
-
-            <button
-                class="btn-sm btn-danger mr-2 col-span-1"
-                @click="confirmingDeleteField = true"
-                v-show="fieldHover"
             >
-                Delete
-            </button>
+                <template v-slot:delButton>
+                    <button
+                        class="btn-sm btn-danger mr-2 col-span-1"
+                        @click="confirmingDeleteField = true"
+                        v-show="true"
+                    >
+                        Delete
+                    </button>
+                </template>
+            </policy-field>
 
             <jet-confirmation-modal
                 :show="confirmingDeleteField"

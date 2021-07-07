@@ -71,8 +71,9 @@
                 </div>
 
                 <policy-fields-list
-                    :fields="fieldsData"
+                    :fields="policyForm.fields"
                     :policy="policy"
+                    @fieldAdded="(field) => this.policyForm.fields.push(field)"
                     class="mb-5"
                 ></policy-fields-list>
 
@@ -89,7 +90,14 @@
                 ></select-policyholder>
             </div>
             <div
-                class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
+                class="
+                    px-8
+                    py-4
+                    bg-gray-100
+                    border-t border-gray-200
+                    flex
+                    items-center
+                "
             >
                 <button
                     v-if="!policy.deleted_at"
@@ -161,6 +169,7 @@ export default {
                 start: props.policy.period_start,
                 end: props.policy.period_end,
             },
+            fields: props.policy.fields,
         });
 
         return { policyForm };
@@ -169,13 +178,7 @@ export default {
         return {
             sending: false,
             fieldFormShown: false,
-            fieldsData: this.fields,
         };
-    },
-    watch: {
-        fields() {
-            this.fieldsData = this.fields;
-        },
     },
     methods: {
         updatePolicy() {
