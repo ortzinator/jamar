@@ -20,7 +20,7 @@
                 :field="field"
                 class=""
             >
-                <template v-slot:delButton>
+                <template v-slot:delButton v-if="!field.protected">
                     <button
                         class="btn-sm btn-danger mr-2 col-span-1"
                         @click="confirmingDeleteField = true"

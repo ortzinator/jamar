@@ -15,15 +15,15 @@
                     <div class="mb-5">
                         <jet-label
                             for="template"
-                            value="Policy Template"
+                            value="Policy Type"
                         ></jet-label>
-                        <select v-model="policyForm.templateFields" class="">
+                        <select class="" v-model="selectedTemplate">
                             <option
                                 v-bind:value="template.fields"
                                 v-for="template in templates"
                                 v-bind:key="template.id"
                             >
-                                {{ template.name }}
+                                {{ template.label }}
                             </option>
                         </select>
                     </div>
@@ -40,23 +40,11 @@
                         ></jet-input-error>
                     </div>
                     <div class="mb-5">
-                        Fields
-                        <policy-field
-                            v-for="field in this.policyForm.templateFields"
-                            :key="field.id"
-                            :field="field"
-                            class=""
-                        ></policy-field>
-                        <policy-fields-list
-                            :fields="policyForm.templateFields"
-                            :editable="false"
-                            class="mb-5"
-                        ></policy-fields-list>
-                    </div>
-                    <div class="mb-5">
                         <policy-fields-list
                             :fields="policyForm.fields"
-                            @fieldAdded="handleNewField"
+                            @fieldAdded="
+                                (field) => policyForm.fields.push(field)
+                            "
                             class="mb-5"
                         ></policy-fields-list>
                     </div>
@@ -112,7 +100,6 @@ export default {
             number: null,
             holders: null,
             created_at: null,
-            templateFields: [],
             range: {
                 start: null,
                 end: null,
@@ -128,25 +115,36 @@ export default {
                 {
                     id: 1,
                     name: "none",
+                    label: "None",
                     fields: null,
                 },
                 {
                     id: 2,
                     name: "vehicle",
+                    label: "Vehicle",
                     fields: [
                         { id: 1, name: "license", value: "" },
                         { id: 2, name: "vin", value: "" },
                     ],
                 },
             ],
+            selectedTemplate: null,
         };
     },
     methods: {
         store() {
             this.policyForm.post(this.route("policies.store"));
         },
-        handleNewField(field) {
-            this.policyForm.fields.push(field);
+    },
+    watch: {
+        selectedTemplate() {
+            this.policyForm.fields = [];
+            if (this.selectedTemplate) {
+                this.policyForm.fields.push(...this.selectedTemplate);
+                this.policyForm.fields.filter(
+                    (field) => (field.protected = true)
+                );
+            }
         },
     },
 };

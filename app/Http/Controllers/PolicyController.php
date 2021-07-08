@@ -55,13 +55,16 @@ class PolicyController extends Controller
      */
     public function store(Request $request)
     {
-        $fields = $request->only('fields');
-        // dd($fields);
-        $request->validate([
+        $policy = Policy::create($request->validate([
             'number' => ['required'],
             'fields.*.name' => ['required'],
-            'fields.*.value' => ['min:2'],
-        ]);
+        ]));
+
+        $policy->period_start = new Carbon($request['range.start']);
+        $policy->period_end = new Carbon($request['range.end']);
+        $policy->save();
+        
+        return Redirect::to(route('policies'))->banner('Policy created');
     }
 
     /**
@@ -95,7 +98,6 @@ class PolicyController extends Controller
             'period_start' => ['date'],
             'period_end' => ['date'],
             'fields.*.name' => ['required'],
-            'fields.*.value' => ['min:2'],
         ]);
 
         if ($request->has('holders')) {
