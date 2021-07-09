@@ -29304,15 +29304,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
-/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
-/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
-/* harmony import */ var _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Shared/LoadingButton */ "./resources/js/Shared/LoadingButton.vue");
-/* harmony import */ var _Shared_Fields_PolicyFieldsList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Shared/Fields/PolicyFieldsList */ "./resources/js/Shared/Fields/PolicyFieldsList.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+/* harmony import */ var _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Jetstream/ConfirmationModal */ "./resources/js/Jetstream/ConfirmationModal.vue");
+/* harmony import */ var _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Shared/LoadingButton */ "./resources/js/Shared/LoadingButton.vue");
+/* harmony import */ var _Shared_Fields_PolicyFieldsList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Shared/Fields/PolicyFieldsList */ "./resources/js/Shared/Fields/PolicyFieldsList.vue");
+/* harmony import */ var _Shared_DateRange__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Shared/DateRange */ "./resources/js/Shared/DateRange.vue");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -29325,6 +29327,14 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -29335,29 +29345,41 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  layout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
+  layout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__.default,
   components: {
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
-    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__.default,
-    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_5__.default,
-    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_6__.default,
-    LoadingButton: _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_7__.default,
-    PolicyFieldsList: _Shared_Fields_PolicyFieldsList__WEBPACK_IMPORTED_MODULE_8__.default
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default,
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_5__.default,
+    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_6__.default,
+    JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_7__.default,
+    LoadingButton: _Shared_LoadingButton__WEBPACK_IMPORTED_MODULE_8__.default,
+    PolicyFieldsList: _Shared_Fields_PolicyFieldsList__WEBPACK_IMPORTED_MODULE_9__.default,
+    DateRange: _Shared_DateRange__WEBPACK_IMPORTED_MODULE_10__.default
   },
   setup: function setup(props) {
-    var policyForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
+    var policyForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)("policy", {
       number: null,
       holders: null,
       created_at: null,
-      range: {
+      period: {
         start: null,
         end: null
       },
       fields: []
     });
+
+    function store() {
+      policyForm.transform(function (data) {
+        return _objectSpread(_objectSpread({}, data), {}, {
+          period_start: data.period.start,
+          period_end: data.period.end
+        });
+      }).post(route("policies.store"));
+    }
+
     return {
-      policyForm: policyForm
+      policyForm: policyForm,
+      store: store
     };
   },
   data: function data() {
@@ -29383,11 +29405,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }],
       selectedTemplate: null
     };
-  },
-  methods: {
-    store: function store() {
-      this.policyForm.post(this.route("policies.store"));
-    }
   },
   watch: {
     selectedTemplate: function selectedTemplate() {
@@ -34433,11 +34450,21 @@ var _hoisted_9 = {
 var _hoisted_10 = {
   "class": "mb-5"
 };
-var _hoisted_11 = {
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-gray-600 text-sm text-left"
+}, " Period of Insurance ", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "mb-5"
+};
+var _hoisted_13 = {
   "class": "\n                        px-8\n                        py-4\n                        bg-gray-100\n                        border-t border-gray-200\n                        flex\n                        items-center\n                    "
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create Policy ");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create Policy ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -34447,6 +34474,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
 
   var _component_jet_input_error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input-error");
+
+  var _component_date_range = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-range");
 
   var _component_policy_fields_list = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("policy-fields-list");
 
@@ -34465,8 +34494,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href"]), _hoisted_4, _hoisted_5]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
-    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return $options.store && $options.store.apply($options, arguments);
+    onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $setup.store && $setup.store.apply($setup, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "template",
@@ -34489,7 +34518,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.selectedTemplate]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "number",
-    value: "Number"
+    value: "Policy Number"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
     modelValue: $setup.policyForm.number,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
@@ -34504,21 +34533,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     message: $setup.policyForm.errors.number
   }, null, 8
   /* PROPS */
-  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_policy_fields_list, {
+  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
+    modelValue: $setup.policyForm.period,
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $setup.policyForm.period = $event;
+    })
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_policy_fields_list, {
     fields: $setup.policyForm.fields,
-    onFieldAdded: _cache[3] || (_cache[3] = function (field) {
+    onFieldAdded: _cache[4] || (_cache[4] = function (field) {
       return $setup.policyForm.fields.push(field);
     }),
     "class": "mb-5"
   }, null, 8
   /* PROPS */
-  , ["fields"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
+  , ["fields"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
     "class": "btn btn-primary ml-auto",
     type: "submit",
     loading: $setup.policyForm.processing
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_12];
+      return [_hoisted_14];
     }),
     _: 1
     /* STABLE */
@@ -36645,7 +36681,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = {
   key: 0,
-  "class": "bg-yellow-100 p-3 text-sm rounded"
+  "class": "bg-yellow-100 p-3 text-sm rounded mb-5"
 };
 var _hoisted_2 = {
   key: 1,

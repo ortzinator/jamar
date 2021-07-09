@@ -28,7 +28,10 @@
                         </select>
                     </div>
                     <div class="mb-5">
-                        <jet-label for="number" value="Number"></jet-label>
+                        <jet-label
+                            for="number"
+                            value="Policy Number"
+                        ></jet-label>
                         <jet-input
                             v-model="policyForm.number"
                             id="number"
@@ -38,6 +41,12 @@
                         <jet-input-error
                             :message="policyForm.errors.number"
                         ></jet-input-error>
+                    </div>
+                    <div class="mb-5">
+                        <div class="text-gray-600 text-sm text-left">
+                            Period of Insurance
+                        </div>
+                        <date-range v-model="policyForm.period" />
                     </div>
                     <div class="mb-5">
                         <policy-fields-list
@@ -73,6 +82,7 @@
 </template>
 
 <script>
+import { reactive, ref } from "vue";
 import AppLayout from "@/Layouts/AppLayout";
 import { useForm } from "@inertiajs/inertia-vue3";
 
@@ -83,6 +93,7 @@ import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 import LoadingButton from "@/Shared/LoadingButton";
 import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
+import DateRange from "@/Shared/DateRange";
 
 export default {
     layout: AppLayout,
@@ -94,20 +105,31 @@ export default {
         JetConfirmationModal,
         LoadingButton,
         PolicyFieldsList,
+        DateRange,
     },
     setup(props) {
-        const policyForm = useForm({
+        const policyForm = useForm("policy", {
             number: null,
             holders: null,
             created_at: null,
-            range: {
+            period: {
                 start: null,
                 end: null,
             },
             fields: [],
         });
 
-        return { policyForm };
+        function store() {
+            policyForm
+                .transform((data) => ({
+                    ...data,
+                    period_start: data.period.start,
+                    period_end: data.period.end,
+                }))
+                .post(route("policies.store"));
+        }
+
+        return { policyForm, store };
     },
     data() {
         return {
@@ -130,11 +152,6 @@ export default {
             ],
             selectedTemplate: null,
         };
-    },
-    methods: {
-        store() {
-            this.policyForm.post(this.route("policies.store"));
-        },
     },
     watch: {
         selectedTemplate() {

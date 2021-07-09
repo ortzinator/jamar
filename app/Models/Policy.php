@@ -18,7 +18,11 @@ class Policy extends Model
 
     protected $appends = ['holderNamesPreview'];
 
-    protected $casts = ['fields' => 'array'];
+    protected $casts = [
+        'fields' => 'array',
+        'period_start' => 'datetime',
+        'period_end' => 'datetime',
+    ];
 
     public function scopeFilter($query, array $filters)
     {

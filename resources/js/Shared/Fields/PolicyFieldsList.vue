@@ -2,7 +2,7 @@
     <div>
         <div
             v-if="fields.length === 0 && editable"
-            class="bg-yellow-100 p-3 text-sm rounded"
+            class="bg-yellow-100 p-3 text-sm rounded mb-5"
         >
             No policy fields found
         </div>
