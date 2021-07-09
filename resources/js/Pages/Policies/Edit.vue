@@ -122,6 +122,7 @@
 </template>
 
 <script>
+import { reactive, ref, watch } from "vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
 import { ExclamationIcon } from "@heroicons/vue/outline";
@@ -172,40 +173,48 @@ export default {
             fields: props.policy.fields,
         });
 
-        return { policyForm };
-    },
-    data() {
-        return {
-            sending: false,
-            fieldFormShown: false,
-        };
-    },
-    methods: {
-        updatePolicy() {
-            this.policyForm.put(this.route("policies.update", this.policy.id));
-        },
-        destroy() {
+        const sending = ref(false);
+        const fieldFormShown = ref(false);
+
+        function updatePolicy() {
+            policyForm.put(route("policies.update", props.policy.id));
+        }
+
+        function destroy() {
             //TODO check if holder is associated with a policy
             if (confirm("Are you sure you want to delete this policy?")) {
-                this.policyForm.delete(
-                    this.route("policies.destroy", this.policy.id)
-                );
+                policyForm.delete(route("policies.destroy", props.policy.id));
             }
-        },
-        restore() {
+        }
+
+        function restore() {
             if (confirm("Are you sure you want to restore this policy?")) {
-                this.policyForm.put(
-                    this.route("policies.restore", this.policy.id)
-                );
+                policyForm.put(route("policies.restore", props.policy.id));
             }
-        },
-        holderSelected(holder) {
-            this.policyForm.holders.push(holder);
-        },
-        formatDate(date) {
-            const options = { year: "numeric", month: "long", day: "numeric" };
-            return new Date(date).toLocaleDateString(undefined, options);
-        },
+        }
+
+        function holderSelected(holder) {
+            policyForm.holders.push(holder);
+        }
+
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            });
+        }
+
+        return {
+            policyForm,
+            sending,
+            fieldFormShown,
+            updatePolicy,
+            destroy,
+            restore,
+            holderSelected,
+            formatDate,
+        };
     },
 };
 </script>

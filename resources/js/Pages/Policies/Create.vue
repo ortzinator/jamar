@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import { reactive, ref, watch } from "vue";
 import AppLayout from "@/Layouts/AppLayout";
 import { useForm } from "@inertiajs/inertia-vue3";
 
@@ -119,6 +119,33 @@ export default {
             fields: [],
         });
 
+        const templates = ref([
+            {
+                id: 1,
+                name: "none",
+                label: "None",
+                fields: null,
+            },
+            {
+                id: 2,
+                name: "vehicle",
+                label: "Vehicle",
+                fields: [
+                    { id: 1, name: "license", value: "" },
+                    { id: 2, name: "vin", value: "" },
+                ],
+            },
+        ]);
+
+        const selectedTemplate = ref(null);
+        watch(selectedTemplate, (selectedTemplate) => {
+            policyForm.fields = [];
+            if (selectedTemplate) {
+                policyForm.fields.push(...selectedTemplate);
+                policyForm.fields.filter((field) => (field.protected = true));
+            }
+        });
+
         function store() {
             policyForm
                 .transform((data) => ({
@@ -129,40 +156,7 @@ export default {
                 .post(route("policies.store"));
         }
 
-        return { policyForm, store };
-    },
-    data() {
-        return {
-            templates: [
-                {
-                    id: 1,
-                    name: "none",
-                    label: "None",
-                    fields: null,
-                },
-                {
-                    id: 2,
-                    name: "vehicle",
-                    label: "Vehicle",
-                    fields: [
-                        { id: 1, name: "license", value: "" },
-                        { id: 2, name: "vin", value: "" },
-                    ],
-                },
-            ],
-            selectedTemplate: null,
-        };
-    },
-    watch: {
-        selectedTemplate() {
-            this.policyForm.fields = [];
-            if (this.selectedTemplate) {
-                this.policyForm.fields.push(...this.selectedTemplate);
-                this.policyForm.fields.filter(
-                    (field) => (field.protected = true)
-                );
-            }
-        },
+        return { policyForm, templates, selectedTemplate, store };
     },
 };
 </script>
