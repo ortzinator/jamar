@@ -2,7 +2,7 @@
 
 ### Prerequisites
 
--   PHP 7
+-   PHP 8
 -   Docker (https://docs.docker.com/get-docker/)
 
 ```
