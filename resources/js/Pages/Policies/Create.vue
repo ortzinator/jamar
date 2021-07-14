@@ -57,6 +57,21 @@
                             class="mb-5"
                         ></policy-fields-list>
                     </div>
+                    <div class="mb-5">
+                        <holder-list :holders="policyForm.holders" class="mb-5">
+                            Policyholders
+                            <template v-slot:noHolders>
+                                <div class="mb-5 text-yellow-500">
+                                    <exclamation-icon
+                                        class="inline h-5 mr-2 w-5"
+                                    />
+                                    Please add one or more policyholders
+                                </div>
+                            </template>
+                        </holder-list>
+                        <select-policyholder @selected="holderSelected">
+                        </select-policyholder>
+                    </div>
                 </div>
                 <div
                     class="
@@ -94,6 +109,9 @@ import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 import LoadingButton from "@/Shared/LoadingButton";
 import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
 import DateRange from "@/Shared/DateRange";
+import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
+import HolderList from "@/Shared/Policyholder/HolderList";
+import { ExclamationIcon } from "@heroicons/vue/outline";
 
 export default {
     layout: AppLayout,
@@ -106,11 +124,14 @@ export default {
         LoadingButton,
         PolicyFieldsList,
         DateRange,
+        SelectPolicyholder,
+        HolderList,
+        ExclamationIcon,
     },
     setup(props) {
         const policyForm = useForm("policy", {
             number: null,
-            holders: null,
+            holders: [],
             created_at: null,
             period: {
                 start: null,
@@ -156,7 +177,17 @@ export default {
                 .post(route("policies.store"));
         }
 
-        return { policyForm, templates, selectedTemplate, store };
+        function holderSelected(holder) {
+            policyForm.holders.push(holder);
+        }
+
+        return {
+            policyForm,
+            templates,
+            selectedTemplate,
+            store,
+            holderSelected,
+        };
     },
 };
 </script>

@@ -1,6 +1,15 @@
 <template>
     <div
-        class="mb-5 p-5 rounded space-x-4 bg-blue-100 border border-blue-200 shadow-lg space-y-5"
+        class="
+            mb-5
+            p-5
+            rounded
+            space-x-4
+            bg-blue-100
+            border border-blue-200
+            shadow-lg
+            space-y-5
+        "
     >
         <input
             type="text"
@@ -44,7 +53,6 @@ import Icon from "@/Shared/Icon";
 import LoadingButton from "@/Shared/LoadingButton";
 
 export default {
-    props: { policy: Object },
     emits: ["selected"],
     components: {
         JetInput,

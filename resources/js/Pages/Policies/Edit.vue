@@ -81,11 +81,11 @@
                     v-if="policyForm.holders.length > 0"
                     :holders="policyForm.holders"
                     class="mb-5"
-                    >Policyholders</holder-list
                 >
+                    Policyholders
+                </holder-list>
 
                 <select-policyholder
-                    :policy="policy"
                     @selected="holderSelected"
                 ></select-policyholder>
             </div>

@@ -29,6 +29,7 @@
     },
     "dependencies": {
         "@heroicons/vue": "^1.0.0",
-        "v-calendar": "^3.0.0-alpha.3"
+        "v-calendar": "^3.0.0-alpha.3",
+        "vee-validate": "^4.4.6"
     }
 }
