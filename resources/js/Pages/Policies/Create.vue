@@ -17,7 +17,7 @@
                             for="template"
                             value="Policy Type"
                         ></jet-label>
-                        <select class="" v-model="selectedTemplate">
+                        <select class="mr-5" v-model="selectedTemplate">
                             <option
                                 v-bind:value="template.fields"
                                 v-for="template in templates"
@@ -26,6 +26,16 @@
                                 {{ template.label }}
                             </option>
                         </select>
+                        <Popper
+                            hover
+                            arrow
+                            class="inline-block"
+                            placement="right"
+                        >
+                            <QuestionMarkCircleIcon class="text-blue-600 w-5">
+                            </QuestionMarkCircleIcon>
+                            <template #content>Help text</template>
+                        </Popper>
                     </div>
                     <div class="mb-5">
                         <jet-label
@@ -112,6 +122,8 @@ import DateRange from "@/Shared/DateRange";
 import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
 import HolderList from "@/Shared/Policyholder/HolderList";
 import { ExclamationIcon } from "@heroicons/vue/outline";
+import { QuestionMarkCircleIcon } from "@heroicons/vue/outline";
+import Popper from "vue3-popper";
 
 export default {
     layout: AppLayout,
@@ -127,6 +139,8 @@ export default {
         SelectPolicyholder,
         HolderList,
         ExclamationIcon,
+        QuestionMarkCircleIcon,
+        Popper,
     },
     setup(props) {
         const policyForm = useForm("policy", {
