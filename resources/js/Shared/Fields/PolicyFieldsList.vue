@@ -20,7 +20,7 @@
                 :field="field"
                 class=""
             >
-                <template v-slot:delButton v-if="!field.protected">
+                <template #delButton v-if="!field.protected">
                     <button
                         class="btn-sm btn-danger mr-2 col-span-1"
                         @click="confirmingDeleteField = true"
@@ -57,31 +57,26 @@
         </div>
 
         <new-policy-field
-            v-if="fieldFormShown && editable"
+            v-if="fieldFormShown"
             @added="(field) => $emit('fieldAdded', field)"
-            class="
-                mb-5
-                p-5
-                rounded
-                bg-blue-100
-                border border-blue-200
-                shadow-lg
-            "
+            class="mb-5 p-5 rounded border"
         />
         <button
-            @click="fieldFormShown = true"
-            v-if="!fieldFormShown && editable"
+            v-if="editable && !fieldFormShown"
+            @click="newFieldClicked = true"
             type="button"
-            class="flex items-center"
+            class="btn btn-sm font-thin px-2 py-1 rounded text-xs"
         >
-            <plus-circle-icon class="h-5 w-5 mr-2" /> Field
+            <plus-sm-icon class="h-5 w-5 mr-2" /> Field
         </button>
     </div>
 </template>
 <script>
+import { reactive, ref, watch, computed } from "vue";
+
 import NewPolicyField from "@/Shared/Fields/NewPolicyField";
 import PolicyField from "@/Shared/Fields/PolicyField";
-import { PlusCircleIcon } from "@heroicons/vue/outline";
+import { PlusSmIcon } from "@heroicons/vue/outline";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 
 export default {
@@ -90,14 +85,19 @@ export default {
     components: {
         NewPolicyField,
         PolicyField,
-        PlusCircleIcon,
+        PlusSmIcon,
         JetConfirmationModal,
     },
-    data() {
-        return {
-            fieldFormShown: false,
-            confirmingDeleteField: false,
-        };
+    setup(props) {
+        var newFieldClicked = ref(false);
+        var confirmingDeleteField = ref(false);
+
+        const fieldFormShown = computed(() => {
+            var fieldsEmpty = props.fields.length < 1;
+            return newFieldClicked.value || fieldsEmpty;
+        });
+
+        return { newFieldClicked, fieldFormShown, confirmingDeleteField };
     },
 };
 </script>

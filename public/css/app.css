@@ -2079,6 +2079,9 @@ textarea {
 }
 
 .btn {
+  position: relative;
+  display: flex;
+  align-items: center;
   border-radius: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -2089,6 +2092,16 @@ textarea {
 
 .btn-sm {
   border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+}
+
+.btn-sm:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
+}
+
+.btn-sm {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
