@@ -1,46 +1,55 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Policies
-            </h2>
-        </template>
+    <div>
+        <app-layout>
+            <template #header>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Policies
+                </h2>
+            </template>
 
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div class="flex mb-4 justify-between">
-                <div class="flex">
-                    <div class="flex shadow rounded">
-                        <select
-                            v-model="searchForm.trashed"
-                            class="border-0 border-gray-200 border-r rounded-l text-gray-500"
+            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+                <div class="flex mb-4 justify-between">
+                    <div class="flex">
+                        <div class="flex shadow rounded">
+                            <select
+                                v-model="searchForm.trashed"
+                                class="
+                                    border-0 border-gray-200 border-r
+                                    rounded-l
+                                    text-gray-500
+                                "
+                            >
+                                <option :value="null">Filter...</option>
+                                <option value="with">With Trashed</option>
+                                <option value="only">Only Trashed</option>
+                            </select>
+                            <input
+                                type="text"
+                                v-model="searchForm.search"
+                                placeholder="Search..."
+                                class="border-0 rounded-r"
+                            />
+                        </div>
+                        <button
+                            class="
+                                ml-3
+                                text-sm text-gray-500
+                                hover:text-gray-700
+                                focus:text-indigo-500
+                            "
+                            type="button"
+                            @click="reset"
                         >
-                            <option :value="null">Filter...</option>
-                            <option value="with">With Trashed</option>
-                            <option value="only">Only Trashed</option>
-                        </select>
-                        <input
-                            type="text"
-                            v-model="searchForm.search"
-                            placeholder="Search..."
-                            class="border-0 rounded-r"
-                        />
+                            Reset
+                        </button>
                     </div>
-                    <button
-                        class="ml-3 text-sm text-gray-500 hover:text-gray-700 focus:text-indigo-500"
-                        type="button"
-                        @click="reset"
+                    <inertia-link
+                        class="btn btn-primary"
+                        :href="route('policies.create')"
                     >
-                        Reset
-                    </button>
+                        New Policy
+                    </inertia-link>
                 </div>
-                <inertia-link
-                    class="btn btn-primary"
-                    :href="route('policies.create')"
-                >
-                    New Policy
-                </inertia-link>
-            </div>
-            <div class="">
                 <div class="shadow rounded bg-white">
                     <table class="w-full table-fixed">
                         <tr class="text-left">
@@ -53,23 +62,35 @@
                             <td class="border-t">
                                 <inertia-link
                                     :href="route('policies.edit', policy.id)"
-                                    class="px-6 py-4 flex items-center focus:text-indigo-500"
-                                    >{{ policy.number }}</inertia-link
+                                    class="
+                                        px-6
+                                        py-4
+                                        flex
+                                        items-center
+                                        focus:text-indigo-500
+                                    "
                                 >
+                                    {{ policy.number }}
+                                </inertia-link>
                             </td>
                             <td class="border-t">
                                 <inertia-link
                                     :href="route('policies.edit', policy.id)"
-                                    class="px-6 py-4 flex items-center focus:text-indigo-500"
+                                    class="
+                                        px-6
+                                        py-4
+                                        flex
+                                        items-center
+                                        focus:text-indigo-500
+                                    "
                                     :title="
                                         new Date(
                                             policy.created_at
                                         ).toLocaleString()
                                     "
-                                    >{{
-                                        formatDate(policy.created_at)
-                                    }}</inertia-link
                                 >
+                                    {{ formatDate(policy.created_at) }}
+                                </inertia-link>
                             </td>
                             <td class="border-t">
                                 <inertia-link
@@ -88,8 +109,11 @@
                                     <div
                                         v-else
                                         v-text="policy.holderNamesPreview"
-                                        class="overflow-ellipsis overflow-hidden whitespace-nowrap"
-                                    ></div>
+                                        class="
+                                            overflow-ellipsis overflow-hidden
+                                            whitespace-nowrap
+                                        "
+                                    />
                                 </inertia-link>
                             </td>
                             <td class="border-t w-px">
@@ -111,13 +135,15 @@
                         </tr>
                     </table>
                 </div>
-                <pagination :links="policies.links"></pagination>
+                <pagination :links="policies.links" />
             </div>
-        </div>
-    </app-layout>
+        </app-layout>
+    </div>
 </template>
 
 <script>
+import { watch, computed } from "vue";
+
 import AppLayout from "@/Layouts/AppLayout";
 import Pagination from "@/Shared/Pagination";
 import JetCheckbox from "@/Jetstream/Checkbox";
@@ -144,39 +170,36 @@ export default {
             trashed: props.filters.trashed,
         });
 
-        return { searchForm };
-    },
-    computed: {
-        formVals() {
-            return {
-                search: this.searchForm.search,
-                trashed: this.searchForm.trashed,
-            };
-        },
-    },
-    watch: {
-        formVals() {
-            this.refreshSearch();
-        },
-    },
-    methods: {
-        refreshSearch: throttle(function () {
-            this.searchForm
+        const refreshSearch = throttle(function () {
+            searchForm
                 .transform((data) => pickBy(data))
                 .get("/policies", {
                     only: ["policies"],
                     preserveState: true,
                     preserveScroll: true,
                 });
-        }, 200),
-        reset() {
-            this.searchForm.search = "";
-            this.searchForm.trashed = null;
-        },
-        formatDate(date) {
+        }, 200);
+
+        const formVals = computed(() => {
+            return {
+                search: searchForm.search,
+                trashed: searchForm.trashed,
+            };
+        });
+
+        function formatDate(date) {
             const options = { year: "numeric", month: "long", day: "numeric" };
             return new Date(date).toLocaleDateString(undefined, options);
-        },
+        }
+
+        function reset() {
+            searchForm.search = "";
+            searchForm.trashed = null;
+        }
+
+        watch(formVals, () => refreshSearch());
+
+        return { searchForm, refreshSearch, reset, formatDate };
     },
 };
 </script>
