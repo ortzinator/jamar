@@ -22,11 +22,11 @@
             >
                 <template #delButton v-if="!field.protected">
                     <button
-                        class="btn-sm btn-danger mr-2 col-span-1"
+                        class="btn btn-sm btn-danger"
                         @click="confirmingDeleteField = true"
                         v-show="true"
                     >
-                        Delete
+                        <trash-icon class="w-5 h-5 mx-auto" />
                     </button>
                 </template>
             </policy-field>
@@ -77,6 +77,7 @@ import { reactive, ref, watch, computed } from "vue";
 import NewPolicyField from "@/Shared/Fields/NewPolicyField";
 import PolicyField from "@/Shared/Fields/PolicyField";
 import { PlusSmIcon } from "@heroicons/vue/outline";
+import { TrashIcon } from "@heroicons/vue/outline";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 
 export default {
@@ -87,6 +88,7 @@ export default {
         PolicyField,
         PlusSmIcon,
         JetConfirmationModal,
+        TrashIcon,
     },
     setup(props) {
         var newFieldClicked = ref(false);
