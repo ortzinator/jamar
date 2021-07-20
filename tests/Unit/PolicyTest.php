@@ -82,4 +82,13 @@ class PolicyTest extends TestCase
 
         $this->assertCount(1, $list);
     }
+
+    // public function test_can_filter_fields()
+    // {
+    //     $policy = Policy::factory()->create([
+    //         'fields' => ['name' => 'value', 'foobar' => 'testing123']
+    //     ]);
+
+    //     $this->assertCount(1, Policy::all());
+    // }
 }
