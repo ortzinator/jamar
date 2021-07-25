@@ -161,7 +161,6 @@ export default {
         fields: Array,
     },
     setup(props) {
-        // console.log(props.toString());
         const policyForm = useForm({
             number: props.policy.number,
             holders: props.policy.holders,

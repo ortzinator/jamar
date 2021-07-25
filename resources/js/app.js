@@ -7,10 +7,11 @@ import {
     plugin as InertiaPlugin,
 } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
+import dayjs from "dayjs";
 
 const el = document.getElementById("app");
 
-createApp({
+const app = createApp({
     render: () =>
         h(InertiaApp, {
             initialPage: JSON.parse(el.dataset.page),
@@ -18,7 +19,17 @@ createApp({
         }),
 })
     .mixin({ methods: { route } })
-    .use(InertiaPlugin)
-    .mount(el);
+    .use(InertiaPlugin);
+
+app.mount(el);
+
+app.config.globalProperties.$filters = {
+    formatDisplayDate(value) {
+        return dayjs(value).format("MM-DD-YYY");
+    },
+    formatUrlDate(value) {
+        return dayjs(value).format("YYYY-MM-DD");
+    },
+};
 
 InertiaProgress.init({ color: "#4B5563" });

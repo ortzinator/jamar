@@ -16,8 +16,6 @@ class Policy extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['holderNamesPreview'];
-
     protected $casts = [
         'fields' => 'array',
         'period_start' => 'datetime',

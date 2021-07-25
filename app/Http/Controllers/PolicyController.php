@@ -19,12 +19,24 @@ class PolicyController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->expectsJson()) {
+            sleep(1);
+            return Policy::select(['number', 'id', 'period_start', 'period_end'])
+                ->orderBy('period_end')
+                ->where('period_end', '>', $request['start'])
+                ->where('period_end', '<', $request['end'])
+                ->get();
+        }
+
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
             'policies' => Policy::orderBy('created_at')
                 ->with('holders')
                 ->filter($request->only('search', 'trashed'))
                 ->paginate()
+                ->through(function($policy){
+                    return $policy->append('holderNamesPreview');
+                })
         ]);
     }
 
@@ -55,7 +67,6 @@ class PolicyController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->toArray());
         Policy::create($request->validate([
             'number' => ['required'],
             'fields.*.name' => ['required'],
