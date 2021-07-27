@@ -20,7 +20,6 @@ class PolicyController extends Controller
     public function index(Request $request)
     {
         if ($request->expectsJson()) {
-            sleep(1);
             return Policy::select(['number', 'id', 'period_start', 'period_end'])
                 ->orderBy('period_end')
                 ->where('period_end', '>', $request['start'])

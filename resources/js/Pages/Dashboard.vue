@@ -18,66 +18,57 @@
                         sm:rounded-lg
                     "
                 >
-                    <div class="relative border bg-white p-4">
-                        <EndingSoon />
-                    </div>
-                    <div class="border bg-white">
-                        <Text>
-                            <template #header>Header</template>
+                    <EndingSoon class="border bg-white p-4" />
+                    <Text class="border bg-white col-span-2">
+                        <template #header>Header</template>
 
-                            Curabitur arcu erat, accumsan id imperdiet et,
-                            porttitor at sem. Vestibulum ante ipsum primis in
-                            faucibus orci luctus et ultrices posuere cubilia
-                            Curae; Donec velit neque, auctor sit amet aliquam
-                            vel, ullamcorper sit amet ligula. Sed porttitor
-                            lectus nibh. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit.
-                        </Text>
-                    </div>
-                    <div class="prose border bg-white p-4">
-                        <Text>
-                            Curabitur arcu erat, accumsan id imperdiet et,
-                            porttitor at sem. Vestibulum ante ipsum primis in
-                            faucibus orci luctus et ultrices posuere cubilia
-                            Curae; Donec velit neque, auctor sit amet aliquam
-                            vel, ullamcorper sit amet ligula. Sed porttitor
-                            lectus nibh. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit.
-                        </Text>
-                    </div>
-                    <div class="prose border bg-white p-4">
-                        <Text>
-                            Curabitur arcu erat, accumsan id imperdiet et,
-                            porttitor at sem. Vestibulum ante ipsum primis in
-                            faucibus orci luctus et ultrices posuere cubilia
-                            Curae; Donec velit neque, auctor sit amet aliquam
-                            vel, ullamcorper sit amet ligula. Sed porttitor
-                            lectus nibh. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit.
-                        </Text>
-                    </div>
-                    <div class="prose border bg-white p-4">
-                        <Text>
-                            Curabitur arcu erat, accumsan id imperdiet et,
-                            porttitor at sem. Vestibulum ante ipsum primis in
-                            faucibus orci luctus et ultrices posuere cubilia
-                            Curae; Donec velit neque, auctor sit amet aliquam
-                            vel, ullamcorper sit amet ligula. Sed porttitor
-                            lectus nibh. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit.
-                        </Text>
-                    </div>
-                    <div class="prose border bg-white p-4">
-                        <Text>
-                            Curabitur arcu erat, accumsan id imperdiet et,
-                            porttitor at sem. Vestibulum ante ipsum primis in
-                            faucibus orci luctus et ultrices posuere cubilia
-                            Curae; Donec velit neque, auctor sit amet aliquam
-                            vel, ullamcorper sit amet ligula. Sed porttitor
-                            lectus nibh. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit.
-                        </Text>
-                    </div>
+                        Curabitur arcu erat, accumsan id imperdiet et, porttitor
+                        at sem. Vestibulum ante ipsum primis in faucibus orci
+                        luctus et ultrices posuere cubilia Curae; Donec velit
+                        neque, auctor sit amet aliquam vel, ullamcorper sit amet
+                        ligula. Sed porttitor lectus nibh. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit.
+                    </Text>
+                    <Text class="border bg-white">
+                        <template #header>Header</template>
+
+                        Curabitur arcu erat, accumsan id imperdiet et, porttitor
+                        at sem. Vestibulum ante ipsum primis in faucibus orci
+                        luctus et ultrices posuere cubilia Curae; Donec velit
+                        neque, auctor sit amet aliquam vel, ullamcorper sit amet
+                        ligula. Sed porttitor lectus nibh. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit.
+                    </Text>
+                    <Text class="border bg-white">
+                        <template #header>Header</template>
+
+                        Curabitur arcu erat, accumsan id imperdiet et, porttitor
+                        at sem. Vestibulum ante ipsum primis in faucibus orci
+                        luctus et ultrices posuere cubilia Curae; Donec velit
+                        neque, auctor sit amet aliquam vel, ullamcorper sit amet
+                        ligula. Sed porttitor lectus nibh. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit.
+                    </Text>
+                    <Text class="border bg-white">
+                        <template #header>Header</template>
+
+                        Curabitur arcu erat, accumsan id imperdiet et, porttitor
+                        at sem. Vestibulum ante ipsum primis in faucibus orci
+                        luctus et ultrices posuere cubilia Curae; Donec velit
+                        neque, auctor sit amet aliquam vel, ullamcorper sit amet
+                        ligula. Sed porttitor lectus nibh. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit.
+                    </Text>
+                    <Text class="border bg-white">
+                        <template #header>Header</template>
+
+                        Curabitur arcu erat, accumsan id imperdiet et, porttitor
+                        at sem. Vestibulum ante ipsum primis in faucibus orci
+                        luctus et ultrices posuere cubilia Curae; Donec velit
+                        neque, auctor sit amet aliquam vel, ullamcorper sit amet
+                        ligula. Sed porttitor lectus nibh. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit.
+                    </Text>
                 </div>
             </div>
         </div>

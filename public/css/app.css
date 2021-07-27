@@ -33493,6 +33493,10 @@ textarea {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.table-show {
+  empty-cells: show;
+}
+
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
