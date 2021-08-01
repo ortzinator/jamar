@@ -51,89 +51,43 @@
                     </inertia-link>
                 </div>
                 <div class="shadow rounded bg-white">
-                    <table class="w-full table-fixed">
-                        <tr class="text-left">
-                            <th class="px-6 pt-6 pb-4 w-2/12">Number</th>
-                            <th class="px-6 pt-6 pb-4 w-2/12">Date Issued</th>
-                            <th class="px-6 pt-6 pb-4 w-7/12">Holders</th>
-                            <th class="w-1/12"></th>
-                        </tr>
-                        <tr v-for="policy in policies.data" :key="policy.id">
-                            <td class="border-t">
-                                <inertia-link
-                                    :href="route('policies.edit', policy.id)"
-                                    class="
-                                        px-6
-                                        py-4
-                                        flex
-                                        items-center
-                                        focus:text-indigo-500
-                                    "
-                                >
-                                    {{ policy.number }}
-                                </inertia-link>
-                            </td>
-                            <td class="border-t">
-                                <inertia-link
-                                    :href="route('policies.edit', policy.id)"
-                                    class="
-                                        px-6
-                                        py-4
-                                        flex
-                                        items-center
-                                        focus:text-indigo-500
-                                    "
-                                    :title="
-                                        new Date(
-                                            policy.created_at
-                                        ).toLocaleString()
-                                    "
-                                >
-                                    {{ formatDate(policy.created_at) }}
-                                </inertia-link>
-                            </td>
-                            <td class="border-t">
-                                <inertia-link
-                                    :href="route('policies.edit', policy.id)"
-                                    class="px-6 py-4 flex focus:text-indigo-500"
-                                >
-                                    <div
-                                        v-if="policy.holders.length === 0"
-                                        class="flex text-red-600 items-center"
-                                    >
-                                        <exclamation-icon
-                                            class="h-5 mr-2 w-5"
-                                        />
-                                        No policyholders found
-                                    </div>
-                                    <div
-                                        v-else
-                                        v-text="policy.holderNamesPreview"
-                                        class="
-                                            overflow-ellipsis overflow-hidden
-                                            whitespace-nowrap
-                                        "
-                                    />
-                                </inertia-link>
-                            </td>
-                            <td class="border-t w-px">
-                                <inertia-link
-                                    class="px-4 flex items-center"
-                                    :href="route('policies.edit', policy.id)"
-                                    tabindex="-1"
-                                >
-                                    <chevron-right-icon
-                                        class="block h-5 text-gray-400 w-5"
-                                    />
-                                </inertia-link>
-                            </td>
-                        </tr>
-                        <tr v-if="policies.data.length === 0">
-                            <td class="border-t px-6 py-4" colspan="4">
-                                No policies found.
-                            </td>
-                        </tr>
-                    </table>
+                    <DataTable
+                        :columns="columns"
+                        :dataSource="policies.data"
+                        routeName="policies.edit"
+                    >
+                        <template v-slot:[`column.period_end`]="{ value }">
+                            <span
+                                :class="{ 'text-red-500': pastDate(value) }"
+                                >{{ formatDate(value) }}</span
+                            >
+                        </template>
+                        <template v-slot:[`column.created_at`]="{ value }">
+                            {{ formatDate(value) }}
+                        </template>
+                        <template
+                            v-slot:[`column.holderNamesPreview`]="{
+                                value,
+                                row,
+                            }"
+                        >
+                            <div
+                                v-if="row.holders.length === 0"
+                                class="flex text-red-600 items-center"
+                            >
+                                <exclamation-icon class="h-5 mr-2 w-5" />
+                                No policyholders found
+                            </div>
+                            <div
+                                v-else
+                                v-text="value"
+                                class="
+                                    overflow-ellipsis overflow-hidden
+                                    whitespace-nowrap
+                                "
+                            />
+                        </template>
+                    </DataTable>
                 </div>
                 <pagination :links="policies.links" />
             </div>
@@ -142,17 +96,19 @@
 </template>
 
 <script>
-import { watch, computed } from "vue";
+import { watch, computed, ref } from "vue";
 
 import AppLayout from "@/Layouts/AppLayout";
 import Pagination from "@/Shared/Pagination";
+import DataTable from "@/Shared/DataTable";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import { ExclamationIcon } from "@heroicons/vue/outline";
 import { ChevronRightIcon } from "@heroicons/vue/outline";
 
 import throttle from "lodash/throttle";
 import pickBy from "lodash/pickBy";
-import { useForm } from "@inertiajs/inertia-vue3";
+import { useForm, Link } from "@inertiajs/inertia-vue3";
+import dayjs from "dayjs";
 
 export default {
     props: { sessions: Object, policies: Object, filters: Object },
@@ -163,6 +119,8 @@ export default {
         JetCheckbox,
         ExclamationIcon,
         ChevronRightIcon,
+        DataTable,
+        Link,
     },
     setup(props) {
         const searchForm = useForm({
@@ -188,8 +146,7 @@ export default {
         });
 
         function formatDate(date) {
-            const options = { year: "numeric", month: "long", day: "numeric" };
-            return new Date(date).toLocaleDateString(undefined, options);
+            return dayjs(date).format("MMM DD, YYYY");
         }
 
         function reset() {
@@ -199,7 +156,25 @@ export default {
 
         watch(formVals, () => refreshSearch());
 
-        return { searchForm, refreshSearch, reset, formatDate };
+        const columns = ref([
+            { text: "Number", value: "number" },
+            { text: "Date Issued", value: "created_at" },
+            { text: "Ending", value: "period_end" },
+            { text: "Holders", value: "holderNamesPreview" },
+        ]);
+
+        function pastDate(date) {
+            return dayjs(date).isBefore(dayjs());
+        }
+
+        return {
+            searchForm,
+            refreshSearch,
+            reset,
+            formatDate,
+            columns,
+            pastDate,
+        };
     },
 };
 </script>

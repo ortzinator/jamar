@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use App\Models\Holder;
 use App\Models\Policy;
 use App\Models\PolicyField;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Inertia\Testing\Assert;
@@ -141,5 +143,44 @@ class PolicyTest extends TestCase
             ->assertInertia(fn (Assert $page) => $page
                 ->has('policies.data', 1)
             );
+    }
+
+    public function test_ending_soon_or_past_due()
+    {
+        $this->signIn(true);
+
+        $this->withoutExceptionHandling();
+
+        $today = Carbon::now()->isoFormat('YYYY-MM-DD');
+        $foreverAgo = Carbon::createFromTimestamp(1)->isoFormat('YYYY-MM-DD');
+        $twoDaysAgo = Carbon::now()->subDays(2)->isoFormat('YYYY-MM-DD');
+        $twoDaysFromNow = Carbon::now()->addDays(2)->isoFormat('YYYY-MM-DD');
+        $aWeekFromNow = Carbon::now()->addWeek()->isoFormat('YYYY-MM-DD');
+        $aWeekAgo = Carbon::now()->subWeek()->isoFormat('YYYY-MM-DD');
+        $twoWeeksFromNow = Carbon::now()->addWeeks(2)->isoFormat('YYYY-MM-DD');
+
+        $pol1 = Policy::factory()->create([
+            'period_start' => $twoDaysAgo,
+            'period_end' => $twoDaysFromNow
+        ]);
+        $pol2 = Policy::factory()->create([
+            'period_start' => $aWeekAgo,
+            'period_end' => $twoDaysAgo
+        ]);
+        $pol3 = Policy::factory()->create([
+            'period_start' => $aWeekAgo,
+            'period_end' => $twoWeeksFromNow
+        ]);
+
+        $this->getJson("/policies/ending-soon")
+            ->assertOk()
+            ->assertJsonCount(2);
+
+        $this->get("/policies/ending-soon")
+            ->assertOk()
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('policies.data', 2), function (Collection $val) use ($pol1) {
+                    return $val->contains($pol1->number);
+                });
     }
 }

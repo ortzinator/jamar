@@ -17,6 +17,8 @@ class Holder extends Model
 
     protected $hidden = ['pivot'];
 
+    protected $withCount = ['policies'];
+
     public function policies()
     {
         return $this->belongsToMany(Policy::class)->withTimestamps();

@@ -48,7 +48,9 @@
             v-if="!loading && results.length > 5"
             class="text-gray-400 text-sm mb-2"
         >
-            Plus {{ results.length - 5 }} more
+            <Link :href="route('policies.ending')">
+                Plus {{ results.length - 5 }} more
+            </Link>
         </div>
         <div class="flex items-center">
             <span
@@ -60,10 +62,14 @@
 </template>
 
 <script>
-import { onMounted, computed, ref } from "vue";
+import { onMounted, computed, ref, reactive } from "vue";
+import { Link } from "@inertiajs/inertia-vue3";
 import dayjs from "dayjs";
 
 export default {
+    components: {
+        Link,
+    },
     setup() {
         var loading = ref(true);
         var cancelSource = ref(null);
@@ -94,12 +100,7 @@ export default {
             loading.value = true;
 
             axios
-                .get(route("policies"), {
-                    params: {
-                        orderBy: "period_end",
-                        start: start.value,
-                        end: end.value,
-                    },
+                .get(route("policies.ending"), {
                     cancelToken: cancelSource.value.token,
                 })
                 .then((response) => {

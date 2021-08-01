@@ -19,14 +19,6 @@ class PolicyController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->expectsJson()) {
-            return Policy::select(['number', 'id', 'period_start', 'period_end'])
-                ->orderBy('period_end')
-                ->where('period_end', '>', $request['start'])
-                ->where('period_end', '<', $request['end'])
-                ->get();
-        }
-
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
             'policies' => Policy::orderBy('created_at')
@@ -139,5 +131,32 @@ class PolicyController extends Controller
     {
         $policy->restore();
         return Redirect::back()->banner(_('Policy restored'));
+    }
+
+    public function endingSoon(Request $request)
+    {
+        $days = 7;
+        $start = Carbon::createFromTimestamp(1);
+        $end = Carbon::now()->addDays($days);
+
+        if ($request->expectsJson()) {
+            return Policy::select(['number', 'id', 'period_start', 'period_end'])
+                ->orderBy('period_end')
+                ->where('period_end', '>', $start)
+                ->where('period_end', '<', $end)
+                ->get();
+        }
+
+        return Inertia::render('Policies/Index', [
+            'filters' => $request->all('search', 'trashed'),
+            'policies' => Policy::orderBy('period_end')
+                ->with('holders')
+                ->where('period_end', '>', $start)
+                ->where('period_end', '<', $end)
+                ->paginate()
+                ->through(function($policy){
+                    return $policy->append('holderNamesPreview');
+                })
+        ]);
     }
 }

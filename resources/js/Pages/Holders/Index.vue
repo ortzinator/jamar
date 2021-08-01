@@ -52,78 +52,11 @@
                 </div>
                 <div class="">
                     <div class="shadow rounded bg-white">
-                        <table class="w-full">
-                            <tr class="text-left">
-                                <th class="px-6 pt-6 pb-4">Name</th>
-                                <th class="px-6 pt-6 pb-4">Address</th>
-                                <th class="px-6 pt-6 pb-4">Policies</th>
-                                <th></th>
-                            </tr>
-                            <tr v-for="holder in holders.data" :key="holder.id">
-                                <td class="border-t">
-                                    <inertia-link
-                                        :href="holder.link"
-                                        class="
-                                            px-6
-                                            py-4
-                                            flex
-                                            items-center
-                                            focus:text-indigo-500
-                                        "
-                                        >{{ holder.name }}</inertia-link
-                                    >
-                                </td>
-                                <td class="border-t">
-                                    <inertia-link
-                                        :href="holderLink(holder.id)"
-                                        class="
-                                            px-6
-                                            py-4
-                                            flex
-                                            items-center
-                                            focus:text-indigo-500
-                                        "
-                                        >{{ holder.address }}</inertia-link
-                                    >
-                                </td>
-                                <td class="border-t">
-                                    <inertia-link
-                                        :href="holderLink(holder.id)"
-                                        class="
-                                            px-6
-                                            py-4
-                                            flex
-                                            items-center
-                                            focus:text-indigo-500
-                                        "
-                                    >
-                                        <span
-                                            v-if="holder.policies.length > 0"
-                                            v-text="holder.policies.length"
-                                        ></span
-                                    ></inertia-link>
-                                </td>
-                                <td class="border-t w-px">
-                                    <inertia-link
-                                        class="px-4 flex items-center"
-                                        :href="holderLink(holder.id)"
-                                        tabindex="-1"
-                                    >
-                                        <chevron-right-icon
-                                            class="block h-5 text-gray-400 w-5"
-                                        />
-                                    </inertia-link>
-                                </td>
-                            </tr>
-                            <tr v-if="holders.data.length === 0">
-                                <td
-                                    class="border-t px-6 py-4 text-gray-400"
-                                    colspan="4"
-                                >
-                                    No policyholders found.
-                                </td>
-                            </tr>
-                        </table>
+                        <DataTable
+                            :dataSource="holders.data"
+                            :columns="columns"
+                            routeName="holders.edit"
+                        />
                     </div>
                     <pagination :links="holders.links"></pagination>
                 </div>
@@ -133,12 +66,13 @@
 </template>
 
 <script>
-import { watch, computed } from "vue";
+import { watch, computed, ref } from "vue";
 
 import AppLayout from "@/Layouts/AppLayout";
 import Pagination from "@/Shared/Pagination";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import { ChevronRightIcon } from "@heroicons/vue/outline";
+import DataTable from "@/Shared/DataTable";
 
 import throttle from "lodash/throttle";
 import pickBy from "lodash/pickBy";
@@ -152,12 +86,19 @@ export default {
         Pagination,
         JetCheckbox,
         ChevronRightIcon,
+        DataTable,
     },
     setup(props) {
         const searchForm = useForm({
             search: props.filters.search,
             trashed: props.filters.trashed,
         });
+
+        const columns = ref([
+            { text: "Name", value: "name" },
+            { text: "Address", value: "address" },
+            { text: "Policies", value: "policies_count" },
+        ]);
 
         const refreshSearch = throttle(function () {
             searchForm
@@ -192,7 +133,14 @@ export default {
 
         watch(formVals, () => refreshSearch());
 
-        return { searchForm, refreshSearch, reset, formatDate, holderLink };
+        return {
+            searchForm,
+            refreshSearch,
+            reset,
+            formatDate,
+            holderLink,
+            columns,
+        };
     },
 };
 </script>
