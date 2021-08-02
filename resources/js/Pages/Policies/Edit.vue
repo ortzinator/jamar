@@ -1,9 +1,9 @@
 <template>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <h1 class="mb-8 font-bold text-3xl">
-            <inertia-link class="text-indigo-400 hover:text-indigo-600" href="/"
-                >Policies</inertia-link
-            >
+            <Link class="text-indigo-400 hover:text-indigo-600" href="/">
+                Policies
+            </Link>
             <span class="text-indigo-400 font-medium">&nbsp;/</span>
             {{ policyForm.name }}
         </h1>
@@ -133,6 +133,7 @@ import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
 import LoadingButton from "@/Shared/LoadingButton";
 import DateRange from "@/Shared/DateRange";
 import { DatePicker } from "v-calendar";
+import { Link } from "@inertiajs/inertia-vue3";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
@@ -154,6 +155,7 @@ export default {
         SelectPolicyholder,
         DateRange,
         DatePicker,
+        Link,
     },
     props: {
         errors: Object,

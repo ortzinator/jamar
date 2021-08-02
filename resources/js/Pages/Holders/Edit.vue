@@ -1,11 +1,12 @@
 <template>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <h1 class="mb-8 font-bold text-3xl">
-            <inertia-link
+            <Link
                 class="text-indigo-400 hover:text-indigo-600"
                 :href="route('holders')"
-                >Holders</inertia-link
             >
+                Holders
+            </Link>
             <span class="text-indigo-400 font-medium">&nbsp;/</span>
             {{ form.name }}
         </h1>
@@ -55,7 +56,14 @@
                     </div>
                 </div>
                 <div
-                    class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
+                    class="
+                        px-8
+                        py-4
+                        bg-gray-100
+                        border-t border-gray-200
+                        flex
+                        items-center
+                    "
                 >
                     <button
                         v-if="!holder.deleted_at"
@@ -132,6 +140,7 @@ import JetLabel from "@/Jetstream/Label";
 import JetInputError from "@/Jetstream/InputError";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
+import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     layout: AppLayout,
@@ -143,6 +152,7 @@ export default {
         LoadingButton,
         JetConfirmationModal,
         TrashIcon,
+        Link,
     },
     props: {
         errors: Object,

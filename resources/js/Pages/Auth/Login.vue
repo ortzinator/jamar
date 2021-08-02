@@ -47,13 +47,13 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <inertia-link
+                <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
                     class="underline text-sm text-gray-600 hover:text-gray-900"
                 >
                     Forgot your password?
-                </inertia-link>
+                </Link>
 
                 <jet-button
                     class="ml-4"
@@ -75,6 +75,7 @@ import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     components: {
@@ -85,6 +86,7 @@ export default {
         JetCheckbox,
         JetLabel,
         JetValidationErrors,
+        Link,
     },
 
     props: {

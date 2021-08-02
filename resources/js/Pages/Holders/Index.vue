@@ -43,12 +43,12 @@
                             Reset
                         </button>
                     </div>
-                    <inertia-link
+                    <Link
                         class="btn btn-primary"
                         :href="route('holders.create')"
                     >
                         New Policyholder
-                    </inertia-link>
+                    </Link>
                 </div>
                 <div class="">
                     <div class="shadow rounded bg-white">
@@ -67,16 +67,16 @@
 
 <script>
 import { watch, computed, ref } from "vue";
+import throttle from "lodash/throttle";
+import pickBy from "lodash/pickBy";
+import { useForm } from "@inertiajs/inertia-vue3";
 
 import AppLayout from "@/Layouts/AppLayout";
 import Pagination from "@/Shared/Pagination";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import { ChevronRightIcon } from "@heroicons/vue/outline";
 import DataTable from "@/Shared/DataTable";
-
-import throttle from "lodash/throttle";
-import pickBy from "lodash/pickBy";
-import { useForm } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     props: { sessions: Object, holders: Object, filters: Object },
@@ -87,6 +87,7 @@ export default {
         JetCheckbox,
         ChevronRightIcon,
         DataTable,
+        Link,
     },
     setup(props) {
         const searchForm = useForm({

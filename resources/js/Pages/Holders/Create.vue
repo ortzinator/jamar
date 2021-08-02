@@ -1,11 +1,9 @@
 <template>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <h1 class="mb-8 font-bold text-3xl">
-            <inertia-link
-                class="text-indigo-400 hover:text-indigo-600"
-                href="/holders"
-                >Holders</inertia-link
-            >
+            <Link class="text-indigo-400 hover:text-indigo-600" href="/holders">
+                Holders
+            </Link>
             <span class="text-indigo-400 font-medium">&nbsp;/</span>
             New Policyholder
         </h1>
@@ -20,9 +18,7 @@
                             type="text"
                             class="block w-full"
                         />
-                        <jet-input-error
-                            :message="form.errors.name"
-                        ></jet-input-error>
+                        <jet-input-error :message="form.errors.name" />
                     </div>
                     <div class="mb-5">
                         <jet-label for="address" value="Address"></jet-label>
@@ -33,14 +29,19 @@
                             cols="30"
                             rows="10"
                             v-model="form.address"
-                        ></textarea>
-                        <jet-input-error
-                            :message="form.errors.address"
-                        ></jet-input-error>
+                        />
+                        <jet-input-error :message="form.errors.address" />
                     </div>
                 </div>
                 <div
-                    class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center"
+                    class="
+                        px-8
+                        py-4
+                        bg-gray-100
+                        border-t border-gray-200
+                        flex
+                        items-center
+                    "
                 >
                     <loading-button
                         class="btn btn-primary ml-auto"
@@ -65,6 +66,7 @@ import JetInputError from "@/Jetstream/InputError";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 import LoadingButton from "@/Shared/LoadingButton";
+import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     layout: AppLayout,
@@ -75,6 +77,7 @@ export default {
         JetValidationErrors,
         JetConfirmationModal,
         LoadingButton,
+        Link,
     },
     setup(props) {
         const form = useForm({
