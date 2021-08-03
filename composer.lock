@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc15a9aaed74099b09dda256816462dc",
+    "content-hash": "488dc63f14e1d432d10f7f5c98f634eb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6180,19 +6180,20 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.3.1",
+            "version": "v1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "a18519e96c32894ac3f8775fa8eb6de5750aca5a"
+                "reference": "51ecfe0f048f8f8e6c5617e02a1f67ca22817c98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/a18519e96c32894ac3f8775fa8eb6de5750aca5a",
-                "reference": "a18519e96c32894ac3f8775fa8eb6de5750aca5a",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/51ecfe0f048f8f8e6c5617e02a1f67ca22817c98",
+                "reference": "51ecfe0f048f8f8e6c5617e02a1f67ca22817c98",
                 "shasum": ""
             },
             "require": {
+                "illuminate/console": "^8.0|^9.0",
                 "illuminate/contracts": "^8.0|^9.0",
                 "illuminate/support": "^8.0|^9.0",
                 "php": "^7.3|^8.0"
@@ -6235,7 +6236,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2021-02-09T16:44:58+00:00"
+            "time": "2021-07-15T07:35:41+00:00"
         },
         {
             "name": "maximebf/debugbar",

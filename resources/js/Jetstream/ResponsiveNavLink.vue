@@ -4,16 +4,14 @@
             <slot></slot>
         </button>
 
-        <Link :href="href" :class="classes" v-else>
+        <inertia-link :href="href" :class="classes" v-else>
             <slot></slot>
-        </Link>
+        </inertia-link>
     </div>
 </template>
 
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
 export default {
-    components: { Link },
     props: ["active", "href", "as"],
 
     computed: {

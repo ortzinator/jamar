@@ -12,7 +12,7 @@
                 v-text="link.label"
             >
             </span>
-            <Link
+            <inertia-link
                 v-else
                 class="
                     hover:bg-white
@@ -27,15 +27,13 @@
                 :href="link.url"
             >
                 <span v-text="link.label" />
-            </Link>
+            </inertia-link>
         </div>
     </div>
 </template>
 
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
 export default {
-    components: { Link },
     props: {
         links: Array,
     },

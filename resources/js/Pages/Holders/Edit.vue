@@ -1,12 +1,12 @@
 <template>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <h1 class="mb-8 font-bold text-3xl">
-            <Link
+            <inertia-link
                 class="text-indigo-400 hover:text-indigo-600"
                 :href="route('holders')"
             >
                 Holders
-            </Link>
+            </inertia-link>
             <span class="text-indigo-400 font-medium">&nbsp;/</span>
             {{ form.name }}
         </h1>
@@ -140,7 +140,6 @@ import JetLabel from "@/Jetstream/Label";
 import JetInputError from "@/Jetstream/InputError";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
-import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     layout: AppLayout,
@@ -152,7 +151,6 @@ export default {
         LoadingButton,
         JetConfirmationModal,
         TrashIcon,
-        Link,
     },
     props: {
         errors: Object,

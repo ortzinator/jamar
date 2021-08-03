@@ -1,9 +1,12 @@
 <template>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <h1 class="mb-8 font-bold text-3xl">
-            <Link class="text-indigo-400 hover:text-indigo-600" href="/holders">
+            <inertia-link
+                class="text-indigo-400 hover:text-indigo-600"
+                href="/holders"
+            >
                 Holders
-            </Link>
+            </inertia-link>
             <span class="text-indigo-400 font-medium">&nbsp;/</span>
             New Policyholder
         </h1>
@@ -66,7 +69,6 @@ import JetInputError from "@/Jetstream/InputError";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 import LoadingButton from "@/Shared/LoadingButton";
-import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     layout: AppLayout,
@@ -77,7 +79,6 @@ export default {
         JetValidationErrors,
         JetConfirmationModal,
         LoadingButton,
-        Link,
     },
     setup(props) {
         const form = useForm({

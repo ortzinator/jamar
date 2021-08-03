@@ -10,7 +10,7 @@
         </tr>
         <tr v-for="row in dataSource" :key="row.id">
             <td v-for="column in columns" :key="column.value" class="border-t">
-                <Link
+                <inertia-link
                     :href="route(routeName, row.id)"
                     class="px-6 py-4 flex items-center focus:text-indigo-500"
                 >
@@ -21,7 +21,7 @@
                     >
                         {{ row[column.value] }}
                     </slot>
-                </Link>
+                </inertia-link>
             </td>
         </tr>
         <tr v-if="dataSource.length === 0">
@@ -33,15 +33,11 @@
 </template>
 
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
-
 export default {
-    components: { Link },
     props: {
         columns: { type: Array, required: false },
         dataSource: { type: Object, required: true },
         routeName: { type: String, required: true },
     },
-    setup(props) {},
 };
 </script>

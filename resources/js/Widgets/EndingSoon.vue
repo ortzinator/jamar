@@ -48,9 +48,9 @@
             v-if="!loading && results.length > 5"
             class="text-gray-400 text-sm mb-2"
         >
-            <Link :href="route('policies.ending')">
+            <inertia-link :href="route('policies.ending')">
                 Plus {{ results.length - 5 }} more
-            </Link>
+            </inertia-link>
         </div>
         <div class="flex items-center">
             <span
@@ -63,13 +63,9 @@
 
 <script>
 import { onMounted, computed, ref, reactive } from "vue";
-import { Link } from "@inertiajs/inertia-vue3";
 import dayjs from "dayjs";
 
 export default {
-    components: {
-        Link,
-    },
     setup() {
         var loading = ref(true);
         var cancelSource = ref(null);

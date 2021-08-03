@@ -43,12 +43,12 @@
                             Reset
                         </button>
                     </div>
-                    <Link
+                    <inertia-link
                         class="btn btn-primary"
                         :href="route('holders.create')"
                     >
                         New Policyholder
-                    </Link>
+                    </inertia-link>
                 </div>
                 <div class="">
                     <div class="shadow rounded bg-white">
@@ -76,7 +76,6 @@ import Pagination from "@/Shared/Pagination";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import { ChevronRightIcon } from "@heroicons/vue/outline";
 import DataTable from "@/Shared/DataTable";
-import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     props: { sessions: Object, holders: Object, filters: Object },
@@ -87,7 +86,6 @@ export default {
         JetCheckbox,
         ChevronRightIcon,
         DataTable,
-        Link,
     },
     setup(props) {
         const searchForm = useForm({

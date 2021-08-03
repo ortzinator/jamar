@@ -21,7 +21,7 @@
             <slot></slot>
         </button>
 
-        <Link
+        <inertia-link
             :href="href"
             class="
                 block
@@ -39,14 +39,12 @@
             v-else
         >
             <slot></slot>
-        </Link>
+        </inertia-link>
     </div>
 </template>
 
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
 export default {
-    components: { Link },
     props: ["href", "as"],
 };
 </script>

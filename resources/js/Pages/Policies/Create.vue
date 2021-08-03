@@ -1,12 +1,12 @@
 <template>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <h1 class="mb-8 font-bold text-3xl">
-            <Link
+            <inertia-link
                 class="text-indigo-400 hover:text-indigo-600"
                 :href="route('policies')"
             >
                 Policies
-            </Link>
+            </inertia-link>
             <span class="text-indigo-400 font-medium">&nbsp;/</span>
             New Policy
         </h1>
@@ -125,7 +125,6 @@ import HolderList from "@/Shared/Policyholder/HolderList";
 import { ExclamationIcon } from "@heroicons/vue/outline";
 import { QuestionMarkCircleIcon } from "@heroicons/vue/outline";
 import Popper from "vue3-popper";
-import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
     layout: AppLayout,
@@ -143,7 +142,6 @@ export default {
         ExclamationIcon,
         QuestionMarkCircleIcon,
         Popper,
-        Link,
     },
     setup(props) {
         const policyForm = useForm("policy", {

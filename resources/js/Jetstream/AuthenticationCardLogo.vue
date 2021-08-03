@@ -1,5 +1,5 @@
 <template>
-    <Link :href="'/'">
+    <inertia-link :href="'/'">
         <svg
             class="w-16 h-16"
             viewBox="0 0 48 48"
@@ -15,11 +15,6 @@
                 fill="#6875F5"
             />
         </svg>
-    </Link>
+    </inertia-link>
 </template>
-<script>
-import { Link } from "@inertiajs/inertia-vue3";
-export default {
-    components: { Link },
-};
-</script>
+<script></script>

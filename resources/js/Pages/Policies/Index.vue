@@ -43,12 +43,12 @@
                             Reset
                         </button>
                     </div>
-                    <Link
+                    <inertia-link
                         class="btn btn-primary"
                         :href="route('policies.create')"
                     >
                         New Policy
-                    </Link>
+                    </inertia-link>
                 </div>
                 <div class="shadow rounded bg-white">
                     <DataTable
