@@ -32,7 +32,11 @@
                     :key="policy.id"
                     class="border-t border-gray-100"
                 >
-                    <td class="py-2 px-4">{{ policy.number }}</td>
+                    <td class="py-2 px-4">
+                        <inertia-link :href="route('policies.edit', policy.id)">
+                            {{ policy.number }}
+                        </inertia-link>
+                    </td>
                     <td
                         class="py-2"
                         :class="{
