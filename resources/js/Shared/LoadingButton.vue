@@ -22,6 +22,7 @@ export default {
     data() {
         return {
             delayedLoading: false,
+            delayId: null,
         };
     },
     watch: {
@@ -30,8 +31,10 @@ export default {
             if (val === false) {
                 //If no longer loading, disable spinner immediately
                 this.delayedLoading = false;
+                clearTimeout(this.delayId);
             } else {
-                delay(() => (this.delayedLoading = val ? true : false), 100);
+                clearTimeout(this.delayId);
+                this.delayId = delay(() => (this.delayedLoading = true), 100);
             }
         },
     },

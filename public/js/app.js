@@ -30448,7 +30448,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      delayedLoading: false
+      delayedLoading: false,
+      delayId: null
     };
   },
   watch: {
@@ -30459,9 +30460,11 @@ __webpack_require__.r(__webpack_exports__);
       if (val === false) {
         //If no longer loading, disable spinner immediately
         this.delayedLoading = false;
+        clearTimeout(this.delayId);
       } else {
-        lodash_delay__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-          return _this.delayedLoading = val ? true : false;
+        clearTimeout(this.delayId);
+        this.delayId = lodash_delay__WEBPACK_IMPORTED_MODULE_1___default()(function () {
+          return _this.delayedLoading = true;
         }, 100);
       }
     }
