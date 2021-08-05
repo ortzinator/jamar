@@ -15,7 +15,7 @@
 
 <script>
 import Icon from "@/Shared/Icon";
-import delay from "lodash/delay";
+
 export default {
     props: { loading: Boolean },
     components: { Icon },
@@ -34,7 +34,10 @@ export default {
                 clearTimeout(this.delayId);
             } else {
                 clearTimeout(this.delayId);
-                this.delayId = delay(() => (this.delayedLoading = true), 100);
+                this.delayId = setTimeout(
+                    () => (this.delayedLoading = true),
+                    100
+                );
             }
         },
     },
