@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="">
         <div v-if="$slots.header" class="border-b font-semibold p-4">
             <slot name="header"></slot>
         </div>

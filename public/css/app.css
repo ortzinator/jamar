@@ -2080,7 +2080,6 @@ textarea {
 
 .btn {
   position: relative;
-  display: flex;
   align-items: center;
   border-radius: 0.25rem;
   padding-left: 1rem;

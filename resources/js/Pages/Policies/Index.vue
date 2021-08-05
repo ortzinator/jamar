@@ -47,10 +47,11 @@
                         class="btn btn-primary"
                         :href="route('policies.create')"
                     >
-                        New Policy
+                        <span>Create</span>
+                        <span class="hidden md:inline"> Policy</span>
                     </inertia-link>
                 </div>
-                <div class="shadow rounded bg-white">
+                <div class="shadow rounded bg-white overflow-x-auto">
                     <DataTable
                         :columns="columns"
                         :dataSource="policies.data"

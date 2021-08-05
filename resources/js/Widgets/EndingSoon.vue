@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="">
         <h3 class="font-bold mb-4">Policies ending soon</h3>
         <table class="w-full mb-2 table-show text-sm">
             <thead class="sr-only">

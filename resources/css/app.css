@@ -10,7 +10,7 @@
 
 @layer components {
     .btn {
-        @apply font-semibold px-4 py-2 rounded flex relative items-center;
+        @apply font-semibold px-4 py-2 rounded relative items-center;
     }
 
     .btn-sm {

@@ -51,7 +51,7 @@
                     </inertia-link>
                 </div>
                 <div class="">
-                    <div class="shadow rounded bg-white">
+                    <div class="shadow rounded bg-white overflow-x-auto">
                         <DataTable
                             :dataSource="holders.data"
                             :columns="columns"

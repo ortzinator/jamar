@@ -11,15 +11,15 @@
                 <div
                     class="
                         grid grid-cols-1
-                        md:grid-cols-2
-                        lg:grid-cols-3
+                        md:grid-cols-3
                         gap-4
                         overflow-hidden
                         sm:rounded-lg
+                        grid-flow-row-dense
                     "
                 >
                     <EndingSoon class="border bg-white p-4" />
-                    <Text class="border bg-white col-span-2">
+                    <Text class="border bg-white md:col-span-2">
                         <template #header>Header</template>
 
                         Curabitur arcu erat, accumsan id imperdiet et, porttitor

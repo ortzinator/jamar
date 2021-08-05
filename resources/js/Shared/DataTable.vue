@@ -1,5 +1,5 @@
 <template>
-    <table class="w-full table-fixed">
+    <table class="w-full whitespace-nowrap">
         <tr class="text-left">
             <th
                 v-for="column in columns"
