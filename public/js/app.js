@@ -28621,7 +28621,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['tokens', 'availablePermissions', 'defaultPermissions'],
+  props: ["tokens", "availablePermissions", "defaultPermissions"],
   components: {
     ApiTokenManager: _ApiTokenManager__WEBPACK_IMPORTED_MODULE_0__.default,
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__.default
@@ -29888,7 +29888,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['sessions'],
+  props: ["sessions"],
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     DeleteUserForm: _DeleteUserForm__WEBPACK_IMPORTED_MODULE_1__.default,
@@ -32013,6 +32013,9 @@ var _hoisted_57 = {
 var _hoisted_58 = {
   "class": "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
 };
+var _hoisted_59 = {
+  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_banner = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-banner");
 
@@ -32352,7 +32355,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* STABLE_FRAGMENT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 2
   /* CLASS */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Heading "), _ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])]);
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Heading "), _ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])]);
 }
 
 /***/ }),
@@ -32771,9 +32774,6 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_2 = {
-  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_api_token_manager = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("api-token-manager");
 
@@ -32784,13 +32784,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_api_token_manager, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_api_token_manager, {
         tokens: $props.tokens,
         "available-permissions": $props.availablePermissions,
         "default-permissions": $props.defaultPermissions
       }, null, 8
       /* PROPS */
-      , ["tokens", "available-permissions", "default-permissions"])])])];
+      , ["tokens", "available-permissions", "default-permissions"])])];
     }),
     _: 1
     /* STABLE */
@@ -33838,39 +33838,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-};
-var _hoisted_2 = {
   "class": "mb-8 font-bold text-3xl"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Holders ");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Holders ");
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-indigo-400 font-medium"
 }, " /", -1
 /* HOISTED */
 );
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" New Policyholder ");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" New Policyholder ");
 
-var _hoisted_6 = {
+var _hoisted_5 = {
   "class": "bg-white rounded shadow overflow-hidden max-w-3xl"
 };
-var _hoisted_7 = {
+var _hoisted_6 = {
   "class": "p-5"
+};
+var _hoisted_7 = {
+  "class": "mb-5"
 };
 var _hoisted_8 = {
   "class": "mb-5"
 };
 var _hoisted_9 = {
-  "class": "mb-5"
-};
-var _hoisted_10 = {
   "class": "\n                        px-8\n                        py-4\n                        bg-gray-100\n                        border-t border-gray-200\n                        flex\n                        items-center\n                    "
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create holder ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create holder ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -33883,21 +33880,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_loading_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("loading-button");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     "class": "text-indigo-400 hover:text-indigo-600",
     href: "/holders"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+      return [_hoisted_2];
     }),
     _: 1
     /* STABLE */
 
-  }), _hoisted_4, _hoisted_5]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+  }), _hoisted_3, _hoisted_4]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
     onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.store && $options.store.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "name",
     value: "Name"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -33914,7 +33911,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     message: $setup.form.errors.name
   }, null, 8
   /* PROPS */
-  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "address",
     value: "Address"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
@@ -33932,13 +33929,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     message: $setup.form.errors.address
   }, null, 8
   /* PROPS */
-  , ["message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
+  , ["message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
     "class": "btn btn-primary ml-auto",
     type: "submit",
     loading: $setup.form.processing
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_11];
+      return [_hoisted_10];
     }),
     _: 1
     /* STABLE */
@@ -33966,55 +33963,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-};
-var _hoisted_2 = {
   "class": "mb-8 font-bold text-3xl"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Holders ");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Holders ");
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-indigo-400 font-medium"
 }, " /", -1
 /* HOISTED */
 );
 
-var _hoisted_5 = {
+var _hoisted_4 = {
   "class": "bg-white rounded shadow overflow-hidden max-w-3xl"
 };
-var _hoisted_6 = {
+var _hoisted_5 = {
   key: 0,
   "class": "bg-yellow-200 flex items-center justify-between p-5 pl-8"
 };
-var _hoisted_7 = {
+var _hoisted_6 = {
   "class": "flex"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" This policyholder is deleted ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" This policyholder is deleted ");
 
-var _hoisted_9 = {
+var _hoisted_8 = {
   "class": "p-8"
+};
+var _hoisted_9 = {
+  "class": "mb-5"
 };
 var _hoisted_10 = {
   "class": "mb-5"
 };
 var _hoisted_11 = {
-  "class": "mb-5"
-};
-var _hoisted_12 = {
   "class": "\n                        px-8\n                        py-4\n                        bg-gray-100\n                        border-t border-gray-200\n                        flex\n                        items-center\n                    "
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update holder ");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update holder ");
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Restore Policyholder ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Restore Policyholder ");
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to restore this policyholder? ");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to restore this policyholder? ");
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Policyholder ");
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Policyholder ");
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete the Policyholder? ");
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete the Policyholder? ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -34031,23 +34025,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_jet_confirmation_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-confirmation-modal");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     "class": "text-indigo-400 hover:text-indigo-600",
     href: _ctx.route('holders')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+      return [_hoisted_2];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["href"]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.name), 1
+  , ["href"]), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.name), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [$props.holder.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_trash_icon, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [$props.holder.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_trash_icon, {
     "class": "h-5 mr-2 w-5"
-  }), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  }), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     "class": "btn hover:underline",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $data.confirmingRestore = true;
@@ -34056,7 +34050,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.updateHolder && $options.updateHolder.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "name",
     value: "Name"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -34073,7 +34067,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     message: $setup.form.errors.name
   }, null, 8
   /* PROPS */
-  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "address",
     value: "Address"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
@@ -34091,7 +34085,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     message: $setup.form.errors.address
   }, null, 8
   /* PROPS */
-  , ["message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [!$props.holder.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+  , ["message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [!$props.holder.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     key: 0,
     "class": "text-red-600 hover:underline",
     tabindex: "-1",
@@ -34105,7 +34099,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     loading: $setup.form.processing
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_13];
+      return [_hoisted_12];
     }),
     _: 1
     /* STABLE */
@@ -34121,10 +34115,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, {
     title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_14];
+      return [_hoisted_13];
     }),
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_15];
+      return [_hoisted_14];
     }),
     footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
@@ -34151,10 +34145,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, {
     title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_16];
+      return [_hoisted_15];
     }),
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_17];
+      return [_hoisted_16];
     }),
     footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
@@ -34200,42 +34194,39 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_2 = {
-  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-};
-var _hoisted_3 = {
   "class": "flex mb-4 justify-between"
 };
-var _hoisted_4 = {
+var _hoisted_3 = {
   "class": "flex"
 };
-var _hoisted_5 = {
+var _hoisted_4 = {
   "class": "flex shadow rounded"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: null
 }, "Filter...", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "with"
 }, "With Trashed", -1
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "only"
 }, "Only Trashed", -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" New Policyholder ");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" New Policyholder ");
 
-var _hoisted_10 = {
+var _hoisted_9 = {
   "class": ""
 };
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "shadow rounded bg-white overflow-x-auto"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -34252,12 +34243,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $setup.searchForm.trashed = $event;
         }),
         "class": "\n                                    border-0 border-gray-200 border-r\n                                    rounded-l\n                                    text-gray-500\n                                "
-      }, [_hoisted_6, _hoisted_7, _hoisted_8], 512
+      }, [_hoisted_5, _hoisted_6, _hoisted_7], 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.searchForm.trashed]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "text",
@@ -34279,14 +34270,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         href: _ctx.route('holders.create')
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_9];
+          return [_hoisted_8];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
+      , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
         dataSource: $props.holders.data,
         columns: $setup.columns,
         routeName: "holders.edit"
@@ -34320,67 +34311,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-};
-var _hoisted_2 = {
   "class": "mb-8 font-bold text-3xl"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-indigo-400 font-medium"
 }, " /", -1
 /* HOISTED */
 );
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" New Policy ");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" New Policy ");
 
-var _hoisted_6 = {
+var _hoisted_5 = {
   "class": "bg-white rounded shadow overflow-hidden max-w-3xl"
 };
-var _hoisted_7 = {
+var _hoisted_6 = {
   "class": "p-5"
 };
-var _hoisted_8 = {
+var _hoisted_7 = {
   "class": "mb-5"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Help text");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Help text");
 
+var _hoisted_9 = {
+  "class": "mb-5"
+};
 var _hoisted_10 = {
   "class": "mb-5"
 };
-var _hoisted_11 = {
-  "class": "mb-5"
-};
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "text-gray-600 text-sm text-left"
 }, " Period of Insurance ", -1
 /* HOISTED */
 );
 
+var _hoisted_12 = {
+  "class": "mb-5"
+};
 var _hoisted_13 = {
   "class": "mb-5"
 };
-var _hoisted_14 = {
-  "class": "mb-5"
-};
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
 
-var _hoisted_16 = {
+var _hoisted_15 = {
   "class": "mb-5 text-yellow-500"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please add one or more policyholders ");
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please add one or more policyholders ");
 
-var _hoisted_18 = {
+var _hoisted_17 = {
   "class": "\n                        px-8\n                        py-4\n                        bg-gray-100\n                        border-t border-gray-200\n                        flex\n                        items-center\n                    "
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create Policy ");
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create Policy ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -34407,23 +34395,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_loading_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("loading-button");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     "class": "text-indigo-400 hover:text-indigo-600",
     href: _ctx.route('policies')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+      return [_hoisted_2];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["href"]), _hoisted_4, _hoisted_5]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+  , ["href"]), _hoisted_3, _hoisted_4]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
     onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $setup.store && $setup.store.apply($setup, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "template",
     value: "Policy Type"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
@@ -34449,7 +34437,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placement: "right"
   }, {
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_9];
+      return [_hoisted_8];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_QuestionMarkCircleIcon, {
@@ -34459,7 +34447,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "number",
     value: "Policy Number"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -34476,14 +34464,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     message: $setup.policyForm.errors.number
   }, null, 8
   /* PROPS */
-  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
+  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
     modelValue: $setup.policyForm.period,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $setup.policyForm.period = $event;
     })
   }, null, 8
   /* PROPS */
-  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_policy_fields_list, {
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_policy_fields_list, {
     fields: $setup.policyForm.fields,
     onFieldAdded: _cache[4] || (_cache[4] = function (field) {
       return $setup.policyForm.fields.push(field);
@@ -34491,17 +34479,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mb-5"
   }, null, 8
   /* PROPS */
-  , ["fields"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_holder_list, {
+  , ["fields"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_holder_list, {
     holders: $setup.policyForm.holders,
     "class": "mb-5"
   }, {
     noHolders: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
         "class": "inline h-5 mr-2 w-5"
-      }), _hoisted_17])];
+      }), _hoisted_16])];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_15];
+      return [_hoisted_14];
     }),
     _: 1
     /* STABLE */
@@ -34512,13 +34500,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSelected: $setup.holderSelected
   }, null, 8
   /* PROPS */
-  , ["onSelected"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
+  , ["onSelected"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
     "class": "btn btn-primary ml-auto",
     type: "submit",
     loading: $setup.policyForm.processing
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_19];
+      return [_hoisted_18];
     }),
     _: 1
     /* STABLE */
@@ -34546,49 +34534,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-};
-var _hoisted_2 = {
   "class": "mb-8 font-bold text-3xl"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-indigo-400 font-medium"
 }, " /", -1
 /* HOISTED */
 );
 
-var _hoisted_5 = {
+var _hoisted_4 = {
   "class": "bg-white rounded shadow overflow-hidden max-w-3xl"
 };
-var _hoisted_6 = {
+var _hoisted_5 = {
   key: 0,
   "class": "bg-yellow-200 flex items-center justify-between p-5 pl-8"
 };
-var _hoisted_7 = {
+var _hoisted_6 = {
   "class": "flex"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" This policy is deleted ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" This policy is deleted ");
 
-var _hoisted_9 = {
+var _hoisted_8 = {
   key: 1,
   "class": "bg-red-200 flex items-center justify-between p-5 pl-8"
 };
-var _hoisted_10 = {
+var _hoisted_9 = {
   "class": "flex items-center"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "text-lg"
 }, " This policy does not have any policyholders ", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = {
+var _hoisted_11 = {
   "class": "p-8"
+};
+var _hoisted_12 = {
+  "class": "mb-5"
 };
 var _hoisted_13 = {
   "class": "mb-5"
@@ -34596,23 +34584,20 @@ var _hoisted_13 = {
 var _hoisted_14 = {
   "class": "mb-5"
 };
-var _hoisted_15 = {
-  "class": "mb-5"
-};
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "text-gray-600 text-sm text-left"
 }, " Period of Insurance ", -1
 /* HOISTED */
 );
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
 
-var _hoisted_18 = {
+var _hoisted_17 = {
   "class": "\n                    px-8\n                    py-4\n                    bg-gray-100\n                    border-t border-gray-200\n                    flex\n                    items-center\n                "
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
@@ -34641,28 +34626,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_loading_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("loading-button");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     "class": "text-indigo-400 hover:text-indigo-600",
     href: "/"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+      return [_hoisted_2];
     }),
     _: 1
     /* STABLE */
 
-  }), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.policyForm.name), 1
+  }), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.policyForm.name), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_trash_icon, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_trash_icon, {
     "class": "h-5 mr-2 w-5"
-  }), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  }), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     "class": "btn hover:underline",
     onClick: _cache[1] || (_cache[1] = function () {
       return $setup.restore && $setup.restore.apply($setup, arguments);
     })
-  }, " Restore ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.policyForm.holders.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
+  }, " Restore ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.policyForm.holders.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
     "class": "h-5 mr-2 w-5"
-  }), _hoisted_11])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+  }), _hoisted_10])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     "for": "number",
     value: "Policy Number"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -34679,7 +34664,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     message: $setup.policyForm.errors.number
   }, null, 8
   /* PROPS */
-  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
     value: "Date Issued"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
     modelValue: $setup.policyForm.created_at,
@@ -34705,7 +34690,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
     modelValue: $setup.policyForm.range,
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.policyForm.range = $event;
@@ -34727,7 +34712,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mb-5"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_17];
+      return [_hoisted_16];
     }),
     _: 1
     /* STABLE */
@@ -34738,7 +34723,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSelected: $setup.holderSelected
   }, null, 8
   /* PROPS */
-  , ["onSelected"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [!$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+  , ["onSelected"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [!$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     key: 0,
     "class": "text-red-600 hover:underline",
     tabindex: "-1",
@@ -34753,7 +34738,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: $setup.updatePolicy
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_19];
+      return [_hoisted_18];
     }),
     _: 1
     /* STABLE */
@@ -34788,55 +34773,52 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_2 = {
-  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-};
-var _hoisted_3 = {
   "class": "flex mb-4 justify-between"
 };
-var _hoisted_4 = {
+var _hoisted_3 = {
   "class": "flex"
 };
-var _hoisted_5 = {
+var _hoisted_4 = {
   "class": "flex shadow rounded"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: null
 }, "Filter...", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "with"
 }, "With Trashed", -1
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "only"
 }, "Only Trashed", -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, "Create", -1
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, "Create", -1
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "hidden md:inline"
 }, " Policy", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "shadow rounded bg-white overflow-x-auto"
 };
-var _hoisted_12 = {
+var _hoisted_11 = {
   key: 0,
   "class": "flex text-red-600 items-center"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No policyholders found ");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No policyholders found ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -34856,12 +34838,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       var _createVNode2;
 
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $setup.searchForm.trashed = $event;
         }),
         "class": "\n                                    border-0 border-gray-200 border-r\n                                    rounded-l\n                                    text-gray-500\n                                "
-      }, [_hoisted_6, _hoisted_7, _hoisted_8], 512
+      }, [_hoisted_5, _hoisted_6, _hoisted_7], 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.searchForm.trashed]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "text",
@@ -34883,14 +34865,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         href: _ctx.route('policies.create')
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_9, _hoisted_10];
+          return [_hoisted_8, _hoisted_9];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
+      , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
         columns: $setup.columns,
         dataSource: $props.policies.data,
         routeName: "policies.edit"
@@ -34911,9 +34893,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })), _defineProperty(_createVNode2, "column.holderNamesPreview", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
         var value = _ref3.value,
             row = _ref3.row;
-        return [row.holders.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
+        return [row.holders.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
           "class": "h-5 mr-2 w-5"
-        }), _hoisted_13])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+        }), _hoisted_12])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
           key: 1,
           textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value),
           "class": "\n                                    overflow-ellipsis overflow-hidden\n                                    whitespace-nowrap\n                                "
@@ -35383,15 +35365,12 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_2 = {
-  "class": "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-};
-var _hoisted_3 = {
   key: 0
 };
-var _hoisted_4 = {
+var _hoisted_3 = {
   key: 1
 };
-var _hoisted_5 = {
+var _hoisted_4 = {
   key: 2
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -35414,13 +35393,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_ctx.$page.props.jetstream.canUpdateProfileInformation ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_profile_information_form, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [_ctx.$page.props.jetstream.canUpdateProfileInformation ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_profile_information_form, {
         user: _ctx.$page.props.user
       }, null, 8
       /* PROPS */
-      , ["user"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.jetstream.canUpdatePassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_password_form, {
+      , ["user"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.jetstream.canUpdatePassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_password_form, {
         "class": "mt-10 sm:mt-0"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.jetstream.canManageTwoFactorAuthentication ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_two_factor_authentication_form, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.jetstream.canManageTwoFactorAuthentication ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_two_factor_authentication_form, {
         "class": "mt-10 sm:mt-0"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_logout_other_browser_sessions_form, {
         sessions: $props.sessions,
@@ -35433,7 +35412,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mt-10 sm:mt-0"
       })], 64
       /* STABLE_FRAGMENT */
-      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])];
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
     }),
     _: 1
     /* STABLE */
@@ -37235,7 +37214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Layouts/AppLayout.vue"],"names":[],"mappings":";AAsRE;IACE,wCAAwC;IACxC,8CAA8C;IAC9C,kCAAkC;IAClC,gCAAgC;IAChC,kCAAkC;IAClC,iCAAiC;IACjC,8BAA8B;IAC9B,uFAAuF;AACzF","sourcesContent":["<template>\n    <div>\n        <jet-banner />\n\n        <div class=\"min-h-screen bg-gray-100\">\n            <nav class=\"bg-white border-b border-gray-100\">\n                <!-- Primary Navigation Menu -->\n                <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n                    <div class=\"flex justify-between h-16\">\n                        <div class=\"flex\">\n                            <!-- Logo -->\n                            <div class=\"flex-shrink-0 flex items-center\">\n                                <inertia-link :href=\"route('dashboard')\">\n                                    <jet-application-mark class=\"block h-9 w-auto\" />\n                                </inertia-link>\n                            </div>\n\n                            <!-- Navigation Links -->\n                            <div class=\"hidden space-x-8 sm:-my-px sm:ml-10 sm:flex\">\n                                <jet-nav-link :href=\"route('dashboard')\" :active=\"route().current('dashboard')\">\n                                    Dashboard\n                                </jet-nav-link>\n                                <jet-nav-link :href=\"route('policies')\" :active=\"route().current('policies')\">\n                                    Policies\n                                </jet-nav-link>\n                                <jet-nav-link :href=\"route('holders')\" :active=\"route().current('holders')\">\n                                    Policyholders\n                                </jet-nav-link>\n                            </div>\n                        </div>\n\n                        <div class=\"hidden sm:flex sm:items-center sm:ml-6\">\n                            <div class=\"ml-3 relative\">\n                                <!-- Teams Dropdown -->\n                                <jet-dropdown align=\"right\" width=\"60\" v-if=\"$page.props.jetstream.hasTeamFeatures\">\n                                    <template #trigger>\n                                        <span class=\"inline-flex rounded-md\">\n                                            <button type=\"button\" class=\"inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150\">\n                                                {{ $page.props.user.current_team.name }}\n\n                                                <svg class=\"ml-2 -mr-0.5 h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                                    <path fill-rule=\"evenodd\" d=\"M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z\" clip-rule=\"evenodd\" />\n                                                </svg>\n                                            </button>\n                                        </span>\n                                    </template>\n\n                                    <template #content>\n                                        <div class=\"w-60\">\n                                            <!-- Team Management -->\n                                            <template v-if=\"$page.props.jetstream.hasTeamFeatures\">\n                                                <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                                    Manage Team\n                                                </div>\n\n                                                <!-- Team Settings -->\n                                                <jet-dropdown-link :href=\"route('teams.show', $page.props.user.current_team)\">\n                                                    Team Settings\n                                                </jet-dropdown-link>\n\n                                                <jet-dropdown-link :href=\"route('teams.create')\" v-if=\"$page.props.jetstream.canCreateTeams\">\n                                                    Create New Team\n                                                </jet-dropdown-link>\n\n                                                <div class=\"border-t border-gray-100\"></div>\n\n                                                <!-- Team Switcher -->\n                                                <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                                    Switch Teams\n                                                </div>\n\n                                                <template v-for=\"team in $page.props.user.all_teams\" :key=\"team.id\">\n                                                    <form @submit.prevent=\"switchToTeam(team)\">\n                                                        <jet-dropdown-link as=\"button\">\n                                                            <div class=\"flex items-center\">\n                                                                <svg v-if=\"team.id == $page.props.user.current_team_id\" class=\"mr-2 h-5 w-5 text-green-400\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg>\n                                                                <div>{{ team.name }}</div>\n                                                            </div>\n                                                        </jet-dropdown-link>\n                                                    </form>\n                                                </template>\n                                            </template>\n                                        </div>\n                                    </template>\n                                </jet-dropdown>\n                            </div>\n\n                            <!-- Settings Dropdown -->\n                            <div class=\"ml-3 relative\">\n                                <jet-dropdown align=\"right\" width=\"48\">\n                                    <template #trigger>\n                                        <button v-if=\"$page.props.jetstream.managesProfilePhotos\" class=\"flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out\">\n                                            <img class=\"h-8 w-8 rounded-full object-cover\" :src=\"$page.props.user.profile_photo_url\" :alt=\"$page.props.user.name\" />\n                                        </button>\n\n                                        <span v-else class=\"inline-flex rounded-md\">\n                                            <button type=\"button\" class=\"inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150\">\n                                                {{ $page.props.user.name }}\n\n                                                <svg class=\"ml-2 -mr-0.5 h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                                    <path fill-rule=\"evenodd\" d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\" clip-rule=\"evenodd\" />\n                                                </svg>\n                                            </button>\n                                        </span>\n                                    </template>\n\n                                    <template #content>\n                                        <!-- Account Management -->\n                                        <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                            Manage Account\n                                        </div>\n\n                                        <jet-dropdown-link :href=\"route('profile.show')\">\n                                            Profile\n                                        </jet-dropdown-link>\n\n                                        <jet-dropdown-link :href=\"route('api-tokens.index')\" v-if=\"$page.props.jetstream.hasApiFeatures\">\n                                            API Tokens\n                                        </jet-dropdown-link>\n\n                                        <div class=\"border-t border-gray-100\"></div>\n\n                                        <!-- Authentication -->\n                                        <form @submit.prevent=\"logout\">\n                                            <jet-dropdown-link as=\"button\">\n                                                Log Out\n                                            </jet-dropdown-link>\n                                        </form>\n                                    </template>\n                                </jet-dropdown>\n                            </div>\n                        </div>\n\n                        <!-- Hamburger -->\n                        <div class=\"-mr-2 flex items-center sm:hidden\">\n                            <button @click=\"showingNavigationDropdown = ! showingNavigationDropdown\" class=\"inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out\">\n                                <svg class=\"h-6 w-6\" stroke=\"currentColor\" fill=\"none\" viewBox=\"0 0 24 24\">\n                                    <path :class=\"{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16M4 18h16\" />\n                                    <path :class=\"{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 18L18 6M6 6l12 12\" />\n                                </svg>\n                            </button>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Responsive Navigation Menu -->\n                <div :class=\"{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}\" class=\"sm:hidden\">\n                    <div class=\"pt-2 pb-3 space-y-1\">\n                        <jet-responsive-nav-link :href=\"route('dashboard')\" :active=\"route().current('dashboard')\">\n                            Dashboard\n                        </jet-responsive-nav-link>\n                    </div>\n\n                    <!-- Responsive Settings Options -->\n                    <div class=\"pt-4 pb-1 border-t border-gray-200\">\n                        <div class=\"flex items-center px-4\">\n                            <div v-if=\"$page.props.jetstream.managesProfilePhotos\" class=\"flex-shrink-0 mr-3\" >\n                                <img class=\"h-10 w-10 rounded-full object-cover\" :src=\"$page.props.user.profile_photo_url\" :alt=\"$page.props.user.name\" />\n                            </div>\n\n                            <div>\n                                <div class=\"font-medium text-base text-gray-800\">{{ $page.props.user.name }}</div>\n                                <div class=\"font-medium text-sm text-gray-500\">{{ $page.props.user.email }}</div>\n                            </div>\n                        </div>\n\n                        <div class=\"mt-3 space-y-1\">\n                            <jet-responsive-nav-link :href=\"route('profile.show')\" :active=\"route().current('profile.show')\">\n                                Profile\n                            </jet-responsive-nav-link>\n\n                            <jet-responsive-nav-link :href=\"route('api-tokens.index')\" :active=\"route().current('api-tokens.index')\" v-if=\"$page.props.jetstream.hasApiFeatures\">\n                                API Tokens\n                            </jet-responsive-nav-link>\n\n                            <!-- Authentication -->\n                            <form method=\"POST\" @submit.prevent=\"logout\">\n                                <jet-responsive-nav-link as=\"button\">\n                                    Log Out\n                                </jet-responsive-nav-link>\n                            </form>\n\n                            <!-- Team Management -->\n                            <template v-if=\"$page.props.jetstream.hasTeamFeatures\">\n                                <div class=\"border-t border-gray-200\"></div>\n\n                                <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                    Manage Team\n                                </div>\n\n                                <!-- Team Settings -->\n                                <jet-responsive-nav-link :href=\"route('teams.show', $page.props.user.current_team)\" :active=\"route().current('teams.show')\">\n                                    Team Settings\n                                </jet-responsive-nav-link>\n\n                                <jet-responsive-nav-link :href=\"route('teams.create')\" :active=\"route().current('teams.create')\">\n                                    Create New Team\n                                </jet-responsive-nav-link>\n\n                                <div class=\"border-t border-gray-200\"></div>\n\n                                <!-- Team Switcher -->\n                                <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                    Switch Teams\n                                </div>\n\n                                <template v-for=\"team in $page.props.user.all_teams\" :key=\"team.id\">\n                                    <form @submit.prevent=\"switchToTeam(team)\">\n                                        <jet-responsive-nav-link as=\"button\">\n                                            <div class=\"flex items-center\">\n                                                <svg v-if=\"team.id == $page.props.user.current_team_id\" class=\"mr-2 h-5 w-5 text-green-400\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg>\n                                                <div>{{ team.name }}</div>\n                                            </div>\n                                        </jet-responsive-nav-link>\n                                    </form>\n                                </template>\n                            </template>\n                        </div>\n                    </div>\n                </div>\n            </nav>\n\n            <!-- Page Heading -->\n            <header class=\"bg-white shadow\" v-if=\"$slots.header\">\n                <div class=\"max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8\">\n                    <slot name=\"header\"></slot>\n                </div>\n            </header>\n\n            <!-- Page Content -->\n            <main>\n                <slot></slot>\n            </main>\n        </div>\n    </div>\n</template>\n\n<script>\n    import JetApplicationMark from '@/Jetstream/ApplicationMark'\n    import JetBanner from '@/Jetstream/Banner'\n    import JetDropdown from '@/Jetstream/Dropdown'\n    import JetDropdownLink from '@/Jetstream/DropdownLink'\n    import JetNavLink from '@/Jetstream/NavLink'\n    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'\n\n    export default {\n        components: {\n            JetApplicationMark,\n            JetBanner,\n            JetDropdown,\n            JetDropdownLink,\n            JetNavLink,\n            JetResponsiveNavLink,\n        },\n\n        data() {\n            return {\n                showingNavigationDropdown: false,\n            }\n        },\n\n        methods: {\n            switchToTeam(team) {\n                this.$inertia.put(route('current-team.update'), {\n                    'team_id': team.id\n                }, {\n                    preserveState: false\n                })\n            },\n\n            logout() {\n                this.$inertia.post(route('logout'));\n            },\n        }\n    }\n</script>\n\n<style>\n  :root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);\n  }\n</style>"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Layouts/AppLayout.vue"],"names":[],"mappings":";AAsRE;IACE,wCAAwC;IACxC,8CAA8C;IAC9C,kCAAkC;IAClC,gCAAgC;IAChC,kCAAkC;IAClC,iCAAiC;IACjC,8BAA8B;IAC9B,uFAAuF;AACzF","sourcesContent":["<template>\n    <div>\n        <jet-banner />\n\n        <div class=\"min-h-screen bg-gray-100\">\n            <nav class=\"bg-white border-b border-gray-100\">\n                <!-- Primary Navigation Menu -->\n                <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n                    <div class=\"flex justify-between h-16\">\n                        <div class=\"flex\">\n                            <!-- Logo -->\n                            <div class=\"flex-shrink-0 flex items-center\">\n                                <inertia-link :href=\"route('dashboard')\">\n                                    <jet-application-mark class=\"block h-9 w-auto\" />\n                                </inertia-link>\n                            </div>\n\n                            <!-- Navigation Links -->\n                            <div class=\"hidden space-x-8 sm:-my-px sm:ml-10 sm:flex\">\n                                <jet-nav-link :href=\"route('dashboard')\" :active=\"route().current('dashboard')\">\n                                    Dashboard\n                                </jet-nav-link>\n                                <jet-nav-link :href=\"route('policies')\" :active=\"route().current('policies')\">\n                                    Policies\n                                </jet-nav-link>\n                                <jet-nav-link :href=\"route('holders')\" :active=\"route().current('holders')\">\n                                    Policyholders\n                                </jet-nav-link>\n                            </div>\n                        </div>\n\n                        <div class=\"hidden sm:flex sm:items-center sm:ml-6\">\n                            <div class=\"ml-3 relative\">\n                                <!-- Teams Dropdown -->\n                                <jet-dropdown align=\"right\" width=\"60\" v-if=\"$page.props.jetstream.hasTeamFeatures\">\n                                    <template #trigger>\n                                        <span class=\"inline-flex rounded-md\">\n                                            <button type=\"button\" class=\"inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150\">\n                                                {{ $page.props.user.current_team.name }}\n\n                                                <svg class=\"ml-2 -mr-0.5 h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                                    <path fill-rule=\"evenodd\" d=\"M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z\" clip-rule=\"evenodd\" />\n                                                </svg>\n                                            </button>\n                                        </span>\n                                    </template>\n\n                                    <template #content>\n                                        <div class=\"w-60\">\n                                            <!-- Team Management -->\n                                            <template v-if=\"$page.props.jetstream.hasTeamFeatures\">\n                                                <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                                    Manage Team\n                                                </div>\n\n                                                <!-- Team Settings -->\n                                                <jet-dropdown-link :href=\"route('teams.show', $page.props.user.current_team)\">\n                                                    Team Settings\n                                                </jet-dropdown-link>\n\n                                                <jet-dropdown-link :href=\"route('teams.create')\" v-if=\"$page.props.jetstream.canCreateTeams\">\n                                                    Create New Team\n                                                </jet-dropdown-link>\n\n                                                <div class=\"border-t border-gray-100\"></div>\n\n                                                <!-- Team Switcher -->\n                                                <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                                    Switch Teams\n                                                </div>\n\n                                                <template v-for=\"team in $page.props.user.all_teams\" :key=\"team.id\">\n                                                    <form @submit.prevent=\"switchToTeam(team)\">\n                                                        <jet-dropdown-link as=\"button\">\n                                                            <div class=\"flex items-center\">\n                                                                <svg v-if=\"team.id == $page.props.user.current_team_id\" class=\"mr-2 h-5 w-5 text-green-400\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg>\n                                                                <div>{{ team.name }}</div>\n                                                            </div>\n                                                        </jet-dropdown-link>\n                                                    </form>\n                                                </template>\n                                            </template>\n                                        </div>\n                                    </template>\n                                </jet-dropdown>\n                            </div>\n\n                            <!-- Settings Dropdown -->\n                            <div class=\"ml-3 relative\">\n                                <jet-dropdown align=\"right\" width=\"48\">\n                                    <template #trigger>\n                                        <button v-if=\"$page.props.jetstream.managesProfilePhotos\" class=\"flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out\">\n                                            <img class=\"h-8 w-8 rounded-full object-cover\" :src=\"$page.props.user.profile_photo_url\" :alt=\"$page.props.user.name\" />\n                                        </button>\n\n                                        <span v-else class=\"inline-flex rounded-md\">\n                                            <button type=\"button\" class=\"inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150\">\n                                                {{ $page.props.user.name }}\n\n                                                <svg class=\"ml-2 -mr-0.5 h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                                    <path fill-rule=\"evenodd\" d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\" clip-rule=\"evenodd\" />\n                                                </svg>\n                                            </button>\n                                        </span>\n                                    </template>\n\n                                    <template #content>\n                                        <!-- Account Management -->\n                                        <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                            Manage Account\n                                        </div>\n\n                                        <jet-dropdown-link :href=\"route('profile.show')\">\n                                            Profile\n                                        </jet-dropdown-link>\n\n                                        <jet-dropdown-link :href=\"route('api-tokens.index')\" v-if=\"$page.props.jetstream.hasApiFeatures\">\n                                            API Tokens\n                                        </jet-dropdown-link>\n\n                                        <div class=\"border-t border-gray-100\"></div>\n\n                                        <!-- Authentication -->\n                                        <form @submit.prevent=\"logout\">\n                                            <jet-dropdown-link as=\"button\">\n                                                Log Out\n                                            </jet-dropdown-link>\n                                        </form>\n                                    </template>\n                                </jet-dropdown>\n                            </div>\n                        </div>\n\n                        <!-- Hamburger -->\n                        <div class=\"-mr-2 flex items-center sm:hidden\">\n                            <button @click=\"showingNavigationDropdown = ! showingNavigationDropdown\" class=\"inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out\">\n                                <svg class=\"h-6 w-6\" stroke=\"currentColor\" fill=\"none\" viewBox=\"0 0 24 24\">\n                                    <path :class=\"{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16M4 18h16\" />\n                                    <path :class=\"{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 18L18 6M6 6l12 12\" />\n                                </svg>\n                            </button>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Responsive Navigation Menu -->\n                <div :class=\"{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}\" class=\"sm:hidden\">\n                    <div class=\"pt-2 pb-3 space-y-1\">\n                        <jet-responsive-nav-link :href=\"route('dashboard')\" :active=\"route().current('dashboard')\">\n                            Dashboard\n                        </jet-responsive-nav-link>\n                    </div>\n\n                    <!-- Responsive Settings Options -->\n                    <div class=\"pt-4 pb-1 border-t border-gray-200\">\n                        <div class=\"flex items-center px-4\">\n                            <div v-if=\"$page.props.jetstream.managesProfilePhotos\" class=\"flex-shrink-0 mr-3\" >\n                                <img class=\"h-10 w-10 rounded-full object-cover\" :src=\"$page.props.user.profile_photo_url\" :alt=\"$page.props.user.name\" />\n                            </div>\n\n                            <div>\n                                <div class=\"font-medium text-base text-gray-800\">{{ $page.props.user.name }}</div>\n                                <div class=\"font-medium text-sm text-gray-500\">{{ $page.props.user.email }}</div>\n                            </div>\n                        </div>\n\n                        <div class=\"mt-3 space-y-1\">\n                            <jet-responsive-nav-link :href=\"route('profile.show')\" :active=\"route().current('profile.show')\">\n                                Profile\n                            </jet-responsive-nav-link>\n\n                            <jet-responsive-nav-link :href=\"route('api-tokens.index')\" :active=\"route().current('api-tokens.index')\" v-if=\"$page.props.jetstream.hasApiFeatures\">\n                                API Tokens\n                            </jet-responsive-nav-link>\n\n                            <!-- Authentication -->\n                            <form method=\"POST\" @submit.prevent=\"logout\">\n                                <jet-responsive-nav-link as=\"button\">\n                                    Log Out\n                                </jet-responsive-nav-link>\n                            </form>\n\n                            <!-- Team Management -->\n                            <template v-if=\"$page.props.jetstream.hasTeamFeatures\">\n                                <div class=\"border-t border-gray-200\"></div>\n\n                                <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                    Manage Team\n                                </div>\n\n                                <!-- Team Settings -->\n                                <jet-responsive-nav-link :href=\"route('teams.show', $page.props.user.current_team)\" :active=\"route().current('teams.show')\">\n                                    Team Settings\n                                </jet-responsive-nav-link>\n\n                                <jet-responsive-nav-link :href=\"route('teams.create')\" :active=\"route().current('teams.create')\">\n                                    Create New Team\n                                </jet-responsive-nav-link>\n\n                                <div class=\"border-t border-gray-200\"></div>\n\n                                <!-- Team Switcher -->\n                                <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                    Switch Teams\n                                </div>\n\n                                <template v-for=\"team in $page.props.user.all_teams\" :key=\"team.id\">\n                                    <form @submit.prevent=\"switchToTeam(team)\">\n                                        <jet-responsive-nav-link as=\"button\">\n                                            <div class=\"flex items-center\">\n                                                <svg v-if=\"team.id == $page.props.user.current_team_id\" class=\"mr-2 h-5 w-5 text-green-400\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg>\n                                                <div>{{ team.name }}</div>\n                                            </div>\n                                        </jet-responsive-nav-link>\n                                    </form>\n                                </template>\n                            </template>\n                        </div>\n                    </div>\n                </div>\n            </nav>\n\n            <!-- Page Heading -->\n            <header class=\"bg-white shadow\" v-if=\"$slots.header\">\n                <div class=\"max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8\">\n                    <slot name=\"header\"></slot>\n                </div>\n            </header>\n\n            <!-- Page Content -->\n            <main class=\"max-w-7xl mx-auto py-10 sm:px-6 lg:px-8\">\n                <slot />\n            </main>\n        </div>\n    </div>\n</template>\n\n<script>\n    import JetApplicationMark from '@/Jetstream/ApplicationMark'\n    import JetBanner from '@/Jetstream/Banner'\n    import JetDropdown from '@/Jetstream/Dropdown'\n    import JetDropdownLink from '@/Jetstream/DropdownLink'\n    import JetNavLink from '@/Jetstream/NavLink'\n    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'\n\n    export default {\n        components: {\n            JetApplicationMark,\n            JetBanner,\n            JetDropdown,\n            JetDropdownLink,\n            JetNavLink,\n            JetResponsiveNavLink,\n        },\n\n        data() {\n            return {\n                showingNavigationDropdown: false,\n            }\n        },\n\n        methods: {\n            switchToTeam(team) {\n                this.$inertia.put(route('current-team.update'), {\n                    'team_id': team.id\n                }, {\n                    preserveState: false\n                })\n            },\n\n            logout() {\n                this.$inertia.post(route('logout'));\n            },\n        }\n    }\n</script>\n\n<style>\n  :root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);\n  }\n</style>"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

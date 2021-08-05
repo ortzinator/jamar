@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div>
         <h1 class="mb-8 font-bold text-3xl">
             <inertia-link
                 class="text-indigo-400 hover:text-indigo-600"
