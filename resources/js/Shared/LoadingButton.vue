@@ -1,9 +1,5 @@
 <template>
-    <button
-        :disabled="loading"
-        class="flex items-center disabled:opacity-50"
-        @click="showEdit"
-    >
+    <button :disabled="loading" class="flex items-center disabled:opacity-50">
         <icon
             v-if="delayedLoading"
             name="spinner"

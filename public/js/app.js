@@ -36728,10 +36728,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     disabled: $props.loading,
-    "class": "flex items-center disabled:opacity-50",
-    onClick: _cache[1] || (_cache[1] = function () {
-      return _ctx.showEdit && _ctx.showEdit.apply(_ctx, arguments);
-    })
+    "class": "flex items-center disabled:opacity-50"
   }, [$data.delayedLoading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_icon, {
     key: 0,
     name: "spinner",
