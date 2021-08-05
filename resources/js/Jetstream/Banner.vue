@@ -1,5 +1,5 @@
 <template>
-    <div class="absolute bottom-0 w-full">
+    <div class="bottom-0 fixed w-full z-50">
         <div
             :class="{
                 'bg-indigo-500': style == 'success',

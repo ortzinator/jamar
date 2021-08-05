@@ -30877,7 +30877,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "absolute bottom-0 w-full"
+  "class": "bottom-0 fixed w-full z-50"
 };
 var _hoisted_2 = {
   "class": "flex items-center justify-between flex-wrap"
