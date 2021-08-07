@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/NewLayout";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 import JetInput from "@/Jetstream/Input";

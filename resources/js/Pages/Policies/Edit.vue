@@ -127,7 +127,7 @@
 <script>
 import { reactive, ref, watch } from "vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/NewLayout";
 import { ExclamationIcon } from "@heroicons/vue/outline";
 import { TrashIcon } from "@heroicons/vue/outline";
 import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";

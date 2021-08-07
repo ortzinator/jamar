@@ -71,7 +71,7 @@ import throttle from "lodash/throttle";
 import pickBy from "lodash/pickBy";
 import { useForm } from "@inertiajs/inertia-vue3";
 
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/NewLayout";
 import Pagination from "@/Shared/Pagination";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import { ChevronRightIcon } from "@heroicons/vue/outline";

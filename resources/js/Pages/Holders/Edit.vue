@@ -131,7 +131,7 @@
 
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/NewLayout";
 import LoadingButton from "@/Shared/LoadingButton";
 import { TrashIcon } from "@heroicons/vue/outline";
 

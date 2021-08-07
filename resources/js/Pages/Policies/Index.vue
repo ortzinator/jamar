@@ -99,7 +99,7 @@
 <script>
 import { watch, computed, ref } from "vue";
 
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/NewLayout";
 import Pagination from "@/Shared/Pagination";
 import DataTable from "@/Shared/DataTable";
 import JetCheckbox from "@/Jetstream/Checkbox";
