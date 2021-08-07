@@ -200,11 +200,9 @@
                     scroll-region
                     class="md:overflow-y-auto md:p-10 sm:p-5 space-y-5 w-full"
                 >
-                    <header class="bg-white shadow" v-if="$slots.header">
-                        <div
-                            class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
-                        >
-                            <slot name="header"></slot>
+                    <header class="py-5" v-if="$slots.header">
+                        <div class="text-3xl font-bold">
+                            <slot name="header" />
                         </div>
                     </header>
                     <main>

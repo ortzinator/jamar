@@ -1,15 +1,18 @@
 <template>
-    <div>
-        <h1 class="mb-8 font-bold text-3xl">
-            <inertia-link
-                class="text-indigo-400 hover:text-indigo-600"
-                :href="route('policies')"
-            >
-                Policies
-            </inertia-link>
-            <span class="text-indigo-400 font-medium">&nbsp;/</span>
-            New Policy
-        </h1>
+    <app-layout>
+        <template #header>
+            <h2>
+                <inertia-link
+                    class="text-indigo-400 hover:text-indigo-600"
+                    :href="route('policies')"
+                >
+                    Policies
+                </inertia-link>
+                <span class="text-indigo-400 font-medium">&nbsp;/</span>
+                New Policy
+            </h2>
+        </template>
+
         <form @submit.prevent="store">
             <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
                 <div class="p-5">
@@ -104,7 +107,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </app-layout>
 </template>
 
 <script>
@@ -127,8 +130,8 @@ import { QuestionMarkCircleIcon } from "@heroicons/vue/outline";
 import Popper from "vue3-popper";
 
 export default {
-    layout: AppLayout,
     components: {
+        AppLayout,
         JetInput,
         JetLabel,
         JetInputError,

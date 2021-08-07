@@ -2,9 +2,7 @@
     <div>
         <app-layout>
             <template #header>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Holders
-                </h2>
+                <h2>Holders</h2>
             </template>
 
             <div>

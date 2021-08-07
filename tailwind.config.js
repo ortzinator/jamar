@@ -13,7 +13,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Open Sans", "Nunito", ...defaultTheme.fontFamily.sans],
+                sans: ["Inter", "Nunito", ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 sky: colors.sky,

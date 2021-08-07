@@ -1,15 +1,18 @@
 <template>
-    <div>
-        <h1 class="mb-8 font-bold text-3xl">
-            <inertia-link
-                class="text-indigo-400 hover:text-indigo-600"
-                href="/"
-            >
-                Policies
-            </inertia-link>
-            <span class="text-indigo-400 font-medium">&nbsp;/</span>
-            {{ policyForm.name }}
-        </h1>
+    <app-layout>
+        <template #header>
+            <h1>
+                <inertia-link
+                    class="text-indigo-400 hover:text-indigo-600"
+                    href="/"
+                >
+                    Policies
+                </inertia-link>
+                <span class="text-indigo-400 font-medium">&nbsp;/</span>
+                {{ policyForm.number }}
+            </h1>
+        </template>
+
         <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
             <div
                 v-if="policy.deleted_at"
@@ -121,7 +124,7 @@
                 </loading-button>
             </div>
         </div>
-    </div>
+    </app-layout>
 </template>
 
 <script>
@@ -143,8 +146,8 @@ import JetInputError from "@/Jetstream/InputError";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
-    layout: AppLayout,
     components: {
+        AppLayout,
         ExclamationIcon,
         TrashIcon,
         JetInput,

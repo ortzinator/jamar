@@ -1,15 +1,18 @@
 <template>
-    <div>
-        <h1 class="mb-8 font-bold text-3xl">
-            <inertia-link
-                class="text-indigo-400 hover:text-indigo-600"
-                :href="route('holders')"
-            >
-                Holders
-            </inertia-link>
-            <span class="text-indigo-400 font-medium">&nbsp;/</span>
-            {{ form.name }}
-        </h1>
+    <app-layout>
+        <template #header>
+            <h1>
+                <inertia-link
+                    class="text-indigo-400 hover:text-indigo-600"
+                    :href="route('holders')"
+                >
+                    Holders
+                </inertia-link>
+                <span class="text-indigo-400 font-medium">&nbsp;/</span>
+                {{ form.name }}
+            </h1>
+        </template>
+
         <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
             <div
                 v-if="holder.deleted_at"
@@ -126,7 +129,7 @@
                 </button>
             </template>
         </jet-confirmation-modal>
-    </div>
+    </app-layout>
 </template>
 
 <script>
@@ -142,8 +145,8 @@ import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
 
 export default {
-    layout: AppLayout,
     components: {
+        AppLayout,
         JetInput,
         JetLabel,
         JetInputError,
