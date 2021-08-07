@@ -198,7 +198,7 @@
                 </nav>
                 <div
                     scroll-region
-                    class="md:overflow-y-auto md:p-10 sm:p-5 space-y-5"
+                    class="md:overflow-y-auto md:p-10 sm:p-5 space-y-5 w-full"
                 >
                     <header class="bg-white shadow" v-if="$slots.header">
                         <div
