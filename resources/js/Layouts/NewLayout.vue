@@ -16,13 +16,13 @@
                         text-white
                     "
                 >
-                    <Disclosure as="nav" v-slot="{ navOpen }" class="w-full">
-                        <div class="flex justify-between">
+                    <Disclosure as="nav" v-slot="{ open }" class="w-full">
+                        <div class="flex md:justify-center justify-between">
                             <div>Jamar Logo</div>
                             <div class="md:hidden">
                                 <DisclosureButton>
                                     <MenuIcon
-                                        v-if="!navOpen"
+                                        v-if="!open"
                                         class="block h-6 w-6"
                                         aria-hidden="true"
                                     />
@@ -125,6 +125,9 @@
                                             'block px-4 py-2 text-sm',
                                         ]"
                                     >
+                                        <UserCircleIcon
+                                            class="w-5 h-5 inline mr-2"
+                                        />
                                         Profile
                                     </inertia-link>
                                 </MenuItem>
@@ -158,7 +161,12 @@
                                             'block px-4 py-2 text-sm',
                                         ]"
                                     >
-                                        <button type="submit">Log Out</button>
+                                        <button type="submit flex">
+                                            <LogoutIcon
+                                                class="h-5 w-5 mr-2 inline"
+                                            />
+                                            Log Out
+                                        </button>
                                     </form>
                                 </MenuItem>
                             </div>
@@ -180,25 +188,28 @@
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
                         >
+                            <PresentationChartBarIcon class="h-5 w-5 inline" />
                             Dashboard
                         </nav-link>
                         <nav-link
                             :href="route('policies')"
                             :active="route().current('policies')"
                         >
+                            <DocumentTextIcon class="h-5 w-5 inline" />
                             Policies
                         </nav-link>
                         <nav-link
                             :href="route('holders')"
                             :active="route().current('holders')"
                         >
+                            <UsersIcon class="h-5 w-5 inline" />
                             Policyholders
                         </nav-link>
                     </ul>
                 </nav>
                 <div
                     scroll-region
-                    class="md:overflow-y-auto md:p-10 sm:p-5 space-y-5 w-full"
+                    class="md:overflow-y-auto md:p-10 p-5 space-y-5 w-full"
                 >
                     <header class="py-5" v-if="$slots.header">
                         <div class="text-3xl font-bold">
@@ -224,7 +235,16 @@ import NavLink from "@/Shared/NavLink";
 import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-import { MenuIcon, XIcon, ChevronDownIcon } from "@heroicons/vue/outline";
+import {
+    MenuIcon,
+    XIcon,
+    ChevronDownIcon,
+    LogoutIcon,
+    UserCircleIcon,
+    PresentationChartBarIcon,
+    UsersIcon,
+    DocumentTextIcon,
+} from "@heroicons/vue/outline";
 import Button from "../Jetstream/Button.vue";
 
 export default {
@@ -245,6 +265,11 @@ export default {
         MenuItems,
         MenuItem,
         ChevronDownIcon,
+        LogoutIcon,
+        UserCircleIcon,
+        PresentationChartBarIcon,
+        UsersIcon,
+        DocumentTextIcon,
     },
 
     setup() {

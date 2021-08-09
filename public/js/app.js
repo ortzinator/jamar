@@ -33527,7 +33527,12 @@ __webpack_require__.r(__webpack_exports__);
     MenuButton: _headlessui_vue__WEBPACK_IMPORTED_MODULE_7__.MenuButton,
     MenuItems: _headlessui_vue__WEBPACK_IMPORTED_MODULE_7__.MenuItems,
     MenuItem: _headlessui_vue__WEBPACK_IMPORTED_MODULE_7__.MenuItem,
-    ChevronDownIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_8__.ChevronDownIcon
+    ChevronDownIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_8__.ChevronDownIcon,
+    LogoutIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_8__.LogoutIcon,
+    UserCircleIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_8__.UserCircleIcon,
+    PresentationChartBarIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_8__.PresentationChartBarIcon,
+    UsersIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_8__.UsersIcon,
+    DocumentTextIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_8__.DocumentTextIcon
   },
   setup: function setup() {
     var showingNavigationDropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
@@ -36885,7 +36890,7 @@ var _hoisted_3 = {
   "class": "\n                        bg-wild-blue-yonder-900\n                        flex\n                        items-center\n                        justify-between\n                        md:flex-shrink-0 md:justify-center md:w-56\n                        px-6\n                        py-4\n                        text-white\n                    "
 };
 var _hoisted_4 = {
-  "class": "flex justify-between"
+  "class": "flex md:justify-center justify-between"
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Jamar Logo", -1
@@ -36928,38 +36933,37 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 var _hoisted_16 = {
   "class": "py-1"
 };
+var _hoisted_17 = {
+  type: "submit flex"
+};
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-  type: "submit"
-}, "Log Out", -1
-/* HOISTED */
-);
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
 
-var _hoisted_18 = {
+var _hoisted_19 = {
   "class": "md:flex md:flex-grow md:overflow-hidden"
 };
-var _hoisted_19 = {
+var _hoisted_20 = {
   "class": "\n                        bg-wild-blue-yonder-800\n                        overflow-y-auto\n                        hidden\n                        md:flex md:flex-shrink-0 md:justify-center md:w-56\n                    "
 };
-var _hoisted_20 = {
+var _hoisted_21 = {
   "class": "text-wild-blue-yonder-300 space-y-5 mt-12"
 };
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
 
-var _hoisted_24 = {
-  "scroll-region": "",
-  "class": "md:overflow-y-auto md:p-10 sm:p-5 space-y-5 w-full"
-};
 var _hoisted_25 = {
+  "scroll-region": "",
+  "class": "md:overflow-y-auto md:p-10 p-5 space-y-5 w-full"
+};
+var _hoisted_26 = {
   key: 0,
   "class": "py-5"
 };
-var _hoisted_26 = {
+var _hoisted_27 = {
   "class": "text-3xl font-bold"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -36981,23 +36985,33 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_MenuButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MenuButton");
 
+  var _component_UserCircleIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("UserCircleIcon");
+
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
   var _component_MenuItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MenuItem");
 
+  var _component_LogoutIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LogoutIcon");
+
   var _component_MenuItems = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MenuItems");
 
   var _component_Menu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Menu");
+
+  var _component_PresentationChartBarIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PresentationChartBarIcon");
+
+  var _component_DocumentTextIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DocumentTextIcon");
+
+  var _component_UsersIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("UsersIcon");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_banner), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Disclosure, {
     as: "nav",
     "class": "w-full"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
-      var navOpen = _ref.navOpen;
+      var open = _ref.open;
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DisclosureButton, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [!navOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_MenuIcon, {
+          return [!open ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_MenuIcon, {
             key: 0,
             "class": "block h-6 w-6",
             "aria-hidden": "true"
@@ -37093,7 +37107,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "class": [active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_hoisted_14];
+                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UserCircleIcon, {
+                    "class": "w-5 h-5 inline mr-2"
+                  }), _hoisted_14];
                 }),
                 _: 2
                 /* DYNAMIC */
@@ -37135,7 +37151,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   return $setup.logout && $setup.logout.apply($setup, arguments);
                 }, ["prevent"])),
                 "class": [active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']
-              }, [_hoisted_17], 34
+              }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LogoutIcon, {
+                "class": "h-5 w-5 mr-2 inline"
+              }), _hoisted_18])], 34
               /* CLASS, HYDRATE_EVENTS */
               )];
             }),
@@ -37152,12 +37170,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("nav", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nav_link, {
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("nav", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nav_link, {
     href: _ctx.route('dashboard'),
     active: _ctx.route().current('dashboard')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_21];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PresentationChartBarIcon, {
+        "class": "h-5 w-5 inline"
+      }), _hoisted_22];
     }),
     _: 1
     /* STABLE */
@@ -37169,7 +37189,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     active: _ctx.route().current('policies')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_22];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DocumentTextIcon, {
+        "class": "h-5 w-5 inline"
+      }), _hoisted_23];
     }),
     _: 1
     /* STABLE */
@@ -37181,14 +37203,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     active: _ctx.route().current('holders')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_23];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UsersIcon, {
+        "class": "h-5 w-5 inline"
+      }), _hoisted_24];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["href", "active"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [_ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])])])]);
+  , ["href", "active"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [_ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])])])]);
 }
 
 /***/ }),
@@ -42190,7 +42214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),\n        0 4px 3px rgba(0, 0, 0, 0.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Layouts/NewLayout.vue"],"names":[],"mappings":";AAuQA;IACI,wCAAwC;IACxC,8CAA8C;IAC9C,kCAAkC;IAClC,gCAAgC;IAChC,kCAAkC;IAClC,iCAAiC;IACjC,8BAA8B;IAC9B;oCACgC;AACpC","sourcesContent":["<template>\n    <div>\n        <jet-banner />\n\n        <div class=\"md:flex md:flex-col bg-wild-blue-yonder-50 md:h-screen\">\n            <div class=\"md:flex md:flex-shrink-0\">\n                <div\n                    class=\"\n                        bg-wild-blue-yonder-900\n                        flex\n                        items-center\n                        justify-between\n                        md:flex-shrink-0 md:justify-center md:w-56\n                        px-6\n                        py-4\n                        text-white\n                    \"\n                >\n                    <Disclosure as=\"nav\" v-slot=\"{ navOpen }\" class=\"w-full\">\n                        <div class=\"flex justify-between\">\n                            <div>Jamar Logo</div>\n                            <div class=\"md:hidden\">\n                                <DisclosureButton>\n                                    <MenuIcon\n                                        v-if=\"!navOpen\"\n                                        class=\"block h-6 w-6\"\n                                        aria-hidden=\"true\"\n                                    />\n                                    <XIcon\n                                        v-else\n                                        class=\"block h-6 w-6\"\n                                        aria-hidden=\"true\"\n                                    />\n                                </DisclosureButton>\n                            </div>\n                        </div>\n\n                        <DisclosurePanel class=\"flex justify-end w-full\">\n                            <ul\n                                class=\"\n                                    text-wild-blue-yonder-300\n                                    space-y-5\n                                    md:hidden\n                                    text-right\n                                \"\n                            >\n                                <nav-link\n                                    :href=\"route('dashboard')\"\n                                    :active=\"route().current('dashboard')\"\n                                >\n                                    Dashboard\n                                </nav-link>\n                                <nav-link\n                                    :href=\"route('policies')\"\n                                    :active=\"route().current('policies')\"\n                                >\n                                    Policies\n                                </nav-link>\n                                <nav-link\n                                    :href=\"route('holders')\"\n                                    :active=\"route().current('holders')\"\n                                >\n                                    Policyholders\n                                </nav-link>\n                            </ul>\n                        </DisclosurePanel>\n                    </Disclosure>\n                </div>\n                <div\n                    class=\"\n                        bg-white\n                        flex\n                        justify-end\n                        md:px-12 md:py-5\n                        px-6\n                        py-4\n                        w-full\n                    \"\n                >\n                    <Menu as=\"div\" class=\"relative\">\n                        <div>\n                            <MenuButton class=\"inline-flex items-center\">\n                                {{ $page.props.user.name }}\n                                <ChevronDownIcon class=\"h-5 w-5 ml-2\" />\n                            </MenuButton>\n                        </div>\n\n                        <MenuItems\n                            as=\"div\"\n                            class=\"\n                                absolute\n                                right-0\n                                w-56\n                                mt-2\n                                origin-top-right\n                                bg-white\n                                divide-y divide-gray-100\n                                rounded-md\n                                shadow-lg\n                                ring-1 ring-black ring-opacity-5\n                                focus:outline-none\n                            \"\n                        >\n                            <div class=\"py-1\">\n                                <div\n                                    class=\"\n                                        block\n                                        px-4\n                                        py-2\n                                        text-xs text-gray-400\n                                    \"\n                                >\n                                    Manage Account\n                                </div>\n                            </div>\n\n                            <div class=\"py-1\">\n                                <MenuItem v-slot=\"{ active }\">\n                                    <inertia-link\n                                        :href=\"route('profile.show')\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        Profile\n                                    </inertia-link>\n                                </MenuItem>\n\n                                <MenuItem\n                                    v-if=\"$page.props.jetstream.hasApiFeatures\"\n                                    v-slot=\"{ active }\"\n                                >\n                                    <inertia-link\n                                        :href=\"route('api-tokens.index')\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        API Tokens\n                                    </inertia-link>\n                                </MenuItem>\n                            </div>\n\n                            <div class=\"py-1\">\n                                <MenuItem v-slot=\"{ active }\">\n                                    <form\n                                        @submit.prevent=\"logout\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        <button type=\"submit\">Log Out</button>\n                                    </form>\n                                </MenuItem>\n                            </div>\n                        </MenuItems>\n                    </Menu>\n                </div>\n            </div>\n            <div class=\"md:flex md:flex-grow md:overflow-hidden\">\n                <nav\n                    class=\"\n                        bg-wild-blue-yonder-800\n                        overflow-y-auto\n                        hidden\n                        md:flex md:flex-shrink-0 md:justify-center md:w-56\n                    \"\n                >\n                    <ul class=\"text-wild-blue-yonder-300 space-y-5 mt-12\">\n                        <nav-link\n                            :href=\"route('dashboard')\"\n                            :active=\"route().current('dashboard')\"\n                        >\n                            Dashboard\n                        </nav-link>\n                        <nav-link\n                            :href=\"route('policies')\"\n                            :active=\"route().current('policies')\"\n                        >\n                            Policies\n                        </nav-link>\n                        <nav-link\n                            :href=\"route('holders')\"\n                            :active=\"route().current('holders')\"\n                        >\n                            Policyholders\n                        </nav-link>\n                    </ul>\n                </nav>\n                <div\n                    scroll-region\n                    class=\"md:overflow-y-auto md:p-10 sm:p-5 space-y-5 w-full\"\n                >\n                    <header class=\"py-5\" v-if=\"$slots.header\">\n                        <div class=\"text-3xl font-bold\">\n                            <slot name=\"header\" />\n                        </div>\n                    </header>\n                    <main>\n                        <slot />\n                    </main>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport { reactive, ref, watch } from \"vue\";\nimport JetApplicationMark from \"@/Jetstream/ApplicationMark\";\nimport JetBanner from \"@/Jetstream/Banner\";\nimport JetDropdown from \"@/Jetstream/Dropdown\";\nimport JetDropdownLink from \"@/Jetstream/DropdownLink\";\nimport NavLink from \"@/Shared/NavLink\";\nimport JetResponsiveNavLink from \"@/Jetstream/ResponsiveNavLink\";\nimport { Disclosure, DisclosureButton, DisclosurePanel } from \"@headlessui/vue\";\nimport { Menu, MenuButton, MenuItems, MenuItem } from \"@headlessui/vue\";\nimport { MenuIcon, XIcon, ChevronDownIcon } from \"@heroicons/vue/outline\";\nimport Button from \"../Jetstream/Button.vue\";\n\nexport default {\n    components: {\n        JetApplicationMark,\n        JetBanner,\n        JetDropdown,\n        JetDropdownLink,\n        NavLink,\n        JetResponsiveNavLink,\n        Disclosure,\n        DisclosureButton,\n        DisclosurePanel,\n        MenuIcon,\n        XIcon,\n        Menu,\n        MenuButton,\n        MenuItems,\n        MenuItem,\n        ChevronDownIcon,\n    },\n\n    setup() {\n        const showingNavigationDropdown = ref(false);\n        const navOpen = ref(false);\n\n        function logout() {\n            this.$inertia.post(route(\"logout\"));\n        }\n\n        return { showingNavigationDropdown, logout, navOpen };\n    },\n};\n</script>\n\n<style>\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),\n        0 4px 3px rgba(0, 0, 0, 0.1);\n}\n</style>\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),\n        0 4px 3px rgba(0, 0, 0, 0.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Layouts/NewLayout.vue"],"names":[],"mappings":";AAgSA;IACI,wCAAwC;IACxC,8CAA8C;IAC9C,kCAAkC;IAClC,gCAAgC;IAChC,kCAAkC;IAClC,iCAAiC;IACjC,8BAA8B;IAC9B;oCACgC;AACpC","sourcesContent":["<template>\n    <div>\n        <jet-banner />\n\n        <div class=\"md:flex md:flex-col bg-wild-blue-yonder-50 md:h-screen\">\n            <div class=\"md:flex md:flex-shrink-0\">\n                <div\n                    class=\"\n                        bg-wild-blue-yonder-900\n                        flex\n                        items-center\n                        justify-between\n                        md:flex-shrink-0 md:justify-center md:w-56\n                        px-6\n                        py-4\n                        text-white\n                    \"\n                >\n                    <Disclosure as=\"nav\" v-slot=\"{ open }\" class=\"w-full\">\n                        <div class=\"flex md:justify-center justify-between\">\n                            <div>Jamar Logo</div>\n                            <div class=\"md:hidden\">\n                                <DisclosureButton>\n                                    <MenuIcon\n                                        v-if=\"!open\"\n                                        class=\"block h-6 w-6\"\n                                        aria-hidden=\"true\"\n                                    />\n                                    <XIcon\n                                        v-else\n                                        class=\"block h-6 w-6\"\n                                        aria-hidden=\"true\"\n                                    />\n                                </DisclosureButton>\n                            </div>\n                        </div>\n\n                        <DisclosurePanel class=\"flex justify-end w-full\">\n                            <ul\n                                class=\"\n                                    text-wild-blue-yonder-300\n                                    space-y-5\n                                    md:hidden\n                                    text-right\n                                \"\n                            >\n                                <nav-link\n                                    :href=\"route('dashboard')\"\n                                    :active=\"route().current('dashboard')\"\n                                >\n                                    Dashboard\n                                </nav-link>\n                                <nav-link\n                                    :href=\"route('policies')\"\n                                    :active=\"route().current('policies')\"\n                                >\n                                    Policies\n                                </nav-link>\n                                <nav-link\n                                    :href=\"route('holders')\"\n                                    :active=\"route().current('holders')\"\n                                >\n                                    Policyholders\n                                </nav-link>\n                            </ul>\n                        </DisclosurePanel>\n                    </Disclosure>\n                </div>\n                <div\n                    class=\"\n                        bg-white\n                        flex\n                        justify-end\n                        md:px-12 md:py-5\n                        px-6\n                        py-4\n                        w-full\n                    \"\n                >\n                    <Menu as=\"div\" class=\"relative\">\n                        <div>\n                            <MenuButton class=\"inline-flex items-center\">\n                                {{ $page.props.user.name }}\n                                <ChevronDownIcon class=\"h-5 w-5 ml-2\" />\n                            </MenuButton>\n                        </div>\n\n                        <MenuItems\n                            as=\"div\"\n                            class=\"\n                                absolute\n                                right-0\n                                w-56\n                                mt-2\n                                origin-top-right\n                                bg-white\n                                divide-y divide-gray-100\n                                rounded-md\n                                shadow-lg\n                                ring-1 ring-black ring-opacity-5\n                                focus:outline-none\n                            \"\n                        >\n                            <div class=\"py-1\">\n                                <div\n                                    class=\"\n                                        block\n                                        px-4\n                                        py-2\n                                        text-xs text-gray-400\n                                    \"\n                                >\n                                    Manage Account\n                                </div>\n                            </div>\n\n                            <div class=\"py-1\">\n                                <MenuItem v-slot=\"{ active }\">\n                                    <inertia-link\n                                        :href=\"route('profile.show')\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        <UserCircleIcon\n                                            class=\"w-5 h-5 inline mr-2\"\n                                        />\n                                        Profile\n                                    </inertia-link>\n                                </MenuItem>\n\n                                <MenuItem\n                                    v-if=\"$page.props.jetstream.hasApiFeatures\"\n                                    v-slot=\"{ active }\"\n                                >\n                                    <inertia-link\n                                        :href=\"route('api-tokens.index')\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        API Tokens\n                                    </inertia-link>\n                                </MenuItem>\n                            </div>\n\n                            <div class=\"py-1\">\n                                <MenuItem v-slot=\"{ active }\">\n                                    <form\n                                        @submit.prevent=\"logout\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        <button type=\"submit flex\">\n                                            <LogoutIcon\n                                                class=\"h-5 w-5 mr-2 inline\"\n                                            />\n                                            Log Out\n                                        </button>\n                                    </form>\n                                </MenuItem>\n                            </div>\n                        </MenuItems>\n                    </Menu>\n                </div>\n            </div>\n            <div class=\"md:flex md:flex-grow md:overflow-hidden\">\n                <nav\n                    class=\"\n                        bg-wild-blue-yonder-800\n                        overflow-y-auto\n                        hidden\n                        md:flex md:flex-shrink-0 md:justify-center md:w-56\n                    \"\n                >\n                    <ul class=\"text-wild-blue-yonder-300 space-y-5 mt-12\">\n                        <nav-link\n                            :href=\"route('dashboard')\"\n                            :active=\"route().current('dashboard')\"\n                        >\n                            <PresentationChartBarIcon class=\"h-5 w-5 inline\" />\n                            Dashboard\n                        </nav-link>\n                        <nav-link\n                            :href=\"route('policies')\"\n                            :active=\"route().current('policies')\"\n                        >\n                            <DocumentTextIcon class=\"h-5 w-5 inline\" />\n                            Policies\n                        </nav-link>\n                        <nav-link\n                            :href=\"route('holders')\"\n                            :active=\"route().current('holders')\"\n                        >\n                            <UsersIcon class=\"h-5 w-5 inline\" />\n                            Policyholders\n                        </nav-link>\n                    </ul>\n                </nav>\n                <div\n                    scroll-region\n                    class=\"md:overflow-y-auto md:p-10 p-5 space-y-5 w-full\"\n                >\n                    <header class=\"py-5\" v-if=\"$slots.header\">\n                        <div class=\"text-3xl font-bold\">\n                            <slot name=\"header\" />\n                        </div>\n                    </header>\n                    <main>\n                        <slot />\n                    </main>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport { reactive, ref, watch } from \"vue\";\nimport JetApplicationMark from \"@/Jetstream/ApplicationMark\";\nimport JetBanner from \"@/Jetstream/Banner\";\nimport JetDropdown from \"@/Jetstream/Dropdown\";\nimport JetDropdownLink from \"@/Jetstream/DropdownLink\";\nimport NavLink from \"@/Shared/NavLink\";\nimport JetResponsiveNavLink from \"@/Jetstream/ResponsiveNavLink\";\nimport { Disclosure, DisclosureButton, DisclosurePanel } from \"@headlessui/vue\";\nimport { Menu, MenuButton, MenuItems, MenuItem } from \"@headlessui/vue\";\nimport {\n    MenuIcon,\n    XIcon,\n    ChevronDownIcon,\n    LogoutIcon,\n    UserCircleIcon,\n    PresentationChartBarIcon,\n    UsersIcon,\n    DocumentTextIcon,\n} from \"@heroicons/vue/outline\";\nimport Button from \"../Jetstream/Button.vue\";\n\nexport default {\n    components: {\n        JetApplicationMark,\n        JetBanner,\n        JetDropdown,\n        JetDropdownLink,\n        NavLink,\n        JetResponsiveNavLink,\n        Disclosure,\n        DisclosureButton,\n        DisclosurePanel,\n        MenuIcon,\n        XIcon,\n        Menu,\n        MenuButton,\n        MenuItems,\n        MenuItem,\n        ChevronDownIcon,\n        LogoutIcon,\n        UserCircleIcon,\n        PresentationChartBarIcon,\n        UsersIcon,\n        DocumentTextIcon,\n    },\n\n    setup() {\n        const showingNavigationDropdown = ref(false);\n        const navOpen = ref(false);\n\n        function logout() {\n            this.$inertia.post(route(\"logout\"));\n        }\n\n        return { showingNavigationDropdown, logout, navOpen };\n    },\n};\n</script>\n\n<style>\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),\n        0 4px 3px rgba(0, 0, 0, 0.1);\n}\n</style>\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
