@@ -1,66 +1,54 @@
 <template>
-    <div>
-        <app-layout>
-            <template #header>
-                <h2>Holders</h2>
-            </template>
+    <app-layout>
+        <template #header>
+            <h2>Holders</h2>
+        </template>
 
-            <div>
-                <div class="flex mb-4 justify-between">
-                    <div class="flex">
-                        <div class="flex shadow rounded">
-                            <select
-                                v-model="searchForm.trashed"
-                                class="
-                                    border-0 border-gray-200 border-r
-                                    rounded-l
-                                    text-gray-500
-                                "
-                            >
-                                <option :value="null">Filter...</option>
-                                <option value="with">With Trashed</option>
-                                <option value="only">Only Trashed</option>
-                            </select>
-                            <input
-                                type="text"
-                                v-model="searchForm.search"
-                                placeholder="Search..."
-                                class="border-0 rounded-r"
-                            />
-                        </div>
-                        <button
-                            class="
-                                ml-3
-                                text-sm text-gray-500
-                                hover:text-gray-700
-                                focus:text-indigo-500
-                            "
-                            type="button"
-                            @click="reset"
-                        >
-                            Reset
-                        </button>
-                    </div>
-                    <inertia-link
-                        class="btn btn-primary"
-                        :href="route('holders.create')"
-                    >
-                        New Policyholder
-                    </inertia-link>
-                </div>
-                <div class="">
-                    <div class="shadow rounded bg-white overflow-x-auto">
-                        <DataTable
-                            :dataSource="holders.data"
-                            :columns="columns"
-                            routeName="holders.edit"
+        <div>
+            <div class="flex mb-4 justify-between">
+                <div class="flex mr-4">
+                    <div class="flex shadow rounded bg-white cursor-default">
+                        <filter-select v-model="searchForm.trashed" />
+                        <input
+                            type="text"
+                            v-model="searchForm.search"
+                            placeholder="Search..."
+                            class="border-0 rounded-r w-full"
                         />
                     </div>
-                    <pagination :links="holders.links"></pagination>
+                    <button
+                        class="
+                            ml-3
+                            text-sm text-gray-500
+                            hover:text-gray-700
+                            focus:text-indigo-500
+                        "
+                        type="button"
+                        @click="reset"
+                    >
+                        Reset
+                    </button>
                 </div>
+                <inertia-link
+                    class="btn btn-primary"
+                    :href="route('holders.create')"
+                >
+                    <span>Create</span>
+                    <span class="hidden md:inline"> Policyholder</span>
+                </inertia-link>
             </div>
-        </app-layout>
-    </div>
+            <div class="">
+                <div class="shadow rounded bg-white overflow-x-auto">
+                    <DataTable
+                        :dataSource="holders.data"
+                        :columns="columns"
+                        routeName="holders.edit"
+                    />
+                </div>
+                <pagination :links="holders.links"></pagination>
+            </div>
+        </div>
+    </app-layout>
 </template>
 
 <script>
@@ -71,6 +59,7 @@ import { useForm } from "@inertiajs/inertia-vue3";
 
 import AppLayout from "@/Layouts/NewLayout";
 import Pagination from "@/Shared/Pagination";
+import FilterSelect from "@/Shared/FilterSelect";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import { ChevronRightIcon } from "@heroicons/vue/outline";
 import DataTable from "@/Shared/DataTable";
@@ -84,6 +73,7 @@ export default {
         JetCheckbox,
         ChevronRightIcon,
         DataTable,
+        FilterSelect,
     },
     setup(props) {
         const searchForm = useForm({

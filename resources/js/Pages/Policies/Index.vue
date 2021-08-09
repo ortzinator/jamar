@@ -6,40 +6,14 @@
 
         <div>
             <div class="flex mb-4 justify-between">
-                <div class="flex">
-                    <div class="shadow rounded bg-white">
-                        <Listbox v-model="searchForm.trashed">
-                            <ListboxButton
-                                class="
-                                    border-0 border-gray-200 border-r
-                                    px-5
-                                    rounded-l
-                                    text-gray-500
-                                "
-                            >
-                                <div class="inline-flex items-center">
-                                    <span class="hidden md:inline">
-                                        Filter
-                                    </span>
-                                    <SelectorIcon class="h-4 w-4 md:ml-2" />
-                                </div>
-                            </ListboxButton>
-                            <ListboxOptions
-                                class="absolute bg-white shadow-2xl z-50"
-                            >
-                                <ListboxOption value="with">
-                                    With Trashed
-                                </ListboxOption>
-                                <ListboxOption value="only">
-                                    Only Trashed
-                                </ListboxOption>
-                            </ListboxOptions>
-                        </Listbox>
+                <div class="flex mr-4">
+                    <div class="flex shadow rounded bg-white cursor-default">
+                        <filter-select v-model="searchForm.trashed" />
                         <input
                             type="text"
                             v-model="searchForm.search"
                             placeholder="Search..."
-                            class="border-0 rounded-r"
+                            class="border-0 rounded-r w-full"
                         />
                     </div>
                     <button
@@ -109,6 +83,7 @@ import { watch, computed, ref } from "vue";
 import AppLayout from "@/Layouts/NewLayout";
 import Pagination from "@/Shared/Pagination";
 import DataTable from "@/Shared/DataTable";
+import FilterSelect from "@/Shared/FilterSelect";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import {
     ExclamationIcon,
@@ -144,6 +119,7 @@ export default {
         ListboxButton,
         ListboxOptions,
         ListboxOption,
+        FilterSelect,
     },
     setup(props) {
         const searchForm = useForm({
