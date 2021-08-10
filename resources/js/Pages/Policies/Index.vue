@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <template #header>
-            <h2>Policies</h2>
+            <h1>Policies</h1>
         </template>
 
         <div>
@@ -21,7 +21,7 @@
                             ml-3
                             text-sm text-gray-500
                             hover:text-gray-700
-                            focus:text-indigo-500
+                            focus:text-light-blue-vivid-500
                         "
                         type="button"
                         @click="reset"
@@ -44,9 +44,10 @@
                     routeName="policies.edit"
                 >
                     <template v-slot:[`column.period_end`]="{ value }">
-                        <span :class="{ 'text-red-500': pastDate(value) }">{{
-                            formatDate(value)
-                        }}</span>
+                        <span
+                            :class="{ 'text-red-vivid-500': pastDate(value) }"
+                            >{{ formatDate(value) }}</span
+                        >
                     </template>
                     <template v-slot:[`column.created_at`]="{ value }">
                         {{ formatDate(value) }}
@@ -56,7 +57,7 @@
                     >
                         <div
                             v-if="row.holders.length === 0"
-                            class="flex text-red-600 items-center"
+                            class="flex text-red-vivid-600 items-center"
                         >
                             <exclamation-icon class="h-5 mr-2 w-5" />
                             No policyholders found

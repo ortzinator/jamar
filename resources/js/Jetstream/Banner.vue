@@ -2,8 +2,8 @@
     <div class="bottom-0 fixed w-full z-50">
         <div
             :class="{
-                'bg-indigo-500': style == 'success',
-                'bg-red-700': style == 'danger',
+                'bg-light-blue-vivid-500': style == 'success',
+                'bg-red-vivid-700': style == 'danger',
             }"
             class="md:px-20 mx-auto py-2 px-3 sm:px-6"
             v-if="show && message"
@@ -13,8 +13,8 @@
                     <span
                         class="flex p-2 rounded-lg"
                         :class="{
-                            'bg-indigo-600': style == 'success',
-                            'bg-red-600': style == 'danger',
+                            'bg-light-blue-vivid-600': style == 'success',
+                            'bg-red-vivid-600': style == 'danger',
                         }"
                     >
                         <CheckCircleIcon
@@ -48,9 +48,9 @@
                             duration-150
                         "
                         :class="{
-                            'hover:bg-indigo-600 focus:bg-indigo-600':
+                            'hover:bg-light-blue-vivid-600 focus:bg-light-blue-vivid-600':
                                 style == 'success',
-                            'hover:bg-red-600 focus:bg-red-600':
+                            'hover:bg-red-vivid-600 focus:bg-red-vivid-600':
                                 style == 'danger',
                         }"
                         aria-label="Dismiss"

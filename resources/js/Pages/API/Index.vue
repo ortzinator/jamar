@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <template #header>
-            <h2>API Tokens</h2>
+            <h1>API Tokens</h1>
         </template>
 
         <div>

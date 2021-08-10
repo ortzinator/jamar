@@ -37,7 +37,12 @@
                         ></path>
                     </svg>
                     <div
-                        class="ml-4 text-lg text-gray-600 leading-7 font-semibold"
+                        class="
+                            ml-4
+                            text-lg text-gray-600
+                            leading-7
+                            font-semibold
+                        "
                     >
                         <a href="https://laravel.com/docs">Documentation</a>
                     </div>
@@ -53,11 +58,18 @@
 
                     <a href="https://laravel.com/docs">
                         <div
-                            class="mt-3 flex items-center text-sm font-semibold text-indigo-700"
+                            class="
+                                mt-3
+                                flex
+                                items-center
+                                text-sm
+                                font-semibold
+                                text-light-blue-vivid-700
+                            "
                         >
                             <div>Explore the documentation</div>
 
-                            <div class="ml-1 text-indigo-500">
+                            <div class="ml-1 text-light-blue-vivid-500">
                                 <svg
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
@@ -92,7 +104,12 @@
                         <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
                     <div
-                        class="ml-4 text-lg text-gray-600 leading-7 font-semibold"
+                        class="
+                            ml-4
+                            text-lg text-gray-600
+                            leading-7
+                            font-semibold
+                        "
                     >
                         <a href="https://laracasts.com">Laracasts</a>
                     </div>
@@ -108,11 +125,18 @@
 
                     <a href="https://laracasts.com">
                         <div
-                            class="mt-3 flex items-center text-sm font-semibold text-indigo-700"
+                            class="
+                                mt-3
+                                flex
+                                items-center
+                                text-sm
+                                font-semibold
+                                text-light-blue-vivid-700
+                            "
                         >
                             <div>Start watching Laracasts</div>
 
-                            <div class="ml-1 text-indigo-500">
+                            <div class="ml-1 text-light-blue-vivid-500">
                                 <svg
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
@@ -146,7 +170,12 @@
                         ></path>
                     </svg>
                     <div
-                        class="ml-4 text-lg text-gray-600 leading-7 font-semibold"
+                        class="
+                            ml-4
+                            text-lg text-gray-600
+                            leading-7
+                            font-semibold
+                        "
                     >
                         <a href="https://tailwindcss.com/">Tailwind</a>
                     </div>
@@ -179,7 +208,12 @@
                         ></path>
                     </svg>
                     <div
-                        class="ml-4 text-lg text-gray-600 leading-7 font-semibold"
+                        class="
+                            ml-4
+                            text-lg text-gray-600
+                            leading-7
+                            font-semibold
+                        "
                     >
                         Authentication
                     </div>

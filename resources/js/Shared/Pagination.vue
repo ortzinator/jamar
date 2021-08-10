@@ -16,7 +16,8 @@
                 v-else
                 class="
                     hover:bg-white
-                    focus:border-indigo-500 focus:text-indigo-500
+                    focus:border-light-blue-vivid-500
+                    focus:text-light-blue-vivid-500
                     px-4
                     py-3
                 "

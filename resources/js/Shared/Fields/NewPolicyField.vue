@@ -27,7 +27,7 @@
                 Add Field
             </button>
         </div>
-        <div v-if="errors.length" class="text-red-500">
+        <div v-if="errors.length" class="text-red-vivid-500">
             <ul>
                 <li v-for="(error, index) in errors" :key="`error-${index}`">
                     {{ error }}

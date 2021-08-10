@@ -32947,7 +32947,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ['update:checked'],
+  emits: ["update:checked"],
   props: {
     checked: {
       type: [Array, Boolean],
@@ -32985,7 +32985,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modal */ "./resources/js/Jetstream/Modal.vue");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ['close'],
+  emits: ["close"],
   components: {
     Modal: _Modal__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -32994,7 +32994,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": false
     },
     maxWidth: {
-      "default": '2xl'
+      "default": "2xl"
     },
     closeable: {
       "default": true
@@ -33002,7 +33002,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     close: function close() {
-      this.$emit('close');
+      this.$emit("close");
     }
   }
 });
@@ -33120,7 +33120,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     type: {
       type: String,
-      "default": 'button'
+      "default": "button"
     }
   }
 });
@@ -33287,8 +33287,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
+  props: ["modelValue"],
+  emits: ["update:modelValue"],
   methods: {
     focus: function focus() {
       this.$refs.input.focus();
@@ -33310,7 +33310,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['message']
+  props: ["message"]
 });
 
 /***/ }),
@@ -33425,7 +33425,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ["active", "href", "as"],
   computed: {
     classes: function classes() {
-      return this.active ? "block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out" : "block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out";
+      return this.active ? "block pl-3 pr-4 py-2 border-l-4 border-light-blue-vivid-400 text-base font-medium text-light-blue-vivid-700 bg-light-blue-vivid-50 focus:outline-none focus:text-light-blue-vivid-800 focus:bg-light-blue-vivid-100 focus:border-light-blue-vivid-700 transition duration-150 ease-in-out" : "block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out";
     }
   }
 });
@@ -33498,8 +33498,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_ResponsiveNavLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/ResponsiveNavLink */ "./resources/js/Jetstream/ResponsiveNavLink.vue");
 /* harmony import */ var _headlessui_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/headlessui.esm.js");
 /* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
-/* harmony import */ var _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Jetstream/Button.vue */ "./resources/js/Jetstream/Button.vue");
-
 
 
 
@@ -33537,6 +33535,19 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup() {
     var showingNavigationDropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var navOpen = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var navigation = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
+      name: "Dashboard",
+      href: route("dashboard"),
+      current: route().current("dashboard")
+    }, {
+      name: "Policies",
+      href: route("policies"),
+      current: route().current("policies")
+    }, {
+      name: "Polcyholder",
+      href: route("holders"),
+      current: route().current("holders")
+    }]);
 
     function logout() {
       this.$inertia.post(route("logout"));
@@ -33545,7 +33556,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       showingNavigationDropdown: showingNavigationDropdown,
       logout: logout,
-      navOpen: navOpen
+      navOpen: navOpen,
+      navigation: navigation
     };
   }
 });
@@ -33605,11 +33617,11 @@ __webpack_require__.r(__webpack_exports__);
     JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.default,
     JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_12__.default
   },
-  props: ['tokens', 'availablePermissions', 'defaultPermissions'],
+  props: ["tokens", "availablePermissions", "defaultPermissions"],
   data: function data() {
     return {
       createApiTokenForm: this.$inertia.form({
-        name: '',
+        name: "",
         permissions: this.defaultPermissions
       }),
       updateApiTokenForm: this.$inertia.form({
@@ -33625,7 +33637,7 @@ __webpack_require__.r(__webpack_exports__);
     createApiToken: function createApiToken() {
       var _this = this;
 
-      this.createApiTokenForm.post(route('api-tokens.store'), {
+      this.createApiTokenForm.post(route("api-tokens.store"), {
         preserveScroll: true,
         onSuccess: function onSuccess() {
           _this.displayingToken = true;
@@ -33641,7 +33653,7 @@ __webpack_require__.r(__webpack_exports__);
     updateApiToken: function updateApiToken() {
       var _this2 = this;
 
-      this.updateApiTokenForm.put(route('api-tokens.update', this.managingPermissionsFor), {
+      this.updateApiTokenForm.put(route("api-tokens.update", this.managingPermissionsFor), {
         preserveScroll: true,
         preserveState: true,
         onSuccess: function onSuccess() {
@@ -33655,7 +33667,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteApiToken: function deleteApiToken() {
       var _this3 = this;
 
-      this.deleteApiTokenForm["delete"](route('api-tokens.destroy', this.apiTokenBeingDeleted), {
+      this.deleteApiTokenForm["delete"](route("api-tokens.destroy", this.apiTokenBeingDeleted), {
         preserveScroll: true,
         preserveState: true,
         onSuccess: function onSuccess() {
@@ -35607,7 +35619,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ["href", "active"],
   computed: {
     classes: function classes() {
-      return this.active ? "text-white" : "hover:text-white";
+      return this.active ? "bg-cool-grey-200 border-light-blue-vivid-500 border-r-4" : "";
     }
   }
 });
@@ -36045,13 +36057,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [$data.show && $options.message ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
     key: 0,
     "class": [{
-      'bg-indigo-500': $options.style == 'success',
-      'bg-red-700': $options.style == 'danger'
+      'bg-light-blue-vivid-500': $options.style == 'success',
+      'bg-red-vivid-700': $options.style == 'danger'
     }, "md:px-20 mx-auto py-2 px-3 sm:px-6"]
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
     "class": ["flex p-2 rounded-lg", {
-      'bg-indigo-600': $options.style == 'success',
-      'bg-red-600': $options.style == 'danger'
+      'bg-light-blue-vivid-600': $options.style == 'success',
+      'bg-red-vivid-600': $options.style == 'danger'
     }]
   }, [$options.style == 'success' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CheckCircleIcon, {
     key: 0,
@@ -36066,8 +36078,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     type: "button",
     "class": ["\n                            -mr-1\n                            flex\n                            p-2\n                            rounded-md\n                            focus:outline-none\n                            sm:-mr-2\n                            transition\n                            ease-in-out\n                            duration-150\n                        ", {
-      'hover:bg-indigo-600 focus:bg-indigo-600': $options.style == 'success',
-      'hover:bg-red-600 focus:bg-red-600': $options.style == 'danger'
+      'hover:bg-light-blue-vivid-600 focus:bg-light-blue-vivid-600': $options.style == 'success',
+      'hover:bg-red-vivid-600 focus:bg-red-vivid-600': $options.style == 'danger'
     }],
     "aria-label": "Dismiss",
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -36128,7 +36140,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $options.proxyChecked = $event;
     }),
-    "class": "rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+    "class": "\n            rounded\n            border-gray-300\n            text-light-blue-vivid-600\n            shadow-sm\n            focus:border-light-blue-vivid-300\n            focus:ring\n            focus:ring-light-blue-vivid-200\n            focus:ring-opacity-50\n        "
   }, null, 8
   /* PROPS */
   , ["value"])), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $options.proxyChecked]]);
@@ -36157,9 +36169,9 @@ var _hoisted_2 = {
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
+  "class": "\n                        mx-auto\n                        flex-shrink-0 flex\n                        items-center\n                        justify-center\n                        h-12\n                        w-12\n                        rounded-full\n                        bg-red-vivid-100\n                        sm:mx-0 sm:h-10 sm:w-10\n                    "
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
-  "class": "h-6 w-6 text-red-600",
+  "class": "h-6 w-6 text-red-vivid-600",
   stroke: "currentColor",
   fill: "none",
   viewBox: "0 0 24 24"
@@ -36328,7 +36340,7 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     type: $props.type,
-    "class": "inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-600 transition ease-in-out duration-150"
+    "class": "\n            inline-flex\n            items-center\n            justify-center\n            px-4\n            py-2\n            bg-red-vivid-600\n            border border-transparent\n            rounded-md\n            font-semibold\n            text-xs text-white\n            uppercase\n            tracking-widest\n            hover:bg-red-vivid-500\n            focus:outline-none focus:border-red-700 focus:shadow-outline-red\n            active:bg-red-vivid-600\n            transition\n            ease-in-out\n            duration-150\n        "
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 8
   /* PROPS */
   , ["type"]);
@@ -36552,7 +36564,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
-    "class": "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
+    "class": "\n            border-gray-300\n            focus:border-light-blue-vivid-300\n            focus:ring\n            focus:ring-light-blue-vivid-200\n            focus:ring-opacity-50\n            rounded-md\n            shadow-sm\n        ",
     value: $props.modelValue,
     onInput: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$emit('update:modelValue', $event.target.value);
@@ -36579,7 +36591,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "text-sm text-red-600"
+  "class": "text-sm text-red-vivid-600"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.message), 1
@@ -36845,13 +36857,13 @@ var _hoisted_1 = {
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "font-medium text-red-600"
-}, "Whoops! Something went wrong.", -1
+  "class": "font-medium text-red-vivid-600"
+}, " Whoops! Something went wrong. ", -1
 /* HOISTED */
 );
 
 var _hoisted_3 = {
-  "class": "mt-3 list-disc list-inside text-sm text-red-600"
+  "class": "mt-3 list-disc list-inside text-sm text-red-vivid-600"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return $options.hasErrors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.errors, function (error, key) {
@@ -36881,13 +36893,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "md:flex md:flex-col bg-wild-blue-yonder-50 md:h-screen"
+  "class": "md:flex md:flex-col bg-cool-grey-50 md:h-screen"
 };
 var _hoisted_2 = {
   "class": "md:flex md:flex-shrink-0"
 };
 var _hoisted_3 = {
-  "class": "\n                        bg-wild-blue-yonder-900\n                        flex\n                        items-center\n                        justify-between\n                        md:flex-shrink-0 md:justify-center md:w-56\n                        px-6\n                        py-4\n                        text-white\n                    "
+  "class": "\n                        bg-light-blue-vivid-800\n                        flex\n                        items-center\n                        justify-between\n                        md:flex-shrink-0 md:justify-center md:w-56\n                        px-6\n                        py-4\n                        text-white\n                    "
 };
 var _hoisted_4 = {
   "class": "flex md:justify-center justify-between"
@@ -36901,20 +36913,17 @@ var _hoisted_6 = {
   "class": "md:hidden"
 };
 var _hoisted_7 = {
-  "class": "\n                                    text-wild-blue-yonder-300\n                                    space-y-5\n                                    md:hidden\n                                    text-right\n                                "
+  "class": "\n                                    text-light-blue-vivid-300\n                                    space-y-5\n                                    md:hidden\n                                    text-right\n                                "
 };
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
-
-var _hoisted_11 = {
+var _hoisted_8 = {
   "class": "\n                        bg-white\n                        flex\n                        justify-end\n                        md:px-12 md:py-5\n                        px-6\n                        py-4\n                        w-full\n                    "
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Jamar", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "py-1"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "\n                                        block\n                                        px-4\n                                        py-2\n                                        text-xs text-gray-400\n                                    "
@@ -36922,49 +36931,42 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_13 = {
+var _hoisted_11 = {
   "class": "py-1"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Profile ");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Profile ");
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
 
-var _hoisted_16 = {
+var _hoisted_14 = {
   "class": "py-1"
 };
-var _hoisted_17 = {
+var _hoisted_15 = {
   type: "submit flex"
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
 
-var _hoisted_19 = {
+var _hoisted_17 = {
   "class": "md:flex md:flex-grow md:overflow-hidden"
 };
+var _hoisted_18 = {
+  "class": "\n                        bg-cool-grey-100\n                        overflow-y-auto\n                        hidden\n                        md:flex md:flex-shrink-0 md:justify-center md:w-56\n                    "
+};
+var _hoisted_19 = {
+  "class": "mt-12 space-y-3 text-light-blue-vivid-900 w-full"
+};
 var _hoisted_20 = {
-  "class": "\n                        bg-wild-blue-yonder-800\n                        overflow-y-auto\n                        hidden\n                        md:flex md:flex-shrink-0 md:justify-center md:w-56\n                    "
+  "scroll-region": "",
+  "class": "\n                        md:overflow-y-auto md:p-10\n                        p-5\n                        space-y-5\n                        w-full\n                        shadow-inner\n                    "
 };
 var _hoisted_21 = {
-  "class": "text-wild-blue-yonder-300 space-y-5 mt-12"
-};
-
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
-
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
-
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
-
-var _hoisted_25 = {
-  "scroll-region": "",
-  "class": "md:overflow-y-auto md:p-10 p-5 space-y-5 w-full"
-};
-var _hoisted_26 = {
   key: 0,
   "class": "py-5"
 };
-var _hoisted_27 = {
-  "class": "text-3xl font-bold"
+var _hoisted_22 = {
+  "class": "font-bold"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_banner = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-banner");
@@ -36975,7 +36977,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_DisclosureButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DisclosureButton");
 
-  var _component_nav_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("nav-link");
+  var _component_NavLink = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("NavLink");
 
   var _component_DisclosurePanel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DisclosurePanel");
 
@@ -36996,12 +36998,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_MenuItems = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MenuItems");
 
   var _component_Menu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Menu");
-
-  var _component_PresentationChartBarIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PresentationChartBarIcon");
-
-  var _component_DocumentTextIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DocumentTextIcon");
-
-  var _component_UsersIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("UsersIcon");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_banner), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Disclosure, {
     as: "nav",
@@ -37030,43 +37026,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "flex justify-end w-full"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nav_link, {
-            href: _ctx.route('dashboard'),
-            active: _ctx.route().current('dashboard')
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_8];
-            }),
-            _: 1
-            /* STABLE */
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.navigation, function (nav) {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_NavLink, {
+              key: nav.name,
+              href: nav.href,
+              active: nav.current
+            }, {
+              "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(nav.name), 1
+                /* TEXT */
+                )];
+              }),
+              _: 2
+              /* DYNAMIC */
 
-          }, 8
-          /* PROPS */
-          , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nav_link, {
-            href: _ctx.route('policies'),
-            active: _ctx.route().current('policies')
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_9];
-            }),
-            _: 1
-            /* STABLE */
-
-          }, 8
-          /* PROPS */
-          , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nav_link, {
-            href: _ctx.route('holders'),
-            active: _ctx.route().current('holders')
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_10];
-            }),
-            _: 1
-            /* STABLE */
-
-          }, 8
-          /* PROPS */
-          , ["href", "active"])])];
+            }, 1032
+            /* PROPS, DYNAMIC_SLOTS */
+            , ["href", "active"]);
+          }), 128
+          /* KEYED_FRAGMENT */
+          ))])];
         }),
         _: 1
         /* STABLE */
@@ -37076,7 +37055,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Menu, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Menu, {
     as: "div",
     "class": "relative"
   }, {
@@ -37099,7 +37078,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "\n                                absolute\n                                right-0\n                                w-56\n                                mt-2\n                                origin-top-right\n                                bg-white\n                                divide-y divide-gray-100\n                                rounded-md\n                                shadow-lg\n                                ring-1 ring-black ring-opacity-5\n                                focus:outline-none\n                            "
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuItem, null, {
+          return [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuItem, null, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref2) {
               var active = _ref2.active;
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
@@ -37109,7 +37088,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                   return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UserCircleIcon, {
                     "class": "w-5 h-5 inline mr-2"
-                  }), _hoisted_14];
+                  }), _hoisted_12];
                 }),
                 _: 2
                 /* DYNAMIC */
@@ -37131,7 +37110,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "class": [active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_hoisted_15];
+                  return [_hoisted_13];
                 }),
                 _: 2
                 /* DYNAMIC */
@@ -37143,7 +37122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuItem, null, {
+          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuItem, null, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
               var active = _ref4.active;
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
@@ -37151,9 +37130,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   return $setup.logout && $setup.logout.apply($setup, arguments);
                 }, ["prevent"])),
                 "class": [active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']
-              }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LogoutIcon, {
+              }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LogoutIcon, {
                 "class": "h-5 w-5 mr-2 inline"
-              }), _hoisted_18])], 34
+              }), _hoisted_16])], 34
               /* CLASS, HYDRATE_EVENTS */
               )];
             }),
@@ -37170,49 +37149,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("nav", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nav_link, {
-    href: _ctx.route('dashboard'),
-    active: _ctx.route().current('dashboard')
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PresentationChartBarIcon, {
-        "class": "h-5 w-5 inline"
-      }), _hoisted_22];
-    }),
-    _: 1
-    /* STABLE */
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("nav", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_19, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.navigation, function (nav) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_NavLink, {
+      key: nav.name,
+      href: nav.href,
+      active: nav.current
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(nav.name), 1
+        /* TEXT */
+        )];
+      }),
+      _: 2
+      /* DYNAMIC */
 
-  }, 8
-  /* PROPS */
-  , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nav_link, {
-    href: _ctx.route('policies'),
-    active: _ctx.route().current('policies')
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DocumentTextIcon, {
-        "class": "h-5 w-5 inline"
-      }), _hoisted_23];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nav_link, {
-    href: _ctx.route('holders'),
-    active: _ctx.route().current('holders')
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UsersIcon, {
-        "class": "h-5 w-5 inline"
-      }), _hoisted_24];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["href", "active"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [_ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])])])]);
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
+    , ["href", "active"]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [_ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])])])]);
 }
 
 /***/ }),
@@ -37286,7 +37242,7 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 
 var _hoisted_19 = {
   key: 0,
-  "class": "mt-4 bg-gray-100 px-4 py-2 rounded font-mono text-sm text-gray-500"
+  "class": "\n                        mt-4\n                        bg-gray-100\n                        px-4\n                        py-2\n                        rounded\n                        font-mono\n                        text-sm text-gray-500\n                    "
 };
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Close ");
@@ -37444,14 +37400,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.availablePermissions.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
           key: 1,
-          "class": "cursor-pointer ml-6 text-sm text-gray-400 underline",
+          "class": "\n                                            cursor-pointer\n                                            ml-6\n                                            text-sm text-gray-400\n                                            underline\n                                        ",
           onClick: function onClick($event) {
             return $options.manageApiTokenPermissions(token);
           }
         }, " Permissions ", 8
         /* PROPS */
         , ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-          "class": "cursor-pointer ml-6 text-sm text-red-500",
+          "class": "\n                                            cursor-pointer\n                                            ml-6\n                                            text-sm text-red-vivid-500\n                                        ",
           onClick: function onClick($event) {
             return $options.confirmApiTokenDeletion(token);
           }
@@ -37625,7 +37581,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, "API Tokens", -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, "API Tokens", -1
 /* HOISTED */
 );
 
@@ -38559,7 +38515,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, "Dashboard", -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, "Dashboard", -1
 /* HOISTED */
 );
 
@@ -38688,7 +38644,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Holders ");
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "text-indigo-400 font-medium"
+  "class": "text-light-blue-vivid-400 font-medium"
 }, " /", -1
 /* HOISTED */
 );
@@ -38729,7 +38685,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-        "class": "text-indigo-400 hover:text-indigo-600",
+        "class": "\n                        text-light-blue-vivid-400\n                        hover:text-light-blue-vivid-600\n                    ",
         href: "/holders"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -38822,7 +38778,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Holders ");
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "text-indigo-400 font-medium"
+  "class": "text-light-blue-vivid-400 font-medium"
 }, " /", -1
 /* HOISTED */
 );
@@ -38832,7 +38788,7 @@ var _hoisted_3 = {
 };
 var _hoisted_4 = {
   key: 0,
-  "class": "bg-yellow-200 flex items-center justify-between p-5 pl-8"
+  "class": "\n                    bg-yellow-vivid-200\n                    flex\n                    items-center\n                    justify-between\n                    p-5\n                    pl-8\n                "
 };
 var _hoisted_5 = {
   "class": "flex"
@@ -38883,7 +38839,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-        "class": "text-indigo-400 hover:text-indigo-600",
+        "class": "\n                        text-light-blue-vivid-400\n                        hover:text-light-blue-vivid-600\n                    ",
         href: _ctx.route('holders')
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -38947,7 +38903,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [!$props.holder.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
         key: 0,
-        "class": "text-red-600 hover:underline",
+        "class": "text-red-vivid-600 hover:underline",
         tabindex: "-1",
         type: "button",
         onClick: _cache[4] || (_cache[4] = function ($event) {
@@ -39052,7 +39008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, "Holders", -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, "Holders", -1
 /* HOISTED */
 );
 
@@ -39115,7 +39071,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.searchForm.search]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-        "class": "\n                            ml-3\n                            text-sm text-gray-500\n                            hover:text-gray-700\n                            focus:text-indigo-500\n                        ",
+        "class": "\n                            ml-3\n                            text-sm text-gray-500\n                            hover:text-gray-700\n                            focus:text-light-blue-vivid-500\n                        ",
         type: "button",
         onClick: _cache[3] || (_cache[3] = function () {
           return $setup.reset && $setup.reset.apply($setup, arguments);
@@ -39169,7 +39125,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "text-indigo-400 font-medium"
+  "class": "text-light-blue-vivid-400 font-medium"
 }, " /", -1
 /* HOISTED */
 );
@@ -39211,7 +39167,7 @@ var _hoisted_12 = {
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
 
 var _hoisted_14 = {
-  "class": "mb-5 text-yellow-500"
+  "class": "mb-5 text-yellow-vivid-600"
 };
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please add one or more policyholders ");
@@ -39251,8 +39207,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-        "class": "text-indigo-400 hover:text-indigo-600",
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+        "class": "\n                        text-light-blue-vivid-400\n                        hover:text-light-blue-vivid-600\n                    ",
         href: _ctx.route('policies')
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -39401,7 +39357,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policies ");
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "text-indigo-400 font-medium"
+  "class": "text-light-blue-vivid-400 font-medium"
 }, " /", -1
 /* HOISTED */
 );
@@ -39421,7 +39377,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_7 = {
   key: 1,
-  "class": "bg-red-200 flex items-center justify-between p-5 pl-8"
+  "class": "\n                    bg-red-vivid-200\n                    flex\n                    items-center\n                    justify-between\n                    p-5\n                    pl-8\n                "
 };
 var _hoisted_8 = {
   "class": "flex items-center"
@@ -39492,7 +39448,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-        "class": "text-indigo-400 hover:text-indigo-600",
+        "class": "\n                        text-light-blue-vivid-400\n                        hover:text-light-blue-vivid-600\n                    ",
         href: "/"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -39593,7 +39549,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["onSelected"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [!$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
         key: 0,
-        "class": "text-red-600 hover:underline",
+        "class": "text-red-vivid-600 hover:underline",
         tabindex: "-1",
         type: "button",
         onClick: _cache[6] || (_cache[6] = function () {
@@ -39639,7 +39595,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, "Policies", -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, "Policies", -1
 /* HOISTED */
 );
 
@@ -39668,7 +39624,7 @@ var _hoisted_7 = {
 };
 var _hoisted_8 = {
   key: 0,
-  "class": "flex text-red-600 items-center"
+  "class": "flex text-red-vivid-600 items-center"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No policyholders found ");
@@ -39710,7 +39666,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.searchForm.search]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-        "class": "\n                            ml-3\n                            text-sm text-gray-500\n                            hover:text-gray-700\n                            focus:text-indigo-500\n                        ",
+        "class": "\n                            ml-3\n                            text-sm text-gray-500\n                            hover:text-gray-700\n                            focus:text-light-blue-vivid-500\n                        ",
         type: "button",
         onClick: _cache[3] || (_cache[3] = function () {
           return $setup.reset && $setup.reset.apply($setup, arguments);
@@ -39735,7 +39691,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         var value = _ref.value;
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
           "class": {
-            'text-red-500': $setup.pastDate(value)
+            'text-red-vivid-500': $setup.pastDate(value)
           }
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(value)), 3
         /* TEXT, CLASS */
@@ -40213,7 +40169,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
   "class": "font-semibold text-xl text-gray-800 leading-tight"
 }, " Profile ", -1
 /* HOISTED */
@@ -40942,7 +40898,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "border-t"
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route($props.routeName, row.id),
-        "class": "px-6 py-4 flex items-center focus:text-indigo-500"
+        "class": "\n                        px-6\n                        py-4\n                        flex\n                        items-center\n                        focus:text-light-blue-vivid-500\n                    "
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, 'column.' + column.value, {
@@ -41102,7 +41058,7 @@ var _hoisted_3 = {
 };
 var _hoisted_4 = {
   key: 0,
-  "class": "text-red-500"
+  "class": "text-red-vivid-500"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
@@ -41699,10 +41655,9 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", {
-    "class": $options.classes
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: $props.href
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: $props.href,
+    "class": [$options.classes, "\n                flex\n                px-6\n                py-3\n                hover:bg-cool-grey-200\n                hover:border-light-blue-vivid-500\n                hover:border-r-4\n            "]
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")];
@@ -41712,9 +41667,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])], 2
-  /* CLASS */
-  );
+  , ["href", "class"])]);
 }
 
 /***/ }),
@@ -41752,7 +41705,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* CLASS, PROPS */
     , ["textContent"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
       key: 1,
-      "class": ["\n                    hover:bg-white\n                    focus:border-indigo-500 focus:text-indigo-500\n                    px-4\n                    py-3\n                ", {
+      "class": ["\n                    hover:bg-white\n                    focus:border-light-blue-vivid-500\n                    focus:text-light-blue-vivid-500\n                    px-4\n                    py-3\n                ", {
         'bg-white': link.active,
         'ml-auto': link.label === 'Next'
       }],
@@ -41933,7 +41886,7 @@ var _hoisted_8 = {
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "flex items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "w-3 h-3 border-2 border-gray-800 bg-red-500 mr-2"
+  "class": "w-3 h-3 border-2 border-gray-800 bg-red-vivid-500 mr-2"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" = Overdue ")], -1
 /* HOISTED */
 );
@@ -41979,7 +41932,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS, DYNAMIC_SLOTS */
     , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
       "class": ["py-2", {
-        'text-red-500': $setup.isInPast(policy.period_end)
+        'text-red-vivid-500': $setup.isInPast(policy.period_end)
       }]
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(policy.period_end)), 3
     /* TEXT, CLASS */
@@ -42214,7 +42167,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),\n        0 4px 3px rgba(0, 0, 0, 0.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Layouts/NewLayout.vue"],"names":[],"mappings":";AAgSA;IACI,wCAAwC;IACxC,8CAA8C;IAC9C,kCAAkC;IAClC,gCAAgC;IAChC,kCAAkC;IAClC,iCAAiC;IACjC,8BAA8B;IAC9B;oCACgC;AACpC","sourcesContent":["<template>\n    <div>\n        <jet-banner />\n\n        <div class=\"md:flex md:flex-col bg-wild-blue-yonder-50 md:h-screen\">\n            <div class=\"md:flex md:flex-shrink-0\">\n                <div\n                    class=\"\n                        bg-wild-blue-yonder-900\n                        flex\n                        items-center\n                        justify-between\n                        md:flex-shrink-0 md:justify-center md:w-56\n                        px-6\n                        py-4\n                        text-white\n                    \"\n                >\n                    <Disclosure as=\"nav\" v-slot=\"{ open }\" class=\"w-full\">\n                        <div class=\"flex md:justify-center justify-between\">\n                            <div>Jamar Logo</div>\n                            <div class=\"md:hidden\">\n                                <DisclosureButton>\n                                    <MenuIcon\n                                        v-if=\"!open\"\n                                        class=\"block h-6 w-6\"\n                                        aria-hidden=\"true\"\n                                    />\n                                    <XIcon\n                                        v-else\n                                        class=\"block h-6 w-6\"\n                                        aria-hidden=\"true\"\n                                    />\n                                </DisclosureButton>\n                            </div>\n                        </div>\n\n                        <DisclosurePanel class=\"flex justify-end w-full\">\n                            <ul\n                                class=\"\n                                    text-wild-blue-yonder-300\n                                    space-y-5\n                                    md:hidden\n                                    text-right\n                                \"\n                            >\n                                <nav-link\n                                    :href=\"route('dashboard')\"\n                                    :active=\"route().current('dashboard')\"\n                                >\n                                    Dashboard\n                                </nav-link>\n                                <nav-link\n                                    :href=\"route('policies')\"\n                                    :active=\"route().current('policies')\"\n                                >\n                                    Policies\n                                </nav-link>\n                                <nav-link\n                                    :href=\"route('holders')\"\n                                    :active=\"route().current('holders')\"\n                                >\n                                    Policyholders\n                                </nav-link>\n                            </ul>\n                        </DisclosurePanel>\n                    </Disclosure>\n                </div>\n                <div\n                    class=\"\n                        bg-white\n                        flex\n                        justify-end\n                        md:px-12 md:py-5\n                        px-6\n                        py-4\n                        w-full\n                    \"\n                >\n                    <Menu as=\"div\" class=\"relative\">\n                        <div>\n                            <MenuButton class=\"inline-flex items-center\">\n                                {{ $page.props.user.name }}\n                                <ChevronDownIcon class=\"h-5 w-5 ml-2\" />\n                            </MenuButton>\n                        </div>\n\n                        <MenuItems\n                            as=\"div\"\n                            class=\"\n                                absolute\n                                right-0\n                                w-56\n                                mt-2\n                                origin-top-right\n                                bg-white\n                                divide-y divide-gray-100\n                                rounded-md\n                                shadow-lg\n                                ring-1 ring-black ring-opacity-5\n                                focus:outline-none\n                            \"\n                        >\n                            <div class=\"py-1\">\n                                <div\n                                    class=\"\n                                        block\n                                        px-4\n                                        py-2\n                                        text-xs text-gray-400\n                                    \"\n                                >\n                                    Manage Account\n                                </div>\n                            </div>\n\n                            <div class=\"py-1\">\n                                <MenuItem v-slot=\"{ active }\">\n                                    <inertia-link\n                                        :href=\"route('profile.show')\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        <UserCircleIcon\n                                            class=\"w-5 h-5 inline mr-2\"\n                                        />\n                                        Profile\n                                    </inertia-link>\n                                </MenuItem>\n\n                                <MenuItem\n                                    v-if=\"$page.props.jetstream.hasApiFeatures\"\n                                    v-slot=\"{ active }\"\n                                >\n                                    <inertia-link\n                                        :href=\"route('api-tokens.index')\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        API Tokens\n                                    </inertia-link>\n                                </MenuItem>\n                            </div>\n\n                            <div class=\"py-1\">\n                                <MenuItem v-slot=\"{ active }\">\n                                    <form\n                                        @submit.prevent=\"logout\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        <button type=\"submit flex\">\n                                            <LogoutIcon\n                                                class=\"h-5 w-5 mr-2 inline\"\n                                            />\n                                            Log Out\n                                        </button>\n                                    </form>\n                                </MenuItem>\n                            </div>\n                        </MenuItems>\n                    </Menu>\n                </div>\n            </div>\n            <div class=\"md:flex md:flex-grow md:overflow-hidden\">\n                <nav\n                    class=\"\n                        bg-wild-blue-yonder-800\n                        overflow-y-auto\n                        hidden\n                        md:flex md:flex-shrink-0 md:justify-center md:w-56\n                    \"\n                >\n                    <ul class=\"text-wild-blue-yonder-300 space-y-5 mt-12\">\n                        <nav-link\n                            :href=\"route('dashboard')\"\n                            :active=\"route().current('dashboard')\"\n                        >\n                            <PresentationChartBarIcon class=\"h-5 w-5 inline\" />\n                            Dashboard\n                        </nav-link>\n                        <nav-link\n                            :href=\"route('policies')\"\n                            :active=\"route().current('policies')\"\n                        >\n                            <DocumentTextIcon class=\"h-5 w-5 inline\" />\n                            Policies\n                        </nav-link>\n                        <nav-link\n                            :href=\"route('holders')\"\n                            :active=\"route().current('holders')\"\n                        >\n                            <UsersIcon class=\"h-5 w-5 inline\" />\n                            Policyholders\n                        </nav-link>\n                    </ul>\n                </nav>\n                <div\n                    scroll-region\n                    class=\"md:overflow-y-auto md:p-10 p-5 space-y-5 w-full\"\n                >\n                    <header class=\"py-5\" v-if=\"$slots.header\">\n                        <div class=\"text-3xl font-bold\">\n                            <slot name=\"header\" />\n                        </div>\n                    </header>\n                    <main>\n                        <slot />\n                    </main>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport { reactive, ref, watch } from \"vue\";\nimport JetApplicationMark from \"@/Jetstream/ApplicationMark\";\nimport JetBanner from \"@/Jetstream/Banner\";\nimport JetDropdown from \"@/Jetstream/Dropdown\";\nimport JetDropdownLink from \"@/Jetstream/DropdownLink\";\nimport NavLink from \"@/Shared/NavLink\";\nimport JetResponsiveNavLink from \"@/Jetstream/ResponsiveNavLink\";\nimport { Disclosure, DisclosureButton, DisclosurePanel } from \"@headlessui/vue\";\nimport { Menu, MenuButton, MenuItems, MenuItem } from \"@headlessui/vue\";\nimport {\n    MenuIcon,\n    XIcon,\n    ChevronDownIcon,\n    LogoutIcon,\n    UserCircleIcon,\n    PresentationChartBarIcon,\n    UsersIcon,\n    DocumentTextIcon,\n} from \"@heroicons/vue/outline\";\nimport Button from \"../Jetstream/Button.vue\";\n\nexport default {\n    components: {\n        JetApplicationMark,\n        JetBanner,\n        JetDropdown,\n        JetDropdownLink,\n        NavLink,\n        JetResponsiveNavLink,\n        Disclosure,\n        DisclosureButton,\n        DisclosurePanel,\n        MenuIcon,\n        XIcon,\n        Menu,\n        MenuButton,\n        MenuItems,\n        MenuItem,\n        ChevronDownIcon,\n        LogoutIcon,\n        UserCircleIcon,\n        PresentationChartBarIcon,\n        UsersIcon,\n        DocumentTextIcon,\n    },\n\n    setup() {\n        const showingNavigationDropdown = ref(false);\n        const navOpen = ref(false);\n\n        function logout() {\n            this.$inertia.post(route(\"logout\"));\n        }\n\n        return { showingNavigationDropdown, logout, navOpen };\n    },\n};\n</script>\n\n<style>\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),\n        0 4px 3px rgba(0, 0, 0, 0.1);\n}\n</style>\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),\n        0 4px 3px rgba(0, 0, 0, 0.1);\n}\n", "",{"version":3,"sources":["webpack://./NewLayout.vue"],"names":[],"mappings":";AAkSA;IACI,wCAAwC;IACxC,8CAA8C;IAC9C,kCAAkC;IAClC,gCAAgC;IAChC,kCAAkC;IAClC,iCAAiC;IACjC,8BAA8B;IAC9B;oCACgC;AACpC","sourcesContent":["<template>\n    <div>\n        <jet-banner />\n\n        <div class=\"md:flex md:flex-col bg-cool-grey-50 md:h-screen\">\n            <div class=\"md:flex md:flex-shrink-0\">\n                <div\n                    class=\"\n                        bg-light-blue-vivid-800\n                        flex\n                        items-center\n                        justify-between\n                        md:flex-shrink-0 md:justify-center md:w-56\n                        px-6\n                        py-4\n                        text-white\n                    \"\n                >\n                    <Disclosure as=\"nav\" v-slot=\"{ open }\" class=\"w-full\">\n                        <div class=\"flex md:justify-center justify-between\">\n                            <div>Jamar Logo</div>\n                            <div class=\"md:hidden\">\n                                <DisclosureButton>\n                                    <MenuIcon\n                                        v-if=\"!open\"\n                                        class=\"block h-6 w-6\"\n                                        aria-hidden=\"true\"\n                                    />\n                                    <XIcon\n                                        v-else\n                                        class=\"block h-6 w-6\"\n                                        aria-hidden=\"true\"\n                                    />\n                                </DisclosureButton>\n                            </div>\n                        </div>\n\n                        <DisclosurePanel class=\"flex justify-end w-full\">\n                            <ul\n                                class=\"\n                                    text-light-blue-vivid-300\n                                    space-y-5\n                                    md:hidden\n                                    text-right\n                                \"\n                            >\n                                <NavLink\n                                    v-for=\"nav in navigation\"\n                                    :key=\"nav.name\"\n                                    :href=\"nav.href\"\n                                    :active=\"nav.current\"\n                                >\n                                    {{ nav.name }}\n                                </NavLink>\n                            </ul>\n                        </DisclosurePanel>\n                    </Disclosure>\n                </div>\n                <div\n                    class=\"\n                        bg-white\n                        flex\n                        justify-end\n                        md:px-12 md:py-5\n                        px-6\n                        py-4\n                        w-full\n                    \"\n                >\n                    <div>Jamar</div>\n                    <Menu as=\"div\" class=\"relative\">\n                        <div>\n                            <MenuButton class=\"inline-flex items-center\">\n                                {{ $page.props.user.name }}\n                                <ChevronDownIcon class=\"h-5 w-5 ml-2\" />\n                            </MenuButton>\n                        </div>\n\n                        <MenuItems\n                            as=\"div\"\n                            class=\"\n                                absolute\n                                right-0\n                                w-56\n                                mt-2\n                                origin-top-right\n                                bg-white\n                                divide-y divide-gray-100\n                                rounded-md\n                                shadow-lg\n                                ring-1 ring-black ring-opacity-5\n                                focus:outline-none\n                            \"\n                        >\n                            <div class=\"py-1\">\n                                <div\n                                    class=\"\n                                        block\n                                        px-4\n                                        py-2\n                                        text-xs text-gray-400\n                                    \"\n                                >\n                                    Manage Account\n                                </div>\n                            </div>\n\n                            <div class=\"py-1\">\n                                <MenuItem v-slot=\"{ active }\">\n                                    <inertia-link\n                                        :href=\"route('profile.show')\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        <UserCircleIcon\n                                            class=\"w-5 h-5 inline mr-2\"\n                                        />\n                                        Profile\n                                    </inertia-link>\n                                </MenuItem>\n\n                                <MenuItem\n                                    v-if=\"$page.props.jetstream.hasApiFeatures\"\n                                    v-slot=\"{ active }\"\n                                >\n                                    <inertia-link\n                                        :href=\"route('api-tokens.index')\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        API Tokens\n                                    </inertia-link>\n                                </MenuItem>\n                            </div>\n\n                            <div class=\"py-1\">\n                                <MenuItem v-slot=\"{ active }\">\n                                    <form\n                                        @submit.prevent=\"logout\"\n                                        :class=\"[\n                                            active\n                                                ? 'bg-gray-100 text-gray-900'\n                                                : 'text-gray-700',\n                                            'block px-4 py-2 text-sm',\n                                        ]\"\n                                    >\n                                        <button type=\"submit flex\">\n                                            <LogoutIcon\n                                                class=\"h-5 w-5 mr-2 inline\"\n                                            />\n                                            Log Out\n                                        </button>\n                                    </form>\n                                </MenuItem>\n                            </div>\n                        </MenuItems>\n                    </Menu>\n                </div>\n            </div>\n            <div class=\"md:flex md:flex-grow md:overflow-hidden\">\n                <nav\n                    class=\"\n                        bg-cool-grey-100\n                        overflow-y-auto\n                        hidden\n                        md:flex md:flex-shrink-0 md:justify-center md:w-56\n                    \"\n                >\n                    <ul\n                        class=\"mt-12 space-y-3 text-light-blue-vivid-900 w-full\"\n                    >\n                        <NavLink\n                            v-for=\"nav in navigation\"\n                            :key=\"nav.name\"\n                            :href=\"nav.href\"\n                            :active=\"nav.current\"\n                        >\n                            {{ nav.name }}\n                        </NavLink>\n                    </ul>\n                </nav>\n                <div\n                    scroll-region\n                    class=\"\n                        md:overflow-y-auto md:p-10\n                        p-5\n                        space-y-5\n                        w-full\n                        shadow-inner\n                    \"\n                >\n                    <header class=\"py-5\" v-if=\"$slots.header\">\n                        <div class=\"font-bold\">\n                            <slot name=\"header\" />\n                        </div>\n                    </header>\n                    <main>\n                        <slot />\n                    </main>\n                </div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\nimport { reactive, ref, watch } from \"vue\";\nimport JetApplicationMark from \"@/Jetstream/ApplicationMark\";\nimport JetBanner from \"@/Jetstream/Banner\";\nimport JetDropdown from \"@/Jetstream/Dropdown\";\nimport JetDropdownLink from \"@/Jetstream/DropdownLink\";\nimport NavLink from \"@/Shared/NavLink\";\nimport JetResponsiveNavLink from \"@/Jetstream/ResponsiveNavLink\";\nimport { Disclosure, DisclosureButton, DisclosurePanel } from \"@headlessui/vue\";\nimport { Menu, MenuButton, MenuItems, MenuItem } from \"@headlessui/vue\";\nimport {\n    MenuIcon,\n    XIcon,\n    ChevronDownIcon,\n    LogoutIcon,\n    UserCircleIcon,\n    PresentationChartBarIcon,\n    UsersIcon,\n    DocumentTextIcon,\n} from \"@heroicons/vue/outline\";\n\nexport default {\n    components: {\n        JetApplicationMark,\n        JetBanner,\n        JetDropdown,\n        JetDropdownLink,\n        NavLink,\n        JetResponsiveNavLink,\n        Disclosure,\n        DisclosureButton,\n        DisclosurePanel,\n        MenuIcon,\n        XIcon,\n        Menu,\n        MenuButton,\n        MenuItems,\n        MenuItem,\n        ChevronDownIcon,\n        LogoutIcon,\n        UserCircleIcon,\n        PresentationChartBarIcon,\n        UsersIcon,\n        DocumentTextIcon,\n    },\n\n    setup() {\n        const showingNavigationDropdown = ref(false);\n        const navOpen = ref(false);\n        const navigation = ref([\n            {\n                name: \"Dashboard\",\n                href: route(\"dashboard\"),\n                current: route().current(\"dashboard\"),\n            },\n            {\n                name: \"Policies\",\n                href: route(\"policies\"),\n                current: route().current(\"policies\"),\n            },\n            {\n                name: \"Polcyholder\",\n                href: route(\"holders\"),\n                current: route().current(\"holders\"),\n            },\n        ]);\n\n        function logout() {\n            this.$inertia.post(route(\"logout\"));\n        }\n\n        return { showingNavigationDropdown, logout, navOpen, navigation };\n    },\n};\n</script>\n\n<style>\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),\n        0 4px 3px rgba(0, 0, 0, 0.1);\n}\n</style>\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -3,12 +3,17 @@
         <template #header>
             <h1>
                 <inertia-link
-                    class="text-indigo-400 hover:text-indigo-600"
+                    class="
+                        text-light-blue-vivid-400
+                        hover:text-light-blue-vivid-600
+                    "
                     :href="route('holders')"
                 >
                     Holders
                 </inertia-link>
-                <span class="text-indigo-400 font-medium">&nbsp;/</span>
+                <span class="text-light-blue-vivid-400 font-medium"
+                    >&nbsp;/</span
+                >
                 {{ form.name }}
             </h1>
         </template>
@@ -16,7 +21,14 @@
         <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
             <div
                 v-if="holder.deleted_at"
-                class="bg-yellow-200 flex items-center justify-between p-5 pl-8"
+                class="
+                    bg-yellow-vivid-200
+                    flex
+                    items-center
+                    justify-between
+                    p-5
+                    pl-8
+                "
             >
                 <div class="flex">
                     <trash-icon class="h-5 mr-2 w-5" />
@@ -70,7 +82,7 @@
                 >
                     <button
                         v-if="!holder.deleted_at"
-                        class="text-red-600 hover:underline"
+                        class="text-red-vivid-600 hover:underline"
                         tabindex="-1"
                         type="button"
                         @click="confirmingDelete = true"

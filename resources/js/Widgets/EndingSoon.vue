@@ -40,7 +40,7 @@
                     <td
                         class="py-2"
                         :class="{
-                            'text-red-500': isInPast(policy.period_end),
+                            'text-red-vivid-500': isInPast(policy.period_end),
                         }"
                     >
                         {{ formatDate(policy.period_end) }}
@@ -58,7 +58,7 @@
         </div>
         <div class="flex items-center">
             <span
-                class="w-3 h-3 border-2 border-gray-800 bg-red-500 mr-2"
+                class="w-3 h-3 border-2 border-gray-800 bg-red-vivid-500 mr-2"
             ></span>
             = Overdue
         </div>

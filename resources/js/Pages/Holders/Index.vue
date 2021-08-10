@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <template #header>
-            <h2>Holders</h2>
+            <h1>Holders</h1>
         </template>
 
         <div>
@@ -21,7 +21,7 @@
                             ml-3
                             text-sm text-gray-500
                             hover:text-gray-700
-                            focus:text-indigo-500
+                            focus:text-light-blue-vivid-500
                         "
                         type="button"
                         @click="reset"

@@ -3,12 +3,17 @@
         <template #header>
             <h1>
                 <inertia-link
-                    class="text-indigo-400 hover:text-indigo-600"
+                    class="
+                        text-light-blue-vivid-400
+                        hover:text-light-blue-vivid-600
+                    "
                     href="/holders"
                 >
                     Holders
                 </inertia-link>
-                <span class="text-indigo-400 font-medium">&nbsp;/</span>
+                <span class="text-light-blue-vivid-400 font-medium"
+                    >&nbsp;/</span
+                >
                 New Policyholder
             </h1>
         </template>

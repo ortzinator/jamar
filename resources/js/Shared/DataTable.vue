@@ -12,7 +12,13 @@
             <td v-for="column in columns" :key="column.value" class="border-t">
                 <inertia-link
                     :href="route(routeName, row.id)"
-                    class="px-6 py-4 flex items-center focus:text-indigo-500"
+                    class="
+                        px-6
+                        py-4
+                        flex
+                        items-center
+                        focus:text-light-blue-vivid-500
+                    "
                 >
                     <slot
                         :name="'column.' + column.value"

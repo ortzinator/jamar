@@ -3,12 +3,17 @@
         <template #header>
             <h1>
                 <inertia-link
-                    class="text-indigo-400 hover:text-indigo-600"
+                    class="
+                        text-light-blue-vivid-400
+                        hover:text-light-blue-vivid-600
+                    "
                     href="/"
                 >
                     Policies
                 </inertia-link>
-                <span class="text-indigo-400 font-medium">&nbsp;/</span>
+                <span class="text-light-blue-vivid-400 font-medium"
+                    >&nbsp;/</span
+                >
                 {{ policyForm.number }}
             </h1>
         </template>
@@ -29,7 +34,14 @@
 
             <div
                 v-if="policyForm.holders.length === 0"
-                class="bg-red-200 flex items-center justify-between p-5 pl-8"
+                class="
+                    bg-red-vivid-200
+                    flex
+                    items-center
+                    justify-between
+                    p-5
+                    pl-8
+                "
             >
                 <div class="flex items-center">
                     <exclamation-icon class="h-5 mr-2 w-5" />
@@ -107,7 +119,7 @@
             >
                 <button
                     v-if="!policy.deleted_at"
-                    class="text-red-600 hover:underline"
+                    class="text-red-vivid-600 hover:underline"
                     tabindex="-1"
                     type="button"
                     @click="destroy"

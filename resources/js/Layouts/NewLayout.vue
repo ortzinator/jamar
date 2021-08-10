@@ -2,11 +2,11 @@
     <div>
         <jet-banner />
 
-        <div class="md:flex md:flex-col bg-wild-blue-yonder-50 md:h-screen">
+        <div class="md:flex md:flex-col bg-cool-grey-50 md:h-screen">
             <div class="md:flex md:flex-shrink-0">
                 <div
                     class="
-                        bg-wild-blue-yonder-900
+                        bg-light-blue-vivid-800
                         flex
                         items-center
                         justify-between
@@ -38,30 +38,20 @@
                         <DisclosurePanel class="flex justify-end w-full">
                             <ul
                                 class="
-                                    text-wild-blue-yonder-300
+                                    text-light-blue-vivid-300
                                     space-y-5
                                     md:hidden
                                     text-right
                                 "
                             >
-                                <nav-link
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
+                                <NavLink
+                                    v-for="nav in navigation"
+                                    :key="nav.name"
+                                    :href="nav.href"
+                                    :active="nav.current"
                                 >
-                                    Dashboard
-                                </nav-link>
-                                <nav-link
-                                    :href="route('policies')"
-                                    :active="route().current('policies')"
-                                >
-                                    Policies
-                                </nav-link>
-                                <nav-link
-                                    :href="route('holders')"
-                                    :active="route().current('holders')"
-                                >
-                                    Policyholders
-                                </nav-link>
+                                    {{ nav.name }}
+                                </NavLink>
                             </ul>
                         </DisclosurePanel>
                     </Disclosure>
@@ -77,6 +67,7 @@
                         w-full
                     "
                 >
+                    <div>Jamar</div>
                     <Menu as="div" class="relative">
                         <div>
                             <MenuButton class="inline-flex items-center">
@@ -177,42 +168,37 @@
             <div class="md:flex md:flex-grow md:overflow-hidden">
                 <nav
                     class="
-                        bg-wild-blue-yonder-800
+                        bg-cool-grey-100
                         overflow-y-auto
                         hidden
                         md:flex md:flex-shrink-0 md:justify-center md:w-56
                     "
                 >
-                    <ul class="text-wild-blue-yonder-300 space-y-5 mt-12">
-                        <nav-link
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
+                    <ul
+                        class="mt-12 space-y-3 text-light-blue-vivid-900 w-full"
+                    >
+                        <NavLink
+                            v-for="nav in navigation"
+                            :key="nav.name"
+                            :href="nav.href"
+                            :active="nav.current"
                         >
-                            <PresentationChartBarIcon class="h-5 w-5 inline" />
-                            Dashboard
-                        </nav-link>
-                        <nav-link
-                            :href="route('policies')"
-                            :active="route().current('policies')"
-                        >
-                            <DocumentTextIcon class="h-5 w-5 inline" />
-                            Policies
-                        </nav-link>
-                        <nav-link
-                            :href="route('holders')"
-                            :active="route().current('holders')"
-                        >
-                            <UsersIcon class="h-5 w-5 inline" />
-                            Policyholders
-                        </nav-link>
+                            {{ nav.name }}
+                        </NavLink>
                     </ul>
                 </nav>
                 <div
                     scroll-region
-                    class="md:overflow-y-auto md:p-10 p-5 space-y-5 w-full"
+                    class="
+                        md:overflow-y-auto md:p-10
+                        p-5
+                        space-y-5
+                        w-full
+                        shadow-inner
+                    "
                 >
                     <header class="py-5" v-if="$slots.header">
-                        <div class="text-3xl font-bold">
+                        <div class="font-bold">
                             <slot name="header" />
                         </div>
                     </header>
@@ -245,7 +231,6 @@ import {
     UsersIcon,
     DocumentTextIcon,
 } from "@heroicons/vue/outline";
-import Button from "../Jetstream/Button.vue";
 
 export default {
     components: {
@@ -275,12 +260,29 @@ export default {
     setup() {
         const showingNavigationDropdown = ref(false);
         const navOpen = ref(false);
+        const navigation = ref([
+            {
+                name: "Dashboard",
+                href: route("dashboard"),
+                current: route().current("dashboard"),
+            },
+            {
+                name: "Policies",
+                href: route("policies"),
+                current: route().current("policies"),
+            },
+            {
+                name: "Polcyholder",
+                href: route("holders"),
+                current: route().current("holders"),
+            },
+        ]);
 
         function logout() {
             this.$inertia.post(route("logout"));
         }
 
-        return { showingNavigationDropdown, logout, navOpen };
+        return { showingNavigationDropdown, logout, navOpen, navigation };
     },
 };
 </script>

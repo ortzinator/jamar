@@ -1,16 +1,21 @@
 <template>
     <app-layout>
         <template #header>
-            <h2>
+            <h1>
                 <inertia-link
-                    class="text-indigo-400 hover:text-indigo-600"
+                    class="
+                        text-light-blue-vivid-400
+                        hover:text-light-blue-vivid-600
+                    "
                     :href="route('policies')"
                 >
                     Policies
                 </inertia-link>
-                <span class="text-indigo-400 font-medium">&nbsp;/</span>
+                <span class="text-light-blue-vivid-400 font-medium"
+                    >&nbsp;/</span
+                >
                 New Policy
-            </h2>
+            </h1>
         </template>
 
         <form @submit.prevent="store">
@@ -75,7 +80,7 @@
                         <holder-list :holders="policyForm.holders" class="mb-5">
                             Policyholders
                             <template v-slot:noHolders>
-                                <div class="mb-5 text-yellow-500">
+                                <div class="mb-5 text-yellow-vivid-600">
                                     <exclamation-icon
                                         class="inline h-5 mr-2 w-5"
                                     />
