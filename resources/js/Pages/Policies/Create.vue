@@ -11,22 +11,24 @@
                 >
                     Policies
                 </inertia-link>
-                <span class="text-light-blue-vivid-400 font-medium"
-                    >&nbsp;/</span
-                >
+                <span class="text-light-blue-vivid-400 font-medium">/</span>
                 New Policy
             </h1>
         </template>
 
         <form @submit.prevent="store">
-            <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
-                <div class="p-5">
-                    <div class="mb-5">
-                        <jet-label
-                            for="template"
-                            value="Policy Type"
-                        ></jet-label>
-                        <select class="mr-5" v-model="selectedTemplate">
+            <div class="">
+                <FormSection>
+                    <template #header>Basics</template>
+                    <template #description>
+                        Description of this section
+                    </template>
+                    <jet-label for="template" value="Policy Type"></jet-label>
+                    <div class="flex items-center">
+                        <select
+                            class="border border-cool-grey-200 mr-5 rounded"
+                            v-model="selectedTemplate"
+                        >
                             <option
                                 v-bind:value="template.fields"
                                 v-for="template in templates"
@@ -35,38 +37,32 @@
                                 {{ template.label }}
                             </option>
                         </select>
-                        <Popper
-                            hover
-                            arrow
-                            class="inline-block"
-                            placement="right"
-                        >
-                            <QuestionMarkCircleIcon class="text-blue-600 w-5">
-                            </QuestionMarkCircleIcon>
+                        <Popper hover arrow placement="right">
+                            <QuestionMarkCircleIcon
+                                class="text-light-blue-vivid-600 w-5 h-5"
+                            />
                             <template #content>Help text</template>
                         </Popper>
                     </div>
-                    <div class="mb-5">
-                        <jet-label
-                            for="number"
-                            value="Policy Number"
-                        ></jet-label>
-                        <jet-input
-                            v-model="policyForm.number"
-                            id="number"
-                            type="text"
-                            class="block w-full"
-                        />
-                        <jet-input-error
-                            :message="policyForm.errors.number"
-                        ></jet-input-error>
+                    <jet-label for="number" value="Policy Number" />
+                    <jet-input
+                        v-model="policyForm.number"
+                        id="number"
+                        type="text"
+                        class="block w-full"
+                    />
+                    <jet-input-error :message="policyForm.errors.number" />
+                    <div class="text-gray-600 text-sm text-left">
+                        Period of Insurance
                     </div>
-                    <div class="mb-5">
-                        <div class="text-gray-600 text-sm text-left">
-                            Period of Insurance
-                        </div>
-                        <date-range v-model="policyForm.period" />
-                    </div>
+                    <date-range v-model="policyForm.period" />
+                </FormSection>
+                <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+                <FormSection>
+                    <template #header>Policy Fields</template>
+                    <template #description>
+                        Description of this section
+                    </template>
                     <div class="mb-5">
                         <policy-fields-list
                             :fields="policyForm.fields"
@@ -91,19 +87,12 @@
                         <select-policyholder @selected="holderSelected">
                         </select-policyholder>
                     </div>
-                </div>
-                <div
-                    class="
-                        px-8
-                        py-4
-                        bg-gray-100
-                        border-t border-gray-200
-                        flex
-                        items-center
-                    "
-                >
+                </FormSection>
+                <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+                <div class="flex justify-between mt-5">
+                    <div>Problems</div>
                     <loading-button
-                        class="btn btn-primary ml-auto"
+                        class="btn btn-primary"
                         type="submit"
                         :loading="policyForm.processing"
                     >
@@ -116,9 +105,12 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import AppLayout from "@/Layouts/NewLayout";
 import { useForm } from "@inertiajs/inertia-vue3";
+import { ExclamationIcon } from "@heroicons/vue/outline";
+import { QuestionMarkCircleIcon } from "@heroicons/vue/outline";
+import Popper from "vue3-popper";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
@@ -130,9 +122,7 @@ import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
 import DateRange from "@/Shared/DateRange";
 import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
 import HolderList from "@/Shared/Policyholder/HolderList";
-import { ExclamationIcon } from "@heroicons/vue/outline";
-import { QuestionMarkCircleIcon } from "@heroicons/vue/outline";
-import Popper from "vue3-popper";
+import FormSection from "@/Shared/FormSection";
 
 export default {
     components: {
@@ -150,6 +140,7 @@ export default {
         ExclamationIcon,
         QuestionMarkCircleIcon,
         Popper,
+        FormSection,
     },
     setup(props) {
         const policyForm = useForm("policy", {
