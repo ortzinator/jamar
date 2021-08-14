@@ -41,7 +41,13 @@
                             <QuestionMarkCircleIcon
                                 class="text-light-blue-vivid-600 w-5 h-5"
                             />
-                            <template #content>Help text</template>
+                            <template #content>
+                                <div
+                                    class="bg-white px-5 py-3 rounded shadow-xl"
+                                >
+                                    Help text
+                                </div>
+                            </template>
                         </Popper>
                     </div>
                     <jet-label for="number" value="Policy Number" />
@@ -63,34 +69,31 @@
                     <template #description>
                         Description of this section
                     </template>
-                    <div class="mb-5">
-                        <policy-fields-list
-                            :fields="policyForm.fields"
-                            @fieldAdded="
-                                (field) => policyForm.fields.push(field)
-                            "
-                            class="mb-5"
-                        ></policy-fields-list>
-                    </div>
-                    <div class="mb-5">
-                        <holder-list :holders="policyForm.holders" class="mb-5">
-                            Policyholders
-                            <template v-slot:noHolders>
-                                <div class="mb-5 text-yellow-vivid-600">
-                                    <exclamation-icon
-                                        class="inline h-5 mr-2 w-5"
-                                    />
-                                    Please add one or more policyholders
-                                </div>
-                            </template>
-                        </holder-list>
-                        <select-policyholder @selected="holderSelected">
-                        </select-policyholder>
-                    </div>
+
+                    <policy-fields-list
+                        :fields="policyForm.fields"
+                        @fieldAdded="(field) => policyForm.fields.push(field)"
+                        class="mb-5"
+                    ></policy-fields-list>
+                </FormSection>
+                <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+                <FormSection>
+                    <template #header>Policyholders</template>
+                    <template #description> Add policyholders here </template>
+                    <holder-list :holders="policyForm.holders" class="mb-5">
+                        Policyholders
+                        <template v-slot:noHolders>
+                            <div class="mb-5 text-yellow-vivid-600">
+                                <exclamation-icon class="inline h-5 mr-2 w-5" />
+                                Please add one or more policyholders
+                            </div>
+                        </template>
+                    </holder-list>
+                    <SelectPolicyholder @selected="holderSelected" />
                 </FormSection>
                 <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
                 <div class="flex justify-between mt-5">
-                    <div>Problems</div>
+                    <div>Problems?</div>
                     <loading-button
                         class="btn btn-primary"
                         type="submit"
@@ -105,7 +108,7 @@
 </template>
 
 <script>
-import { ref, watch, computed } from "vue";
+import { ref, watch } from "vue";
 import AppLayout from "@/Layouts/NewLayout";
 import { useForm } from "@inertiajs/inertia-vue3";
 import { ExclamationIcon } from "@heroicons/vue/outline";
@@ -142,7 +145,7 @@ export default {
         Popper,
         FormSection,
     },
-    setup(props) {
+    setup() {
         const policyForm = useForm("policy", {
             number: null,
             holders: [],

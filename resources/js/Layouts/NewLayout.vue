@@ -329,17 +329,3 @@ export default {
     },
 };
 </script>
-
-<style>
-:root {
-    --popper-theme-background-color: #333333;
-    --popper-theme-background-color-hover: #333333;
-    --popper-theme-text-color: #ffffff;
-    --popper-theme-border-width: 0px;
-    --popper-theme-border-style: solid;
-    --popper-theme-border-radius: 6px;
-    --popper-theme-padding: 0.5rem;
-    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04),
-        0 4px 3px rgba(0, 0, 0, 0.1);
-}
-</style>

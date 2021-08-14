@@ -22,9 +22,9 @@ class HolderController extends Controller
     public function index(Request $request)
     {
         if ($request->expectsJson()) {
-            return Holder::select('id', 'name')
+            return Holder::select('id', 'name', 'address')
                 ->orderBy('name')
-                ->filter($request->only('search', 'trashed'))->limit(5)->get();
+                ->filter($request->only('search', 'trashed'))->limit(10)->get();
         }
 
         return Inertia::render('Holders/Index', [

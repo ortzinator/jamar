@@ -1,55 +1,57 @@
 <template>
-    <div
-        class="
-            mb-5
-            p-5
-            rounded
-            space-x-4
-            bg-blue-100
-            border border-blue-200
-            shadow-lg
-            space-y-5
-        "
-    >
-        <input
-            type="text"
-            v-model="searchTerm"
-            placeholder="Search policyholders..."
-            class="border-0 rounded-r shadow w-full"
-        />
-        <div v-if="loading">
+    <div class="border border-gray-300 p-2 bg-white">
+        <div class="flex items-center">
+            <input
+                type="text"
+                v-model="searchTerm"
+                placeholder="Search policyholders..."
+                class="border-0 rounded-r shadow w-full"
+            />
             <icon
+                v-if="loading"
                 name="spinner"
-                class="animate-spin fill-current h-5 mr-2 text-gray-400 w-5"
+                class="-ml-8 animate-spin fill-current h-6 text-gray-400 w-6"
             />
         </div>
-        <div v-else-if="this.results.length > 0">
-            <ul>
-                <li v-for="holder in this.results" :key="holder.id" class="p-1">
-                    <button
-                        type="button"
-                        v-text="holder.name"
+        <div class="overflow-auto h-52 mt-2">
+            <ul v-if="results.length > 0" class="space-y-2 mt-2">
+                <li
+                    v-for="holder in results"
+                    :key="holder.id"
+                    class="hover:bg-light-blue-vivid-50"
+                >
+                    <a
                         @click="$emit('selected', holder)"
-                    ></button>
+                        class="cursor-pointer p-2 block"
+                    >
+                        <div v-text="holder.name"></div>
+                        <div v-text="holder.address"></div>
+                    </a>
                 </li>
             </ul>
-        </div>
-        <div v-else-if="this.searchTerm" class="italic text-gray-400">
-            None found
+            <ul v-else-if="searchTerm" class="italic text-gray-400">
+                <li>None found</li>
+            </ul>
         </div>
     </div>
 </template>
 <script>
-import { useForm } from "@inertiajs/inertia-vue3";
+import { ref, watch, computed } from "vue";
 import throttle from "lodash/throttle";
-import pickBy from "lodash/pickBy";
+import Popper from "vue3-popper";
+import { SelectorIcon } from "@heroicons/vue/outline";
+import {
+    Listbox,
+    ListboxButton,
+    ListboxOptions,
+    ListboxOption,
+} from "@headlessui/vue";
 
 import JetInput from "@/Jetstream/Input";
 import JetLabel from "@/Jetstream/Label";
 import JetInputError from "@/Jetstream/InputError";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import Icon from "@/Shared/Icon";
-
 import LoadingButton from "@/Shared/LoadingButton";
 
 export default {
@@ -61,46 +63,57 @@ export default {
         JetValidationErrors,
         LoadingButton,
         Icon,
+        Popper,
+        Listbox,
+        ListboxButton,
+        ListboxOptions,
+        ListboxOption,
     },
-    data() {
-        return {
-            searchTerm: "",
-            results: [],
-            loading: false,
-            cancelSource: null,
-        };
-    },
-    watch: {
-        searchTerm() {
-            this.refreshSearch();
-        },
-    },
-    methods: {
-        refreshSearch: throttle(function () {
-            if (this.cancelSource) {
-                this.cancelSource.cancel();
-            }
-            this.cancelSource = axios.CancelToken.source();
+    setup() {
+        var isOpen = ref(false);
+        var searchTerm = ref("");
+        var results = ref([]);
+        var loading = ref(false);
+        var cancelSource = ref(null);
+        var selectedHolder = ref(null);
 
-            if (this.searchTerm === "") {
-                this.results = [];
+        var refreshSearch = throttle(function () {
+            if (cancelSource.value) {
+                cancelSource.value.cancel();
+            }
+            cancelSource.value = axios.CancelToken.source();
+
+            if (searchTerm.value === "") {
+                results.value = [];
                 return;
             }
 
-            this.loading = true;
+            loading.value = true;
             axios
                 .get(route("holders"), {
-                    params: { search: this.searchTerm },
-                    cancelToken: this.cancelSource.token,
+                    params: { search: searchTerm.value },
+                    cancelToken: cancelSource.value.token,
                 })
                 .then((response) => {
                     if (response) {
-                        this.results = response.data;
-                        this.loading = false;
-                        this.cancelSource = null;
+                        results.value = response.data;
+                        loading.value = false;
+                        cancelSource.value = null;
                     }
                 });
-        }, 200),
+        }, 200);
+
+        watch(searchTerm, () => refreshSearch());
+
+        return {
+            isOpen,
+            searchTerm,
+            results,
+            loading,
+            cancelSource,
+            refreshSearch,
+            selectedHolder,
+        };
     },
 };
 </script>
