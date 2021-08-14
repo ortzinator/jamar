@@ -41927,13 +41927,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "border border-gray-300 p-2 bg-white"
+  "class": "bg-white p-2 rounded shadow"
 };
 var _hoisted_2 = {
   "class": "flex items-center"
 };
 var _hoisted_3 = {
-  "class": "overflow-auto h-52 mt-2"
+  "class": "overflow-auto h-52 mt-2 pr-1"
 };
 var _hoisted_4 = {
   key: 0,
@@ -41957,7 +41957,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.searchTerm = $event;
     }),
     placeholder: "Search policyholders...",
-    "class": "border-0 rounded-r shadow w-full"
+    "class": "border-0 rounded-r w-full"
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.searchTerm]]), $setup.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_icon, {
@@ -41967,7 +41967,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [$setup.results.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("ul", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.results, function (holder) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", {
       key: holder.id,
-      "class": "hover:bg-light-blue-vivid-50"
+      "class": "hover:bg-light-blue-vivid-50 odd:bg-cool-grey-50"
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
       onClick: function onClick($event) {
         return _ctx.$emit('selected', holder);

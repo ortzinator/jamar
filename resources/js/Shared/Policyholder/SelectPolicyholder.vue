@@ -1,11 +1,11 @@
 <template>
-    <div class="border border-gray-300 p-2 bg-white">
+    <div class="bg-white p-2 rounded shadow">
         <div class="flex items-center">
             <input
                 type="text"
                 v-model="searchTerm"
                 placeholder="Search policyholders..."
-                class="border-0 rounded-r shadow w-full"
+                class="border-0 rounded-r w-full"
             />
             <icon
                 v-if="loading"
@@ -13,12 +13,12 @@
                 class="-ml-8 animate-spin fill-current h-6 text-gray-400 w-6"
             />
         </div>
-        <div class="overflow-auto h-52 mt-2">
+        <div class="overflow-auto h-52 mt-2 pr-1">
             <ul v-if="results.length > 0" class="space-y-2 mt-2">
                 <li
                     v-for="holder in results"
                     :key="holder.id"
-                    class="hover:bg-light-blue-vivid-50"
+                    class="hover:bg-light-blue-vivid-50 odd:bg-cool-grey-50"
                 >
                     <a
                         @click="$emit('selected', holder)"

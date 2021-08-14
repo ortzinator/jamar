@@ -103,6 +103,7 @@ module.exports = {
         extend: {
             opacity: ["disabled"],
             borderWidth: ["hover", "focus"],
+            backgroundColor: ["odd"],
         },
     },
 
