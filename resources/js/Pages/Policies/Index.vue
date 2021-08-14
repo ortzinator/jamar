@@ -92,8 +92,6 @@ import {
     SelectorIcon,
 } from "@heroicons/vue/outline";
 
-import throttle from "lodash/throttle";
-import pickBy from "lodash/pickBy";
 import { useForm, Link } from "@inertiajs/inertia-vue3";
 import dayjs from "dayjs";
 
@@ -128,15 +126,15 @@ export default {
             trashed: props.filters.trashed,
         });
 
-        const refreshSearch = throttle(function () {
+        const refreshSearch = _.debounce(function () {
             searchForm
-                .transform((data) => pickBy(data))
+                .transform((data) => _.pickBy(data))
                 .get("/policies", {
                     only: ["policies"],
                     preserveState: true,
                     preserveScroll: true,
                 });
-        }, 200);
+        }, 500);
 
         const formVals = computed(() => {
             return {

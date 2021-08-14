@@ -80,7 +80,11 @@
                 <FormSection>
                     <template #header>Policyholders</template>
                     <template #description> Add policyholders here </template>
-                    <holder-list :holders="policyForm.holders" class="mb-5">
+                    <holder-list
+                        :holders="policyForm.holders"
+                        class="mb-5"
+                        @holderClicked="handleHolderClick"
+                    >
                         Policyholders
                         <template v-slot:noHolders>
                             <div class="mb-5 text-yellow-vivid-600">
@@ -198,12 +202,17 @@ export default {
             policyForm.holders.push(holder);
         }
 
+        function handleHolderClick(holder) {
+            _.pull(policyForm.holders, holder);
+        }
+
         return {
             policyForm,
             templates,
             selectedTemplate,
             store,
             holderSelected,
+            handleHolderClick,
         };
     },
 };

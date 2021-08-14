@@ -5,7 +5,7 @@
                 type="text"
                 v-model="searchTerm"
                 placeholder="Search policyholders..."
-                class="border-0 rounded-r w-full"
+                class="border-cool-grey-200 rounded w-full"
             />
             <icon
                 v-if="loading"
@@ -36,10 +36,8 @@
     </div>
 </template>
 <script>
-import { ref, watch, computed } from "vue";
-import throttle from "lodash/throttle";
+import { ref, watch } from "vue";
 import Popper from "vue3-popper";
-import { SelectorIcon } from "@heroicons/vue/outline";
 import {
     Listbox,
     ListboxButton,
@@ -77,7 +75,12 @@ export default {
         var cancelSource = ref(null);
         var selectedHolder = ref(null);
 
-        var refreshSearch = throttle(function () {
+        function refreshSearch() {
+            loading.value = true;
+            search();
+        }
+
+        var search = _.debounce(function () {
             if (cancelSource.value) {
                 cancelSource.value.cancel();
             }
@@ -88,20 +91,19 @@ export default {
                 return;
             }
 
-            loading.value = true;
             axios
                 .get(route("holders"), {
                     params: { search: searchTerm.value },
                     cancelToken: cancelSource.value.token,
                 })
                 .then((response) => {
+                    loading.value = false;
                     if (response) {
                         results.value = response.data;
-                        loading.value = false;
                         cancelSource.value = null;
                     }
                 });
-        }, 200);
+        }, 500);
 
         watch(searchTerm, () => refreshSearch());
 

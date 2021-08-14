@@ -53,8 +53,6 @@
 
 <script>
 import { watch, computed, ref } from "vue";
-import throttle from "lodash/throttle";
-import pickBy from "lodash/pickBy";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 import AppLayout from "@/Layouts/NewLayout";
@@ -87,15 +85,15 @@ export default {
             { text: "Policies", value: "policies_count" },
         ]);
 
-        const refreshSearch = throttle(function () {
+        const refreshSearch = _.debounce(function () {
             searchForm
-                .transform((data) => pickBy(data))
+                .transform((data) => _.pickBy(data))
                 .get("/holders", {
                     only: ["holders"],
                     preserveState: true,
                     preserveScroll: true,
                 });
-        }, 200);
+        }, 500);
 
         const formVals = computed(() => {
             return {
