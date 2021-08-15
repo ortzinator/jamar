@@ -34339,7 +34339,7 @@ __webpack_require__.r(__webpack_exports__);
         preserveState: true,
         preserveScroll: true
       });
-    }, 500);
+    }, 400);
 
     var formVals = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return {
@@ -34723,7 +34723,7 @@ __webpack_require__.r(__webpack_exports__);
         preserveState: true,
         preserveScroll: true
       });
-    }, 500);
+    }, 400);
 
     var formVals = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return {
@@ -35747,7 +35747,7 @@ __webpack_require__.r(__webpack_exports__);
           cancelSource.value = null;
         }
       });
-    }, 500);
+    }, 400);
 
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(searchTerm, function () {
       return refreshSearch();

@@ -93,7 +93,7 @@ export default {
                     preserveState: true,
                     preserveScroll: true,
                 });
-        }, 500);
+        }, 400);
 
         const formVals = computed(() => {
             return {

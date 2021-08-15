@@ -103,7 +103,7 @@ export default {
                         cancelSource.value = null;
                     }
                 });
-        }, 500);
+        }, 400);
 
         watch(searchTerm, () => refreshSearch());
 
