@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Policy;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Auth;
 
 class PolicyFactory extends Factory
 {
@@ -26,6 +28,7 @@ class PolicyFactory extends Factory
             'period_start' => now()->subDays(rand(0, 10)),
             'period_end' => now()->addDays(rand(5, 10)),
             'fields' => json_encode([]),
+            'agent_id' => User::first()->id,
         ];
     }
 }

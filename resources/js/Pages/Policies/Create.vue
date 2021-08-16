@@ -50,6 +50,19 @@
                             </template>
                         </Popper>
                     </div>
+                    <jet-label for="agent" value="Assigned Agent"></jet-label>
+                    <select
+                        class="border border-cool-grey-200 mr-5 rounded"
+                        v-model="policyForm.agent_id"
+                    >
+                        <option
+                            v-for="agent in users"
+                            v-bind:value="agent.id"
+                            v-bind:key="agent.id"
+                        >
+                            {{ agent.name }}
+                        </option>
+                    </select>
                     <jet-label for="number" value="Policy Number" />
                     <jet-input
                         v-model="policyForm.number"
@@ -132,6 +145,7 @@ import HolderList from "@/Shared/Policyholder/HolderList";
 import FormSection from "@/Shared/FormSection";
 
 export default {
+    props: ["users"],
     components: {
         AppLayout,
         JetInput,
@@ -149,7 +163,7 @@ export default {
         Popper,
         FormSection,
     },
-    setup() {
+    setup(props, context) {
         const policyForm = useForm("policy", {
             number: null,
             holders: [],
@@ -159,6 +173,7 @@ export default {
                 end: null,
             },
             fields: [],
+            agent_id: context.attrs.user.id,
         });
 
         const templates = ref([

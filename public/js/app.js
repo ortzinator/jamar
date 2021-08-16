@@ -34445,6 +34445,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["users"],
   components: {
     AppLayout: _Layouts_NewLayout__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_4__.default,
@@ -34462,7 +34463,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     Popper: vue3_popper__WEBPACK_IMPORTED_MODULE_15__.default,
     FormSection: _Shared_FormSection__WEBPACK_IMPORTED_MODULE_14__.default
   },
-  setup: function setup() {
+  setup: function setup(props, context) {
     var policyForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)("policy", {
       number: null,
       holders: [],
@@ -34471,7 +34472,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         start: null,
         end: null
       },
-      fields: []
+      fields: [],
+      agent_id: context.attrs.user.id
     });
     var templates = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
       id: 1,
@@ -39293,7 +39295,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
-        onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+        onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $setup.store && $setup.store.apply($setup, arguments);
         }, ["prevent"]))
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FormSection, null, {
@@ -39340,11 +39342,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* STABLE */
 
           })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+            "for": "agent",
+            value: "Assigned Agent"
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+            "class": "border border-cool-grey-200 mr-5 rounded",
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+              return $setup.policyForm.agent_id = $event;
+            })
+          }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.users, function (agent) {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("option", {
+              value: agent.id,
+              key: agent.id
+            }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(agent.name), 9
+            /* TEXT, PROPS */
+            , ["value"]);
+          }), 128
+          /* KEYED_FRAGMENT */
+          ))], 512
+          /* NEED_PATCH */
+          ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.policyForm.agent_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
             "for": "number",
             value: "Policy Number"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
             modelValue: $setup.policyForm.number,
-            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
               return $setup.policyForm.number = $event;
             }),
             id: "number",
@@ -39358,7 +39379,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           /* PROPS */
           , ["message"]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
             modelValue: $setup.policyForm.period,
-            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+            "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
               return $setup.policyForm.period = $event;
             })
           }, null, 8
@@ -39378,7 +39399,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_policy_fields_list, {
             fields: $setup.policyForm.fields,
-            onFieldAdded: _cache[4] || (_cache[4] = function (field) {
+            onFieldAdded: _cache[5] || (_cache[5] = function (field) {
               return $setup.policyForm.fields.push(field);
             }),
             "class": "mb-5"

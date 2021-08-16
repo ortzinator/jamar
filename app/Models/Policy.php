@@ -43,6 +43,11 @@ class Policy extends Model
         return $this->belongsToMany(Holder::class)->withTimestamps();
     }
 
+    public function agent()
+    {
+        return $this->belongsTo(User::class, 'agent_id');
+    }
+
     public function cacheKey()
     {
         return sprintf(

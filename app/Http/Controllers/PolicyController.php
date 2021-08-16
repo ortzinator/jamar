@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Holder;
 use App\Models\Policy;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -46,7 +47,8 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Create', [
             'holders' => Inertia::lazy(fn () => Holder::orderBy('name')
                 ->filter($request->only('search', 'trashed'))
-            )
+            ),
+            'users' => User::all(['id', 'name'])
         ]);
     }
 
@@ -79,7 +81,7 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Edit', [
             'policy' => $policy->load(['holders' => function($query) {
                 $query->select(['name', 'id']);
-            }]),
+            }])->load('agent'),
             'fields' => $policy->fields
         ]);
     }

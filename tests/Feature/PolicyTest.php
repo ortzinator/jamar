@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Testing\Assert;
 use Tests\TestCase;
 
@@ -182,5 +183,19 @@ class PolicyTest extends TestCase
                 ->has('policies.data', 2), function (Collection $val) use ($pol1) {
                     return $val->contains($pol1->number);
                 });
+    }
+
+    public function test_a_policy_has_an_agent()
+    {
+        $this->signIn(true);
+        $this->withExceptionHandling();
+
+        $policy = Policy::factory()->create(['number' => '1234']);
+
+        $this->get(route('policies.edit', $policy->id))
+            ->assertOk()
+            ->assertInertia(fn (Assert $page) => $page
+                ->where('policy.agent.name', Auth::user()->name)
+            );
     }
 }
