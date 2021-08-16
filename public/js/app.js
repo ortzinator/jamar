@@ -34601,6 +34601,8 @@ __webpack_require__.r(__webpack_exports__);
     fields: Array
   },
   setup: function setup(props) {
+    var _props$policy$fields;
+
     var policyForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
       number: props.policy.number,
       holders: props.policy.holders,
@@ -34609,7 +34611,7 @@ __webpack_require__.r(__webpack_exports__);
         start: props.policy.period_start,
         end: props.policy.period_end
       },
-      fields: props.policy.fields
+      fields: (_props$policy$fields = props.policy.fields) !== null && _props$policy$fields !== void 0 ? _props$policy$fields : []
     });
     var sending = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var fieldFormShown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);

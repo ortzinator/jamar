@@ -187,7 +187,7 @@ export default {
                 start: props.policy.period_start,
                 end: props.policy.period_end,
             },
-            fields: props.policy.fields,
+            fields: props.policy.fields ?? [],
         });
 
         const sending = ref(false);

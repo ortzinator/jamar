@@ -27,7 +27,6 @@ class PolicyFactory extends Factory
             'number' => $this->faker->regexify('[A-Za-z0-9]{8}'),
             'period_start' => now()->subDays(rand(0, 10)),
             'period_end' => now()->addDays(rand(5, 10)),
-            'fields' => json_encode([]),
             'agent_id' => User::first()->id,
         ];
     }

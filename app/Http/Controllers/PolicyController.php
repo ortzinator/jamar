@@ -65,6 +65,7 @@ class PolicyController extends Controller
             'fields.*.name' => ['required'],
             'period_start' => ['required'],
             'period_end' => ['required'],
+            'agent_id' => ['required']
         ]));
         
         return Redirect::to(route('policies'))->banner('Policy created');
