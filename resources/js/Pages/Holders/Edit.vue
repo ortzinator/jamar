@@ -69,6 +69,29 @@
                             :message="form.errors.address"
                         ></jet-input-error>
                     </div>
+                    <div class="mb-5">
+                        <Disclosure v-slot="{ open }">
+                            <DisclosureButton class="flex items-center">
+                                <label for="notes" class="cursor-pointer"
+                                    >Agent Notes</label
+                                >
+                                <ChevronRightIcon
+                                    :class="open ? 'transform rotate-90' : ''"
+                                    class="h-5 w-5 ml-2"
+                                />
+                            </DisclosureButton>
+                            <DisclosurePanel class="mt-5">
+                                <textarea
+                                    name="notes"
+                                    id="notes"
+                                    class="block w-full"
+                                    cols="30"
+                                    rows="10"
+                                    v-model="form.notes"
+                                ></textarea>
+                            </DisclosurePanel>
+                        </Disclosure>
+                    </div>
                 </div>
                 <div
                     class="
@@ -145,16 +168,18 @@
 </template>
 
 <script>
-import { useForm } from "@inertiajs/inertia-vue3";
-import AppLayout from "@/Layouts/NewLayout";
-import LoadingButton from "@/Shared/LoadingButton";
-import { TrashIcon } from "@heroicons/vue/outline";
+import { useForm } from '@inertiajs/inertia-vue3';
+import AppLayout from '@/Layouts/NewLayout';
+import LoadingButton from '@/Shared/LoadingButton';
+import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
 
-import JetInput from "@/Jetstream/Input";
-import JetLabel from "@/Jetstream/Label";
-import JetInputError from "@/Jetstream/InputError";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
+import JetInput from '@/Jetstream/Input';
+import JetLabel from '@/Jetstream/Label';
+import JetInputError from '@/Jetstream/InputError';
+import JetValidationErrors from '@/Jetstream/ValidationErrors';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
+
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 
 export default {
     components: {
@@ -166,15 +191,20 @@ export default {
         LoadingButton,
         JetConfirmationModal,
         TrashIcon,
+        Disclosure,
+        DisclosureButton,
+        DisclosurePanel,
+        ChevronRightIcon
     },
     props: {
         errors: Object,
-        holder: Object,
+        holder: Object
     },
     setup(props) {
         const form = useForm({
             name: props.holder.name,
             address: props.holder.address,
+            notes: props.holder.notes
         });
 
         return { form };
@@ -182,21 +212,21 @@ export default {
     data() {
         return {
             confirmingDelete: false,
-            confirmingRestore: false,
+            confirmingRestore: false
         };
     },
     methods: {
         updateHolder() {
-            this.form.put(this.route("holders.update", this.holder.id));
+            this.form.put(this.route('holders.update', this.holder.id));
         },
         destroy() {
-            this.form.delete(this.route("holders.destroy", this.holder.id));
+            this.form.delete(this.route('holders.destroy', this.holder.id));
             this.confirmingDelete = false;
         },
         restore() {
-            this.form.put(this.route("holders.restore", this.holder.id));
+            this.form.put(this.route('holders.restore', this.holder.id));
             this.confirmingRestore = false;
-        },
-    },
+        }
+    }
 };
 </script>

@@ -14,13 +14,13 @@ use Tests\TestCase;
 class HolderTest extends TestCase
 {
     use RefreshDatabase;
+    use WithFaker;
 
     public function test_holders_cannot_be_viewed_by_non_admins()
     {
         $this->signIn();
 
-        $this->get(route('holders'))
-            ->assertStatus(403);
+        $this->get(route('holders'))->assertStatus(403);
     }
 
     public function test_holders_can_be_viewed_by_admins()
@@ -29,12 +29,11 @@ class HolderTest extends TestCase
 
         Holder::factory(3)->create();
 
-        $this->get(route('holders'))
-            ->assertInertia(function (Assert $page){
-                $page->component('Holders/Index')
-                    ->has('holders.data', 3);
-            });
-            // ->assertPropCount(3, 'holders.data');
+        $this->get(route('holders'))->assertInertia(
+            fn(Assert $page) => $page
+                ->component('Holders/Index')
+                ->has('holders.data', 3)
+        );
     }
 
     public function test_can_search_for_holders()
@@ -45,12 +44,12 @@ class HolderTest extends TestCase
         $holder = Holder::factory()->create(['name' => 'John Doe']);
         Holder::factory()->create(['name' => 'Jane Doe']);
 
-        $this->get('holders?search=John')
-            ->assertInertia(fn (Assert $page) => $page
-                    ->where('filters.search', 'John')
-                    ->has('holders.data', 1)
-                    ->where('holders.data.0.address', $holder->address)
-            );
+        $this->get('holders?search=John')->assertInertia(
+            fn(Assert $page) => $page
+                ->where('filters.search', 'John')
+                ->has('holders.data', 1)
+                ->where('holders.data.0.address', $holder->address)
+        );
     }
 
     public function test_an_admin_can_edit_holders()
@@ -60,13 +59,14 @@ class HolderTest extends TestCase
 
         $holder = Holder::factory()->create(['name' => 'John Doe']);
 
-        $this->get(route('holders.edit', $holder->id))
-        ->assertInertia(fn (Assert $page) => $page
-            ->component('Holders/Edit')
+        $this->get(route('holders.edit', $holder->id))->assertInertia(
+            fn(Assert $page) => $page->component('Holders/Edit')
         );
 
-        $this->put(route('holders.update', $holder->id), ['name' => 'Jane Doe', 'address' => $holder->address])
-            ->assertRedirect(route('holders.edit', $holder->id));
+        $this->put(route('holders.update', $holder->id), [
+            'name' => 'Jane Doe',
+            'address' => $holder->address
+        ])->assertRedirect(route('holders.edit', $holder->id));
 
         $this->assertEquals('Jane Doe', $holder->fresh()->name);
     }
@@ -78,10 +78,9 @@ class HolderTest extends TestCase
         $holders = Holder::factory(4)->create(['name' => 'John Doe']);
         $holders->first()->delete();
 
-        $this->get(route('holders'))
-            ->assertInertia(fn (Assert $page) => $page
-                ->has('holders.data', 3)
-            );
+        $this->get(route('holders'))->assertInertia(
+            fn(Assert $page) => $page->has('holders.data', 3)
+        );
     }
 
     public function test_can_search_by_deleted_holders()
@@ -92,10 +91,9 @@ class HolderTest extends TestCase
         $holders = Holder::factory(4)->create(['name' => 'John Doe']);
         $holders->first()->delete();
 
-        $this->get('holders?trashed=with')
-            ->assertInertia(fn (Assert $page) => $page
-                ->has('holders.data', 4)
-            );
+        $this->get('holders?trashed=with')->assertInertia(
+            fn(Assert $page) => $page->has('holders.data', 4)
+        );
     }
 
     public function test_holder_can_be_deleted()
@@ -109,14 +107,40 @@ class HolderTest extends TestCase
 
         $this->get($path);
 
-        $this->delete(route('holders.destroy', $holder->id))
-            ->assertRedirect($path);
+        $this->delete(route('holders.destroy', $holder->id))->assertRedirect(
+            $path
+        );
 
-        $this->get($path)
-            ->assertInertia(fn (Assert $page) => $page
-                ->where('holder.deleted_at', function($val){
-                    return !is_null($val);
-                })
-            );
+        $this->get($path)->assertInertia(
+            fn(Assert $page) => $page->where(
+                'holder.deleted_at',
+                fn($val) => !is_null($val)
+            )
+        );
+    }
+
+    public function test_holder_can_be_created()
+    {
+        $this->signIn(true);
+        $this->withoutExceptionHandling();
+
+        $holder = [
+            'id' => 1,
+            'name' => $this->faker->name(),
+            'address' => $this->faker->address(),
+            'notes' => $this->faker->paragraph()
+        ];
+
+        $this->post(route('holders.store'), $holder)->assertRedirect(
+            route('holders')
+        );
+
+        $this->get(route('holders.edit', 1))->assertInertia(
+            fn(Assert $page) => $page
+                ->component('Holders/Edit')
+                ->has('holder.name')
+                ->has('holder.address')
+                ->has('holder.notes')
+        );
     }
 }

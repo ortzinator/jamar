@@ -23,7 +23,8 @@ class HolderFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'address' => $this->faker->address
+            'address' => $this->faker->address,
+            'notes' => $this->faker->paragraph
         ];
     }
 }
