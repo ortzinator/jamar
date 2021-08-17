@@ -34518,8 +34518,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }).post(route('policies.store'));
     }
 
+    function holderExists(holder) {
+      return _.findIndex(policyForm.holders, function (o) {
+        return _.isMatch(o, holder);
+      }) > -1;
+    }
+
     function holderSelected(holder) {
-      policyForm.holders.push(holder);
+      if (!holderExists(holder)) {
+        policyForm.holders.push(holder);
+      }
     }
 
     function handleHolderClick(holder) {
@@ -35699,7 +35707,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ["selected"],
+  emits: ['selected'],
   components: {
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_2__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
@@ -35715,7 +35723,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup() {
     var isOpen = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
-    var searchTerm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var searchTerm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var results = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var cancelSource = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
@@ -35733,12 +35741,12 @@ __webpack_require__.r(__webpack_exports__);
 
       cancelSource.value = axios.CancelToken.source();
 
-      if (searchTerm.value === "") {
+      if (searchTerm.value === '') {
         results.value = [];
         return;
       }
 
-      axios.get(route("holders"), {
+      axios.get(route('holders'), {
         params: {
           search: searchTerm.value
         },

@@ -213,8 +213,18 @@ export default {
                 .post(route('policies.store'));
         }
 
+        function holderExists(holder) {
+            return (
+                _.findIndex(policyForm.holders, (o) => {
+                    return _.isMatch(o, holder);
+                }) > -1
+            );
+        }
+
         function holderSelected(holder) {
-            policyForm.holders.push(holder);
+            if (!holderExists(holder)) {
+                policyForm.holders.push(holder);
+            }
         }
 
         function handleHolderClick(holder) {

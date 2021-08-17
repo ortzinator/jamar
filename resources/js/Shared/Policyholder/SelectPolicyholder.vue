@@ -36,24 +36,24 @@
     </div>
 </template>
 <script>
-import { ref, watch } from "vue";
-import Popper from "vue3-popper";
+import { ref, watch } from 'vue';
+import Popper from 'vue3-popper';
 import {
     Listbox,
     ListboxButton,
     ListboxOptions,
-    ListboxOption,
-} from "@headlessui/vue";
+    ListboxOption
+} from '@headlessui/vue';
 
-import JetInput from "@/Jetstream/Input";
-import JetLabel from "@/Jetstream/Label";
-import JetInputError from "@/Jetstream/InputError";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import Icon from "@/Shared/Icon";
-import LoadingButton from "@/Shared/LoadingButton";
+import JetInput from '@/Jetstream/Input';
+import JetLabel from '@/Jetstream/Label';
+import JetInputError from '@/Jetstream/InputError';
+import JetValidationErrors from '@/Jetstream/ValidationErrors';
+import Icon from '@/Shared/Icon';
+import LoadingButton from '@/Shared/LoadingButton';
 
 export default {
-    emits: ["selected"],
+    emits: ['selected'],
     components: {
         JetInput,
         JetLabel,
@@ -65,11 +65,11 @@ export default {
         Listbox,
         ListboxButton,
         ListboxOptions,
-        ListboxOption,
+        ListboxOption
     },
     setup() {
         var isOpen = ref(false);
-        var searchTerm = ref("");
+        var searchTerm = ref('');
         var results = ref([]);
         var loading = ref(false);
         var cancelSource = ref(null);
@@ -86,15 +86,15 @@ export default {
             }
             cancelSource.value = axios.CancelToken.source();
 
-            if (searchTerm.value === "") {
+            if (searchTerm.value === '') {
                 results.value = [];
                 return;
             }
 
             axios
-                .get(route("holders"), {
+                .get(route('holders'), {
                     params: { search: searchTerm.value },
-                    cancelToken: cancelSource.value.token,
+                    cancelToken: cancelSource.value.token
                 })
                 .then((response) => {
                     loading.value = false;
@@ -114,8 +114,8 @@ export default {
             loading,
             cancelSource,
             refreshSearch,
-            selectedHolder,
+            selectedHolder
         };
-    },
+    }
 };
 </script>
