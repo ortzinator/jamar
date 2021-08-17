@@ -125,27 +125,27 @@
 </template>
 
 <script>
-import { ref, watch } from "vue";
-import AppLayout from "@/Layouts/NewLayout";
-import { useForm } from "@inertiajs/inertia-vue3";
-import { ExclamationIcon } from "@heroicons/vue/outline";
-import { QuestionMarkCircleIcon } from "@heroicons/vue/outline";
-import Popper from "vue3-popper";
+import { ref, watch } from 'vue';
+import AppLayout from '@/Layouts/NewLayout';
+import { useForm } from '@inertiajs/inertia-vue3';
+import { ExclamationIcon } from '@heroicons/vue/outline';
+import { QuestionMarkCircleIcon } from '@heroicons/vue/outline';
+import Popper from 'vue3-popper';
 
-import JetInput from "@/Jetstream/Input";
-import JetLabel from "@/Jetstream/Label";
-import JetInputError from "@/Jetstream/InputError";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
-import LoadingButton from "@/Shared/LoadingButton";
-import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
-import DateRange from "@/Shared/DateRange";
-import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
-import HolderList from "@/Shared/Policyholder/HolderList";
-import FormSection from "@/Shared/FormSection";
+import JetInput from '@/Jetstream/Input';
+import JetLabel from '@/Jetstream/Label';
+import JetInputError from '@/Jetstream/InputError';
+import JetValidationErrors from '@/Jetstream/ValidationErrors';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
+import LoadingButton from '@/Shared/LoadingButton';
+import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
+import DateRange from '@/Shared/DateRange';
+import SelectPolicyholder from '@/Shared/Policyholder/SelectPolicyholder';
+import HolderList from '@/Shared/Policyholder/HolderList';
+import FormSection from '@/Shared/FormSection';
 
 export default {
-    props: ["users"],
+    props: ['users'],
     components: {
         AppLayout,
         JetInput,
@@ -161,37 +161,37 @@ export default {
         ExclamationIcon,
         QuestionMarkCircleIcon,
         Popper,
-        FormSection,
+        FormSection
     },
     setup(props, context) {
-        const policyForm = useForm("policy", {
+        const policyForm = useForm('policy', {
             number: null,
             holders: [],
             created_at: null,
             period: {
                 start: null,
-                end: null,
+                end: null
             },
             fields: [],
-            agent_id: context.attrs.user.id,
+            agent_id: context.attrs.user.id
         });
 
         const templates = ref([
             {
                 id: 1,
-                name: "none",
-                label: "None",
-                fields: null,
+                name: 'none',
+                label: 'None',
+                fields: null
             },
             {
                 id: 2,
-                name: "vehicle",
-                label: "Vehicle",
+                name: 'vehicle',
+                label: 'Vehicle',
                 fields: [
-                    { id: 1, name: "license", value: "" },
-                    { id: 2, name: "vin", value: "" },
-                ],
-            },
+                    { id: 1, name: 'license', value: '' },
+                    { id: 2, name: 'vin', value: '' }
+                ]
+            }
         ]);
 
         const selectedTemplate = ref(null);
@@ -208,9 +208,9 @@ export default {
                 .transform((data) => ({
                     ...data,
                     period_start: data.period.start,
-                    period_end: data.period.end,
+                    period_end: data.period.end
                 }))
-                .post(route("policies.store"));
+                .post(route('policies.store'));
         }
 
         function holderSelected(holder) {
@@ -227,8 +227,8 @@ export default {
             selectedTemplate,
             store,
             holderSelected,
-            handleHolderClick,
+            handleHolderClick
         };
-    },
+    }
 };
 </script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePolicyRequest;
 use App\Models\Holder;
 use App\Models\Policy;
 use App\Models\User;
@@ -9,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class PolicyController extends Controller
@@ -26,9 +28,9 @@ class PolicyController extends Controller
                 ->with('holders')
                 ->filter($request->only('search', 'trashed'))
                 ->paginate()
-                ->through(function($policy){
+                ->through(function ($policy) {
                     return $policy->append('holderNamesPreview');
-                })
+                }),
         ]);
     }
 
@@ -45,10 +47,12 @@ class PolicyController extends Controller
     public function create(Request $request)
     {
         return Inertia::render('Policies/Create', [
-            'holders' => Inertia::lazy(fn () => Holder::orderBy('name')
-                ->filter($request->only('search', 'trashed'))
+            'holders' => Inertia::lazy(
+                fn() => Holder::orderBy('name')->filter(
+                    $request->only('search', 'trashed'),
+                ),
             ),
-            'users' => User::all(['id', 'name'])
+            'users' => User::all(['id', 'name']),
         ]);
     }
 
@@ -58,16 +62,19 @@ class PolicyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePolicyRequest $request)
     {
-        Policy::create($request->validate([
-            'number' => ['required'],
-            'fields.*.name' => ['required'],
-            'period_start' => ['required'],
-            'period_end' => ['required'],
-            'agent_id' => ['required']
-        ]));
-        
+        $policy = Policy::create([
+            'number' => $request['number'],
+            'period_start' => new Carbon($request['range.start']),
+            'period_end' => new Carbon($request['range.end']),
+            'fields' => $request['fields'],
+            'agent_id' => $request['agent_id'],
+        ]);
+
+        $holders = Arr::pluck($request['holders'], 'id');
+        $policy->holders()->sync($holders);
+
         return Redirect::to(route('policies'))->banner('Policy created');
     }
 
@@ -80,10 +87,14 @@ class PolicyController extends Controller
     public function edit(Policy $policy)
     {
         return Inertia::render('Policies/Edit', [
-            'policy' => $policy->load(['holders' => function($query) {
-                $query->select(['name', 'id']);
-            }])->load('agent'),
-            'fields' => $policy->fields
+            'policy' => $policy
+                ->load([
+                    'holders' => function ($query) {
+                        $query->select(['name', 'id']);
+                    },
+                ])
+                ->load('agent'),
+            'fields' => $policy->fields,
         ]);
     }
 
@@ -143,7 +154,12 @@ class PolicyController extends Controller
         $end = Carbon::now()->addDays($days);
 
         if ($request->expectsJson()) {
-            return Policy::select(['number', 'id', 'period_start', 'period_end'])
+            return Policy::select([
+                'number',
+                'id',
+                'period_start',
+                'period_end',
+            ])
                 ->orderBy('period_end')
                 ->where('period_end', '>', $start)
                 ->where('period_end', '<', $end)
@@ -157,9 +173,9 @@ class PolicyController extends Controller
                 ->where('period_end', '>', $start)
                 ->where('period_end', '<', $end)
                 ->paginate()
-                ->through(function($policy){
+                ->through(function ($policy) {
                     return $policy->append('holderNamesPreview');
-                })
+                }),
         ]);
     }
 }

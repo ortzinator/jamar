@@ -34445,7 +34445,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["users"],
+  props: ['users'],
   components: {
     AppLayout: _Layouts_NewLayout__WEBPACK_IMPORTED_MODULE_1__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_4__.default,
@@ -34464,7 +34464,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     FormSection: _Shared_FormSection__WEBPACK_IMPORTED_MODULE_14__.default
   },
   setup: function setup(props, context) {
-    var policyForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)("policy", {
+    var policyForm = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)('policy', {
       number: null,
       holders: [],
       created_at: null,
@@ -34477,21 +34477,21 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     });
     var templates = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
       id: 1,
-      name: "none",
-      label: "None",
+      name: 'none',
+      label: 'None',
       fields: null
     }, {
       id: 2,
-      name: "vehicle",
-      label: "Vehicle",
+      name: 'vehicle',
+      label: 'Vehicle',
       fields: [{
         id: 1,
-        name: "license",
-        value: ""
+        name: 'license',
+        value: ''
       }, {
         id: 2,
-        name: "vin",
-        value: ""
+        name: 'vin',
+        value: ''
       }]
     }]);
     var selectedTemplate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
@@ -34515,7 +34515,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           period_start: data.period.start,
           period_end: data.period.end
         });
-      }).post(route("policies.store"));
+      }).post(route('policies.store'));
     }
 
     function holderSelected(holder) {
