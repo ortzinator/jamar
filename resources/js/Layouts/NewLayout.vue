@@ -3,7 +3,7 @@
         <jet-banner />
 
         <div class="md:flex md:flex-col bg-cool-grey-50 md:h-screen">
-            <div class="md:flex md:flex-shrink-0">
+            <div class="md:flex md:flex-shrink-0 bg-white">
                 <div
                     class="
                         bg-cool-grey-800
@@ -110,6 +110,7 @@
                         px-6
                         py-4
                         w-full
+                        max-w-screen-2xl
                     "
                 >
                     <div>Jamar</div>
@@ -158,7 +159,7 @@
                                             active
                                                 ? 'bg-gray-100 text-gray-900'
                                                 : 'text-gray-700',
-                                            'block px-4 py-2 text-sm',
+                                            'block px-4 py-2 text-sm'
                                         ]"
                                     >
                                         <UserCircleIcon
@@ -178,7 +179,7 @@
                                             active
                                                 ? 'bg-gray-100 text-gray-900'
                                                 : 'text-gray-700',
-                                            'block px-4 py-2 text-sm',
+                                            'block px-4 py-2 text-sm'
                                         ]"
                                     >
                                         API Tokens
@@ -194,7 +195,7 @@
                                             active
                                                 ? 'bg-gray-100 text-gray-900'
                                                 : 'text-gray-700',
-                                            'block px-4 py-2 text-sm',
+                                            'block px-4 py-2 text-sm'
                                         ]"
                                     >
                                         <button type="submit flex">
@@ -232,22 +233,18 @@
                 </nav>
                 <div
                     scroll-region
-                    class="
-                        md:overflow-y-auto md:p-10
-                        p-5
-                        space-y-5
-                        w-full
-                        shadow-inner
-                    "
+                    class="md:overflow-y-auto w-full shadow-inner"
                 >
-                    <header class="py-5" v-if="$slots.header">
-                        <div class="font-bold">
-                            <slot name="header" />
-                        </div>
-                    </header>
-                    <main>
-                        <slot />
-                    </main>
+                    <div class="max-w-screen-2xl md:p-10 p-5">
+                        <header class="py-5" v-if="$slots.header">
+                            <div class="font-bold">
+                                <slot name="header" />
+                            </div>
+                        </header>
+                        <main>
+                            <slot />
+                        </main>
+                    </div>
                 </div>
             </div>
         </div>
@@ -255,15 +252,15 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from "vue";
-import JetApplicationMark from "@/Jetstream/ApplicationMark";
-import JetBanner from "@/Jetstream/Banner";
-import JetDropdown from "@/Jetstream/Dropdown";
-import JetDropdownLink from "@/Jetstream/DropdownLink";
-import NavLink from "@/Shared/NavLink";
-import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import { reactive, ref, watch } from 'vue';
+import JetApplicationMark from '@/Jetstream/ApplicationMark';
+import JetBanner from '@/Jetstream/Banner';
+import JetDropdown from '@/Jetstream/Dropdown';
+import JetDropdownLink from '@/Jetstream/DropdownLink';
+import NavLink from '@/Shared/NavLink';
+import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 import {
     MenuIcon,
     XIcon,
@@ -272,8 +269,8 @@ import {
     UserCircleIcon,
     PresentationChartBarIcon,
     UsersIcon,
-    DocumentTextIcon,
-} from "@heroicons/vue/outline";
+    DocumentTextIcon
+} from '@heroicons/vue/outline';
 
 export default {
     components: {
@@ -297,7 +294,7 @@ export default {
         UserCircleIcon,
         PresentationChartBarIcon,
         UsersIcon,
-        DocumentTextIcon,
+        DocumentTextIcon
     },
 
     setup() {
@@ -305,27 +302,27 @@ export default {
         const navOpen = ref(false);
         const navigation = ref([
             {
-                name: "Dashboard",
-                href: route("dashboard"),
-                current: route().current("dashboard"),
+                name: 'Dashboard',
+                href: route('dashboard'),
+                current: route().current('dashboard')
             },
             {
-                name: "Policies",
-                href: route("policies"),
-                current: route().current("policies"),
+                name: 'Policies',
+                href: route('policies'),
+                current: route().current('policies')
             },
             {
-                name: "Polcyholder",
-                href: route("holders"),
-                current: route().current("holders"),
-            },
+                name: 'Polcyholder',
+                href: route('holders'),
+                current: route().current('holders')
+            }
         ]);
 
         function logout() {
-            this.$inertia.post(route("logout"));
+            this.$inertia.post(route('logout'));
         }
 
         return { showingNavigationDropdown, logout, navOpen, navigation };
-    },
+    }
 };
 </script>

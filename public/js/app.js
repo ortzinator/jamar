@@ -33536,21 +33536,21 @@ __webpack_require__.r(__webpack_exports__);
     var showingNavigationDropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var navOpen = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var navigation = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
-      name: "Dashboard",
-      href: route("dashboard"),
-      current: route().current("dashboard")
+      name: 'Dashboard',
+      href: route('dashboard'),
+      current: route().current('dashboard')
     }, {
-      name: "Policies",
-      href: route("policies"),
-      current: route().current("policies")
+      name: 'Policies',
+      href: route('policies'),
+      current: route().current('policies')
     }, {
-      name: "Polcyholder",
-      href: route("holders"),
-      current: route().current("holders")
+      name: 'Polcyholder',
+      href: route('holders'),
+      current: route().current('holders')
     }]);
 
     function logout() {
-      this.$inertia.post(route("logout"));
+      this.$inertia.post(route('logout'));
     }
 
     return {
@@ -36928,7 +36928,7 @@ var _hoisted_1 = {
   "class": "md:flex md:flex-col bg-cool-grey-50 md:h-screen"
 };
 var _hoisted_2 = {
-  "class": "md:flex md:flex-shrink-0"
+  "class": "md:flex md:flex-shrink-0 bg-white"
 };
 var _hoisted_3 = {
   "class": "\n                        bg-cool-grey-800\n                        flex\n                        items-center\n                        justify-between\n                        md:flex-shrink-0 md:justify-center md:w-56\n                        px-6\n                        py-4\n                        text-white\n                    "
@@ -36980,7 +36980,7 @@ var _hoisted_7 = {
   "class": "\n                                    text-light-blue-vivid-300\n                                    space-y-5\n                                    md:hidden\n                                    text-right\n                                "
 };
 var _hoisted_8 = {
-  "class": "\n                        bg-white\n                        flex\n                        justify-between\n                        md:px-12 md:py-5\n                        px-6\n                        py-4\n                        w-full\n                    "
+  "class": "\n                        bg-white\n                        flex\n                        justify-between\n                        md:px-12 md:py-5\n                        px-6\n                        py-4\n                        w-full\n                        max-w-screen-2xl\n                    "
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Jamar", -1
@@ -37023,13 +37023,16 @@ var _hoisted_19 = {
 };
 var _hoisted_20 = {
   "scroll-region": "",
-  "class": "\n                        md:overflow-y-auto md:p-10\n                        p-5\n                        space-y-5\n                        w-full\n                        shadow-inner\n                    "
+  "class": "md:overflow-y-auto w-full shadow-inner"
 };
 var _hoisted_21 = {
+  "class": "max-w-screen-2xl md:p-10 p-5"
+};
+var _hoisted_22 = {
   key: 0,
   "class": "py-5"
 };
-var _hoisted_22 = {
+var _hoisted_23 = {
   "class": "font-bold"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -37232,7 +37235,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["href", "active"]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [_ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])])])]);
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [_ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("header", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])])])])]);
 }
 
 /***/ }),
