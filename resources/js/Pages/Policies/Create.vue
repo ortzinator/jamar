@@ -23,60 +23,113 @@
                     <template #description>
                         Description of this section
                     </template>
-                    <jet-label for="template" value="Policy Type"></jet-label>
-                    <div class="flex items-center">
-                        <select
-                            class="border border-cool-grey-200 mr-5 rounded"
-                            v-model="selectedTemplate"
-                        >
-                            <option
-                                v-bind:value="template.fields"
-                                v-for="template in templates"
-                                v-bind:key="template.id"
-                            >
-                                {{ template.label }}
-                            </option>
-                        </select>
-                        <Popper hover arrow placement="right">
-                            <QuestionMarkCircleIcon
-                                class="text-light-blue-vivid-600 w-5 h-5"
-                            />
-                            <template #content>
-                                <div
-                                    class="bg-white px-5 py-3 rounded shadow-xl"
+                    <div class="grid gap-4">
+                        <div class="col-span-6 sm:col-span-4">
+                            <jet-label
+                                for="template"
+                                value="Policy Type"
+                            ></jet-label>
+                            <div class="flex items-center">
+                                <select
+                                    class="
+                                        border border-cool-grey-200
+                                        mr-5
+                                        mt-1
+                                        rounded
+                                    "
+                                    v-model="selectedTemplate"
                                 >
-                                    Help text
-                                </div>
-                            </template>
-                        </Popper>
+                                    <option
+                                        v-bind:value="template.fields"
+                                        v-for="template in templates"
+                                        v-bind:key="template.id"
+                                    >
+                                        {{ template.label }}
+                                    </option>
+                                </select>
+                                <Popper hover arrow placement="right">
+                                    <QuestionMarkCircleIcon
+                                        class="
+                                            text-light-blue-vivid-600
+                                            w-5
+                                            h-5
+                                        "
+                                    />
+                                    <template #content>
+                                        <div
+                                            class="
+                                                bg-white
+                                                px-5
+                                                py-3
+                                                rounded
+                                                shadow-xl
+                                            "
+                                        >
+                                            Help text
+                                        </div>
+                                    </template>
+                                </Popper>
+                            </div>
+                        </div>
+                        <div class="col-span-6 sm:col-span-4">
+                            <jet-label
+                                for="agent"
+                                value="Assigned Agent"
+                            ></jet-label>
+                            <select
+                                class="
+                                    border border-cool-grey-200
+                                    mr-5
+                                    rounded
+                                    mt-1
+                                "
+                                v-model="policyForm.agent_id"
+                            >
+                                <option
+                                    v-for="agent in users"
+                                    v-bind:value="agent.id"
+                                    v-bind:key="agent.id"
+                                >
+                                    {{ agent.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-span-6 sm:col-span-4">
+                            <jet-label for="number" value="Policy Number" />
+                            <jet-input
+                                v-model="policyForm.number"
+                                id="number"
+                                type="text"
+                                class="block w-full mt-1"
+                            />
+                            <jet-input-error
+                                :message="policyForm.errors.number"
+                            />
+                        </div>
+                        <div class="col-span-6 sm:col-span-4">
+                            <jet-label>Period of Insurance</jet-label>
+                            <div
+                                :class="{
+                                    formError:
+                                        policyForm.errors.period_start ||
+                                        policyForm.errors.period_end
+                                }"
+                                class="mt-1"
+                            >
+                                <date-range v-model="policyForm.period" />
+                            </div>
+                            <jet-input-error
+                                :message="policyForm.errors.period_start"
+                            />
+                            <jet-input-error
+                                :message="policyForm.errors.period_end"
+                            />
+                        </div>
                     </div>
-                    <jet-label for="agent" value="Assigned Agent"></jet-label>
-                    <select
-                        class="border border-cool-grey-200 mr-5 rounded"
-                        v-model="policyForm.agent_id"
-                    >
-                        <option
-                            v-for="agent in users"
-                            v-bind:value="agent.id"
-                            v-bind:key="agent.id"
-                        >
-                            {{ agent.name }}
-                        </option>
-                    </select>
-                    <jet-label for="number" value="Policy Number" />
-                    <jet-input
-                        v-model="policyForm.number"
-                        id="number"
-                        type="text"
-                        class="block w-full"
-                    />
-                    <jet-input-error :message="policyForm.errors.number" />
-                    <div class="text-gray-600 text-sm text-left">
-                        Period of Insurance
-                    </div>
-                    <date-range v-model="policyForm.period" />
                 </FormSection>
+
                 <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+
                 <FormSection>
                     <template #header>Policy Fields</template>
                     <template #description>
@@ -89,7 +142,9 @@
                         class="mb-5"
                     ></policy-fields-list>
                 </FormSection>
+
                 <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+
                 <FormSection>
                     <template #header>Policyholders</template>
                     <template #description> Add policyholders here </template>
@@ -108,7 +163,9 @@
                     </holder-list>
                     <SelectPolicyholder @selected="holderSelected" />
                 </FormSection>
+
                 <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+
                 <div class="flex justify-between mt-5">
                     <div>Problems?</div>
                     <loading-button
@@ -167,7 +224,6 @@ export default {
         const policyForm = useForm('policy', {
             number: null,
             holders: [],
-            created_at: null,
             period: {
                 start: null,
                 end: null

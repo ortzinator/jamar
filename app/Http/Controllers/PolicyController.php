@@ -30,7 +30,7 @@ class PolicyController extends Controller
                 ->paginate()
                 ->through(function ($policy) {
                     return $policy->append('holderNamesPreview');
-                }),
+                })
         ]);
     }
 
@@ -49,10 +49,10 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Create', [
             'holders' => Inertia::lazy(
                 fn() => Holder::orderBy('name')->filter(
-                    $request->only('search', 'trashed'),
-                ),
+                    $request->only('search', 'trashed')
+                )
             ),
-            'users' => User::all(['id', 'name']),
+            'users' => User::all(['id', 'name'])
         ]);
     }
 
@@ -69,7 +69,7 @@ class PolicyController extends Controller
             'period_start' => new Carbon($request['range.start']),
             'period_end' => new Carbon($request['range.end']),
             'fields' => $request['fields'],
-            'agent_id' => $request['agent_id'],
+            'agent_id' => $request['agent_id']
         ]);
 
         $holders = Arr::pluck($request['holders'], 'id');
@@ -91,10 +91,10 @@ class PolicyController extends Controller
                 ->load([
                     'holders' => function ($query) {
                         $query->select(['name', 'id']);
-                    },
+                    }
                 ])
                 ->load('agent'),
-            'fields' => $policy->fields,
+            'fields' => $policy->fields
         ]);
     }
 
@@ -112,7 +112,7 @@ class PolicyController extends Controller
             'holders' => ['array'],
             'period_start' => ['date'],
             'period_end' => ['date'],
-            'fields.*.name' => ['required'],
+            'fields.*.name' => ['required']
         ]);
 
         if ($request->has('holders')) {
@@ -124,7 +124,7 @@ class PolicyController extends Controller
             'number' => $request['number'],
             'period_start' => new Carbon($request['range.start']),
             'period_end' => new Carbon($request['range.end']),
-            'fields' => $request['fields'],
+            'fields' => $request['fields']
         ]);
         return Redirect::back()->banner('Policy updated');
     }
@@ -158,7 +158,7 @@ class PolicyController extends Controller
                 'number',
                 'id',
                 'period_start',
-                'period_end',
+                'period_end'
             ])
                 ->orderBy('period_end')
                 ->where('period_end', '>', $start)
@@ -175,7 +175,7 @@ class PolicyController extends Controller
                 ->paginate()
                 ->through(function ($policy) {
                     return $policy->append('holderNamesPreview');
-                }),
+                })
         ]);
     }
 }

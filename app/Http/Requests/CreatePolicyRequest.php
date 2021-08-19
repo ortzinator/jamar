@@ -34,4 +34,11 @@ class CreatePolicyRequest extends FormRequest
             'holders' => ['required']
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'holders.required' => 'At least one policyholder must be added'
+        ];
+    }
 }

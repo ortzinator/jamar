@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title inertia>Jamar</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter|Nunito&display=swap">
+        <!-- Fonts are imported via css -->
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
