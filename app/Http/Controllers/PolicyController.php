@@ -64,6 +64,7 @@ class PolicyController extends Controller
      */
     public function store(CreatePolicyRequest $request)
     {
+        $request->dd();
         $policy = Policy::create([
             'number' => $request['number'],
             'period_start' => new Carbon($request['range.start']),
