@@ -29,19 +29,31 @@
         >
             <ListboxOption
                 :value="null"
-                class="hover:bg-wild-blue-yonder-600 hover:text-white px-4 py-2"
+                class="
+                    hover:bg-wild-blue-yonder-600 hover:text-gray-400
+                    px-4
+                    py-2
+                "
             >
                 None
             </ListboxOption>
             <ListboxOption
                 value="with"
-                class="hover:bg-wild-blue-yonder-600 hover:text-white px-4 py-2"
+                class="
+                    hover:bg-wild-blue-yonder-600 hover:text-gray-400
+                    px-4
+                    py-2
+                "
             >
                 With Trashed
             </ListboxOption>
             <ListboxOption
                 value="only"
-                class="hover:bg-wild-blue-yonder-600 hover:text-white px-4 py-2"
+                class="
+                    hover:bg-wild-blue-yonder-600 hover:text-gray-400
+                    px-4
+                    py-2
+                "
             >
                 Only Trashed
             </ListboxOption>
@@ -50,34 +62,34 @@
 </template>
 
 <script>
-import { computed } from "vue";
-import { SelectorIcon } from "@heroicons/vue/outline";
+import { computed } from 'vue';
+import { SelectorIcon } from '@heroicons/vue/outline';
 import {
     Listbox,
     ListboxButton,
     ListboxOptions,
-    ListboxOption,
-} from "@headlessui/vue";
+    ListboxOption
+} from '@headlessui/vue';
 
 export default {
     props: { modelValue: String },
-    emits: ["update:modelValue"],
+    emits: ['update:modelValue'],
     components: {
         SelectorIcon,
         Listbox,
         ListboxButton,
         ListboxOptions,
-        ListboxOption,
+        ListboxOption
     },
     setup(props, { emit }) {
         const value = computed({
             get: () => props.modelValue,
             set: (val) => {
-                emit("update:modelValue", val);
-            },
+                emit('update:modelValue', val);
+            }
         });
 
         return { value };
-    },
+    }
 };
 </script>
