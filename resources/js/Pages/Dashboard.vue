@@ -14,8 +14,8 @@
                 grid-flow-row-dense
             "
         >
-            <EndingSoon class="border bg-white p-4 rounded" />
-            <Text class="border bg-white lg:col-span-2 rounded">
+            <EndingSoon class="shadow-sm bg-white p-4 rounded" />
+            <Text class="bg-white lg:col-span-2 rounded shadow-sm">
                 <template #header>Header</template>
 
                 Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -24,7 +24,7 @@
                 aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus
                 nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Text>
-            <Text class="border bg-white rounded">
+            <Text class="shadow-sm bg-white rounded">
                 <template #header>Header</template>
 
                 Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -33,7 +33,7 @@
                 aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus
                 nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Text>
-            <Text class="border bg-white rounded">
+            <Text class="shadow-sm bg-white rounded">
                 <template #header>Header</template>
 
                 Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -42,7 +42,7 @@
                 aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus
                 nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Text>
-            <Text class="border bg-white rounded">
+            <Text class="shadow-sm bg-white rounded">
                 <template #header>Header</template>
 
                 Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -51,7 +51,7 @@
                 aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus
                 nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Text>
-            <Text class="border bg-white rounded">
+            <Text class="shadow-sm bg-white rounded">
                 <template #header>Header</template>
 
                 Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -65,15 +65,15 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/NewLayout";
-import EndingSoon from "@/Widgets/EndingSoon";
-import Text from "@/Widgets/Text";
+import AppLayout from '@/Layouts/NewLayout';
+import EndingSoon from '@/Widgets/EndingSoon';
+import Text from '@/Widgets/Text';
 
 export default {
     components: {
         AppLayout,
         EndingSoon,
-        Text,
-    },
+        Text
+    }
 };
 </script>

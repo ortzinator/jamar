@@ -1,14 +1,8 @@
 <template>
-    <div class="">
-        <div v-if="$slots.header" class="border-b font-semibold p-4">
+    <div class="p-6">
+        <h4 v-if="$slots.header" class="font-semibold">
             <slot name="header"></slot>
-        </div>
-        <div class="prose p-4"><slot /></div>
+        </h4>
+        <div class="prose"><slot /></div>
     </div>
 </template>
-
-<script>
-export default {
-    setup() {},
-};
-</script>

@@ -10,18 +10,18 @@
     }
 
     h1 {
-        @apply text-2xl;
+        @apply text-2xl leading-loose;
     }
 
     h2 {
-        @apply text-xl;
+        @apply text-xl leading-loose;
     }
 
     h3,
     h4,
     h5,
     h6 {
-        @apply text-lg font-bold;
+        @apply text-lg font-bold leading-loose;
     }
 }
 
