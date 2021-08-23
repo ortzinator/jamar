@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\Holder;
+use App\Models\Contact;
 use App\Models\Policy;
 use App\Models\PolicyField;
 use Carbon\Carbon;
@@ -17,7 +17,7 @@ class PolicyTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_add_holders_to_a_policy()
+    public function test_can_add_contacts_to_a_policy()
     {
         $this->signIn(true);
         $this->withoutExceptionHandling();
@@ -28,16 +28,16 @@ class PolicyTest extends TestCase
 
         $policy->refresh();
 
-        /**  @var \Illuminate\Database\Eloquent\Collection $holders */
-        $holders = Holder::factory(3)->create();
+        /**  @var \Illuminate\Database\Eloquent\Collection $contacts */
+        $contacts = Contact::factory(3)->create();
 
         $this->put(route('policies.update', $policy->id), [
             'number' => $policy->number,
-            'holders' => $holders->toArray(),
+            'contacts' => $contacts->toArray()
         ]);
 
         $this->get(route('policies.edit', $policy->id))->assertInertia(
-            fn(Assert $page) => $page->has('policy.holders', 3),
+            fn(Assert $page) => $page->has('policy.contacts', 3)
         );
     }
 
@@ -48,7 +48,7 @@ class PolicyTest extends TestCase
         $policy = Policy::factory()->create();
 
         $this->put(route('policies.update', $policy->id), [
-            'number' => '',
+            'number' => ''
         ])->assertSessionHasErrors();
     }
 
@@ -60,7 +60,7 @@ class PolicyTest extends TestCase
         Policy::factory(10)->create();
 
         $this->get('policies/?search=1234')->assertInertia(
-            fn(Assert $page) => $page->has('policies.data', 1),
+            fn(Assert $page) => $page->has('policies.data', 1)
         );
     }
 
@@ -70,12 +70,12 @@ class PolicyTest extends TestCase
 
         $policy = Policy::factory()->create([
             'number' => '1234',
-            'fields' => ['name' => 'value', 'foobar' => 'testing123'],
+            'fields' => ['name' => 'value', 'foobar' => 'testing123']
         ]);
         Policy::factory(10)->create();
 
         $this->get('policies/?search=testing123')->assertInertia(
-            fn(Assert $page) => $page->has('policies.data', 1),
+            fn(Assert $page) => $page->has('policies.data', 1)
         );
     }
 
@@ -89,11 +89,11 @@ class PolicyTest extends TestCase
         Policy::factory(10)->create();
 
         $this->get('policies/?search=1234')->assertInertia(
-            fn(Assert $page) => $page->has('policies.data', 0),
+            fn(Assert $page) => $page->has('policies.data', 0)
         );
 
         $this->get('policies/?search=1234&trashed=with')->assertInertia(
-            fn(Assert $page) => $page->has('policies.data', 1),
+            fn(Assert $page) => $page->has('policies.data', 1)
         );
     }
 
@@ -123,15 +123,15 @@ class PolicyTest extends TestCase
 
         $pol1 = Policy::factory()->create([
             'period_start' => $twoDaysAgo,
-            'period_end' => $twoDaysFromNow,
+            'period_end' => $twoDaysFromNow
         ]);
         $pol2 = Policy::factory()->create([
             'period_start' => $aWeekAgo,
-            'period_end' => $twoDaysAgo,
+            'period_end' => $twoDaysAgo
         ]);
         $pol3 = Policy::factory()->create([
             'period_start' => $aWeekAgo,
-            'period_end' => $twoWeeksFromNow,
+            'period_end' => $twoWeeksFromNow
         ]);
 
         $this->getJson('/policies/ending-soon')
@@ -144,7 +144,7 @@ class PolicyTest extends TestCase
                 fn(Assert $page) => $page->has('policies.data', 2),
                 function (Collection $val) use ($pol1) {
                     return $val->contains($pol1->number);
-                },
+                }
             );
     }
 
@@ -160,8 +160,8 @@ class PolicyTest extends TestCase
             ->assertInertia(
                 fn(Assert $page) => $page->where(
                     'policy.agent.name',
-                    Auth::user()->name,
-                ),
+                    Auth::user()->name
+                )
             );
     }
 
@@ -171,10 +171,10 @@ class PolicyTest extends TestCase
         $this->withoutExceptionHandling();
 
         $policy = Policy::factory()->make(['id' => 1]);
-        $holders = Holder::factory(4)->create();
+        $contacts = Contact::factory(4)->create();
 
         $data = $policy->toArray();
-        $data['holders'] = $holders->toArray();
+        $data['contacts'] = $contacts->toArray();
 
         $this->post(route('policies.store'), $data);
 
@@ -182,10 +182,10 @@ class PolicyTest extends TestCase
 
         $this->get(route('policies.edit', 1))->assertInertia(
             fn(Assert $page) => $page
-                ->has('policy.holders', 4)
+                ->has('policy.contacts', 4)
                 ->has('policy.period_start')
                 ->has('policy.agent_id')
-                ->has('policy.number'),
+                ->has('policy.number')
         );
     }
 }

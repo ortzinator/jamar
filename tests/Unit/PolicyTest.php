@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Models\Holder;
+use App\Models\Contact;
 use App\Models\Policy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -10,23 +10,27 @@ use Tests\TestCase;
 class PolicyTest extends TestCase
 {
     use RefreshDatabase;
-    
-    public function test_a_policy_can_have_multiple_holders()
+
+    public function test_a_policy_can_have_multiple_contacts()
     {
         $policy = Policy::factory()->create();
-        $policy->holders()->attach(Holder::factory()->create());
-        $policy->holders()->attach(Holder::factory()->create());
+        $policy->contacts()->attach(Contact::factory()->create());
+        $policy->contacts()->attach(Contact::factory()->create());
 
-        $this->assertCount(2, $policy->holders);
+        $this->assertCount(2, $policy->contacts);
     }
 
-    public function test_a_policy_has_a_pretty_one_line_list_of_holders()
+    public function test_a_policy_has_a_pretty_one_line_list_of_contacts()
     {
         $policy = Policy::factory()->create();
-        $policy->holders()->attach(Holder::factory()->create(['name' => 'John Doe']));
-        $policy->holders()->attach(Holder::factory()->create(['name' => 'Jane Doe']));
+        $policy
+            ->contacts()
+            ->attach(Contact::factory()->create(['name' => 'John Doe']));
+        $policy
+            ->contacts()
+            ->attach(Contact::factory()->create(['name' => 'Jane Doe']));
 
-        $this->assertEquals('John Doe, Jane Doe', $policy->holderNamesPreview);
+        $this->assertEquals('John Doe, Jane Doe', $policy->contactNamesPreview);
     }
 
     public function test_a_policy_can_filter_by_expired()
@@ -75,7 +79,9 @@ class PolicyTest extends TestCase
 
     public function test_can_filter_cancelled_policies()
     {
-        Policy::factory()->create()->cancel();
+        Policy::factory()
+            ->create()
+            ->cancel();
         Policy::factory()->create();
 
         $list = Policy::cancelled()->get();

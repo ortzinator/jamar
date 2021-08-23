@@ -31,14 +31,14 @@ class CreatePolicyRequest extends FormRequest
             'period_start' => ['required'],
             'period_end' => ['required'],
             'agent_id' => ['required'],
-            'holders' => ['required']
+            'contacts' => ['required']
         ];
     }
 
     public function messages()
     {
         return [
-            'holders.required' => 'At least one policyholder must be added'
+            'contacts.required' => 'At least one contact must be added'
         ];
     }
 }

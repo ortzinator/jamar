@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Holder extends Model
+class Contact extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $guarded = [];
-    
+
     protected $appends = ['link'];
 
     protected $hidden = ['pivot'];
@@ -26,23 +26,26 @@ class Holder extends Model
 
     public function getLinkAttribute()
     {
-        return url("/holders/{$this->id}/edit");
+        return url("/contacts/{$this->id}/edit");
     }
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? null, function ($query, $search) {
-            $query->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('address', 'like', '%'.$search.'%');
+        $query
+            ->when($filters['search'] ?? null, function ($query, $search) {
+                $query->where(function ($query) use ($search) {
+                    $query
+                        ->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('address', 'like', '%' . $search . '%');
+                });
+            })
+            ->when($filters['trashed'] ?? null, function ($query, $trashed) {
+                if ($trashed === 'with') {
+                    $query->withTrashed();
+                } elseif ($trashed === 'only') {
+                    $query->onlyTrashed();
+                }
             });
-        })->when($filters['trashed'] ?? null, function ($query, $trashed) {
-            if ($trashed === 'with') {
-                $query->withTrashed();
-            } elseif ($trashed === 'only') {
-                $query->onlyTrashed();
-            }
-        });
     }
 
     public function resolveRouteBinding($id, $field = null)

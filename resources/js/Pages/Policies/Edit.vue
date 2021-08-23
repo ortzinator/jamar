@@ -33,7 +33,7 @@
             </div>
 
             <div
-                v-if="policyForm.holders.length === 0"
+                v-if="policyForm.contacts.length === 0"
                 class="
                     bg-red-vivid-200
                     flex
@@ -46,7 +46,7 @@
                 <div class="flex items-center">
                     <exclamation-icon class="h-5 mr-2 w-5" />
                     <div class="text-lg">
-                        This policy does not have any policyholders
+                        This policy does not have any contacts
                     </div>
                 </div>
             </div>
@@ -95,17 +95,15 @@
                     class="mb-5"
                 ></policy-fields-list>
 
-                <holder-list
-                    v-if="policyForm.holders.length > 0"
-                    :holders="policyForm.holders"
+                <contact-list
+                    v-if="policyForm.contacts.length > 0"
+                    :contacts="policyForm.contacts"
                     class="mb-5"
                 >
-                    Policyholders
-                </holder-list>
+                    Contacts
+                </contact-list>
 
-                <select-policyholder
-                    @selected="holderSelected"
-                ></select-policyholder>
+                <select-contact @selected="contactSelected"></select-contact>
             </div>
             <div
                 class="
@@ -140,22 +138,22 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from "vue";
-import { useForm } from "@inertiajs/inertia-vue3";
-import AppLayout from "@/Layouts/NewLayout";
-import { ExclamationIcon } from "@heroicons/vue/outline";
-import { TrashIcon } from "@heroicons/vue/outline";
-import PolicyFieldsList from "@/Shared/Fields/PolicyFieldsList";
-import HolderList from "@/Shared/Policyholder/HolderList";
-import SelectPolicyholder from "@/Shared/Policyholder/SelectPolicyholder";
-import LoadingButton from "@/Shared/LoadingButton";
-import DateRange from "@/Shared/DateRange";
-import { DatePicker } from "v-calendar";
+import { reactive, ref, watch } from 'vue';
+import { useForm } from '@inertiajs/inertia-vue3';
+import AppLayout from '@/Layouts/NewLayout';
+import { ExclamationIcon } from '@heroicons/vue/outline';
+import { TrashIcon } from '@heroicons/vue/outline';
+import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
+import ContactList from '@/Shared/Contact/ContactList';
+import SelectContact from '@/Shared/Contact/SelectContact';
+import LoadingButton from '@/Shared/LoadingButton';
+import DateRange from '@/Shared/DateRange';
+import { DatePicker } from 'v-calendar';
 
-import JetInput from "@/Jetstream/Input";
-import JetLabel from "@/Jetstream/Label";
-import JetInputError from "@/Jetstream/InputError";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetInput from '@/Jetstream/Input';
+import JetLabel from '@/Jetstream/Label';
+import JetInputError from '@/Jetstream/InputError';
+import JetValidationErrors from '@/Jetstream/ValidationErrors';
 
 export default {
     components: {
@@ -167,58 +165,58 @@ export default {
         JetInputError,
         JetValidationErrors,
         PolicyFieldsList,
-        HolderList,
+        ContactList,
         LoadingButton,
-        SelectPolicyholder,
+        SelectContact,
         DateRange,
-        DatePicker,
+        DatePicker
     },
     props: {
         errors: Object,
         policy: Object,
-        fields: Array,
+        fields: Array
     },
     setup(props) {
         const policyForm = useForm({
             number: props.policy.number,
-            holders: props.policy.holders,
+            contacts: props.policy.contacts,
             created_at: props.policy.created_at,
             range: {
                 start: props.policy.period_start,
-                end: props.policy.period_end,
+                end: props.policy.period_end
             },
-            fields: props.policy.fields ?? [],
+            fields: props.policy.fields ?? []
         });
 
         const sending = ref(false);
         const fieldFormShown = ref(false);
 
         function updatePolicy() {
-            policyForm.put(route("policies.update", props.policy.id));
+            policyForm.put(route('policies.update', props.policy.id));
         }
 
         function destroy() {
-            //TODO check if holder is associated with a policy
-            if (confirm("Are you sure you want to delete this policy?")) {
-                policyForm.delete(route("policies.destroy", props.policy.id));
+            //TODO check if contact is associated with a policy
+            if (confirm('Are you sure you want to delete this policy?')) {
+                policyForm.delete(route('policies.destroy', props.policy.id));
             }
         }
 
         function restore() {
-            if (confirm("Are you sure you want to restore this policy?")) {
-                policyForm.put(route("policies.restore", props.policy.id));
+            if (confirm('Are you sure you want to restore this policy?')) {
+                policyForm.put(route('policies.restore', props.policy.id));
             }
         }
 
-        function holderSelected(holder) {
-            policyForm.holders.push(holder);
+        function contactSelected(contact) {
+            policyForm.contacts.push(contact);
         }
 
         function formatDate(date) {
             return new Date(date).toLocaleDateString(undefined, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
             });
         }
 
@@ -229,9 +227,9 @@ export default {
             updatePolicy,
             destroy,
             restore,
-            holderSelected,
-            formatDate,
+            contactSelected,
+            formatDate
         };
-    },
+    }
 };
 </script>

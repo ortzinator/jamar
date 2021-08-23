@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <template #header>
-            <h1>Holders</h1>
+            <h1>Contacts</h1>
         </template>
 
         <div>
@@ -31,39 +31,39 @@
                 </div>
                 <inertia-link
                     class="btn btn-primary"
-                    :href="route('holders.create')"
+                    :href="route('contacts.create')"
                 >
                     <span>Create</span>
-                    <span class="hidden md:inline"> Policyholder</span>
+                    <span class="hidden md:inline"> Contact</span>
                 </inertia-link>
             </div>
             <div class="">
                 <div class="shadow rounded bg-white overflow-x-auto">
                     <DataTable
-                        :dataSource="holders.data"
+                        :dataSource="contacts.data"
                         :columns="columns"
-                        routeName="holders.edit"
+                        routeName="contacts.edit"
                     />
                 </div>
-                <pagination :links="holders.links"></pagination>
+                <pagination :links="contacts.links"></pagination>
             </div>
         </div>
     </app-layout>
 </template>
 
 <script>
-import { watch, computed, ref } from "vue";
-import { useForm } from "@inertiajs/inertia-vue3";
+import { watch, computed, ref } from 'vue';
+import { useForm } from '@inertiajs/inertia-vue3';
 
-import AppLayout from "@/Layouts/NewLayout";
-import Pagination from "@/Shared/Pagination";
-import FilterSelect from "@/Shared/FilterSelect";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import { ChevronRightIcon } from "@heroicons/vue/outline";
-import DataTable from "@/Shared/DataTable";
+import AppLayout from '@/Layouts/NewLayout';
+import Pagination from '@/Shared/Pagination';
+import FilterSelect from '@/Shared/FilterSelect';
+import JetCheckbox from '@/Jetstream/Checkbox';
+import { ChevronRightIcon } from '@heroicons/vue/outline';
+import DataTable from '@/Shared/DataTable';
 
 export default {
-    props: { sessions: Object, holders: Object, filters: Object },
+    props: { sessions: Object, contacts: Object, filters: Object },
 
     components: {
         AppLayout,
@@ -71,49 +71,49 @@ export default {
         JetCheckbox,
         ChevronRightIcon,
         DataTable,
-        FilterSelect,
+        FilterSelect
     },
     setup(props) {
         const searchForm = useForm({
             search: props.filters.search,
-            trashed: props.filters.trashed,
+            trashed: props.filters.trashed
         });
 
         const columns = ref([
-            { text: "Name", value: "name" },
-            { text: "Address", value: "address" },
-            { text: "Policies", value: "policies_count" },
+            { text: 'Name', value: 'name' },
+            { text: 'Address', value: 'address' },
+            { text: 'Policies', value: 'policies_count' }
         ]);
 
         const refreshSearch = _.debounce(function () {
             searchForm
                 .transform((data) => _.pickBy(data))
-                .get("/holders", {
-                    only: ["holders"],
+                .get('/contacts', {
+                    only: ['contacts'],
                     preserveState: true,
-                    preserveScroll: true,
+                    preserveScroll: true
                 });
         }, 400);
 
         const formVals = computed(() => {
             return {
                 search: searchForm.search,
-                trashed: searchForm.trashed,
+                trashed: searchForm.trashed
             };
         });
 
         function formatDate(date) {
-            const options = { year: "numeric", month: "long", day: "numeric" };
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return new Date(date).toLocaleDateString(undefined, options);
         }
 
         function reset() {
-            searchForm.search = "";
+            searchForm.search = '';
             searchForm.trashed = null;
         }
 
-        function holderLink(id) {
-            return route("holders.edit", id);
+        function contactLink(id) {
+            return route('contacts.edit', id);
         }
 
         watch(formVals, () => refreshSearch());
@@ -123,9 +123,9 @@ export default {
             refreshSearch,
             reset,
             formatDate,
-            holderLink,
-            columns,
+            contactLink,
+            columns
         };
-    },
+    }
 };
 </script>

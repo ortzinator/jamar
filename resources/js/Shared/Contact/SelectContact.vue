@@ -4,7 +4,7 @@
             <input
                 type="text"
                 v-model="searchTerm"
-                placeholder="Search policyholders..."
+                placeholder="Search contacts..."
                 class="border-cool-grey-200 rounded w-full"
             />
             <icon
@@ -16,16 +16,16 @@
         <div class="overflow-auto h-52 mt-2 pr-1">
             <ul v-if="results.length > 0" class="space-y-2 mt-2">
                 <li
-                    v-for="holder in results"
-                    :key="holder.id"
+                    v-for="contact in results"
+                    :key="contact.id"
                     class="hover:bg-light-blue-vivid-50 odd:bg-cool-grey-50"
                 >
                     <a
-                        @click="$emit('selected', holder)"
+                        @click="$emit('selected', contact)"
                         class="cursor-pointer p-2 block"
                     >
-                        <div v-text="holder.name"></div>
-                        <div v-text="holder.address"></div>
+                        <div v-text="contact.name"></div>
+                        <div v-text="contact.address"></div>
                     </a>
                 </li>
             </ul>
@@ -73,7 +73,7 @@ export default {
         var results = ref([]);
         var loading = ref(false);
         var cancelSource = ref(null);
-        var selectedHolder = ref(null);
+        var selectedContact = ref(null);
 
         function refreshSearch() {
             loading.value = true;
@@ -92,7 +92,7 @@ export default {
             }
 
             axios
-                .get(route('holders'), {
+                .get(route('contacts'), {
                     params: { search: searchTerm.value },
                     cancelToken: cancelSource.value.token
                 })
@@ -114,7 +114,7 @@ export default {
             loading,
             cancelSource,
             refreshSearch,
-            selectedHolder
+            selectedContact
         };
     }
 };

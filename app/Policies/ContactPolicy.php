@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Holder;
+use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class HolderPolicy
+class ContactPolicy
 {
     use HandlesAuthorization;
 
@@ -40,10 +40,10 @@ class HolderPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Holder  $holder
+     * @param  \App\Models\Contact  $contact
      * @return mixed
      */
-    public function view(User $user, Holder $holder)
+    public function view(User $user, Contact $contact)
     {
         //
     }
@@ -63,10 +63,10 @@ class HolderPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Holder  $holder
+     * @param  \App\Models\Contact  $contact
      * @return mixed
      */
-    public function update(User $user, Holder $holder)
+    public function update(User $user, Contact $contact)
     {
         //
     }
@@ -75,10 +75,10 @@ class HolderPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Holder  $holder
+     * @param  \App\Models\Contact  $contact
      * @return mixed
      */
-    public function delete(User $user, Holder $holder)
+    public function delete(User $user, Contact $contact)
     {
         //
     }
@@ -87,10 +87,10 @@ class HolderPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Holder  $holder
+     * @param  \App\Models\Contact  $contact
      * @return mixed
      */
-    public function restore(User $user, Holder $holder)
+    public function restore(User $user, Contact $contact)
     {
         //
     }
@@ -99,10 +99,10 @@ class HolderPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Holder  $holder
+     * @param  \App\Models\Contact  $contact
      * @return mixed
      */
-    public function forceDelete(User $user, Holder $holder)
+    public function forceDelete(User $user, Contact $contact)
     {
         //
     }

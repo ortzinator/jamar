@@ -7,9 +7,9 @@
                         text-light-blue-vivid-400
                         hover:text-light-blue-vivid-600
                     "
-                    :href="route('holders')"
+                    :href="route('contacts')"
                 >
-                    Holders
+                    Contacts
                 </inertia-link>
                 <span class="text-light-blue-vivid-400 font-medium"
                     >&nbsp;/</span
@@ -20,7 +20,7 @@
 
         <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
             <div
-                v-if="holder.deleted_at"
+                v-if="contact.deleted_at"
                 class="
                     bg-yellow-vivid-200
                     flex
@@ -32,7 +32,7 @@
             >
                 <div class="flex">
                     <trash-icon class="h-5 mr-2 w-5" />
-                    This policyholder is deleted
+                    This contact is deleted
                 </div>
                 <button
                     class="btn hover:underline"
@@ -41,7 +41,7 @@
                     Restore
                 </button>
             </div>
-            <form @submit.prevent="updateHolder">
+            <form @submit.prevent="updateContact">
                 <div class="p-8">
                     <div class="mb-5">
                         <jet-label for="name" value="Name"></jet-label>
@@ -104,20 +104,20 @@
                     "
                 >
                     <button
-                        v-if="!holder.deleted_at"
+                        v-if="!contact.deleted_at"
                         class="text-red-vivid-600 hover:underline"
                         tabindex="-1"
                         type="button"
                         @click="confirmingDelete = true"
                     >
-                        Delete holder
+                        Delete contact
                     </button>
                     <loading-button
                         class="btn btn-primary ml-auto"
                         type="submit"
                         :loading="form.processing"
                     >
-                        Update holder
+                        Update contact
                     </loading-button>
                 </div>
             </form>
@@ -127,10 +127,10 @@
             :show="confirmingRestore"
             @close="confirmingRestore = false"
         >
-            <template #title> Restore Policyholder </template>
+            <template #title> Restore Contact </template>
 
             <template #content>
-                Are you sure you want to restore this policyholder?
+                Are you sure you want to restore this contact?
             </template>
 
             <template #footer>
@@ -148,10 +148,10 @@
             :show="confirmingDelete"
             @close="confirmingDelete = false"
         >
-            <template #title> Delete Policyholder </template>
+            <template #title> Delete Contact </template>
 
             <template #content>
-                Are you sure you want to delete the Policyholder?
+                Are you sure you want to delete the Contact?
             </template>
 
             <template #footer>
@@ -198,13 +198,13 @@ export default {
     },
     props: {
         errors: Object,
-        holder: Object
+        contact: Object
     },
     setup(props) {
         const form = useForm({
-            name: props.holder.name,
-            address: props.holder.address,
-            notes: props.holder.notes
+            name: props.contact.name,
+            address: props.contact.address,
+            notes: props.contact.notes
         });
 
         return { form };
@@ -216,15 +216,15 @@ export default {
         };
     },
     methods: {
-        updateHolder() {
-            this.form.put(this.route('holders.update', this.holder.id));
+        updateContact() {
+            this.form.put(this.route('contacts.update', this.contact.id));
         },
         destroy() {
-            this.form.delete(this.route('holders.destroy', this.holder.id));
+            this.form.delete(this.route('contacts.destroy', this.contact.id));
             this.confirmingDelete = false;
         },
         restore() {
-            this.form.put(this.route('holders.restore', this.holder.id));
+            this.form.put(this.route('contacts.restore', this.contact.id));
             this.confirmingRestore = false;
         }
     }

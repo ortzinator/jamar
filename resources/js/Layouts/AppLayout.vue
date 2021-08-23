@@ -23,8 +23,8 @@
                                 <jet-nav-link :href="route('policies')" :active="route().current('policies')">
                                     Policies
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('holders')" :active="route().current('holders')">
-                                    Policyholders
+                                <jet-nav-link :href="route('contacts')" :active="route().current('contacts')">
+                                    Contacts
                                 </jet-nav-link>
                             </div>
                         </div>

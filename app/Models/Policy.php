@@ -19,28 +19,30 @@ class Policy extends Model
     protected $casts = [
         'fields' => 'array',
         'period_start' => 'datetime',
-        'period_end' => 'datetime',
+        'period_end' => 'datetime'
     ];
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? null, function ($query, $search) {
-            $query->where(function ($query) use ($search) {
-                $query->where('number', 'like', '%'.$search.'%');
-                $query->orWhere('fields', 'like', '%'.$search.'%');
+        $query
+            ->when($filters['search'] ?? null, function ($query, $search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('number', 'like', '%' . $search . '%');
+                    $query->orWhere('fields', 'like', '%' . $search . '%');
+                });
+            })
+            ->when($filters['trashed'] ?? null, function ($query, $trashed) {
+                if ($trashed === 'with') {
+                    $query->withTrashed();
+                } elseif ($trashed === 'only') {
+                    $query->onlyTrashed();
+                }
             });
-        })->when($filters['trashed'] ?? null, function ($query, $trashed) {
-            if ($trashed === 'with') {
-                $query->withTrashed();
-            } elseif ($trashed === 'only') {
-                $query->onlyTrashed();
-            }
-        });
     }
 
-    public function holders()
+    public function contacts()
     {
-        return $this->belongsToMany(Holder::class)->withTimestamps();
+        return $this->belongsToMany(Contact::class)->withTimestamps();
     }
 
     public function agent()
@@ -51,28 +53,32 @@ class Policy extends Model
     public function cacheKey()
     {
         return sprintf(
-            "%s/%s-%s",
+            '%s/%s-%s',
             $this->getTable(),
             $this->getKey(),
             $this->updated_at->timestamp
         );
     }
 
-    public function getHolderNamesPreviewAttribute()
+    public function getContactNamesPreviewAttribute()
     {
-        return Cache::remember($this->cacheKey() . ':holder_names', 15, function() {
-            return Str::limit($this->holders->implode('name', ', '), 100);
-        });
+        return Cache::remember(
+            $this->cacheKey() . ':contact_names',
+            15,
+            function () {
+                return Str::limit($this->contacts->implode('name', ', '), 100);
+            }
+        );
     }
 
     /**
-     * @param int $holderId The ID of the Holder you want to attach
-     * 
+     * @param int $contactId The ID of the Contact you want to attach
+     *
      * @return void
      */
-    public function attachHolder($holderId)
+    public function attachContact($contactId)
     {
-        $this->holders()->attach($holderId);
+        $this->contacts()->attach($contactId);
     }
 
     public function resolveRouteBinding($id, $field = null)

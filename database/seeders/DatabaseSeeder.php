@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Holder;
+use App\Models\Contact;
 use App\Models\Policy;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -22,10 +22,12 @@ class DatabaseSeeder extends Seeder
             'role_id' => 3
         ]); //User factory defaults password to "password"
 
-        $holders = Holder::factory(50)->create();
-        
-        $holders->map(function ($item, $key) {
-            Policy::factory()->hasAttached($item)->create();
+        $contacts = Contact::factory(50)->create();
+
+        $contacts->map(function ($item, $key) {
+            Policy::factory()
+                ->hasAttached($item)
+                ->create();
         });
     }
 }

@@ -7,14 +7,14 @@
                         text-light-blue-vivid-400
                         hover:text-light-blue-vivid-600
                     "
-                    href="/holders"
+                    href="/contacts"
                 >
-                    Holders
+                    Contacts
                 </inertia-link>
                 <span class="text-light-blue-vivid-400 font-medium"
                     >&nbsp;/</span
                 >
-                New Policyholder
+                New Contact
             </h1>
         </template>
 
@@ -59,7 +59,7 @@
                         type="submit"
                         :loading="form.processing"
                     >
-                        Create holder
+                        Create contact
                     </loading-button>
                 </div>
             </div>
@@ -68,15 +68,15 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/NewLayout";
-import { useForm } from "@inertiajs/inertia-vue3";
+import AppLayout from '@/Layouts/NewLayout';
+import { useForm } from '@inertiajs/inertia-vue3';
 
-import JetInput from "@/Jetstream/Input";
-import JetLabel from "@/Jetstream/Label";
-import JetInputError from "@/Jetstream/InputError";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
-import LoadingButton from "@/Shared/LoadingButton";
+import JetInput from '@/Jetstream/Input';
+import JetLabel from '@/Jetstream/Label';
+import JetInputError from '@/Jetstream/InputError';
+import JetValidationErrors from '@/Jetstream/ValidationErrors';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
+import LoadingButton from '@/Shared/LoadingButton';
 
 export default {
     components: {
@@ -86,20 +86,20 @@ export default {
         JetInputError,
         JetValidationErrors,
         JetConfirmationModal,
-        LoadingButton,
+        LoadingButton
     },
     setup(props) {
         const form = useForm({
             name: null,
-            address: null,
+            address: null
         });
 
         return { form };
     },
     methods: {
         store() {
-            this.form.post(this.route("holders.store"));
-        },
-    },
+            this.form.post(this.route('contacts.store'));
+        }
+    }
 };
 </script>

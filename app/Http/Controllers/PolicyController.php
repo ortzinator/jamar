@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePolicyRequest;
-use App\Models\Holder;
+use App\Models\Contact;
 use App\Models\Policy;
 use App\Models\User;
 use Carbon\Carbon;
@@ -25,11 +25,11 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
             'policies' => Policy::orderBy('created_at')
-                ->with('holders')
+                ->with('contacts')
                 ->filter($request->only('search', 'trashed'))
                 ->paginate()
                 ->through(function ($policy) {
-                    return $policy->append('holderNamesPreview');
+                    return $policy->append('contactNamesPreview');
                 })
         ]);
     }
@@ -47,8 +47,8 @@ class PolicyController extends Controller
     public function create(Request $request)
     {
         return Inertia::render('Policies/Create', [
-            'holders' => Inertia::lazy(
-                fn() => Holder::orderBy('name')->filter(
+            'contacts' => Inertia::lazy(
+                fn() => Contact::orderBy('name')->filter(
                     $request->only('search', 'trashed')
                 )
             ),
@@ -72,8 +72,8 @@ class PolicyController extends Controller
             'agent_id' => $request['agent_id']
         ]);
 
-        $holders = Arr::pluck($request['holders'], 'id');
-        $policy->holders()->sync($holders);
+        $contacts = Arr::pluck($request['contacts'], 'id');
+        $policy->contacts()->sync($contacts);
 
         return Redirect::to(route('policies'))->banner('Policy created');
     }
@@ -89,7 +89,7 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Edit', [
             'policy' => $policy
                 ->load([
-                    'holders' => function ($query) {
+                    'contacts' => function ($query) {
                         $query->select(['name', 'id']);
                     }
                 ])
@@ -109,15 +109,15 @@ class PolicyController extends Controller
     {
         $request->validate([
             'number' => ['required'],
-            'holders' => ['array'],
+            'contacts' => ['array'],
             'period_start' => ['date'],
             'period_end' => ['date'],
             'fields.*.name' => ['required']
         ]);
 
-        if ($request->has('holders')) {
-            $holders = Arr::pluck($request['holders'], 'id');
-            $policy->holders()->sync($holders);
+        if ($request->has('contacts')) {
+            $contacts = Arr::pluck($request['contacts'], 'id');
+            $policy->contacts()->sync($contacts);
         }
 
         $policy->update([
@@ -169,12 +169,12 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
             'policies' => Policy::orderBy('period_end')
-                ->with('holders')
+                ->with('contacts')
                 ->where('period_end', '>', $start)
                 ->where('period_end', '<', $end)
                 ->paginate()
                 ->through(function ($policy) {
-                    return $policy->append('holderNamesPreview');
+                    return $policy->append('contactNamesPreview');
                 })
         ]);
     }

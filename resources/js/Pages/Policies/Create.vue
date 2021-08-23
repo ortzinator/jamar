@@ -146,22 +146,22 @@
                 <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
 
                 <FormSection>
-                    <template #header>Policyholders</template>
-                    <template #description> Add policyholders here </template>
-                    <holder-list
-                        :holders="policyForm.holders"
+                    <template #header>Contacts</template>
+                    <template #description> Add contacts here </template>
+                    <contact-list
+                        :contacts="policyForm.contacts"
                         class="mb-5"
-                        @holderClicked="handleHolderClick"
+                        @contactClicked="handleContactClick"
                     >
-                        Policyholders
-                        <template v-slot:noHolders>
+                        Contacts
+                        <template v-slot:noContacts>
                             <div class="mb-5 text-yellow-vivid-600">
                                 <exclamation-icon class="inline h-5 mr-2 w-5" />
-                                Please add one or more policyholders
+                                Please add one or more contacts
                             </div>
                         </template>
-                    </holder-list>
-                    <SelectPolicyholder @selected="holderSelected" />
+                    </contact-list>
+                    <SelectContact @selected="contactSelected" />
                 </FormSection>
 
                 <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
@@ -197,8 +197,8 @@ import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 import LoadingButton from '@/Shared/LoadingButton';
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
 import DateRange from '@/Shared/DateRange';
-import SelectPolicyholder from '@/Shared/Policyholder/SelectPolicyholder';
-import HolderList from '@/Shared/Policyholder/HolderList';
+import SelectContact from '@/Shared/Contact/SelectContact';
+import ContactList from '@/Shared/Contact/ContactList';
 import FormSection from '@/Shared/FormSection';
 
 export default {
@@ -213,8 +213,8 @@ export default {
         LoadingButton,
         PolicyFieldsList,
         DateRange,
-        SelectPolicyholder,
-        HolderList,
+        SelectContact,
+        ContactList,
         ExclamationIcon,
         QuestionMarkCircleIcon,
         Popper,
@@ -223,7 +223,7 @@ export default {
     setup(props, context) {
         const policyForm = useForm('policy', {
             number: null,
-            holders: [],
+            contacts: [],
             period: {
                 start: null,
                 end: null
@@ -269,22 +269,22 @@ export default {
                 .post(route('policies.store'));
         }
 
-        function holderExists(holder) {
+        function contactExists(contact) {
             return (
-                _.findIndex(policyForm.holders, (o) => {
-                    return _.isMatch(o, holder);
+                _.findIndex(policyForm.contacts, (o) => {
+                    return _.isMatch(o, contact);
                 }) > -1
             );
         }
 
-        function holderSelected(holder) {
-            if (!holderExists(holder)) {
-                policyForm.holders.push(holder);
+        function contactSelected(contact) {
+            if (!contactExists(contact)) {
+                policyForm.contacts.push(contact);
             }
         }
 
-        function handleHolderClick(holder) {
-            _.pull(policyForm.holders, holder);
+        function handleContactClick(contact) {
+            _.pull(policyForm.contacts, contact);
         }
 
         return {
@@ -292,8 +292,8 @@ export default {
             templates,
             selectedTemplate,
             store,
-            holderSelected,
-            handleHolderClick
+            contactSelected,
+            handleContactClick
         };
     }
 };

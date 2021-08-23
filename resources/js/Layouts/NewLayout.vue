@@ -312,9 +312,9 @@ export default {
                 current: route().current('policies')
             },
             {
-                name: 'Polcyholder',
-                href: route('holders'),
-                current: route().current('holders')
+                name: 'Contacts',
+                href: route('contacts'),
+                current: route().current('contacts')
             }
         ]);
 

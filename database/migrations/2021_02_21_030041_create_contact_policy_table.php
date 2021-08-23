@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHolderPolicyTable extends Migration
+class CreateContactPolicyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateHolderPolicyTable extends Migration
      */
     public function up()
     {
-        Schema::create('holder_policy', function (Blueprint $table) {
-            $table->primary(['holder_id', 'policy_id']);
+        Schema::create('contact_policy', function (Blueprint $table) {
+            $table->primary(['contact_id', 'policy_id']);
 
-            $table->foreignId('holder_id')->constrained();
+            $table->foreignId('contact_id')->constrained();
             $table->foreignId('policy_id')->constrained();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateHolderPolicyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('holder_policy');
+        Schema::dropIfExists('contact_policy');
     }
 }

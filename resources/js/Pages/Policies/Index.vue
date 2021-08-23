@@ -53,14 +53,14 @@
                         {{ formatDate(value) }}
                     </template>
                     <template
-                        v-slot:[`column.holderNamesPreview`]="{ value, row }"
+                        v-slot:[`column.contactNamesPreview`]="{ value, row }"
                     >
                         <div
-                            v-if="row.holders.length === 0"
+                            v-if="row.contacts.length === 0"
                             class="flex text-red-vivid-600 items-center"
                         >
                             <exclamation-icon class="h-5 mr-2 w-5" />
-                            No policyholders found
+                            No contacts found
                         </div>
                         <div
                             v-else
@@ -79,28 +79,28 @@
 </template>
 
 <script>
-import { watch, computed, ref } from "vue";
+import { watch, computed, ref } from 'vue';
 
-import AppLayout from "@/Layouts/NewLayout";
-import Pagination from "@/Shared/Pagination";
-import DataTable from "@/Shared/DataTable";
-import FilterSelect from "@/Shared/FilterSelect";
-import JetCheckbox from "@/Jetstream/Checkbox";
+import AppLayout from '@/Layouts/NewLayout';
+import Pagination from '@/Shared/Pagination';
+import DataTable from '@/Shared/DataTable';
+import FilterSelect from '@/Shared/FilterSelect';
+import JetCheckbox from '@/Jetstream/Checkbox';
 import {
     ExclamationIcon,
     ChevronRightIcon,
-    SelectorIcon,
-} from "@heroicons/vue/outline";
+    SelectorIcon
+} from '@heroicons/vue/outline';
 
-import { useForm, Link } from "@inertiajs/inertia-vue3";
-import dayjs from "dayjs";
+import { useForm, Link } from '@inertiajs/inertia-vue3';
+import dayjs from 'dayjs';
 
 import {
     Listbox,
     ListboxButton,
     ListboxOptions,
-    ListboxOption,
-} from "@headlessui/vue";
+    ListboxOption
+} from '@headlessui/vue';
 
 export default {
     props: { sessions: Object, policies: Object, filters: Object },
@@ -118,47 +118,47 @@ export default {
         ListboxButton,
         ListboxOptions,
         ListboxOption,
-        FilterSelect,
+        FilterSelect
     },
     setup(props) {
         const searchForm = useForm({
             search: props.filters.search,
-            trashed: props.filters.trashed,
+            trashed: props.filters.trashed
         });
 
         const refreshSearch = _.debounce(function () {
             searchForm
                 .transform((data) => _.pickBy(data))
-                .get("/policies", {
-                    only: ["policies"],
+                .get('/policies', {
+                    only: ['policies'],
                     preserveState: true,
-                    preserveScroll: true,
+                    preserveScroll: true
                 });
         }, 400);
 
         const formVals = computed(() => {
             return {
                 search: searchForm.search,
-                trashed: searchForm.trashed,
+                trashed: searchForm.trashed
             };
         });
 
         function formatDate(date) {
-            return dayjs(date).format("MMM DD, YYYY");
+            return dayjs(date).format('MMM DD, YYYY');
         }
 
         function reset() {
-            searchForm.search = "";
+            searchForm.search = '';
             searchForm.trashed = null;
         }
 
         watch(formVals, () => refreshSearch());
 
         const columns = ref([
-            { text: "Number", value: "number" },
-            { text: "Date Issued", value: "created_at" },
-            { text: "Ending", value: "period_end" },
-            { text: "Holders", value: "holderNamesPreview" },
+            { text: 'Number', value: 'number' },
+            { text: 'Date Issued', value: 'created_at' },
+            { text: 'Ending', value: 'period_end' },
+            { text: 'Contacts', value: 'contactNamesPreview' }
         ]);
 
         function pastDate(date) {
@@ -171,8 +171,8 @@ export default {
             reset,
             formatDate,
             columns,
-            pastDate,
+            pastDate
         };
-    },
+    }
 };
 </script>

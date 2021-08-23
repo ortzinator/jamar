@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HolderController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\PolicyFieldController;
 use Illuminate\Foundation\Application;
@@ -27,54 +27,77 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    // Holders
-    Route::get('holders', [HolderController::class, 'index'])
-        ->name('holders');
-        
-    Route::get('holders/create', [HolderController::class, 'create'])
-        ->name('holders.create');
-        
-    Route::post('holders', [HolderController::class, 'store'])
-        ->name('holders.store');
+    // Contacts
+    Route::get('contacts', [ContactController::class, 'index'])->name(
+        'contacts'
+    );
 
-    Route::get('/holders/{holder}/edit', [HolderController::class, 'edit'])
-        ->name('holders.edit');
-        
-    Route::put('/holders/{holder}', [HolderController::class, 'update'])
-        ->name('holders.update');
-        
-    Route::delete('holders/{holder}', [HolderController::class, 'destroy'])
-        ->name('holders.destroy');
-        
-    Route::put('holders/{holder}/restore', [HolderController::class, 'restore'])
-        ->name('holders.restore');
+    Route::get('contacts/create', [ContactController::class, 'create'])->name(
+        'contacts.create'
+    );
+
+    Route::post('contacts', [ContactController::class, 'store'])->name(
+        'contacts.store'
+    );
+
+    Route::get('/contacts/{contact}/edit', [
+        ContactController::class,
+        'edit'
+    ])->name('contacts.edit');
+
+    Route::put('/contacts/{contact}', [
+        ContactController::class,
+        'update'
+    ])->name('contacts.update');
+
+    Route::delete('contacts/{contact}', [
+        ContactController::class,
+        'destroy'
+    ])->name('contacts.destroy');
+
+    Route::put('contacts/{contact}/restore', [
+        ContactController::class,
+        'restore'
+    ])->name('contacts.restore');
 
     // Policy
-    Route::get('/policies', [PolicyController::class, 'index'])
-        ->name('policies');
+    Route::get('/policies', [PolicyController::class, 'index'])->name(
+        'policies'
+    );
 
-    Route::get('/policies/create', [PolicyController::class, 'create'])
-        ->name('policies.create');
+    Route::get('/policies/create', [PolicyController::class, 'create'])->name(
+        'policies.create'
+    );
 
-    Route::post('/policies', [PolicyController::class, 'store'])
-        ->name('policies.store');
-        
-    Route::get('/policies/ending-soon', [PolicyController::class, 'endingSoon'])
-        ->name('policies.ending');
-            
-    Route::get('/policies/{policy}', [PolicyController::class, 'show'])
-        ->name('policies.show');
+    Route::post('/policies', [PolicyController::class, 'store'])->name(
+        'policies.store'
+    );
 
-    Route::get('/policies/{policy}/edit', [PolicyController::class, 'edit'])
-        ->name('policies.edit');
+    Route::get('/policies/ending-soon', [
+        PolicyController::class,
+        'endingSoon'
+    ])->name('policies.ending');
 
-    Route::put('/policies/{policy}', [PolicyController::class, 'update'])
-        ->name('policies.update');
+    Route::get('/policies/{policy}', [PolicyController::class, 'show'])->name(
+        'policies.show'
+    );
 
-    Route::put('/policies/{policy}/restore', [PolicyController::class, 'restore'])
-        ->name('policies.restore');
+    Route::get('/policies/{policy}/edit', [
+        PolicyController::class,
+        'edit'
+    ])->name('policies.edit');
 
-    Route::delete('/policies/{policy}', [PolicyController::class, 'destroy'])
-        ->name('policies.destroy');
-        
+    Route::put('/policies/{policy}', [PolicyController::class, 'update'])->name(
+        'policies.update'
+    );
+
+    Route::put('/policies/{policy}/restore', [
+        PolicyController::class,
+        'restore'
+    ])->name('policies.restore');
+
+    Route::delete('/policies/{policy}', [
+        PolicyController::class,
+        'destroy'
+    ])->name('policies.destroy');
 });
