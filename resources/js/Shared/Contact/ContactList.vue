@@ -5,10 +5,21 @@
             <li v-for="contact in contacts" :key="contact.id" class="p-2">
                 <a
                     @click="$emit('contactClicked', contact)"
-                    class="block cursor-pointer hover:line-through"
+                    class="group cursor-pointer flex items-center"
                 >
-                    <div v-text="contact.name"></div>
-                    <div v-text="contact.address"></div>
+                    <div>
+                        <div v-text="contact.name"></div>
+                        <div v-text="contact.address"></div>
+                    </div>
+                    <div
+                        v-if="removable"
+                        title="Remove policyholder"
+                        @click="removeContact(contact)"
+                    >
+                        <XIcon
+                            class="h-5 w-5 ml-10 invisible group-hover:visible"
+                        />
+                    </div>
                 </a>
             </li>
         </ul>
@@ -19,8 +30,18 @@
 </template>
 
 <script>
+import { XIcon } from '@heroicons/vue/outline';
 export default {
-    props: { contacts: Array },
-    emits: ['contactClicked']
+    props: { contacts: Array, removable: { type: Boolean, default: false } },
+    components: { XIcon },
+    emits: ['contactClicked'],
+
+    setup(props) {
+        function removeContact(contact) {
+            _.pull(props.contacts, contact);
+        }
+
+        return { removeContact };
+    }
 };
 </script>

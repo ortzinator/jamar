@@ -90,7 +90,7 @@ class PolicyController extends Controller
             'policy' => $policy
                 ->load([
                     'contacts' => function ($query) {
-                        $query->select(['name', 'id']);
+                        $query->select(['name', 'id', 'address']);
                     }
                 ])
                 ->load('agent'),

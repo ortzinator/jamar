@@ -34540,13 +34540,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       _.pull(policyForm.contacts, contact);
     }
 
+    function handleFieldDelete(field) {
+      _.pull(policyForm.fields, field);
+    }
+
     return {
       policyForm: policyForm,
       templates: templates,
       selectedTemplate: selectedTemplate,
       store: store,
       contactSelected: contactSelected,
-      handleContactClick: handleContactClick
+      handleContactClick: handleContactClick,
+      handleFieldDelete: handleFieldDelete
     };
   }
 });
@@ -35292,11 +35297,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    contacts: Array
+    contacts: Array,
+    removable: {
+      type: Boolean,
+      "default": false
+    }
   },
-  emits: ['contactClicked']
+  components: {
+    XIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_0__.XIcon
+  },
+  emits: ['contactClicked'],
+  setup: function setup(props) {
+    function removeContact(contact) {
+      _.pull(props.contacts, contact);
+    }
+
+    return {
+      removeContact: removeContact
+    };
+  }
 });
 
 /***/ }),
@@ -35500,7 +35523,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ["added"],
+  emits: ['added'],
   components: {
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_0__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_1__.default
@@ -35517,7 +35540,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     add: function add() {
       if (!this.validate()) return;
-      this.$emit("added", this.field);
+      this.$emit('added', this.field);
       this.reset();
     },
     reset: function reset() {
@@ -35532,7 +35555,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.field.name) {
         return true;
       } else {
-        this.errors.push("Field name is required");
+        this.errors.push('Field name is required');
       }
     }
   }
@@ -35605,7 +35628,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": true
     }
   },
-  emits: ["fieldAdded"],
+  emits: ['fieldAdded', 'fieldDeleted'],
   components: {
     NewPolicyField: _Shared_Fields_NewPolicyField__WEBPACK_IMPORTED_MODULE_1__.default,
     PolicyField: _Shared_Fields_PolicyField__WEBPACK_IMPORTED_MODULE_2__.default,
@@ -35613,17 +35636,37 @@ __webpack_require__.r(__webpack_exports__);
     JetConfirmationModal: _Jetstream_ConfirmationModal__WEBPACK_IMPORTED_MODULE_4__.default,
     TrashIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_3__.TrashIcon
   },
-  setup: function setup(props) {
+  setup: function setup(props, _ref) {
+    var emit = _ref.emit;
     var newFieldClicked = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var confirmingDeleteField = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var anyFieldAdded = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var fieldFormShown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       var fieldsEmpty = props.fields.length < 1;
-      return newFieldClicked.value || fieldsEmpty;
+      return newFieldClicked.value || fieldsEmpty || anyFieldAdded;
     });
+
+    function handleNewFieldClick() {
+      newFieldClicked.value = true;
+    }
+
+    function handleFieldAdded(field) {
+      emit('fieldAdded', field);
+      anyFieldAdded.value = true;
+    }
+
+    function handleFieldDeleted(field) {
+      emit('fieldDeleted', field);
+    }
+
     return {
       newFieldClicked: newFieldClicked,
       fieldFormShown: fieldFormShown,
-      confirmingDeleteField: confirmingDeleteField
+      confirmingDeleteField: confirmingDeleteField,
+      anyFieldAdded: anyFieldAdded,
+      handleNewFieldClick: handleNewFieldClick,
+      handleFieldAdded: handleFieldAdded,
+      handleFieldDeleted: handleFieldDeleted
     };
   }
 });
@@ -39499,10 +39542,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onFieldAdded: _cache[5] || (_cache[5] = function (field) {
               return $setup.policyForm.fields.push(field);
             }),
+            onFieldDeleted: $setup.handleFieldDelete,
             "class": "mb-5"
           }, null, 8
           /* PROPS */
-          , ["fields"])];
+          , ["fields", "onFieldDeleted"])];
         }),
         _: 1
         /* STABLE */
@@ -39518,7 +39562,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_contact_list, {
             contacts: $setup.policyForm.contacts,
             "class": "mb-5",
-            onContactClicked: $setup.handleContactClick
+            onContactClicked: $setup.handleContactClick,
+            removable: ""
           }, {
             noContacts: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
@@ -39638,10 +39683,17 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Contacts ");
 
 var _hoisted_16 = {
-  "class": "\n                    px-8\n                    py-4\n                    bg-gray-100\n                    border-t border-gray-200\n                    flex\n                    items-center\n                "
+  "class": "\n                    px-8\n                    py-4\n                    bg-gray-100\n                    border-t border-gray-200\n                    flex\n                    justify-between\n                    items-center\n                "
+};
+var _hoisted_17 = {
+  "class": "flex items-baseline"
+};
+var _hoisted_18 = {
+  key: 0,
+  "class": "mr-5 text-cool-grey-400 italic"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
@@ -39760,7 +39812,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["fields", "policy"]), $setup.policyForm.contacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_contact_list, {
         key: 0,
         contacts: $setup.policyForm.contacts,
-        "class": "mb-5"
+        "class": "mb-5",
+        removable: ""
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_15];
@@ -39782,21 +39835,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _cache[6] || (_cache[6] = function () {
           return $setup.destroy && $setup.destroy.apply($setup, arguments);
         })
-      }, " Delete policy ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
-        "class": "btn btn-primary ml-auto",
+      }, " Delete policy ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [$setup.policyForm.isDirty ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_18, " Unsaved Changes ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
+        "class": "btn btn-primary",
         type: "submit",
         loading: $setup.policyForm.processing,
         onClick: $setup.updatePolicy
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_17];
+          return [_hoisted_19];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["loading", "onClick"])])])];
+      , ["loading", "onClick"])])])])];
     }),
     _: 1
     /* STABLE */
@@ -41093,6 +41146,8 @@ var _hoisted_2 = {
   key: 1
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_XIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("XIcon");
+
   return $props.contacts.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.contacts, function (contact) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", {
       key: contact.id,
@@ -41101,8 +41156,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return _ctx.$emit('contactClicked', contact);
       },
-      "class": "block cursor-pointer hover:line-through"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+      "class": "group cursor-pointer flex items-center"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.name)
     }, null, 8
     /* PROPS */
@@ -41110,7 +41165,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(contact.address)
     }, null, 8
     /* PROPS */
-    , ["textContent"])], 8
+    , ["textContent"])]), $props.removable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+      key: 0,
+      title: "Remove policyholder",
+      onClick: function onClick($event) {
+        return $setup.removeContact(contact);
+      }
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_XIcon, {
+      "class": "h-5 w-5 ml-10 invisible group-hover:visible"
+    })], 8
+    /* PROPS */
+    , ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8
     /* PROPS */
     , ["onClick"])]);
   }), 128
@@ -41446,8 +41511,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     "class": "btn mt-4 hover:underline",
     type: "button",
-    onClick: _cache[3] || (_cache[3] = function ($event) {
-      return $options.add();
+    onClick: _cache[3] || (_cache[3] = function () {
+      return $options.add && $options.add.apply($options, arguments);
     })
   }, " Add Field ")]), $data.errors.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.errors, function (error, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", {
@@ -41534,18 +41599,12 @@ var _hoisted_3 = {
   "class": "border-b font-bold my-5 pb-2 text-gray-700"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Field ");
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete this field? ");
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Field ");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Field ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_trash_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("trash-icon");
 
   var _component_policy_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("policy-field");
-
-  var _component_jet_confirmation_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-confirmation-modal");
 
   var _component_new_policy_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("new-policy-field");
 
@@ -41564,67 +41623,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       name: "delButton",
       fn: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-          "class": "btn btn-sm btn-danger",
-          onClick: _cache[1] || (_cache[1] = function ($event) {
-            return $setup.confirmingDeleteField = true;
-          })
+          "class": "btn hover:bg-red-vivid-300 hover:text-white",
+          onClick: function onClick($event) {
+            return $setup.handleFieldDeleted(field);
+          }
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_trash_icon, {
           "class": "w-5 h-5 mx-auto"
-        })], 512
-        /* NEED_PATCH */
-        ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, true]])];
+        })], 8
+        /* PROPS */
+        , ["onClick"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, true]])];
       })
     } : undefined]), 1032
     /* PROPS, DYNAMIC_SLOTS */
     , ["field"]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_confirmation_modal, {
-    show: $setup.confirmingDeleteField,
-    onClose: _cache[4] || (_cache[4] = function ($event) {
-      return $setup.confirmingDeleteField = false;
-    })
-  }, {
-    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_4];
-    }),
-    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
-    }),
-    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-        "class": "btn",
-        onClick: _cache[2] || (_cache[2] = function ($event) {
-          return $setup.confirmingDeleteField = false;
-        })
-      }, " Cancel "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-        "class": "btn btn-danger ml-2",
-        onClick: _cache[3] || (_cache[3] = function (field) {
-          return _ctx.$emit('delete', field);
-        })
-      }, " Delete Field ")];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["show"])])), $setup.fieldFormShown ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_new_policy_field, {
+  ))])), $setup.fieldFormShown ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_new_policy_field, {
     key: 2,
-    onAdded: _cache[5] || (_cache[5] = function (field) {
-      return _ctx.$emit('fieldAdded', field);
+    onAdded: _cache[1] || (_cache[1] = function (field) {
+      return $setup.handleFieldAdded(field);
     }),
     "class": "mb-5 p-5 rounded border"
   })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.editable && !$setup.fieldFormShown ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     key: 3,
-    onClick: _cache[6] || (_cache[6] = function ($event) {
-      return $setup.newFieldClicked = true;
+    onClick: _cache[2] || (_cache[2] = function () {
+      return $setup.handleNewFieldClick && $setup.handleNewFieldClick.apply($setup, arguments);
     }),
     type: "button",
-    "class": "btn btn-sm font-thin px-2 py-1 rounded text-xs"
+    "class": "btn btn-sm px-2 py-1 rounded flex items-center"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_plus_sm_icon, {
     "class": "h-5 w-5 mr-2"
-  }), _hoisted_6])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }), _hoisted_4])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),

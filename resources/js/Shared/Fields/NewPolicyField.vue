@@ -19,11 +19,7 @@
                     class="w-full"
                 />
             </div>
-            <button
-                class="btn mt-4 hover:underline"
-                type="button"
-                @click="add()"
-            >
+            <button class="btn mt-4 hover:underline" type="button" @click="add">
                 Add Field
             </button>
         </div>
@@ -38,34 +34,34 @@
 </template>
 
 <script>
-import JetInput from "@/Jetstream/Input";
-import JetLabel from "@/Jetstream/Label";
+import JetInput from '@/Jetstream/Input';
+import JetLabel from '@/Jetstream/Label';
 
 export default {
-    emits: ["added"],
+    emits: ['added'],
     components: {
         JetInput,
-        JetLabel,
+        JetLabel
     },
     data() {
         return {
             field: {
                 name: null,
-                value: null,
+                value: null
             },
-            errors: [],
+            errors: []
         };
     },
     methods: {
         add() {
             if (!this.validate()) return;
-            this.$emit("added", this.field);
+            this.$emit('added', this.field);
             this.reset();
         },
         reset() {
             this.field = {
                 name: null,
-                value: null,
+                value: null
             };
         },
         validate() {
@@ -74,9 +70,9 @@ export default {
             if (this.field.name) {
                 return true;
             } else {
-                this.errors.push("Field name is required");
+                this.errors.push('Field name is required');
             }
-        },
-    },
+        }
+    }
 };
 </script>

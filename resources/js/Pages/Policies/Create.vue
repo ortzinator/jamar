@@ -139,6 +139,7 @@
                     <policy-fields-list
                         :fields="policyForm.fields"
                         @fieldAdded="(field) => policyForm.fields.push(field)"
+                        @fieldDeleted="handleFieldDelete"
                         class="mb-5"
                     ></policy-fields-list>
                 </FormSection>
@@ -152,6 +153,7 @@
                         :contacts="policyForm.contacts"
                         class="mb-5"
                         @contactClicked="handleContactClick"
+                        removable
                     >
                         Contacts
                         <template v-slot:noContacts>
@@ -287,13 +289,18 @@ export default {
             _.pull(policyForm.contacts, contact);
         }
 
+        function handleFieldDelete(field) {
+            _.pull(policyForm.fields, field);
+        }
+
         return {
             policyForm,
             templates,
             selectedTemplate,
             store,
             contactSelected,
-            handleContactClick
+            handleContactClick,
+            handleFieldDelete
         };
     }
 };

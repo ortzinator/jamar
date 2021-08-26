@@ -99,6 +99,7 @@
                     v-if="policyForm.contacts.length > 0"
                     :contacts="policyForm.contacts"
                     class="mb-5"
+                    removable
                 >
                     Contacts
                 </contact-list>
@@ -112,6 +113,7 @@
                     bg-gray-100
                     border-t border-gray-200
                     flex
+                    justify-between
                     items-center
                 "
             >
@@ -124,14 +126,22 @@
                 >
                     Delete policy
                 </button>
-                <loading-button
-                    class="btn btn-primary ml-auto"
-                    type="submit"
-                    :loading="policyForm.processing"
-                    @click="updatePolicy"
-                >
-                    Update policy
-                </loading-button>
+                <div class="flex items-baseline">
+                    <div
+                        v-if="policyForm.isDirty"
+                        class="mr-5 text-cool-grey-400 italic"
+                    >
+                        Unsaved Changes
+                    </div>
+                    <loading-button
+                        class="btn btn-primary"
+                        type="submit"
+                        :loading="policyForm.processing"
+                        @click="updatePolicy"
+                    >
+                        Update policy
+                    </loading-button>
+                </div>
             </div>
         </div>
     </app-layout>
