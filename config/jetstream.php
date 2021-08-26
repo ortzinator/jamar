@@ -3,7 +3,6 @@
 use Laravel\Jetstream\Features;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Jetstream Stack
@@ -45,8 +44,8 @@ return [
         // Features::termsAndPrivacyPolicy(),
         // Features::profilePhotos(),
         // Features::api(),
-        // Features::teams(['invitations' => true]),
-        Features::accountDeletion(),
+        Features::teams(['invitations' => true]),
+        Features::accountDeletion()
     ],
 
     /*
@@ -60,6 +59,5 @@ return [
     |
     */
 
-    'profile_photo_disk' => 'public',
-
+    'profile_photo_disk' => 'public'
 ];
