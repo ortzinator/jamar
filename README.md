@@ -7,7 +7,7 @@
 
 ```
 $ git clone git@github.com:ortzinator/jamar.git
-$ cd jamar && sail composer install && sail npm install
+$ cd jamar && composer install && npm install
 $ sail up
 $ npm run dev
 ```
