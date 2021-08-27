@@ -136,6 +136,7 @@
                                 shadow-lg
                                 ring-1 ring-black ring-opacity-5
                                 focus:outline-none
+                                z-10
                             "
                         >
                             <div class="py-1">
