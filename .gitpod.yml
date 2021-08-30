@@ -8,6 +8,7 @@ tasks:
     command: ddev start && gp preview $(gp url 8080)
   - name: Mix
     command: gp sync-await npm && npx mix watch
+    openMode: split-right
 
 ports:
   # Direct-connect ddev-webserver port that is the main port
