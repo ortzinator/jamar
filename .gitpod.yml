@@ -7,7 +7,7 @@ tasks:
       bash .gp/init.sh
     command: ddev start && gp preview $(gp url 8080)
   - name: Mix
-    command: gp sync-await npm && npx mix watch
+    command: npm install -g npm@next && gp sync-await npm && npx mix watch
     openMode: split-right
 
 ports:
