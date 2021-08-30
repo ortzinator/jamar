@@ -1,11 +1,13 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-  - before: install -o gitpod -g gitpod .gp/.bash_aliases /home/gitpod
-  - init: |
+  - name: Main term
+    init: |
       export DDEV_NONINTERACTIVE=true
       bash .gp/init.sh
-    command: echo 'start script'
+    command: ddev start && gp preview $(gp url 8080)
+  - name: Mix
+    command: npx mix watch
 
 ports:
   # Direct-connect ddev-webserver port that is the main port
@@ -42,3 +44,11 @@ ports:
   # projector port
   - port: 9999
     visibility: private
+
+vscode:
+  extensions:
+    - felixfbecker.php-debug
+    - bmewburn.vscode-intelephense-client
+    - esbenp.prettier-vscode
+    - bradlc.vscode-tailwindcss
+    - onecentlin.laravel-blade
