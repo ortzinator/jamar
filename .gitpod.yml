@@ -1,0 +1,57 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - name: Main term
+    init: |
+      export DDEV_NONINTERACTIVE=true
+      bash .gp/init.sh
+    command: ddev start && gp sync-done start && gp preview $(gp url 8080)
+  - name: Mix
+    command: npm install -g npm@next && gp sync-await start && npx mix watch
+    openMode: split-right
+
+ports:
+  # Direct-connect ddev-webserver port that is the main port
+  - port: 8080
+    visibility: private
+# Currently un-notified and unsupported mailhog http port
+  - port: 8025
+    onOpen: ignore
+    visibility: private
+# Currently un-notified and unsupported mailhog https port
+  - port: 8026
+    onOpen: ignore
+    visibility: private
+# Currently un-notified and unsupported phpmyadmin http port
+  - port: 8036
+    onOpen: ignore
+    visibility: private
+# Currently un-notified and unsupported phpmyadmin https port
+  - port: 8037
+    onOpen: ignore
+    visibility: private
+# router http port that we're ignoring.
+  - port: 8888
+    onOpen: ignore
+    visibility: private
+# router https port that we're ignoring.
+  - port: 8889
+    onOpen: ignore
+    visibility: private
+# xdebug port
+  - port: 9000
+    onOpen: ignore
+    visibility: private
+# projector port
+  - port: 9999
+    visibility: private
+
+vscode:
+  extensions:
+    - felixfbecker.php-debug
+    - bmewburn.vscode-intelephense-client
+    - esbenp.prettier-vscode
+    - bradlc.vscode-tailwindcss
+    - onecentlin.laravel-blade
+    - arcticicestudio.nord-visual-studio-code
+    - octref.vetur
