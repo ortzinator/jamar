@@ -52,6 +52,7 @@ vscode:
     - bmewburn.vscode-intelephense-client
     - esbenp.prettier-vscode
     - bradlc.vscode-tailwindcss
+    - heybourn.headwind
     - onecentlin.laravel-blade
     - arcticicestudio.nord-visual-studio-code
     - octref.vetur
