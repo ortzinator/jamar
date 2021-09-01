@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use Cknow\Money\Money;
-use Cknow\Money\MoneyCast;
+use App\Casts\MoneyIntegerCast;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +21,7 @@ class Policy extends Model
         'fields' => 'array',
         'period_start' => 'datetime',
         'period_end' => 'datetime',
-        'premium' => MoneyCast::class . ':currency'
+        'premium' => MoneyIntegerCast::class . ':currency'
     ];
 
     public function scopeFilter($query, array $filters)

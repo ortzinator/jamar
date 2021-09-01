@@ -10,7 +10,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class PolicyController extends Controller
@@ -87,14 +86,17 @@ class PolicyController extends Controller
      */
     public function edit(Policy $policy)
     {
+        $policyData = $policy
+            ->load([
+                'contacts' => function ($query) {
+                    $query->select(['name', 'id', 'address']);
+                }
+            ])
+            ->load('agent')
+            ->toArray();
+
         return Inertia::render('Policies/Edit', [
-            'policy' => $policy
-                ->load([
-                    'contacts' => function ($query) {
-                        $query->select(['name', 'id', 'address']);
-                    }
-                ])
-                ->load('agent'),
+            'policy' => $policyData,
             'fields' => $policy->fields
         ]);
     }

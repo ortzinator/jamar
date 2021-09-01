@@ -3,9 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Policy;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Auth;
 
 class PolicyFactory extends Factory
 {
@@ -29,7 +27,7 @@ class PolicyFactory extends Factory
             'period_end' => now()->addDays(rand(5, 10)),
             'agent_id' => 1,
             'currency' => 'USD',
-            'premium' => strval(1234)
+            'premium' => $this->faker->randomNumber(4)
         ];
     }
 }

@@ -171,13 +171,13 @@ class PolicyTest extends TestCase
         $this->signIn();
         $this->withoutExceptionHandling();
 
-        // dd(Money::getDefaultCurrency());
         $policy = Policy::factory()->make();
         $contacts = Contact::factory(4)->create();
 
         $data = $policy->toArray();
         $data['contacts'] = $contacts->toArray();
-        // $data['premium'] = 123.45;
+        $amount = $policy->premium->toArray()['amount'];
+        $data['premium'] = $amount;
 
         $this->post(route('policies.store'), $data);
 
@@ -191,8 +191,28 @@ class PolicyTest extends TestCase
                     ->has('policy.period_start')
                     ->has('policy.agent_id')
                     ->has('policy.number')
-                    ->where('policy.premium.amount', '12345')
-                    ->where('policy.premium.formatted', '$123.45')
+                    ->where('policy.premium.amount', $amount)
+                // ->where('policy.premium.formatted', '$123.45')
+            );
+    }
+
+    public function test_can_show_edit_page()
+    {
+        $this->signIn();
+        $policy = Policy::factory()
+            ->has(Contact::factory(4))
+            ->create();
+
+        $this->get(route('policies.edit', $policy->id))
+            ->assertSessionDoesntHaveErrors()
+            ->assertInertia(
+                fn(Assert $page) => $page
+                    ->has('policy.contacts', 4)
+                    ->has('policy.period_start')
+                    ->has('policy.agent_id')
+                    ->has('policy.number')
+                    ->has('policy.premium.amount')
+                    ->has('policy.premium.formatted')
             );
     }
 }
