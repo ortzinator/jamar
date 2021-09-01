@@ -21,6 +21,8 @@ class CreatePolicyTable extends Migration
             $table->timestamp('cancelled_at')->nullable();
             $table->json('fields')->nullable();
             $table->foreignId('agent_id');
+            $table->bigInteger('premium')->nullable();
+            $table->string('currency')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

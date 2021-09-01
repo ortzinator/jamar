@@ -34847,14 +34847,17 @@ __webpack_require__.r(__webpack_exports__);
       text: 'Number',
       value: 'number'
     }, {
+      text: 'Contacts',
+      value: 'contactNamesPreview'
+    }, {
+      text: 'Premium',
+      value: 'premium'
+    }, {
       text: 'Date Issued',
       value: 'created_at'
     }, {
       text: 'Ending',
       value: 'period_end'
-    }, {
-      text: 'Contacts',
-      value: 'contactNamesPreview'
     }]);
 
     function pastDate(date) {
@@ -35351,11 +35354,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Pages_Teams_Partials_CreateTeamForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Pages/Teams/Partials/CreateTeamForm.vue */ "./resources/js/Pages/Teams/Partials/CreateTeamForm.vue");
+/* harmony import */ var _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout.vue */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Pages_Teams_Partials_CreateTeamForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Teams/Partials/CreateTeamForm.vue */ "./resources/js/Pages/Teams/Partials/CreateTeamForm.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    CreateTeamForm: _Pages_Teams_Partials_CreateTeamForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    CreateTeamForm: _Pages_Teams_Partials_CreateTeamForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
   }
 });
 
@@ -40858,9 +40864,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(value)), 1
         /* TEXT */
         )];
-      })), _defineProperty(_createVNode2, "column.contactNamesPreview", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
-        var value = _ref3.value,
-            row = _ref3.row;
+      })), _defineProperty(_createVNode2, "column.premium", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
+        var value = _ref3.value;
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+          "class": "text-right w-full",
+          textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.formatted)
+        }, null, 8
+        /* PROPS */
+        , ["textContent"])];
+      })), _defineProperty(_createVNode2, "column.contactNamesPreview", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
+        var value = _ref4.value,
+            row = _ref4.row;
         return [row.contacts.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
           "class": "h-5 mr-2 w-5"
         }), _hoisted_9])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {

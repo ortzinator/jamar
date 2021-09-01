@@ -29,7 +29,7 @@ class PolicyController extends Controller
                 ->filter($request->only('search', 'trashed'))
                 ->paginate()
                 ->through(function ($policy) {
-                    return $policy->append('contactNamesPreview');
+                    return $policy->append(['contactNamesPreview']);
                 })
         ]);
     }
@@ -69,7 +69,8 @@ class PolicyController extends Controller
             'period_start' => new Carbon($request['range.start']),
             'period_end' => new Carbon($request['range.end']),
             'fields' => $request['fields'],
-            'agent_id' => $request['agent_id']
+            'agent_id' => $request['agent_id'],
+            'premium' => $request['premium']
         ]);
 
         $contacts = Arr::pluck($request['contacts'], 'id');

@@ -52,6 +52,12 @@
                     <template v-slot:[`column.created_at`]="{ value }">
                         {{ formatDate(value) }}
                     </template>
+                    <template v-slot:[`column.premium`]="{ value }">
+                        <div
+                            class="text-right w-full"
+                            v-text="value.formatted"
+                        ></div>
+                    </template>
                     <template
                         v-slot:[`column.contactNamesPreview`]="{ value, row }"
                     >
@@ -156,9 +162,10 @@ export default {
 
         const columns = ref([
             { text: 'Number', value: 'number' },
+            { text: 'Contacts', value: 'contactNamesPreview' },
+            { text: 'Premium', value: 'premium' },
             { text: 'Date Issued', value: 'created_at' },
-            { text: 'Ending', value: 'period_end' },
-            { text: 'Contacts', value: 'contactNamesPreview' }
+            { text: 'Ending', value: 'period_end' }
         ]);
 
         function pastDate(date) {

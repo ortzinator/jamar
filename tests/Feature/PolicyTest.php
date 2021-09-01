@@ -6,6 +6,7 @@ use App\Models\Contact;
 use App\Models\Policy;
 use App\Models\PolicyField;
 use Carbon\Carbon;
+use Cknow\Money\Money;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -170,22 +171,28 @@ class PolicyTest extends TestCase
         $this->signIn();
         $this->withoutExceptionHandling();
 
-        $policy = Policy::factory()->make(['id' => 1]);
+        // dd(Money::getDefaultCurrency());
+        $policy = Policy::factory()->make();
         $contacts = Contact::factory(4)->create();
 
         $data = $policy->toArray();
         $data['contacts'] = $contacts->toArray();
+        // $data['premium'] = 123.45;
 
         $this->post(route('policies.store'), $data);
 
-        $policy->refresh();
+        $policy = Policy::first();
 
-        $this->get(route('policies.edit', 1))->assertInertia(
-            fn(Assert $page) => $page
-                ->has('policy.contacts', 4)
-                ->has('policy.period_start')
-                ->has('policy.agent_id')
-                ->has('policy.number')
-        );
+        $this->get(route('policies.edit', $policy->id))
+            ->assertSessionDoesntHaveErrors()
+            ->assertInertia(
+                fn(Assert $page) => $page
+                    ->has('policy.contacts', 4)
+                    ->has('policy.period_start')
+                    ->has('policy.agent_id')
+                    ->has('policy.number')
+                    ->where('policy.premium.amount', '12345')
+                    ->where('policy.premium.formatted', '$123.45')
+            );
     }
 }

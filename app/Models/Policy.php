@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Cknow\Money\Money;
+use Cknow\Money\MoneyCast;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +21,8 @@ class Policy extends Model
     protected $casts = [
         'fields' => 'array',
         'period_start' => 'datetime',
-        'period_end' => 'datetime'
+        'period_end' => 'datetime',
+        'premium' => MoneyCast::class . ':currency'
     ];
 
     public function scopeFilter($query, array $filters)
