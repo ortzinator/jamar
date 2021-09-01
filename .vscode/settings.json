@@ -1,0 +1,21 @@
+{
+    "workbench.colorTheme": "Nord",
+    "Lua.diagnostics.globals": ["AddEventHandler"],
+    "workbench.iconTheme": "eq-material-theme-icons-light",
+    "editor.lineHeight": 26,
+    "explorer.confirmDragAndDrop": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.cursorSmoothCaretAnimation": true,
+    "terminal.integrated.fontSize": 12,
+    "sync.gist": "b4a89984548b9fab2202e816727d2e2d"
+}
