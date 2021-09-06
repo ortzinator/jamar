@@ -5,7 +5,7 @@ tasks:
       init: |
           export DDEV_NONINTERACTIVE=true
           bash .gp/init.sh
-      command: ddev start && gp sync-done start && gp preview $(gp url 8080)
+      command: bash .ddev/gitpod-setup-ddev.sh && gp sync-done start && gp preview $(gp url 8080)
     - name: Mix
       command: npm install -g npm@next && gp sync-await start && npx mix watch
       openMode: split-right
