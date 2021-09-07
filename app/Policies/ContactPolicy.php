@@ -30,18 +30,6 @@ class ContactPolicy
      */
     public function viewAny(User $user)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Contact  $contact
-     * @return mixed
-     */
-    public function view(User $user, Contact $contact)
-    {
         if ($user === null) {
             return false;
         }
@@ -54,6 +42,18 @@ class ContactPolicy
     }
 
     /**
+     * Determine whether the user can view the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Contact  $contact
+     * @return mixed
+     */
+    public function view(User $user, Contact $contact)
+    {
+        //
+    }
+
+    /**
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
@@ -61,7 +61,15 @@ class ContactPolicy
      */
     public function create(User $user)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('create contacts')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -73,7 +81,15 @@ class ContactPolicy
      */
     public function update(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('update contacts')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -85,7 +101,15 @@ class ContactPolicy
      */
     public function delete(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('delete contacts')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -97,7 +121,15 @@ class ContactPolicy
      */
     public function restore(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('restore contacts')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -109,6 +141,14 @@ class ContactPolicy
      */
     public function forceDelete(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('hard delete contacts')) {
+            return true;
+        }
+
+        return false;
     }
 }
