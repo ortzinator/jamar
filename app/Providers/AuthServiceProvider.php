@@ -13,7 +13,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        \App\Models\Team::class => \App\Policies\TeamPolicy::class,
         \App\Models\Policy::class => \App\Policies\PolicyPolicy::class
     ];
 
@@ -25,11 +24,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Gate::before(function ($user) {
-            if ($user->role_id == 3) {
-                return true;
-            }
-        });
     }
 }
