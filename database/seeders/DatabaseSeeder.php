@@ -7,6 +7,8 @@ use App\Models\Policy;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,26 +19,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        app()[
+            \Spatie\Permission\PermissionRegistrar::class
+        ]->forgetCachedPermissions();
+
+        $role = Role::create(['name' => 'Super Admin']);
+        $role->givePermissionTo(Permission::all());
+
         $user = User::factory()->create([
             'name' => 'Brian Ortiz',
             'email' => 'ortzinator@gmail.com'
         ]); //User factory defaults password to "password"
-
-        $user->switchTeam(
-            $user->ownedTeams()->create([
-                'name' => 'Admins',
-                'personal_team' => false,
-                'user_id' => $user->id
-            ])
-        );
-
-        $user->ownedTeams()->save(
-            Team::forceCreate([
-                'name' => 'Jamar Agents',
-                'personal_team' => false,
-                'user_id' => $user->id
-            ])
-        );
+        $user->assignRole('Super Admin');
 
         $contacts = Contact::factory(50)->create();
 

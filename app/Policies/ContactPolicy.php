@@ -19,10 +19,7 @@ class ContactPolicy
      */
     public function before(User $user, $ability)
     {
-        if ($user->isAdmin()) {
-            return true;
-        }
-        return null;
+        //
     }
 
     /**
@@ -45,7 +42,15 @@ class ContactPolicy
      */
     public function view(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('view contacts')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
