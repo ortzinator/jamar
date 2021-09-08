@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+bash .gp/set-env.sh
+
 bash .ddev/gitpod-setup-ddev.sh
 
 ddev composer install && npm i && gp sync-done npm
