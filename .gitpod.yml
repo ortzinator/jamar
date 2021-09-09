@@ -5,7 +5,7 @@ tasks:
       init: bash .gp/init.sh
       command: bash .ddev/gitpod-setup-ddev.sh
     - name: Mix
-      command: npm install -g npm@next && gp sync-await start && npx mix watch
+      command: gp sync-await start && npm install -g npm@next && npx mix watch
       openMode: split-right
 
 ports:
