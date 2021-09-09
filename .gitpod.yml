@@ -2,10 +2,8 @@ image:
     file: .gitpod.Dockerfile
 tasks:
     - name: Main term
-      init: |
-          export DDEV_NONINTERACTIVE=true
-          bash .gp/init.sh
-      command: ddev config global --instrumentation-opt-in=false && bash .ddev/gitpod-setup-ddev.sh
+      init: bash .gp/init.sh
+      command: bash .ddev/gitpod-setup-ddev.sh
     - name: Mix
       command: npm install -g npm@next && gp sync-await start && npx mix watch
       openMode: split-right
