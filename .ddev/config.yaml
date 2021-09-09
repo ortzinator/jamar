@@ -13,10 +13,6 @@ mysql_version: '8.0'
 use_dns_when_possible: true
 composer_version: '2'
 web_environment: []
-
-hooks:
-    post-start:
-        - exec-host: 'gp sync-done start'
 # This config.yaml was created with ddev version v1.17.5
 # webimage: drud/ddev-webserver:v1.17.4
 # dbimage: drud/ddev-dbserver-mariadb-10.3:v1.17.3

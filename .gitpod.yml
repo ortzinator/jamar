@@ -3,7 +3,7 @@ image:
 tasks:
     - name: Main term
       init: bash .gp/init.sh
-      command: bash .ddev/gitpod-setup-ddev.sh
+      command: bash .ddev/gitpod-setup-ddev.sh && gp sync-done start
     - name: Mix
       command: nvm install 14 && npm install -g npm@next && npm i && gp sync-await start && npx mix watch
       openMode: split-right
