@@ -33934,8 +33934,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       form: this.$inertia.form({
-        email: "",
-        password: "",
+        email: '',
+        password: '',
         remember: false
       })
     };
@@ -33946,11 +33946,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.form.transform(function (data) {
         return _objectSpread(_objectSpread({}, data), {}, {
-          remember: _this.form.remember ? "on" : ""
+          remember: _this.form.remember ? 'on' : ''
         });
-      }).post(this.route("login"), {
+      }).post(this.route('login'), {
         onFinish: function onFinish() {
-          return _this.form.reset("password");
+          return _this.form.reset('password');
         }
       });
     }
@@ -38852,6 +38852,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "Email"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "email",
+        name: "email",
         type: "email",
         "class": "mt-1 block w-full",
         modelValue: $data.form.email,
@@ -38868,6 +38869,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "Password"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password",
+        name: "password",
         type: "password",
         "class": "mt-1 block w-full",
         modelValue: $data.form.password,
@@ -44240,7 +44242,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import modules...
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+window.inertiaEventsCount = {
+  navigateCount: 0,
+  successCount: 0,
+  errorCount: 0
+}; // Import modules...
 
 
 
@@ -44248,7 +44257,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import
 
 (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.createInertiaApp)({
   title: function title(_title) {
-    return _title ? "".concat(_title, " - Jamar") : "Jamar";
+    return _title ? "".concat(_title, " - Jamar") : 'Jamar';
   },
   resolve: function resolve(name) {
     return __webpack_require__("./resources/js/Pages sync recursive ^\\.\\/.*$")("./".concat(name));
@@ -44262,7 +44271,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import
       render: function render() {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(App, props);
       }
-    }).use(plugin).component("InertiaHead", _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head).component("InertiaLink", _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link).mixin({
+    }).use(plugin).component('InertiaHead', _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head).component('InertiaLink', _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link).mixin({
       methods: {
         route: route
       }
@@ -44270,7 +44279,16 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import
   }
 });
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
-  color: "#4B5563"
+  color: '#4B5563'
+});
+_inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.on('navigate', function (event) {
+  window.inertiaEventsCount.navigateCount++;
+});
+_inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.on('success', function (event) {
+  window.inertiaEventsCount.successCount++;
+});
+_inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.on('error', function (event) {
+  window.inertiaEventsCount.errorCount++;
 });
 
 /***/ }),

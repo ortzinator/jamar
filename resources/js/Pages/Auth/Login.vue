@@ -15,6 +15,7 @@
                 <jet-label for="email" value="Email" />
                 <jet-input
                     id="email"
+                    name="email"
                     type="email"
                     class="mt-1 block w-full"
                     v-model="form.email"
@@ -28,6 +29,7 @@
                 <jet-label for="password" value="Password" />
                 <jet-input
                     id="password"
+                    name="password"
                     type="password"
                     class="mt-1 block w-full"
                     v-model="form.password"
@@ -68,13 +70,13 @@
 </template>
 
 <script>
-import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
-import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
-import JetButton from "@/Jetstream/Button";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetLabel from "@/Jetstream/Label";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetAuthenticationCard from '@/Jetstream/AuthenticationCard';
+import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo';
+import JetButton from '@/Jetstream/Button';
+import JetInput from '@/Jetstream/Input';
+import JetCheckbox from '@/Jetstream/Checkbox';
+import JetLabel from '@/Jetstream/Label';
+import JetValidationErrors from '@/Jetstream/ValidationErrors';
 
 export default {
     components: {
@@ -84,21 +86,21 @@ export default {
         JetInput,
         JetCheckbox,
         JetLabel,
-        JetValidationErrors,
+        JetValidationErrors
     },
 
     props: {
         canResetPassword: Boolean,
-        status: String,
+        status: String
     },
 
     data() {
         return {
             form: this.$inertia.form({
-                email: "",
-                password: "",
-                remember: false,
-            }),
+                email: '',
+                password: '',
+                remember: false
+            })
         };
     },
 
@@ -107,12 +109,12 @@ export default {
             this.form
                 .transform((data) => ({
                     ...data,
-                    remember: this.form.remember ? "on" : "",
+                    remember: this.form.remember ? 'on' : ''
                 }))
-                .post(this.route("login"), {
-                    onFinish: () => this.form.reset("password"),
+                .post(this.route('login'), {
+                    onFinish: () => this.form.reset('password')
                 });
-        },
-    },
+        }
+    }
 };
 </script>

@@ -22,6 +22,10 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
+Route::get('/test', function () {
+    return '<html><body>testing123</body></html>';
+});
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
