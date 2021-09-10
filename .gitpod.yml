@@ -55,6 +55,7 @@ vscode:
         - octref.vetur
         - wongjn.php-sniffer
         - neilbrayfield.php-docblocker
+        - pkief.material-icon-theme
 
 github:
     prebuilds:
