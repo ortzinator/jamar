@@ -13,4 +13,3 @@ npm-debug.log
 yarn-error.log
 .ddev/docker-compose.host-docker-internal.yaml
 .env.dusk.local
-tests/Browser/console/*

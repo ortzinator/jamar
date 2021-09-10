@@ -10,12 +10,8 @@ use Tests\DuskTestCase;
 class LoginTest extends DuskTestCase
 {
     use DatabaseMigrations;
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    public function testExample()
+
+    public function test_a_user_can_log_in()
     {
         User::create([
             'name' => 'Brian Ortiz',
