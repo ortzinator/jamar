@@ -16,7 +16,7 @@ web_environment: []
 
 hooks:
     post-start:
-        - exec-host: echo 'create database if not exists dusk;' | ddev mysql -uroot -proot
+        - exec-host: echo "create database if not exists dusk; GRANT ALL ON dusk.* TO 'db'@'%';" | ddev mysql -uroot -proot
 # This config.yaml was created with ddev version v1.17.5
 # webimage: drud/ddev-webserver:v1.17.4
 # dbimage: drud/ddev-dbserver-mariadb-10.3:v1.17.3
