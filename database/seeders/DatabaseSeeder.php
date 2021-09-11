@@ -19,12 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        app()[
-            \Spatie\Permission\PermissionRegistrar::class
-        ]->forgetCachedPermissions();
-
-        $role = Role::create(['name' => 'Super Admin']);
-        $role->givePermissionTo(Permission::all());
+        $this->call([PermissionSeeder::class]);
 
         $user = User::factory()->create([
             'name' => 'Brian Ortiz',

@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Models\User;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
@@ -11,6 +12,12 @@ abstract class DuskTestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->artisan('db:seed --class=PermissionSeeder');
+    }
+
     /**
      * Prepare for Dusk test execution.
      *
@@ -19,7 +26,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public static function prepare()
     {
-        static::startChromeDriver();
+        //
     }
 
     /**
@@ -59,5 +66,12 @@ abstract class DuskTestCase extends BaseTestCase
     {
         return isset($_SERVER['DUSK_HEADLESS_DISABLED']) ||
             isset($_ENV['DUSK_HEADLESS_DISABLED']);
+    }
+
+    public function adminUser()
+    {
+        return User::factory()
+            ->admin()
+            ->create();
     }
 }

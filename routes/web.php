@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PolicyController;
-use App\Http\Controllers\PolicyFieldController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;

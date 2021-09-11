@@ -44266,7 +44266,8 @@ window.inertiaEventsCount = {
     var el = _ref.el,
         App = _ref.App,
         props = _ref.props,
-        plugin = _ref.plugin;
+        plugin = _ref.plugin,
+        onMounted = _ref.onMounted;
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
       render: function render() {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(App, props);

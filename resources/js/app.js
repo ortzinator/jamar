@@ -7,7 +7,7 @@ window.inertiaEventsCount = {
 };
 
 // Import modules...
-import { createApp, h } from 'vue';
+import { createApp, h, onMounted } from 'vue';
 import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import { Inertia } from '@inertiajs/inertia';
@@ -15,7 +15,7 @@ import { Inertia } from '@inertiajs/inertia';
 createInertiaApp({
     title: (title) => (title ? `${title} - Jamar` : 'Jamar'),
     resolve: (name) => require(`./Pages/${name}`),
-    setup({ el, App, props, plugin }) {
+    setup({ el, App, props, plugin, onMounted }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .component('InertiaHead', Head)

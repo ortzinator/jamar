@@ -14,6 +14,11 @@ use Inertia\Inertia;
 
 class PolicyController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Policy::class, 'policy');
+    }
+
     /**
      * Display a listing of the resource.
      *

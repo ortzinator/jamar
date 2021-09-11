@@ -10,8 +10,6 @@ class PolicyPolicy
 {
     use HandlesAuthorization;
 
-    use HandlesAuthorization;
-
     /**
      * Perform pre-authorization checks.
      *
