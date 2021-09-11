@@ -168,7 +168,7 @@ class PolicyTest extends TestCase
 
     public function test_can_create_policy()
     {
-        $this->signIn();
+        $this->signIn(true);
         $this->withoutExceptionHandling();
 
         $policy = Policy::factory()->make();
@@ -198,7 +198,7 @@ class PolicyTest extends TestCase
 
     public function test_can_show_edit_page()
     {
-        $this->signIn();
+        $this->signIn(true);
         $policy = Policy::factory()
             ->has(Contact::factory(4))
             ->create();
