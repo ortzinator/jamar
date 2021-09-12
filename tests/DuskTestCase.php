@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use App\Models\User;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
@@ -26,7 +25,9 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public static function prepare()
     {
-        //
+        if (!static::runningInSail()) {
+            static::startChromeDriver();
+        }
     }
 
     /**
@@ -39,11 +40,7 @@ abstract class DuskTestCase extends BaseTestCase
         $options = (new ChromeOptions())->addArguments(
             collect(['--window-size=1920,1080'])
                 ->unless($this->hasHeadlessDisabled(), function ($items) {
-                    return $items->merge([
-                        '--disable-gpu',
-                        '--headless',
-                        '--ignore-certificate-errors'
-                    ]);
+                    return $items->merge(['--disable-gpu', '--headless']);
                 })
                 ->all()
         );
@@ -66,12 +63,5 @@ abstract class DuskTestCase extends BaseTestCase
     {
         return isset($_SERVER['DUSK_HEADLESS_DISABLED']) ||
             isset($_ENV['DUSK_HEADLESS_DISABLED']);
-    }
-
-    public function adminUser()
-    {
-        return User::factory()
-            ->admin()
-            ->create();
     }
 }
