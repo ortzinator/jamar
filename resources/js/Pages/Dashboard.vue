@@ -2,6 +2,10 @@
     <app-layout>
         <template #header>
             <h1>Dashboard</h1>
+            <Alert v-if="user.roles.length < 1">
+                You have not been assigned any roles yet. Please contact your
+                manager or administrator
+            </Alert>
         </template>
 
         <div
@@ -65,15 +69,24 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { usePage } from '@inertiajs/inertia-vue3';
+
 import AppLayout from '@/Layouts/NewLayout';
 import EndingSoon from '@/Widgets/EndingSoon';
 import Text from '@/Widgets/Text';
+import Alert from '@/Shared/Alert';
 
 export default {
     components: {
         AppLayout,
         EndingSoon,
-        Text
+        Text,
+        Alert
+    },
+    setup() {
+        const user = computed(() => usePage().props.value.user);
+        return { user };
     }
 };
 </script>

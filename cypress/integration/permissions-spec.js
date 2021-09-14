@@ -22,7 +22,9 @@ describe('permissions', () => {
     context('user has no permissions', () => {
         it('gets an error', () => {
             cy.login({ email: 'pat@startrek.com' });
-            cy.visit('/dashboard').contains('h1', 'dashboard');
+            cy.visit('/dashboard').contains(
+                'You have not been assigned any roles yet.'
+            );
         });
     });
 });
