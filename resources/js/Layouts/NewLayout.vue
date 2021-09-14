@@ -190,8 +190,7 @@
 
                             <div class="py-1">
                                 <MenuItem v-slot="{ active }">
-                                    <form
-                                        @submit.prevent="logout"
+                                    <div
                                         :class="[
                                             active
                                                 ? 'bg-gray-100 text-gray-900'
@@ -199,13 +198,16 @@
                                             'block px-4 py-2 text-sm'
                                         ]"
                                     >
-                                        <button type="submit flex">
+                                        <button
+                                            type="submit flex"
+                                            @click="logout"
+                                        >
                                             <LogoutIcon
                                                 class="h-5 w-5 mr-2 inline"
                                             />
                                             Log Out
                                         </button>
-                                    </form>
+                                    </div>
                                 </MenuItem>
                             </div>
                             <template
@@ -313,6 +315,8 @@
 
 <script>
 import { ref } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+
 import JetApplicationMark from '@/Jetstream/ApplicationMark';
 import JetBanner from '@/Jetstream/Banner';
 import JetDropdown from '@/Jetstream/Dropdown';
@@ -383,7 +387,7 @@ export default {
         ]);
 
         function logout() {
-            this.$inertia.post(route('logout'));
+            Inertia.post(route('logout'));
         }
 
         return { showingNavigationDropdown, logout, navOpen, navigation };
