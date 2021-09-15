@@ -19,7 +19,46 @@ class PermissionSeeder extends Seeder
             \Spatie\Permission\PermissionRegistrar::class
         ]->forgetCachedPermissions();
 
-        $role = Role::create(['name' => 'Super Admin']);
-        $role->givePermissionTo(Permission::all());
+        Permission::create(['name' => 'view policies']);
+        Permission::create(['name' => 'create policies']);
+        Permission::create(['name' => 'update policies']);
+        Permission::create(['name' => 'update policy facts']);
+        Permission::create(['name' => 'view policy facts']);
+        Permission::create(['name' => 'delete policies']);
+
+        Permission::create(['name' => 'view contacts']);
+        Permission::create(['name' => 'create contacts']);
+        Permission::create(['name' => 'update contacts']);
+        Permission::create(['name' => 'view contact facts']);
+        Permission::create(['name' => 'update contact facts']);
+        Permission::create(['name' => 'delete contacts']);
+
+        Role::create(['name' => 'Super Admin'])->givePermissionTo(
+            Permission::all()
+        );
+        Role::create(['name' => 'Manager'])->syncPermissions([
+            'view policies',
+            'create policies',
+            'update policies',
+            'update policy facts',
+            'view policy facts',
+            'delete policies',
+            'create contacts',
+            'update contacts',
+            'view contact facts',
+            'update contact facts'
+        ]);
+        Role::create(['name' => 'Employee'])->syncPermissions([
+            'view policies',
+            'create policies',
+            'update policies',
+            'update policy facts',
+            'view policy facts',
+            'delete policies',
+            'create contacts',
+            'update contacts',
+            'view contact facts',
+            'update contact facts'
+        ]);
     }
 }

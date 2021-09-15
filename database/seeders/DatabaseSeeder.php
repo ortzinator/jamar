@@ -21,11 +21,22 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([PermissionSeeder::class]);
 
-        $user = User::factory()->create([
-            'name' => 'Brian Ortiz',
-            'email' => 'ortzinator@gmail.com'
-        ]); //User factory defaults password to "password"
-        $user->assignRole('Super Admin');
+        User::factory()
+            ->create([
+                'name' => 'Brian Ortiz',
+                'email' => 'ortzinator@gmail.com'
+            ])
+            ->assignRole('Super Admin');
+        User::factory()
+            ->create([
+                'email' => 'manager@jamar.com'
+            ])
+            ->assignRole('Manager');
+        User::factory()
+            ->create([
+                'email' => 'employee@jamar.com'
+            ])
+            ->assignRole('Employee');
 
         $contacts = Contact::factory(50)->create();
 
