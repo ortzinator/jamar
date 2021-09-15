@@ -43,10 +43,12 @@ class PermissionSeeder extends Seeder
             'update policy facts',
             'view policy facts',
             'delete policies',
+            'view contacts',
             'create contacts',
             'update contacts',
             'view contact facts',
-            'update contact facts'
+            'update contact facts',
+            'delete contacts'
         ]);
         Role::create(['name' => 'Employee'])->syncPermissions([
             'view policies',
@@ -55,10 +57,12 @@ class PermissionSeeder extends Seeder
             'update policy facts',
             'view policy facts',
             'delete policies',
+            'view contacts',
             'create contacts',
             'update contacts',
             'view contact facts',
-            'update contact facts'
+            'update contact facts',
+            'delete contacts'
         ]);
     }
 }
