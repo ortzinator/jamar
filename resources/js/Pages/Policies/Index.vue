@@ -1,6 +1,7 @@
 <template>
     <app-layout>
         <template #header>
+            <inertia-head title="Policies" />
             <h1>Policies</h1>
         </template>
 

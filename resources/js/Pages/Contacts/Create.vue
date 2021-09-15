@@ -1,6 +1,7 @@
 <template>
     <app-layout>
         <template #header>
+            <inertia-head title="Create Contact" />
             <h1>
                 <inertia-link
                     class="

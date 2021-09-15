@@ -12,5 +12,10 @@ describe('contacts', () => {
             cy.visit('/contacts/1/edit');
             cy.get('#address').invoke('val').should('not.be.empty');
         });
+
+        it('displays correct page title', () => {
+            cy.visit('/contacts');
+            cy.title().should('eq', 'Contacts - Jamar');
+        });
     });
 });

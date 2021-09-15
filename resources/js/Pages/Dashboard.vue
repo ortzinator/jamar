@@ -1,6 +1,7 @@
 <template>
     <app-layout>
         <template #header>
+            <inertia-head title="Dashboard" />
             <h1>Dashboard</h1>
             <Alert v-if="user.roles.length < 1">
                 You have not been assigned any roles yet. Please contact your
