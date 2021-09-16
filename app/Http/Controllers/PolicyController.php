@@ -102,7 +102,8 @@ class PolicyController extends Controller
 
         return Inertia::render('Policies/Edit', [
             'policy' => $policyData,
-            'fields' => $policy->fields
+            'fields' => $policy->fields,
+            'users' => User::all(['id', 'name'])
         ]);
     }
 
@@ -120,7 +121,8 @@ class PolicyController extends Controller
             'contacts' => ['array'],
             'period_start' => ['date'],
             'period_end' => ['date'],
-            'fields.*.name' => ['required']
+            'fields.*.name' => ['required'],
+            'agent_id' => ['exists:users,id']
         ]);
 
         if ($request->has('contacts')) {
@@ -132,7 +134,8 @@ class PolicyController extends Controller
             'number' => $request['number'],
             'period_start' => new Carbon($request['range.start']),
             'period_end' => new Carbon($request['range.end']),
-            'fields' => $request['fields']
+            'fields' => $request['fields'],
+            'agent_id' => $request['agent_id']
         ]);
         return Redirect::back()->banner('Policy updated');
     }

@@ -224,7 +224,7 @@ export default {
         FormSection
     },
     setup(props, context) {
-        const policyForm = useForm('policy', {
+        const policyForm = useForm({
             number: null,
             contacts: [],
             period: {

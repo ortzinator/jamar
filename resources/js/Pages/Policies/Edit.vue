@@ -81,6 +81,22 @@
                         </template>
                     </date-picker>
                 </div>
+                <div class="mb-5">
+                    <jet-label value="Assigned Agent" />
+                    <select
+                        class="border border-cool-grey-200 mr-5 rounded mt-1"
+                        id="agent"
+                        v-model="policyForm.agent_id"
+                    >
+                        <option
+                            v-for="agent in users"
+                            v-bind:value="agent.id"
+                            v-bind:key="agent.id"
+                        >
+                            {{ agent.name }}
+                        </option>
+                    </select>
+                </div>
 
                 <div class="mb-5">
                     <div class="text-gray-600 text-sm text-left">
@@ -185,7 +201,8 @@ export default {
     props: {
         errors: Object,
         policy: Object,
-        fields: Array
+        fields: Array,
+        users: { type: Array, required: true }
     },
     setup(props) {
         const policyForm = useForm({
@@ -196,7 +213,8 @@ export default {
                 start: props.policy.period_start,
                 end: props.policy.period_end
             },
-            fields: props.policy.fields ?? []
+            fields: props.policy.fields ?? [],
+            agent_id: props.policy.agent_id
         });
 
         const sending = ref(false);

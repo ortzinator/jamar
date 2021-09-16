@@ -3,7 +3,7 @@
         <div
             :class="{
                 'bg-light-blue-vivid-500': style == 'success',
-                'bg-red-vivid-700': style == 'danger',
+                'bg-red-vivid-700': style == 'danger'
             }"
             class="md:px-20 mx-auto py-2 px-3 sm:px-6"
             v-if="show && message"
@@ -14,7 +14,7 @@
                         class="flex p-2 rounded-lg"
                         :class="{
                             'bg-light-blue-vivid-600': style == 'success',
-                            'bg-red-vivid-600': style == 'danger',
+                            'bg-red-vivid-600': style == 'danger'
                         }"
                     >
                         <CheckCircleIcon
@@ -51,7 +51,7 @@
                             'hover:bg-light-blue-vivid-600 focus:bg-light-blue-vivid-600':
                                 style == 'success',
                             'hover:bg-red-vivid-600 focus:bg-red-vivid-600':
-                                style == 'danger',
+                                style == 'danger'
                         }"
                         aria-label="Dismiss"
                         @click.prevent="show = false"
@@ -65,34 +65,34 @@
 </template>
 
 <script>
+import { ref, computed, watch } from 'vue';
+import { usePage } from '@inertiajs/inertia-vue3';
 import {
     XIcon,
     ExclamationIcon,
-    CheckCircleIcon,
-} from "@heroicons/vue/outline";
+    CheckCircleIcon
+} from '@heroicons/vue/outline';
 
 export default {
     components: { XIcon, ExclamationIcon, CheckCircleIcon },
-    data() {
-        return {
-            show: true,
-        };
-    },
+    setup(props, attrs) {
+        var show = ref(true);
 
-    computed: {
-        style() {
-            return this.$page.props.jetstream.flash?.bannerStyle || "success";
-        },
+        const style = computed(() => {
+            return (
+                usePage().props.value.jetstream.flash.bannerStyle || 'success'
+            );
+        });
 
-        message() {
-            return this.$page.props.jetstream.flash?.banner || "";
-        },
-    },
+        const message = computed(() => {
+            return usePage().props.value.jetstream.flash.banner || '';
+        });
 
-    watch: {
-        "$page.props.jetstream.flash"() {
-            this.show = true;
-        },
-    },
+        watch(message, () => {
+            show = true;
+        });
+
+        return { show, style, message };
+    }
 };
 </script>
