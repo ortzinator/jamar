@@ -17,12 +17,16 @@ describe('policy', () => {
                 ['agent']
             ).then((policy) => {
                 cy.visit(`/policies/${policy.id}/edit`);
+
                 cy.get('#agent').select('2');
                 cy.contains('button', 'Update policy').click();
                 cy.contains('Policy updated');
 
                 cy.visit(`/policies/${policy.id}/edit`);
                 cy.get('#agent').should('have.value', 2);
+                cy.get('#agent')
+                    .find('option:selected')
+                    .should('not.contain.text', policy.agent.name);
             });
         });
     });

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Gate;
 
-class CreatePolicyRequest extends FormRequest
+class UpdatePolicyReqest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,19 +24,13 @@ class CreatePolicyRequest extends FormRequest
     public function rules()
     {
         return [
-            'number' => ['required'],
+            'number' => ['sometimes', 'required'],
+            'fields' => ['sometimes', 'array'],
             'fields.*.name' => ['required'],
-            'period_start' => ['required'],
-            'period_end' => ['required'],
-            'agent_id' => ['required', 'exists:users,id'],
-            'contacts' => ['required']
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'contacts.required' => 'At least one contact must be added'
+            'period_start' => ['sometimes', 'required', 'date'],
+            'period_end' => ['sometimes', 'required', 'date'],
+            'contacts' => ['sometimes'],
+            'agent_id' => ['sometimes', 'exists:users,id']
         ];
     }
 }

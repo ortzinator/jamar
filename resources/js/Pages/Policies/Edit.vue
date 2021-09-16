@@ -221,7 +221,13 @@ export default {
         const fieldFormShown = ref(false);
 
         function updatePolicy() {
-            policyForm.put(route('policies.update', props.policy.id));
+            policyForm
+                .transform((data) => ({
+                    ...data,
+                    period_start: data.range.start,
+                    period_end: data.range.end
+                }))
+                .put(route('policies.update', props.policy.id));
         }
 
         function destroy() {

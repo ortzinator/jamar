@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePolicyRequest;
+use App\Http\Requests\UpdatePolicyReqest;
 use App\Models\Contact;
 use App\Models\Policy;
 use App\Models\User;
@@ -114,29 +115,15 @@ class PolicyController extends Controller
      * @param  \App\Models\Policy  $policy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Policy $policy)
+    public function update(UpdatePolicyReqest $request, Policy $policy)
     {
-        $request->validate([
-            'number' => ['required'],
-            'contacts' => ['array'],
-            'period_start' => ['date'],
-            'period_end' => ['date'],
-            'fields.*.name' => ['required'],
-            'agent_id' => ['exists:users,id']
-        ]);
-
         if ($request->has('contacts')) {
-            $contacts = Arr::pluck($request['contacts'], 'id');
-            $policy->contacts()->sync($contacts);
+            $policy
+                ->contacts()
+                ->sync(Arr::pluck($request->safe()['contacts'], 'id'));
         }
 
-        $policy->update([
-            'number' => $request['number'],
-            'period_start' => new Carbon($request['range.start']),
-            'period_end' => new Carbon($request['range.end']),
-            'fields' => $request['fields'],
-            'agent_id' => $request['agent_id']
-        ]);
+        $policy->update($request->safe()->except('contacts'));
         return Redirect::back()->banner('Policy updated');
     }
 
