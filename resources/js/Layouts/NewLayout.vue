@@ -210,65 +210,6 @@
                                     </div>
                                 </MenuItem>
                             </div>
-                            <template
-                                v-if="$page.props.jetstream.hasTeamFeatures"
-                            >
-                                <div class="py-1">
-                                    <div
-                                        class="
-                                            px-4
-                                            py-2
-                                            text-xs text-gray-400
-                                            flex
-                                            items-center
-                                        "
-                                    >
-                                        <UserGroupIcon class="w-5 h-5 mr-2" />
-                                        Manage Teams
-                                    </div>
-                                </div>
-                                <!-- Team Settings -->
-                                <div class="py-1">
-                                    <MenuItem v-slot="{ active }">
-                                        <inertia-link
-                                            :href="
-                                                route(
-                                                    'teams.show',
-                                                    $page.props.user
-                                                        .current_team
-                                                )
-                                            "
-                                            :class="[
-                                                active
-                                                    ? 'bg-gray-100 text-gray-900'
-                                                    : 'text-gray-700',
-                                                'block px-4 py-2 text-sm'
-                                            ]"
-                                        >
-                                            Team Settings
-                                        </inertia-link>
-                                    </MenuItem>
-
-                                    <MenuItem
-                                        v-slot="{ active }"
-                                        v-if="
-                                            $page.props.jetstream.canCreateTeams
-                                        "
-                                    >
-                                        <inertia-link
-                                            :href="route('teams.create')"
-                                            :class="[
-                                                active
-                                                    ? 'bg-gray-100 text-gray-900'
-                                                    : 'text-gray-700',
-                                                'block px-4 py-2 text-sm'
-                                            ]"
-                                        >
-                                            Create New Team
-                                        </inertia-link>
-                                    </MenuItem>
-                                </div>
-                            </template>
                         </MenuItems>
                     </Menu>
                 </div>
@@ -317,12 +258,7 @@
 import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 
-import JetApplicationMark from '@/Jetstream/ApplicationMark';
 import JetBanner from '@/Jetstream/Banner';
-import JetDropdown from '@/Jetstream/Dropdown';
-import JetDropdownLink from '@/Jetstream/DropdownLink';
-import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink';
-
 import NavLink from '@/Shared/NavLink';
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
@@ -341,12 +277,8 @@ import {
 
 export default {
     components: {
-        JetApplicationMark,
         JetBanner,
-        JetDropdown,
-        JetDropdownLink,
         NavLink,
-        JetResponsiveNavLink,
         Disclosure,
         DisclosureButton,
         DisclosurePanel,

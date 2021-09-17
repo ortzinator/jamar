@@ -1,64 +1,30 @@
 <template>
-    <div class="bottom-0 fixed w-full z-50">
-        <div
-            :class="{
-                'bg-light-blue-vivid-500': style == 'success',
-                'bg-red-vivid-700': style == 'danger'
-            }"
-            class="md:px-20 mx-auto py-2 px-3 sm:px-6"
-            v-if="show && message"
-        >
-            <div class="flex items-center justify-between flex-wrap">
-                <div class="w-0 flex-1 flex items-center min-w-0">
-                    <span
-                        class="flex p-2 rounded-lg"
-                        :class="{
-                            'bg-light-blue-vivid-600': style == 'success',
-                            'bg-red-vivid-600': style == 'danger'
-                        }"
-                    >
-                        <CheckCircleIcon
-                            v-if="style == 'success'"
-                            class="h-5 w-5 text-white"
-                        />
-
-                        <ExclamationIcon
-                            v-if="style == 'danger'"
-                            class="w-5 h-5 text-white"
-                        />
-                    </span>
-
-                    <p class="ml-3 font-medium text-sm text-white truncate">
-                        {{ message }}
-                    </p>
-                </div>
-
-                <div class="flex-shrink-0 sm:ml-3">
-                    <button
-                        type="button"
-                        class="
-                            -mr-1
-                            flex
-                            p-2
-                            rounded-md
-                            focus:outline-none
-                            sm:-mr-2
-                            transition
-                            ease-in-out
-                            duration-150
-                        "
-                        :class="{
-                            'hover:bg-light-blue-vivid-600 focus:bg-light-blue-vivid-600':
-                                style == 'success',
-                            'hover:bg-red-vivid-600 focus:bg-red-vivid-600':
-                                style == 'danger'
-                        }"
-                        aria-label="Dismiss"
-                        @click.prevent="show = false"
-                    >
-                        <XIcon class="h-5 w-5 text-white" />
-                    </button>
-                </div>
+    <div
+        v-if="show && message"
+        class="
+            absolute
+            flex
+            items-center
+            bottom-32
+            left-10
+            shadow-lg
+            rounded-lg
+        "
+        :class="{
+            'bg-green-400': style == 'success',
+            'bg-red-vivid-600': style == 'danger'
+        }"
+    >
+        <div class="p-4 border-r border-gray-400 rounded-l-lg">
+            <CheckIcon v-if="style == 'success'" class="h-5 w-5" />
+            <ExclamationIcon v-if="style == 'danger'" class="w-5 h-5" />
+        </div>
+        <div class="flex bg-white rounded-r-lg">
+            <div class="p-4">{{ message }}</div>
+            <div class="p-4">
+                <button class="cursor-pointer" @click="show = false">
+                    <XIcon class="w-5 h-5" />
+                </button>
             </div>
         </div>
     </div>
@@ -67,29 +33,30 @@
 <script>
 import { ref, computed, watch } from 'vue';
 import { usePage } from '@inertiajs/inertia-vue3';
-import {
-    XIcon,
-    ExclamationIcon,
-    CheckCircleIcon
-} from '@heroicons/vue/outline';
+import { Inertia } from '@inertiajs/inertia';
+import { XIcon, ExclamationIcon, CheckIcon } from '@heroicons/vue/outline';
 
 export default {
-    components: { XIcon, ExclamationIcon, CheckCircleIcon },
+    components: { XIcon, ExclamationIcon, CheckIcon },
     setup(props, attrs) {
         var show = ref(true);
 
         const style = computed(() => {
             return (
-                usePage().props.value.jetstream.flash.bannerStyle || 'success'
+                usePage().props.value.jetstream.flash?.bannerStyle || 'success'
             );
         });
 
         const message = computed(() => {
-            return usePage().props.value.jetstream.flash.banner || '';
+            return usePage().props.value.jetstream.flash?.banner || '';
         });
 
-        watch(message, () => {
-            show = true;
+        watch(usePage().props.value.jetstream.flash, () => {
+            show.value = true;
+        });
+
+        Inertia.on('start', (event) => {
+            console.log(`Starting a visit to ${event.detail.visit.url}`);
         });
 
         return { show, style, message };
