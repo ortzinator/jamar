@@ -1,7 +1,5 @@
 <template>
     <div>
-        <jet-banner />
-
         <div class="md:flex md:flex-col bg-cool-grey-50 md:h-screen">
             <div class="md:flex md:flex-shrink-0 bg-white">
                 <div
@@ -239,11 +237,6 @@
                     class="md:overflow-y-auto w-full shadow-inner"
                 >
                     <div class="max-w-screen-2xl md:p-10 p-5">
-                        <header class="py-5" v-if="$slots.header">
-                            <div class="font-bold">
-                                <slot name="header" />
-                            </div>
-                        </header>
                         <main>
                             <slot />
                         </main>
@@ -255,8 +248,10 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
+import { usePage } from '@inertiajs/inertia-vue3';
+import { useToast } from 'vue-toastification';
 
 import JetBanner from '@/Jetstream/Banner';
 import NavLink from '@/Shared/NavLink';
@@ -318,11 +313,26 @@ export default {
             }
         ]);
 
+        const toast = useToast();
+
         function logout() {
             Inertia.post(route('logout'));
         }
 
-        return { showingNavigationDropdown, logout, navOpen, navigation };
+        const flash = computed(() => usePage().props.value.flash.message);
+        watch(flash, (val) => {
+            if (val) {
+                toast(val);
+            }
+        });
+
+        return {
+            showingNavigationDropdown,
+            logout,
+            navOpen,
+            navigation,
+            toast
+        };
     }
 };
 </script>

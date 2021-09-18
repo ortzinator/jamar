@@ -33,12 +33,11 @@
 <script>
 import { ref, computed, watch } from 'vue';
 import { usePage } from '@inertiajs/inertia-vue3';
-import { Inertia } from '@inertiajs/inertia';
 import { XIcon, ExclamationIcon, CheckIcon } from '@heroicons/vue/outline';
 
 export default {
     components: { XIcon, ExclamationIcon, CheckIcon },
-    setup(props, attrs) {
+    setup() {
         var show = ref(true);
 
         const style = computed(() => {
@@ -53,10 +52,6 @@ export default {
 
         watch(usePage().props.value.jetstream.flash, () => {
             show.value = true;
-        });
-
-        Inertia.on('start', (event) => {
-            console.log(`Starting a visit to ${event.detail.visit.url}`);
         });
 
         return { show, style, message };

@@ -1,187 +1,175 @@
 <template>
-    <app-layout>
-        <template #header>
-            <inertia-head title="Create Policy" />
-            <h1>
-                <inertia-link
-                    class="
-                        text-light-blue-vivid-400
-                        hover:text-light-blue-vivid-600
-                    "
-                    :href="route('policies')"
-                >
-                    Policies
-                </inertia-link>
-                <span class="text-light-blue-vivid-400 font-medium">/</span>
-                New Policy
-            </h1>
-        </template>
+    <div class="font-bold py-5">
+        <inertia-head title="Create Policy" />
+        <h1>
+            <inertia-link
+                class="
+                    text-light-blue-vivid-400
+                    hover:text-light-blue-vivid-600
+                "
+                :href="route('policies')"
+            >
+                Policies
+            </inertia-link>
+            <span class="text-light-blue-vivid-400 font-medium">/</span>
+            New Policy
+        </h1>
+    </div>
 
-        <form @submit.prevent="store">
-            <div class="">
-                <FormSection>
-                    <template #header>Basics</template>
-                    <template #description>
-                        Description of this section
-                    </template>
-                    <div class="grid gap-4">
-                        <div class="col-span-6 sm:col-span-4">
-                            <jet-label
-                                for="template"
-                                value="Policy Type"
-                            ></jet-label>
-                            <div class="flex items-center">
-                                <select
-                                    class="
-                                        border border-cool-grey-200
-                                        mr-5
-                                        mt-1
-                                        rounded
-                                    "
-                                    v-model="selectedTemplate"
-                                >
-                                    <option
-                                        v-bind:value="template.fields"
-                                        v-for="template in templates"
-                                        v-bind:key="template.id"
-                                    >
-                                        {{ template.label }}
-                                    </option>
-                                </select>
-                                <Popper hover arrow placement="right">
-                                    <QuestionMarkCircleIcon
-                                        class="
-                                            text-light-blue-vivid-600
-                                            w-5
-                                            h-5
-                                        "
-                                    />
-                                    <template #content>
-                                        <div
-                                            class="
-                                                bg-white
-                                                px-5
-                                                py-3
-                                                rounded
-                                                shadow-xl
-                                            "
-                                        >
-                                            Help text
-                                        </div>
-                                    </template>
-                                </Popper>
-                            </div>
-                        </div>
-                        <div class="col-span-6 sm:col-span-4">
-                            <jet-label
-                                for="agent"
-                                value="Assigned Agent"
-                            ></jet-label>
+    <form @submit.prevent="store">
+        <div class="">
+            <FormSection>
+                <template #header>Basics</template>
+                <template #description> Description of this section </template>
+                <div class="grid gap-4">
+                    <div class="col-span-6 sm:col-span-4">
+                        <jet-label
+                            for="template"
+                            value="Policy Type"
+                        ></jet-label>
+                        <div class="flex items-center">
                             <select
                                 class="
                                     border border-cool-grey-200
                                     mr-5
-                                    rounded
                                     mt-1
+                                    rounded
                                 "
-                                v-model="policyForm.agent_id"
+                                v-model="selectedTemplate"
                             >
                                 <option
-                                    v-for="agent in users"
-                                    v-bind:value="agent.id"
-                                    v-bind:key="agent.id"
+                                    v-bind:value="template.fields"
+                                    v-for="template in templates"
+                                    v-bind:key="template.id"
                                 >
-                                    {{ agent.name }}
+                                    {{ template.label }}
                                 </option>
                             </select>
-                        </div>
-                        <div class="col-span-6 sm:col-span-4">
-                            <jet-label for="number" value="Policy Number" />
-                            <jet-input
-                                v-model="policyForm.number"
-                                id="number"
-                                type="text"
-                                class="block w-full mt-1"
-                            />
-                            <jet-input-error
-                                :message="policyForm.errors.number"
-                            />
-                        </div>
-                        <div class="col-span-6 sm:col-span-4">
-                            <jet-label>Period of Insurance</jet-label>
-                            <div
-                                :class="{
-                                    formError:
-                                        policyForm.errors.period_start ||
-                                        policyForm.errors.period_end
-                                }"
-                                class="mt-1"
-                            >
-                                <date-range v-model="policyForm.period" />
-                            </div>
-                            <jet-input-error
-                                :message="policyForm.errors.period_start"
-                            />
-                            <jet-input-error
-                                :message="policyForm.errors.period_end"
-                            />
+                            <Popper hover arrow placement="right">
+                                <QuestionMarkCircleIcon
+                                    class="text-light-blue-vivid-600 w-5 h-5"
+                                />
+                                <template #content>
+                                    <div
+                                        class="
+                                            bg-white
+                                            px-5
+                                            py-3
+                                            rounded
+                                            shadow-xl
+                                        "
+                                    >
+                                        Help text
+                                    </div>
+                                </template>
+                            </Popper>
                         </div>
                     </div>
-                </FormSection>
-
-                <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
-
-                <FormSection>
-                    <template #header>Policy Fields</template>
-                    <template #description>
-                        Description of this section
-                    </template>
-
-                    <policy-fields-list
-                        :fields="policyForm.fields"
-                        @fieldAdded="(field) => policyForm.fields.push(field)"
-                        @fieldDeleted="handleFieldDelete"
-                        class="mb-5"
-                    ></policy-fields-list>
-                </FormSection>
-
-                <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
-
-                <FormSection>
-                    <template #header>Contacts</template>
-                    <template #description> Add contacts here </template>
-                    <contact-list
-                        :contacts="policyForm.contacts"
-                        class="mb-5"
-                        @contactClicked="handleContactClick"
-                        removable
-                    >
-                        Contacts
-                        <template v-slot:noContacts>
-                            <div class="mb-5 text-yellow-vivid-600">
-                                <exclamation-icon class="inline h-5 mr-2 w-5" />
-                                Please add one or more contacts
-                            </div>
-                        </template>
-                    </contact-list>
-                    <SelectContact @selected="contactSelected" />
-                </FormSection>
-
-                <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
-
-                <div class="flex justify-between mt-5">
-                    <div>Problems?</div>
-                    <loading-button
-                        class="btn btn-primary"
-                        type="submit"
-                        :loading="policyForm.processing"
-                    >
-                        Create Policy
-                    </loading-button>
+                    <div class="col-span-6 sm:col-span-4">
+                        <jet-label
+                            for="agent"
+                            value="Assigned Agent"
+                        ></jet-label>
+                        <select
+                            class="
+                                border border-cool-grey-200
+                                mr-5
+                                rounded
+                                mt-1
+                            "
+                            v-model="policyForm.agent_id"
+                        >
+                            <option
+                                v-for="agent in users"
+                                v-bind:value="agent.id"
+                                v-bind:key="agent.id"
+                            >
+                                {{ agent.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-span-6 sm:col-span-4">
+                        <jet-label for="number" value="Policy Number" />
+                        <jet-input
+                            v-model="policyForm.number"
+                            id="number"
+                            type="text"
+                            class="block w-full mt-1"
+                        />
+                        <jet-input-error :message="policyForm.errors.number" />
+                    </div>
+                    <div class="col-span-6 sm:col-span-4">
+                        <jet-label>Period of Insurance</jet-label>
+                        <div
+                            :class="{
+                                formError:
+                                    policyForm.errors.period_start ||
+                                    policyForm.errors.period_end
+                            }"
+                            class="mt-1"
+                        >
+                            <date-range v-model="policyForm.period" />
+                        </div>
+                        <jet-input-error
+                            :message="policyForm.errors.period_start"
+                        />
+                        <jet-input-error
+                            :message="policyForm.errors.period_end"
+                        />
+                    </div>
                 </div>
+            </FormSection>
+
+            <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+
+            <FormSection>
+                <template #header>Policy Fields</template>
+                <template #description> Description of this section </template>
+
+                <policy-fields-list
+                    :fields="policyForm.fields"
+                    @fieldAdded="(field) => policyForm.fields.push(field)"
+                    @fieldDeleted="handleFieldDelete"
+                    class="mb-5"
+                ></policy-fields-list>
+            </FormSection>
+
+            <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+
+            <FormSection>
+                <template #header>Contacts</template>
+                <template #description> Add contacts here </template>
+                <contact-list
+                    :contacts="policyForm.contacts"
+                    class="mb-5"
+                    @contactClicked="handleContactClick"
+                    removable
+                >
+                    Contacts
+                    <template v-slot:noContacts>
+                        <div class="mb-5 text-yellow-vivid-600">
+                            <exclamation-icon class="inline h-5 mr-2 w-5" />
+                            Please add one or more contacts
+                        </div>
+                    </template>
+                </contact-list>
+                <SelectContact @selected="contactSelected" />
+            </FormSection>
+
+            <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+
+            <div class="flex justify-between mt-5">
+                <div>Problems?</div>
+                <loading-button
+                    class="btn btn-primary"
+                    type="submit"
+                    :loading="policyForm.processing"
+                >
+                    Create Policy
+                </loading-button>
             </div>
-        </form>
-    </app-layout>
+        </div>
+    </form>
 </template>
 
 <script>
@@ -206,6 +194,8 @@ import FormSection from '@/Shared/FormSection';
 
 export default {
     props: ['users'],
+    layout: AppLayout,
+
     components: {
         AppLayout,
         JetInput,

@@ -1,88 +1,85 @@
 <template>
-    <app-layout>
-        <template #header>
-            <inertia-head title="Policies" />
-            <h1>Policies</h1>
-        </template>
+    <div class="font-bold py-5">
+        <inertia-head title="Policies" />
+        <h1>Policies</h1>
+    </div>
 
-        <div>
-            <div class="flex mb-4 justify-between">
-                <div class="flex mr-4">
-                    <div class="flex shadow rounded bg-white cursor-default">
-                        <filter-select v-model="searchForm.trashed" />
-                        <input
-                            type="text"
-                            v-model="searchForm.search"
-                            placeholder="Search..."
-                            class="border-0 rounded-r w-full"
-                        />
-                    </div>
-                    <button
-                        class="
-                            ml-3
-                            text-sm text-gray-500
-                            hover:text-gray-700
-                            focus:text-light-blue-vivid-500
-                        "
-                        type="button"
-                        @click="reset"
-                    >
-                        Reset
-                    </button>
+    <div>
+        <div class="flex mb-4 justify-between">
+            <div class="flex mr-4">
+                <div class="flex shadow rounded bg-white cursor-default">
+                    <filter-select v-model="searchForm.trashed" />
+                    <input
+                        type="text"
+                        v-model="searchForm.search"
+                        placeholder="Search..."
+                        class="border-0 rounded-r w-full"
+                    />
                 </div>
-                <inertia-link
-                    class="btn btn-primary"
-                    :href="route('policies.create')"
+                <button
+                    class="
+                        ml-3
+                        text-sm text-gray-500
+                        hover:text-gray-700
+                        focus:text-light-blue-vivid-500
+                    "
+                    type="button"
+                    @click="reset"
                 >
-                    <span>Create</span>
-                    <span class="hidden md:inline"> Policy</span>
-                </inertia-link>
+                    Reset
+                </button>
             </div>
-            <div class="shadow rounded bg-white overflow-x-auto">
-                <DataTable
-                    :columns="columns"
-                    :dataSource="policies.data"
-                    routeName="policies.edit"
-                >
-                    <template v-slot:[`column.period_end`]="{ value }">
-                        <span
-                            :class="{ 'text-red-vivid-500': pastDate(value) }"
-                            >{{ formatDate(value) }}</span
-                        >
-                    </template>
-                    <template v-slot:[`column.created_at`]="{ value }">
-                        {{ formatDate(value) }}
-                    </template>
-                    <template v-slot:[`column.premium`]="{ value }">
-                        <div
-                            class="text-right w-full"
-                            v-text="value.formatted"
-                        ></div>
-                    </template>
-                    <template
-                        v-slot:[`column.contactNamesPreview`]="{ value, row }"
-                    >
-                        <div
-                            v-if="row.contacts.length === 0"
-                            class="flex text-red-vivid-600 items-center"
-                        >
-                            <exclamation-icon class="h-5 mr-2 w-5" />
-                            No contacts found
-                        </div>
-                        <div
-                            v-else
-                            v-text="value"
-                            class="
-                                overflow-ellipsis overflow-hidden
-                                whitespace-nowrap
-                            "
-                        />
-                    </template>
-                </DataTable>
-            </div>
-            <pagination :links="policies.links" />
+            <inertia-link
+                class="btn btn-primary"
+                :href="route('policies.create')"
+            >
+                <span>Create</span>
+                <span class="hidden md:inline"> Policy</span>
+            </inertia-link>
         </div>
-    </app-layout>
+        <div class="shadow rounded bg-white overflow-x-auto">
+            <DataTable
+                :columns="columns"
+                :dataSource="policies.data"
+                routeName="policies.edit"
+            >
+                <template v-slot:[`column.period_end`]="{ value }">
+                    <span :class="{ 'text-red-vivid-500': pastDate(value) }">{{
+                        formatDate(value)
+                    }}</span>
+                </template>
+                <template v-slot:[`column.created_at`]="{ value }">
+                    {{ formatDate(value) }}
+                </template>
+                <template v-slot:[`column.premium`]="{ value }">
+                    <div
+                        class="text-right w-full"
+                        v-text="value.formatted"
+                    ></div>
+                </template>
+                <template
+                    v-slot:[`column.contactNamesPreview`]="{ value, row }"
+                >
+                    <div
+                        v-if="row.contacts.length === 0"
+                        class="flex text-red-vivid-600 items-center"
+                    >
+                        <exclamation-icon class="h-5 mr-2 w-5" />
+                        No contacts found
+                    </div>
+                    <div
+                        v-else
+                        v-text="value"
+                        class="
+                            overflow-ellipsis overflow-hidden
+                            whitespace-nowrap
+                        "
+                    />
+                </template>
+            </DataTable>
+        </div>
+        <pagination :links="policies.links" />
+    </div>
 </template>
 
 <script>
@@ -111,6 +108,7 @@ import {
 
 export default {
     props: { sessions: Object, policies: Object, filters: Object },
+    layout: AppLayout,
 
     components: {
         AppLayout,

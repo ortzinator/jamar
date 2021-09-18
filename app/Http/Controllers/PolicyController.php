@@ -124,7 +124,9 @@ class PolicyController extends Controller
         }
 
         $policy->update($request->safe()->except('contacts'));
-        return Redirect::back()->banner('Policy updated');
+
+        session()->flash('message', 'Policy updated');
+        return Redirect::back();
     }
 
     /**
@@ -136,13 +138,17 @@ class PolicyController extends Controller
     public function destroy(Policy $policy)
     {
         $policy->delete();
-        return Redirect::back()->banner(_('Policy deleted'));
+
+        session()->flash('message', 'Policy deleted');
+        return Redirect::back();
     }
 
     public function restore(Policy $policy)
     {
         $policy->restore();
-        return Redirect::back()->banner(_('Policy restored'));
+
+        session()->flash('message', 'Policy restored');
+        return Redirect::back();
     }
 
     public function endingSoon(Request $request)
