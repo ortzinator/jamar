@@ -63,7 +63,8 @@ class ContactController extends Controller
             ])
         );
 
-        return Redirect::route('contacts')->banner(_('Contact added'));
+        session()->flash('message', 'Contact added');
+        return Redirect::route('contacts');
     }
 
     /**
@@ -95,7 +96,8 @@ class ContactController extends Controller
 
         $contact->update($request->only(['name', 'address']));
 
-        return Redirect::back()->banner(_('Contact updated'));
+        session()->flash('message', 'Contact updated');
+        return Redirect::back();
     }
 
     /**
@@ -107,12 +109,16 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
-        return Redirect::back()->banner(_('Contact deleted'));
+
+        session()->flash('message', 'Contact deleted');
+        return Redirect::back();
     }
 
     public function restore(Contact $contact)
     {
         $contact->restore();
-        return Redirect::back()->banner(_('Contact restored'));
+
+        session()->flash('message', 'Contact restored');
+        return Redirect::back();
     }
 }

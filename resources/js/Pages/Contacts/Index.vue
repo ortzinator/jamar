@@ -1,54 +1,53 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h1>Contacts</h1>
-        </template>
+    <div class="font-bold py-5">
+        <inertia-head title="Contacts" />
+        <h1>Contacts</h1>
+    </div>
 
-        <div>
-            <div class="flex mb-4 justify-between">
-                <div class="flex mr-4">
-                    <div class="flex shadow rounded bg-white cursor-default">
-                        <filter-select v-model="searchForm.trashed" />
-                        <input
-                            type="text"
-                            v-model="searchForm.search"
-                            placeholder="Search..."
-                            class="border-0 rounded-r w-full"
-                        />
-                    </div>
-                    <button
-                        class="
-                            ml-3
-                            text-sm text-gray-500
-                            hover:text-gray-700
-                            focus:text-light-blue-vivid-500
-                        "
-                        type="button"
-                        @click="reset"
-                    >
-                        Reset
-                    </button>
-                </div>
-                <inertia-link
-                    class="btn btn-primary"
-                    :href="route('contacts.create')"
-                >
-                    <span>Create</span>
-                    <span class="hidden md:inline"> Contact</span>
-                </inertia-link>
-            </div>
-            <div class="">
-                <div class="shadow rounded bg-white overflow-x-auto">
-                    <DataTable
-                        :dataSource="contacts.data"
-                        :columns="columns"
-                        routeName="contacts.edit"
+    <div>
+        <div class="flex mb-4 justify-between">
+            <div class="flex mr-4">
+                <div class="flex shadow rounded bg-white cursor-default">
+                    <filter-select v-model="searchForm.trashed" />
+                    <input
+                        type="text"
+                        v-model="searchForm.search"
+                        placeholder="Search..."
+                        class="border-0 rounded-r w-full"
                     />
                 </div>
-                <pagination :links="contacts.links"></pagination>
+                <button
+                    class="
+                        ml-3
+                        text-sm text-gray-500
+                        hover:text-gray-700
+                        focus:text-light-blue-vivid-500
+                    "
+                    type="button"
+                    @click="reset"
+                >
+                    Reset
+                </button>
             </div>
+            <inertia-link
+                class="btn btn-primary"
+                :href="route('contacts.create')"
+            >
+                <span>Create</span>
+                <span class="hidden md:inline"> Contact</span>
+            </inertia-link>
         </div>
-    </app-layout>
+        <div class="">
+            <div class="shadow rounded bg-white overflow-x-auto">
+                <DataTable
+                    :dataSource="contacts.data"
+                    :columns="columns"
+                    routeName="contacts.edit"
+                />
+            </div>
+            <pagination :links="contacts.links"></pagination>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -64,6 +63,7 @@ import DataTable from '@/Shared/DataTable';
 
 export default {
     props: { sessions: Object, contacts: Object, filters: Object },
+    layout: AppLayout,
 
     components: {
         AppLayout,

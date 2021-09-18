@@ -14,7 +14,6 @@ class CreatePolicyRequest extends FormRequest
      */
     public function authorize()
     {
-        // return Gate::allows('create', new \App\Models\Policy);
         return true;
     }
 
@@ -30,7 +29,7 @@ class CreatePolicyRequest extends FormRequest
             'fields.*.name' => ['required'],
             'period_start' => ['required'],
             'period_end' => ['required'],
-            'agent_id' => ['required'],
+            'agent_id' => ['required', 'exists:users,id'],
             'contacts' => ['required']
         ];
     }

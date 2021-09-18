@@ -4,8 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Contact;
 use App\Models\Policy;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,11 +19,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
-            'name' => 'BrianOrtiz',
-            'email' => 'ortzinator@gmail.com',
-            'role_id' => 3
-        ]); //User factory defaults password to "password"
+        $this->call([PermissionSeeder::class]);
+
+        User::factory()
+            ->create([
+                'name' => 'Brian Ortiz',
+                'email' => 'ortzinator@gmail.com'
+            ])
+            ->assignRole('Super Admin');
+        User::factory()
+            ->create([
+                'email' => 'manager@jamar.com'
+            ])
+            ->assignRole('Manager');
+        User::factory()
+            ->create([
+                'email' => 'employee@jamar.com'
+            ])
+            ->assignRole('Employee');
 
         $contacts = Contact::factory(50)->create();
 

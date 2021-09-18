@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePolicyRequest;
+use App\Http\Requests\UpdatePolicyReqest;
 use App\Models\Contact;
 use App\Models\Policy;
 use App\Models\User;
@@ -14,6 +15,11 @@ use Inertia\Inertia;
 
 class PolicyController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Policy::class, 'policy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -97,7 +103,8 @@ class PolicyController extends Controller
 
         return Inertia::render('Policies/Edit', [
             'policy' => $policyData,
-            'fields' => $policy->fields
+            'fields' => $policy->fields,
+            'users' => User::all(['id', 'name'])
         ]);
     }
 
@@ -108,28 +115,18 @@ class PolicyController extends Controller
      * @param  \App\Models\Policy  $policy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Policy $policy)
+    public function update(UpdatePolicyReqest $request, Policy $policy)
     {
-        $request->validate([
-            'number' => ['required'],
-            'contacts' => ['array'],
-            'period_start' => ['date'],
-            'period_end' => ['date'],
-            'fields.*.name' => ['required']
-        ]);
-
         if ($request->has('contacts')) {
-            $contacts = Arr::pluck($request['contacts'], 'id');
-            $policy->contacts()->sync($contacts);
+            $policy
+                ->contacts()
+                ->sync(Arr::pluck($request->safe()['contacts'], 'id'));
         }
 
-        $policy->update([
-            'number' => $request['number'],
-            'period_start' => new Carbon($request['range.start']),
-            'period_end' => new Carbon($request['range.end']),
-            'fields' => $request['fields']
-        ]);
-        return Redirect::back()->banner('Policy updated');
+        $policy->update($request->safe()->except('contacts'));
+
+        session()->flash('message', 'Policy updated');
+        return Redirect::back();
     }
 
     /**
@@ -141,13 +138,17 @@ class PolicyController extends Controller
     public function destroy(Policy $policy)
     {
         $policy->delete();
-        return Redirect::back()->banner(_('Policy deleted'));
+
+        session()->flash('message', 'Policy deleted');
+        return Redirect::back();
     }
 
     public function restore(Policy $policy)
     {
         $policy->restore();
-        return Redirect::back()->banner(_('Policy restored'));
+
+        session()->flash('message', 'Policy restored');
+        return Redirect::back();
     }
 
     public function endingSoon(Request $request)

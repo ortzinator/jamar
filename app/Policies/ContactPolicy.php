@@ -19,10 +19,7 @@ class ContactPolicy
      */
     public function before(User $user, $ability)
     {
-        if ($user->isAdmin()) {
-            return true;
-        }
-        return null;
+        //
     }
 
     /**
@@ -33,7 +30,9 @@ class ContactPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if ($user->can('view contacts')) {
+            return true;
+        }
     }
 
     /**
@@ -45,7 +44,9 @@ class ContactPolicy
      */
     public function view(User $user, Contact $contact)
     {
-        //
+        if ($user->can('view contacts')) {
+            return true;
+        }
     }
 
     /**
@@ -56,7 +57,9 @@ class ContactPolicy
      */
     public function create(User $user)
     {
-        //
+        if ($user->can('create contacts')) {
+            return true;
+        }
     }
 
     /**
@@ -68,7 +71,13 @@ class ContactPolicy
      */
     public function update(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('update contacts')) {
+            return true;
+        }
     }
 
     /**
@@ -80,7 +89,13 @@ class ContactPolicy
      */
     public function delete(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('delete contacts')) {
+            return true;
+        }
     }
 
     /**
@@ -92,7 +107,13 @@ class ContactPolicy
      */
     public function restore(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('restore contacts')) {
+            return true;
+        }
     }
 
     /**
@@ -104,6 +125,12 @@ class ContactPolicy
      */
     public function forceDelete(User $user, Contact $contact)
     {
-        //
+        if ($user === null) {
+            return false;
+        }
+
+        if ($user->can('hard delete contacts')) {
+            return true;
+        }
     }
 }

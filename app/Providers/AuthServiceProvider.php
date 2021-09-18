@@ -13,7 +13,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        \App\Models\Team::class => \App\Policies\TeamPolicy::class,
         \App\Models\Policy::class => \App\Policies\PolicyPolicy::class
     ];
 
@@ -26,10 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::before(function ($user) {
-            if ($user->role_id == 3) {
-                return true;
-            }
+        // Implicitly grant "Super Admin" role all permissions
+        // This works in the app by using gate-related functions like auth()->user->can() and @can()
+        Gate::before(function ($user, $ability) {
+            return $user->hasRole('Super Admin') ? true : null;
         });
     }
 }

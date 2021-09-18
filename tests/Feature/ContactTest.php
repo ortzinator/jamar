@@ -29,11 +29,13 @@ class ContactTest extends TestCase
 
         Contact::factory(3)->create();
 
-        $this->get(route('contacts'))->assertInertia(
-            fn(Assert $page) => $page
-                ->component('Contacts/Index')
-                ->has('contacts.data', 3)
-        );
+        $this->get(route('contacts'))
+            ->assertOk()
+            ->assertInertia(
+                fn(Assert $page) => $page
+                    ->component('Contacts/Index')
+                    ->has('contacts.data', 3)
+            );
     }
 
     public function test_can_search_for_contacts()

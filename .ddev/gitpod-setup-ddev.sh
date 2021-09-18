@@ -44,5 +44,6 @@ COMPOSEEND
 
 # Misc housekeeping before start
 ddev config global --router-bind-all-interfaces
+ddev config global --instrumentation-opt-in=false
 
 yes | ddev start

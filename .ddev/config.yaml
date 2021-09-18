@@ -1,20 +1,22 @@
 name: jamar
 type: laravel
 docroot: public
-php_version: "8.0"
+php_version: '8.0'
 webserver_type: nginx-fpm
-router_http_port: "80"
-router_https_port: "443"
+router_http_port: '80'
+router_https_port: '443'
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
-mariadb_version: ""
-mysql_version: "8.0"
+mariadb_version: ''
+mysql_version: '8.0'
 use_dns_when_possible: true
-composer_version: "2"
+composer_version: '2'
 web_environment: []
 
-
+hooks:
+    post-start:
+        - exec-host: echo "create database if not exists dusk; GRANT ALL ON dusk.* TO 'db'@'%';" | ddev mysql -uroot -proot
 # This config.yaml was created with ddev version v1.17.5
 # webimage: drud/ddev-webserver:v1.17.4
 # dbimage: drud/ddev-dbserver-mariadb-10.3:v1.17.3

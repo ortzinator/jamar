@@ -1,29 +1,28 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h1>API Tokens</h1>
-        </template>
+    <div class="font-bold py-5">
+        <h1>API Tokens</h1>
+    </div>
 
-        <div>
-            <api-token-manager
-                :tokens="tokens"
-                :available-permissions="availablePermissions"
-                :default-permissions="defaultPermissions"
-            />
-        </div>
-    </app-layout>
+    <div>
+        <api-token-manager
+            :tokens="tokens"
+            :available-permissions="availablePermissions"
+            :default-permissions="defaultPermissions"
+        />
+    </div>
 </template>
 
 <script>
-import ApiTokenManager from "./ApiTokenManager";
-import AppLayout from "@/Layouts/NewLayout";
+import ApiTokenManager from './ApiTokenManager';
+import AppLayout from '@/Layouts/NewLayout';
 
 export default {
-    props: ["tokens", "availablePermissions", "defaultPermissions"],
+    props: ['tokens', 'availablePermissions', 'defaultPermissions'],
+    layout: AppLayout,
 
     components: {
         ApiTokenManager,
-        AppLayout,
-    },
+        AppLayout
+    }
 };
 </script>
