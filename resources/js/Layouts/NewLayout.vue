@@ -257,18 +257,30 @@ export default {
         const navigation = ref([
             {
                 name: 'Dashboard',
-                href: route('dashboard'),
-                current: route().current('dashboard')
+                get href() {
+                    return route('dashboard');
+                },
+                get current() {
+                    return route().current('dashboard');
+                }
             },
             {
                 name: 'Policies',
-                href: route('policies'),
-                current: route().current('policies')
+                get href() {
+                    return route('policies');
+                },
+                get current() {
+                    return route().current('policies');
+                }
             },
             {
                 name: 'Contacts',
-                href: route('contacts'),
-                current: route().current('contacts')
+                get href() {
+                    return route('contacts');
+                },
+                get current() {
+                    return route().current('contacts');
+                }
             }
         ]);
 

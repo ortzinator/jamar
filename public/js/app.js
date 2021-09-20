@@ -31978,16 +31978,37 @@ __webpack_require__.r(__webpack_exports__);
     var navOpen = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var navigation = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
       name: 'Dashboard',
-      href: route('dashboard'),
-      current: route().current('dashboard')
+
+      get href() {
+        return route('dashboard');
+      },
+
+      get current() {
+        return route().current('dashboard');
+      }
+
     }, {
       name: 'Policies',
-      href: route('policies'),
-      current: route().current('policies')
+
+      get href() {
+        return route('policies');
+      },
+
+      get current() {
+        return route().current('policies');
+      }
+
     }, {
       name: 'Contacts',
-      href: route('contacts'),
-      current: route().current('contacts')
+
+      get href() {
+        return route('contacts');
+      },
+
+      get current() {
+        return route().current('contacts');
+      }
+
     }]);
     var toast = (0,vue_toastification__WEBPACK_IMPORTED_MODULE_3__.useToast)();
 
@@ -34629,10 +34650,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["href", "active"],
+  props: ['href', 'active'],
   computed: {
     classes: function classes() {
-      return this.active ? "bg-light-blue-vivid-600 border-light-blue-vivid-500 border-r-4 text-cool-grey-100" : "";
+      return this.active ? 'bg-light-blue-vivid-600 border-light-blue-vivid-500 border-r-4 text-cool-grey-100' : '';
     }
   }
 });
