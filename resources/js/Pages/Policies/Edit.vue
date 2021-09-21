@@ -37,7 +37,7 @@
             <div class="flex items-center">
                 <exclamation-icon class="h-5 mr-2 w-5" />
                 <div class="text-lg">
-                    This policy does not have any contacts
+                    This policy does not have any policyholders
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 class="mb-5"
                 removable
             >
-                Contacts
+                Policyholders
             </contact-list>
 
             <select-contact @selected="contactSelected"></select-contact>

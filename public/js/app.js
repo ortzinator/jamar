@@ -38844,7 +38844,7 @@ var _hoisted_9 = {
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "text-lg"
-}, " This policy does not have any contacts ", -1
+}, " This policy does not have any policyholders ", -1
 /* HOISTED */
 );
 
@@ -38870,7 +38870,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Contacts ");
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
 
 var _hoisted_18 = {
   "class": "\n                px-8\n                py-4\n                bg-gray-100\n                border-t border-gray-200\n                flex\n                justify-between\n                items-center\n            "
