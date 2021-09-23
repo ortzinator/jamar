@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
@@ -23,6 +24,24 @@ class Policy extends Model
         'period_end' => 'datetime',
         'premium' => MoneyIntegerCast::class . ':currency'
     ];
+
+    protected static function booted()
+    {
+        static::created(function (Policy $policy) {
+            $policy->history()->create([
+                'event_type' => 'policy_created',
+                'policy_id' => $policy->id,
+                'user_id' => Auth::id()
+            ]);
+        });
+        static::updated(function (Policy $policy) {
+            $policy->history()->create([
+                'event_type' => 'policy_created',
+                'policy_id' => $policy->id,
+                'user_id' => Auth::id()
+            ]);
+        });
+    }
 
     public function scopeFilter($query, array $filters)
     {
@@ -54,6 +73,11 @@ class Policy extends Model
     public function agent()
     {
         return $this->belongsTo(User::class, 'agent_id');
+    }
+
+    public function history()
+    {
+        return $this->hasMany(History::class);
     }
 
     public function cacheKey()
