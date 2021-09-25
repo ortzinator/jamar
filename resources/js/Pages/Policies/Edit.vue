@@ -16,6 +16,8 @@
         </h1>
     </div>
 
+    <div class="flex max-w-3xl mb-2"><HistoryModal :policy="policy" /></div>
+
     <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
         <div
             v-if="policy.deleted_at"
@@ -151,17 +153,19 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from 'vue';
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/NewLayout';
 import { ExclamationIcon } from '@heroicons/vue/outline';
 import { TrashIcon } from '@heroicons/vue/outline';
+import { DatePicker } from 'v-calendar';
+
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
 import ContactList from '@/Shared/Contact/ContactList';
 import SelectContact from '@/Shared/Contact/SelectContact';
 import LoadingButton from '@/Shared/LoadingButton';
 import DateRange from '@/Shared/DateRange';
-import { DatePicker } from 'v-calendar';
+import HistoryModal from '@/Shared/HistoryModal';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
@@ -183,7 +187,8 @@ export default {
         LoadingButton,
         SelectContact,
         DateRange,
-        DatePicker
+        DatePicker,
+        HistoryModal
     },
     props: {
         errors: Object,

@@ -39,11 +39,6 @@ class PolicyController extends Controller
         ]);
     }
 
-    public function show(Policy $policy)
-    {
-        # code...
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -104,7 +99,8 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Edit', [
             'policy' => $policyData,
             'fields' => $policy->fields,
-            'users' => User::all(['id', 'name'])
+            'users' => User::all(['id', 'name']),
+            'histories' => $policy->history
         ]);
     }
 
