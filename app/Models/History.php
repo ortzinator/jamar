@@ -10,4 +10,20 @@ class History extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d'
+    ];
+
+    protected $appends = ['user_name'];
+
+    public function getUserNameAttribute()
+    {
+        return $this->user->name;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

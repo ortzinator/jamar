@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Policy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class HistoryController extends Controller
 {
@@ -16,7 +20,9 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        //
+        return QueryBuilder::for(History::class)
+            ->allowedFilters(AllowedFilter::exact('policy_id'))
+            ->get();
     }
 
     /**
@@ -27,13 +33,14 @@ class HistoryController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO: Validation
         $policy = Policy::findOrFail($request['policy_id']);
 
-        $policy
-            ->history()
-            ->create(
-                $request->only('message', 'value', 'user_id', 'event_type')
-            );
+        $policy->history()->create(
+            array_merge($request->only('message', 'value', 'event_type'), [
+                'user_id' => Auth::id()
+            ])
+        );
 
         session()->flash('message', 'History updated');
         return Redirect::back();
@@ -45,9 +52,9 @@ class HistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(History $history)
     {
-        //
+        return $history;
     }
 
     /**
