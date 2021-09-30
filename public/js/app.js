@@ -42289,7 +42289,7 @@ var _hoisted_1 = {
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
-  "class": "border-t italic font-bold"
+  "class": "border-t italic font-bold px-2"
 }, "Policy created", -1
 /* HOISTED */
 );
@@ -42301,7 +42301,7 @@ var _hoisted_4 = {
   "class": "border-t"
 };
 var _hoisted_5 = {
-  "class": "border-t"
+  "class": "border-t px-2"
 };
 var _hoisted_6 = {
   "class": "border-t"
@@ -42354,24 +42354,27 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_4 = {
   key: 0,
-  "class": "flex-grow md:max-h-96 mx-7 overflow-y-scroll"
+  "class": "\n                        flex-grow\n                        md:max-h-96 md:mx-7 md:my-5\n                        mx-2\n                        my-4\n                        overflow-y-scroll\n                    "
 };
 var _hoisted_5 = {
-  "class": "font-mono w-full text-xs"
+  "class": "font-mono w-full text-xs table-fixed"
 };
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  scope: "col"
+  scope: "col",
+  "class": "w-2/12"
 }, "Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  scope: "col"
+  scope: "col",
+  "class": "w-6/12"
 }, "Message"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  scope: "col"
+  scope: "col",
+  "class": "w-2/12"
 }, "Agent")], -1
 /* HOISTED */
 );
 
 var _hoisted_7 = {
-  "class": "px-7 py-5"
+  "class": "md:mx-7 md:my-5 mx-2 my-4"
 };
 var _hoisted_8 = {
   "class": "\n                        bg-cool-grey-100\n                        md:mt-0\n                        mt-auto\n                        px-4\n                        py-3\n                        sm:flex sm:flex-row-reverse sm:px-6\n                    "
@@ -42404,7 +42407,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DialogOverlay, {
         "class": "fixed inset-0 bg-black opacity-30"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DialogTitle, {
-        "class": "mx-7 my-5"
+        "class": "md:mx-7 md:my-5 mx-2 my-4"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_3];

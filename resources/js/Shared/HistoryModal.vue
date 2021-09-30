@@ -21,16 +21,24 @@
                     w-full
                 "
             >
-                <DialogTitle class="mx-7 my-5">History of Facts</DialogTitle>
+                <DialogTitle class="md:mx-7 md:my-5 mx-2 my-4"
+                    >History of Facts</DialogTitle
+                >
                 <div
                     v-if="histories.length > 0"
-                    class="flex-grow md:max-h-96 mx-7 overflow-y-scroll"
+                    class="
+                        flex-grow
+                        md:max-h-96 md:mx-7 md:my-5
+                        mx-2
+                        my-4
+                        overflow-y-scroll
+                    "
                 >
-                    <table class="font-mono w-full text-xs">
+                    <table class="font-mono w-full text-xs table-fixed">
                         <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Message</th>
-                            <th scope="col">Agent</th>
+                            <th scope="col" class="w-2/12">Date</th>
+                            <th scope="col" class="w-6/12">Message</th>
+                            <th scope="col" class="w-2/12">Agent</th>
                         </tr>
                         <tr v-for="history in histories" :key="history.id">
                             <history-item :history="history" />
@@ -38,7 +46,7 @@
                     </table>
                 </div>
 
-                <div class="px-7 py-5">
+                <div class="md:mx-7 md:my-5 mx-2 my-4">
                     <jet-label for="message" value="Message" />
                     <textarea
                         name="address"
