@@ -16,31 +16,29 @@
                     bg-white
                     flex flex-col
                     h-screen
-                    md:max-w-lg
-                    mx-auto
+                    md:h-auto md:max-w-lg md:my-auto md:rounded md:shadow-2xl
                     relative
-                    md:rounded md:shadow-2xl
                     w-full
                 "
             >
-                <div class="px-7 py-5">
-                    <DialogTitle>History of Facts</DialogTitle>
-                    <div
-                        v-if="histories.length > 0"
-                        class="max-h-56 overflow-y-scroll"
-                    >
-                        <table class="font-mono w-full text-xs">
-                            <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">Message</th>
-                                <th scope="col">Agent</th>
-                            </tr>
-                            <tr v-for="history in histories" :key="history.id">
-                                <history-item :history="history" />
-                            </tr>
-                        </table>
-                    </div>
+                <DialogTitle class="mx-7 my-5">History of Facts</DialogTitle>
+                <div
+                    v-if="histories.length > 0"
+                    class="flex-grow md:max-h-96 mx-7 overflow-y-scroll"
+                >
+                    <table class="font-mono w-full text-xs">
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Message</th>
+                            <th scope="col">Agent</th>
+                        </tr>
+                        <tr v-for="history in histories" :key="history.id">
+                            <history-item :history="history" />
+                        </tr>
+                    </table>
+                </div>
 
+                <div class="px-7 py-5">
                     <jet-label for="message" value="Message" />
                     <textarea
                         name="address"
@@ -51,7 +49,6 @@
                     />
                     <jet-input-error :message="historyForm.errors.message" />
                 </div>
-
                 <div
                     class="
                         bg-cool-grey-100
