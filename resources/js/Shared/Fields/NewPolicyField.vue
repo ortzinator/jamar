@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex space-x-4 mb-4">
+        <div class="mb-4 md:flex md:space-x-4 md:space-y-0 space-y-4">
             <div class="flex-auto">
                 <jet-label for="number" value="Field Name" />
                 <jet-input
