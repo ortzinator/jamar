@@ -156,8 +156,7 @@
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/NewLayout';
-import { ExclamationIcon } from '@heroicons/vue/outline';
-import { TrashIcon } from '@heroicons/vue/outline';
+import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
 import { DatePicker } from 'v-calendar';
 
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';

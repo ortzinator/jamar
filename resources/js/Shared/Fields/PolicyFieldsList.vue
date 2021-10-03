@@ -52,8 +52,7 @@ import { ref, computed } from 'vue';
 
 import NewPolicyField from '@/Shared/Fields/NewPolicyField';
 import PolicyField from '@/Shared/Fields/PolicyField';
-import { PlusSmIcon } from '@heroicons/vue/outline';
-import { TrashIcon } from '@heroicons/vue/outline';
+import { PlusSmIcon, TrashIcon } from '@heroicons/vue/outline';
 import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 
 export default {

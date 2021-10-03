@@ -158,8 +158,10 @@
 import { ref, watch } from 'vue';
 import AppLayout from '@/Layouts/NewLayout';
 import { useForm } from '@inertiajs/inertia-vue3';
-import { ExclamationIcon } from '@heroicons/vue/outline';
-import { QuestionMarkCircleIcon } from '@heroicons/vue/outline';
+import {
+    ExclamationIcon,
+    QuestionMarkCircleIcon
+} from '@heroicons/vue/outline';
 import Popper from 'vue3-popper';
 
 import JetInput from '@/Jetstream/Input';
