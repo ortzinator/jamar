@@ -6,7 +6,7 @@
 
 @layer base {
     textarea {
-        @apply border border-gray-300 rounded;
+        @apply border border-cool-grey-200 rounded;
     }
 
     h1 {

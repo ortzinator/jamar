@@ -21,7 +21,7 @@
             <FormSection>
                 <template #header>Basics</template>
                 <template #description> Description of this section </template>
-                <div class="grid gap-4">
+                <div class="grid gap-4 grid-cols-6">
                     <div class="col-span-6 sm:col-span-4">
                         <jet-label
                             for="template"
@@ -31,9 +31,9 @@
                             <select
                                 class="
                                     border border-cool-grey-200
-                                    mr-5
                                     mt-1
                                     rounded
+                                    w-full
                                 "
                                 v-model="selectedTemplate"
                             >
@@ -45,24 +45,6 @@
                                     {{ template.label }}
                                 </option>
                             </select>
-                            <Popper hover arrow placement="right">
-                                <QuestionMarkCircleIcon
-                                    class="text-light-blue-vivid-600 w-5 h-5"
-                                />
-                                <template #content>
-                                    <div
-                                        class="
-                                            bg-white
-                                            px-5
-                                            py-3
-                                            rounded
-                                            shadow-xl
-                                        "
-                                    >
-                                        Help text
-                                    </div>
-                                </template>
-                            </Popper>
                         </div>
                     </div>
                     <div class="col-span-6 sm:col-span-4">
@@ -73,9 +55,9 @@
                         <select
                             class="
                                 border border-cool-grey-200
-                                mr-5
                                 rounded
                                 mt-1
+                                w-full
                             "
                             v-model="policyForm.agent_id"
                         >

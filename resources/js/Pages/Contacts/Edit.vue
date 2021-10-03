@@ -95,8 +95,8 @@
                 class="
                     px-8
                     py-4
-                    bg-gray-100
-                    border-t border-gray-200
+                    bg-cool-grey-50
+                    border-t border-cool-grey-100
                     flex
                     items-center
                 "

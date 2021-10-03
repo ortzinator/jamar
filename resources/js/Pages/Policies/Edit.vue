@@ -64,7 +64,7 @@
                             :value="inputValue"
                             id="created_at"
                             type="text"
-                            class="block w-full text-gray-400"
+                            class="block w-full text-cool-grey-400"
                             readonly
                         />
                     </template>
@@ -88,7 +88,7 @@
             </div>
 
             <div class="mb-5">
-                <div class="text-gray-600 text-sm text-left">
+                <div class="text-cool-grey-600 text-sm text-left">
                     Period of Insurance
                 </div>
                 <date-range v-model="policyForm.range" />
@@ -116,8 +116,8 @@
             class="
                 px-8
                 py-4
-                bg-gray-100
-                border-t border-gray-200
+                bg-cool-grey-100
+                border-t border-cool-grey-200
                 flex
                 justify-between
                 items-center
