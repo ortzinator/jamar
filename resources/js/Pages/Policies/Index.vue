@@ -44,9 +44,9 @@
                 routeName="policies.edit"
             >
                 <template v-slot:[`column.period_end`]="{ value }">
-                    <span :class="{ 'text-red-vivid-500': pastDate(value) }">{{
-                        formatDate(value)
-                    }}</span>
+                    <span :class="{ 'text-red-vivid-500': isInPast(value) }">
+                        {{ formatDate(value) }}
+                    </span>
                 </template>
                 <template v-slot:[`column.created_at`]="{ value }">
                     {{ formatDate(value) }}
@@ -97,7 +97,7 @@ import {
 } from '@heroicons/vue/outline';
 
 import { useForm, Link } from '@inertiajs/inertia-vue3';
-import dayjs from 'dayjs';
+import { useDates } from '../../dates';
 
 import {
     Listbox,
@@ -126,6 +126,8 @@ export default {
         FilterSelect
     },
     setup(props) {
+        const { formatDate, isInPast } = useDates();
+
         const searchForm = useForm({
             search: props.filters.search,
             trashed: props.filters.trashed
@@ -148,10 +150,6 @@ export default {
             };
         });
 
-        function formatDate(date) {
-            return dayjs(date).format('MMM DD, YYYY');
-        }
-
         function reset() {
             searchForm.search = '';
             searchForm.trashed = null;
@@ -167,17 +165,13 @@ export default {
             { text: 'Ending', value: 'period_end' }
         ]);
 
-        function pastDate(date) {
-            return dayjs(date).isBefore(dayjs());
-        }
-
         return {
             searchForm,
             refreshSearch,
             reset,
             formatDate,
-            columns,
-            pastDate
+            isInPast,
+            columns
         };
     }
 };

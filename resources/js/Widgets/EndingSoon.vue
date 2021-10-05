@@ -43,7 +43,16 @@
                             'text-red-vivid-500': isInPast(policy.period_end)
                         }"
                     >
-                        {{ formatDate(policy.period_end) }}
+                        <span
+                            :title="
+                                formatDate(
+                                    policy.period_end,
+                                    'YYYY-MM-DD HH:mm:ss Z[Z]'
+                                )
+                            "
+                        >
+                            {{ formatDate(policy.period_end) }}
+                        </span>
                     </td>
                 </tr>
             </tbody>
@@ -72,54 +81,39 @@
 </template>
 
 <script>
-import { onMounted, computed, ref, reactive } from 'vue';
-import dayjs from 'dayjs';
+import { onMounted, ref } from 'vue';
+import { useDates } from '../dates';
 
 export default {
     setup() {
         var loading = ref(true);
-        var cancelSource = ref(null);
         var results = ref([]);
 
-        const start = computed(() => {
-            return dayjs.unix(1).format('YYYY-MM-DD'); //The beginning of (UNIX) time
-        });
+        const { formatDate, isInPast } = useDates();
 
-        const end = computed(() => {
-            return dayjs().add(1, 'week').format('YYYY-MM-DD'); //A week from now
-        });
-
-        function formatDate(date) {
-            return dayjs(date).format('MM-DD-YYYY');
-        }
-
-        function isInPast(date) {
-            return dayjs(date).isBefore(dayjs());
-        }
-
+        var cancelSource = null;
         onMounted(() => {
-            if (cancelSource.value) {
-                cancelSource.value.cancel();
+            if (cancelSource) {
+                cancelSource.cancel();
             }
-            cancelSource.value = axios.CancelToken.source();
+            cancelSource = axios.CancelToken.source();
 
             loading.value = true;
 
             axios
                 .get(route('policies.ending'), {
-                    cancelToken: cancelSource.value.token
+                    cancelToken: cancelSource.token
                 })
                 .then((response) => {
                     if (response) {
                         results.value = response.data;
                         loading.value = false;
-                        cancelSource.value = null;
+                        cancelSource = null;
                     }
                 });
         });
         return {
             loading,
-            cancelSource,
             results,
             formatDate,
             isInPast

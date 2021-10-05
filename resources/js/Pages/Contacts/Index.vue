@@ -64,7 +64,6 @@ import DataTable from '@/Shared/DataTable';
 export default {
     props: { sessions: Object, contacts: Object, filters: Object },
     layout: AppLayout,
-
     components: {
         AppLayout,
         Pagination,
@@ -102,11 +101,6 @@ export default {
             };
         });
 
-        function formatDate(date) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return new Date(date).toLocaleDateString(undefined, options);
-        }
-
         function reset() {
             searchForm.search = '';
             searchForm.trashed = null;
@@ -122,7 +116,6 @@ export default {
             searchForm,
             refreshSearch,
             reset,
-            formatDate,
             contactLink,
             columns
         };

@@ -230,14 +230,6 @@ export default {
             policyForm.contacts.push(contact);
         }
 
-        function formatDate(date) {
-            return new Date(date).toLocaleDateString(undefined, {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        }
-
         return {
             policyForm,
             sending,
@@ -245,8 +237,7 @@ export default {
             updatePolicy,
             destroy,
             restore,
-            contactSelected,
-            formatDate
+            contactSelected
         };
     }
 };

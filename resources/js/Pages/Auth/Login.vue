@@ -44,9 +44,9 @@
                         name="remember"
                         v-model:checked="form.remember"
                     />
-                    <span class="ml-2 text-sm text-cool-grey-600"
-                        >Remember me</span
-                    >
+                    <span class="ml-2 text-sm text-cool-grey-600">
+                        Remember me
+                    </span>
                 </label>
             </div>
 
