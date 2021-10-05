@@ -9,7 +9,7 @@
         <div v-else class="mr-5 mb-5">
             <div
                 v-if="editable"
-                class="border-b font-bold my-5 pb-2 text-gray-700"
+                class="border-b font-bold my-5 pb-2 text-cool-grey-700"
             >
                 Policy Fields
             </div>

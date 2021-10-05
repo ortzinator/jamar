@@ -1,7 +1,7 @@
 <template>
     <input
         class="
-            border-gray-300
+            border-cool-grey-300
             focus:border-light-blue-vivid-300
             focus:ring
             focus:ring-light-blue-vivid-200
@@ -17,14 +17,14 @@
 
 <script>
 export default {
-    props: ["modelValue"],
+    props: ['modelValue'],
 
-    emits: ["update:modelValue"],
+    emits: ['update:modelValue'],
 
     methods: {
         focus() {
             this.$refs.input.focus();
-        },
-    },
+        }
+    }
 };
 </script>

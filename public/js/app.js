@@ -31296,7 +31296,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     type: {
       type: String,
-      "default": "submit"
+      "default": 'submit'
     }
   }
 });
@@ -31315,7 +31315,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ["update:checked"],
+  emits: ['update:checked'],
   props: {
     checked: {
       type: [Array, Boolean],
@@ -31331,7 +31331,7 @@ __webpack_require__.r(__webpack_exports__);
         return this.checked;
       },
       set: function set(val) {
-        this.$emit("update:checked", val);
+        this.$emit('update:checked', val);
       }
     }
   }
@@ -31353,7 +31353,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modal */ "./resources/js/Jetstream/Modal.vue");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ["close"],
+  emits: ['close'],
   components: {
     Modal: _Modal__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -31362,7 +31362,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": false
     },
     maxWidth: {
-      "default": "2xl"
+      "default": '2xl'
     },
     closeable: {
       "default": true
@@ -31370,7 +31370,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     close: function close() {
-      this.$emit("close");
+      this.$emit('close');
     }
   }
 });
@@ -31611,7 +31611,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["href", "as"]
+  props: ['href', 'as']
 });
 
 /***/ }),
@@ -31655,8 +31655,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["modelValue"],
-  emits: ["update:modelValue"],
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
   methods: {
     focus: function focus() {
       this.$refs.input.focus();
@@ -31695,7 +31695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["value"]
+  props: ['value']
 });
 
 /***/ }),
@@ -31766,10 +31766,10 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     maxWidthClass: function maxWidthClass() {
       return {
-        'sm': 'sm:max-w-sm',
-        'md': 'sm:max-w-md',
-        'lg': 'sm:max-w-lg',
-        'xl': 'sm:max-w-xl',
+        sm: 'sm:max-w-sm',
+        md: 'sm:max-w-md',
+        lg: 'sm:max-w-lg',
+        xl: 'sm:max-w-xl',
         '2xl': 'sm:max-w-2xl'
       }[this.maxWidth];
     }
@@ -31790,10 +31790,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["href", "active"],
+  props: ['href', 'active'],
   computed: {
     classes: function classes() {
-      return this.active ? "inline-flex items-center px-1 pt-1 border-b-2 border-light-blue-vivid-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-light-blue-vivid-700 transition duration-150 ease-in-out" : "inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out";
+      return this.active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-light-blue-vivid-400 text-sm font-medium leading-5 text-cool-grey-900 focus:outline-none focus:border-light-blue-vivid-700 transition duration-150 ease-in-out' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-cool-grey-500 hover:text-cool-grey-700 hover:border-cool-grey-300 focus:outline-none focus:text-cool-grey-700 focus:border-cool-grey-300 transition duration-150 ease-in-out';
     }
   }
 });
@@ -31812,10 +31812,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["active", "href", "as"],
+  props: ['active', 'href', 'as'],
   computed: {
     classes: function classes() {
-      return this.active ? "block pl-3 pr-4 py-2 border-l-4 border-light-blue-vivid-400 text-base font-medium text-light-blue-vivid-700 bg-light-blue-vivid-50 focus:outline-none focus:text-light-blue-vivid-800 focus:bg-light-blue-vivid-100 focus:border-light-blue-vivid-700 transition duration-150 ease-in-out" : "block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out";
+      return this.active ? 'block pl-3 pr-4 py-2 border-l-4 border-light-blue-vivid-400 text-base font-medium text-light-blue-vivid-700 bg-light-blue-vivid-50 focus:outline-none focus:text-light-blue-vivid-800 focus:bg-light-blue-vivid-100 focus:border-light-blue-vivid-700 transition duration-150 ease-in-out' : 'block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-cool-grey-600 hover:text-cool-grey-800 hover:bg-cool-grey-50 hover:border-cool-grey-300 focus:outline-none focus:text-cool-grey-800 focus:bg-cool-grey-50 focus:border-cool-grey-300 transition duration-150 ease-in-out';
     }
   }
 });
@@ -32089,11 +32089,11 @@ __webpack_require__.r(__webpack_exports__);
     JetSecondaryButton: _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.default,
     JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_12__.default
   },
-  props: ["tokens", "availablePermissions", "defaultPermissions"],
+  props: ['tokens', 'availablePermissions', 'defaultPermissions'],
   data: function data() {
     return {
       createApiTokenForm: this.$inertia.form({
-        name: "",
+        name: '',
         permissions: this.defaultPermissions
       }),
       updateApiTokenForm: this.$inertia.form({
@@ -32109,7 +32109,7 @@ __webpack_require__.r(__webpack_exports__);
     createApiToken: function createApiToken() {
       var _this = this;
 
-      this.createApiTokenForm.post(route("api-tokens.store"), {
+      this.createApiTokenForm.post(route('api-tokens.store'), {
         preserveScroll: true,
         onSuccess: function onSuccess() {
           _this.displayingToken = true;
@@ -32125,7 +32125,7 @@ __webpack_require__.r(__webpack_exports__);
     updateApiToken: function updateApiToken() {
       var _this2 = this;
 
-      this.updateApiTokenForm.put(route("api-tokens.update", this.managingPermissionsFor), {
+      this.updateApiTokenForm.put(route('api-tokens.update', this.managingPermissionsFor), {
         preserveScroll: true,
         preserveState: true,
         onSuccess: function onSuccess() {
@@ -32139,7 +32139,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteApiToken: function deleteApiToken() {
       var _this3 = this;
 
-      this.deleteApiTokenForm["delete"](route("api-tokens.destroy", this.apiTokenBeingDeleted), {
+      this.deleteApiTokenForm["delete"](route('api-tokens.destroy', this.apiTokenBeingDeleted), {
         preserveScroll: true,
         preserveState: true,
         onSuccess: function onSuccess() {
@@ -32394,10 +32394,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: this.$inertia.form({
-        name: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
         terms: false
       })
     };
@@ -32406,9 +32406,9 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      this.form.post(this.route("register"), {
+      this.form.post(this.route('register'), {
         onFinish: function onFinish() {
-          return _this.form.reset("password", "password_confirmation");
+          return _this.form.reset('password', 'password_confirmation');
         }
       });
     }
@@ -32577,12 +32577,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.form.post(this.route("verification.send"));
+      this.form.post(this.route('verification.send'));
     }
   },
   computed: {
     verificationLinkSent: function verificationLinkSent() {
-      return this.status === "verification-link-sent";
+      return this.status === 'verification-link-sent';
     }
   }
 });
@@ -34226,7 +34226,6 @@ __webpack_require__.r(__webpack_exports__);
     var searchTerm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var results = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
-    var cancelSource = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var selectedContact = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
 
     function refreshSearch() {
@@ -34234,12 +34233,14 @@ __webpack_require__.r(__webpack_exports__);
       search();
     }
 
+    var cancelSource = null;
+
     var search = _.debounce(function () {
-      if (cancelSource.value) {
-        cancelSource.value.cancel();
+      if (cancelSource) {
+        cancelSource.cancel();
       }
 
-      cancelSource.value = axios.CancelToken.source();
+      cancelSource = axios.CancelToken.source();
 
       if (searchTerm.value === '') {
         results.value = [];
@@ -34250,13 +34251,13 @@ __webpack_require__.r(__webpack_exports__);
         params: {
           search: searchTerm.value
         },
-        cancelToken: cancelSource.value.token
+        cancelToken: cancelSource.token
       }).then(function (response) {
         loading.value = false;
 
         if (response) {
           results.value = response.data;
-          cancelSource.value = null;
+          cancelSource = null;
         }
       });
     }, 400);
@@ -34269,7 +34270,6 @@ __webpack_require__.r(__webpack_exports__);
       searchTerm: searchTerm,
       results: results,
       loading: loading,
-      cancelSource: cancelSource,
       refreshSearch: refreshSearch,
       selectedContact: selectedContact
     };
@@ -34828,16 +34828,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
-    var cancelSource = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var results = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-    var start = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
-      return dayjs__WEBPACK_IMPORTED_MODULE_1___default().unix(1).format('YYYY-MM-DD'); //The beginning of (UNIX) time
-    });
-    var end = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
-      return dayjs__WEBPACK_IMPORTED_MODULE_1___default()().add(1, 'week').format('YYYY-MM-DD'); //A week from now
-    });
 
-    function formatDate(date) {
+    function formatDate(date, format) {
+      if (format) {
+        return dayjs__WEBPACK_IMPORTED_MODULE_1___default()(date).format(format);
+      }
+
       return dayjs__WEBPACK_IMPORTED_MODULE_1___default()(date).format('MM-DD-YYYY');
     }
 
@@ -34845,26 +34842,26 @@ __webpack_require__.r(__webpack_exports__);
       return dayjs__WEBPACK_IMPORTED_MODULE_1___default()(date).isBefore(dayjs__WEBPACK_IMPORTED_MODULE_1___default()());
     }
 
+    var cancelSource = null;
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-      if (cancelSource.value) {
-        cancelSource.value.cancel();
+      if (cancelSource) {
+        cancelSource.cancel();
       }
 
-      cancelSource.value = axios.CancelToken.source();
+      cancelSource = axios.CancelToken.source();
       loading.value = true;
       axios.get(route('policies.ending'), {
-        cancelToken: cancelSource.value.token
+        cancelToken: cancelSource.token
       }).then(function (response) {
         if (response) {
           results.value = response.data;
           loading.value = false;
-          cancelSource.value = null;
+          cancelSource = null;
         }
       });
     });
     return {
       loading: loading,
-      cancelSource: cancelSource,
       results: results,
       formatDate: formatDate,
       isInPast: isInPast
@@ -34888,7 +34885,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "text-sm text-gray-600"
+  "class": "text-sm text-cool-grey-600"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
@@ -35002,10 +34999,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
+  "class": "\n            min-h-screen\n            flex flex-col\n            sm:justify-center\n            items-center\n            pt-6\n            sm:pt-0\n            bg-cool-grey-100\n        "
 };
 var _hoisted_2 = {
-  "class": "w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
+  "class": "\n                w-full\n                sm:max-w-md\n                mt-6\n                px-6\n                py-4\n                bg-white\n                shadow-md\n                overflow-hidden\n                sm:rounded-lg\n            "
 };
 function render(_ctx, _cache) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "logo")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])]);
@@ -35073,7 +35070,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "p-4 border-r border-gray-400 rounded-l-lg"
+  "class": "p-4 border-r border-cool-grey-400 rounded-l-lg"
 };
 var _hoisted_2 = {
   "class": "flex bg-white rounded-r-lg"
@@ -35135,7 +35132,7 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     type: $props.type,
-    "class": "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150"
+    "class": "\n            inline-flex\n            items-center\n            px-4\n            py-2\n            bg-cool-grey-800\n            border border-transparent\n            rounded-md\n            font-semibold\n            text-xs text-white\n            uppercase\n            tracking-widest\n            hover:bg-cool-grey-700\n            active:bg-cool-grey-900\n            focus:outline-none\n            focus:border-cool-grey-900\n            focus:shadow-outline-gray\n            transition\n            ease-in-out\n            duration-150\n        "
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 8
   /* PROPS */
   , ["type"]);
@@ -35163,7 +35160,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $options.proxyChecked = $event;
     }),
-    "class": "\n            rounded\n            border-gray-300\n            text-light-blue-vivid-600\n            shadow-sm\n            focus:border-light-blue-vivid-300\n            focus:ring\n            focus:ring-light-blue-vivid-200\n            focus:ring-opacity-50\n        "
+    "class": "\n            rounded\n            border-cool-grey-300\n            text-light-blue-vivid-600\n            shadow-sm\n            focus:border-light-blue-vivid-300\n            focus:ring\n            focus:ring-light-blue-vivid-200\n            focus:ring-opacity-50\n        "
   }, null, 8
   /* PROPS */
   , ["value"])), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $options.proxyChecked]]);
@@ -35217,7 +35214,7 @@ var _hoisted_6 = {
   "class": "mt-2"
 };
 var _hoisted_7 = {
-  "class": "px-6 py-4 bg-gray-100 text-right"
+  "class": "px-6 py-4 bg-cool-grey-100 text-right"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("modal");
@@ -35394,7 +35391,7 @@ var _hoisted_3 = {
   "class": "mt-4"
 };
 var _hoisted_4 = {
-  "class": "px-6 py-4 bg-gray-100 text-right"
+  "class": "px-6 py-4 bg-cool-grey-100 text-right"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("modal");
@@ -35495,7 +35492,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   key: 0,
   type: "submit",
-  "class": "\n                block\n                w-full\n                px-4\n                py-2\n                text-sm\n                leading-5\n                text-gray-700 text-left\n                hover:bg-gray-100\n                focus:outline-none focus:bg-gray-100\n                transition\n                duration-150\n                ease-in-out\n            "
+  "class": "\n                block\n                w-full\n                px-4\n                py-2\n                text-sm\n                leading-5\n                text-cool-grey-700 text-left\n                hover:bg-cool-grey-100\n                focus:outline-none focus:bg-cool-grey-100\n                transition\n                duration-150\n                ease-in-out\n            "
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
@@ -35503,7 +35500,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [$props.as == 'button' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
     key: 1,
     href: $props.href,
-    "class": "\n                block\n                px-4\n                py-2\n                text-sm\n                leading-5\n                text-gray-700\n                hover:bg-gray-100\n                focus:outline-none focus:bg-gray-100\n                transition\n                duration-150\n                ease-in-out\n            "
+    "class": "\n                block\n                px-4\n                py-2\n                text-sm\n                leading-5\n                text-cool-grey-700\n                hover:bg-cool-grey-100\n                focus:outline-none focus:bg-cool-grey-100\n                transition\n                duration-150\n                ease-in-out\n            "
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")];
@@ -35542,7 +35539,7 @@ var _hoisted_3 = {
 };
 var _hoisted_4 = {
   key: 0,
-  "class": "flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md"
+  "class": "\n                        flex\n                        items-center\n                        justify-end\n                        px-4\n                        py-3\n                        bg-cool-grey-50\n                        text-right\n                        sm:px-6\n                        shadow\n                        sm:rounded-bl-md sm:rounded-br-md\n                    "
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_section_title = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-title");
@@ -35587,7 +35584,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
-    "class": "\n            border-gray-300\n            focus:border-light-blue-vivid-300\n            focus:ring\n            focus:ring-light-blue-vivid-200\n            focus:ring-opacity-50\n            rounded-md\n            shadow-sm\n        ",
+    "class": "\n            border-cool-grey-300\n            focus:border-light-blue-vivid-300\n            focus:ring\n            focus:ring-light-blue-vivid-200\n            focus:ring-opacity-50\n            rounded-md\n            shadow-sm\n        ",
     value: $props.modelValue,
     onInput: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$emit('update:modelValue', $event.target.value);
@@ -35640,7 +35637,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "block font-medium text-sm text-gray-700 md:mt-2"
+  "class": "block font-medium text-sm text-cool-grey-700 md:mt-2"
 };
 var _hoisted_2 = {
   key: 0
@@ -35674,7 +35671,7 @@ var _hoisted_1 = {
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "absolute inset-0 bg-gray-500 opacity-75"
+  "class": "absolute inset-0 bg-cool-grey-500 opacity-75"
 }, null, -1
 /* HOISTED */
 );
@@ -35717,7 +35714,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-            "class": ["mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto", $options.maxWidthClass]
+            "class": ["\n                            mb-6\n                            bg-white\n                            rounded-lg\n                            overflow-hidden\n                            shadow-xl\n                            transform\n                            transition-all\n                            sm:w-full sm:mx-auto\n                        ", $options.maxWidthClass]
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 2
           /* CLASS */
           ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.show]])];
@@ -35825,7 +35822,7 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     type: $props.type,
-    "class": "inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+    "class": "\n            inline-flex\n            items-center\n            px-4\n            py-2\n            bg-white\n            border border-cool-grey-300\n            rounded-md\n            font-semibold\n            text-xs text-cool-grey-700\n            uppercase\n            tracking-widest\n            shadow-sm\n            hover:text-cool-grey-500\n            focus:outline-none focus:border-blue-300 focus:shadow-outline-blue\n            active:text-cool-grey-800 active:bg-cool-grey-50\n            transition\n            ease-in-out\n            duration-150\n        "
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 8
   /* PROPS */
   , ["type"]);
@@ -35853,7 +35850,7 @@ var _hoisted_1 = {
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "py-8"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "border-t border-gray-200"
+  "class": "border-t border-cool-grey-200"
 })], -1
 /* HOISTED */
 );
@@ -35884,10 +35881,10 @@ var _hoisted_2 = {
   "class": "px-4 sm:px-0"
 };
 var _hoisted_3 = {
-  "class": "text-lg font-medium text-gray-900"
+  "class": "text-lg font-medium text-cool-grey-900"
 };
 var _hoisted_4 = {
-  "class": "mt-1 text-sm text-gray-600"
+  "class": "mt-1 text-sm text-cool-grey-600"
 };
 function render(_ctx, _cache) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "title")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "description")])])]);
@@ -35949,10 +35946,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-screen bg-gray-100"
+  "class": "min-h-screen bg-cool-grey-100"
 };
 var _hoisted_2 = {
-  "class": "bg-white border-b border-gray-100"
+  "class": "bg-white border-b border-cool-grey-100"
 };
 var _hoisted_3 = {
   "class": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -35984,7 +35981,7 @@ var _hoisted_12 = {
 };
 var _hoisted_13 = {
   key: 0,
-  "class": "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+  "class": "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-cool-grey-300 transition duration-150 ease-in-out"
 };
 var _hoisted_14 = {
   key: 1,
@@ -35992,7 +35989,7 @@ var _hoisted_14 = {
 };
 var _hoisted_15 = {
   type: "button",
-  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-cool-grey-500 bg-white hover:text-cool-grey-700 focus:outline-none transition ease-in-out duration-150"
 };
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
@@ -36009,7 +36006,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "block px-4 py-2 text-xs text-gray-400"
+  "class": "block px-4 py-2 text-xs text-cool-grey-400"
 }, " Manage Account ", -1
 /* HOISTED */
 );
@@ -36019,7 +36016,7 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "border-t border-gray-100"
+  "class": "border-t border-cool-grey-100"
 }, null, -1
 /* HOISTED */
 );
@@ -36042,7 +36039,7 @@ var _hoisted_24 = {
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
 
 var _hoisted_26 = {
-  "class": "pt-4 pb-1 border-t border-gray-200"
+  "class": "pt-4 pb-1 border-t border-cool-grey-200"
 };
 var _hoisted_27 = {
   "class": "flex items-center px-4"
@@ -36052,10 +36049,10 @@ var _hoisted_28 = {
   "class": "flex-shrink-0 mr-3"
 };
 var _hoisted_29 = {
-  "class": "font-medium text-base text-gray-800"
+  "class": "font-medium text-base text-cool-grey-800"
 };
 var _hoisted_30 = {
-  "class": "font-medium text-sm text-gray-500"
+  "class": "font-medium text-sm text-cool-grey-500"
 };
 var _hoisted_31 = {
   "class": "mt-3 space-y-1"
@@ -36204,7 +36201,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $data.showingNavigationDropdown = !$data.showingNavigationDropdown;
     }),
-    "class": "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+    "class": "inline-flex items-center justify-center p-2 rounded-md text-cool-grey-400 hover:text-cool-grey-500 hover:bg-cool-grey-100 focus:outline-none focus:bg-cool-grey-100 focus:text-cool-grey-500 transition duration-150 ease-in-out"
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("svg", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
     "class": {
       'hidden': $data.showingNavigationDropdown,
@@ -36344,7 +36341,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "py-1"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "\n                                        block\n                                        px-4\n                                        py-2\n                                        text-xs text-gray-400\n                                    "
+  "class": "\n                                        block\n                                        px-4\n                                        py-2\n                                        text-xs text-cool-grey-400\n                                    "
 }, " Manage Account ")], -1
 /* HOISTED */
 );
@@ -36488,7 +36485,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuItems, {
         as: "div",
-        "class": "\n                                absolute\n                                right-0\n                                w-56\n                                mt-2\n                                origin-top-right\n                                bg-white\n                                divide-y divide-gray-100\n                                rounded-md\n                                shadow-lg\n                                ring-1 ring-black ring-opacity-5\n                                focus:outline-none\n                                z-10\n                            "
+        "class": "\n                                absolute\n                                right-0\n                                w-56\n                                mt-2\n                                origin-top-right\n                                bg-white\n                                divide-y divide-cool-grey-100\n                                rounded-md\n                                shadow-lg\n                                ring-1 ring-black ring-opacity-5\n                                focus:outline-none\n                                z-10\n                            "
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuItem, null, {
@@ -36496,7 +36493,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               var active = _ref2.active;
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
                 href: _ctx.route('profile.show'),
-                "class": [active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']
+                "class": [active ? 'bg-cool-grey-100 text-cool-grey-900' : 'text-cool-grey-700', 'block px-4 py-2 text-sm']
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                   return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UserCircleIcon, {
@@ -36520,7 +36517,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               var active = _ref3.active;
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
                 href: _ctx.route('api-tokens.index'),
-                "class": [active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']
+                "class": [active ? 'bg-cool-grey-100 text-cool-grey-900' : 'text-cool-grey-700', 'block px-4 py-2 text-sm']
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                   return [_hoisted_12];
@@ -36539,7 +36536,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
               var active = _ref4.active;
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-                "class": [active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']
+                "class": [active ? 'bg-cool-grey-100 text-cool-grey-900' : 'text-cool-grey-700', 'block px-4 py-2 text-sm']
               }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
                 type: "submit flex",
                 onClick: _cache[1] || (_cache[1] = function () {
@@ -36620,7 +36617,7 @@ var _hoisted_6 = {
   "class": "flex items-center"
 };
 var _hoisted_7 = {
-  "class": "ml-2 text-sm text-gray-600"
+  "class": "ml-2 text-sm text-cool-grey-600"
 };
 
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Created. ");
@@ -36646,7 +36643,7 @@ var _hoisted_15 = {
 };
 var _hoisted_16 = {
   key: 0,
-  "class": "text-sm text-gray-400"
+  "class": "text-sm text-cool-grey-400"
 };
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Token ");
@@ -36657,7 +36654,7 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 
 var _hoisted_19 = {
   key: 0,
-  "class": "\n                        mt-4\n                        bg-gray-100\n                        px-4\n                        py-2\n                        rounded\n                        font-mono\n                        text-sm text-gray-500\n                    "
+  "class": "\n                        mt-4\n                        bg-cool-grey-100\n                        px-4\n                        py-2\n                        rounded\n                        font-mono\n                        text-sm text-cool-grey-500\n                    "
 };
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Close ");
@@ -36671,7 +36668,7 @@ var _hoisted_23 = {
   "class": "flex items-center"
 };
 var _hoisted_24 = {
-  "class": "ml-2 text-sm text-gray-600"
+  "class": "ml-2 text-sm text-cool-grey-600"
 };
 
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevermind ");
@@ -36815,7 +36812,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.availablePermissions.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
           key: 1,
-          "class": "\n                                            cursor-pointer\n                                            ml-6\n                                            text-sm text-gray-400\n                                            underline\n                                        ",
+          "class": "\n                                            cursor-pointer\n                                            ml-6\n                                            text-sm text-cool-grey-400\n                                            underline\n                                        ",
           onClick: function onClick($event) {
             return $options.manageApiTokenPermissions(token);
           }
@@ -37033,7 +37030,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "mb-4 text-sm text-gray-600"
+  "class": "mb-4 text-sm text-cool-grey-600"
 }, " This is a secure area of the application. Please confirm your password before continuing. ", -1
 /* HOISTED */
 );
@@ -37125,7 +37122,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "mb-4 text-sm text-gray-600"
+  "class": "mb-4 text-sm text-cool-grey-600"
 }, " Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one. ", -1
 /* HOISTED */
 );
@@ -37235,7 +37232,7 @@ var _hoisted_4 = {
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "ml-2 text-sm text-gray-600"
+  "class": "ml-2 text-sm text-cool-grey-600"
 }, "Remember me", -1
 /* HOISTED */
 );
@@ -37322,7 +37319,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["checked"]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [$props.canResetPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
         key: 0,
         href: _ctx.route('password.request'),
-        "class": "underline text-sm text-gray-600 hover:text-gray-900"
+        "class": "\n                        underline\n                        text-sm text-cool-grey-600\n                        hover:text-cool-grey-900\n                    "
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_7];
@@ -37507,13 +37504,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           , ["checked"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
             target: "_blank",
             href: _ctx.route('terms.show'),
-            "class": "\n                                    underline\n                                    text-sm text-gray-600\n                                    hover:text-gray-900\n                                "
+            "class": "\n                                    underline\n                                    text-sm text-cool-grey-600\n                                    hover:text-cool-grey-900\n                                "
           }, " Terms of Service ", 8
           /* PROPS */
           , ["href"]), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
             target: "_blank",
             href: _ctx.route('policy.show'),
-            "class": "\n                                    underline\n                                    text-sm text-gray-600\n                                    hover:text-gray-900\n                                "
+            "class": "\n                                    underline\n                                    text-sm text-cool-grey-600\n                                    hover:text-cool-grey-900\n                                "
           }, " Privacy Policy ", 8
           /* PROPS */
           , ["href"])])])];
@@ -37523,7 +37520,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('login'),
-        "class": "underline text-sm text-gray-600 hover:text-gray-900"
+        "class": "\n                        underline\n                        text-sm text-cool-grey-600\n                        hover:text-cool-grey-900\n                    "
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_10];
@@ -37693,7 +37690,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "mb-4 text-sm text-gray-600"
+  "class": "mb-4 text-sm text-cool-grey-600"
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please confirm access to your account by entering the authentication code provided by your authenticator application. ");
@@ -37782,7 +37779,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["modelValue"])])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
         type: "button",
-        "class": "text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer",
+        "class": "\n                        text-sm text-cool-grey-600\n                        hover:text-cool-grey-900\n                        underline\n                        cursor-pointer\n                    ",
         onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.toggleRecovery && $options.toggleRecovery.apply($options, arguments);
         }, ["prevent"]))
@@ -37835,7 +37832,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "mb-4 text-sm text-gray-600"
+  "class": "mb-4 text-sm text-cool-grey-600"
 }, " Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another. ", -1
 /* HOISTED */
 );
@@ -37888,7 +37885,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         href: _ctx.route('logout'),
         method: "post",
         as: "button",
-        "class": "underline text-sm text-gray-600 hover:text-gray-900"
+        "class": "\n                        underline\n                        text-sm text-cool-grey-600\n                        hover:text-cool-grey-900\n                    "
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_5];
@@ -38410,7 +38407,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.searchForm.search]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-    "class": "\n                        ml-3\n                        text-sm text-gray-500\n                        hover:text-gray-700\n                        focus:text-light-blue-vivid-500\n                    ",
+    "class": "\n                        ml-3\n                        text-sm text-cool-grey-500\n                        hover:text-cool-grey-700\n                        focus:text-light-blue-vivid-500\n                    ",
     type: "button",
     onClick: _cache[3] || (_cache[3] = function () {
       return $setup.reset && $setup.reset.apply($setup, arguments);
@@ -38979,7 +38976,7 @@ var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
 
 var _hoisted_19 = {
-  "class": "\n                px-8\n                py-4\n                bg-cool-grey-100\n                border-t border-cool-grey-200\n                flex\n                justify-between\n                items-center\n            "
+  "class": "px-8 py-4 bg-cool-grey-50 flex justify-between items-center"
 };
 var _hoisted_20 = {
   "class": "flex items-baseline"
@@ -39261,7 +39258,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.searchForm.search]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-    "class": "\n                        ml-3\n                        text-sm text-gray-500\n                        hover:text-gray-700\n                        focus:text-light-blue-vivid-500\n                    ",
+    "class": "\n                        ml-3\n                        text-sm text-cool-grey-500\n                        hover:text-cool-grey-700\n                        focus:text-light-blue-vivid-500\n                    ",
     type: "button",
     onClick: _cache[3] || (_cache[3] = function () {
       return $setup.reset && $setup.reset.apply($setup, arguments);
@@ -39343,10 +39340,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "font-sans text-gray-900 antialiased"
+  "class": "font-sans text-cool-grey-900 antialiased"
 };
 var _hoisted_2 = {
-  "class": "pt-4 bg-gray-100"
+  "class": "pt-4 bg-cool-grey-100"
 };
 var _hoisted_3 = {
   "class": "min-h-screen flex flex-col items-center pt-6 sm:pt-0"
@@ -39356,7 +39353,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_authentication_card_logo)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
     innerHTML: $props.policy,
-    "class": "w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose"
+    "class": "\n                        w-full\n                        sm:max-w-2xl\n                        mt-6\n                        p-6\n                        bg-white\n                        shadow-md\n                        overflow-hidden\n                        sm:rounded-lg\n                        prose\n                    "
   }, null, 8
   /* PROPS */
   , ["innerHTML"])])])]);
@@ -39383,7 +39380,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Permanently delete your account. ");
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "max-w-xl text-sm text-gray-600"
+  "class": "max-w-xl text-sm text-cool-grey-600"
 }, " Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain. ", -1
 /* HOISTED */
 );
@@ -39528,7 +39525,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Manage and log out your active sessions on other browsers and devices. ");
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "max-w-xl text-sm text-gray-600"
+  "class": "max-w-xl text-sm text-cool-grey-600"
 }, " If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password. ", -1
 /* HOISTED */
 );
@@ -39545,7 +39542,7 @@ var _hoisted_5 = {
   "stroke-width": "2",
   viewBox: "0 0 24 24",
   stroke: "currentColor",
-  "class": "w-8 h-8 text-gray-500"
+  "class": "w-8 h-8 text-cool-grey-500"
 };
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
@@ -39563,7 +39560,7 @@ var _hoisted_7 = {
   fill: "none",
   "stroke-linecap": "round",
   "stroke-linejoin": "round",
-  "class": "w-8 h-8 text-gray-500"
+  "class": "w-8 h-8 text-cool-grey-500"
 };
 
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
@@ -39593,10 +39590,10 @@ var _hoisted_11 = {
   "class": "ml-3"
 };
 var _hoisted_12 = {
-  "class": "text-sm text-gray-600"
+  "class": "text-sm text-cool-grey-600"
 };
 var _hoisted_13 = {
-  "class": "text-xs text-gray-500"
+  "class": "text-xs text-cool-grey-500"
 };
 var _hoisted_14 = {
   key: 0,
@@ -39772,7 +39769,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "font-bold py-5"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
-  "class": "font-semibold text-xl text-gray-800 leading-tight"
+  "class": "font-semibold text-xl text-cool-grey-800 leading-tight"
 }, " Profile ")], -1
 /* HOISTED */
 );
@@ -39845,15 +39842,15 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_3 = {
   key: 0,
-  "class": "text-lg font-medium text-gray-900"
+  "class": "text-lg font-medium text-cool-grey-900"
 };
 var _hoisted_4 = {
   key: 1,
-  "class": "text-lg font-medium text-gray-900"
+  "class": "text-lg font-medium text-cool-grey-900"
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "mt-3 max-w-xl text-sm text-gray-600"
+  "class": "mt-3 max-w-xl text-sm text-cool-grey-600"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application. ")], -1
 /* HOISTED */
 );
@@ -39866,7 +39863,7 @@ var _hoisted_7 = {
 };
 
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "mt-4 max-w-xl text-sm text-gray-600"
+  "class": "mt-4 max-w-xl text-sm text-cool-grey-600"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "font-semibold"
 }, " Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application. ")], -1
@@ -39878,7 +39875,7 @@ var _hoisted_9 = {
 };
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "mt-4 max-w-xl text-sm text-gray-600"
+  "class": "mt-4 max-w-xl text-sm text-cool-grey-600"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "font-semibold"
 }, " Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost. ")], -1
@@ -39886,7 +39883,7 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 var _hoisted_11 = {
-  "class": "grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg"
+  "class": "\n                            grid\n                            gap-1\n                            max-w-xl\n                            mt-4\n                            px-4\n                            py-4\n                            font-mono\n                            text-sm\n                            bg-cool-grey-100\n                            rounded-lg\n                        "
 };
 var _hoisted_12 = {
   "class": "mt-5"
@@ -40418,7 +40415,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
-  "class": "font-semibold text-xl text-gray-800 leading-tight"
+  "class": "font-semibold text-xl text-cool-grey-800 leading-tight"
 }, " Create Team ", -1
 /* HOISTED */
 );
@@ -40476,7 +40473,7 @@ var _hoisted_5 = {
   "class": "ml-4 leading-tight"
 };
 var _hoisted_6 = {
-  "class": "text-gray-700 text-sm"
+  "class": "text-cool-grey-700 text-sm"
 };
 var _hoisted_7 = {
   "class": "col-span-6 sm:col-span-4"
@@ -40584,7 +40581,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Permanently delete this team. ");
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "max-w-xl text-sm text-gray-600"
+  "class": "max-w-xl text-sm text-cool-grey-600"
 }, " Once a team is deleted, all of its resources and data will be permanently deleted. Before deleting this team, please download any data or information regarding this team that you wish to retain. ", -1
 /* HOISTED */
 );
@@ -40711,7 +40708,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-span-6"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "max-w-xl text-sm text-gray-600"
+  "class": "max-w-xl text-sm text-cool-grey-600"
 }, " Please provide the email address of the person you would like to add to this team. ")], -1
 /* HOISTED */
 );
@@ -40724,7 +40721,7 @@ var _hoisted_6 = {
   "class": "col-span-6 lg:col-span-4"
 };
 var _hoisted_7 = {
-  "class": "relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer"
+  "class": "\n                                relative\n                                z-0\n                                mt-1\n                                border border-cool-grey-200\n                                rounded-lg\n                                cursor-pointer\n                            "
 };
 var _hoisted_8 = {
   "class": "flex items-center"
@@ -40747,7 +40744,7 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 var _hoisted_11 = {
-  "class": "mt-2 text-xs text-gray-600"
+  "class": "mt-2 text-xs text-cool-grey-600"
 };
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Added. ");
@@ -40766,7 +40763,7 @@ var _hoisted_17 = {
   "class": "space-y-6"
 };
 var _hoisted_18 = {
-  "class": "text-gray-600"
+  "class": "text-cool-grey-600"
 };
 var _hoisted_19 = {
   "class": "flex items-center"
@@ -40793,7 +40790,7 @@ var _hoisted_26 = {
 };
 var _hoisted_27 = {
   key: 1,
-  "class": "ml-2 text-sm text-gray-400"
+  "class": "ml-2 text-sm text-cool-grey-400"
 };
 
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Manage Role ");
@@ -40802,7 +40799,7 @@ var _hoisted_29 = {
   key: 0
 };
 var _hoisted_30 = {
-  "class": "relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer"
+  "class": "\n                            relative\n                            z-0\n                            mt-1\n                            border border-cool-grey-200\n                            rounded-lg\n                            cursor-pointer\n                        "
 };
 var _hoisted_31 = {
   "class": "flex items-center"
@@ -40825,7 +40822,7 @@ var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 var _hoisted_34 = {
-  "class": "mt-2 text-xs text-gray-600"
+  "class": "mt-2 text-xs text-cool-grey-600"
 };
 
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Cancel ");
@@ -40912,8 +40909,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["message"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.availableRoles, function (role, i) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
           type: "button",
-          "class": ["relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200", {
-            'border-t border-gray-200 rounded-t-none': i > 0,
+          "class": ["\n                                    relative\n                                    px-4\n                                    py-3\n                                    inline-flex\n                                    w-full\n                                    rounded-lg\n                                    focus:z-10\n                                    focus:outline-none\n                                    focus:border-blue-300\n                                    focus:ring\n                                    focus:ring-blue-200\n                                ", {
+            'border-t border-cool-grey-200 rounded-t-none': i > 0,
             'rounded-b-none': i != Object.keys($props.availableRoles).length - 1
           }],
           onClick: function onClick($event) {
@@ -40925,7 +40922,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             'opacity-50': $data.addTeamMemberForm.role && $data.addTeamMemberForm.role != role.key
           }
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Role Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-          "class": ["text-sm text-gray-600", {
+          "class": ["text-sm text-cool-grey-600", {
             'font-semibold': $data.addTeamMemberForm.role == role.key
           }]
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.name), 3
@@ -40993,7 +40990,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Cancel Team Invitation "), $props.userPermissions.canRemoveTeamMembers ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
           key: 0,
-          "class": "cursor-pointer ml-6 text-sm text-red-500 focus:outline-none",
+          "class": "\n                                        cursor-pointer\n                                        ml-6\n                                        text-sm text-red-500\n                                        focus:outline-none\n                                    ",
           onClick: function onClick($event) {
             return $options.cancelTeamInvitation(invitation);
           }
@@ -41031,7 +41028,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Manage Team Member Role "), $props.userPermissions.canAddTeamMembers && $props.availableRoles.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
           key: 0,
-          "class": "ml-2 text-sm text-gray-400 underline",
+          "class": "\n                                        ml-2\n                                        text-sm text-cool-grey-400\n                                        underline\n                                    ",
           onClick: function onClick($event) {
             return $options.manageRole(user);
           }
@@ -41041,13 +41038,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Leave Team "), _ctx.$page.props.user.id === user.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
           key: 2,
-          "class": "cursor-pointer ml-6 text-sm text-red-500",
+          "class": "\n                                        cursor-pointer\n                                        ml-6\n                                        text-sm text-red-500\n                                    ",
           onClick: _cache[2] || (_cache[2] = function () {
             return $options.confirmLeavingTeam && $options.confirmLeavingTeam.apply($options, arguments);
           })
         }, " Leave ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Remove Team Member "), $props.userPermissions.canRemoveTeamMembers ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
           key: 3,
-          "class": "cursor-pointer ml-6 text-sm text-red-500",
+          "class": "\n                                        cursor-pointer\n                                        ml-6\n                                        text-sm text-red-500\n                                    ",
           onClick: function onClick($event) {
             return $options.confirmTeamMemberRemoval(user);
           }
@@ -41074,8 +41071,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [$data.managingRoleFor ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_30, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.availableRoles, function (role, i) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
           type: "button",
-          "class": ["relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200", {
-            'border-t border-gray-200 rounded-t-none': i > 0,
+          "class": ["\n                                relative\n                                px-4\n                                py-3\n                                inline-flex\n                                w-full\n                                rounded-lg\n                                focus:z-10\n                                focus:outline-none\n                                focus:border-blue-300\n                                focus:ring\n                                focus:ring-blue-200\n                            ", {
+            'border-t border-cool-grey-200 rounded-t-none': i > 0,
             'rounded-b-none': i !== Object.keys($props.availableRoles).length - 1
           }],
           onClick: function onClick($event) {
@@ -41087,7 +41084,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             'opacity-50': $data.updateRoleForm.role && $data.updateRoleForm.role !== role.key
           }
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Role Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-          "class": ["text-sm text-gray-600", {
+          "class": ["text-sm text-cool-grey-600", {
             'font-semibold': $data.updateRoleForm.role === role.key
           }]
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.name), 3
@@ -41262,7 +41259,7 @@ var _hoisted_5 = {
   "class": "ml-4 leading-tight"
 };
 var _hoisted_6 = {
-  "class": "text-gray-700 text-sm"
+  "class": "text-cool-grey-700 text-sm"
 };
 var _hoisted_7 = {
   "class": "col-span-6 sm:col-span-4"
@@ -41384,7 +41381,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
-  "class": "font-semibold text-xl text-gray-800 leading-tight"
+  "class": "font-semibold text-xl text-cool-grey-800 leading-tight"
 }, " Team Settings ", -1
 /* HOISTED */
 );
@@ -41455,10 +41452,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "font-sans text-gray-900 antialiased"
+  "class": "font-sans text-cool-grey-900 antialiased"
 };
 var _hoisted_2 = {
-  "class": "pt-4 bg-gray-100"
+  "class": "pt-4 bg-cool-grey-100"
 };
 var _hoisted_3 = {
   "class": "min-h-screen flex flex-col items-center pt-6 sm:pt-0"
@@ -41468,7 +41465,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_authentication_card_logo)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
     innerHTML: $props.terms,
-    "class": "w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose"
+    "class": "\n                        w-full\n                        sm:max-w-2xl\n                        mt-6\n                        p-6\n                        bg-white\n                        shadow-md\n                        overflow-hidden\n                        sm:rounded-lg\n                        prose\n                    "
   }, null, 8
   /* PROPS */
   , ["innerHTML"])])])]);
@@ -41657,7 +41654,7 @@ var _hoisted_4 = {
 };
 var _hoisted_5 = {
   key: 1,
-  "class": "italic text-gray-400"
+  "class": "italic text-cool-grey-400"
 };
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, "None found", -1
@@ -41679,7 +41676,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.searchTerm]]), $setup.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_icon, {
     key: 0,
     name: "spinner",
-    "class": "-ml-8 animate-spin fill-current h-6 text-gray-400 w-6"
+    "class": "\n                    -ml-8\n                    animate-spin\n                    fill-current\n                    h-6\n                    text-cool-grey-400\n                    w-6\n                "
   })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [$setup.results.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("ul", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.results, function (contact) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", {
       key: contact.id,
@@ -42011,7 +42008,7 @@ var _hoisted_2 = {
 };
 var _hoisted_3 = {
   key: 0,
-  "class": "border-b font-bold my-5 pb-2 text-gray-700"
+  "class": "border-b font-bold my-5 pb-2 text-cool-grey-700"
 };
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Field ");
@@ -42724,7 +42721,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: 0,
       "class": [{
         'ml-auto': link.label === 'Next'
-      }, "text-gray-400 px-4 py-3"],
+      }, "text-cool-grey-400 px-4 py-3"],
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(link.label)
     }, null, 10
     /* CLASS, PROPS */
@@ -42858,8 +42855,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": ["py-2", {
         'text-red-vivid-500': $setup.isInPast(policy.period_end)
       }]
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(policy.period_end)), 3
-    /* TEXT, CLASS */
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+      title: $setup.formatDate(policy.period_end, 'YYYY-MM-DD HH:mm:ss Z[Z]')
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(policy.period_end)), 9
+    /* TEXT, PROPS */
+    , ["title"])], 2
+    /* CLASS */
     )]);
   }), 128
   /* KEYED_FRAGMENT */
@@ -43122,7 +43123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Layouts/AppLayout.vue"],"names":[],"mappings":";AA2LE;IACE,wCAAwC;IACxC,8CAA8C;IAC9C,kCAAkC;IAClC,gCAAgC;IAChC,kCAAkC;IAClC,iCAAiC;IACjC,8BAA8B;IAC9B,uFAAuF;AACzF","sourcesContent":["<template>\n    <div>\n        <jet-banner />\n\n        <div class=\"min-h-screen bg-gray-100\">\n            <nav class=\"bg-white border-b border-gray-100\">\n                <!-- Primary Navigation Menu -->\n                <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n                    <div class=\"flex justify-between h-16\">\n                        <div class=\"flex\">\n                            <!-- Logo -->\n                            <div class=\"flex-shrink-0 flex items-center\">\n                                <inertia-link :href=\"route('dashboard')\">\n                                    <jet-application-mark class=\"block h-9 w-auto\" />\n                                </inertia-link>\n                            </div>\n\n                            <!-- Navigation Links -->\n                            <div class=\"hidden space-x-8 sm:-my-px sm:ml-10 sm:flex\">\n                                <jet-nav-link :href=\"route('dashboard')\" :active=\"route().current('dashboard')\">\n                                    Dashboard\n                                </jet-nav-link>\n                                <jet-nav-link :href=\"route('policies')\" :active=\"route().current('policies')\">\n                                    Policies\n                                </jet-nav-link>\n                                <jet-nav-link :href=\"route('contacts')\" :active=\"route().current('contacts')\">\n                                    Contacts\n                                </jet-nav-link>\n                            </div>\n                        </div>\n\n                        <div class=\"hidden sm:flex sm:items-center sm:ml-6\">\n                            <!-- Settings Dropdown -->\n                            <div class=\"ml-3 relative\">\n                                <jet-dropdown align=\"right\" width=\"48\">\n                                    <template #trigger>\n                                        <button v-if=\"$page.props.jetstream.managesProfilePhotos\" class=\"flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out\">\n                                            <img class=\"h-8 w-8 rounded-full object-cover\" :src=\"$page.props.user.profile_photo_url\" :alt=\"$page.props.user.name\" />\n                                        </button>\n\n                                        <span v-else class=\"inline-flex rounded-md\">\n                                            <button type=\"button\" class=\"inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150\">\n                                                {{ $page.props.user.name }}\n\n                                                <svg class=\"ml-2 -mr-0.5 h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                                    <path fill-rule=\"evenodd\" d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\" clip-rule=\"evenodd\" />\n                                                </svg>\n                                            </button>\n                                        </span>\n                                    </template>\n\n                                    <template #content>\n                                        <!-- Account Management -->\n                                        <div class=\"block px-4 py-2 text-xs text-gray-400\">\n                                            Manage Account\n                                        </div>\n\n                                        <jet-dropdown-link :href=\"route('profile.show')\">\n                                            Profile\n                                        </jet-dropdown-link>\n\n                                        <jet-dropdown-link :href=\"route('api-tokens.index')\" v-if=\"$page.props.jetstream.hasApiFeatures\">\n                                            API Tokens\n                                        </jet-dropdown-link>\n\n                                        <div class=\"border-t border-gray-100\"></div>\n\n                                        <!-- Authentication -->\n                                        <form @submit.prevent=\"logout\">\n                                            <jet-dropdown-link as=\"button\">\n                                                Log Out\n                                            </jet-dropdown-link>\n                                        </form>\n                                    </template>\n                                </jet-dropdown>\n                            </div>\n                        </div>\n\n                        <!-- Hamburger -->\n                        <div class=\"-mr-2 flex items-center sm:hidden\">\n                            <button @click=\"showingNavigationDropdown = ! showingNavigationDropdown\" class=\"inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out\">\n                                <svg class=\"h-6 w-6\" stroke=\"currentColor\" fill=\"none\" viewBox=\"0 0 24 24\">\n                                    <path :class=\"{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16M4 18h16\" />\n                                    <path :class=\"{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 18L18 6M6 6l12 12\" />\n                                </svg>\n                            </button>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Responsive Navigation Menu -->\n                <div :class=\"{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}\" class=\"sm:hidden\">\n                    <div class=\"pt-2 pb-3 space-y-1\">\n                        <jet-responsive-nav-link :href=\"route('dashboard')\" :active=\"route().current('dashboard')\">\n                            Dashboard\n                        </jet-responsive-nav-link>\n                    </div>\n\n                    <!-- Responsive Settings Options -->\n                    <div class=\"pt-4 pb-1 border-t border-gray-200\">\n                        <div class=\"flex items-center px-4\">\n                            <div v-if=\"$page.props.jetstream.managesProfilePhotos\" class=\"flex-shrink-0 mr-3\" >\n                                <img class=\"h-10 w-10 rounded-full object-cover\" :src=\"$page.props.user.profile_photo_url\" :alt=\"$page.props.user.name\" />\n                            </div>\n\n                            <div>\n                                <div class=\"font-medium text-base text-gray-800\">{{ $page.props.user.name }}</div>\n                                <div class=\"font-medium text-sm text-gray-500\">{{ $page.props.user.email }}</div>\n                            </div>\n                        </div>\n\n                        <div class=\"mt-3 space-y-1\">\n                            <jet-responsive-nav-link :href=\"route('profile.show')\" :active=\"route().current('profile.show')\">\n                                Profile\n                            </jet-responsive-nav-link>\n\n                            <jet-responsive-nav-link :href=\"route('api-tokens.index')\" :active=\"route().current('api-tokens.index')\" v-if=\"$page.props.jetstream.hasApiFeatures\">\n                                API Tokens\n                            </jet-responsive-nav-link>\n\n                            <!-- Authentication -->\n                            <form method=\"POST\" @submit.prevent=\"logout\">\n                                <jet-responsive-nav-link as=\"button\">\n                                    Log Out\n                                </jet-responsive-nav-link>\n                            </form>\n                        </div>\n                    </div>\n                </div>\n            </nav>\n\n            <!-- Page Heading -->\n            <header class=\"bg-white shadow\" v-if=\"$slots.header\">\n                <div class=\"max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8\">\n                    <slot name=\"header\"></slot>\n                </div>\n            </header>\n\n            <!-- Page Content -->\n            <main class=\"max-w-7xl mx-auto py-10 sm:px-6 lg:px-8\">\n                <slot />\n            </main>\n        </div>\n    </div>\n</template>\n\n<script>\n    import JetApplicationMark from '@/Jetstream/ApplicationMark'\n    import JetBanner from '@/Jetstream/Banner'\n    import JetDropdown from '@/Jetstream/Dropdown'\n    import JetDropdownLink from '@/Jetstream/DropdownLink'\n    import JetNavLink from '@/Jetstream/NavLink'\n    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'\n\n    export default {\n        components: {\n            JetApplicationMark,\n            JetBanner,\n            JetDropdown,\n            JetDropdownLink,\n            JetNavLink,\n            JetResponsiveNavLink,\n        },\n\n        data() {\n            return {\n                showingNavigationDropdown: false,\n            }\n        },\n\n        methods: {\n            switchToTeam(team) {\n                this.$inertia.put(route('current-team.update'), {\n                    'team_id': team.id\n                }, {\n                    preserveState: false\n                })\n            },\n\n            logout() {\n                this.$inertia.post(route('logout'));\n            },\n        }\n    }\n</script>\n\n<style>\n  :root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);\n  }\n</style>"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/Layouts/AppLayout.vue"],"names":[],"mappings":";AA2LE;IACE,wCAAwC;IACxC,8CAA8C;IAC9C,kCAAkC;IAClC,gCAAgC;IAChC,kCAAkC;IAClC,iCAAiC;IACjC,8BAA8B;IAC9B,uFAAuF;AACzF","sourcesContent":["<template>\n    <div>\n        <jet-banner />\n\n        <div class=\"min-h-screen bg-cool-grey-100\">\n            <nav class=\"bg-white border-b border-cool-grey-100\">\n                <!-- Primary Navigation Menu -->\n                <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n                    <div class=\"flex justify-between h-16\">\n                        <div class=\"flex\">\n                            <!-- Logo -->\n                            <div class=\"flex-shrink-0 flex items-center\">\n                                <inertia-link :href=\"route('dashboard')\">\n                                    <jet-application-mark class=\"block h-9 w-auto\" />\n                                </inertia-link>\n                            </div>\n\n                            <!-- Navigation Links -->\n                            <div class=\"hidden space-x-8 sm:-my-px sm:ml-10 sm:flex\">\n                                <jet-nav-link :href=\"route('dashboard')\" :active=\"route().current('dashboard')\">\n                                    Dashboard\n                                </jet-nav-link>\n                                <jet-nav-link :href=\"route('policies')\" :active=\"route().current('policies')\">\n                                    Policies\n                                </jet-nav-link>\n                                <jet-nav-link :href=\"route('contacts')\" :active=\"route().current('contacts')\">\n                                    Contacts\n                                </jet-nav-link>\n                            </div>\n                        </div>\n\n                        <div class=\"hidden sm:flex sm:items-center sm:ml-6\">\n                            <!-- Settings Dropdown -->\n                            <div class=\"ml-3 relative\">\n                                <jet-dropdown align=\"right\" width=\"48\">\n                                    <template #trigger>\n                                        <button v-if=\"$page.props.jetstream.managesProfilePhotos\" class=\"flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-cool-grey-300 transition duration-150 ease-in-out\">\n                                            <img class=\"h-8 w-8 rounded-full object-cover\" :src=\"$page.props.user.profile_photo_url\" :alt=\"$page.props.user.name\" />\n                                        </button>\n\n                                        <span v-else class=\"inline-flex rounded-md\">\n                                            <button type=\"button\" class=\"inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-cool-grey-500 bg-white hover:text-cool-grey-700 focus:outline-none transition ease-in-out duration-150\">\n                                                {{ $page.props.user.name }}\n\n                                                <svg class=\"ml-2 -mr-0.5 h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\">\n                                                    <path fill-rule=\"evenodd\" d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\" clip-rule=\"evenodd\" />\n                                                </svg>\n                                            </button>\n                                        </span>\n                                    </template>\n\n                                    <template #content>\n                                        <!-- Account Management -->\n                                        <div class=\"block px-4 py-2 text-xs text-cool-grey-400\">\n                                            Manage Account\n                                        </div>\n\n                                        <jet-dropdown-link :href=\"route('profile.show')\">\n                                            Profile\n                                        </jet-dropdown-link>\n\n                                        <jet-dropdown-link :href=\"route('api-tokens.index')\" v-if=\"$page.props.jetstream.hasApiFeatures\">\n                                            API Tokens\n                                        </jet-dropdown-link>\n\n                                        <div class=\"border-t border-cool-grey-100\"></div>\n\n                                        <!-- Authentication -->\n                                        <form @submit.prevent=\"logout\">\n                                            <jet-dropdown-link as=\"button\">\n                                                Log Out\n                                            </jet-dropdown-link>\n                                        </form>\n                                    </template>\n                                </jet-dropdown>\n                            </div>\n                        </div>\n\n                        <!-- Hamburger -->\n                        <div class=\"-mr-2 flex items-center sm:hidden\">\n                            <button @click=\"showingNavigationDropdown = ! showingNavigationDropdown\" class=\"inline-flex items-center justify-center p-2 rounded-md text-cool-grey-400 hover:text-cool-grey-500 hover:bg-cool-grey-100 focus:outline-none focus:bg-cool-grey-100 focus:text-cool-grey-500 transition duration-150 ease-in-out\">\n                                <svg class=\"h-6 w-6\" stroke=\"currentColor\" fill=\"none\" viewBox=\"0 0 24 24\">\n                                    <path :class=\"{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16M4 18h16\" />\n                                    <path :class=\"{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 18L18 6M6 6l12 12\" />\n                                </svg>\n                            </button>\n                        </div>\n                    </div>\n                </div>\n\n                <!-- Responsive Navigation Menu -->\n                <div :class=\"{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}\" class=\"sm:hidden\">\n                    <div class=\"pt-2 pb-3 space-y-1\">\n                        <jet-responsive-nav-link :href=\"route('dashboard')\" :active=\"route().current('dashboard')\">\n                            Dashboard\n                        </jet-responsive-nav-link>\n                    </div>\n\n                    <!-- Responsive Settings Options -->\n                    <div class=\"pt-4 pb-1 border-t border-cool-grey-200\">\n                        <div class=\"flex items-center px-4\">\n                            <div v-if=\"$page.props.jetstream.managesProfilePhotos\" class=\"flex-shrink-0 mr-3\" >\n                                <img class=\"h-10 w-10 rounded-full object-cover\" :src=\"$page.props.user.profile_photo_url\" :alt=\"$page.props.user.name\" />\n                            </div>\n\n                            <div>\n                                <div class=\"font-medium text-base text-cool-grey-800\">{{ $page.props.user.name }}</div>\n                                <div class=\"font-medium text-sm text-cool-grey-500\">{{ $page.props.user.email }}</div>\n                            </div>\n                        </div>\n\n                        <div class=\"mt-3 space-y-1\">\n                            <jet-responsive-nav-link :href=\"route('profile.show')\" :active=\"route().current('profile.show')\">\n                                Profile\n                            </jet-responsive-nav-link>\n\n                            <jet-responsive-nav-link :href=\"route('api-tokens.index')\" :active=\"route().current('api-tokens.index')\" v-if=\"$page.props.jetstream.hasApiFeatures\">\n                                API Tokens\n                            </jet-responsive-nav-link>\n\n                            <!-- Authentication -->\n                            <form method=\"POST\" @submit.prevent=\"logout\">\n                                <jet-responsive-nav-link as=\"button\">\n                                    Log Out\n                                </jet-responsive-nav-link>\n                            </form>\n                        </div>\n                    </div>\n                </div>\n            </nav>\n\n            <!-- Page Heading -->\n            <header class=\"bg-white shadow\" v-if=\"$slots.header\">\n                <div class=\"max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8\">\n                    <slot name=\"header\"></slot>\n                </div>\n            </header>\n\n            <!-- Page Content -->\n            <main class=\"max-w-7xl mx-auto py-10 sm:px-6 lg:px-8\">\n                <slot />\n            </main>\n        </div>\n    </div>\n</template>\n\n<script>\n    import JetApplicationMark from '@/Jetstream/ApplicationMark'\n    import JetBanner from '@/Jetstream/Banner'\n    import JetDropdown from '@/Jetstream/Dropdown'\n    import JetDropdownLink from '@/Jetstream/DropdownLink'\n    import JetNavLink from '@/Jetstream/NavLink'\n    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'\n\n    export default {\n        components: {\n            JetApplicationMark,\n            JetBanner,\n            JetDropdown,\n            JetDropdownLink,\n            JetNavLink,\n            JetResponsiveNavLink,\n        },\n\n        data() {\n            return {\n                showingNavigationDropdown: false,\n            }\n        },\n\n        methods: {\n            switchToTeam(team) {\n                this.$inertia.put(route('current-team.update'), {\n                    'team_id': team.id\n                }, {\n                    preserveState: false\n                })\n            },\n\n            logout() {\n                this.$inertia.post(route('logout'));\n            },\n        }\n    }\n</script>\n\n<style>\n  :root {\n    --popper-theme-background-color: #333333;\n    --popper-theme-background-color-hover: #333333;\n    --popper-theme-text-color: #ffffff;\n    --popper-theme-border-width: 0px;\n    --popper-theme-border-style: solid;\n    --popper-theme-border-radius: 6px;\n    --popper-theme-padding: 0.5rem;\n    --popper-theme-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.04), 0 4px 3px rgba(0, 0, 0, 0.1);\n  }\n</style>"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

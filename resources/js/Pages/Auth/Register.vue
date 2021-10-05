@@ -77,8 +77,8 @@
                                 :href="route('terms.show')"
                                 class="
                                     underline
-                                    text-sm text-gray-600
-                                    hover:text-gray-900
+                                    text-sm text-cool-grey-600
+                                    hover:text-cool-grey-900
                                 "
                             >
                                 Terms of Service
@@ -89,8 +89,8 @@
                                 :href="route('policy.show')"
                                 class="
                                     underline
-                                    text-sm text-gray-600
-                                    hover:text-gray-900
+                                    text-sm text-cool-grey-600
+                                    hover:text-cool-grey-900
                                 "
                             >
                                 Privacy Policy
@@ -103,7 +103,11 @@
             <div class="flex items-center justify-end mt-4">
                 <inertia-link
                     :href="route('login')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
+                    class="
+                        underline
+                        text-sm text-cool-grey-600
+                        hover:text-cool-grey-900
+                    "
                 >
                     Already registered?
                 </inertia-link>
@@ -121,13 +125,13 @@
 </template>
 
 <script>
-import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
-import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
-import JetButton from "@/Jetstream/Button";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetLabel from "@/Jetstream/Label";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetAuthenticationCard from '@/Jetstream/AuthenticationCard';
+import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo';
+import JetButton from '@/Jetstream/Button';
+import JetInput from '@/Jetstream/Input';
+import JetCheckbox from '@/Jetstream/Checkbox';
+import JetLabel from '@/Jetstream/Label';
+import JetValidationErrors from '@/Jetstream/ValidationErrors';
 
 export default {
     components: {
@@ -137,28 +141,28 @@ export default {
         JetInput,
         JetCheckbox,
         JetLabel,
-        JetValidationErrors,
+        JetValidationErrors
     },
 
     data() {
         return {
             form: this.$inertia.form({
-                name: "",
-                email: "",
-                password: "",
-                password_confirmation: "",
-                terms: false,
-            }),
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: '',
+                terms: false
+            })
         };
     },
 
     methods: {
         submit() {
-            this.form.post(this.route("register"), {
+            this.form.post(this.route('register'), {
                 onFinish: () =>
-                    this.form.reset("password", "password_confirmation"),
+                    this.form.reset('password', 'password_confirmation')
             });
-        },
-    },
+        }
+    }
 };
 </script>

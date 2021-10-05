@@ -1,6 +1,6 @@
 <template>
     <div class="font-bold py-5">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h1 class="font-semibold text-xl text-cool-grey-800 leading-tight">
             Profile
         </h1>
     </div>

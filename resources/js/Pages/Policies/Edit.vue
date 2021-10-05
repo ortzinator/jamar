@@ -113,15 +113,7 @@
             <select-contact @selected="contactSelected"></select-contact>
         </div>
         <div
-            class="
-                px-8
-                py-4
-                bg-cool-grey-100
-                border-t border-cool-grey-200
-                flex
-                justify-between
-                items-center
-            "
+            class="px-8 py-4 bg-cool-grey-50 flex justify-between items-center"
         >
             <button
                 v-if="!policy.deleted_at"

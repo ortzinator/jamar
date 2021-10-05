@@ -44,7 +44,9 @@
                         name="remember"
                         v-model:checked="form.remember"
                     />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ml-2 text-sm text-cool-grey-600"
+                        >Remember me</span
+                    >
                 </label>
             </div>
 
@@ -52,7 +54,11 @@
                 <inertia-link
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
+                    class="
+                        underline
+                        text-sm text-cool-grey-600
+                        hover:text-cool-grey-900
+                    "
                 >
                     Forgot your password?
                 </inertia-link>

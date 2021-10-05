@@ -19,8 +19,8 @@
                 <button
                     class="
                         ml-3
-                        text-sm text-gray-500
-                        hover:text-gray-700
+                        text-sm text-cool-grey-500
+                        hover:text-cool-grey-700
                         focus:text-light-blue-vivid-500
                     "
                     type="button"

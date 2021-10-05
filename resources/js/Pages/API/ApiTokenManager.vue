@@ -42,7 +42,7 @@
                                         createApiTokenForm.permissions
                                     "
                                 />
-                                <span class="ml-2 text-sm text-gray-600">{{
+                                <span class="ml-2 text-sm text-cool-grey-600">{{
                                     permission
                                 }}</span>
                             </label>
@@ -95,7 +95,7 @@
 
                                 <div class="flex items-center">
                                     <div
-                                        class="text-sm text-gray-400"
+                                        class="text-sm text-cool-grey-400"
                                         v-if="token.last_used_ago"
                                     >
                                         Last used {{ token.last_used_ago }}
@@ -105,7 +105,7 @@
                                         class="
                                             cursor-pointer
                                             ml-6
-                                            text-sm text-gray-400
+                                            text-sm text-cool-grey-400
                                             underline
                                         "
                                         @click="
@@ -150,12 +150,12 @@
                 <div
                     class="
                         mt-4
-                        bg-gray-100
+                        bg-cool-grey-100
                         px-4
                         py-2
                         rounded
                         font-mono
-                        text-sm text-gray-500
+                        text-sm text-cool-grey-500
                     "
                     v-if="$page.props.jetstream.flash.token"
                 >
@@ -188,7 +188,7 @@
                                 :value="permission"
                                 v-model:checked="updateApiTokenForm.permissions"
                             />
-                            <span class="ml-2 text-sm text-gray-600">{{
+                            <span class="ml-2 text-sm text-cool-grey-600">{{
                                 permission
                             }}</span>
                         </label>
@@ -246,19 +246,19 @@
 </template>
 
 <script>
-import JetActionMessage from "@/Jetstream/ActionMessage";
-import JetActionSection from "@/Jetstream/ActionSection";
-import JetButton from "@/Jetstream/Button";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
-import JetDangerButton from "@/Jetstream/DangerButton";
-import JetDialogModal from "@/Jetstream/DialogModal";
-import JetFormSection from "@/Jetstream/FormSection";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetInputError from "@/Jetstream/InputError";
-import JetLabel from "@/Jetstream/Label";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton";
-import JetSectionBorder from "@/Jetstream/SectionBorder";
+import JetActionMessage from '@/Jetstream/ActionMessage';
+import JetActionSection from '@/Jetstream/ActionSection';
+import JetButton from '@/Jetstream/Button';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
+import JetDangerButton from '@/Jetstream/DangerButton';
+import JetDialogModal from '@/Jetstream/DialogModal';
+import JetFormSection from '@/Jetstream/FormSection';
+import JetInput from '@/Jetstream/Input';
+import JetCheckbox from '@/Jetstream/Checkbox';
+import JetInputError from '@/Jetstream/InputError';
+import JetLabel from '@/Jetstream/Label';
+import JetSecondaryButton from '@/Jetstream/SecondaryButton';
+import JetSectionBorder from '@/Jetstream/SectionBorder';
 
 export default {
     components: {
@@ -274,38 +274,38 @@ export default {
         JetInputError,
         JetLabel,
         JetSecondaryButton,
-        JetSectionBorder,
+        JetSectionBorder
     },
 
-    props: ["tokens", "availablePermissions", "defaultPermissions"],
+    props: ['tokens', 'availablePermissions', 'defaultPermissions'],
 
     data() {
         return {
             createApiTokenForm: this.$inertia.form({
-                name: "",
-                permissions: this.defaultPermissions,
+                name: '',
+                permissions: this.defaultPermissions
             }),
 
             updateApiTokenForm: this.$inertia.form({
-                permissions: [],
+                permissions: []
             }),
 
             deleteApiTokenForm: this.$inertia.form(),
 
             displayingToken: false,
             managingPermissionsFor: null,
-            apiTokenBeingDeleted: null,
+            apiTokenBeingDeleted: null
         };
     },
 
     methods: {
         createApiToken() {
-            this.createApiTokenForm.post(route("api-tokens.store"), {
+            this.createApiTokenForm.post(route('api-tokens.store'), {
                 preserveScroll: true,
                 onSuccess: () => {
                     this.displayingToken = true;
                     this.createApiTokenForm.reset();
-                },
+                }
             });
         },
 
@@ -317,11 +317,11 @@ export default {
 
         updateApiToken() {
             this.updateApiTokenForm.put(
-                route("api-tokens.update", this.managingPermissionsFor),
+                route('api-tokens.update', this.managingPermissionsFor),
                 {
                     preserveScroll: true,
                     preserveState: true,
-                    onSuccess: () => (this.managingPermissionsFor = null),
+                    onSuccess: () => (this.managingPermissionsFor = null)
                 }
             );
         },
@@ -332,14 +332,14 @@ export default {
 
         deleteApiToken() {
             this.deleteApiTokenForm.delete(
-                route("api-tokens.destroy", this.apiTokenBeingDeleted),
+                route('api-tokens.destroy', this.apiTokenBeingDeleted),
                 {
                     preserveScroll: true,
                     preserveState: true,
-                    onSuccess: () => (this.apiTokenBeingDeleted = null),
+                    onSuccess: () => (this.apiTokenBeingDeleted = null)
                 }
             );
-        },
-    },
+        }
+    }
 };
 </script>

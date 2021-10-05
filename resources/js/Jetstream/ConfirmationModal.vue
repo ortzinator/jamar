@@ -47,38 +47,38 @@
             </div>
         </div>
 
-        <div class="px-6 py-4 bg-gray-100 text-right">
+        <div class="px-6 py-4 bg-cool-grey-100 text-right">
             <slot name="footer"> </slot>
         </div>
     </modal>
 </template>
 
 <script>
-import Modal from "./Modal";
+import Modal from './Modal';
 
 export default {
-    emits: ["close"],
+    emits: ['close'],
 
     components: {
-        Modal,
+        Modal
     },
 
     props: {
         show: {
-            default: false,
+            default: false
         },
         maxWidth: {
-            default: "2xl",
+            default: '2xl'
         },
         closeable: {
-            default: true,
-        },
+            default: true
+        }
     },
 
     methods: {
         close() {
-            this.$emit("close");
-        },
-    },
+            this.$emit('close');
+        }
+    }
 };
 </script>

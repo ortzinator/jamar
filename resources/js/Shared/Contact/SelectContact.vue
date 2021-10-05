@@ -10,7 +10,14 @@
             <icon
                 v-if="loading"
                 name="spinner"
-                class="-ml-8 animate-spin fill-current h-6 text-gray-400 w-6"
+                class="
+                    -ml-8
+                    animate-spin
+                    fill-current
+                    h-6
+                    text-cool-grey-400
+                    w-6
+                "
             />
         </div>
         <div class="overflow-auto h-52 mt-2 pr-1">
@@ -29,7 +36,7 @@
                     </a>
                 </li>
             </ul>
-            <ul v-else-if="searchTerm" class="italic text-gray-400">
+            <ul v-else-if="searchTerm" class="italic text-cool-grey-400">
                 <li>None found</li>
             </ul>
         </div>
@@ -72,7 +79,6 @@ export default {
         var searchTerm = ref('');
         var results = ref([]);
         var loading = ref(false);
-        var cancelSource = ref(null);
         var selectedContact = ref(null);
 
         function refreshSearch() {
@@ -80,11 +86,12 @@ export default {
             search();
         }
 
+        var cancelSource = null;
         var search = _.debounce(function () {
-            if (cancelSource.value) {
-                cancelSource.value.cancel();
+            if (cancelSource) {
+                cancelSource.cancel();
             }
-            cancelSource.value = axios.CancelToken.source();
+            cancelSource = axios.CancelToken.source();
 
             if (searchTerm.value === '') {
                 results.value = [];
@@ -94,13 +101,13 @@ export default {
             axios
                 .get(route('contacts'), {
                     params: { search: searchTerm.value },
-                    cancelToken: cancelSource.value.token
+                    cancelToken: cancelSource.token
                 })
                 .then((response) => {
                     loading.value = false;
                     if (response) {
                         results.value = response.data;
-                        cancelSource.value = null;
+                        cancelSource = null;
                     }
                 });
         }, 400);
@@ -112,7 +119,6 @@ export default {
             searchTerm,
             results,
             loading,
-            cancelSource,
             refreshSearch,
             selectedContact
         };

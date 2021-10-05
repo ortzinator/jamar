@@ -86,7 +86,7 @@
                                 mt-2
                                 origin-top-right
                                 bg-white
-                                divide-y divide-gray-100
+                                divide-y divide-cool-grey-100
                                 rounded-md
                                 shadow-lg
                                 ring-1 ring-black ring-opacity-5
@@ -100,7 +100,7 @@
                                         block
                                         px-4
                                         py-2
-                                        text-xs text-gray-400
+                                        text-xs text-cool-grey-400
                                     "
                                 >
                                     Manage Account
@@ -113,8 +113,8 @@
                                         :href="route('profile.show')"
                                         :class="[
                                             active
-                                                ? 'bg-gray-100 text-gray-900'
-                                                : 'text-gray-700',
+                                                ? 'bg-cool-grey-100 text-cool-grey-900'
+                                                : 'text-cool-grey-700',
                                             'block px-4 py-2 text-sm'
                                         ]"
                                     >
@@ -133,8 +133,8 @@
                                         :href="route('api-tokens.index')"
                                         :class="[
                                             active
-                                                ? 'bg-gray-100 text-gray-900'
-                                                : 'text-gray-700',
+                                                ? 'bg-cool-grey-100 text-cool-grey-900'
+                                                : 'text-cool-grey-700',
                                             'block px-4 py-2 text-sm'
                                         ]"
                                     >
@@ -148,8 +148,8 @@
                                     <div
                                         :class="[
                                             active
-                                                ? 'bg-gray-100 text-gray-900'
-                                                : 'text-gray-700',
+                                                ? 'bg-cool-grey-100 text-cool-grey-900'
+                                                : 'text-cool-grey-700',
                                             'block px-4 py-2 text-sm'
                                         ]"
                                     >
