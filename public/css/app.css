@@ -2358,6 +2358,16 @@ h3, h4, h5, h6{
 	background-color: rgba(254, 243, 199, var(--tw-bg-opacity));
 }
 
+.bg-blue-500{
+	--tw-bg-opacity: 1;
+	background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
+}
+
+.bg-light-blue-vivid-500{
+	--tw-bg-opacity: 1;
+	background-color: rgba(43, 176, 237, var(--tw-bg-opacity));
+}
+
 .bg-opacity-25{
 	--tw-bg-opacity: 0.25;
 }
@@ -2413,6 +2423,10 @@ h3, h4, h5, h6{
 
 .p-3{
 	padding: 0.75rem;
+}
+
+.p-1{
+	padding: 0.25rem;
 }
 
 .px-4{

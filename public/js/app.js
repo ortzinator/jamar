@@ -33256,6 +33256,15 @@ __webpack_require__.r(__webpack_exports__);
       searchForm.trashed = null;
     }
 
+    function highlight(text) {
+      if (!searchForm.search) {
+        return text;
+      }
+
+      var escaped = new RegExp(searchForm.search.replace(/[.*?^${}()\[\]]/g, '\\$&'), 'i');
+      return text.replace(escaped, '<mark class="bg-light-blue-vivid-600 text-white">$&</mark>');
+    }
+
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(formVals, function () {
       return refreshSearch();
     });
@@ -33281,7 +33290,8 @@ __webpack_require__.r(__webpack_exports__);
       reset: reset,
       formatDate: formatDate,
       isInPast: isInPast,
-      columns: columns
+      columns: columns,
+      highlight: highlight
     };
   }
 });
@@ -39188,7 +39198,7 @@ var _hoisted_9 = {
   "class": "flex text-red-vivid-600 items-center"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No contacts found ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No policyholders found ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _createVNode2;
@@ -39245,8 +39255,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     columns: $setup.columns,
     dataSource: $props.policies.data,
     routeName: "policies.edit"
-  }, (_createVNode2 = {}, _defineProperty(_createVNode2, "column.period_end", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
+  }, (_createVNode2 = {}, _defineProperty(_createVNode2, "column.number", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
     var value = _ref.value;
+    return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+      innerHTML: $setup.highlight(value)
+    }, null, 8
+    /* PROPS */
+    , ["innerHTML"])];
+  })), _defineProperty(_createVNode2, "column.period_end", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref2) {
+    var value = _ref2.value;
     return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
       "class": {
         'text-red-vivid-500': $setup.isInPast(value)
@@ -39254,31 +39271,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(value)), 3
     /* TEXT, CLASS */
     )];
-  })), _defineProperty(_createVNode2, "column.created_at", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref2) {
-    var value = _ref2.value;
+  })), _defineProperty(_createVNode2, "column.created_at", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
+    var value = _ref3.value;
     return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.formatDate(value)), 1
     /* TEXT */
     )];
-  })), _defineProperty(_createVNode2, "column.premium", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
-    var value = _ref3.value;
+  })), _defineProperty(_createVNode2, "column.premium", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
+    var value = _ref4.value;
     return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
       "class": "text-right w-full",
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value.formatted)
     }, null, 8
     /* PROPS */
     , ["textContent"])];
-  })), _defineProperty(_createVNode2, "column.contactNamesPreview", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
-    var value = _ref4.value,
-        row = _ref4.row;
+  })), _defineProperty(_createVNode2, "column.contactNamesPreview", (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref5) {
+    var value = _ref5.value,
+        row = _ref5.row;
     return [row.contacts.length === 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_exclamation_icon, {
       "class": "h-5 mr-2 w-5"
     }), _hoisted_10])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
       key: 1,
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(value),
+      innerHTML: $setup.highlight(value),
       "class": "\n                            overflow-ellipsis overflow-hidden\n                            whitespace-nowrap\n                        "
     }, null, 8
     /* PROPS */
-    , ["textContent"]))];
+    , ["innerHTML"]))];
   })), _defineProperty(_createVNode2, "_", 2), _createVNode2), 1032
   /* PROPS, DYNAMIC_SLOTS */
   , ["columns", "dataSource"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination, {

@@ -43,6 +43,9 @@
                 :dataSource="policies.data"
                 routeName="policies.edit"
             >
+                <template v-slot:[`column.number`]="{ value }">
+                    <span v-html="highlight(value)" />
+                </template>
                 <template v-slot:[`column.period_end`]="{ value }">
                     <span :class="{ 'text-red-vivid-500': isInPast(value) }">
                         {{ formatDate(value) }}
@@ -65,11 +68,11 @@
                         class="flex text-red-vivid-600 items-center"
                     >
                         <exclamation-icon class="h-5 mr-2 w-5" />
-                        No contacts found
+                        No policyholders found
                     </div>
                     <div
                         v-else
-                        v-text="value"
+                        v-html="highlight(value)"
                         class="
                             overflow-ellipsis overflow-hidden
                             whitespace-nowrap
@@ -155,6 +158,22 @@ export default {
             searchForm.trashed = null;
         }
 
+        function highlight(text) {
+            if (!searchForm.search) {
+                return text;
+            }
+
+            let escaped = new RegExp(
+                searchForm.search.replace(/[.*?^${}()\[\]]/g, '\\$&'),
+                'i'
+            );
+
+            return text.replace(
+                escaped,
+                '<mark class="bg-light-blue-vivid-600 text-white">$&</mark>'
+            );
+        }
+
         watch(formVals, () => refreshSearch());
 
         const columns = ref([
@@ -171,7 +190,8 @@ export default {
             reset,
             formatDate,
             isInPast,
-            columns
+            columns,
+            highlight
         };
     }
 };
