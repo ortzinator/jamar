@@ -10,8 +10,8 @@
                 <div class="flex shadow rounded bg-white cursor-default">
                     <filter-select v-model="searchForm.trashed" />
                     <input
-                        type="text"
                         v-model="searchForm.search"
+                        type="text"
                         placeholder="Search..."
                         class="border-0 rounded-r w-full"
                     />
@@ -40,29 +40,24 @@
         <div class="shadow rounded bg-white overflow-x-auto">
             <DataTable
                 :columns="columns"
-                :dataSource="policies.data"
-                routeName="policies.edit"
+                :data-source="policies.data"
+                route-name="policies.edit"
             >
-                <template v-slot:[`column.number`]="{ value }">
+                <template #[`column.number`]="{ value }">
                     <span v-html="highlight(value)" />
                 </template>
-                <template v-slot:[`column.period_end`]="{ value }">
+                <template #[`column.period_end`]="{ value }">
                     <span :class="{ 'text-red-vivid-500': isInPast(value) }">
                         {{ formatDate(value) }}
                     </span>
                 </template>
-                <template v-slot:[`column.created_at`]="{ value }">
+                <template #[`column.created_at`]="{ value }">
                     {{ formatDate(value) }}
                 </template>
-                <template v-slot:[`column.premium`]="{ value }">
-                    <div
-                        class="text-right w-full"
-                        v-text="value.formatted"
-                    ></div>
+                <template #[`column.premium`]="{ value }">
+                    <div class="text-right w-full" v-text="value.formatted" />
                 </template>
-                <template
-                    v-slot:[`column.contactNamesPreview`]="{ value, row }"
-                >
+                <template #[`column.contactNamesPreview`]="{ value, row }">
                     <div
                         v-if="row.contacts.length === 0"
                         class="flex text-red-vivid-600 items-center"
@@ -72,11 +67,11 @@
                     </div>
                     <div
                         v-else
-                        v-html="highlight(value)"
                         class="
                             overflow-ellipsis overflow-hidden
                             whitespace-nowrap
                         "
+                        v-html="highlight(value)"
                     />
                 </template>
             </DataTable>
@@ -92,41 +87,23 @@ import AppLayout from '@/Layouts/NewLayout';
 import Pagination from '@/Shared/Pagination';
 import DataTable from '@/Shared/DataTable';
 import FilterSelect from '@/Shared/FilterSelect';
-import JetCheckbox from '@/Jetstream/Checkbox';
-import {
-    ExclamationIcon,
-    ChevronRightIcon,
-    SelectorIcon
-} from '@heroicons/vue/outline';
+import { ExclamationIcon } from '@heroicons/vue/outline';
 
-import { useForm, Link } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/inertia-vue3';
 import { useDates } from '../../dates';
 
-import {
-    Listbox,
-    ListboxButton,
-    ListboxOptions,
-    ListboxOption
-} from '@headlessui/vue';
-
 export default {
-    props: { sessions: Object, policies: Object, filters: Object },
-    layout: AppLayout,
-
     components: {
-        AppLayout,
         Pagination,
-        JetCheckbox,
         ExclamationIcon,
-        ChevronRightIcon,
-        SelectorIcon,
         DataTable,
-        Link,
-        Listbox,
-        ListboxButton,
-        ListboxOptions,
-        ListboxOption,
         FilterSelect
+    },
+    layout: AppLayout,
+    props: {
+        sessions: { type: Object, required: true },
+        policies: { type: Object, required: true },
+        filters: { type: Object, required: true }
     },
     setup(props) {
         const { formatDate, isInPast } = useDates();
@@ -164,7 +141,7 @@ export default {
             }
 
             let escaped = new RegExp(
-                searchForm.search.replace(/[.*?^${}()\[\]]/g, '\\$&'),
+                searchForm.search.replace(/[.*?^${}()[\]]/g, '\\$&'),
                 'i'
             );
 

@@ -23,24 +23,21 @@
                 <template #description> Description of this section </template>
                 <div class="grid gap-4 grid-cols-6">
                     <div class="col-span-6 sm:col-span-4">
-                        <jet-label
-                            for="template"
-                            value="Policy Type"
-                        ></jet-label>
+                        <jet-label for="template" value="Policy Type" />
                         <div class="flex items-center">
                             <select
+                                v-model="selectedTemplate"
                                 class="
                                     border border-cool-grey-200
                                     mt-1
                                     rounded
                                     w-full
                                 "
-                                v-model="selectedTemplate"
                             >
                                 <option
-                                    v-bind:value="template.fields"
                                     v-for="template in templates"
-                                    v-bind:key="template.id"
+                                    :key="template.id"
+                                    :value="template.fields"
                                 >
                                     {{ template.label }}
                                 </option>
@@ -48,23 +45,20 @@
                         </div>
                     </div>
                     <div class="col-span-6 sm:col-span-4">
-                        <jet-label
-                            for="agent"
-                            value="Assigned Agent"
-                        ></jet-label>
+                        <jet-label for="agent" value="Assigned Agent" />
                         <select
+                            v-model="policyForm.agent_id"
                             class="
                                 border border-cool-grey-200
                                 rounded
                                 mt-1
                                 w-full
                             "
-                            v-model="policyForm.agent_id"
                         >
                             <option
                                 v-for="agent in users"
-                                v-bind:value="agent.id"
-                                v-bind:key="agent.id"
+                                :key="agent.id"
+                                :value="agent.id"
                             >
                                 {{ agent.name }}
                             </option>
@@ -73,8 +67,8 @@
                     <div class="col-span-6 sm:col-span-4">
                         <jet-label for="number" value="Policy Number" />
                         <jet-input
-                            v-model="policyForm.number"
                             id="number"
+                            v-model="policyForm.number"
                             type="text"
                             class="block w-full mt-1"
                         />
@@ -109,11 +103,11 @@
                 <template #description> Description of this section </template>
 
                 <policy-fields-list
+                    class="mb-5"
                     :fields="policyForm.fields"
                     @fieldAdded="(field) => policyForm.fields.push(field)"
                     @fieldDeleted="handleFieldDelete"
-                    class="mb-5"
-                ></policy-fields-list>
+                />
             </FormSection>
 
             <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
@@ -124,11 +118,11 @@
                 <contact-list
                     :contacts="policyForm.contacts"
                     class="mb-5"
-                    @contactClicked="handleContactClick"
                     removable
+                    @contactClicked="handleContactClick"
                 >
                     Contacts
-                    <template v-slot:noContacts>
+                    <template #noContacts>
                         <div class="mb-5 text-yellow-vivid-600">
                             <exclamation-icon class="inline h-5 mr-2 w-5" />
                             Please add one or more contacts
@@ -158,17 +152,11 @@
 import { ref, watch } from 'vue';
 import AppLayout from '@/Layouts/NewLayout';
 import { useForm } from '@inertiajs/inertia-vue3';
-import {
-    ExclamationIcon,
-    QuestionMarkCircleIcon
-} from '@heroicons/vue/outline';
-import Popper from 'vue3-popper';
+import { ExclamationIcon } from '@heroicons/vue/outline';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 import LoadingButton from '@/Shared/LoadingButton';
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
 import DateRange from '@/Shared/DateRange';
@@ -177,27 +165,21 @@ import ContactList from '@/Shared/Contact/ContactList';
 import FormSection from '@/Shared/FormSection';
 
 export default {
-    props: ['users'],
-    layout: AppLayout,
-
     components: {
-        AppLayout,
         JetInput,
         JetLabel,
         JetInputError,
-        JetValidationErrors,
-        JetConfirmationModal,
         LoadingButton,
         PolicyFieldsList,
         DateRange,
         SelectContact,
         ContactList,
         ExclamationIcon,
-        QuestionMarkCircleIcon,
-        Popper,
         FormSection
     },
-    setup(props, context) {
+    layout: AppLayout,
+    props: { users: { type: Array, required: true } },
+    setup(context) {
         const policyForm = useForm({
             number: null,
             contacts: [],

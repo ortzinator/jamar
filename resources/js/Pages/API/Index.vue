@@ -17,12 +17,10 @@ import ApiTokenManager from './ApiTokenManager';
 import AppLayout from '@/Layouts/NewLayout';
 
 export default {
-    props: ['tokens', 'availablePermissions', 'defaultPermissions'],
-    layout: AppLayout,
-
     components: {
-        ApiTokenManager,
-        AppLayout
-    }
+        ApiTokenManager
+    },
+    layout: AppLayout,
+    props: ['tokens', 'availablePermissions', 'defaultPermissions']
 };
 </script>

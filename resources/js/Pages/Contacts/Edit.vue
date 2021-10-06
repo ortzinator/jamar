@@ -42,37 +42,33 @@
         <form @submit.prevent="updateContact">
             <div class="p-8">
                 <div class="mb-5">
-                    <jet-label for="name" value="Name"></jet-label>
+                    <jet-label for="name" value="Name" />
                     <jet-input
-                        v-model="form.name"
                         id="name"
+                        v-model="form.name"
                         type="text"
                         class="block w-full"
                     />
-                    <jet-input-error
-                        :message="form.errors.name"
-                    ></jet-input-error>
+                    <jet-input-error :message="form.errors.name" />
                 </div>
                 <div class="mb-5">
-                    <jet-label for="address" value="Address"></jet-label>
+                    <jet-label for="address" value="Address" />
                     <textarea
-                        name="address"
                         id="address"
+                        v-model="form.address"
+                        name="address"
                         class="block w-full"
                         cols="30"
                         rows="10"
-                        v-model="form.address"
-                    ></textarea>
-                    <jet-input-error
-                        :message="form.errors.address"
-                    ></jet-input-error>
+                    />
+                    <jet-input-error :message="form.errors.address" />
                 </div>
                 <div class="mb-5">
                     <Disclosure v-slot="{ open }">
                         <DisclosureButton class="flex items-center">
-                            <label for="notes" class="cursor-pointer"
-                                >Agent Notes</label
-                            >
+                            <label for="notes" class="cursor-pointer">
+                                Agent Notes
+                            </label>
                             <ChevronRightIcon
                                 :class="open ? 'transform rotate-90' : ''"
                                 class="h-5 w-5 ml-2"
@@ -80,13 +76,13 @@
                         </DisclosureButton>
                         <DisclosurePanel class="mt-5">
                             <textarea
-                                name="notes"
                                 id="notes"
+                                v-model="form.notes"
+                                name="notes"
                                 class="block w-full"
                                 cols="30"
                                 rows="10"
-                                v-model="form.notes"
-                            ></textarea>
+                            />
                         </DisclosurePanel>
                     </Disclosure>
                 </div>
@@ -173,19 +169,15 @@ import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
 import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 
 export default {
-    layout: AppLayout,
     components: {
-        AppLayout,
         JetInput,
         JetLabel,
         JetInputError,
-        JetValidationErrors,
         LoadingButton,
         JetConfirmationModal,
         TrashIcon,
@@ -194,9 +186,10 @@ export default {
         DisclosurePanel,
         ChevronRightIcon
     },
+    layout: AppLayout,
     props: {
-        errors: Object,
-        contact: Object
+        errors: { type: Object, required: true },
+        contact: { type: Object, required: true }
     },
     setup(props) {
         const form = useForm({

@@ -10,8 +10,8 @@
                 <div class="flex shadow rounded bg-white cursor-default">
                     <filter-select v-model="searchForm.trashed" />
                     <input
-                        type="text"
                         v-model="searchForm.search"
+                        type="text"
                         placeholder="Search..."
                         class="border-0 rounded-r w-full"
                     />
@@ -40,9 +40,9 @@
         <div class="">
             <div class="shadow rounded bg-white overflow-x-auto">
                 <DataTable
-                    :dataSource="contacts.data"
+                    route-name="contacts.edit"
                     :columns="columns"
-                    routeName="contacts.edit"
+                    :data-source="contacts.data"
                 />
             </div>
             <pagination :links="contacts.links"></pagination>
@@ -57,20 +57,19 @@ import { useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/NewLayout';
 import Pagination from '@/Shared/Pagination';
 import FilterSelect from '@/Shared/FilterSelect';
-import JetCheckbox from '@/Jetstream/Checkbox';
-import { ChevronRightIcon } from '@heroicons/vue/outline';
 import DataTable from '@/Shared/DataTable';
 
 export default {
-    props: { sessions: Object, contacts: Object, filters: Object },
-    layout: AppLayout,
     components: {
-        AppLayout,
         Pagination,
-        JetCheckbox,
-        ChevronRightIcon,
         DataTable,
         FilterSelect
+    },
+    layout: AppLayout,
+    props: {
+        sessions: { type: Object, required: true },
+        contacts: { type: Object, required: true },
+        filters: { type: Object, required: true }
     },
     setup(props) {
         const searchForm = useForm({

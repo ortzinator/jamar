@@ -47,17 +47,15 @@ import UpdatePasswordForm from './UpdatePasswordForm';
 import UpdateProfileInformationForm from './UpdateProfileInformationForm';
 
 export default {
-    props: ['sessions'],
-    layout: AppLayout,
-
     components: {
-        AppLayout,
         DeleteUserForm,
         JetSectionBorder,
         LogoutOtherBrowserSessionsForm,
         TwoFactorAuthenticationForm,
         UpdatePasswordForm,
         UpdateProfileInformationForm
-    }
+    },
+    layout: AppLayout,
+    props: { sessions: { type: Array, required: true } }
 };
 </script>

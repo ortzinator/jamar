@@ -48,8 +48,8 @@
             <div class="mb-5">
                 <jet-label for="number" value="Policy Number" />
                 <jet-input
-                    v-model="policyForm.number"
                     id="number"
+                    v-model="policyForm.number"
                     type="text"
                     class="block w-full"
                 />
@@ -59,10 +59,10 @@
             <div class="mb-5">
                 <jet-label value="Date Issued" />
                 <date-picker v-model="policyForm.created_at" mode="dateTime">
-                    <template v-slot="{ inputValue }">
+                    <template #default="{ inputValue }">
                         <jet-input
-                            :value="inputValue"
                             id="created_at"
+                            :value="inputValue"
                             type="text"
                             class="block w-full text-cool-grey-400"
                             readonly
@@ -73,14 +73,14 @@
             <div class="mb-5">
                 <jet-label value="Assigned Agent" />
                 <select
-                    class="border border-cool-grey-200 mr-5 rounded mt-1"
                     id="agent"
                     v-model="policyForm.agent_id"
+                    class="border border-cool-grey-200 mr-5 rounded mt-1"
                 >
                     <option
                         v-for="agent in users"
-                        v-bind:value="agent.id"
-                        v-bind:key="agent.id"
+                        :key="agent.id"
+                        :value="agent.id"
                     >
                         {{ agent.name }}
                     </option>
@@ -95,10 +95,10 @@
             </div>
 
             <policy-fields-list
+                class="mb-5"
                 :fields="policyForm.fields"
                 :policy="policy"
-                @fieldAdded="(field) => this.policyForm.fields.push(field)"
-                class="mb-5"
+                @fieldAdded="(field) => policyForm.fields.push(field)"
             ></policy-fields-list>
 
             <contact-list
@@ -161,18 +161,14 @@ import HistoryModal from '@/Shared/HistoryModal';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
 
 export default {
-    layout: AppLayout,
     components: {
-        AppLayout,
         ExclamationIcon,
         TrashIcon,
         JetInput,
         JetLabel,
         JetInputError,
-        JetValidationErrors,
         PolicyFieldsList,
         ContactList,
         LoadingButton,
@@ -181,10 +177,11 @@ export default {
         DatePicker,
         HistoryModal
     },
+    layout: AppLayout,
     props: {
-        errors: Object,
-        policy: Object,
-        fields: Array,
+        errors: { type: Object, required: true },
+        policy: { type: Object, required: true },
+        fields: { type: Array, required: true },
         users: { type: Array, required: true }
     },
     setup(props) {

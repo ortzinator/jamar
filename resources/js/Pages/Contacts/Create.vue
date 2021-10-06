@@ -22,8 +22,8 @@
                 <div class="mb-5">
                     <jet-label for="name" value="Name"></jet-label>
                     <jet-input
-                        v-model="form.name"
                         id="name"
+                        v-model="form.name"
                         type="text"
                         class="block w-full"
                     />
@@ -32,12 +32,12 @@
                 <div class="mb-5">
                     <jet-label for="address" value="Address"></jet-label>
                     <textarea
-                        name="address"
                         id="address"
+                        v-model="form.address"
+                        name="address"
                         class="block w-full"
                         cols="30"
                         rows="10"
-                        v-model="form.address"
                     />
                     <jet-input-error :message="form.errors.address" />
                 </div>
@@ -71,22 +71,17 @@ import { useForm } from '@inertiajs/inertia-vue3';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 import LoadingButton from '@/Shared/LoadingButton';
 
 export default {
-    layout: AppLayout,
     components: {
-        AppLayout,
         JetInput,
         JetLabel,
         JetInputError,
-        JetValidationErrors,
-        JetConfirmationModal,
         LoadingButton
     },
-    setup(props) {
+    layout: AppLayout,
+    setup() {
         const form = useForm({
             name: null,
             address: null
