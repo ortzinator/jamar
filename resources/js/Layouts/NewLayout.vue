@@ -14,7 +14,7 @@
                         text-white
                     "
                 >
-                    <Disclosure as="nav" v-slot="{ open }" class="w-full">
+                    <Disclosure v-slot="{ open }" as="nav" class="w-full">
                         <div class="flex md:justify-center justify-between">
                             <div>
                                 <AppLogo class="h-8 fill-current text-white" />
@@ -210,7 +210,6 @@ import { Inertia } from '@inertiajs/inertia';
 import { usePage } from '@inertiajs/inertia-vue3';
 import { useToast } from 'vue-toastification';
 
-import JetBanner from '@/Jetstream/Banner';
 import NavLink from '@/Shared/NavLink';
 import AppLogo from '@/Shared/AppLogo';
 
@@ -221,16 +220,11 @@ import {
     XIcon,
     ChevronDownIcon,
     LogoutIcon,
-    UserCircleIcon,
-    PresentationChartBarIcon,
-    UsersIcon,
-    DocumentTextIcon,
-    UserGroupIcon
+    UserCircleIcon
 } from '@heroicons/vue/outline';
 
 export default {
     components: {
-        JetBanner,
         NavLink,
         Disclosure,
         DisclosureButton,
@@ -244,10 +238,6 @@ export default {
         ChevronDownIcon,
         LogoutIcon,
         UserCircleIcon,
-        PresentationChartBarIcon,
-        UsersIcon,
-        DocumentTextIcon,
-        UserGroupIcon,
         AppLogo
     },
 

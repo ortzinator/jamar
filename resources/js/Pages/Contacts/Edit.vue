@@ -161,6 +161,7 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/NewLayout';
 import LoadingButton from '@/Shared/LoadingButton';
@@ -197,27 +198,31 @@ export default {
             address: props.contact.address,
             notes: props.contact.notes
         });
+        let confirmingDelete = ref(false);
+        let confirmingRestore = ref(false);
 
-        return { form };
-    },
-    data() {
-        return {
-            confirmingDelete: false,
-            confirmingRestore: false
-        };
-    },
-    methods: {
-        updateContact() {
-            this.form.put(this.route('contacts.update', this.contact.id));
-        },
-        destroy() {
-            this.form.delete(this.route('contacts.destroy', this.contact.id));
-            this.confirmingDelete = false;
-        },
-        restore() {
-            this.form.put(this.route('contacts.restore', this.contact.id));
-            this.confirmingRestore = false;
+        function updateContact() {
+            form.put(route('contacts.update', props.contact.id));
         }
+
+        function destroy() {
+            form.delete(route('contacts.destroy', props.contact.id));
+            confirmingDelete = false;
+        }
+
+        function restore() {
+            form.put(route('contacts.restore', props.contact.id));
+            confirmingRestore = false;
+        }
+
+        return {
+            form,
+            confirmingDelete,
+            confirmingRestore,
+            updateContact,
+            destroy,
+            restore
+        };
     }
 };
 </script>

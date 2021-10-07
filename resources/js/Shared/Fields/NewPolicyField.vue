@@ -4,8 +4,8 @@
             <div class="flex-auto">
                 <jet-label for="number" value="Field Name" />
                 <jet-input
-                    v-model="field.name"
                     id="name"
+                    v-model="field.name"
                     type="text"
                     class="w-full"
                 />
@@ -13,8 +13,8 @@
             <div class="flex-auto">
                 <jet-label for="number" value="Field Value" />
                 <jet-input
-                    v-model="field.value"
                     id="value"
+                    v-model="field.value"
                     type="text"
                     class="w-full"
                 />
@@ -34,45 +34,45 @@
 </template>
 
 <script>
+import { ref, reactive } from 'vue';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 
 export default {
-    emits: ['added'],
     components: {
         JetInput,
         JetLabel
     },
-    data() {
-        return {
-            field: {
-                name: null,
-                value: null
-            },
-            errors: []
-        };
-    },
-    methods: {
-        add() {
-            if (!this.validate()) return;
-            this.$emit('added', this.field);
-            this.reset();
-        },
-        reset() {
-            this.field = {
-                name: null,
-                value: null
-            };
-        },
-        validate() {
-            this.errors = [];
+    emits: ['added'],
+    setup(props, context) {
+        let field = reactive({
+            name: null,
+            value: null
+        });
+        let errors = ref([]);
 
-            if (this.field.name) {
+        function validate() {
+            errors = [];
+
+            if (field.name) {
                 return true;
             } else {
-                this.errors.push('Field name is required');
+                errors.value.push('Field name is required');
             }
         }
+
+        function reset() {
+            field.name = null;
+            field.value = null;
+        }
+
+        function add() {
+            if (!validate()) return;
+            context.emit('added', Object.assign({}, field));
+            reset();
+        }
+
+        return { field, errors, reset, add };
     }
 };
 </script>

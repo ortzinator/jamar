@@ -20,11 +20,11 @@
                 :field="field"
                 class=""
             >
-                <template #delButton v-if="!field.protected">
+                <template v-if="!field.protected" #delButton>
                     <button
+                        v-show="true"
                         class="btn hover:bg-red-vivid-300 hover:text-white"
                         @click="handleFieldDeleted(field)"
-                        v-show="true"
                     >
                         <trash-icon class="w-5 h-5 mx-auto" />
                     </button>
@@ -34,14 +34,14 @@
 
         <new-policy-field
             v-if="fieldFormShown"
-            @added="(field) => handleFieldAdded(field)"
             class="mb-5 p-5 rounded border"
+            @added="(field) => handleFieldAdded(field)"
         />
         <button
             v-if="editable && !fieldFormShown"
-            @click="handleNewFieldClick"
             type="button"
             class="btn btn-sm px-2 py-1 rounded flex items-center"
+            @click="handleNewFieldClick"
         >
             <plus-sm-icon class="h-5 w-5 mr-2" /> Field
         </button>
@@ -53,18 +53,19 @@ import { ref, computed } from 'vue';
 import NewPolicyField from '@/Shared/Fields/NewPolicyField';
 import PolicyField from '@/Shared/Fields/PolicyField';
 import { PlusSmIcon, TrashIcon } from '@heroicons/vue/outline';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 
 export default {
-    props: { fields: Array, editable: { default: true } },
-    emits: ['fieldAdded', 'fieldDeleted'],
     components: {
         NewPolicyField,
         PolicyField,
         PlusSmIcon,
-        JetConfirmationModal,
         TrashIcon
     },
+    props: {
+        fields: { type: Array, required: true },
+        editable: { type: Boolean, default: true }
+    },
+    emits: ['fieldAdded', 'fieldDeleted'],
     setup(props, { emit }) {
         var newFieldClicked = ref(false);
         var confirmingDeleteField = ref(false);

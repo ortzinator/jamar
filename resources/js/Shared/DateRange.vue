@@ -7,7 +7,7 @@
         is-required
         :min-date="minDate"
     >
-        <template v-slot="{ inputValue, inputEvents, isDragging }">
+        <template #default="{ inputValue, inputEvents, isDragging }">
             <div class="flex flex-col sm:flex-row justify-start items-center">
                 <div class="relative flex-grow">
                     <CalendarIcon
@@ -95,18 +95,17 @@
     </date-picker>
 </template>
 <script>
-import { Calendar, DatePicker } from 'v-calendar';
+import { DatePicker } from 'v-calendar';
 import { CalendarIcon, ArrowRightIcon } from '@heroicons/vue/outline';
 
 export default {
-    props: { modelValue: Object },
-    emits: ['update:modelValue'],
     components: {
-        Calendar,
         DatePicker,
         CalendarIcon,
         ArrowRightIcon
     },
+    props: { modelValue: { type: Object, required: true } },
+    emits: ['update:modelValue'],
     data() {
         return {
             masks: {

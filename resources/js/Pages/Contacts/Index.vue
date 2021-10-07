@@ -67,7 +67,6 @@ export default {
     },
     layout: AppLayout,
     props: {
-        sessions: { type: Object, required: true },
         contacts: { type: Object, required: true },
         filters: { type: Object, required: true }
     },

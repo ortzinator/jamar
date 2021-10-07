@@ -101,7 +101,6 @@ export default {
     },
     layout: AppLayout,
     props: {
-        sessions: { type: Object, required: true },
         policies: { type: Object, required: true },
         filters: { type: Object, required: true }
     },

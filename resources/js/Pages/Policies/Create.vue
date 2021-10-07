@@ -151,7 +151,7 @@
 <script>
 import { ref, watch } from 'vue';
 import AppLayout from '@/Layouts/NewLayout';
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm, usePage } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon } from '@heroicons/vue/outline';
 
 import JetInput from '@/Jetstream/Input';
@@ -179,7 +179,7 @@ export default {
     },
     layout: AppLayout,
     props: { users: { type: Array, required: true } },
-    setup(context) {
+    setup() {
         const policyForm = useForm({
             number: null,
             contacts: [],
@@ -188,7 +188,7 @@ export default {
                 end: null
             },
             fields: [],
-            agent_id: context.attrs.user.id
+            agent_id: usePage().props.value.user.id
         });
 
         const templates = ref([

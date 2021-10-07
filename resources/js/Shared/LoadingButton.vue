@@ -10,19 +10,17 @@
 </template>
 
 <script>
-import Icon from "@/Shared/Icon";
+import { ref, watch } from 'vue';
+import Icon from '@/Shared/Icon';
 
 export default {
-    props: { loading: Boolean },
     components: { Icon },
-    data() {
-        return {
-            delayedLoading: false,
-            delayId: null,
-        };
-    },
-    watch: {
-        loading(val) {
+    props: { loading: Boolean },
+    setup(props) {
+        let delayedLoading = ref(false);
+        let delayId = ref();
+
+        watch(props.loading, (val) => {
             //Only show the loading spinner icon if the request has taken longer than 100ms
             if (val === false) {
                 //If no longer loading, disable spinner immediately
@@ -35,7 +33,9 @@ export default {
                     100
                 );
             }
-        },
-    },
+        });
+
+        return { delayedLoading, delayId };
+    }
 };
 </script>
