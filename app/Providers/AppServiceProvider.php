@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(UrlGenerator $url)
     {
         if (Str::contains(env('APP_URL'), 'gitpod.io')) {
-            $url->forceSchema('https');
+            $url->forceScheme('https');
         }
     }
 }
