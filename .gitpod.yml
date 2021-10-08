@@ -7,10 +7,10 @@ tasks:
           bash .ddev/gitpod-setup-ddev.sh
           gp sync-done start
     - name: Mix
-      command: >
-          nvm install 14 &&
-          npm install -g npm@next &&
+      init: >
+          nvm install node --latest-npm &&
           npm i &&
+      command: >
           gp sync-await start &&
           npx mix watch
       openMode: split-right
@@ -55,7 +55,6 @@ vscode:
     extensions:
         - felixfbecker.php-debug
         - bmewburn.vscode-intelephense-client
-        - esbenp.prettier-vscode
         - bradlc.vscode-tailwindcss
         - onecentlin.laravel-blade
         - arcticicestudio.nord-visual-studio-code
@@ -63,6 +62,7 @@ vscode:
         - wongjn.php-sniffer
         - neilbrayfield.php-docblocker
         - pkief.material-icon-theme
+        - rvest.vs-code-prettier-eslint
 
 github:
     prebuilds:
