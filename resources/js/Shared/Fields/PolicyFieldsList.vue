@@ -7,13 +7,6 @@
             No policy fields found
         </div>
         <div v-else class="mr-5 mb-5">
-            <div
-                v-if="editable"
-                class="border-b font-bold my-5 pb-2 text-cool-grey-700"
-            >
-                Policy Fields
-            </div>
-
             <policy-field
                 v-for="field in fields"
                 :key="field.id"
