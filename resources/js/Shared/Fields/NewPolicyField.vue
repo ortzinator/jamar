@@ -19,7 +19,7 @@
                     class="w-full"
                 />
             </div>
-            <button class="btn mt-4 hover:underline" type="button" @click="add">
+            <button class="font-bold mt-4 hover:underline" type="button" @click="add">
                 Add Field
             </button>
         </div>

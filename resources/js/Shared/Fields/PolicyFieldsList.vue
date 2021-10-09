@@ -34,7 +34,6 @@
 
         <new-policy-field
             v-if="fieldFormShown"
-            class="mb-5 p-5 rounded border"
             @added="(field) => handleFieldAdded(field)"
         />
         <button

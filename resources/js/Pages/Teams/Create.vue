@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout.vue';
+import AppLayout from '@/Layouts/NewLayout.vue';
 import CreateTeamForm from '@/Pages/Teams/Partials/CreateTeamForm.vue';
 
 export default {

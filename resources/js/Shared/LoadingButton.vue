@@ -15,12 +15,13 @@ import Icon from '@/Shared/Icon';
 
 export default {
     components: { Icon },
-    props: { loading: Boolean },
+    props: { loading: { type: Boolean, required: true } },
     setup(props) {
         const delayedLoading = ref(false);
         const delayId = ref();
+        const loading = ref(props.loading);
 
-        watch(props.loading, (val) => {
+        watch(loading, (val) => {
             // Only show the loading spinner icon if the request has taken longer than 100ms
             if (val === false) {
                 // If no longer loading, disable spinner immediately

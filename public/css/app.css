@@ -3740,6 +3740,10 @@ h3, h4, h5, h6{
 		padding: 2.5rem;
 	}
 
+	.md\:p-5{
+		padding: 1.25rem;
+	}
+
 	.md\:px-12{
 		padding-left: 3rem;
 		padding-right: 3rem;

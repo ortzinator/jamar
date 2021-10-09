@@ -9,7 +9,7 @@
     >
         <template #default="{ inputValue, inputEvents, isDragging }">
             <div class="flex flex-col sm:flex-row justify-start items-center">
-                <div class="relative flex-grow">
+                <div class="relative flex-grow w-full">
                     <CalendarIcon
                         class="
                             text-cool-grey-600
@@ -52,7 +52,7 @@
                         class="w-4 h-4 stroke-current text-cool-grey-600"
                     />
                 </span>
-                <div class="relative flex-grow">
+                <div class="relative flex-grow w-full">
                     <CalendarIcon
                         class="
                             text-cool-grey-600
@@ -123,7 +123,7 @@ export default {
             },
         },
         minDate() {
-            var now = new Date();
+            const now = new Date();
             if (new Date(this.modelValue.start) < now) {
                 return this.modelValue.start;
             }

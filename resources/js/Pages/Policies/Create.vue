@@ -113,19 +113,18 @@
             <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
 
             <FormSection>
-                <template #header>Contacts</template>
-                <template #description> Add contacts here </template>
+                <template #header>Policyholders</template>
+                <template #description> Add policyholders here </template>
                 <contact-list
                     :contacts="policyForm.contacts"
                     class="mb-5"
                     removable
                     @contactClicked="handleContactClick"
                 >
-                    Contacts
                     <template #noContacts>
                         <div class="mb-5 text-yellow-vivid-600">
                             <exclamation-icon class="inline h-5 mr-2 w-5" />
-                            Please add one or more contacts
+                            Please add one or more policyholders
                         </div>
                     </template>
                 </contact-list>
@@ -245,7 +244,7 @@ export default {
         }
 
         function handleContactClick(contact) {
-            _.pull(policyForm.contacts, contact);
+            window.open(contact.link, '_blank').focus();
         }
 
         function handleFieldDelete(field) {
