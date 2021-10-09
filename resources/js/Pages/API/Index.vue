@@ -18,9 +18,9 @@ import AppLayout from '@/Layouts/NewLayout';
 
 export default {
     components: {
-        ApiTokenManager
+        ApiTokenManager,
     },
     layout: AppLayout,
-    props: ['tokens', 'availablePermissions', 'defaultPermissions']
+    props: ['tokens', 'availablePermissions', 'defaultPermissions'],
 };
 </script>

@@ -163,16 +163,15 @@
 <script>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
+import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import AppLayout from '@/Layouts/NewLayout';
 import LoadingButton from '@/Shared/LoadingButton';
-import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
 import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
-
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 
 export default {
     components: {
@@ -185,18 +184,18 @@ export default {
         Disclosure,
         DisclosureButton,
         DisclosurePanel,
-        ChevronRightIcon
+        ChevronRightIcon,
     },
     layout: AppLayout,
     props: {
         errors: { type: Object, required: true },
-        contact: { type: Object, required: true }
+        contact: { type: Object, required: true },
     },
     setup(props) {
         const form = useForm({
             name: props.contact.name,
             address: props.contact.address,
-            notes: props.contact.notes
+            notes: props.contact.notes,
         });
         let confirmingDelete = ref(false);
         let confirmingRestore = ref(false);
@@ -221,8 +220,8 @@ export default {
             confirmingRestore,
             updateContact,
             destroy,
-            restore
+            restore,
         };
-    }
+    },
 };
 </script>

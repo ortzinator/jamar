@@ -12,7 +12,7 @@
                     :key="index"
                     class="border-t border-cool-grey-100 animate-pulse"
                 >
-                    <td v-for="index in 2" :key="index" class="py-2 px-4">
+                    <td v-for="windex in 2" :key="windex" class="py-2 px-4">
                         <span>
                             <div
                                 class="bg-cool-grey-200 rounded-lg"
@@ -82,16 +82,14 @@
 
 <script>
 import { onMounted, ref } from 'vue';
-import { useDates } from '../dates';
+import { formatDate, isInPast } from '../dates';
 
 export default {
     setup() {
-        var loading = ref(true);
-        var results = ref([]);
+        const loading = ref(true);
+        const results = ref([]);
 
-        const { formatDate, isInPast } = useDates();
-
-        var cancelSource = null;
+        let cancelSource = null;
         onMounted(() => {
             if (cancelSource) {
                 cancelSource.cancel();
@@ -102,7 +100,7 @@ export default {
 
             axios
                 .get(route('policies.ending'), {
-                    cancelToken: cancelSource.token
+                    cancelToken: cancelSource.token,
                 })
                 .then((response) => {
                     if (response) {
@@ -116,8 +114,8 @@ export default {
             loading,
             results,
             formatDate,
-            isInPast
+            isInPast,
         };
-    }
+    },
 };
 </script>

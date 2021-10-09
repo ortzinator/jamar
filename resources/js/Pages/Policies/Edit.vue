@@ -147,9 +147,9 @@
 <script>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
-import AppLayout from '@/Layouts/NewLayout';
 import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
 import { DatePicker } from 'v-calendar';
+import AppLayout from '@/Layouts/NewLayout';
 
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
 import ContactList from '@/Shared/Contact/ContactList';
@@ -175,14 +175,14 @@ export default {
         SelectContact,
         DateRange,
         DatePicker,
-        HistoryModal
+        HistoryModal,
     },
     layout: AppLayout,
     props: {
         errors: { type: Object, required: true },
         policy: { type: Object, required: true },
         fields: { type: Array, required: true },
-        users: { type: Array, required: true }
+        users: { type: Array, required: true },
     },
     setup(props) {
         const policyForm = useForm({
@@ -191,10 +191,10 @@ export default {
             created_at: props.policy.created_at,
             range: {
                 start: props.policy.period_start,
-                end: props.policy.period_end
+                end: props.policy.period_end,
             },
             fields: props.policy.fields ?? [],
-            agent_id: props.policy.agent_id
+            agent_id: props.policy.agent_id,
         });
 
         const sending = ref(false);
@@ -205,20 +205,20 @@ export default {
                 .transform((data) => ({
                     ...data,
                     period_start: data.range.start,
-                    period_end: data.range.end
+                    period_end: data.range.end,
                 }))
                 .put(route('policies.update', props.policy.id));
         }
 
         function destroy() {
-            //TODO check if contact is associated with a policy
-            if (confirm('Are you sure you want to delete this policy?')) {
+            // TODO check if contact is associated with a policy
+            if (window.confirm('Are you sure you want to delete this policy?')) {
                 policyForm.delete(route('policies.destroy', props.policy.id));
             }
         }
 
         function restore() {
-            if (confirm('Are you sure you want to restore this policy?')) {
+            if (window.confirm('Are you sure you want to restore this policy?')) {
                 policyForm.put(route('policies.restore', props.policy.id));
             }
         }
@@ -234,8 +234,8 @@ export default {
             updatePolicy,
             destroy,
             restore,
-            contactSelected
+            contactSelected,
         };
-    }
+    },
 };
 </script>

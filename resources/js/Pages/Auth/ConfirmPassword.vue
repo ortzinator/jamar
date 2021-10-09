@@ -16,9 +16,9 @@
                 <jet-label for="password" value="Password" />
                 <jet-input
                     id="password"
+                    v-model="form.password"
                     type="password"
                     class="mt-1 block w-full"
-                    v-model="form.password"
                     required
                     autocomplete="current-password"
                     autofocus
@@ -53,23 +53,23 @@ export default {
         JetButton,
         JetInput,
         JetLabel,
-        JetValidationErrors
+        JetValidationErrors,
     },
 
     data() {
         return {
             form: this.$inertia.form({
-                password: ''
-            })
+                password: '',
+            }),
         };
     },
 
     methods: {
         submit() {
             this.form.post(this.route('password.confirm'), {
-                onFinish: () => this.form.reset()
+                onFinish: () => this.form.reset(),
             });
-        }
-    }
+        },
+    },
 };
 </script>

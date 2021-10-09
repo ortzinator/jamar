@@ -65,8 +65,8 @@
 </template>
 
 <script>
-import AppLayout from '@/Layouts/NewLayout';
 import { useForm } from '@inertiajs/inertia-vue3';
+import AppLayout from '@/Layouts/NewLayout';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
@@ -78,13 +78,13 @@ export default {
         JetInput,
         JetLabel,
         JetInputError,
-        LoadingButton
+        LoadingButton,
     },
     layout: AppLayout,
     setup() {
         const form = useForm({
             name: null,
-            address: null
+            address: null,
         });
 
         return { form };
@@ -92,7 +92,7 @@ export default {
     methods: {
         store() {
             this.form.post(this.route('contacts.store'));
-        }
-    }
+        },
+    },
 };
 </script>

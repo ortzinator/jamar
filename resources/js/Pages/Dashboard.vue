@@ -80,12 +80,12 @@ export default {
     components: {
         EndingSoon,
         Text,
-        Alert
+        Alert,
     },
     layout: AppLayout,
     setup() {
         const user = computed(() => usePage().props.value.user);
         return { user };
-    }
+    },
 };
 </script>

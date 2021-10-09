@@ -21,9 +21,9 @@
                 <jet-label for="email" value="Email" />
                 <jet-input
                     id="email"
+                    v-model="form.email"
                     type="email"
                     class="mt-1 block w-full"
-                    v-model="form.email"
                     required
                     autofocus
                 />
@@ -56,25 +56,25 @@ export default {
         JetButton,
         JetInput,
         JetLabel,
-        JetValidationErrors
+        JetValidationErrors,
     },
 
     props: {
-        status: String
+        status: String,
     },
 
     data() {
         return {
             form: this.$inertia.form({
-                email: ''
-            })
+                email: '',
+            }),
         };
     },
 
     methods: {
         submit() {
             this.form.post(this.route('password.email'));
-        }
-    }
+        },
+    },
 };
 </script>

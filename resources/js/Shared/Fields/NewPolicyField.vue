@@ -41,13 +41,13 @@ import JetLabel from '@/Jetstream/Label';
 export default {
     components: {
         JetInput,
-        JetLabel
+        JetLabel,
     },
     emits: ['added'],
     setup(props, context) {
-        let field = reactive({
+        const field = reactive({
             name: null,
-            value: null
+            value: null,
         });
         let errors = ref([]);
 
@@ -56,9 +56,9 @@ export default {
 
             if (field.name) {
                 return true;
-            } else {
-                errors.value.push('Field name is required');
             }
+            errors.value.push('Field name is required');
+            return false;
         }
 
         function reset() {
@@ -68,11 +68,13 @@ export default {
 
         function add() {
             if (!validate()) return;
-            context.emit('added', Object.assign({}, field));
+            context.emit('added', { ...field });
             reset();
         }
 
-        return { field, errors, reset, add };
-    }
+        return {
+            field, errors, reset, add,
+        };
+    },
 };
 </script>

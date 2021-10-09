@@ -13,6 +13,6 @@
 
 <script>
 export default {
-    props: { history: Object }
+    props: { history: { type: Object, required: true } },
 };
 </script>

@@ -83,51 +83,47 @@
 <script>
 import { watch, computed, ref } from 'vue';
 
+import { ExclamationIcon } from '@heroicons/vue/outline';
+import { useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/NewLayout';
 import Pagination from '@/Shared/Pagination';
 import DataTable from '@/Shared/DataTable';
 import FilterSelect from '@/Shared/FilterSelect';
-import { ExclamationIcon } from '@heroicons/vue/outline';
 
-import { useForm } from '@inertiajs/inertia-vue3';
-import { useDates } from '../../dates';
+import { formatDate, isInPast } from '../../dates';
 
 export default {
     components: {
         Pagination,
         ExclamationIcon,
         DataTable,
-        FilterSelect
+        FilterSelect,
     },
     layout: AppLayout,
     props: {
         policies: { type: Object, required: true },
-        filters: { type: Object, required: true }
+        filters: { type: Object, required: true },
     },
     setup(props) {
-        const { formatDate, isInPast } = useDates();
-
         const searchForm = useForm({
             search: props.filters.search,
-            trashed: props.filters.trashed
+            trashed: props.filters.trashed,
         });
 
-        const refreshSearch = _.debounce(function () {
+        const refreshSearch = _.debounce(() => {
             searchForm
                 .transform((data) => _.pickBy(data))
                 .get('/policies', {
                     only: ['policies'],
                     preserveState: true,
-                    preserveScroll: true
+                    preserveScroll: true,
                 });
         }, 400);
 
-        const formVals = computed(() => {
-            return {
-                search: searchForm.search,
-                trashed: searchForm.trashed
-            };
-        });
+        const formVals = computed(() => ({
+            search: searchForm.search,
+            trashed: searchForm.trashed,
+        }));
 
         function reset() {
             searchForm.search = '';
@@ -139,14 +135,14 @@ export default {
                 return text;
             }
 
-            let escaped = new RegExp(
+            const escaped = new RegExp(
                 searchForm.search.replace(/[.*?^${}()[\]]/g, '\\$&'),
-                'i'
+                'i',
             );
 
             return text.replace(
                 escaped,
-                '<mark class="bg-light-blue-vivid-600 text-white">$&</mark>'
+                '<mark class="bg-light-blue-vivid-600 text-white">$&</mark>',
             );
         }
 
@@ -157,7 +153,7 @@ export default {
             { text: 'Contacts', value: 'contactNamesPreview' },
             { text: 'Premium', value: 'premium' },
             { text: 'Date Issued', value: 'created_at' },
-            { text: 'Ending', value: 'period_end' }
+            { text: 'Ending', value: 'period_end' },
         ]);
 
         return {
@@ -167,8 +163,8 @@ export default {
             formatDate,
             isInPast,
             columns,
-            highlight
+            highlight,
         };
-    }
+    },
 };
 </script>

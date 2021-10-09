@@ -68,28 +68,28 @@ import {
     Listbox,
     ListboxButton,
     ListboxOptions,
-    ListboxOption
+    ListboxOption,
 } from '@headlessui/vue';
 
 export default {
-    props: { modelValue: String },
-    emits: ['update:modelValue'],
     components: {
         SelectorIcon,
         Listbox,
         ListboxButton,
         ListboxOptions,
-        ListboxOption
+        ListboxOption,
     },
+    props: { modelValue: String },
+    emits: ['update:modelValue'],
     setup(props, { emit }) {
         const value = computed({
             get: () => props.modelValue,
             set: (val) => {
                 emit('update:modelValue', val);
-            }
+            },
         });
 
         return { value };
-    }
+    },
 };
 </script>

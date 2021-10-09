@@ -1,6 +1,7 @@
 <template>
     <div>
         <button
+            v-if="as == 'button'"
             type="submit"
             class="
                 block
@@ -16,12 +17,12 @@
                 duration-150
                 ease-in-out
             "
-            v-if="as == 'button'"
         >
             <slot></slot>
         </button>
 
         <inertia-link
+            v-else
             :href="href"
             class="
                 block
@@ -36,7 +37,6 @@
                 duration-150
                 ease-in-out
             "
-            v-else
         >
             <slot></slot>
         </inertia-link>
@@ -45,6 +45,6 @@
 
 <script>
 export default {
-    props: ['href', 'as']
+    props: ['href', 'as'],
 };
 </script>

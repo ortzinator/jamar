@@ -21,6 +21,7 @@
                 </div>
 
                 <div
+                    v-if="hasActions"
                     class="
                         flex
                         items-center
@@ -33,7 +34,6 @@
                         shadow
                         sm:rounded-bl-md sm:rounded-br-md
                     "
-                    v-if="hasActions"
                 >
                     <slot name="actions"></slot>
                 </div>
@@ -46,16 +46,16 @@
 import JetSectionTitle from './SectionTitle';
 
 export default {
-    emits: ['submitted'],
 
     components: {
-        JetSectionTitle
+        JetSectionTitle,
     },
+    emits: ['submitted'],
 
     computed: {
         hasActions() {
             return !!this.$slots.actions;
-        }
-    }
+        },
+    },
 };
 </script>

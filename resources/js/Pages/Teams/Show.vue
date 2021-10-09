@@ -45,12 +45,12 @@ export default {
         JetSectionBorder,
         TeamMemberManager,
         UpdateTeamNameForm,
-        AppLayout
+        AppLayout,
     },
     props: {
         team: { type: Object, required: true },
         availableRoles: { type: Array, required: true },
-        permissions: { type: Array, required: true }
-    }
+        permissions: { type: Array, required: true },
+    },
 };
 </script>

@@ -45,10 +45,10 @@ export default {
             type: Array,
             default() {
                 return [];
-            }
+            },
         },
         dataSource: { type: Object, required: true },
-        routeName: { type: String, required: true }
-    }
+        routeName: { type: String, required: true },
+    },
 };
 </script>

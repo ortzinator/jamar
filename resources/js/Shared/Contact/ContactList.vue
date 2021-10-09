@@ -4,8 +4,8 @@
         <ul>
             <li v-for="contact in contacts" :key="contact.id" class="p-2">
                 <a
-                    @click="$emit('contactClicked', contact)"
                     class="group cursor-pointer flex items-center"
+                    @click="$emit('contactClicked', contact)"
                 >
                     <div>
                         <div v-text="contact.name"></div>
@@ -31,9 +31,13 @@
 
 <script>
 import { XIcon } from '@heroicons/vue/outline';
+
 export default {
-    props: { contacts: Array, removable: { type: Boolean, default: false } },
     components: { XIcon },
+    props: {
+        contacts: { type: Array, required: true },
+        removable: { type: Boolean, default: false },
+    },
     emits: ['contactClicked'],
 
     setup(props) {
@@ -42,6 +46,6 @@ export default {
         }
 
         return { removeContact };
-    }
+    },
 };
 </script>

@@ -30,9 +30,9 @@
                 <jet-label for="name" value="Team Name" />
                 <jet-input
                     id="name"
+                    v-model="form.name"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.name"
                     autofocus
                 />
                 <jet-input-error :message="form.errors.name" class="mt-2" />
@@ -63,14 +63,14 @@ export default {
         JetFormSection,
         JetInput,
         JetInputError,
-        JetLabel
+        JetLabel,
     },
 
     data() {
         return {
             form: this.$inertia.form({
-                name: ''
-            })
+                name: '',
+            }),
         };
     },
 
@@ -78,9 +78,9 @@ export default {
         createTeam() {
             this.form.post(route('teams.store'), {
                 errorBag: 'createTeam',
-                preserveScroll: true
+                preserveScroll: true,
             });
-        }
-    }
+        },
+    },
 };
 </script>

@@ -25,28 +25,31 @@
 import Modal from './Modal';
 
 export default {
-    emits: ['close'],
 
     components: {
-        Modal
+        Modal,
     },
 
     props: {
         show: {
-            default: false
+            type: Boolean,
+            default: false,
         },
         maxWidth: {
-            default: '2xl'
+            type: String,
+            default: '2xl',
         },
         closeable: {
-            default: true
-        }
+            type: Boolean,
+            default: true,
+        },
     },
+    emits: ['close'],
 
     methods: {
         close() {
             this.$emit('close');
-        }
-    }
+        },
+    },
 };
 </script>

@@ -38,23 +38,19 @@ import { XIcon, ExclamationIcon, CheckIcon } from '@heroicons/vue/outline';
 export default {
     components: { XIcon, ExclamationIcon, CheckIcon },
     setup() {
-        var show = ref(true);
+        const show = ref(true);
 
-        const style = computed(() => {
-            return (
-                usePage().props.value.jetstream.flash?.bannerStyle || 'success'
-            );
-        });
+        const style = computed(() => (
+            usePage().props.value.jetstream.flash?.bannerStyle || 'success'
+        ));
 
-        const message = computed(() => {
-            return usePage().props.value.jetstream.flash?.banner || '';
-        });
+        const message = computed(() => usePage().props.value.jetstream.flash?.banner || '');
 
         watch(usePage().props.value.jetstream.flash, () => {
             show.value = true;
         });
 
         return { show, style, message };
-    }
+    },
 };
 </script>

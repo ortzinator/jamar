@@ -150,9 +150,9 @@
 
 <script>
 import { ref, watch } from 'vue';
-import AppLayout from '@/Layouts/NewLayout';
 import { useForm, usePage } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon } from '@heroicons/vue/outline';
+import AppLayout from '@/Layouts/NewLayout';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
@@ -175,7 +175,7 @@ export default {
         SelectContact,
         ContactList,
         ExclamationIcon,
-        FormSection
+        FormSection,
     },
     layout: AppLayout,
     props: { users: { type: Array, required: true } },
@@ -185,10 +185,10 @@ export default {
             contacts: [],
             period: {
                 start: null,
-                end: null
+                end: null,
             },
             fields: [],
-            agent_id: usePage().props.value.user.id
+            agent_id: usePage().props.value.user.id,
         });
 
         const templates = ref([
@@ -196,7 +196,7 @@ export default {
                 id: 1,
                 name: 'none',
                 label: 'None',
-                fields: null
+                fields: null,
             },
             {
                 id: 2,
@@ -204,9 +204,9 @@ export default {
                 label: 'Vehicle',
                 fields: [
                     { id: 1, name: 'license', value: '' },
-                    { id: 2, name: 'vin', value: '' }
-                ]
-            }
+                    { id: 2, name: 'vin', value: '' },
+                ],
+            },
         ]);
 
         const selectedTemplate = ref(null);
@@ -214,7 +214,11 @@ export default {
             policyForm.fields = [];
             if (selectedTemplate) {
                 policyForm.fields.push(...selectedTemplate);
-                policyForm.fields.filter((field) => (field.protected = true));
+                policyForm.fields.map((field) => {
+                    const item = { ...field };
+                    item.protected = true;
+                    return item;
+                });
             }
         });
 
@@ -223,16 +227,14 @@ export default {
                 .transform((data) => ({
                     ...data,
                     period_start: data.period.start,
-                    period_end: data.period.end
+                    period_end: data.period.end,
                 }))
                 .post(route('policies.store'));
         }
 
         function contactExists(contact) {
             return (
-                _.findIndex(policyForm.contacts, (o) => {
-                    return _.isMatch(o, contact);
-                }) > -1
+                _.findIndex(policyForm.contacts, (o) => _.isMatch(o, contact)) > -1
             );
         }
 
@@ -257,8 +259,8 @@ export default {
             store,
             contactSelected,
             handleContactClick,
-            handleFieldDelete
+            handleFieldDelete,
         };
-    }
+    },
 };
 </script>

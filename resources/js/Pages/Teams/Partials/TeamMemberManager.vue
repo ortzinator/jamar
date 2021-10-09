@@ -25,9 +25,9 @@
                         <jet-label for="email" value="Email" />
                         <jet-input
                             id="email"
+                            v-model="addTeamMemberForm.email"
                             type="email"
                             class="mt-1 block w-full"
-                            v-model="addTeamMemberForm.email"
                         />
                         <jet-input-error
                             :message="addTeamMemberForm.errors.email"
@@ -37,8 +37,8 @@
 
                     <!-- Role -->
                     <div
-                        class="col-span-6 lg:col-span-4"
                         v-if="availableRoles.length > 0"
+                        class="col-span-6 lg:col-span-4"
                     >
                         <jet-label for="roles" value="Role" />
                         <jet-input-error
@@ -57,6 +57,8 @@
                             "
                         >
                             <button
+                                v-for="(role, i) in availableRoles"
+                                :key="role.key"
                                 type="button"
                                 class="
                                     relative
@@ -79,8 +81,6 @@
                                         Object.keys(availableRoles).length - 1
                                 }"
                                 @click="addTeamMemberForm.role = role.key"
-                                v-for="(role, i) in availableRoles"
-                                :key="role.key"
                             >
                                 <div
                                     :class="{
@@ -105,7 +105,7 @@
                                         <svg
                                             v-if="
                                                 addTeamMemberForm.role ==
-                                                role.key
+                                                    role.key
                                             "
                                             class="ml-2 h-5 w-5 text-green-400"
                                             fill="none"
@@ -154,7 +154,7 @@
         <div
             v-if="
                 team.team_invitations.length > 0 &&
-                userPermissions.canAddTeamMembers
+                    userPermissions.canAddTeamMembers
             "
         >
             <jet-section-border />
@@ -173,9 +173,9 @@
                 <template #content>
                     <div class="space-y-6">
                         <div
-                            class="flex items-center justify-between"
                             v-for="invitation in team.team_invitations"
                             :key="invitation.id"
+                            class="flex items-center justify-between"
                         >
                             <div class="text-cool-grey-600">
                                 {{ invitation.email }}
@@ -184,6 +184,7 @@
                             <div class="flex items-center">
                                 <!-- Cancel Team Invitation -->
                                 <button
+                                    v-if="userPermissions.canRemoveTeamMembers"
                                     class="
                                         cursor-pointer
                                         ml-6
@@ -191,7 +192,6 @@
                                         focus:outline-none
                                     "
                                     @click="cancelTeamInvitation(invitation)"
-                                    v-if="userPermissions.canRemoveTeamMembers"
                                 >
                                     Cancel
                                 </button>
@@ -217,9 +217,9 @@
                 <template #content>
                     <div class="space-y-6">
                         <div
-                            class="flex items-center justify-between"
                             v-for="user in team.users"
                             :key="user.id"
+                            class="flex items-center justify-between"
                         >
                             <div class="flex items-center">
                                 <img
@@ -233,49 +233,49 @@
                             <div class="flex items-center">
                                 <!-- Manage Team Member Role -->
                                 <button
+                                    v-if="
+                                        userPermissions.canAddTeamMembers &&
+                                            availableRoles.length
+                                    "
                                     class="
                                         ml-2
                                         text-sm text-cool-grey-400
                                         underline
                                     "
                                     @click="manageRole(user)"
-                                    v-if="
-                                        userPermissions.canAddTeamMembers &&
-                                        availableRoles.length
-                                    "
                                 >
                                     {{ displayableRole(user.membership.role) }}
                                 </button>
 
                                 <div
-                                    class="ml-2 text-sm text-cool-grey-400"
                                     v-else-if="availableRoles.length"
+                                    class="ml-2 text-sm text-cool-grey-400"
                                 >
                                     {{ displayableRole(user.membership.role) }}
                                 </div>
 
                                 <!-- Leave Team -->
                                 <button
+                                    v-if="$page.props.user.id === user.id"
                                     class="
                                         cursor-pointer
                                         ml-6
                                         text-sm text-red-500
                                     "
                                     @click="confirmLeavingTeam"
-                                    v-if="$page.props.user.id === user.id"
                                 >
                                     Leave
                                 </button>
 
                                 <!-- Remove Team Member -->
                                 <button
+                                    v-if="userPermissions.canRemoveTeamMembers"
                                     class="
                                         cursor-pointer
                                         ml-6
                                         text-sm text-red-500
                                     "
                                     @click="confirmTeamMemberRemoval(user)"
-                                    v-if="userPermissions.canRemoveTeamMembers"
                                 >
                                     Remove
                                 </button>
@@ -306,6 +306,8 @@
                         "
                     >
                         <button
+                            v-for="(role, i) in availableRoles"
+                            :key="role.key"
                             type="button"
                             class="
                                 relative
@@ -327,8 +329,6 @@
                                     i !== Object.keys(availableRoles).length - 1
                             }"
                             @click="updateRoleForm.role = role.key"
-                            v-for="(role, i) in availableRoles"
-                            :key="role.key"
                         >
                             <div
                                 :class="{
@@ -382,9 +382,9 @@
 
                 <jet-button
                     class="ml-2"
-                    @click="updateRole"
                     :class="{ 'opacity-25': updateRoleForm.processing }"
                     :disabled="updateRoleForm.processing"
+                    @click="updateRole"
                 >
                     Save
                 </jet-button>
@@ -409,9 +409,9 @@
 
                 <jet-danger-button
                     class="ml-2"
-                    @click="leaveTeam"
                     :class="{ 'opacity-25': leaveTeamForm.processing }"
                     :disabled="leaveTeamForm.processing"
+                    @click="leaveTeam"
                 >
                     Leave
                 </jet-danger-button>
@@ -436,9 +436,9 @@
 
                 <jet-danger-button
                     class="ml-2"
-                    @click="removeTeamMember"
                     :class="{ 'opacity-25': removeTeamMemberForm.processing }"
                     :disabled="removeTeamMemberForm.processing"
+                    @click="removeTeamMember"
                 >
                     Remove
                 </jet-danger-button>
@@ -474,7 +474,7 @@ export default {
         JetInputError,
         JetLabel,
         JetSecondaryButton,
-        JetSectionBorder
+        JetSectionBorder,
     },
 
     props: ['team', 'availableRoles', 'userPermissions'],
@@ -483,11 +483,11 @@ export default {
         return {
             addTeamMemberForm: this.$inertia.form({
                 email: '',
-                role: null
+                role: null,
             }),
 
             updateRoleForm: this.$inertia.form({
-                role: null
+                role: null,
             }),
 
             leaveTeamForm: this.$inertia.form(),
@@ -496,7 +496,7 @@ export default {
             currentlyManagingRole: false,
             managingRoleFor: null,
             confirmingLeavingTeam: false,
-            teamMemberBeingRemoved: null
+            teamMemberBeingRemoved: null,
         };
     },
 
@@ -507,8 +507,8 @@ export default {
                 {
                     errorBag: 'addTeamMember',
                     preserveScroll: true,
-                    onSuccess: () => this.addTeamMemberForm.reset()
-                }
+                    onSuccess: () => this.addTeamMemberForm.reset(),
+                },
             );
         },
 
@@ -516,8 +516,8 @@ export default {
             this.$inertia.delete(
                 route('team-invitations.destroy', invitation),
                 {
-                    preserveScroll: true
-                }
+                    preserveScroll: true,
+                },
             );
         },
 
@@ -532,8 +532,8 @@ export default {
                 route('team-members.update', [this.team, this.managingRoleFor]),
                 {
                     preserveScroll: true,
-                    onSuccess: () => (this.currentlyManagingRole = false)
-                }
+                    onSuccess: () => (this.currentlyManagingRole = false),
+                },
             );
         },
 
@@ -545,8 +545,8 @@ export default {
             this.leaveTeamForm.delete(
                 route('team-members.destroy', [
                     this.team,
-                    this.$page.props.user
-                ])
+                    this.$page.props.user,
+                ]),
             );
         },
 
@@ -558,20 +558,20 @@ export default {
             this.removeTeamMemberForm.delete(
                 route('team-members.destroy', [
                     this.team,
-                    this.teamMemberBeingRemoved
+                    this.teamMemberBeingRemoved,
                 ]),
                 {
                     errorBag: 'removeTeamMember',
                     preserveScroll: true,
                     preserveState: true,
-                    onSuccess: () => (this.teamMemberBeingRemoved = null)
-                }
+                    onSuccess: () => (this.teamMemberBeingRemoved = null),
+                },
             );
         },
 
         displayableRole(role) {
             return this.availableRoles.find((r) => r.key === role).name;
-        }
-    }
+        },
+    },
 };
 </script>

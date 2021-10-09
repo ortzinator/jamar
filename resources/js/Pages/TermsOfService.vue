@@ -7,7 +7,6 @@
                 </div>
 
                 <div
-                    v-html="terms"
                     class="
                         w-full
                         sm:max-w-2xl
@@ -19,6 +18,7 @@
                         sm:rounded-lg
                         prose
                     "
+                    v-html="terms"
                 ></div>
             </div>
         </div>
@@ -29,10 +29,10 @@
 import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo';
 
 export default {
-    props: ['terms'],
 
     components: {
-        JetAuthenticationCardLogo
-    }
+        JetAuthenticationCardLogo,
+    },
+    props: ['terms'],
 };
 </script>

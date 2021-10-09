@@ -36,7 +36,7 @@
 <script>
 export default {
     props: {
-        links: Array
-    }
+        links: { type: Array, required: true },
+    },
 };
 </script>

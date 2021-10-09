@@ -63,41 +63,39 @@ export default {
     components: {
         Pagination,
         DataTable,
-        FilterSelect
+        FilterSelect,
     },
     layout: AppLayout,
     props: {
         contacts: { type: Object, required: true },
-        filters: { type: Object, required: true }
+        filters: { type: Object, required: true },
     },
     setup(props) {
         const searchForm = useForm({
             search: props.filters.search,
-            trashed: props.filters.trashed
+            trashed: props.filters.trashed,
         });
 
         const columns = ref([
             { text: 'Name', value: 'name' },
             { text: 'Address', value: 'address' },
-            { text: 'Policies', value: 'policies_count' }
+            { text: 'Policies', value: 'policies_count' },
         ]);
 
-        const refreshSearch = _.debounce(function () {
+        const refreshSearch = _.debounce(() => {
             searchForm
                 .transform((data) => _.pickBy(data))
                 .get('/contacts', {
                     only: ['contacts'],
                     preserveState: true,
-                    preserveScroll: true
+                    preserveScroll: true,
                 });
         }, 400);
 
-        const formVals = computed(() => {
-            return {
-                search: searchForm.search,
-                trashed: searchForm.trashed
-            };
-        });
+        const formVals = computed(() => ({
+            search: searchForm.search,
+            trashed: searchForm.trashed,
+        }));
 
         function reset() {
             searchForm.search = '';
@@ -115,8 +113,8 @@ export default {
             refreshSearch,
             reset,
             contactLink,
-            columns
+            columns,
         };
-    }
+    },
 };
 </script>

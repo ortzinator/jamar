@@ -16,24 +16,24 @@
 </template>
 
 <script>
-import JetInput from '@/Jetstream/Input';
 import { ref } from 'vue';
+import JetInput from '@/Jetstream/Input';
 
 export default {
     components: { JetInput },
     props: {
-        field: { type: Object, required: true }
+        field: { type: Object, required: true },
     },
     emits: ['delete'],
     setup() {
-        let fieldHover = ref(false);
-        let editing = ref(false);
+        const fieldHover = ref(false);
+        const editing = ref(false);
 
         function deleteField() {
             this.confirming = false;
         }
 
         return { fieldHover, editing, deleteField };
-    }
+    },
 };
 </script>

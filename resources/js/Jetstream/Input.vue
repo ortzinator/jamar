@@ -1,5 +1,6 @@
 <template>
     <input
+        ref="input"
         class="
             border-cool-grey-300
             focus:border-light-blue-vivid-300
@@ -11,7 +12,6 @@
         "
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
-        ref="input"
     />
 </template>
 
@@ -24,7 +24,7 @@ export default {
     methods: {
         focus() {
             this.$refs.input.focus();
-        }
-    }
+        },
+    },
 };
 </script>

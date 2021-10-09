@@ -50,29 +50,29 @@
 <script>
 import { ref, computed } from 'vue';
 
+import { PlusSmIcon, TrashIcon } from '@heroicons/vue/outline';
 import NewPolicyField from '@/Shared/Fields/NewPolicyField';
 import PolicyField from '@/Shared/Fields/PolicyField';
-import { PlusSmIcon, TrashIcon } from '@heroicons/vue/outline';
 
 export default {
     components: {
         NewPolicyField,
         PolicyField,
         PlusSmIcon,
-        TrashIcon
+        TrashIcon,
     },
     props: {
         fields: { type: Array, required: true },
-        editable: { type: Boolean, default: true }
+        editable: { type: Boolean, default: true },
     },
     emits: ['fieldAdded', 'fieldDeleted'],
     setup(props, { emit }) {
-        var newFieldClicked = ref(false);
-        var confirmingDeleteField = ref(false);
-        var anyFieldAdded = ref(false);
+        const newFieldClicked = ref(false);
+        const confirmingDeleteField = ref(false);
+        const anyFieldAdded = ref(false);
 
         const fieldFormShown = computed(() => {
-            var fieldsEmpty = props.fields.length < 1;
+            const fieldsEmpty = props.fields.length < 1;
             return newFieldClicked.value || fieldsEmpty || anyFieldAdded;
         });
 
@@ -96,8 +96,8 @@ export default {
             anyFieldAdded,
             handleNewFieldClick,
             handleFieldAdded,
-            handleFieldDeleted
+            handleFieldDeleted,
         };
-    }
+    },
 };
 </script>

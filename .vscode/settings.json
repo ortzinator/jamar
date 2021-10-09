@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "Nord",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "eq-material-theme-icons",
     "editor.lineHeight": 26,
     "explorer.confirmDragAndDrop": false,
     "diffEditor.ignoreTrimWhitespace": true,
@@ -9,10 +9,41 @@
     "editor.fontLigatures": true,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "[javascript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+    "[typescript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+    "[vue]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
     "editor.cursorSmoothCaretAnimation": true,
     "terminal.integrated.fontSize": 12,
     "editor.rulers": [
         120
     ],
     "eslint.format.enable": true,
+    "eslint.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.options": {
+        "extensions": [".html", ".js", ".ts", ".vue"]
+    },
+    "html.format.enable": false,
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+        "vue-html": "html"
+    },
+    "files.exclude": {
+        "**/*.log": true,
+        "**/*.log*": true,
+        "**/dist": true,
+      },
+      "files.associations": {
+        ".babelrc": "jsonc",
+        ".eslintrc": "jsonc",
+        ".markdownlintrc": "jsonc",
+        "*.config.js": "javascript",
+        "*.spec.js": "javascript",
+        "*.vue": "vue"
+      },
+      // The default end of line character. Use \n for LF and \r\n for CRLF.
+      "files.eol": "\n",
+      "files.insertFinalNewline": true,
+      "files.trimFinalNewlines": true,
+      "files.trimTrailingWhitespace": true,
 }

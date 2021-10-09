@@ -2,8 +2,8 @@
     <div class="bg-white p-2 rounded shadow">
         <div class="flex items-center">
             <input
-                type="text"
                 v-model="searchTerm"
+                type="text"
                 placeholder="Search contacts..."
                 class="border-cool-grey-200 rounded w-full"
             />
@@ -28,8 +28,8 @@
                     class="hover:bg-light-blue-vivid-50 odd:bg-cool-grey-50"
                 >
                     <a
-                        @click="$emit('selected', contact)"
                         class="cursor-pointer p-2 block"
+                        @click="$emit('selected', contact)"
                     >
                         <div v-text="contact.name"></div>
                         <div v-text="contact.address"></div>
@@ -44,50 +44,23 @@
 </template>
 <script>
 import { ref, watch } from 'vue';
-import Popper from 'vue3-popper';
-import {
-    Listbox,
-    ListboxButton,
-    ListboxOptions,
-    ListboxOption
-} from '@headlessui/vue';
 
-import JetInput from '@/Jetstream/Input';
-import JetLabel from '@/Jetstream/Label';
-import JetInputError from '@/Jetstream/InputError';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
 import Icon from '@/Shared/Icon';
-import LoadingButton from '@/Shared/LoadingButton';
 
 export default {
-    emits: ['selected'],
     components: {
-        JetInput,
-        JetLabel,
-        JetInputError,
-        JetValidationErrors,
-        LoadingButton,
         Icon,
-        Popper,
-        Listbox,
-        ListboxButton,
-        ListboxOptions,
-        ListboxOption
     },
+    emits: ['selected'],
     setup() {
-        var isOpen = ref(false);
-        var searchTerm = ref('');
-        var results = ref([]);
-        var loading = ref(false);
-        var selectedContact = ref(null);
+        const isOpen = ref(false);
+        const searchTerm = ref('');
+        const results = ref([]);
+        const loading = ref(false);
+        const selectedContact = ref(null);
 
-        function refreshSearch() {
-            loading.value = true;
-            search();
-        }
-
-        var cancelSource = null;
-        var search = _.debounce(function () {
+        let cancelSource = null;
+        const search = _.debounce(() => {
             if (cancelSource) {
                 cancelSource.cancel();
             }
@@ -101,7 +74,7 @@ export default {
             axios
                 .get(route('contacts'), {
                     params: { search: searchTerm.value },
-                    cancelToken: cancelSource.token
+                    cancelToken: cancelSource.token,
                 })
                 .then((response) => {
                     loading.value = false;
@@ -112,6 +85,11 @@ export default {
                 });
         }, 400);
 
+        function refreshSearch() {
+            loading.value = true;
+            search();
+        }
+
         watch(searchTerm, () => refreshSearch());
 
         return {
@@ -120,8 +98,8 @@ export default {
             results,
             loading,
             refreshSearch,
-            selectedContact
+            selectedContact,
         };
-    }
+    },
 };
 </script>

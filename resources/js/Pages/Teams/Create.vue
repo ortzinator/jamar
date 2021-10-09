@@ -21,7 +21,7 @@ import CreateTeamForm from '@/Pages/Teams/Partials/CreateTeamForm.vue';
 export default {
     components: {
         AppLayout,
-        CreateTeamForm
-    }
+        CreateTeamForm,
+    },
 };
 </script>

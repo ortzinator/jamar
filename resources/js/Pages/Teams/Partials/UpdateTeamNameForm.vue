@@ -33,9 +33,9 @@
 
                 <jet-input
                     id="name"
+                    v-model="form.name"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.name"
                     :disabled="!permissions.canUpdateTeam"
                 />
 
@@ -43,7 +43,7 @@
             </div>
         </template>
 
-        <template #actions v-if="permissions.canUpdateTeam">
+        <template v-if="permissions.canUpdateTeam" #actions>
             <jet-action-message :on="form.recentlySuccessful" class="mr-3">
                 Saved.
             </jet-action-message>
@@ -73,7 +73,7 @@ export default {
         JetFormSection,
         JetInput,
         JetInputError,
-        JetLabel
+        JetLabel,
     },
 
     props: ['team', 'permissions'],
@@ -81,8 +81,8 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                name: this.team.name
-            })
+                name: this.team.name,
+            }),
         };
     },
 
@@ -90,9 +90,9 @@ export default {
         updateTeamName() {
             this.form.put(route('teams.update', this.team), {
                 errorBag: 'updateTeamName',
-                preserveScroll: true
+                preserveScroll: true,
             });
-        }
-    }
+        },
+    },
 };
 </script>

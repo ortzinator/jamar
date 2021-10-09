@@ -210,18 +210,18 @@ import { Inertia } from '@inertiajs/inertia';
 import { usePage } from '@inertiajs/inertia-vue3';
 import { useToast } from 'vue-toastification';
 
-import NavLink from '@/Shared/NavLink';
-import AppLogo from '@/Shared/AppLogo';
-
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
+import {
+    Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItems, MenuItem,
+} from '@headlessui/vue';
 import {
     MenuIcon,
     XIcon,
     ChevronDownIcon,
     LogoutIcon,
-    UserCircleIcon
+    UserCircleIcon,
 } from '@heroicons/vue/outline';
+import AppLogo from '@/Shared/AppLogo';
+import NavLink from '@/Shared/NavLink';
 
 export default {
     components: {
@@ -238,7 +238,7 @@ export default {
         ChevronDownIcon,
         LogoutIcon,
         UserCircleIcon,
-        AppLogo
+        AppLogo,
     },
 
     setup() {
@@ -252,7 +252,7 @@ export default {
                 },
                 get current() {
                     return route().current('dashboard');
-                }
+                },
             },
             {
                 name: 'Policies',
@@ -261,7 +261,7 @@ export default {
                 },
                 get current() {
                     return route().current('policies');
-                }
+                },
             },
             {
                 name: 'Contacts',
@@ -270,8 +270,8 @@ export default {
                 },
                 get current() {
                     return route().current('contacts');
-                }
-            }
+                },
+            },
         ]);
 
         const toast = useToast();
@@ -292,8 +292,8 @@ export default {
             logout,
             navOpen,
             navigation,
-            toast
+            toast,
         };
-    }
+    },
 };
 </script>

@@ -17,25 +17,25 @@ export default {
     components: { Icon },
     props: { loading: Boolean },
     setup(props) {
-        let delayedLoading = ref(false);
-        let delayId = ref();
+        const delayedLoading = ref(false);
+        const delayId = ref();
 
         watch(props.loading, (val) => {
-            //Only show the loading spinner icon if the request has taken longer than 100ms
+            // Only show the loading spinner icon if the request has taken longer than 100ms
             if (val === false) {
-                //If no longer loading, disable spinner immediately
+                // If no longer loading, disable spinner immediately
                 this.delayedLoading = false;
                 clearTimeout(this.delayId);
             } else {
                 clearTimeout(this.delayId);
                 this.delayId = setTimeout(
-                    () => (this.delayedLoading = true),
-                    100
+                    () => { this.delayedLoading = true; },
+                    100,
                 );
             }
         });
 
         return { delayedLoading, delayId };
-    }
+    },
 };
 </script>

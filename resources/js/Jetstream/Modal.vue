@@ -58,32 +58,19 @@
 import { onMounted, onUnmounted } from 'vue';
 
 export default {
-    emits: ['close'],
 
     props: {
         show: {
-            default: false
+            default: false,
         },
         maxWidth: {
-            default: '2xl'
+            default: '2xl',
         },
         closeable: {
-            default: true
-        }
+            default: true,
+        },
     },
-
-    watch: {
-        show: {
-            immediate: true,
-            handler: (show) => {
-                if (show) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = null;
-                }
-            }
-        }
-    },
+    emits: ['close'],
 
     setup(props, { emit }) {
         const close = () => {
@@ -99,12 +86,10 @@ export default {
         };
 
         onMounted(() => document.addEventListener('keydown', closeOnEscape));
-        onUnmounted(() =>
-            document.removeEventListener('keydown', closeOnEscape)
-        );
+        onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
 
         return {
-            close
+            close,
         };
     },
 
@@ -115,9 +100,23 @@ export default {
                 md: 'sm:max-w-md',
                 lg: 'sm:max-w-lg',
                 xl: 'sm:max-w-xl',
-                '2xl': 'sm:max-w-2xl'
+                '2xl': 'sm:max-w-2xl',
             }[this.maxWidth];
-        }
-    }
+        },
+    },
+
+    watch: {
+        show: {
+            immediate: true,
+            // eslint-disable-next-line object-shorthand,func-names
+            handler: function (show) {
+                if (show) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = null;
+                }
+            },
+        },
+    },
 };
 </script>

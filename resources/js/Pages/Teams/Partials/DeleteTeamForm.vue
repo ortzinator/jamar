@@ -40,9 +40,9 @@
 
                     <jet-danger-button
                         class="ml-2"
-                        @click="deleteTeam"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
+                        @click="deleteTeam"
                     >
                         Delete Team
                     </jet-danger-button>
@@ -59,21 +59,21 @@ import JetDangerButton from '@/Jetstream/DangerButton.vue';
 import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
 
 export default {
-    props: ['team'],
 
     components: {
         JetActionSection,
         JetConfirmationModal,
         JetDangerButton,
-        JetSecondaryButton
+        JetSecondaryButton,
     },
+    props: ['team'],
 
     data() {
         return {
             confirmingTeamDeletion: false,
             deleting: false,
 
-            form: this.$inertia.form()
+            form: this.$inertia.form(),
         };
     },
 
@@ -84,9 +84,9 @@ export default {
 
         deleteTeam() {
             this.form.delete(route('teams.destroy', this.team), {
-                errorBag: 'deleteTeam'
+                errorBag: 'deleteTeam',
             });
-        }
-    }
+        },
+    },
 };
 </script>

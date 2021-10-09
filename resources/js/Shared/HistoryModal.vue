@@ -1,5 +1,5 @@
 <template>
-    <button @click="setIsOpen(true)" class="btn btn-secondary ml-auto">
+    <button class="btn btn-secondary ml-auto" @click="setIsOpen(true)">
         History of facts
     </button>
     <Dialog
@@ -21,9 +21,10 @@
                     w-full
                 "
             >
-                <DialogTitle class="md:mx-7 md:my-5 mx-2 my-4"
-                    >History of Facts</DialogTitle
-                >
+                <DialogTitle class="md:mx-7 md:my-5 mx-2 my-4">
+                    History of Facts
+                </DialogTitle>
+                <DialogDescription>Displays a history of facts</DialogDescription>
                 <div
                     v-if="histories.length > 0"
                     class="
@@ -49,11 +50,11 @@
                 <div class="md:mx-7 md:my-5 mx-2 my-4">
                     <jet-label for="message" value="Message" />
                     <textarea
-                        name="address"
                         id="address"
+                        v-model="historyForm.message"
+                        name="address"
                         class="block w-full"
                         rows="2"
-                        v-model="historyForm.message"
                     />
                     <jet-input-error :message="historyForm.errors.message" />
                 </div>
@@ -84,54 +85,36 @@ import {
     Dialog,
     DialogOverlay,
     DialogTitle,
-    DialogDescription
+    DialogDescription,
 } from '@headlessui/vue';
 
-import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
 import HistoryItem from './HistoryItem.vue';
 
 export default {
-    props: { policy: Object },
     components: {
         Dialog,
         DialogOverlay,
         DialogTitle,
         DialogDescription,
-        JetInput,
         JetLabel,
         JetInputError,
-        JetValidationErrors,
-        HistoryItem
+        HistoryItem,
     },
+    props: { policy: { type: Object, required: true } },
     setup(props) {
-        let isOpen = ref(false);
-        let histories = ref([]);
-        let loading = ref(false);
+        const isOpen = ref(false);
+        const histories = ref([]);
+        const loading = ref(false);
 
         let cancelSource = null;
 
         const historyForm = useForm({
             message: '',
             policy_id: props.policy.id,
-            event_type: 'note'
+            event_type: 'note',
         });
-
-        function handleAdd() {
-            historyForm.post('/histories', {
-                onSuccess: () => {
-                    historyForm.reset();
-                    loadHistory();
-                }
-            });
-        }
-
-        function handleClose() {
-            historyForm.reset();
-            setIsOpen(false);
-        }
 
         function loadHistory() {
             if (cancelSource) {
@@ -145,8 +128,8 @@ export default {
                 .get(route('histories.index'), {
                     cancelToken: cancelSource.token,
                     params: {
-                        'filter[policy_id]': props.policy.id
-                    }
+                        'filter[policy_id]': props.policy.id,
+                    },
                 })
                 .then((response) => {
                     if (response) {
@@ -163,14 +146,28 @@ export default {
             isOpen.value = state;
         }
 
+        function handleAdd() {
+            historyForm.post('/histories', {
+                onSuccess: () => {
+                    historyForm.reset();
+                    loadHistory();
+                },
+            });
+        }
+
+        function handleClose() {
+            historyForm.reset();
+            setIsOpen(false);
+        }
+
         return {
             isOpen,
             setIsOpen,
             historyForm,
             histories,
             handleAdd,
-            handleClose
+            handleClose,
         };
-    }
+    },
 };
 </script>

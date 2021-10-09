@@ -102,15 +102,15 @@ export default {
     components: {
         DatePicker,
         CalendarIcon,
-        ArrowRightIcon
+        ArrowRightIcon,
     },
     props: { modelValue: { type: Object, required: true } },
     emits: ['update:modelValue'],
     data() {
         return {
             masks: {
-                input: 'MM-DD-YYYY'
-            }
+                input: 'MM-DD-YYYY',
+            },
         };
     },
     computed: {
@@ -120,7 +120,7 @@ export default {
             },
             set(value) {
                 this.$emit('update:modelValue', value);
-            }
+            },
         },
         minDate() {
             var now = new Date();
@@ -128,7 +128,7 @@ export default {
                 return this.modelValue.start;
             }
             return now;
-        }
-    }
+        },
+    },
 };
 </script>

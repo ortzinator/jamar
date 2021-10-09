@@ -53,9 +53,9 @@ export default {
         LogoutOtherBrowserSessionsForm,
         TwoFactorAuthenticationForm,
         UpdatePasswordForm,
-        UpdateProfileInformationForm
+        UpdateProfileInformationForm,
     },
     layout: AppLayout,
-    props: { sessions: { type: Array, required: true } }
+    props: { sessions: { type: Array, required: true } },
 };
 </script>

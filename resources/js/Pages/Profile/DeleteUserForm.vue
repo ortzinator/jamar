@@ -12,7 +12,7 @@
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click.native="confirmUserDeletion">
+                <jet-danger-button @click="confirmUserDeletion">
                     Delete Account
                 </jet-danger-button>
             </div>
@@ -32,12 +32,12 @@
 
                     <div class="mt-4">
                         <jet-input
+                            ref="password"
+                            v-model="form.password"
                             type="password"
                             class="mt-1 block w-3/4"
                             placeholder="Password"
-                            ref="password"
-                            v-model="form.password"
-                            @keyup.enter.native="deleteUser"
+                            @keyup.enter="deleteUser"
                         />
 
                         <jet-input-error
@@ -48,15 +48,15 @@
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button @click.native="closeModal">
+                    <jet-secondary-button @click="closeModal">
                         Nevermind
                     </jet-secondary-button>
 
                     <jet-danger-button
                         class="ml-2"
-                        @click.native="deleteUser"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
+                        @click="deleteUser"
                     >
                         Delete Account
                     </jet-danger-button>
@@ -81,7 +81,7 @@ export default {
         JetDialogModal,
         JetInput,
         JetInputError,
-        JetSecondaryButton
+        JetSecondaryButton,
     },
 
     data() {
@@ -89,8 +89,8 @@ export default {
             confirmingUserDeletion: false,
 
             form: this.$inertia.form({
-                password: ''
-            })
+                password: '',
+            }),
         };
     },
 
@@ -106,7 +106,7 @@ export default {
                 preserveScroll: true,
                 onSuccess: () => this.closeModal(),
                 onError: () => this.$refs.password.focus(),
-                onFinish: () => this.form.reset()
+                onFinish: () => this.form.reset(),
             });
         },
 
@@ -114,7 +114,7 @@ export default {
             this.confirmingUserDeletion = false;
 
             this.form.reset();
-        }
-    }
+        },
+    },
 };
 </script>
