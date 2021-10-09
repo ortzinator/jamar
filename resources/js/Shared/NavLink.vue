@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    props: { href: { type: String, required: true }, active: { type: String, required: true } },
+    props: { href: { type: String, required: true }, active: { type: Boolean, required: true } },
 
     computed: {
         classes() {
