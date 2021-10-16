@@ -29,7 +29,8 @@ class PolicyController extends Controller
     {
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
-            'policies' => Policy::orderBy('created_at')
+            'policies' => Policy::query()
+                ->latest()
                 ->with('contacts')
                 ->filter($request->only('search', 'trashed'))
                 ->paginate()
@@ -93,8 +94,7 @@ class PolicyController extends Controller
                     $query->select(['name', 'id', 'address']);
                 }
             ])
-            ->load('agent')
-            ->toArray();
+            ->load('agent');
 
         return Inertia::render('Policies/Edit', [
             'policy' => $policyData,
