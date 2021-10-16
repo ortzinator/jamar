@@ -26,7 +26,7 @@ class PolicyFactory extends Factory
             'period_start' => now()->subDays(rand(0, 10)),
             'period_end' => now()->addDays(rand(5, 10)),
             'agent_id' => 1,
-            'currency' => 'USD',
+            'currency' => 'PHP',
             'premium' => $this->faker->randomNumber(4)
         ];
     }
