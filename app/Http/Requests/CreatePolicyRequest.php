@@ -30,7 +30,8 @@ class CreatePolicyRequest extends FormRequest
             'period_start' => ['required'],
             'period_end' => ['required'],
             'agent_id' => ['required', 'exists:users,id'],
-            'contacts' => ['required']
+            'contacts' => ['required'],
+            'premium' => ['requires']
         ];
     }
 

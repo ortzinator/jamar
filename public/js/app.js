@@ -1,6 +1,472 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@easymoney/core/dist/index.es.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@easymoney/core/dist/index.es.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RoundingModes": () => (/* binding */ F),
+/* harmony export */   "assert": () => (/* binding */ L),
+/* harmony export */   "bind": () => (/* binding */ N)
+/* harmony export */ });
+function L(L,F=new Error){if(!L)throw F}const F={HALF_EVEN:"HALF_EVEN",HALF_UP:"HALF_UP",HALF_DOWN:"HALF_DOWN",FLOOR:"FLOOR",CEILING:"CEILING",DOWN:"DOWN",UP:"UP"},N=(L,F)=>L.bind(null,F);
+//# sourceMappingURL=index.es.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@easymoney/currencies/dist/index.es.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@easymoney/currencies/dist/index.es.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "convertCurrencyMapToArray": () => (/* binding */ n),
+/* harmony export */   "createAgregatedCurrencyList": () => (/* binding */ U),
+/* harmony export */   "createCurrencyList": () => (/* binding */ e),
+/* harmony export */   "cryptoCurrenciesMap": () => (/* binding */ a),
+/* harmony export */   "currenciesMap": () => (/* binding */ C)
+/* harmony export */ });
+/* harmony import */ var _easymoney_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @easymoney/core */ "./node_modules/@easymoney/core/dist/index.es.js");
+function n(n){return Object.keys(n).map(e=>n[e])}function e(n){const e={};for(let r=0;r<n.length;r++){const c=n[r];(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)("string"==typeof c.code,new TypeError(`Currency code must be a string and not empty. ${c.code} given`)),(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)("number"==typeof c.minorUnit,new TypeError(`Currency ${c.code} does not have a valid minor unit. Must be a positive integer.`)),e[c.code]=c}const o={currencies:e},u={},d={publicInstance:u,privateInstance:o};return u.contains=(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(c,o),u.getCurrencies=(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(i,o),u.subUnitFor=(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(r,d),u}function r(n,e){const r="object"==typeof e?e.code:e;if(!n.publicInstance.contains(e))throw new Error("Cannot find ISO currency "+r);return n.privateInstance.currencies[r].minorUnit}function c(n,e){return!!n.currencies["object"==typeof e?e.code:e]}function i(n){return n.currencies}function o(n,e){const r="object"==typeof e?e.code:e;if(!n.publicInstance.contains(e))throw new Error("Cannot find ISO currency "+r);return n.privateInstance.currencies[r].minorUnit}function u(n,e){return!!n.currencies["object"==typeof e?e.code:e]}function d(n){return n.currencies}const a={BTC:{code:"BTC",minorUnit:8,symbol:"BTC"},LTC:{code:"LTC",minorUnit:8,symbol:"LTC"},ETH:{code:"ETH",minorUnit:18,symbol:"ETH"}},C=(n(a),{AFN:{code:"AFN",currency:"Afghani",minorUnit:2,numericCode:971},EUR:{code:"EUR",currency:"Euro",minorUnit:2,numericCode:978},ALL:{code:"ALL",currency:"Lek",minorUnit:2,numericCode:8},DZD:{code:"DZD",currency:"Algerian Dinar",minorUnit:2,numericCode:12},USD:{code:"USD",currency:"US Dollar",minorUnit:2,numericCode:840},AOA:{code:"AOA",currency:"Kwanza",minorUnit:2,numericCode:973},XCD:{code:"XCD",currency:"East Caribbean Dollar",minorUnit:2,numericCode:951},ARS:{code:"ARS",currency:"Argentine Peso",minorUnit:2,numericCode:32},AMD:{code:"AMD",currency:"Armenian Dram",minorUnit:2,numericCode:51},AWG:{code:"AWG",currency:"Aruban Florin",minorUnit:2,numericCode:533},AUD:{code:"AUD",currency:"Australian Dollar",minorUnit:2,numericCode:36},AZN:{code:"AZN",currency:"Azerbaijan Manat",minorUnit:2,numericCode:944},BSD:{code:"BSD",currency:"Bahamian Dollar",minorUnit:2,numericCode:44},BHD:{code:"BHD",currency:"Bahraini Dinar",minorUnit:3,numericCode:48},BDT:{code:"BDT",currency:"Taka",minorUnit:2,numericCode:50},BBD:{code:"BBD",currency:"Barbados Dollar",minorUnit:2,numericCode:52},BYN:{code:"BYN",currency:"Belarusian Ruble",minorUnit:2,numericCode:933},BZD:{code:"BZD",currency:"Belize Dollar",minorUnit:2,numericCode:84},XOF:{code:"XOF",currency:"CFA Franc BCEAO",minorUnit:0,numericCode:952},BMD:{code:"BMD",currency:"Bermudian Dollar",minorUnit:2,numericCode:60},INR:{code:"INR",currency:"Indian Rupee",minorUnit:2,numericCode:356},BTN:{code:"BTN",currency:"Ngultrum",minorUnit:2,numericCode:64},BOB:{code:"BOB",currency:"Boliviano",minorUnit:2,numericCode:68},BOV:{code:"BOV",currency:"Mvdol",minorUnit:2,numericCode:984},BAM:{code:"BAM",currency:"Convertible Mark",minorUnit:2,numericCode:977},BWP:{code:"BWP",currency:"Pula",minorUnit:2,numericCode:72},NOK:{code:"NOK",currency:"Norwegian Krone",minorUnit:2,numericCode:578},BRL:{code:"BRL",currency:"Brazilian Real",minorUnit:2,numericCode:986},BND:{code:"BND",currency:"Brunei Dollar",minorUnit:2,numericCode:96},BGN:{code:"BGN",currency:"Bulgarian Lev",minorUnit:2,numericCode:975},BIF:{code:"BIF",currency:"Burundi Franc",minorUnit:0,numericCode:108},CVE:{code:"CVE",currency:"Cabo Verde Escudo",minorUnit:2,numericCode:132},KHR:{code:"KHR",currency:"Riel",minorUnit:2,numericCode:116},XAF:{code:"XAF",currency:"CFA Franc BEAC",minorUnit:0,numericCode:950},CAD:{code:"CAD",currency:"Canadian Dollar",minorUnit:2,numericCode:124},KYD:{code:"KYD",currency:"Cayman Islands Dollar",minorUnit:2,numericCode:136},CLP:{code:"CLP",currency:"Chilean Peso",minorUnit:0,numericCode:152},CLF:{code:"CLF",currency:"Unidad de Fomento",minorUnit:4,numericCode:990},CNY:{code:"CNY",currency:"Yuan Renminbi",minorUnit:2,numericCode:156},COP:{code:"COP",currency:"Colombian Peso",minorUnit:2,numericCode:170},COU:{code:"COU",currency:"Unidad de Valor Real",minorUnit:2,numericCode:970},KMF:{code:"KMF",currency:"Comorian Franc ",minorUnit:0,numericCode:174},CDF:{code:"CDF",currency:"Congolese Franc",minorUnit:2,numericCode:976},NZD:{code:"NZD",currency:"New Zealand Dollar",minorUnit:2,numericCode:554},CRC:{code:"CRC",currency:"Costa Rican Colon",minorUnit:2,numericCode:188},HRK:{code:"HRK",currency:"Kuna",minorUnit:2,numericCode:191},CUP:{code:"CUP",currency:"Cuban Peso",minorUnit:2,numericCode:192},CUC:{code:"CUC",currency:"Peso Convertible",minorUnit:2,numericCode:931},ANG:{code:"ANG",currency:"Netherlands Antillean Guilder",minorUnit:2,numericCode:532},CZK:{code:"CZK",currency:"Czech Koruna",minorUnit:2,numericCode:203},DKK:{code:"DKK",currency:"Danish Krone",minorUnit:2,numericCode:208},DJF:{code:"DJF",currency:"Djibouti Franc",minorUnit:0,numericCode:262},DOP:{code:"DOP",currency:"Dominican Peso",minorUnit:2,numericCode:214},EGP:{code:"EGP",currency:"Egyptian Pound",minorUnit:2,numericCode:818},SVC:{code:"SVC",currency:"El Salvador Colon",minorUnit:2,numericCode:222},ERN:{code:"ERN",currency:"Nakfa",minorUnit:2,numericCode:232},ETB:{code:"ETB",currency:"Ethiopian Birr",minorUnit:2,numericCode:230},FKP:{code:"FKP",currency:"Falkland Islands Pound",minorUnit:2,numericCode:238},FJD:{code:"FJD",currency:"Fiji Dollar",minorUnit:2,numericCode:242},XPF:{code:"XPF",currency:"CFP Franc",minorUnit:0,numericCode:953},GMD:{code:"GMD",currency:"Dalasi",minorUnit:2,numericCode:270},GEL:{code:"GEL",currency:"Lari",minorUnit:2,numericCode:981},GHS:{code:"GHS",currency:"Ghana Cedi",minorUnit:2,numericCode:936},GIP:{code:"GIP",currency:"Gibraltar Pound",minorUnit:2,numericCode:292},GTQ:{code:"GTQ",currency:"Quetzal",minorUnit:2,numericCode:320},GBP:{code:"GBP",currency:"Pound Sterling",minorUnit:2,numericCode:826},GNF:{code:"GNF",currency:"Guinean Franc",minorUnit:0,numericCode:324},GYD:{code:"GYD",currency:"Guyana Dollar",minorUnit:2,numericCode:328},HTG:{code:"HTG",currency:"Gourde",minorUnit:2,numericCode:332},HNL:{code:"HNL",currency:"Lempira",minorUnit:2,numericCode:340},HKD:{code:"HKD",currency:"Hong Kong Dollar",minorUnit:2,numericCode:344},HUF:{code:"HUF",currency:"Forint",minorUnit:2,numericCode:348},ISK:{code:"ISK",currency:"Iceland Krona",minorUnit:0,numericCode:352},IDR:{code:"IDR",currency:"Rupiah",minorUnit:2,numericCode:360},XDR:{code:"XDR",currency:"SDR (Special Drawing Right)",minorUnit:0,numericCode:960},IRR:{code:"IRR",currency:"Iranian Rial",minorUnit:2,numericCode:364},IQD:{code:"IQD",currency:"Iraqi Dinar",minorUnit:3,numericCode:368},ILS:{code:"ILS",currency:"New Israeli Sheqel",minorUnit:2,numericCode:376},JMD:{code:"JMD",currency:"Jamaican Dollar",minorUnit:2,numericCode:388},JPY:{code:"JPY",currency:"Yen",minorUnit:0,numericCode:392},JOD:{code:"JOD",currency:"Jordanian Dinar",minorUnit:3,numericCode:400},KZT:{code:"KZT",currency:"Tenge",minorUnit:2,numericCode:398},KES:{code:"KES",currency:"Kenyan Shilling",minorUnit:2,numericCode:404},KPW:{code:"KPW",currency:"North Korean Won",minorUnit:2,numericCode:408},KRW:{code:"KRW",currency:"Won",minorUnit:0,numericCode:410},KWD:{code:"KWD",currency:"Kuwaiti Dinar",minorUnit:3,numericCode:414},KGS:{code:"KGS",currency:"Som",minorUnit:2,numericCode:417},LAK:{code:"LAK",currency:"Lao Kip",minorUnit:2,numericCode:418},LBP:{code:"LBP",currency:"Lebanese Pound",minorUnit:2,numericCode:422},LSL:{code:"LSL",currency:"Loti",minorUnit:2,numericCode:426},ZAR:{code:"ZAR",currency:"Rand",minorUnit:2,numericCode:710},LRD:{code:"LRD",currency:"Liberian Dollar",minorUnit:2,numericCode:430},LYD:{code:"LYD",currency:"Libyan Dinar",minorUnit:3,numericCode:434},CHF:{code:"CHF",currency:"Swiss Franc",minorUnit:2,numericCode:756},MOP:{code:"MOP",currency:"Pataca",minorUnit:2,numericCode:446},MKD:{code:"MKD",currency:"Denar",minorUnit:2,numericCode:807},MGA:{code:"MGA",currency:"Malagasy Ariary",minorUnit:2,numericCode:969},MWK:{code:"MWK",currency:"Malawi Kwacha",minorUnit:2,numericCode:454},MYR:{code:"MYR",currency:"Malaysian Ringgit",minorUnit:2,numericCode:458},MVR:{code:"MVR",currency:"Rufiyaa",minorUnit:2,numericCode:462},MRU:{code:"MRU",currency:"Ouguiya",minorUnit:2,numericCode:929},MUR:{code:"MUR",currency:"Mauritius Rupee",minorUnit:2,numericCode:480},XUA:{code:"XUA",currency:"ADB Unit of Account",minorUnit:0,numericCode:965},MXN:{code:"MXN",currency:"Mexican Peso",minorUnit:2,numericCode:484},MXV:{code:"MXV",currency:"Mexican Unidad de Inversion (UDI)",minorUnit:2,numericCode:979},MDL:{code:"MDL",currency:"Moldovan Leu",minorUnit:2,numericCode:498},MNT:{code:"MNT",currency:"Tugrik",minorUnit:2,numericCode:496},MAD:{code:"MAD",currency:"Moroccan Dirham",minorUnit:2,numericCode:504},MZN:{code:"MZN",currency:"Mozambique Metical",minorUnit:2,numericCode:943},MMK:{code:"MMK",currency:"Kyat",minorUnit:2,numericCode:104},NAD:{code:"NAD",currency:"Namibia Dollar",minorUnit:2,numericCode:516},NPR:{code:"NPR",currency:"Nepalese Rupee",minorUnit:2,numericCode:524},NIO:{code:"NIO",currency:"Cordoba Oro",minorUnit:2,numericCode:558},NGN:{code:"NGN",currency:"Naira",minorUnit:2,numericCode:566},OMR:{code:"OMR",currency:"Rial Omani",minorUnit:3,numericCode:512},PKR:{code:"PKR",currency:"Pakistan Rupee",minorUnit:2,numericCode:586},PAB:{code:"PAB",currency:"Balboa",minorUnit:2,numericCode:590},PGK:{code:"PGK",currency:"Kina",minorUnit:2,numericCode:598},PYG:{code:"PYG",currency:"Guarani",minorUnit:0,numericCode:600},PEN:{code:"PEN",currency:"Sol",minorUnit:2,numericCode:604},PHP:{code:"PHP",currency:"Philippine Piso",minorUnit:2,numericCode:608},PLN:{code:"PLN",currency:"Zloty",minorUnit:2,numericCode:985},QAR:{code:"QAR",currency:"Qatari Rial",minorUnit:2,numericCode:634},RON:{code:"RON",currency:"Romanian Leu",minorUnit:2,numericCode:946},RUB:{code:"RUB",currency:"Russian Ruble",minorUnit:2,numericCode:643},RWF:{code:"RWF",currency:"Rwanda Franc",minorUnit:0,numericCode:646},SHP:{code:"SHP",currency:"Saint Helena Pound",minorUnit:2,numericCode:654},WST:{code:"WST",currency:"Tala",minorUnit:2,numericCode:882},STN:{code:"STN",currency:"Dobra",minorUnit:2,numericCode:930},SAR:{code:"SAR",currency:"Saudi Riyal",minorUnit:2,numericCode:682},RSD:{code:"RSD",currency:"Serbian Dinar",minorUnit:2,numericCode:941},SCR:{code:"SCR",currency:"Seychelles Rupee",minorUnit:2,numericCode:690},SLL:{code:"SLL",currency:"Leone",minorUnit:2,numericCode:694},SGD:{code:"SGD",currency:"Singapore Dollar",minorUnit:2,numericCode:702},XSU:{code:"XSU",currency:"Sucre",minorUnit:0,numericCode:994},SBD:{code:"SBD",currency:"Solomon Islands Dollar",minorUnit:2,numericCode:90},SOS:{code:"SOS",currency:"Somali Shilling",minorUnit:2,numericCode:706},SSP:{code:"SSP",currency:"South Sudanese Pound",minorUnit:2,numericCode:728},LKR:{code:"LKR",currency:"Sri Lanka Rupee",minorUnit:2,numericCode:144},SDG:{code:"SDG",currency:"Sudanese Pound",minorUnit:2,numericCode:938},SRD:{code:"SRD",currency:"Surinam Dollar",minorUnit:2,numericCode:968},SZL:{code:"SZL",currency:"Lilangeni",minorUnit:2,numericCode:748},SEK:{code:"SEK",currency:"Swedish Krona",minorUnit:2,numericCode:752},CHE:{code:"CHE",currency:"WIR Euro",minorUnit:2,numericCode:947},CHW:{code:"CHW",currency:"WIR Franc",minorUnit:2,numericCode:948},SYP:{code:"SYP",currency:"Syrian Pound",minorUnit:2,numericCode:760},TWD:{code:"TWD",currency:"New Taiwan Dollar",minorUnit:2,numericCode:901},TJS:{code:"TJS",currency:"Somoni",minorUnit:2,numericCode:972},TZS:{code:"TZS",currency:"Tanzanian Shilling",minorUnit:2,numericCode:834},THB:{code:"THB",currency:"Baht",minorUnit:2,numericCode:764},TOP:{code:"TOP",currency:"Pa’anga",minorUnit:2,numericCode:776},TTD:{code:"TTD",currency:"Trinidad and Tobago Dollar",minorUnit:2,numericCode:780},TND:{code:"TND",currency:"Tunisian Dinar",minorUnit:3,numericCode:788},TRY:{code:"TRY",currency:"Turkish Lira",minorUnit:2,numericCode:949},TMT:{code:"TMT",currency:"Turkmenistan New Manat",minorUnit:2,numericCode:934},UGX:{code:"UGX",currency:"Uganda Shilling",minorUnit:0,numericCode:800},UAH:{code:"UAH",currency:"Hryvnia",minorUnit:2,numericCode:980},AED:{code:"AED",currency:"UAE Dirham",minorUnit:2,numericCode:784},USN:{code:"USN",currency:"US Dollar (Next day)",minorUnit:2,numericCode:997},UYU:{code:"UYU",currency:"Peso Uruguayo",minorUnit:2,numericCode:858},UYI:{code:"UYI",currency:"Uruguay Peso en Unidades Indexadas (URUIURUI)",minorUnit:0,numericCode:940},UZS:{code:"UZS",currency:"Uzbekistan Sum",minorUnit:2,numericCode:860},VUV:{code:"VUV",currency:"Vatu",minorUnit:0,numericCode:548},VEF:{code:"VEF",currency:"Bolívar",minorUnit:2,numericCode:937},VND:{code:"VND",currency:"Dong",minorUnit:0,numericCode:704},YER:{code:"YER",currency:"Yemeni Rial",minorUnit:2,numericCode:886},ZMW:{code:"ZMW",currency:"Zambian Kwacha",minorUnit:2,numericCode:967},ZWL:{code:"ZWL",currency:"Zimbabwe Dollar",minorUnit:2,numericCode:932},XBA:{code:"XBA",currency:"Bond Markets Unit European Composite Unit (EURCO)",minorUnit:0,numericCode:955},XBB:{code:"XBB",currency:"Bond Markets Unit European Monetary Unit (E.M.U.-6)",minorUnit:0,numericCode:956},XBC:{code:"XBC",currency:"Bond Markets Unit European Unit of Account 9 (E.U.A.-9)",minorUnit:0,numericCode:957},XBD:{code:"XBD",currency:"Bond Markets Unit European Unit of Account 17 (E.U.A.-17)",minorUnit:0,numericCode:958},XTS:{code:"XTS",currency:"Codes specifically reserved for testing purposes",minorUnit:0,numericCode:963},XXX:{code:"XXX",currency:"The codes assigned for transactions where no currency is involved",minorUnit:0,numericCode:999},XAU:{code:"XAU",currency:"Gold",minorUnit:0,numericCode:959},XPD:{code:"XPD",currency:"Palladium",minorUnit:0,numericCode:964},XPT:{code:"XPT",currency:"Platinum",minorUnit:0,numericCode:962},XAG:{code:"XAG",currency:"Silver",minorUnit:0,numericCode:961}}),U=(n(C),n=>{const e={};for(let r=0;r<n.length;r++){const c=n[r].getCurrencies(),i=Object.keys(c);for(let n=0;n<i.length;n++){const r=c[i[n]];(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)("string"==typeof r.code,new TypeError(`Currency code must be a string and not empty. ${r.code} given`)),(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)("number"==typeof r.minorUnit,new TypeError(`Currency ${r.code} does not have a valid minor unit. Must be a positive integer.`)),e[r.code]=r}}const r={currencies:e},c={},i={publicInstance:c,privateInstance:r};return c.contains=(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(u,r),c.getCurrencies=(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(d,r),c.subUnitFor=(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(o,i),c});
+//# sourceMappingURL=index.es.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@easymoney/formatter/dist/index.es.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@easymoney/formatter/dist/index.es.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createMoneyIntlFormatter": () => (/* binding */ s)
+/* harmony export */ });
+/* harmony import */ var _easymoney_currencies__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @easymoney/currencies */ "./node_modules/@easymoney/currencies/dist/index.es.js");
+/* harmony import */ var _easymoney_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @easymoney/core */ "./node_modules/@easymoney/core/dist/index.es.js");
+function i(i){return{format:(0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(r,{currencyList:i})}}function r(i,money,r="en-US",t){const e={...c,...t};let n=money.getAmount(),o=0;"-"===n[0]&&(o=1,n=n.slice(1));const s=i.currencyList.subUnitFor(money.getCurrency()),u=n.length;let m,y;if(u>s){m=n.slice(0,u-s);const i=n.slice(u-s);y=i.length,y>0&&(m=`${m}.${i}`)}else m=`0.${((i,r,t)=>{let e="";for(;e.length<t;)e="0"+e;return e})(0,0,s-u)}${n}`;1==o&&(m="-"+m);const a=e.hideFractionIfZero&&parseInt(n)%Math.pow(10,s)==0,l=money.getCurrency();return Number(m).toLocaleString(r,{currency:"string"==typeof l?l:l.code,useGrouping:e.useGrouping,style:e.style,currencyDisplay:e.currencyDisplay,minimumFractionDigits:a?0:void 0!==e.minimumFractionDigits?e.minimumFractionDigits:y,maximumFractionDigits:a?0:void 0!==e.maximumFractionDigits?e.maximumFractionDigits:y})}const c={currencyDisplay:"symbol",useGrouping:1,style:"currency",hideFractionIfZero:0},s=(r=>{const e=(0,_easymoney_currencies__WEBPACK_IMPORTED_MODULE_1__.createCurrencyList)(r);return i.bind(null,e)})((0,_easymoney_currencies__WEBPACK_IMPORTED_MODULE_1__.convertCurrencyMapToArray)(_easymoney_currencies__WEBPACK_IMPORTED_MODULE_1__.currenciesMap));
+//# sourceMappingURL=index.es.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/@easymoney/money/dist/index.es.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@easymoney/money/dist/index.es.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createMoney": () => (/* binding */ k),
+/* harmony export */   "createMoneyUnit": () => (/* binding */ c)
+/* harmony export */ });
+/* harmony import */ var _easymoney_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @easymoney/core */ "./node_modules/@easymoney/core/dist/index.es.js");
+function n(n, o = "") {
+  if ("" === n && "" === o) throw new TypeError("Empty number is invalid");
+  const u = { integerPart: t(String(n)), fractionalPart: r(String(o)) },
+    c = {};
+  return (
+    (c.isInteger = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(e, u)),
+    (c.getIntegerPart = () => u.integerPart),
+    (c.getFractionalPart = () => u.fractionalPart),
+    (c.toString = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(a, u)),
+    c
+  );
+}
+function t(n) {
+  if ("" === n || "0" === n) return "0";
+  if ("-" === n) return "-0";
+  let t = 0,
+    r = 0;
+  for (let e = 0; e < n.length; e++) {
+    const o = n[e];
+    if (!Z[o] && (0 !== e || ("-" !== o && "+" !== o)))
+      throw new Error(`Invalid integer part ${n}. Invalid digit ${o} found`);
+    if ((0 === e && "+" === o && (r = 1), 0 == t && "0" === o))
+      throw new Error("Leading zeros are not allowed");
+    t = 1;
+  }
+  return r ? n.substr(1) : n;
+}
+function r(n) {
+  if ("" === n) return n;
+  for (let t = 0; t < n.length; t++) {
+    const r = n[t];
+    if (!Z[r])
+      throw new Error(`Invalid fractional part ${n}. Invalid digit ${r} found`);
+  }
+  return n;
+}
+function e(n) {
+  return "" === n.fractionalPart;
+}
+function o(t) {
+  const r = t.indexOf(".");
+  if (-1 === r) return n(t, "");
+  const e = t.substr(r + 1);
+  return n(t.substr(0, r), e.replace(/0+$/, ""));
+}
+function u(t) {
+  if (
+    "number" == typeof t &&
+    !isNaN(parseInt(t)) &&
+    isFinite(t) &&
+    !Number.isInteger(t)
+  )
+    return o(t.toFixed(14));
+  if (Number.isInteger(t)) return n(t);
+  if ("string" == typeof t) return o(t);
+  throw new TypeError("Valid numeric value expected");
+}
+function a(n) {
+  const { fractionalPart: t, integerPart: r } = n;
+  return "" === t ? r : `${r}.${t}`;
+}
+function c(n) {
+  return j(n);
+}
+function i(n, t, r) {
+  M(r);
+  const { calculator: e } = n;
+  return r === _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.CEILING
+    ? e.ceil(t)
+    : r === _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.FLOOR
+    ? e.floor(t)
+    : e.round(t, r);
+}
+function s(n, money) {
+  const { publicInstance: t, privateInstance: r } = n,
+    { calculator: e, instanceMoney: o } = r;
+  p(t, money);
+  const u = e.add(money.getAmount(), o.amount);
+  return j(r.calculator)({ amount: u, currency: money.getCurrency() });
+}
+function l(n, money) {
+  const { publicInstance: t, privateInstance: r } = n,
+    { calculator: e } = r;
+  p(t, money);
+  const o = e.subtract(t.getAmount(), money.getAmount());
+  return j(r.calculator)({ amount: o, currency: money.getCurrency() });
+}
+function m(n) {
+  return n.instanceMoney.amount;
+}
+function f(n) {
+  return n.instanceMoney.currency;
+}
+function g(n, money) {
+  return n.getCurrency() === money.getCurrency();
+}
+function p(n, money) {
+  (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)(g(n, money), new TypeError("Currencies must be identical"));
+}
+function b(n, money) {
+  return (
+    n.publicInstance.isSameCurrency(money) &&
+    n.privateInstance.instanceMoney.amount === money.getAmount()
+  );
+}
+function d(n, money) {
+  const { publicInstance: t, privateInstance: r } = n;
+  return (
+    p(t, money), r.calculator.compare(r.instanceMoney.amount, money.getAmount())
+  );
+}
+function I(n, money) {
+  return n.compare(money) > 0;
+}
+function y(n, money) {
+  return n.compare(money) >= 0;
+}
+function h(n, money) {
+  return n.compare(money) < 0;
+}
+function N(n, money) {
+  return n.compare(money) <= 0;
+}
+function E(n, t, r = _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.HALF_EVEN) {
+  A(t), M(r);
+  const { publicInstance: e, privateInstance: o } = n,
+    { calculator: u } = o,
+    a = u.multiply(e.getAmount(), t),
+    c = o.round(a, r);
+  return j(o.calculator)({ amount: c, currency: e.getCurrency() });
+}
+function A(n) {
+  var t;
+  (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)(
+    ((t = n), !isNaN(parseInt(t)) && isFinite(t)),
+    new TypeError("Operand should be a numeric value.")
+  );
+}
+function M(n) {
+  (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)(
+    [
+      _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.CEILING,
+      _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.DOWN,
+      _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.FLOOR,
+      _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.HALF_DOWN,
+      _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.HALF_EVEN,
+      _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.HALF_UP,
+      _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.UP
+    ].includes(n),
+    new TypeError(
+      "rounding mode should be one of RoundingModes.CEILING RoundingModes.DOWN RoundingModes.FLOOR RoundingModes.HALF_DOWN RoundingModes.HALF_EVEN RoundingModes.HALF_UP RoundingModes.UP"
+    )
+  );
+}
+function w(n, t, r = _easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.HALF_EVEN) {
+  A(t), M(r);
+  const { privateInstance: e, publicInstance: o } = n,
+    { round: a, calculator: c } = e,
+    i = u(t).toString();
+  if (0 === c.compare(i, "0")) throw new TypeError("Division by zero");
+  const s = a(c.divide(o.getAmount(), i), r);
+  return j(c)({ amount: s, currency: o.getCurrency() });
+}
+function v(n, t) {
+  if (0 === t.length)
+    throw new TypeError(
+      "Cannot allocate to none, ratios cannot be an empty array"
+    );
+  const { privateInstance: r, publicInstance: e } = n,
+    { calculator: o } = r;
+  let u = e.getAmount();
+  const a = [],
+    c = t.reduce((n, t) => n + t, 0);
+  if (c <= 0)
+    throw new TypeError(
+      "Cannot allocate to none, sum of ratios must be greater than zero"
+    );
+  for (let n = 0; n < t.length; n++) {
+    const r = t[n];
+    if (r < 0)
+      throw new TypeError(
+        "Cannot allocate to none, ratio must be zero or positive"
+      );
+    const i = o.share(e.getAmount(), r, c);
+    (a[n] = i), (u = o.subtract(u, i));
+  }
+  if (0 === o.compare(u, "0"))
+    return a.map(n => j(o)({ amount: n, currency: e.getCurrency() }));
+  const i = t.map(n => {
+    const t = (n / c) * Number(e.getAmount());
+    return t - Math.floor(t);
+  });
+  for (; o.compare(u, "0") > 0; ) {
+    let n;
+    if (0 !== i.length) {
+      let t = [];
+      i.forEach((n, r) => {
+        n === Math.max(...i) && t.push(r);
+      }),
+        (n = t[0]);
+    } else n = 0;
+    (a[n] = o.add(a[n], "1")), (u = o.subtract(u, "1")), (i[n] = 0);
+  }
+  return a.map(n => j(o)({ amount: n, currency: e.getCurrency() }));
+}
+function C(n, t) {
+  if (!Number.isInteger(t))
+    throw new TypeError("Number of targets must be an integer");
+  if (t <= 0)
+    throw new TypeError(
+      "Cannot allocate to none, target must be greater than zero"
+    );
+  return n.publicInstance.allocate(Array(t).fill(1));
+}
+function F(n, t) {
+  p(n.publicInstance, t);
+  const { publicInstance: r, privateInstance: e } = n,
+    { calculator: o } = e,
+    u = o.mod(r.getAmount(), t.getAmount());
+  return j(e.calculator)({ amount: u, currency: r.getCurrency() });
+}
+function T(n) {
+  const { privateInstance: t, publicInstance: r } = n;
+  return j(t.calculator)({
+    amount: t.calculator.absolute(r.getAmount()),
+    currency: r.getCurrency()
+  });
+}
+function L(n) {
+  const { privateInstance: t, publicInstance: r } = n,
+    { calculator: e } = t,
+    o = e.subtract("0", r.getAmount());
+  return j(e)({ amount: o, currency: r.getCurrency() });
+}
+function S(n) {
+  const { privateInstance: t, publicInstance: r } = n,
+    { calculator: e } = t;
+  return 0 === e.compare(r.getAmount(), "0");
+}
+function O(n) {
+  const { privateInstance: t, publicInstance: r } = n,
+    { calculator: e } = t;
+  return e.compare(r.getAmount(), "0") > 0;
+}
+function _(n) {
+  const { privateInstance: t, publicInstance: r } = n,
+    { calculator: e } = t;
+  return e.compare(r.getAmount(), "0") < 0;
+}
+function P(n, money) {
+  if (money.isZero()) throw new TypeError("Cannot calculate a ratio of zero");
+  const { privateInstance: t, publicInstance: r } = n,
+    { calculator: e } = t;
+  return e.divide(r.getAmount(), money.getAmount());
+}
+function R(n) {
+  const t = Math.round(n);
+  return (n => Math.abs(n) % 1 == 0.5)(n) ? (t % 2 == 0 ? t : t - 1) : t;
+}
+function H(n) {
+  return -Math.sign(n) * Math.ceil(-Math.abs(n) - 0.5);
+}
+function G(n) {
+  return -Math.sign(n) * Math.floor(0.5 - Math.abs(n));
+}
+function D(n) {
+  return -Math.ceil(-n);
+}
+function $(n) {
+  return -Math.floor(-n);
+}
+function x(n) {
+  return -Math.sign(n) * Math.ceil(-Math.abs(n));
+}
+function z(n) {
+  return -Math.sign(n) * Math.floor(-Math.abs(n));
+}
+function U(n) {
+  return W(n), String(parseInt(String(n), 10));
+}
+function V(n) {
+  const t = Number(n);
+  (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)(
+    "number" == typeof t && Number.isInteger(t),
+    new TypeError("The result of arithmetic operation is not an integer")
+  );
+}
+function W(n) {
+  (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)(
+    !(n > Number.MAX_SAFE_INTEGER),
+    new RangeError(
+      "You overflowed the maximum allowed integer (Number.MAX_SAFE_INTEGER)"
+    )
+  ),
+    (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.assert)(
+      !(n < -Number.MAX_SAFE_INTEGER),
+      new RangeError(
+        "You underflowed the minimum allowed integer (-Number.MAX_SAFE_INTEGER)"
+      )
+    );
+}
+
+const Z = { 0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1 },
+  j = n => ({ amount: t, currency: r }) => {
+    const money = ((n, t) => {
+        let r = null;
+        if (!Number.isInteger(Number(n))) {
+          let t = o(n);
+          if (!t.isInteger())
+            throw new Error("Amount must be an integer(ish) value");
+          r = t.getIntegerPart();
+        }
+        return { amount: r || o(String(n)).toString(), currency: t };
+      })(t, r),
+      e = { calculator: n, instanceMoney: money };
+    e.round = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(i, e);
+    const u = {},
+      a = { privateInstance: e, publicInstance: u };
+    return (
+      (u.add = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(s, a)),
+      (u.isSameCurrency = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(g, u)),
+      (u.getAmount = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(m, e)),
+      (u.getCurrency = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(f, e)),
+      (u.equals = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(b, a)),
+      (u.compare = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(d, a)),
+      (u.greaterThan = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(I, u)),
+      (u.greaterThanOrEqual = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(y, u)),
+      (u.lessThan = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(h, u)),
+      (u.lessThanOrEqual = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(N, u)),
+      (u.subtract = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(l, a)),
+      (u.multiply = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(E, a)),
+      (u.divide = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(w, a)),
+      (u.allocate = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(v, a)),
+      (u.allocateTo = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(C, a)),
+      (u.mod = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(F, a)),
+      (u.absolute = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(T, a)),
+      (u.negative = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(L, a)),
+      (u.isZero = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(S, a)),
+      (u.isPositive = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(O, a)),
+      (u.isNegative = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(_, a)),
+      (u.ratioOf = (0,_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.bind)(P, a)),
+      u
+    );
+  },
+  k = c({
+    compare: (n, t) => (n < t ? -1 : n > t ? 1 : 0),
+    add: (n, t) => {
+      const r = Number(n) + Number(t);
+      return V(r), String(r);
+    },
+    subtract: (n, t) => {
+      const r = Number(n) - Number(t);
+      return V(r), String(r);
+    },
+    multiply: (n, t) => {
+      const r = Number(n) * Number(t);
+      return W(r), u(r).toString();
+    },
+    divide: (n, t) => {
+      const r = Number(n) / Number(t);
+      return W(r), u(r).toString();
+    },
+    ceil: n => U(Math.ceil(Number(n))),
+    absolute: n => {
+      const t = Math.abs(Number(n));
+      return W(t), String(t);
+    },
+    floor: n => U(Math.floor(Number(n))),
+    share: (n, t, r) => U(Math.floor((Number(n) * Number(t)) / Number(r))),
+    round: (n, t) =>
+      U(
+        ((n, t) =>
+          ({
+            [_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.HALF_EVEN]: R,
+            [_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.HALF_UP]: H,
+            [_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.HALF_DOWN]: G,
+            [_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.FLOOR]: D,
+            [_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.CEILING]: $,
+            [_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.DOWN]: x,
+            [_easymoney_core__WEBPACK_IMPORTED_MODULE_0__.RoundingModes.UP]: z
+          }[t](n)))(Number(n), t)
+      ),
+    mod: (n, t) => {
+      const r = Number(n) % Number(t);
+      return W(r), String(r);
+    }
+  });
+
+//# sourceMappingURL=index.es.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/@headlessui/vue/dist/headlessui.esm.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@headlessui/vue/dist/headlessui.esm.js ***!
@@ -32845,11 +33311,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Shared_CurrencyTextBox__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @/Shared/CurrencyTextBox */ "./resources/js/Shared/CurrencyTextBox.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -32878,7 +33346,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     SelectContact: _Shared_Contact_SelectContact__WEBPACK_IMPORTED_MODULE_7__.default,
     DateRange: _Shared_DateRange__WEBPACK_IMPORTED_MODULE_9__.default,
     DatePicker: v_calendar__WEBPACK_IMPORTED_MODULE_3__.DatePicker,
-    HistoryModal: _Shared_HistoryModal__WEBPACK_IMPORTED_MODULE_10__.default
+    HistoryModal: _Shared_HistoryModal__WEBPACK_IMPORTED_MODULE_10__.default,
+    CurrencyTextBox: _Shared_CurrencyTextBox__WEBPACK_IMPORTED_MODULE_14__.default
   },
   layout: _Layouts_NewLayout__WEBPACK_IMPORTED_MODULE_4__.default,
   props: {
@@ -32911,7 +33380,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         end: props.policy.period_end
       },
       fields: (_props$policy$fields = props.policy.fields) !== null && _props$policy$fields !== void 0 ? _props$policy$fields : [],
-      agent_id: props.policy.agent_id
+      agent_id: props.policy.agent_id,
+      premium: props.policy.premium
     });
     var sending = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var fieldFormShown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
@@ -32924,6 +33394,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       }).put(route('policies.update', props.policy.id));
     }
+
+    var premium = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.policy.premium);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(premium, function () {
+      return console.log(policyForm.premium.amount);
+    });
 
     function destroy() {
       // TODO check if contact is associated with a policy
@@ -32974,7 +33449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Shared/Pagination */ "./resources/js/Shared/Pagination.vue");
 /* harmony import */ var _Shared_DataTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Shared/DataTable */ "./resources/js/Shared/DataTable.vue");
 /* harmony import */ var _Shared_FilterSelect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Shared/FilterSelect */ "./resources/js/Shared/FilterSelect.vue");
-/* harmony import */ var _dates__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../dates */ "./resources/js/dates.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/util.js */ "./resources/js/util.js");
 
 
 
@@ -33061,8 +33536,8 @@ __webpack_require__.r(__webpack_exports__);
       searchForm: searchForm,
       refreshSearch: refreshSearch,
       reset: reset,
-      formatDate: _dates__WEBPACK_IMPORTED_MODULE_7__.formatDate,
-      isInPast: _dates__WEBPACK_IMPORTED_MODULE_7__.isInPast,
+      formatDate: _util_js__WEBPACK_IMPORTED_MODULE_7__.formatDate,
+      isInPast: _util_js__WEBPACK_IMPORTED_MODULE_7__.isInPast,
       columns: columns,
       highlight: highlight
     };
@@ -34032,6 +34507,119 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/CurrencyTextBox.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/CurrencyTextBox.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _easymoney_money__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @easymoney/money */ "./node_modules/@easymoney/money/dist/index.es.js");
+/* harmony import */ var _easymoney_formatter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @easymoney/formatter */ "./node_modules/@easymoney/formatter/dist/index.es.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/util.js */ "./resources/js/util.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    modelValue: {
+      type: Object,
+      required: true
+    }
+  },
+  emits: ['update:modelValue'],
+  setup: function setup(props, context) {
+    var focused = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+    var currency = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.modelValue.currency);
+    var rawValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((0,_util_js__WEBPACK_IMPORTED_MODULE_1__.addDecimal)(props.modelValue.amount, props.modelValue.subunit));
+
+    function stripDecimal(val) {
+      return val.replaceAll('.', '');
+    }
+
+    function getMoney() {
+      return (0,_easymoney_money__WEBPACK_IMPORTED_MODULE_2__.createMoney)({
+        amount: stripDecimal(rawValue.value),
+        currency: currency.value
+      });
+    }
+
+    function handleFocus() {
+      focused.value = true;
+    }
+
+    function handleBlur() {
+      focused.value = false;
+    }
+
+    function handleKeydown(e) {
+      e.preventDefault();
+    }
+
+    function handlePaste(e) {
+      var paste = (e.clipboardData || window.clipboardData).getData('text');
+      console.log(paste);
+      e.preventDefault();
+    }
+
+    var formattedValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
+      get: function get() {
+        if (focused.value === false) {
+          if (errors.value.length > 0) {
+            return rawValue.value;
+          }
+
+          return (0,_easymoney_formatter__WEBPACK_IMPORTED_MODULE_3__.createMoneyIntlFormatter)().format(getMoney());
+        }
+
+        return rawValue.value;
+      },
+      set: function set(value) {
+        var regex = /^(\d*\.{0,1}\d*)$/gm;
+
+        if (value.match(regex)) {
+          errors.value = [];
+        } else {
+          errors.value.push('Value is invalid');
+        }
+
+        rawValue.value = value;
+
+        if (errors.value.length === 0) {
+          var newVal = _objectSpread({}, props.modelValue);
+
+          newVal.amount = stripDecimal(value);
+          context.emit('update:modelValue', newVal);
+        }
+      }
+    });
+    return {
+      formattedValue: formattedValue,
+      handleFocus: handleFocus,
+      handleBlur: handleBlur,
+      errors: errors,
+      handleKeydown: handleKeydown,
+      handlePaste: handlePaste,
+      rawValue: rawValue
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/DataTable.vue?vue&type=script&lang=js":
 /*!***********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/DataTable.vue?vue&type=script&lang=js ***!
@@ -34622,7 +35210,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _dates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dates */ "./resources/js/dates.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/util.js */ "./resources/js/util.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -34650,8 +35238,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       loading: loading,
       results: results,
-      formatDate: _dates__WEBPACK_IMPORTED_MODULE_1__.formatDate,
-      isInPast: _dates__WEBPACK_IMPORTED_MODULE_1__.isInPast
+      formatDate: _util_js__WEBPACK_IMPORTED_MODULE_1__.formatDate,
+      isInPast: _util_js__WEBPACK_IMPORTED_MODULE_1__.isInPast
     };
   }
 });
@@ -38100,27 +38688,30 @@ var _hoisted_15 = {
 var _hoisted_16 = {
   "class": "mb-5"
 };
+var _hoisted_17 = {
+  "class": "mb-5"
+};
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "text-cool-grey-600 text-sm text-left"
 }, " Period of Insurance ", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Policyholders ");
 
-var _hoisted_19 = {
+var _hoisted_20 = {
   "class": "px-8 py-4 bg-cool-grey-50 flex justify-between items-center"
 };
-var _hoisted_20 = {
+var _hoisted_21 = {
   "class": "flex items-baseline"
 };
-var _hoisted_21 = {
+var _hoisted_22 = {
   key: 0,
   "class": "mr-5 text-cool-grey-400 italic"
 };
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update policy ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-head");
@@ -38140,6 +38731,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_input_error = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input-error");
 
   var _component_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-picker");
+
+  var _component_CurrencyTextBox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CurrencyTextBox");
 
   var _component_date_range = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-range");
 
@@ -38240,9 +38833,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.policyForm.agent_id]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
-    modelValue: $setup.policyForm.range,
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.policyForm.agent_id]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+    value: "Premium"
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CurrencyTextBox, {
+    id: "premium",
+    modelValue: $setup.policyForm.premium,
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $setup.policyForm.premium = $event;
+    }),
+    "class": "border border-cool-grey-200 mr-5 rounded mt-1"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
+    modelValue: $setup.policyForm.range,
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $setup.policyForm.range = $event;
     })
   }, null, 8
@@ -38251,7 +38855,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mb-5",
     fields: $setup.policyForm.fields,
     policy: $props.policy,
-    onFieldAdded: _cache[6] || (_cache[6] = function (field) {
+    onFieldAdded: _cache[7] || (_cache[7] = function (field) {
       return $setup.policyForm.fields.push(field);
     })
   }, null, 8
@@ -38263,7 +38867,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     removable: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_18];
+      return [_hoisted_19];
     }),
     _: 1
     /* STABLE */
@@ -38274,22 +38878,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSelected: $setup.contactSelected
   }, null, 8
   /* PROPS */
-  , ["onSelected"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [!$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+  , ["onSelected"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [!$props.policy.deleted_at ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
     key: 0,
     "class": "text-red-vivid-600 hover:underline",
     tabindex: "-1",
     type: "button",
-    onClick: _cache[7] || (_cache[7] = function () {
+    onClick: _cache[8] || (_cache[8] = function () {
       return $setup.destroy && $setup.destroy.apply($setup, arguments);
     })
-  }, " Delete policy ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [$setup.policyForm.isDirty ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_21, " Unsaved Changes ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
+  }, " Delete policy ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [$setup.policyForm.isDirty ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_22, " Unsaved Changes ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_loading_button, {
     "class": "btn btn-primary",
     type: "submit",
     loading: $setup.policyForm.processing,
     onClick: $setup.updatePolicy
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_22];
+      return [_hoisted_23];
     }),
     _: 1
     /* STABLE */
@@ -40849,6 +41453,51 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/CurrencyTextBox.vue?vue&type=template&id=1bbb20e1":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/CurrencyTextBox.vue?vue&type=template&id=1bbb20e1 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
+    ref: "textInput",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $setup.formattedValue = $event;
+    }),
+    type: "text",
+    inputmode: "decimal"
+  }, _ctx.$attrs, {
+    onFocus: _cache[2] || (_cache[2] = function () {
+      return $setup.handleFocus && $setup.handleFocus.apply($setup, arguments);
+    }),
+    onBlur: _cache[3] || (_cache[3] = function () {
+      return $setup.handleBlur && $setup.handleBlur.apply($setup, arguments);
+    }),
+    onKeydown: _cache[4] || (_cache[4] = function () {
+      return $setup.handleKeydown && $setup.handleKeydown.apply($setup, arguments);
+    }),
+    onPaste: _cache[5] || (_cache[5] = function () {
+      return $setup.handlePaste && $setup.handlePaste.apply($setup, arguments);
+    })
+  }), null, 16
+  /* FULL_PROPS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formattedValue]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.errors[0]), 1
+  /* TEXT */
+  )], 64
+  /* STABLE_FRAGMENT */
+  );
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/DataTable.vue?vue&type=template&id=4d084898":
 /*!***************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/DataTable.vue?vue&type=template&id=4d084898 ***!
@@ -42142,17 +42791,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/dates.js":
-/*!*******************************!*\
-  !*** ./resources/js/dates.js ***!
-  \*******************************/
+/***/ "./resources/js/util.js":
+/*!******************************!*\
+  !*** ./resources/js/util.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "formatDate": () => (/* binding */ formatDate),
-/* harmony export */   "isInPast": () => (/* binding */ isInPast)
+/* harmony export */   "isInPast": () => (/* binding */ isInPast),
+/* harmony export */   "addDecimal": () => (/* binding */ addDecimal)
 /* harmony export */ });
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_0__);
@@ -42168,6 +42818,22 @@ function formatDate(date, format) {
 
 function isInPast(date) {
   return dayjs__WEBPACK_IMPORTED_MODULE_0___default()(date).isBefore(dayjs__WEBPACK_IMPORTED_MODULE_0___default()());
+}
+
+function addDecimal(amount, subunit) {
+  var output = amount;
+  var _output = output,
+      length = _output.length;
+
+  if (subunit > length - 1) {
+    var zeros = subunit - length + 1;
+    output = '0'.repeat(zeros) + output;
+    length = output.length;
+  }
+
+  var pos = length - subunit;
+  output = "".concat(output.slice(0, pos), ".").concat(output.slice(pos));
+  return output;
 }
 
 
@@ -81641,6 +82307,32 @@ _SelectContact_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.
 
 /***/ }),
 
+/***/ "./resources/js/Shared/CurrencyTextBox.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/Shared/CurrencyTextBox.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CurrencyTextBox_vue_vue_type_template_id_1bbb20e1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CurrencyTextBox.vue?vue&type=template&id=1bbb20e1 */ "./resources/js/Shared/CurrencyTextBox.vue?vue&type=template&id=1bbb20e1");
+/* harmony import */ var _CurrencyTextBox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CurrencyTextBox.vue?vue&type=script&lang=js */ "./resources/js/Shared/CurrencyTextBox.vue?vue&type=script&lang=js");
+
+
+
+_CurrencyTextBox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _CurrencyTextBox_vue_vue_type_template_id_1bbb20e1__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_CurrencyTextBox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Shared/CurrencyTextBox.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_CurrencyTextBox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Shared/DataTable.vue":
 /*!*******************************************!*\
   !*** ./resources/js/Shared/DataTable.vue ***!
@@ -82795,6 +83487,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Shared/CurrencyTextBox.vue?vue&type=script&lang=js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/Shared/CurrencyTextBox.vue?vue&type=script&lang=js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CurrencyTextBox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CurrencyTextBox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CurrencyTextBox.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/CurrencyTextBox.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Shared/DataTable.vue?vue&type=script&lang=js":
 /*!*******************************************************************!*\
   !*** ./resources/js/Shared/DataTable.vue?vue&type=script&lang=js ***!
@@ -83863,6 +84571,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SelectContact_vue_vue_type_template_id_3cc8ab89__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_SelectContact_vue_vue_type_template_id_3cc8ab89__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./SelectContact.vue?vue&type=template&id=3cc8ab89 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/Contact/SelectContact.vue?vue&type=template&id=3cc8ab89");
+
+
+/***/ }),
+
+/***/ "./resources/js/Shared/CurrencyTextBox.vue?vue&type=template&id=1bbb20e1":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/Shared/CurrencyTextBox.vue?vue&type=template&id=1bbb20e1 ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CurrencyTextBox_vue_vue_type_template_id_1bbb20e1__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CurrencyTextBox_vue_vue_type_template_id_1bbb20e1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CurrencyTextBox.vue?vue&type=template&id=1bbb20e1 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/CurrencyTextBox.vue?vue&type=template&id=1bbb20e1");
 
 
 /***/ }),

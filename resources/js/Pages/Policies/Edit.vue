@@ -70,6 +70,7 @@
                     </template>
                 </date-picker>
             </div>
+
             <div class="mb-5">
                 <jet-label value="Assigned Agent" />
                 <select
@@ -85,6 +86,15 @@
                         {{ agent.name }}
                     </option>
                 </select>
+            </div>
+
+            <div class="mb-5">
+                <jet-label value="Premium" />
+                <CurrencyTextBox
+                    id="premium"
+                    v-model="policyForm.premium"
+                    class="border border-cool-grey-200 mr-5 rounded mt-1"
+                />
             </div>
 
             <div class="mb-5">
@@ -145,7 +155,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
 import { DatePicker } from 'v-calendar';
@@ -161,6 +171,7 @@ import HistoryModal from '@/Shared/HistoryModal';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
+import CurrencyTextBox from '@/Shared/CurrencyTextBox';
 
 export default {
     components: {
@@ -176,6 +187,7 @@ export default {
         DateRange,
         DatePicker,
         HistoryModal,
+        CurrencyTextBox,
     },
     layout: AppLayout,
     props: {
@@ -195,6 +207,7 @@ export default {
             },
             fields: props.policy.fields ?? [],
             agent_id: props.policy.agent_id,
+            premium: props.policy.premium,
         });
 
         const sending = ref(false);
@@ -209,6 +222,8 @@ export default {
                 }))
                 .put(route('policies.update', props.policy.id));
         }
+        const premium = ref(props.policy.premium);
+        watch(premium, () => console.log(policyForm.premium.amount));
 
         function destroy() {
             // TODO check if contact is associated with a policy
