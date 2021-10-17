@@ -90,7 +90,7 @@ import Pagination from '@/Shared/Pagination';
 import DataTable from '@/Shared/DataTable';
 import FilterSelect from '@/Shared/FilterSelect';
 
-import { formatDate, isInPast } from '@/dates.js';
+import { formatDate, isInPast } from '@/util.js';
 
 export default {
     components: {

@@ -82,7 +82,7 @@
 
 <script>
 import { onMounted, ref } from 'vue';
-import { formatDate, isInPast } from '@/dates.js';
+import { formatDate, isInPast } from '@/util.js';
 
 export default {
     setup() {
