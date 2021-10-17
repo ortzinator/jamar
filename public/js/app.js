@@ -34565,13 +34565,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       focused.value = false;
     }
 
-    function handleKeydown(e) {
-      e.preventDefault();
+    function hasEnoughCents(value) {
+      return value.match(/(.\d{3,})$/gm);
     }
 
     function handlePaste(e) {
-      var paste = (e.clipboardData || window.clipboardData).getData('text');
-      console.log(paste);
       e.preventDefault();
     }
 
@@ -34596,9 +34594,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           errors.value.push('Value is invalid');
         }
 
-        rawValue.value = value;
+        if (!hasEnoughCents(value) && errors.value.length === 0) {
+          rawValue.value = value;
 
-        if (errors.value.length === 0) {
           var newVal = _objectSpread({}, props.modelValue);
 
           newVal.amount = stripDecimal(value);
@@ -34611,7 +34609,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       handleFocus: handleFocus,
       handleBlur: handleBlur,
       errors: errors,
-      handleKeydown: handleKeydown,
       handlePaste: handlePaste,
       rawValue: rawValue
     };
@@ -41481,10 +41478,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[3] || (_cache[3] = function () {
       return $setup.handleBlur && $setup.handleBlur.apply($setup, arguments);
     }),
-    onKeydown: _cache[4] || (_cache[4] = function () {
-      return $setup.handleKeydown && $setup.handleKeydown.apply($setup, arguments);
-    }),
-    onPaste: _cache[5] || (_cache[5] = function () {
+    onPaste: _cache[4] || (_cache[4] = function () {
       return $setup.handlePaste && $setup.handlePaste.apply($setup, arguments);
     })
   }), null, 16
