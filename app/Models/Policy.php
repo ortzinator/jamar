@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
@@ -24,14 +25,36 @@ class Policy extends Model
         'premium' => MoneyIntegerCast::class . ':currency'
     ];
 
+    protected static function booted()
+    {
+        static::created(function (Policy $policy) {
+            $policy->history()->create([
+                'event_type' => 'policy_created',
+                'policy_id' => $policy->id,
+                'user_id' => Auth::id() ? Auth::id() : $policy->agent_id
+            ]);
+        });
+        static::updated(function (Policy $policy) {
+            $policy->history()->create([
+                'event_type' => 'policy_created',
+                'policy_id' => $policy->id,
+                'user_id' => Auth::id() ? Auth::id() : $policy->agent_id
+            ]);
+        });
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query
             ->when($filters['search'] ?? null, function ($query, $search) {
-                $query->where(function ($query) use ($search) {
-                    $query->where('number', 'like', '%' . $search . '%');
-                    $query->orWhere('fields', 'like', '%' . $search . '%');
-                });
+                $query
+                    ->where(function ($query) use ($search) {
+                        $query->where('number', 'like', '%' . $search . '%');
+                        $query->orWhere('fields', 'like', '%' . $search . '%');
+                    })
+                    ->orWhereHas('contacts', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });
             })
             ->when($filters['trashed'] ?? null, function ($query, $trashed) {
                 if ($trashed === 'with') {
@@ -50,6 +73,11 @@ class Policy extends Model
     public function agent()
     {
         return $this->belongsTo(User::class, 'agent_id');
+    }
+
+    public function history()
+    {
+        return $this->hasMany(History::class);
     }
 
     public function cacheKey()

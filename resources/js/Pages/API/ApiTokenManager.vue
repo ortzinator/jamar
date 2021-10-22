@@ -15,9 +15,9 @@
                     <jet-label for="name" value="Name" />
                     <jet-input
                         id="name"
+                        v-model="createApiTokenForm.name"
                         type="text"
                         class="mt-1 block w-full"
-                        v-model="createApiTokenForm.name"
                         autofocus
                     />
                     <jet-input-error
@@ -27,7 +27,7 @@
                 </div>
 
                 <!-- Token Permissions -->
-                <div class="col-span-6" v-if="availablePermissions.length > 0">
+                <div v-if="availablePermissions.length > 0" class="col-span-6">
                     <jet-label for="permissions" value="Permissions" />
 
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -37,12 +37,12 @@
                         >
                             <label class="flex items-center">
                                 <jet-checkbox
-                                    :value="permission"
                                     v-model:checked="
                                         createApiTokenForm.permissions
                                     "
+                                    :value="permission"
                                 />
-                                <span class="ml-2 text-sm text-gray-600">{{
+                                <span class="ml-2 text-sm text-cool-grey-600">{{
                                     permission
                                 }}</span>
                             </label>
@@ -85,9 +85,9 @@
                     <template #content>
                         <div class="space-y-6">
                             <div
-                                class="flex items-center justify-between"
                                 v-for="token in tokens"
                                 :key="token.id"
+                                class="flex items-center justify-between"
                             >
                                 <div>
                                     {{ token.name }}
@@ -95,23 +95,23 @@
 
                                 <div class="flex items-center">
                                     <div
-                                        class="text-sm text-gray-400"
                                         v-if="token.last_used_ago"
+                                        class="text-sm text-cool-grey-400"
                                     >
                                         Last used {{ token.last_used_ago }}
                                     </div>
 
                                     <button
+                                        v-if="availablePermissions.length > 0"
                                         class="
                                             cursor-pointer
                                             ml-6
-                                            text-sm text-gray-400
+                                            text-sm text-cool-grey-400
                                             underline
                                         "
                                         @click="
                                             manageApiTokenPermissions(token)
                                         "
-                                        v-if="availablePermissions.length > 0"
                                     >
                                         Permissions
                                     </button>
@@ -148,23 +148,23 @@
                 </div>
 
                 <div
+                    v-if="$page.props.jetstream.flash.token"
                     class="
                         mt-4
-                        bg-gray-100
+                        bg-cool-grey-100
                         px-4
                         py-2
                         rounded
                         font-mono
-                        text-sm text-gray-500
+                        text-sm text-cool-grey-500
                     "
-                    v-if="$page.props.jetstream.flash.token"
                 >
                     {{ $page.props.jetstream.flash.token }}
                 </div>
             </template>
 
             <template #footer>
-                <jet-secondary-button @click.native="displayingToken = false">
+                <jet-secondary-button @click="displayingToken = false">
                     Close
                 </jet-secondary-button>
             </template>
@@ -185,10 +185,10 @@
                     >
                         <label class="flex items-center">
                             <jet-checkbox
-                                :value="permission"
                                 v-model:checked="updateApiTokenForm.permissions"
+                                :value="permission"
                             />
-                            <span class="ml-2 text-sm text-gray-600">{{
+                            <span class="ml-2 text-sm text-cool-grey-600">{{
                                 permission
                             }}</span>
                         </label>
@@ -198,16 +198,16 @@
 
             <template #footer>
                 <jet-secondary-button
-                    @click.native="managingPermissionsFor = null"
+                    @click="managingPermissionsFor = null"
                 >
                     Nevermind
                 </jet-secondary-button>
 
                 <jet-button
                     class="ml-2"
-                    @click.native="updateApiToken"
                     :class="{ 'opacity-25': updateApiTokenForm.processing }"
                     :disabled="updateApiTokenForm.processing"
+                    @click="updateApiToken"
                 >
                     Save
                 </jet-button>
@@ -227,16 +227,16 @@
 
             <template #footer>
                 <jet-secondary-button
-                    @click.native="apiTokenBeingDeleted = null"
+                    @click="apiTokenBeingDeleted = null"
                 >
                     Nevermind
                 </jet-secondary-button>
 
                 <jet-danger-button
                     class="ml-2"
-                    @click.native="deleteApiToken"
                     :class="{ 'opacity-25': deleteApiTokenForm.processing }"
                     :disabled="deleteApiTokenForm.processing"
+                    @click="deleteApiToken"
                 >
                     Delete
                 </jet-danger-button>
@@ -246,19 +246,19 @@
 </template>
 
 <script>
-import JetActionMessage from "@/Jetstream/ActionMessage";
-import JetActionSection from "@/Jetstream/ActionSection";
-import JetButton from "@/Jetstream/Button";
-import JetConfirmationModal from "@/Jetstream/ConfirmationModal";
-import JetDangerButton from "@/Jetstream/DangerButton";
-import JetDialogModal from "@/Jetstream/DialogModal";
-import JetFormSection from "@/Jetstream/FormSection";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetInputError from "@/Jetstream/InputError";
-import JetLabel from "@/Jetstream/Label";
-import JetSecondaryButton from "@/Jetstream/SecondaryButton";
-import JetSectionBorder from "@/Jetstream/SectionBorder";
+import JetActionMessage from '@/Jetstream/ActionMessage';
+import JetActionSection from '@/Jetstream/ActionSection';
+import JetButton from '@/Jetstream/Button';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
+import JetDangerButton from '@/Jetstream/DangerButton';
+import JetDialogModal from '@/Jetstream/DialogModal';
+import JetFormSection from '@/Jetstream/FormSection';
+import JetInput from '@/Jetstream/Input';
+import JetCheckbox from '@/Jetstream/Checkbox';
+import JetInputError from '@/Jetstream/InputError';
+import JetLabel from '@/Jetstream/Label';
+import JetSecondaryButton from '@/Jetstream/SecondaryButton';
+import JetSectionBorder from '@/Jetstream/SectionBorder';
 
 export default {
     components: {
@@ -277,12 +277,12 @@ export default {
         JetSectionBorder,
     },
 
-    props: ["tokens", "availablePermissions", "defaultPermissions"],
+    props: ['tokens', 'availablePermissions', 'defaultPermissions'],
 
     data() {
         return {
             createApiTokenForm: this.$inertia.form({
-                name: "",
+                name: '',
                 permissions: this.defaultPermissions,
             }),
 
@@ -300,7 +300,7 @@ export default {
 
     methods: {
         createApiToken() {
-            this.createApiTokenForm.post(route("api-tokens.store"), {
+            this.createApiTokenForm.post(route('api-tokens.store'), {
                 preserveScroll: true,
                 onSuccess: () => {
                     this.displayingToken = true;
@@ -317,12 +317,12 @@ export default {
 
         updateApiToken() {
             this.updateApiTokenForm.put(
-                route("api-tokens.update", this.managingPermissionsFor),
+                route('api-tokens.update', this.managingPermissionsFor),
                 {
                     preserveScroll: true,
                     preserveState: true,
                     onSuccess: () => (this.managingPermissionsFor = null),
-                }
+                },
             );
         },
 
@@ -332,12 +332,12 @@ export default {
 
         deleteApiToken() {
             this.deleteApiTokenForm.delete(
-                route("api-tokens.destroy", this.apiTokenBeingDeleted),
+                route('api-tokens.destroy', this.apiTokenBeingDeleted),
                 {
                     preserveScroll: true,
                     preserveState: true,
                     onSuccess: () => (this.apiTokenBeingDeleted = null),
-                }
+                },
             );
         },
     },

@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\Models\Contact;
 use App\Models\Policy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class ContactTest extends TestCase
@@ -13,6 +14,8 @@ class ContactTest extends TestCase
 
     public function test_a_contact_can_have_many_policies()
     {
+        Auth::shouldReceive('id')->andReturn(1);
+
         $contact = Contact::factory()->create();
         $contact->policies()->attach(Policy::factory()->create());
         $contact->policies()->attach(Policy::factory()->create());

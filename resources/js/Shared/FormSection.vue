@@ -1,5 +1,5 @@
 <template>
-    <div class="p-5 md:grid-cols-3 md:grid">
+    <div class="md:p-5 md:grid-cols-3 md:grid py-5">
         <div class="md:col-span-1">
             <div class="text-lg"><slot name="header" /></div>
             <div class="text-sm text-cool-grey-700">

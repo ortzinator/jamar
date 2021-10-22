@@ -82,6 +82,8 @@ return [
 
     'locale' => 'en',
 
+    'currency' => 'PHP',
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

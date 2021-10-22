@@ -15,7 +15,7 @@
             'bg-red-vivid-600': style == 'danger'
         }"
     >
-        <div class="p-4 border-r border-gray-400 rounded-l-lg">
+        <div class="p-4 border-r border-cool-grey-400 rounded-l-lg">
             <CheckIcon v-if="style == 'success'" class="h-5 w-5" />
             <ExclamationIcon v-if="style == 'danger'" class="w-5 h-5" />
         </div>
@@ -38,23 +38,19 @@ import { XIcon, ExclamationIcon, CheckIcon } from '@heroicons/vue/outline';
 export default {
     components: { XIcon, ExclamationIcon, CheckIcon },
     setup() {
-        var show = ref(true);
+        const show = ref(true);
 
-        const style = computed(() => {
-            return (
-                usePage().props.value.jetstream.flash?.bannerStyle || 'success'
-            );
-        });
+        const style = computed(() => (
+            usePage().props.value.jetstream.flash?.bannerStyle || 'success'
+        ));
 
-        const message = computed(() => {
-            return usePage().props.value.jetstream.flash?.banner || '';
-        });
+        const message = computed(() => usePage().props.value.jetstream.flash?.banner || '');
 
         watch(usePage().props.value.jetstream.flash, () => {
             show.value = true;
         });
 
         return { show, style, message };
-    }
+    },
 };
 </script>

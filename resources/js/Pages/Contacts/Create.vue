@@ -22,8 +22,8 @@
                 <div class="mb-5">
                     <jet-label for="name" value="Name"></jet-label>
                     <jet-input
-                        v-model="form.name"
                         id="name"
+                        v-model="form.name"
                         type="text"
                         class="block w-full"
                     />
@@ -32,12 +32,12 @@
                 <div class="mb-5">
                     <jet-label for="address" value="Address"></jet-label>
                     <textarea
-                        name="address"
                         id="address"
+                        v-model="form.address"
+                        name="address"
                         class="block w-full"
                         cols="30"
                         rows="10"
-                        v-model="form.address"
                     />
                     <jet-input-error :message="form.errors.address" />
                 </div>
@@ -46,8 +46,8 @@
                 class="
                     px-8
                     py-4
-                    bg-gray-100
-                    border-t border-gray-200
+                    bg-cool-grey-50
+                    border-t border-cool-grey-100
                     flex
                     items-center
                 "
@@ -65,31 +65,26 @@
 </template>
 
 <script>
-import AppLayout from '@/Layouts/NewLayout';
 import { useForm } from '@inertiajs/inertia-vue3';
+import AppLayout from '@/Layouts/NewLayout';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 import LoadingButton from '@/Shared/LoadingButton';
 
 export default {
-    layout: AppLayout,
     components: {
-        AppLayout,
         JetInput,
         JetLabel,
         JetInputError,
-        JetValidationErrors,
-        JetConfirmationModal,
-        LoadingButton
+        LoadingButton,
     },
-    setup(props) {
+    layout: AppLayout,
+    setup() {
         const form = useForm({
             name: null,
-            address: null
+            address: null,
         });
 
         return { form };
@@ -97,7 +92,7 @@ export default {
     methods: {
         store() {
             this.form.post(this.route('contacts.store'));
-        }
-    }
+        },
+    },
 };
 </script>

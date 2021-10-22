@@ -10,8 +10,8 @@
                 <div class="flex shadow rounded bg-white cursor-default">
                     <filter-select v-model="searchForm.trashed" />
                     <input
-                        type="text"
                         v-model="searchForm.search"
+                        type="text"
                         placeholder="Search..."
                         class="border-0 rounded-r w-full"
                     />
@@ -19,8 +19,8 @@
                 <button
                     class="
                         ml-3
-                        text-sm text-gray-500
-                        hover:text-gray-700
+                        text-sm text-cool-grey-500
+                        hover:text-cool-grey-700
                         focus:text-light-blue-vivid-500
                     "
                     type="button"
@@ -40,40 +40,38 @@
         <div class="shadow rounded bg-white overflow-x-auto">
             <DataTable
                 :columns="columns"
-                :dataSource="policies.data"
-                routeName="policies.edit"
+                :data-source="policies.data"
+                route-name="policies.edit"
             >
-                <template v-slot:[`column.period_end`]="{ value }">
-                    <span :class="{ 'text-red-vivid-500': pastDate(value) }">{{
-                        formatDate(value)
-                    }}</span>
+                <template #[`column.number`]="{ value }">
+                    <span v-html="highlight(value)" />
                 </template>
-                <template v-slot:[`column.created_at`]="{ value }">
+                <template #[`column.period_end`]="{ value }">
+                    <span :class="{ 'text-red-vivid-500': isInPast(value) }">
+                        {{ formatDate(value) }}
+                    </span>
+                </template>
+                <template #[`column.created_at`]="{ value }">
                     {{ formatDate(value) }}
                 </template>
-                <template v-slot:[`column.premium`]="{ value }">
-                    <div
-                        class="text-right w-full"
-                        v-text="value.formatted"
-                    ></div>
+                <template #[`column.premium`]="{ value }">
+                    <div class="text-right w-full" v-text="value.formatted" />
                 </template>
-                <template
-                    v-slot:[`column.contactNamesPreview`]="{ value, row }"
-                >
+                <template #[`column.contactNamesPreview`]="{ value, row }">
                     <div
                         v-if="row.contacts.length === 0"
                         class="flex text-red-vivid-600 items-center"
                     >
                         <exclamation-icon class="h-5 mr-2 w-5" />
-                        No contacts found
+                        No policyholders found
                     </div>
                     <div
                         v-else
-                        v-text="value"
                         class="
                             overflow-ellipsis overflow-hidden
                             whitespace-nowrap
                         "
+                        v-html="highlight(value)"
                     />
                 </template>
             </DataTable>
@@ -85,76 +83,67 @@
 <script>
 import { watch, computed, ref } from 'vue';
 
+import { ExclamationIcon } from '@heroicons/vue/outline';
+import { useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/NewLayout';
 import Pagination from '@/Shared/Pagination';
 import DataTable from '@/Shared/DataTable';
 import FilterSelect from '@/Shared/FilterSelect';
-import JetCheckbox from '@/Jetstream/Checkbox';
-import {
-    ExclamationIcon,
-    ChevronRightIcon,
-    SelectorIcon
-} from '@heroicons/vue/outline';
 
-import { useForm, Link } from '@inertiajs/inertia-vue3';
-import dayjs from 'dayjs';
-
-import {
-    Listbox,
-    ListboxButton,
-    ListboxOptions,
-    ListboxOption
-} from '@headlessui/vue';
+import { formatDate, isInPast } from '@/util.js';
 
 export default {
-    props: { sessions: Object, policies: Object, filters: Object },
-    layout: AppLayout,
-
     components: {
-        AppLayout,
         Pagination,
-        JetCheckbox,
         ExclamationIcon,
-        ChevronRightIcon,
-        SelectorIcon,
         DataTable,
-        Link,
-        Listbox,
-        ListboxButton,
-        ListboxOptions,
-        ListboxOption,
-        FilterSelect
+        FilterSelect,
+    },
+    layout: AppLayout,
+    props: {
+        policies: { type: Object, required: true },
+        filters: { type: Object, required: true },
     },
     setup(props) {
         const searchForm = useForm({
             search: props.filters.search,
-            trashed: props.filters.trashed
+            trashed: props.filters.trashed,
         });
 
-        const refreshSearch = _.debounce(function () {
+        const refreshSearch = _.debounce(() => {
             searchForm
                 .transform((data) => _.pickBy(data))
                 .get('/policies', {
                     only: ['policies'],
                     preserveState: true,
-                    preserveScroll: true
+                    preserveScroll: true,
                 });
         }, 400);
 
-        const formVals = computed(() => {
-            return {
-                search: searchForm.search,
-                trashed: searchForm.trashed
-            };
-        });
-
-        function formatDate(date) {
-            return dayjs(date).format('MMM DD, YYYY');
-        }
+        const formVals = computed(() => ({
+            search: searchForm.search,
+            trashed: searchForm.trashed,
+        }));
 
         function reset() {
             searchForm.search = '';
             searchForm.trashed = null;
+        }
+
+        function highlight(text) {
+            if (!searchForm.search) {
+                return text;
+            }
+
+            const escaped = new RegExp(
+                searchForm.search.replace(/[.*?^${}()[\]]/g, '\\$&'),
+                'i',
+            );
+
+            return text.replace(
+                escaped,
+                '<mark class="bg-light-blue-vivid-600 text-white">$&</mark>',
+            );
         }
 
         watch(formVals, () => refreshSearch());
@@ -164,21 +153,18 @@ export default {
             { text: 'Contacts', value: 'contactNamesPreview' },
             { text: 'Premium', value: 'premium' },
             { text: 'Date Issued', value: 'created_at' },
-            { text: 'Ending', value: 'period_end' }
+            { text: 'Ending', value: 'period_end' },
         ]);
-
-        function pastDate(date) {
-            return dayjs(date).isBefore(dayjs());
-        }
 
         return {
             searchForm,
             refreshSearch,
             reset,
             formatDate,
+            isInPast,
             columns,
-            pastDate
+            highlight,
         };
-    }
+    },
 };
 </script>

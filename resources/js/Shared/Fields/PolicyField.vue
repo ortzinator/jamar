@@ -1,13 +1,13 @@
 <template>
     <div
+        class="grid grid-cols-9 gap-5 mb-5"
         @mouseenter="fieldHover = true"
         @mouseleave="fieldHover = false"
-        class="grid grid-cols-9 gap-5 mb-5"
     >
-        <div v-text="field.name" class="px-4 py-2 rounded col-span-4"></div>
+        <div class="px-4 py-2 rounded col-span-4" v-text="field.name"></div>
         <jet-input
-            v-model="field.value"
             :id="'input-' + field.name"
+            :value="field.value"
             type="text"
             class="col-span-4 font-mono"
         />
@@ -16,24 +16,24 @@
 </template>
 
 <script>
-import { useForm } from "@inertiajs/inertia-vue3";
-
-import JetInput from "@/Jetstream/Input";
+import { ref } from 'vue';
+import JetInput from '@/Jetstream/Input';
 
 export default {
-    props: ["field", "policy"],
-    emits: ["delete"],
     components: { JetInput },
-    data() {
-        return {
-            fieldHover: false,
-            editing: false,
-        };
+    props: {
+        field: { type: Object, required: true },
     },
-    methods: {
-        deleteField() {
+    emits: ['delete'],
+    setup() {
+        const fieldHover = ref(false);
+        const editing = ref(false);
+
+        function deleteField() {
             this.confirming = false;
-        },
+        }
+
+        return { fieldHover, editing, deleteField };
     },
 };
 </script>

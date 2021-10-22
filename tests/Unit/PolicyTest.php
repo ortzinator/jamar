@@ -3,13 +3,21 @@
 namespace Tests\Unit;
 
 use App\Models\Contact;
+use App\Models\History;
 use App\Models\Policy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class PolicyTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        Auth::shouldReceive('id')->andReturn(1);
+    }
 
     public function test_a_policy_can_have_multiple_contacts()
     {
@@ -87,5 +95,16 @@ class PolicyTest extends TestCase
         $list = Policy::cancelled()->get();
 
         $this->assertCount(1, $list);
+    }
+
+    public function test_has_a_history_of_facts()
+    {
+        $policy = Policy::factory()
+            ->has(History::factory(10))
+            ->create();
+
+        $list = $policy->history;
+
+        $this->assertCount(11, $list);
     }
 }

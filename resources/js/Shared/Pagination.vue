@@ -8,7 +8,7 @@
             <span
                 v-if="link.url === null"
                 :class="{ 'ml-auto': link.label === 'Next' }"
-                class="text-gray-400 px-4 py-3"
+                class="text-cool-grey-400 px-4 py-3"
                 v-text="link.label"
             >
             </span>
@@ -23,7 +23,7 @@
                 "
                 :class="{
                     'bg-white': link.active,
-                    'ml-auto': link.label === 'Next',
+                    'ml-auto': link.label === 'Next'
                 }"
                 :href="link.url"
             >
@@ -36,7 +36,7 @@
 <script>
 export default {
     props: {
-        links: Array,
+        links: { type: Array, required: true },
     },
 };
 </script>

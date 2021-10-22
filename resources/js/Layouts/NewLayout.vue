@@ -14,7 +14,7 @@
                         text-white
                     "
                 >
-                    <Disclosure as="nav" v-slot="{ open }" class="w-full">
+                    <Disclosure v-slot="{ open }" as="nav" class="w-full">
                         <div class="flex md:justify-center justify-between">
                             <div>
                                 <AppLogo class="h-8 fill-current text-white" />
@@ -86,7 +86,7 @@
                                 mt-2
                                 origin-top-right
                                 bg-white
-                                divide-y divide-gray-100
+                                divide-y divide-cool-grey-100
                                 rounded-md
                                 shadow-lg
                                 ring-1 ring-black ring-opacity-5
@@ -100,7 +100,7 @@
                                         block
                                         px-4
                                         py-2
-                                        text-xs text-gray-400
+                                        text-xs text-cool-grey-400
                                     "
                                 >
                                     Manage Account
@@ -113,8 +113,8 @@
                                         :href="route('profile.show')"
                                         :class="[
                                             active
-                                                ? 'bg-gray-100 text-gray-900'
-                                                : 'text-gray-700',
+                                                ? 'bg-cool-grey-100 text-cool-grey-900'
+                                                : 'text-cool-grey-700',
                                             'block px-4 py-2 text-sm'
                                         ]"
                                     >
@@ -133,8 +133,8 @@
                                         :href="route('api-tokens.index')"
                                         :class="[
                                             active
-                                                ? 'bg-gray-100 text-gray-900'
-                                                : 'text-gray-700',
+                                                ? 'bg-cool-grey-100 text-cool-grey-900'
+                                                : 'text-cool-grey-700',
                                             'block px-4 py-2 text-sm'
                                         ]"
                                     >
@@ -148,8 +148,8 @@
                                     <div
                                         :class="[
                                             active
-                                                ? 'bg-gray-100 text-gray-900'
-                                                : 'text-gray-700',
+                                                ? 'bg-cool-grey-100 text-cool-grey-900'
+                                                : 'text-cool-grey-700',
                                             'block px-4 py-2 text-sm'
                                         ]"
                                     >
@@ -210,27 +210,21 @@ import { Inertia } from '@inertiajs/inertia';
 import { usePage } from '@inertiajs/inertia-vue3';
 import { useToast } from 'vue-toastification';
 
-import JetBanner from '@/Jetstream/Banner';
-import NavLink from '@/Shared/NavLink';
-import AppLogo from '@/Shared/AppLogo';
-
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
+import {
+    Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItems, MenuItem,
+} from '@headlessui/vue';
 import {
     MenuIcon,
     XIcon,
     ChevronDownIcon,
     LogoutIcon,
     UserCircleIcon,
-    PresentationChartBarIcon,
-    UsersIcon,
-    DocumentTextIcon,
-    UserGroupIcon
 } from '@heroicons/vue/outline';
+import AppLogo from '@/Shared/AppLogo';
+import NavLink from '@/Shared/NavLink';
 
 export default {
     components: {
-        JetBanner,
         NavLink,
         Disclosure,
         DisclosureButton,
@@ -244,11 +238,7 @@ export default {
         ChevronDownIcon,
         LogoutIcon,
         UserCircleIcon,
-        PresentationChartBarIcon,
-        UsersIcon,
-        DocumentTextIcon,
-        UserGroupIcon,
-        AppLogo
+        AppLogo,
     },
 
     setup() {
@@ -257,19 +247,31 @@ export default {
         const navigation = ref([
             {
                 name: 'Dashboard',
-                href: route('dashboard'),
-                current: route().current('dashboard')
+                get href() {
+                    return route('dashboard');
+                },
+                get current() {
+                    return route().current('dashboard');
+                },
             },
             {
                 name: 'Policies',
-                href: route('policies'),
-                current: route().current('policies')
+                get href() {
+                    return route('policies');
+                },
+                get current() {
+                    return route().current('policies');
+                },
             },
             {
                 name: 'Contacts',
-                href: route('contacts'),
-                current: route().current('contacts')
-            }
+                get href() {
+                    return route('contacts');
+                },
+                get current() {
+                    return route().current('contacts');
+                },
+            },
         ]);
 
         const toast = useToast();
@@ -290,8 +292,8 @@ export default {
             logout,
             navOpen,
             navigation,
-            toast
+            toast,
         };
-    }
+    },
 };
 </script>

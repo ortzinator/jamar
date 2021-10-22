@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Testing\Assert;
 use Tests\TestCase;
 
@@ -61,6 +62,20 @@ class PolicyTest extends TestCase
         Policy::factory(10)->create();
 
         $this->get('policies/?search=1234')->assertInertia(
+            fn(Assert $page) => $page->has('policies.data', 1)
+        );
+    }
+
+    public function test_can_search_policies_by_contact()
+    {
+        $this->signIn(true);
+
+        $policy = Policy::factory()
+            ->hasContacts(['name' => 'JamesTKirk'])
+            ->create(['number' => '1234']);
+        Policy::factory(10)->create();
+
+        $this->get('policies/?search=JamesTKirk')->assertInertia(
             fn(Assert $page) => $page->has('policies.data', 1)
         );
     }

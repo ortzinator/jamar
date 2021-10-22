@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="flex space-x-4 mb-4">
+        <div class="mb-4 md:flex md:space-x-4 md:space-y-0 space-y-4">
             <div class="flex-auto">
                 <jet-label for="number" value="Field Name" />
                 <jet-input
-                    v-model="field.name"
                     id="name"
+                    v-model="field.name"
                     type="text"
                     class="w-full"
                 />
@@ -13,13 +13,13 @@
             <div class="flex-auto">
                 <jet-label for="number" value="Field Value" />
                 <jet-input
-                    v-model="field.value"
                     id="value"
+                    v-model="field.value"
                     type="text"
                     class="w-full"
                 />
             </div>
-            <button class="btn mt-4 hover:underline" type="button" @click="add">
+            <button class="font-bold mt-4 hover:underline" type="button" @click="add">
                 Add Field
             </button>
         </div>
@@ -34,45 +34,47 @@
 </template>
 
 <script>
+import { ref, reactive } from 'vue';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 
 export default {
-    emits: ['added'],
     components: {
         JetInput,
-        JetLabel
+        JetLabel,
     },
-    data() {
+    emits: ['added'],
+    setup(props, context) {
+        const field = reactive({
+            name: null,
+            value: null,
+        });
+        let errors = ref([]);
+
+        function validate() {
+            errors = [];
+
+            if (field.name) {
+                return true;
+            }
+            errors.value.push('Field name is required');
+            return false;
+        }
+
+        function reset() {
+            field.name = null;
+            field.value = null;
+        }
+
+        function add() {
+            if (!validate()) return;
+            context.emit('added', { ...field });
+            reset();
+        }
+
         return {
-            field: {
-                name: null,
-                value: null
-            },
-            errors: []
+            field, errors, reset, add,
         };
     },
-    methods: {
-        add() {
-            if (!this.validate()) return;
-            this.$emit('added', this.field);
-            this.reset();
-        },
-        reset() {
-            this.field = {
-                name: null,
-                value: null
-            };
-        },
-        validate() {
-            this.errors = [];
-
-            if (this.field.name) {
-                return true;
-            } else {
-                this.errors.push('Field name is required');
-            }
-        }
-    }
 };
 </script>

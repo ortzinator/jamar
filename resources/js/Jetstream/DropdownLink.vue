@@ -1,6 +1,7 @@
 <template>
     <div>
         <button
+            v-if="as == 'button'"
             type="submit"
             class="
                 block
@@ -9,19 +10,19 @@
                 py-2
                 text-sm
                 leading-5
-                text-gray-700 text-left
-                hover:bg-gray-100
-                focus:outline-none focus:bg-gray-100
+                text-cool-grey-700 text-left
+                hover:bg-cool-grey-100
+                focus:outline-none focus:bg-cool-grey-100
                 transition
                 duration-150
                 ease-in-out
             "
-            v-if="as == 'button'"
         >
             <slot></slot>
         </button>
 
         <inertia-link
+            v-else
             :href="href"
             class="
                 block
@@ -29,14 +30,13 @@
                 py-2
                 text-sm
                 leading-5
-                text-gray-700
-                hover:bg-gray-100
-                focus:outline-none focus:bg-gray-100
+                text-cool-grey-700
+                hover:bg-cool-grey-100
+                focus:outline-none focus:bg-cool-grey-100
                 transition
                 duration-150
                 ease-in-out
             "
-            v-else
         >
             <slot></slot>
         </inertia-link>
@@ -45,6 +45,6 @@
 
 <script>
 export default {
-    props: ["href", "as"],
+    props: ['href', 'as'],
 };
 </script>

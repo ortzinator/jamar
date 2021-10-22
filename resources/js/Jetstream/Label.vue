@@ -1,5 +1,5 @@
 <template>
-    <label class="block font-medium text-sm text-gray-700 md:mt-2">
+    <label class="block font-medium text-sm text-cool-grey-700 md:mt-2">
         <span v-if="value">{{ value }}</span>
         <span v-else><slot></slot></span>
     </label>
@@ -7,6 +7,6 @@
 
 <script>
 export default {
-    props: ["value"],
+    props: ['value'],
 };
 </script>

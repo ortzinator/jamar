@@ -1,11 +1,11 @@
 <template>
     <input
+        v-model="proxyChecked"
         type="checkbox"
         :value="value"
-        v-model="proxyChecked"
         class="
             rounded
-            border-gray-300
+            border-cool-grey-300
             text-light-blue-vivid-600
             shadow-sm
             focus:border-light-blue-vivid-300
@@ -18,7 +18,6 @@
 
 <script>
 export default {
-    emits: ["update:checked"],
 
     props: {
         checked: {
@@ -29,6 +28,7 @@ export default {
             default: null,
         },
     },
+    emits: ['update:checked'],
 
     computed: {
         proxyChecked: {
@@ -37,7 +37,7 @@ export default {
             },
 
             set(val) {
-                this.$emit("update:checked", val);
+                this.$emit('update:checked', val);
             },
         },
     },

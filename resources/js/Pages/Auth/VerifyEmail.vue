@@ -4,15 +4,15 @@
             <jet-authentication-card-logo />
         </template>
 
-        <div class="mb-4 text-sm text-gray-600">
+        <div class="mb-4 text-sm text-cool-grey-600">
             Thanks for signing up! Before getting started, could you verify your
             email address by clicking on the link we just emailed to you? If you
             didn't receive the email, we will gladly send you another.
         </div>
 
         <div
-            class="mb-4 font-medium text-sm text-green-600"
             v-if="verificationLinkSent"
+            class="mb-4 font-medium text-sm text-green-600"
         >
             A new verification link has been sent to the email address you
             provided during registration.
@@ -31,7 +31,11 @@
                     :href="route('logout')"
                     method="post"
                     as="button"
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
+                    class="
+                        underline
+                        text-sm text-cool-grey-600
+                        hover:text-cool-grey-900
+                    "
                 >
                     Log Out
                 </inertia-link>
@@ -41,9 +45,9 @@
 </template>
 
 <script>
-import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
-import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
-import JetButton from "@/Jetstream/Button";
+import JetAuthenticationCard from '@/Jetstream/AuthenticationCard';
+import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo';
+import JetButton from '@/Jetstream/Button';
 
 export default {
     components: {
@@ -53,7 +57,7 @@ export default {
     },
 
     props: {
-        status: String,
+        status: { type: String, required: true },
     },
 
     data() {
@@ -62,15 +66,15 @@ export default {
         };
     },
 
-    methods: {
-        submit() {
-            this.form.post(this.route("verification.send"));
+    computed: {
+        verificationLinkSent() {
+            return this.status === 'verification-link-sent';
         },
     },
 
-    computed: {
-        verificationLinkSent() {
-            return this.status === "verification-link-sent";
+    methods: {
+        submit() {
+            this.form.post(this.route('verification.send'));
         },
     },
 };

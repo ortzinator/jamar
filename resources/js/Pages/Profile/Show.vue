@@ -1,6 +1,6 @@
 <template>
     <div class="font-bold py-5">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h1 class="font-semibold text-xl text-cool-grey-800 leading-tight">
             Profile
         </h1>
     </div>
@@ -47,17 +47,15 @@ import UpdatePasswordForm from './UpdatePasswordForm';
 import UpdateProfileInformationForm from './UpdateProfileInformationForm';
 
 export default {
-    props: ['sessions'],
-    layout: AppLayout,
-
     components: {
-        AppLayout,
         DeleteUserForm,
         JetSectionBorder,
         LogoutOtherBrowserSessionsForm,
         TwoFactorAuthenticationForm,
         UpdatePasswordForm,
-        UpdateProfileInformationForm
-    }
+        UpdateProfileInformationForm,
+    },
+    layout: AppLayout,
+    props: { sessions: { type: Array, required: true } },
 };
 </script>

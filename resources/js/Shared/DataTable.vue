@@ -4,8 +4,8 @@
             <th
                 v-for="column in columns"
                 :key="column.value"
-                v-text="column.text"
                 class="px-6 pt-6 pb-4"
+                v-text="column.text"
             />
         </tr>
         <tr v-for="row in dataSource" :key="row.id">
@@ -41,7 +41,12 @@
 <script>
 export default {
     props: {
-        columns: { type: Array, required: false },
+        columns: {
+            type: Array,
+            default() {
+                return [];
+            },
+        },
         dataSource: { type: Object, required: true },
         routeName: { type: String, required: true },
     },

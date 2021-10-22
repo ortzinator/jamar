@@ -77,16 +77,15 @@ import Text from '@/Widgets/Text';
 import Alert from '@/Shared/Alert';
 
 export default {
-    layout: AppLayout,
     components: {
-        AppLayout,
         EndingSoon,
         Text,
-        Alert
+        Alert,
     },
+    layout: AppLayout,
     setup() {
         const user = computed(() => usePage().props.value.user);
         return { user };
-    }
+    },
 };
 </script>

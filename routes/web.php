@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\PolicyController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -103,4 +104,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         PolicyController::class,
         'destroy'
     ])->name('policies.destroy');
+
+    Route::resource('histories', HistoryController::class);
 });

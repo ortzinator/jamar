@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <template>
     <inertia-link :href="'/'">
         <svg

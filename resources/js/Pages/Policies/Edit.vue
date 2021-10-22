@@ -16,6 +16,8 @@
         </h1>
     </div>
 
+    <div class="flex max-w-3xl mb-2"><HistoryModal :policy="policy" /></div>
+
     <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
         <div
             v-if="policy.deleted_at"
@@ -37,7 +39,7 @@
             <div class="flex items-center">
                 <exclamation-icon class="h-5 mr-2 w-5" />
                 <div class="text-lg">
-                    This policy does not have any contacts
+                    This policy does not have any policyholders
                 </div>
             </div>
         </div>
@@ -46,8 +48,8 @@
             <div class="mb-5">
                 <jet-label for="number" value="Policy Number" />
                 <jet-input
-                    v-model="policyForm.number"
                     id="number"
+                    v-model="policyForm.number"
                     type="text"
                     class="block w-full"
                 />
@@ -57,28 +59,29 @@
             <div class="mb-5">
                 <jet-label value="Date Issued" />
                 <date-picker v-model="policyForm.created_at" mode="dateTime">
-                    <template v-slot="{ inputValue }">
+                    <template #default="{ inputValue }">
                         <jet-input
-                            :value="inputValue"
                             id="created_at"
+                            :value="inputValue"
                             type="text"
-                            class="block w-full text-gray-400"
+                            class="block w-full text-cool-grey-400"
                             readonly
                         />
                     </template>
                 </date-picker>
             </div>
+
             <div class="mb-5">
                 <jet-label value="Assigned Agent" />
                 <select
-                    class="border border-cool-grey-200 mr-5 rounded mt-1"
                     id="agent"
                     v-model="policyForm.agent_id"
+                    class="border border-cool-grey-200 mr-5 rounded mt-1"
                 >
                     <option
                         v-for="agent in users"
-                        v-bind:value="agent.id"
-                        v-bind:key="agent.id"
+                        :key="agent.id"
+                        :value="agent.id"
                     >
                         {{ agent.name }}
                     </option>
@@ -86,17 +89,26 @@
             </div>
 
             <div class="mb-5">
-                <div class="text-gray-600 text-sm text-left">
+                <jet-label value="Premium" />
+                <CurrencyTextBox
+                    id="premium"
+                    v-model="policyForm.premium"
+                    class="border border-cool-grey-200 mr-5 rounded mt-1"
+                />
+            </div>
+
+            <div class="mb-5">
+                <div class="text-cool-grey-600 text-sm text-left">
                     Period of Insurance
                 </div>
                 <date-range v-model="policyForm.range" />
             </div>
 
             <policy-fields-list
+                class="mb-5"
                 :fields="policyForm.fields"
                 :policy="policy"
-                @fieldAdded="(field) => this.policyForm.fields.push(field)"
-                class="mb-5"
+                @fieldAdded="(field) => policyForm.fields.push(field)"
             ></policy-fields-list>
 
             <contact-list
@@ -105,21 +117,13 @@
                 class="mb-5"
                 removable
             >
-                Contacts
+                Policyholders
             </contact-list>
 
             <select-contact @selected="contactSelected"></select-contact>
         </div>
         <div
-            class="
-                px-8
-                py-4
-                bg-gray-100
-                border-t border-gray-200
-                flex
-                justify-between
-                items-center
-            "
+            class="px-8 py-4 bg-cool-grey-50 flex justify-between items-center"
         >
             <button
                 v-if="!policy.deleted_at"
@@ -151,45 +155,46 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
+import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
+import { DatePicker } from 'v-calendar';
 import AppLayout from '@/Layouts/NewLayout';
-import { ExclamationIcon } from '@heroicons/vue/outline';
-import { TrashIcon } from '@heroicons/vue/outline';
+
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
 import ContactList from '@/Shared/Contact/ContactList';
 import SelectContact from '@/Shared/Contact/SelectContact';
 import LoadingButton from '@/Shared/LoadingButton';
 import DateRange from '@/Shared/DateRange';
-import { DatePicker } from 'v-calendar';
+import HistoryModal from '@/Shared/HistoryModal';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
+import CurrencyTextBox from '@/Shared/CurrencyTextBox';
 
 export default {
-    layout: AppLayout,
     components: {
-        AppLayout,
         ExclamationIcon,
         TrashIcon,
         JetInput,
         JetLabel,
         JetInputError,
-        JetValidationErrors,
         PolicyFieldsList,
         ContactList,
         LoadingButton,
         SelectContact,
         DateRange,
-        DatePicker
+        DatePicker,
+        HistoryModal,
+        CurrencyTextBox,
     },
+    layout: AppLayout,
     props: {
-        errors: Object,
-        policy: Object,
-        fields: Array,
-        users: { type: Array, required: true }
+        errors: { type: Object, required: true },
+        policy: { type: Object, required: true },
+        fields: { type: Array, required: true },
+        users: { type: Array, required: true },
     },
     setup(props) {
         const policyForm = useForm({
@@ -198,10 +203,11 @@ export default {
             created_at: props.policy.created_at,
             range: {
                 start: props.policy.period_start,
-                end: props.policy.period_end
+                end: props.policy.period_end,
             },
             fields: props.policy.fields ?? [],
-            agent_id: props.policy.agent_id
+            agent_id: props.policy.agent_id,
+            premium: props.policy.premium,
         });
 
         const sending = ref(false);
@@ -212,34 +218,28 @@ export default {
                 .transform((data) => ({
                     ...data,
                     period_start: data.range.start,
-                    period_end: data.range.end
+                    period_end: data.range.end,
                 }))
                 .put(route('policies.update', props.policy.id));
         }
+        const premium = ref(props.policy.premium);
+        watch(premium, () => console.log(policyForm.premium.amount));
 
         function destroy() {
-            //TODO check if contact is associated with a policy
-            if (confirm('Are you sure you want to delete this policy?')) {
+            // TODO check if contact is associated with a policy
+            if (window.confirm('Are you sure you want to delete this policy?')) {
                 policyForm.delete(route('policies.destroy', props.policy.id));
             }
         }
 
         function restore() {
-            if (confirm('Are you sure you want to restore this policy?')) {
+            if (window.confirm('Are you sure you want to restore this policy?')) {
                 policyForm.put(route('policies.restore', props.policy.id));
             }
         }
 
         function contactSelected(contact) {
             policyForm.contacts.push(contact);
-        }
-
-        function formatDate(date) {
-            return new Date(date).toLocaleDateString(undefined, {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
         }
 
         return {
@@ -250,8 +250,7 @@ export default {
             destroy,
             restore,
             contactSelected,
-            formatDate
         };
-    }
+    },
 };
 </script>

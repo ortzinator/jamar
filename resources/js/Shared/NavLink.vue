@@ -20,13 +20,13 @@
 
 <script>
 export default {
-    props: ["href", "active"],
+    props: { href: { type: String, required: true }, active: { type: Boolean, required: true } },
 
     computed: {
         classes() {
             return this.active
-                ? "bg-light-blue-vivid-600 border-light-blue-vivid-500 border-r-4 text-cool-grey-100"
-                : "";
+                ? 'bg-light-blue-vivid-600 border-light-blue-vivid-500 border-r-4 text-cool-grey-100'
+                : '';
         },
     },
 };

@@ -10,12 +10,12 @@
                 <tr
                     v-for="index in 5"
                     :key="index"
-                    class="border-t border-gray-100 animate-pulse"
+                    class="border-t border-cool-grey-100 animate-pulse"
                 >
-                    <td v-for="index in 2" :key="index" class="py-2 px-4">
+                    <td v-for="windex in 2" :key="windex" class="py-2 px-4">
                         <span>
                             <div
-                                class="bg-gray-200 rounded-lg"
+                                class="bg-cool-grey-200 rounded-lg"
                                 :style="`width: ${
                                     Math.floor(Math.random() * 51) + 50
                                 }%;`"
@@ -30,7 +30,7 @@
                 <tr
                     v-for="policy in results.slice(0, 5)"
                     :key="policy.id"
-                    class="border-t border-gray-100"
+                    class="border-t border-cool-grey-100"
                 >
                     <td class="py-2 px-4">
                         <inertia-link :href="route('policies.edit', policy.id)">
@@ -40,17 +40,26 @@
                     <td
                         class="py-2"
                         :class="{
-                            'text-red-vivid-500': isInPast(policy.period_end),
+                            'text-red-vivid-500': isInPast(policy.period_end)
                         }"
                     >
-                        {{ formatDate(policy.period_end) }}
+                        <span
+                            :title="
+                                formatDate(
+                                    policy.period_end,
+                                    'YYYY-MM-DD HH:mm:ss Z[Z]'
+                                )
+                            "
+                        >
+                            {{ formatDate(policy.period_end) }}
+                        </span>
                     </td>
                 </tr>
             </tbody>
         </table>
         <div
             v-if="!loading && results.length > 5"
-            class="text-gray-400 text-sm mb-2"
+            class="text-cool-grey-400 text-sm mb-2"
         >
             <inertia-link :href="route('policies.ending')">
                 Plus {{ results.length - 5 }} more
@@ -58,7 +67,13 @@
         </div>
         <div class="flex items-center">
             <span
-                class="w-3 h-3 border-2 border-gray-800 bg-red-vivid-500 mr-2"
+                class="
+                    w-3
+                    h-3
+                    border-2 border-cool-grey-800
+                    bg-red-vivid-500
+                    mr-2
+                "
             ></span>
             = Overdue
         </div>
@@ -66,54 +81,37 @@
 </template>
 
 <script>
-import { onMounted, computed, ref, reactive } from "vue";
-import dayjs from "dayjs";
+import { onMounted, ref } from 'vue';
+import { formatDate, isInPast } from '@/util.js';
 
 export default {
     setup() {
-        var loading = ref(true);
-        var cancelSource = ref(null);
-        var results = ref([]);
+        const loading = ref(true);
+        const results = ref([]);
 
-        const start = computed(() => {
-            return dayjs.unix(1).format("YYYY-MM-DD"); //The beginning of (UNIX) time
-        });
-
-        const end = computed(() => {
-            return dayjs().add(1, "week").format("YYYY-MM-DD"); //A week from now
-        });
-
-        function formatDate(date) {
-            return dayjs(date).format("MM-DD-YYYY");
-        }
-
-        function isInPast(date) {
-            return dayjs(date).isBefore(dayjs());
-        }
-
+        let cancelSource = null;
         onMounted(() => {
-            if (cancelSource.value) {
-                cancelSource.value.cancel();
+            if (cancelSource) {
+                cancelSource.cancel();
             }
-            cancelSource.value = axios.CancelToken.source();
+            cancelSource = axios.CancelToken.source();
 
             loading.value = true;
 
             axios
-                .get(route("policies.ending"), {
-                    cancelToken: cancelSource.value.token,
+                .get(route('policies.ending'), {
+                    cancelToken: cancelSource.token,
                 })
                 .then((response) => {
                     if (response) {
                         results.value = response.data;
                         loading.value = false;
-                        cancelSource.value = null;
+                        cancelSource = null;
                     }
                 });
         });
         return {
             loading,
-            cancelSource,
             results,
             formatDate,
             isInPast,

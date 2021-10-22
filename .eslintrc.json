@@ -1,0 +1,39 @@
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "commonjs": true
+    },
+    "extends": ["eslint:recommended", "plugin:vue/vue3-recommended", "airbnb"],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": ["vue"],
+    "globals": { "_": true, "route": true, "axios": true, "confirm": true },
+    "overrides": [],
+    "rules": {
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "vue/html-indent": [
+            "error",
+            4,
+            {
+                "attribute": 1,
+                "baseIndent": 1,
+                "closeBracket": 0,
+                "alignAttributesVertically": true,
+                "ignores": []
+            }
+        ],
+        "vue/html-self-closing": ["off"],
+        "vue/max-attributes-per-line": ["off"],
+        "vue/singleline-html-element-content-newline": ["off"],
+        "import/no-unresolved": ["off"],
+        "import/extensions": ["off"],
+        "import/no-extraneous-dependencies": ["off"],
+        "no-shadow": ["off"],
+        "no-return-assign": ["off"]
+    }
+}

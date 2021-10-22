@@ -25,18 +25,25 @@
         "axios": "^0.21",
         "cypress": "^8.3.1",
         "dayjs": "^1.10.6",
+        "dinero.js": "^2.0.0-alpha.8",
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb": "^18.2.1",
+        "eslint-plugin-vue": "^7.19.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.2.1",
         "postcss-import": "^12.0.1",
-        "prettier": "^2.3.2",
         "tailwindcss": "^2.2.7",
         "v-calendar": "^3.0.0-alpha.5",
         "vue": "^3.2.11",
+        "vue-eslint-parser": "^7.11.0",
         "vue-loader": "^16.1.2",
         "vue3-popper": "^1.0.2"
     },
     "dependencies": {
+        "@dinero.js/currencies": "^2.0.0-alpha.8",
+        "@easymoney/formatter": "^1.1.0",
+        "@easymoney/money": "^1.0.2",
         "vue-toastification": "^2.0.0-rc.1"
     }
 }

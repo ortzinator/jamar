@@ -10,8 +10,8 @@
                 <div class="flex shadow rounded bg-white cursor-default">
                     <filter-select v-model="searchForm.trashed" />
                     <input
-                        type="text"
                         v-model="searchForm.search"
+                        type="text"
                         placeholder="Search..."
                         class="border-0 rounded-r w-full"
                     />
@@ -19,8 +19,8 @@
                 <button
                     class="
                         ml-3
-                        text-sm text-gray-500
-                        hover:text-gray-700
+                        text-sm text-cool-grey-500
+                        hover:text-cool-grey-700
                         focus:text-light-blue-vivid-500
                     "
                     type="button"
@@ -40,9 +40,9 @@
         <div class="">
             <div class="shadow rounded bg-white overflow-x-auto">
                 <DataTable
-                    :dataSource="contacts.data"
+                    route-name="contacts.edit"
                     :columns="columns"
-                    routeName="contacts.edit"
+                    :data-source="contacts.data"
                 />
             </div>
             <pagination :links="contacts.links"></pagination>
@@ -57,55 +57,45 @@ import { useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/NewLayout';
 import Pagination from '@/Shared/Pagination';
 import FilterSelect from '@/Shared/FilterSelect';
-import JetCheckbox from '@/Jetstream/Checkbox';
-import { ChevronRightIcon } from '@heroicons/vue/outline';
 import DataTable from '@/Shared/DataTable';
 
 export default {
-    props: { sessions: Object, contacts: Object, filters: Object },
-    layout: AppLayout,
-
     components: {
-        AppLayout,
         Pagination,
-        JetCheckbox,
-        ChevronRightIcon,
         DataTable,
-        FilterSelect
+        FilterSelect,
+    },
+    layout: AppLayout,
+    props: {
+        contacts: { type: Object, required: true },
+        filters: { type: Object, required: true },
     },
     setup(props) {
         const searchForm = useForm({
             search: props.filters.search,
-            trashed: props.filters.trashed
+            trashed: props.filters.trashed,
         });
 
         const columns = ref([
             { text: 'Name', value: 'name' },
             { text: 'Address', value: 'address' },
-            { text: 'Policies', value: 'policies_count' }
+            { text: 'Policies', value: 'policies_count' },
         ]);
 
-        const refreshSearch = _.debounce(function () {
+        const refreshSearch = _.debounce(() => {
             searchForm
                 .transform((data) => _.pickBy(data))
                 .get('/contacts', {
                     only: ['contacts'],
                     preserveState: true,
-                    preserveScroll: true
+                    preserveScroll: true,
                 });
         }, 400);
 
-        const formVals = computed(() => {
-            return {
-                search: searchForm.search,
-                trashed: searchForm.trashed
-            };
-        });
-
-        function formatDate(date) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return new Date(date).toLocaleDateString(undefined, options);
-        }
+        const formVals = computed(() => ({
+            search: searchForm.search,
+            trashed: searchForm.trashed,
+        }));
 
         function reset() {
             searchForm.search = '';
@@ -122,10 +112,9 @@ export default {
             searchForm,
             refreshSearch,
             reset,
-            formatDate,
             contactLink,
-            columns
+            columns,
         };
-    }
+    },
 };
 </script>

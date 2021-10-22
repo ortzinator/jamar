@@ -2,17 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\History;
 use App\Models\Policy;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PolicyFactory extends Factory
+class HistoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Policy::class;
+    protected $model = History::class;
 
     /**
      * Define the model's default state.
@@ -22,12 +24,10 @@ class PolicyFactory extends Factory
     public function definition()
     {
         return [
-            'number' => $this->faker->regexify('[A-Za-z0-9]{8}'),
-            'period_start' => now()->subDays(rand(0, 10)),
-            'period_end' => now()->addDays(rand(5, 10)),
-            'agent_id' => 1,
-            'currency' => 'PHP',
-            'premium' => $this->faker->randomNumber(4)
+            'message' => $this->faker->sentence(),
+            'policy_id' => Policy::factory(),
+            'user_id' => User::factory(),
+            'event_type' => 'note'
         ];
     }
 }
