@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             ])
             ->assignRole('Employee');
 
-        $contacts = Contact::factory(50)->create();
+        $contacts = Contact::factory(800)->create();
 
         $contacts->map(function ($item, $key) {
             Policy::factory()

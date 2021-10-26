@@ -30,8 +30,7 @@ class PolicyController extends Controller
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
             'policies' => Policy::query()
-                ->select('id', 'number', 'updated_at', 'premium')
-                ->latest()
+                ->orderBy('policies.created_at')
                 ->with('contacts:name,id')
                 ->filter($request->only('search', 'trashed'))
                 ->paginate()

@@ -15,7 +15,7 @@ class CreatePolicyTable extends Migration
     {
         Schema::create('policies', function (Blueprint $table) {
             $table->id();
-            $table->string('number');
+            $table->string('number')->index()->unique();
             $table->timestamp('period_start');
             $table->timestamp('period_end');
             $table->timestamp('cancelled_at')->nullable();

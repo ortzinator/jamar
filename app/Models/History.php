@@ -17,6 +17,8 @@ class History extends Model
 
     protected $appends = ['user_name'];
 
+    protected $with = ['user'];
+
     public function getUserNameAttribute()
     {
         return $this->user->name;

@@ -36,7 +36,7 @@ class Policy extends Model
         });
         static::updated(function (Policy $policy) {
             $policy->history()->create([
-                'event_type' => 'policy_created',
+                'event_type' => 'policy_updated',
                 'policy_id' => $policy->id,
                 'user_id' => Auth::id() ? Auth::id() : $policy->agent_id
             ]);
@@ -47,14 +47,14 @@ class Policy extends Model
     {
         $query
             ->when($filters['search'] ?? null, function ($query, $search) {
-                $query
-                    ->where(function ($query) use ($search) {
-                        $query->where('number', 'like', '%' . $search . '%');
-                        $query->orWhere('fields', 'like', '%' . $search . '%');
-                    })
-                    ->orWhereHas('contacts', function ($query) use ($search) {
-                        $query->where('name', 'like', '%' . $search . '%');
-                    });
+                $search = $search . '%';
+                $query->where(function ($query) use ($search) {
+                    $query->where('number', 'like', $search)
+                        ->orWhere('fields', 'like', '%' . $search)
+                        ->orWhereHas('contacts', function ($query) use ($search) {
+                            $query->where('name', 'like', $search);
+                        });
+                });
             })
             ->when($filters['trashed'] ?? null, function ($query, $trashed) {
                 if ($trashed === 'with') {
