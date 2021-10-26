@@ -150,7 +150,7 @@ export default {
 
         const columns = ref([
             { text: 'Number', value: 'number' },
-            { text: 'Contacts', value: 'contactNamesPreview' },
+            { text: 'Policyholders', value: 'contactNamesPreview' },
             { text: 'Premium', value: 'premium' },
             { text: 'Date Issued', value: 'created_at' },
             { text: 'Ending', value: 'period_end' },

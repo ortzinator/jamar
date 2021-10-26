@@ -33520,7 +33520,7 @@ __webpack_require__.r(__webpack_exports__);
       text: 'Number',
       value: 'number'
     }, {
-      text: 'Contacts',
+      text: 'Policyholders',
       value: 'contactNamesPreview'
     }, {
       text: 'Premium',
