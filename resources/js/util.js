@@ -24,4 +24,22 @@ function addDecimal(amount, subunit) {
     return output;
 }
 
-export { formatDate, isInPast, addDecimal };
+function highlight(text, searchTerm) {
+    if (!searchTerm) {
+        return text;
+    }
+
+    const escaped = new RegExp(
+        searchTerm.replace(/[.*?^${}()[\]]/g, '\\$&'),
+        'i',
+    );
+
+    return text.replace(
+        escaped,
+        '<mark class="bg-light-blue-vivid-600 text-white">$&</mark>',
+    );
+}
+
+export {
+    formatDate, isInPast, addDecimal, highlight,
+};

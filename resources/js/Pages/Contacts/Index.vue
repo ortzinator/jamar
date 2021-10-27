@@ -43,7 +43,14 @@
                     route-name="contacts.edit"
                     :columns="columns"
                     :data-source="contacts.data"
-                />
+                >
+                    <template #[`column.name`]="{ value }">
+                        <span v-html="highlight(value, searchForm.search)" />
+                    </template>
+                    <template #[`column.address`]="{ value }">
+                        <span v-html="highlight(value, searchForm.search)" />
+                    </template>
+                </DataTable>
             </div>
             <pagination :links="contacts.links"></pagination>
         </div>
@@ -53,6 +60,7 @@
 <script>
 import { watch, computed, ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
+import { highlight } from '@/util.js';
 
 import AppLayout from '@/Layouts/NewLayout';
 import Pagination from '@/Shared/Pagination';
@@ -114,6 +122,7 @@ export default {
             reset,
             contactLink,
             columns,
+            highlight,
         };
     },
 };

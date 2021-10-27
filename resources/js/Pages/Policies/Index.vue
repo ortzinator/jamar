@@ -44,7 +44,7 @@
                 route-name="policies.edit"
             >
                 <template #[`column.number`]="{ value }">
-                    <span v-html="highlight(value)" />
+                    <span v-html="highlight(value, searchForm.search)" />
                 </template>
                 <template #[`column.period_end`]="{ value }">
                     <span :class="{ 'text-red-vivid-500': isInPast(value) }">
@@ -71,7 +71,7 @@
                             overflow-ellipsis overflow-hidden
                             whitespace-nowrap
                         "
-                        v-html="highlight(value)"
+                        v-html="highlight(value, searchForm.search)"
                     />
                 </template>
             </DataTable>
@@ -90,7 +90,7 @@ import Pagination from '@/Shared/Pagination';
 import DataTable from '@/Shared/DataTable';
 import FilterSelect from '@/Shared/FilterSelect';
 
-import { formatDate, isInPast } from '@/util.js';
+import { formatDate, isInPast, highlight } from '@/util.js';
 
 export default {
     components: {
@@ -128,22 +128,6 @@ export default {
         function reset() {
             searchForm.search = '';
             searchForm.trashed = null;
-        }
-
-        function highlight(text) {
-            if (!searchForm.search) {
-                return text;
-            }
-
-            const escaped = new RegExp(
-                searchForm.search.replace(/[.*?^${}()[\]]/g, '\\$&'),
-                'i',
-            );
-
-            return text.replace(
-                escaped,
-                '<mark class="bg-light-blue-vivid-600 text-white">$&</mark>',
-            );
         }
 
         watch(formVals, () => refreshSearch());
