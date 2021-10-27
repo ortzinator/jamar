@@ -9,7 +9,7 @@ tasks:
     - name: Mix
       init: >
           nvm install node --latest-npm &&
-          npm i &&
+          npm i
       command: >
           gp sync-await start &&
           npx mix watch
