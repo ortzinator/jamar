@@ -116,6 +116,7 @@
                 :contacts="policyForm.contacts"
                 class="mb-5"
                 removable
+                @contactClicked="handleContactClick"
             >
                 Policyholders
             </contact-list>
@@ -193,7 +194,7 @@ export default {
     props: {
         errors: { type: Object, required: true },
         policy: { type: Object, required: true },
-        fields: { type: Array, required: true },
+        fields: { type: Array, required: false, default() { return []; } },
         users: { type: Array, required: true },
     },
     setup(props) {
@@ -242,6 +243,10 @@ export default {
             policyForm.contacts.push(contact);
         }
 
+        function handleContactClick(contact) {
+            window.open(contact.link, '_blank').focus();
+        }
+
         return {
             policyForm,
             sending,
@@ -250,6 +255,7 @@ export default {
             destroy,
             restore,
             contactSelected,
+            handleContactClick,
         };
     },
 };
