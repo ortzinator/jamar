@@ -12,6 +12,9 @@ function isInPast(date) {
 }
 
 function addDecimal(amount, subunit) {
+    if (typeof amount !== 'string') {
+        throw new TypeError('amount must be a string');
+    }
     let output = amount;
     let { length } = output;
     if (subunit > length - 1) {

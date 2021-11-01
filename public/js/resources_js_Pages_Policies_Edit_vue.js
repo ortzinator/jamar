@@ -164,7 +164,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       policyForm.transform(function (data) {
         return _objectSpread(_objectSpread({}, data), {}, {
           period_start: data.range.start,
-          period_end: data.range.end
+          period_end: data.range.end,
+          premium: data.premium.amount
         });
       }).put(route('policies.update', props.policy.id));
     }
@@ -396,7 +397,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var formattedValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
       get: function get() {
         if (focused.value === false) {
-          if (errors.value.length > 0) {
+          console.log(rawValue.value);
+
+          if (errors.value.length > 0 || !(rawValue.value > 0)) {
             return rawValue.value;
           }
 
@@ -1193,7 +1196,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "border border-cool-grey-200 mr-5 rounded mt-1"
   }, null, 8
   /* PROPS */
-  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+    message: $setup.policyForm.errors.premium
+  }, null, 8
+  /* PROPS */
+  , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_range, {
     modelValue: $setup.policyForm.range,
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $setup.policyForm.range = $event;
@@ -2225,6 +2232,10 @@ function isInPast(date) {
 }
 
 function addDecimal(amount, subunit) {
+  if (typeof amount !== 'string') {
+    throw new TypeError('amount must be a string');
+  }
+
   var output = amount;
   var _output = output,
       length = _output.length;

@@ -95,6 +95,7 @@
                     v-model="policyForm.premium"
                     class="border border-cool-grey-200 mr-5 rounded mt-1"
                 />
+                <jet-input-error :message="policyForm.errors.premium" />
             </div>
 
             <div class="mb-5">
@@ -220,6 +221,7 @@ export default {
                     ...data,
                     period_start: data.range.start,
                     period_end: data.range.end,
+                    premium: data.premium.amount,
                 }))
                 .put(route('policies.update', props.policy.id));
         }

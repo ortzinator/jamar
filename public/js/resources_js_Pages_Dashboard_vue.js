@@ -437,6 +437,10 @@ function isInPast(date) {
 }
 
 function addDecimal(amount, subunit) {
+  if (typeof amount !== 'string') {
+    throw new TypeError('amount must be a string');
+  }
+
   var output = amount;
   var _output = output,
       length = _output.length;

@@ -93,6 +93,14 @@
                             :message="policyForm.errors.period_end"
                         />
                     </div>
+                    <div class="col-span-6 sm:col-span-4">
+                        <CurrencyTextBox
+                            id="premium"
+                            v-model="policyForm.premium"
+                            class="border border-cool-grey-200 mr-5 rounded mt-1"
+                        />
+                        <jet-input-error :message="policyForm.errors.premium" />
+                    </div>
                 </div>
             </FormSection>
 
@@ -162,6 +170,7 @@ import DateRange from '@/Shared/DateRange';
 import SelectContact from '@/Shared/Contact/SelectContact';
 import ContactList from '@/Shared/Contact/ContactList';
 import FormSection from '@/Shared/FormSection';
+import CurrencyTextBox from '@/Shared/CurrencyTextBox';
 
 export default {
     components: {
@@ -175,6 +184,7 @@ export default {
         ContactList,
         ExclamationIcon,
         FormSection,
+        CurrencyTextBox,
     },
     layout: AppLayout,
     props: { users: { type: Array, required: true } },
@@ -188,6 +198,11 @@ export default {
             },
             fields: [],
             agent_id: usePage().props.value.user.id,
+            premium: {
+                amount: '0',
+                subunit: 2,
+                currency: 'PHP',
+            },
         });
 
         const templates = ref([

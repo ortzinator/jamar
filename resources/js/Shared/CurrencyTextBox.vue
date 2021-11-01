@@ -54,7 +54,9 @@ export default {
         const formattedValue = computed({
             get() {
                 if (focused.value === false) {
-                    if (errors.value.length > 0) {
+                    console.log(rawValue.value);
+                    if (errors.value.length > 0
+                        || !(rawValue.value > 0)) {
                         return rawValue.value;
                     }
                     return createMoneyIntlFormatter().format(getMoney());
