@@ -44,7 +44,7 @@ export default {
         }
 
         function hasEnoughCents(value) {
-            return value.match(/(.\d{3,})$/gm);
+            return value.match(/(\.\d{3,})$/gm);
         }
 
         function handlePaste(e) {
@@ -54,7 +54,6 @@ export default {
         const formattedValue = computed({
             get() {
                 if (focused.value === false) {
-                    console.log(rawValue.value);
                     if (errors.value.length > 0
                         || !(rawValue.value > 0)) {
                         return rawValue.value;
@@ -72,7 +71,11 @@ export default {
                     errors.value.push('Value is invalid');
                 }
 
-                if (!hasEnoughCents(value) && errors.value.length === 0) {
+                if (hasEnoughCents(value)) {
+                    return;
+                }
+
+                if (errors.value.length === 0) {
                     rawValue.value = value;
                     const newVal = { ...props.modelValue };
                     newVal.amount = stripDecimal(value);
