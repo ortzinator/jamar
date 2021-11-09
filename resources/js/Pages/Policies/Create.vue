@@ -242,6 +242,7 @@ export default {
                     ...data,
                     period_start: data.period.start,
                     period_end: data.period.end,
+                    premium: data.premium.amount,
                 }))
                 .post(route('policies.store'));
         }
