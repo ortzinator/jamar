@@ -10,7 +10,9 @@ additional_hostnames: []
 additional_fqdns: []
 mariadb_version: ''
 mysql_version: '8.0'
-use_dns_when_possible: true
+use_dns_when_possible: false
+nfs_mount_enabled: false
+mutagen_enabled: false
 composer_version: '2'
 web_environment: []
 
