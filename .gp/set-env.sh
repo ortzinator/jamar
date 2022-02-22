@@ -2,7 +2,9 @@
 
 url=$(gp url 8080)
 
-cp .env .env.dusk.local
+if [ ! -f .env.dusk.local ]; then
+  cp .env .env.dusk.local
+fi
 
-sed -i'' "s|^APP_URL=http://web*|APP_URL=$url|g" .env
-sed -i'' "s|^ASSET_URL=http://web*|ASSET_URL=$url|g" .env
+sed -i "s|^APP_URL=.*\$|APP_URL=$url|g" .env
+sed -i "s|^ASSET_URL=.*\$|ASSET_URL=$url|g" .env
