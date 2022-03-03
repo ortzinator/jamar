@@ -38,6 +38,24 @@ class ContactTest extends TestCase
             );
     }
 
+    public function test_contact_is_serialized_properly()
+    {
+        $this->signIn(true);
+
+        Contact::factory()->create();
+
+        $this->get(route('contacts.edit', 1))
+            ->assertOk()
+            ->assertInertia(
+                fn(Assert $page) => $page
+                    ->component('Contacts/Edit')
+                    ->has('contact.name')
+                    ->has('contact.address')
+                    ->has('contact.notes')
+                    ->missing('contact.id')
+            );
+    }
+
     public function test_can_search_for_contacts()
     {
         $this->signIn(true);

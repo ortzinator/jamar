@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Http\Resources\ContactResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -76,7 +77,7 @@ class ContactController extends Controller
     public function edit(Contact $contact)
     {
         return Inertia::render('Contacts/Edit', [
-            'contact' => $contact->toArray()
+            'contact' => ContactResource::make($contact)
         ]);
     }
 
