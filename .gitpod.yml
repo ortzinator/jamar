@@ -72,7 +72,6 @@ vscode:
     - bradlc.vscode-tailwindcss
     - onecentlin.laravel-blade
     - arcticicestudio.nord-visual-studio-code
-    - octref.vetur
     - wongjn.php-sniffer
     - neilbrayfield.php-docblocker
     - pkief.material-icon-theme
