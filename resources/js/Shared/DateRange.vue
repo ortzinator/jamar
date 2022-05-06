@@ -9,7 +9,7 @@
     >
         <template #default="{ inputValue, inputEvents, isDragging }">
             <div class="flex flex-col sm:flex-row justify-start items-center">
-                <div class="relative flex-grow w-full">
+                <div class="relative grow w-full">
                     <CalendarIcon
                         class="
                             text-cool-grey-600
@@ -23,7 +23,7 @@
                     <input
                         type="text"
                         class="
-                            flex-grow
+                            grow
                             pl-8
                             pr-2
                             py-1
@@ -47,12 +47,12 @@
                         v-on="inputEvents.start"
                     />
                 </div>
-                <span class="flex-shrink-0 m-2">
+                <span class="shrink-0 m-2">
                     <ArrowRightIcon
                         class="w-4 h-4 stroke-current text-cool-grey-600"
                     />
                 </span>
-                <div class="relative flex-grow w-full">
+                <div class="relative grow w-full">
                     <CalendarIcon
                         class="
                             text-cool-grey-600
@@ -66,7 +66,7 @@
                     <input
                         type="text"
                         class="
-                            flex-grow
+                            grow
                             pl-8
                             pr-2
                             py-1

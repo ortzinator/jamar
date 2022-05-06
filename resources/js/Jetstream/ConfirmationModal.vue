@@ -10,7 +10,7 @@
                 <div
                     class="
                         mx-auto
-                        flex-shrink-0 flex
+                        shrink-0 flex
                         items-center
                         justify-center
                         h-12

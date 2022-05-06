@@ -28,7 +28,7 @@
                 <div
                     v-if="histories.length > 0"
                     class="
-                        flex-grow
+                        grow
                         md:max-h-96 md:mx-7 md:my-5
                         mx-2
                         my-4

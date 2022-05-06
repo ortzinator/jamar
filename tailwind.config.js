@@ -1,20 +1,19 @@
+/* eslint-disable global-require */
 const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
 
 module.exports = {
-    mode: 'jit',
-    purge: [
+    content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/js/**/*.vue'
+        './resources/js/**/*.vue',
     ],
 
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', 'Nunito', ...defaultTheme.fontFamily.sans]
+                sans: ['Inter', 'Nunito', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 // Primary
@@ -28,7 +27,7 @@ module.exports = {
                     600: '#1992D4',
                     700: '#127FBF',
                     800: '#0B69A3',
-                    900: '#035388'
+                    900: '#035388',
                 },
 
                 // Neutrals
@@ -42,7 +41,7 @@ module.exports = {
                     600: '#52606D',
                     700: '#3E4C59',
                     800: '#323F4B',
-                    900: '#1F2933'
+                    900: '#1F2933',
                 },
 
                 // Supporting
@@ -56,7 +55,7 @@ module.exports = {
                     600: '#BC0A6F',
                     700: '#A30664',
                     800: '#870557',
-                    900: '#620042'
+                    900: '#620042',
                 },
                 'red-vivid': {
                     50: '#FFE3E3',
@@ -68,7 +67,7 @@ module.exports = {
                     600: '#CF1124',
                     700: '#AB091E',
                     800: '#8A041A',
-                    900: '#610316'
+                    900: '#610316',
                 },
 
                 'yellow-vivid': {
@@ -81,7 +80,7 @@ module.exports = {
                     600: '#DE911D',
                     700: '#CB6E17',
                     800: '#B44D12',
-                    900: '#8D2B0B'
+                    900: '#8D2B0B',
                 },
 
                 teal: {
@@ -94,20 +93,14 @@ module.exports = {
                     600: '#199473',
                     700: '#147D64',
                     800: '#0C6B58',
-                    900: '#014D40'
-                }
-            }
-        }
+                    900: '#014D40',
+                },
+            },
+        },
     },
 
-    variants: {
-        extend: {
-            opacity: ['disabled'],
-            borderWidth: ['hover', 'focus'],
-            backgroundColor: ['odd'],
-            visibility: ['hover', 'group-hover']
-        }
-    },
-
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')]
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography'),
+    ],
 };

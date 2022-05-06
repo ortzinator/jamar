@@ -70,7 +70,7 @@
                                 Agent Notes
                             </label>
                             <ChevronRightIcon
-                                :class="open ? 'transform rotate-90' : ''"
+                                :class="open ? 'rotate-90' : ''"
                                 class="h-5 w-5 ml-2"
                             />
                         </DisclosureButton>

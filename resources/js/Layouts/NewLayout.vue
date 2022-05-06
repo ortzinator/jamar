@@ -1,14 +1,14 @@
 <template>
     <div>
         <div class="md:flex md:flex-col bg-cool-grey-50 md:h-screen">
-            <div class="md:flex md:flex-shrink-0 bg-white">
+            <div class="md:flex md:shrink-0 bg-white">
                 <div
                     class="
                         bg-cool-grey-800
                         flex
                         items-center
                         justify-between
-                        md:flex-shrink-0 md:justify-center md:w-56
+                        md:shrink-0 md:justify-center md:w-56
                         px-6
                         py-4
                         text-white
@@ -169,13 +169,13 @@
                     </Menu>
                 </div>
             </div>
-            <div class="md:flex md:flex-grow md:overflow-hidden">
+            <div class="md:flex md:grow md:overflow-hidden">
                 <nav
                     class="
                         bg-cool-grey-900
                         overflow-y-auto
                         hidden
-                        md:flex md:flex-shrink-0 md:justify-center md:w-56
+                        md:flex md:shrink-0 md:justify-center md:w-56
                     "
                 >
                     <ul class="mt-12 space-y-3 w-full text-cool-grey-300">

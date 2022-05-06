@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "Nord",
-    "workbench.iconTheme": "eq-material-theme-icons",
+    "workbench.iconTheme": "material-icon-theme",
     "files.autoSave": "off",
     "editor.lineHeight": 26,
     "explorer.confirmDragAndDrop": false,

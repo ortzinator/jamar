@@ -15,7 +15,7 @@
                 >
                     <div
                         v-show="show"
-                        class="fixed inset-0 transform transition-all"
+                        class="fixed inset-0 transition-all"
                         @click="close"
                     >
                         <div

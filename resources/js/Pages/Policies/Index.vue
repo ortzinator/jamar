@@ -68,7 +68,7 @@
                     <div
                         v-else
                         class="
-                            overflow-ellipsis overflow-hidden
+                            text-ellipsis overflow-hidden
                             whitespace-nowrap
                         "
                         v-html="highlight(value, searchForm.search)"
