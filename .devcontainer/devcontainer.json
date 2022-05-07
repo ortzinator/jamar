@@ -1,6 +1,6 @@
 // https://aka.ms/devcontainer.json
 {
-	"name": "Existing Docker Compose (Extend)",
+	"name": "Laravel Sail - Jamar",
 	"dockerComposeFile": [
 		"../docker-compose.yml"
 	],
@@ -8,11 +8,13 @@
 	"workspaceFolder": "/var/www/html",
 	"settings": {},
 	"extensions": [
-		// "mikestead.dotenv",
-		// "amiralizadeh9480.laravel-extra-intellisense",
-		// "ryannaddy.laravel-artisan",
-		// "onecentlin.laravel5-snippets",
-		// "onecentlin.laravel-blade"
+		"bmewburn.vscode-intelephense-client",
+		"mikestead.dotenv",
+		"bradlc.vscode-tailwindcss",
+		"Wscats.vue",
+		"octref.vetur",
+		"amiralizadeh9480.laravel-extra-intellisense",
+		"onecentlin.laravel-blade"
 	],
 	"remoteUser": "sail",
 	// "forwardPorts": [],
