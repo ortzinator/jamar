@@ -18,6 +18,8 @@ class ContactResource extends JsonResource
             'name' => $this->name,
             'address' => $this->address,
             'notes' => $this->notes,
+            'id' => $this->id,
+            'deleted_at' => $this->deleted_at,
         ];
     }
 }

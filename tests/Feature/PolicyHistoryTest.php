@@ -4,9 +4,8 @@ namespace Tests\Feature;
 
 use App\Models\Policy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
-use Inertia\Testing\Assert;
+use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
 
 class PolicyHistoryTest extends TestCase
@@ -15,7 +14,7 @@ class PolicyHistoryTest extends TestCase
 
     public function test_can_create_policy_fields()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withoutExceptionHandling();
 
         $policy = Policy::factory()->create();

@@ -4,15 +4,11 @@ namespace Tests\Feature;
 
 use App\Models\Contact;
 use App\Models\Policy;
-use App\Models\PolicyField;
 use Carbon\Carbon;
-use Cknow\Money\Money;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Inertia\Testing\Assert;
+use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
 
 class PolicyTest extends TestCase
@@ -21,7 +17,7 @@ class PolicyTest extends TestCase
 
     public function test_can_add_contacts_to_a_policy()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withoutExceptionHandling();
 
         /**  @var Policy $policy */
@@ -45,7 +41,7 @@ class PolicyTest extends TestCase
 
     public function test_a_number_is_required()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
 
         $policy = Policy::factory()->create();
 
@@ -56,7 +52,7 @@ class PolicyTest extends TestCase
 
     public function test_can_search_policies()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
 
         $policy = Policy::factory()->create(['number' => '1234']);
         Policy::factory(10)->create();
@@ -68,7 +64,7 @@ class PolicyTest extends TestCase
 
     public function test_can_search_policies_by_contact()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
 
         $policy = Policy::factory()
             ->hasContacts(['name' => 'JamesTKirk'])
@@ -82,7 +78,7 @@ class PolicyTest extends TestCase
 
     public function test_can_search_policy_fields()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
 
         $policy = Policy::factory()->create([
             'number' => '1234',
@@ -97,7 +93,7 @@ class PolicyTest extends TestCase
 
     public function test_can_search_trashed_policies()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withExceptionHandling();
 
         $policy = Policy::factory()->create(['number' => '1234']);
@@ -115,7 +111,7 @@ class PolicyTest extends TestCase
 
     public function test_ending_soon_or_past_due()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
 
         $this->withoutExceptionHandling();
 
@@ -166,7 +162,7 @@ class PolicyTest extends TestCase
 
     public function test_a_policy_has_an_agent()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withExceptionHandling();
 
         $policy = Policy::factory()->create(['number' => '1234']);
@@ -183,7 +179,7 @@ class PolicyTest extends TestCase
 
     public function test_can_create_policy()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withoutExceptionHandling();
 
         $policy = Policy::factory()->make();
@@ -213,7 +209,7 @@ class PolicyTest extends TestCase
 
     public function test_can_show_edit_page()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $policy = Policy::factory()
             ->has(Contact::factory(4))
             ->create();

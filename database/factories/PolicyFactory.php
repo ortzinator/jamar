@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Policy;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PolicyFactory extends Factory
@@ -25,7 +26,7 @@ class PolicyFactory extends Factory
             'number' => $this->faker->unique()->regexify('[A-Za-z0-9]{8}'),
             'period_start' => now()->subDays(rand(0, 10)),
             'period_end' => now()->addDays(rand(5, 10)),
-            'agent_id' => 1,
+            'agent_id' => User::first() ?: 1,
             'currency' => 'PHP',
             'premium' => $this->faker->randomNumber(4)
         ];

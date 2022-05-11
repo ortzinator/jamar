@@ -37,4 +37,9 @@ abstract class TestCase extends BaseTestCase
         }
         return $this->actingAs($user);
     }
+
+    public function signInAdmin()
+    {
+        return $this->signIn(true);
+    }
 }

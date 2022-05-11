@@ -14,7 +14,8 @@
 		"Wscats.vue",
 		"octref.vetur",
 		"amiralizadeh9480.laravel-extra-intellisense",
-		"onecentlin.laravel-blade"
+		"onecentlin.laravel-blade",
+		"eamodio.gitlens",
 	],
 	"remoteUser": "sail",
 	// "forwardPorts": [],

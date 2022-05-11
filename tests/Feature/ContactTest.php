@@ -3,12 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\Contact;
-use App\Models\Policy;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Auth;
-use Inertia\Testing\Assert;
+use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
 
 class ContactTest extends TestCase
@@ -25,7 +22,7 @@ class ContactTest extends TestCase
 
     public function test_contacts_can_be_viewed_by_admins()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
 
         Contact::factory(3)->create();
 
@@ -40,11 +37,14 @@ class ContactTest extends TestCase
 
     public function test_contact_is_serialized_properly()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
 
-        Contact::factory()->create();
+        $contact = Contact::factory()->create();
+        $this->assertDatabaseHas('contacts', [
+            'id' => $contact->id
+        ]);
 
-        $this->get(route('contacts.edit', 1))
+        $this->get(route('contacts.edit', $contact->id))
             ->assertOk()
             ->assertInertia(
                 fn(Assert $page) => $page
@@ -52,13 +52,14 @@ class ContactTest extends TestCase
                     ->has('contact.name')
                     ->has('contact.address')
                     ->has('contact.notes')
-                    ->missing('contact.id')
+                    ->has('contact.id')
+                    ->has('contact.deleted_at')
             );
     }
 
     public function test_can_search_for_contacts()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withoutExceptionHandling();
 
         $contact = Contact::factory()->create(['name' => 'John Doe']);
@@ -74,7 +75,7 @@ class ContactTest extends TestCase
 
     public function test_an_admin_can_edit_contacts()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withoutExceptionHandling();
 
         $contact = Contact::factory()->create(['name' => 'John Doe']);
@@ -93,7 +94,7 @@ class ContactTest extends TestCase
 
     public function test_cannot_view_deleted_contacts()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
 
         $contacts = Contact::factory(4)->create(['name' => 'John Doe']);
         $contacts->first()->delete();
@@ -105,7 +106,7 @@ class ContactTest extends TestCase
 
     public function test_can_search_by_deleted_contacts()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withoutExceptionHandling();
 
         $contacts = Contact::factory(4)->create(['name' => 'John Doe']);
@@ -118,7 +119,7 @@ class ContactTest extends TestCase
 
     public function test_contact_can_be_deleted()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withoutExceptionHandling();
 
         $contact = Contact::factory()->create();
@@ -141,26 +142,27 @@ class ContactTest extends TestCase
 
     public function test_contact_can_be_created()
     {
-        $this->signIn(true);
+        $this->signInAdmin();
         $this->withoutExceptionHandling();
 
         $contact = [
-            'id' => 1,
             'name' => $this->faker->name(),
             'address' => $this->faker->address(),
             'notes' => $this->faker->paragraph()
         ];
 
-        $this->post(route('contacts.store'), $contact)->assertRedirect(
-            route('contacts')
-        );
+        $this->post(route('contacts.store'), $contact)
+            ->assertRedirect(
+                route('contacts')
+            );
 
-        $this->get(route('contacts.edit', 1))->assertInertia(
-            fn(Assert $page) => $page
-                ->component('Contacts/Edit')
-                ->has('contact.name')
-                ->has('contact.address')
-                ->has('contact.notes')
-        );
+        $this->get(route('contacts.edit', Contact::orderBy('id', 'desc')->first()->id))
+            ->assertInertia(
+                fn(Assert $page) => $page
+                    ->component('Contacts/Edit')
+                    ->has('contact.name')
+                    ->has('contact.address')
+                    ->has('contact.notes')
+            );
     }
 }
