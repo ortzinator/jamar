@@ -206,12 +206,12 @@ export default {
 
         function destroy() {
             form.delete(route('contacts.destroy', props.contact.id));
-            confirmingDelete = false;
+            confirmingDelete.value = false;
         }
 
         function restore() {
             form.put(route('contacts.restore', props.contact.id));
-            confirmingRestore = false;
+            confirmingRestore.value = false;
         }
 
         return {
