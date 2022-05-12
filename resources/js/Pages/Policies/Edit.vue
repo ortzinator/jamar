@@ -156,7 +156,7 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
@@ -175,90 +175,60 @@ import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
 import CurrencyTextBox from '@/Shared/CurrencyTextBox';
 
-export default {
-    components: {
-        ExclamationIcon,
-        TrashIcon,
-        JetInput,
-        JetLabel,
-        JetInputError,
-        PolicyFieldsList,
-        ContactList,
-        LoadingButton,
-        SelectContact,
-        DateRange,
-        DatePicker,
-        HistoryModal,
-        CurrencyTextBox,
-    },
+defineOptions({
     layout: AppLayout,
-    props: {
-        errors: { type: Object, required: true },
-        policy: { type: Object, required: true },
-        fields: { type: Array, required: false, default() { return []; } },
-        users: { type: Array, required: true },
+});
+
+const props = defineProps({
+    errors: { type: Object, required: true },
+    policy: { type: Object, required: true },
+    fields: { type: Array, required: false, default() { return []; } },
+    users: { type: Array, required: true },
+});
+const policyForm = useForm({
+    number: props.policy.number,
+    contacts: props.policy.contacts,
+    created_at: props.policy.created_at,
+    range: {
+        start: props.policy.period_start,
+        end: props.policy.period_end,
     },
-    setup(props) {
-        const policyForm = useForm({
-            number: props.policy.number,
-            contacts: props.policy.contacts,
-            created_at: props.policy.created_at,
-            range: {
-                start: props.policy.period_start,
-                end: props.policy.period_end,
-            },
-            fields: props.policy.fields ?? [],
-            agent_id: props.policy.agent_id,
-            premium: props.policy.premium,
-        });
+    fields: props.policy.fields ?? [],
+    agent_id: props.policy.agent_id,
+    premium: props.policy.premium,
+});
 
-        const sending = ref(false);
-        const fieldFormShown = ref(false);
+function updatePolicy() {
+    policyForm
+        .transform((data) => ({
+            ...data,
+            period_start: data.range.start,
+            period_end: data.range.end,
+            premium: data.premium.amount,
+        }))
+        .put(route('policies.update', props.policy.id));
+}
+const premium = ref(props.policy.premium);
+watch(premium, () => console.log(policyForm.premium.amount));
 
-        function updatePolicy() {
-            policyForm
-                .transform((data) => ({
-                    ...data,
-                    period_start: data.range.start,
-                    period_end: data.range.end,
-                    premium: data.premium.amount,
-                }))
-                .put(route('policies.update', props.policy.id));
-        }
-        const premium = ref(props.policy.premium);
-        watch(premium, () => console.log(policyForm.premium.amount));
+function destroy() {
+    // TODO check if contact is associated with a policy
+    if (window.confirm('Are you sure you want to delete this policy?')) {
+        policyForm.delete(route('policies.destroy', props.policy.id));
+    }
+}
 
-        function destroy() {
-            // TODO check if contact is associated with a policy
-            if (window.confirm('Are you sure you want to delete this policy?')) {
-                policyForm.delete(route('policies.destroy', props.policy.id));
-            }
-        }
+function restore() {
+    if (window.confirm('Are you sure you want to restore this policy?')) {
+        policyForm.put(route('policies.restore', props.policy.id));
+    }
+}
 
-        function restore() {
-            if (window.confirm('Are you sure you want to restore this policy?')) {
-                policyForm.put(route('policies.restore', props.policy.id));
-            }
-        }
+function contactSelected(contact) {
+    policyForm.contacts.push(contact);
+}
 
-        function contactSelected(contact) {
-            policyForm.contacts.push(contact);
-        }
-
-        function handleContactClick(contact) {
-            window.open(contact.link, '_blank').focus();
-        }
-
-        return {
-            policyForm,
-            sending,
-            fieldFormShown,
-            updatePolicy,
-            destroy,
-            restore,
-            contactSelected,
-            handleContactClick,
-        };
-    },
-};
+function handleContactClick(contact) {
+    window.open(contact.link, '_blank').focus();
+}
 </script>
