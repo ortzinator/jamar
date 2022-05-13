@@ -18,8 +18,8 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="email" value="Email" />
-                <jet-input
+                <JetLabel for="email" value="Email" />
+                <JetInput
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -30,12 +30,12 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <jet-button
+                <JetButton
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Email Password Reset Link
-                </jet-button>
+                </JetButton>
             </div>
         </form>
     </jet-authentication-card>

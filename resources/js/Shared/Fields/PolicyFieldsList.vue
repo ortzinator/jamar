@@ -39,57 +39,38 @@
         </button>
     </div>
 </template>
-<script>
+
+<script setup>
 import { ref, computed } from 'vue';
 
 import { PlusSmIcon, TrashIcon } from '@heroicons/vue/outline';
 import NewPolicyField from '@/Shared/Fields/NewPolicyField';
 import PolicyField from '@/Shared/Fields/PolicyField';
 
-export default {
-    components: {
-        NewPolicyField,
-        PolicyField,
-        PlusSmIcon,
-        TrashIcon,
-    },
-    props: {
-        fields: { type: Array, required: true },
-        editable: { type: Boolean, default: true },
-    },
-    emits: ['fieldAdded', 'fieldDeleted'],
-    setup(props, { emit }) {
-        const newFieldClicked = ref(false);
-        const confirmingDeleteField = ref(false);
-        const anyFieldAdded = ref(false);
+const props = defineProps({
+    fields: { type: Array, required: true },
+    editable: { type: Boolean, default: true },
+});
+const emit = defineEmits(['fieldAdded', 'fieldDeleted']);
 
-        const fieldFormShown = computed(() => {
-            const fieldsEmpty = props.fields.length < 1;
-            return newFieldClicked.value || fieldsEmpty || anyFieldAdded;
-        });
+const newFieldClicked = ref(false);
+const anyFieldAdded = ref(false);
 
-        function handleNewFieldClick() {
-            newFieldClicked.value = true;
-        }
+const fieldFormShown = computed(() => {
+    const fieldsEmpty = props.fields.length < 1;
+    return newFieldClicked.value || fieldsEmpty || anyFieldAdded;
+});
 
-        function handleFieldAdded(field) {
-            emit('fieldAdded', field);
-            anyFieldAdded.value = true;
-        }
+function handleNewFieldClick() {
+    newFieldClicked.value = true;
+}
 
-        function handleFieldDeleted(field) {
-            emit('fieldDeleted', field);
-        }
+function handleFieldAdded(field) {
+    emit('fieldAdded', field);
+    anyFieldAdded.value = true;
+}
 
-        return {
-            newFieldClicked,
-            fieldFormShown,
-            confirmingDeleteField,
-            anyFieldAdded,
-            handleNewFieldClick,
-            handleFieldAdded,
-            handleFieldDeleted,
-        };
-    },
-};
+function handleFieldDeleted(field) {
+    emit('fieldDeleted', field);
+}
 </script>

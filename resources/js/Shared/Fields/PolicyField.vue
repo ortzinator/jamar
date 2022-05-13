@@ -5,7 +5,7 @@
         @mouseleave="fieldHover = false"
     >
         <div class="px-4 py-2 rounded col-span-4" v-text="field.name"></div>
-        <jet-input
+        <JetInput
             :id="'input-' + field.name"
             :value="field.value"
             type="text"
@@ -15,25 +15,13 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import JetInput from '@/Jetstream/Input';
 
-export default {
-    components: { JetInput },
-    props: {
-        field: { type: Object, required: true },
-    },
-    emits: ['delete'],
-    setup() {
-        const fieldHover = ref(false);
-        const editing = ref(false);
+defineProps({
+    field: { type: Object, required: true },
+});
+const fieldHover = ref(false);
 
-        function deleteField() {
-            this.confirming = false;
-        }
-
-        return { fieldHover, editing, deleteField };
-    },
-};
 </script>

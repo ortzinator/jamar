@@ -1,6 +1,6 @@
 <template>
     <div class="font-bold py-5">
-        <inertia-head title="Contacts" />
+        <InertiaHead title="Contacts" />
         <h1>Contacts</h1>
     </div>
 
@@ -29,13 +29,13 @@
                     Reset
                 </button>
             </div>
-            <inertia-link
+            <InertiaLink
                 class="btn btn-primary"
                 :href="route('contacts.create')"
             >
                 <span>Create</span>
                 <span class="hidden md:inline"> Contact</span>
-            </inertia-link>
+            </InertiaLink>
         </div>
         <div class="">
             <div class="shadow rounded bg-white overflow-x-auto">
@@ -57,7 +57,7 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { watch, computed, ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { highlight } from '@/util.js';
@@ -67,63 +67,46 @@ import Pagination from '@/Shared/Pagination';
 import FilterSelect from '@/Shared/FilterSelect';
 import DataTable from '@/Shared/DataTable';
 
-export default {
-    components: {
-        Pagination,
-        DataTable,
-        FilterSelect,
-    },
+defineOptions({
     layout: AppLayout,
-    props: {
-        contacts: { type: Object, required: true },
-        filters: { type: Object, required: true },
-    },
-    setup(props) {
-        const searchForm = useForm({
-            search: props.filters.search,
-            trashed: props.filters.trashed,
+});
+
+const props = defineProps({
+    contacts: { type: Object, required: true },
+    filters: { type: Object, required: true },
+});
+
+const searchForm = useForm({
+    search: props.filters.search,
+    trashed: props.filters.trashed,
+});
+
+const columns = ref([
+    { text: 'Name', value: 'name' },
+    { text: 'Address', value: 'address' },
+    { text: 'Policies', value: 'policies_count' },
+]);
+
+const refreshSearch = _.debounce(() => {
+    searchForm
+        .transform((data) => _.pickBy(data))
+        .get('/contacts', {
+            only: ['contacts'],
+            preserveState: true,
+            preserveScroll: true,
         });
+}, 400);
 
-        const columns = ref([
-            { text: 'Name', value: 'name' },
-            { text: 'Address', value: 'address' },
-            { text: 'Policies', value: 'policies_count' },
-        ]);
+const formVals = computed(() => ({
+    search: searchForm.search,
+    trashed: searchForm.trashed,
+}));
 
-        const refreshSearch = _.debounce(() => {
-            searchForm
-                .transform((data) => _.pickBy(data))
-                .get('/contacts', {
-                    only: ['contacts'],
-                    preserveState: true,
-                    preserveScroll: true,
-                });
-        }, 400);
+function reset() {
+    searchForm.search = '';
+    searchForm.trashed = null;
+}
 
-        const formVals = computed(() => ({
-            search: searchForm.search,
-            trashed: searchForm.trashed,
-        }));
+watch(formVals, () => refreshSearch());
 
-        function reset() {
-            searchForm.search = '';
-            searchForm.trashed = null;
-        }
-
-        function contactLink(id) {
-            return route('contacts.edit', id);
-        }
-
-        watch(formVals, () => refreshSearch());
-
-        return {
-            searchForm,
-            refreshSearch,
-            reset,
-            contactLink,
-            columns,
-            highlight,
-        };
-    },
-};
 </script>

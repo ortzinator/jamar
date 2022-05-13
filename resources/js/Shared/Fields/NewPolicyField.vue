@@ -2,8 +2,8 @@
     <div>
         <div class="mb-4 md:flex md:space-x-4 md:space-y-0 space-y-4">
             <div class="flex-auto">
-                <jet-label for="number" value="Field Name" />
-                <jet-input
+                <JetLabel for="number" value="Field Name" />
+                <JetInput
                     id="name"
                     v-model="field.name"
                     type="text"
@@ -11,8 +11,8 @@
                 />
             </div>
             <div class="flex-auto">
-                <jet-label for="number" value="Field Value" />
-                <jet-input
+                <JetLabel for="number" value="Field Value" />
+                <JetInput
                     id="value"
                     v-model="field.value"
                     type="text"
@@ -33,48 +33,37 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from 'vue';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 
-export default {
-    components: {
-        JetInput,
-        JetLabel,
-    },
-    emits: ['added'],
-    setup(props, context) {
-        const field = reactive({
-            name: null,
-            value: null,
-        });
-        let errors = ref([]);
+const emit = defineEmits(['added']);
 
-        function validate() {
-            errors = [];
+const field = reactive({
+    name: null,
+    value: null,
+});
+let errors = ref([]);
 
-            if (field.name) {
-                return true;
-            }
-            errors.value.push('Field name is required');
-            return false;
-        }
+function validate() {
+    errors = [];
 
-        function reset() {
-            field.name = null;
-            field.value = null;
-        }
+    if (field.name) {
+        return true;
+    }
+    errors.value.push('Field name is required');
+    return false;
+}
 
-        function add() {
-            if (!validate()) return;
-            context.emit('added', { ...field });
-            reset();
-        }
+function reset() {
+    field.name = null;
+    field.value = null;
+}
 
-        return {
-            field, errors, reset, add,
-        };
-    },
-};
+function add() {
+    if (!validate()) return;
+    emit('added', { ...field });
+    reset();
+}
 </script>

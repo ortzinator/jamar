@@ -1,6 +1,6 @@
 <template>
     <li>
-        <inertia-link
+        <InertiaLink
             :href="href"
             :class="classes"
             class="
@@ -14,7 +14,7 @@
             "
         >
             <slot></slot>
-        </inertia-link>
+        </InertiaLink>
     </li>
 </template>
 

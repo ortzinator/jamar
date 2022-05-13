@@ -61,7 +61,7 @@
     </Listbox>
 </template>
 
-<script>
+<script setup>
 import { computed } from 'vue';
 import { SelectorIcon } from '@heroicons/vue/outline';
 import {
@@ -71,25 +71,12 @@ import {
     ListboxOption,
 } from '@headlessui/vue';
 
-export default {
-    components: {
-        SelectorIcon,
-        Listbox,
-        ListboxButton,
-        ListboxOptions,
-        ListboxOption,
+const props = defineProps({ modelValue: { type: String, required: true } });
+const emit = defineEmits(['update:modelValue']);
+const value = computed({
+    get: () => props.modelValue,
+    set: (val) => {
+        emit('update:modelValue', val);
     },
-    props: { modelValue: String },
-    emits: ['update:modelValue'],
-    setup(props, { emit }) {
-        const value = computed({
-            get: () => props.modelValue,
-            set: (val) => {
-                emit('update:modelValue', val);
-            },
-        });
-
-        return { value };
-    },
-};
+});
 </script>

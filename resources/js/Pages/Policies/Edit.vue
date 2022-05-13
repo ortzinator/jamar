@@ -1,8 +1,8 @@
 <template>
     <div class="font-bold py-5">
-        <inertia-head title="Edit Policy" />
+        <InertiaHead title="Edit Policy" />
         <h1>
-            <inertia-link
+            <InertiaLink
                 class="
                     text-light-blue-vivid-400
                     hover:text-light-blue-vivid-600
@@ -10,7 +10,7 @@
                 href="/"
             >
                 Policies
-            </inertia-link>
+            </InertiaLink>
             <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
             {{ policyForm.number }}
         </h1>
@@ -37,7 +37,7 @@
             class="bg-red-vivid-200 flex items-center justify-between p-5 pl-8"
         >
             <div class="flex items-center">
-                <exclamation-icon class="h-5 mr-2 w-5" />
+                <ExclamationIcon class="h-5 mr-2 w-5" />
                 <div class="text-lg">
                     This policy does not have any policyholders
                 </div>
@@ -46,21 +46,21 @@
 
         <div class="p-8">
             <div class="mb-5">
-                <jet-label for="number" value="Policy Number" />
-                <jet-input
+                <JetLabel for="number" value="Policy Number" />
+                <JetInput
                     id="number"
                     v-model="policyForm.number"
                     type="text"
                     class="block w-full"
                 />
-                <jet-input-error :message="policyForm.errors.number" />
+                <JetInput-error :message="policyForm.errors.number" />
             </div>
 
             <div class="mb-5">
-                <jet-label value="Date Issued" />
+                <JetLabel value="Date Issued" />
                 <date-picker v-model="policyForm.created_at" mode="dateTime">
                     <template #default="{ inputValue }">
-                        <jet-input
+                        <JetInput
                             id="created_at"
                             :value="inputValue"
                             type="text"
@@ -72,7 +72,7 @@
             </div>
 
             <div class="mb-5">
-                <jet-label value="Assigned Agent" />
+                <JetLabel value="Assigned Agent" />
                 <select
                     id="agent"
                     v-model="policyForm.agent_id"
@@ -89,30 +89,30 @@
             </div>
 
             <div class="mb-5">
-                <jet-label value="Premium" />
+                <JetLabel value="Premium" />
                 <CurrencyTextBox
                     id="premium"
                     v-model="policyForm.premium"
                     class="border border-cool-grey-200 mr-5 rounded mt-1"
                 />
-                <jet-input-error :message="policyForm.errors.premium" />
+                <JetInput-error :message="policyForm.errors.premium" />
             </div>
 
             <div class="mb-5">
                 <div class="text-cool-grey-600 text-sm text-left">
                     Period of Insurance
                 </div>
-                <date-range v-model="policyForm.range" />
+                <DateRange v-model="policyForm.range" />
             </div>
 
-            <policy-fields-list
+            <PolicyFieldsList
                 class="mb-5"
                 :fields="policyForm.fields"
                 :policy="policy"
                 @fieldAdded="(field) => policyForm.fields.push(field)"
-            ></policy-fields-list>
+            ></PolicyFieldsList>
 
-            <contact-list
+            <ContactList
                 v-if="policyForm.contacts.length > 0"
                 :contacts="policyForm.contacts"
                 class="mb-5"
@@ -120,7 +120,7 @@
                 @contactClicked="handleContactClick"
             >
                 Policyholders
-            </contact-list>
+            </ContactList>
 
             <select-contact @selected="contactSelected"></select-contact>
         </div>
@@ -143,14 +143,14 @@
                 >
                     Unsaved Changes
                 </div>
-                <loading-button
+                <LoadingButton
                     class="btn btn-primary"
                     type="submit"
                     :loading="policyForm.processing"
                     @click="updatePolicy"
                 >
                     Update policy
-                </loading-button>
+                </LoadingButton>
             </div>
         </div>
     </div>

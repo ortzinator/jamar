@@ -9,34 +9,28 @@
     </button>
 </template>
 
-<script>
+<script setup>
 import { ref, watch } from 'vue';
 import Icon from '@/Shared/Icon';
 
-export default {
-    components: { Icon },
-    props: { loading: { type: Boolean, required: true } },
-    setup(props) {
-        const delayedLoading = ref(false);
-        const delayId = ref();
-        const loading = ref(props.loading);
+const props = defineProps({ loading: { type: Boolean, required: true } });
 
-        watch(loading, (val) => {
-            // Only show the loading spinner icon if the request has taken longer than 100ms
-            if (val === false) {
-                // If no longer loading, disable spinner immediately
-                this.delayedLoading = false;
-                clearTimeout(this.delayId);
-            } else {
-                clearTimeout(this.delayId);
-                this.delayId = setTimeout(
-                    () => { this.delayedLoading = true; },
-                    100,
-                );
-            }
-        });
+const delayedLoading = ref(false);
+const delayId = ref();
+const loading = ref(props.loading);
 
-        return { delayedLoading, delayId };
-    },
-};
+watch(loading, (val) => {
+    // Only show the loading spinner icon if the request has taken longer than 100ms
+    if (val === false) {
+        // If no longer loading, disable spinner immediately
+        delayedLoading.value = false;
+        clearTimeout(delayId.value);
+    } else {
+        clearTimeout(delayId.value);
+        delayId.value = setTimeout(
+            () => { delayedLoading.value = true; },
+            100,
+        );
+    }
+});
 </script>

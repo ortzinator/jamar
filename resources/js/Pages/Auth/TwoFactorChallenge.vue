@@ -20,8 +20,8 @@
 
         <form @submit.prevent="submit">
             <div v-if="!recovery">
-                <jet-label for="code" value="Code" />
-                <jet-input
+                <JetLabel for="code" value="Code" />
+                <JetInput
                     id="code"
                     ref="code"
                     v-model="form.code"
@@ -34,8 +34,8 @@
             </div>
 
             <div v-else>
-                <jet-label for="recovery_code" value="Recovery Code" />
-                <jet-input
+                <JetLabel for="recovery_code" value="Recovery Code" />
+                <JetInput
                     id="recovery_code"
                     ref="recovery_code"
                     v-model="form.recovery_code"
@@ -61,13 +61,13 @@
                     <template v-else> Use an authentication code </template>
                 </button>
 
-                <jet-button
+                <JetButton
                     class="ml-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Log in
-                </jet-button>
+                </JetButton>
             </div>
         </form>
     </jet-authentication-card>

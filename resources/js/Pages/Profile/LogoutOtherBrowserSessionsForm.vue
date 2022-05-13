@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-    <jet-action-section>
+    <JetActionSection>
         <template #title> Browser Sessions </template>
 
         <template #description>
@@ -85,9 +85,9 @@
             </div>
 
             <div class="flex items-center mt-5">
-                <jet-button @click="confirmLogout">
+                <JetButton @click="confirmLogout">
                     Log Out Other Browser Sessions
-                </jet-button>
+                </JetButton>
 
                 <jet-action-message :on="form.recentlySuccessful" class="ml-3">
                     Done.
@@ -95,7 +95,7 @@
             </div>
 
             <!-- Log Out Other Devices Confirmation Modal -->
-            <jet-dialog-modal :show="confirmingLogout" @close="closeModal">
+            <JetDialogModal :show="confirmingLogout" @close="closeModal">
                 <template #title> Log Out Other Browser Sessions </template>
 
                 <template #content>
@@ -104,7 +104,7 @@
                     devices.
 
                     <div class="mt-4">
-                        <jet-input
+                        <JetInput
                             ref="password"
                             v-model="form.password"
                             type="password"
@@ -113,7 +113,7 @@
                             @keyup.enter="logoutOtherBrowserSessions"
                         />
 
-                        <jet-input-error
+                        <JetInput-error
                             :message="form.errors.password"
                             class="mt-2"
                         />
@@ -121,22 +121,22 @@
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button @click="closeModal">
+                    <JetSecondaryButton @click="closeModal">
                         Nevermind
-                    </jet-secondary-button>
+                    </JetSecondaryButton>
 
-                    <jet-button
+                    <JetButton
                         class="ml-2"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="logoutOtherBrowserSessions"
                     >
                         Log Out Other Browser Sessions
-                    </jet-button>
+                    </JetButton>
                 </template>
-            </jet-dialog-modal>
+            </JetDialogModal>
         </template>
-    </jet-action-section>
+    </JetActionSection>
 </template>
 
 <script>

@@ -12,8 +12,8 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="email" value="Email" />
-                <jet-input
+                <JetLabel for="email" value="Email" />
+                <JetInput
                     id="email"
                     v-model="form.email"
                     name="email"
@@ -26,8 +26,8 @@
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input
+                <JetLabel for="password" value="Password" />
+                <JetInput
                     id="password"
                     v-model="form.password"
                     name="password"
@@ -51,7 +51,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <inertia-link
+                <InertiaLink
                     v-if="canResetPassword"
                     :href="route('password.request')"
                     class="
@@ -61,15 +61,15 @@
                     "
                 >
                     Forgot your password?
-                </inertia-link>
+                </InertiaLink>
 
-                <jet-button
+                <JetButton
                     class="ml-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Log in
-                </jet-button>
+                </JetButton>
             </div>
         </form>
     </jet-authentication-card>

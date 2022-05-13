@@ -1,5 +1,5 @@
 <template>
-    <jet-action-section>
+    <JetActionSection>
         <template #title> Delete Team </template>
 
         <template #description> Permanently delete this team. </template>
@@ -13,9 +13,9 @@
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click="confirmTeamDeletion">
+                <JetDangerButton @click="confirmTeamDeletion">
                     Delete Team
-                </jet-danger-button>
+                </JetDangerButton>
             </div>
 
             <!-- Delete Team Confirmation Modal -->
@@ -32,24 +32,24 @@
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button
+                    <JetSecondaryButton
                         @click="confirmingTeamDeletion = false"
                     >
                         Cancel
-                    </jet-secondary-button>
+                    </JetSecondaryButton>
 
-                    <jet-danger-button
+                    <JetDangerButton
                         class="ml-2"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="deleteTeam"
                     >
                         Delete Team
-                    </jet-danger-button>
+                    </JetDangerButton>
                 </template>
             </jet-confirmation-modal>
         </template>
-    </jet-action-section>
+    </JetActionSection>
 </template>
 
 <script>

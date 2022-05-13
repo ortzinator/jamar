@@ -1,7 +1,7 @@
 <template>
-    <inertia-link :href="href" :class="classes">
+    <InertiaLink :href="href" :class="classes">
         <slot></slot>
-    </inertia-link>
+    </InertiaLink>
 </template>
 
 <script>

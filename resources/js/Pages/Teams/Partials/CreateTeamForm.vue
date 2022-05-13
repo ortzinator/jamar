@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="createTeam">
+    <JetFormSection @submitted="createTeam">
         <template #title> Team Details </template>
 
         <template #description>
@@ -8,7 +8,7 @@
 
         <template #form>
             <div class="col-span-6">
-                <jet-label value="Team Owner" />
+                <JetLabel value="Team Owner" />
 
                 <div class="flex items-center mt-2">
                     <img
@@ -27,27 +27,27 @@
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="name" value="Team Name" />
-                <jet-input
+                <JetLabel for="name" value="Team Name" />
+                <JetInput
                     id="name"
                     v-model="form.name"
                     type="text"
                     class="mt-1 block w-full"
                     autofocus
                 />
-                <jet-input-error :message="form.errors.name" class="mt-2" />
+                <JetInput-error :message="form.errors.name" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <jet-button
+            <JetButton
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
             >
                 Create
-            </jet-button>
+            </JetButton>
         </template>
-    </jet-form-section>
+    </JetFormSection>
 </template>
 
 <script>

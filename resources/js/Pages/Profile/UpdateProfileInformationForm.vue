@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updateProfileInformation">
+    <JetFormSection @submitted="updateProfileInformation">
         <template #title>
             Profile Information
         </template>
@@ -17,7 +17,7 @@
                        @change="updatePhotoPreview"
                 >
 
-                <jet-label for="photo" value="Photo" />
+                <JetLabel for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
                 <div v-show="! photoPreview" class="mt-2">
@@ -38,44 +38,44 @@
                     </span>
                 </div>
 
-                <jet-secondary-button
+                <JetSecondaryButton
                     class="mt-2 mr-2"
                     type="button"
                     @click.prevent="selectNewPhoto"
                 >
                     Select A New Photo
-                </jet-secondary-button>
+                </JetSecondaryButton>
 
-                <jet-secondary-button
+                <JetSecondaryButton
                     v-if="user.profile_photo_path"
                     type="button"
                     class="mt-2"
                     @click.prevent="deletePhoto"
                 >
                     Remove Photo
-                </jet-secondary-button>
+                </JetSecondaryButton>
 
-                <jet-input-error :message="form.errors.photo" class="mt-2" />
+                <JetInput-error :message="form.errors.photo" class="mt-2" />
             </div>
 
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="name" value="Name" />
-                <jet-input
+                <JetLabel for="name" value="Name" />
+                <JetInput
                     id="name"
                     v-model="form.name"
                     type="text"
                     class="mt-1 block w-full"
                     autocomplete="name"
                 />
-                <jet-input-error :message="form.errors.name" class="mt-2" />
+                <JetInput-error :message="form.errors.name" class="mt-2" />
             </div>
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" v-model="form.email" type="email" class="mt-1 block w-full" />
-                <jet-input-error :message="form.errors.email" class="mt-2" />
+                <JetLabel for="email" value="Email" />
+                <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" />
+                <JetInput-error :message="form.errors.email" class="mt-2" />
             </div>
         </template>
 
@@ -84,11 +84,11 @@
                 Saved.
             </jet-action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </jet-button>
+            </JetButton>
         </template>
-    </jet-form-section>
+    </JetFormSection>
 </template>
 
 <script>

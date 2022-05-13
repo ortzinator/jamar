@@ -8,8 +8,8 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="name" value="Name" />
-                <jet-input
+                <JetLabel for="name" value="Name" />
+                <JetInput
                     id="name"
                     v-model="form.name"
                     type="text"
@@ -21,8 +21,8 @@
             </div>
 
             <div class="mt-4">
-                <jet-label for="email" value="Email" />
-                <jet-input
+                <JetLabel for="email" value="Email" />
+                <JetInput
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -32,8 +32,8 @@
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input
+                <JetLabel for="password" value="Password" />
+                <JetInput
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -44,11 +44,11 @@
             </div>
 
             <div class="mt-4">
-                <jet-label
+                <JetLabel
                     for="password_confirmation"
                     value="Confirm Password"
                 />
-                <jet-input
+                <JetInput
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
@@ -62,7 +62,7 @@
                 v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature"
                 class="mt-4"
             >
-                <jet-label for="terms">
+                <JetLabel for="terms">
                     <div class="flex items-center">
                         <jet-checkbox
                             id="terms"
@@ -97,11 +97,11 @@
                             </a>
                         </div>
                     </div>
-                </jet-label>
+                </JetLabel>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <inertia-link
+                <InertiaLink
                     :href="route('login')"
                     class="
                         underline
@@ -110,15 +110,15 @@
                     "
                 >
                     Already registered?
-                </inertia-link>
+                </InertiaLink>
 
-                <jet-button
+                <JetButton
                     class="ml-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Register
-                </jet-button>
+                </JetButton>
             </div>
         </form>
     </jet-authentication-card>

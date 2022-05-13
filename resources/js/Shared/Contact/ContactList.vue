@@ -26,23 +26,17 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { XIcon } from '@heroicons/vue/outline';
 
-export default {
-    components: { XIcon },
-    props: {
-        contacts: { type: Array, required: true },
-        removable: { type: Boolean, default: false },
-    },
-    emits: ['contactClicked'],
+const props = defineProps({
+    contacts: { type: Array, required: true },
+    removable: { type: Boolean, default: false },
+});
 
-    setup(props) {
-        function removeContact(contact) {
-            _.pull(props.contacts, contact);
-        }
+defineEmits(['contactClicked']);
 
-        return { removeContact };
-    },
-};
+function removeContact(contact) {
+    _.pull(props.contacts, contact);
+}
 </script>

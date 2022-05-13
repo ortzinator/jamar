@@ -1,8 +1,8 @@
 <template>
-    <inertia-head title="Edit Contact" />
+    <InertiaHead title="Edit Contact" />
     <div class="font-bold py-5">
         <h1>
-            <inertia-link
+            <InertiaLink
                 class="
                     text-light-blue-vivid-400
                     hover:text-light-blue-vivid-600
@@ -10,7 +10,7 @@
                 :href="route('contacts')"
             >
                 Contacts
-            </inertia-link>
+            </InertiaLink>
             <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
             {{ form.name }}
         </h1>
@@ -29,7 +29,7 @@
             "
         >
             <div class="flex">
-                <trash-icon class="h-5 mr-2 w-5" />
+                <TrashIcon class="h-5 mr-2 w-5" />
                 This contact is deleted
             </div>
             <button
@@ -42,17 +42,17 @@
         <form @submit.prevent="updateContact">
             <div class="p-8">
                 <div class="mb-5">
-                    <jet-label for="name" value="Name" />
-                    <jet-input
+                    <JetLabel for="name" value="Name" />
+                    <JetInput
                         id="name"
                         v-model="form.name"
                         type="text"
                         class="block w-full"
                     />
-                    <jet-input-error :message="form.errors.name" />
+                    <JetInput-error :message="form.errors.name" />
                 </div>
                 <div class="mb-5">
-                    <jet-label for="address" value="Address" />
+                    <JetLabel for="address" value="Address" />
                     <textarea
                         id="address"
                         v-model="form.address"
@@ -61,7 +61,7 @@
                         cols="30"
                         rows="10"
                     />
-                    <jet-input-error :message="form.errors.address" />
+                    <JetInputError :message="form.errors.address" />
                 </div>
                 <div class="mb-5">
                     <Disclosure v-slot="{ open }">
@@ -106,18 +106,18 @@
                 >
                     Delete contact
                 </button>
-                <loading-button
+                <LoadingButton
                     class="btn btn-primary ml-auto"
                     type="submit"
                     :loading="form.processing"
                 >
                     Update contact
-                </loading-button>
+                </LoadingButton>
             </div>
         </form>
     </div>
 
-    <jet-confirmation-modal
+    <JetConfirmationModal
         :show="confirmingRestore"
         @close="confirmingRestore = false"
     >
@@ -136,9 +136,9 @@
                 Restore
             </button>
         </template>
-    </jet-confirmation-modal>
+    </JetConfirmationModal>
 
-    <jet-confirmation-modal
+    <JetConfirmationModal
         :show="confirmingDelete"
         @close="confirmingDelete = false"
     >
@@ -157,10 +157,10 @@
                 Delete Field
             </button>
         </template>
-    </jet-confirmation-modal>
+    </JetConfirmationModal>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
@@ -173,55 +173,35 @@ import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
 import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 
-export default {
-    components: {
-        JetInput,
-        JetLabel,
-        JetInputError,
-        LoadingButton,
-        JetConfirmationModal,
-        TrashIcon,
-        Disclosure,
-        DisclosureButton,
-        DisclosurePanel,
-        ChevronRightIcon,
-    },
+defineOptions({
     layout: AppLayout,
-    props: {
-        errors: { type: Object, required: true },
-        contact: { type: Object, required: true },
-    },
-    setup(props) {
-        const form = useForm({
-            name: props.contact.name,
-            address: props.contact.address,
-            notes: props.contact.notes,
-        });
-        let confirmingDelete = ref(false);
-        let confirmingRestore = ref(false);
+});
 
-        function updateContact() {
-            form.put(route('contacts.update', props.contact.id));
-        }
+const props = defineProps({
+    errors: { type: Object, required: true },
+    contact: { type: Object, required: true },
+});
 
-        function destroy() {
-            form.delete(route('contacts.destroy', props.contact.id));
-            confirmingDelete.value = false;
-        }
+const form = useForm({
+    name: props.contact.name,
+    address: props.contact.address,
+    notes: props.contact.notes,
+});
+const confirmingDelete = ref(false);
+const confirmingRestore = ref(false);
 
-        function restore() {
-            form.put(route('contacts.restore', props.contact.id));
-            confirmingRestore.value = false;
-        }
+function updateContact() {
+    form.put(route('contacts.update', props.contact.id));
+}
 
-        return {
-            form,
-            confirmingDelete,
-            confirmingRestore,
-            updateContact,
-            destroy,
-            restore,
-        };
-    },
-};
+function destroy() {
+    form.delete(route('contacts.destroy', props.contact.id));
+    confirmingDelete.value = false;
+}
+
+function restore() {
+    form.put(route('contacts.restore', props.contact.id));
+    confirmingRestore.value = false;
+}
+
 </script>

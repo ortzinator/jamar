@@ -42,64 +42,48 @@
         </div>
     </div>
 </template>
-<script>
+
+<script setup>
 import { ref, watch } from 'vue';
 
 import Icon from '@/Shared/Icon';
 
-export default {
-    components: {
-        Icon,
-    },
-    emits: ['selected'],
-    setup() {
-        const isOpen = ref(false);
-        const searchTerm = ref('');
-        const results = ref([]);
-        const loading = ref(false);
-        const selectedContact = ref(null);
+defineEmits(['selected']);
 
-        let cancelSource = null;
-        const search = _.debounce(() => {
-            if (cancelSource) {
-                cancelSource.cancel();
+const searchTerm = ref('');
+const results = ref([]);
+const loading = ref(false);
+
+let cancelSource = null;
+const search = _.debounce(() => {
+    if (cancelSource) {
+        cancelSource.cancel();
+    }
+    cancelSource = axios.CancelToken.source();
+
+    if (searchTerm.value === '') {
+        results.value = [];
+        return;
+    }
+
+    axios
+        .get(route('contacts'), {
+            params: { search: searchTerm.value },
+            cancelToken: cancelSource.token,
+        })
+        .then((response) => {
+            loading.value = false;
+            if (response) {
+                results.value = response.data;
+                cancelSource = null;
             }
-            cancelSource = axios.CancelToken.source();
+        });
+}, 400);
 
-            if (searchTerm.value === '') {
-                results.value = [];
-                return;
-            }
+function refreshSearch() {
+    loading.value = true;
+    search();
+}
 
-            axios
-                .get(route('contacts'), {
-                    params: { search: searchTerm.value },
-                    cancelToken: cancelSource.token,
-                })
-                .then((response) => {
-                    loading.value = false;
-                    if (response) {
-                        results.value = response.data;
-                        cancelSource = null;
-                    }
-                });
-        }, 400);
-
-        function refreshSearch() {
-            loading.value = true;
-            search();
-        }
-
-        watch(searchTerm, () => refreshSearch());
-
-        return {
-            isOpen,
-            searchTerm,
-            results,
-            loading,
-            refreshSearch,
-            selectedContact,
-        };
-    },
-};
+watch(searchTerm, () => refreshSearch());
 </script>

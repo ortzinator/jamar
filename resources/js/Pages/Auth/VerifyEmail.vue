@@ -20,14 +20,14 @@
 
         <form @submit.prevent="submit">
             <div class="mt-4 flex items-center justify-between">
-                <jet-button
+                <JetButton
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Resend Verification Email
-                </jet-button>
+                </JetButton>
 
-                <inertia-link
+                <InertiaLink
                     :href="route('logout')"
                     method="post"
                     as="button"
@@ -38,7 +38,7 @@
                     "
                 >
                     Log Out
-                </inertia-link>
+                </InertiaLink>
             </div>
         </form>
     </jet-authentication-card>

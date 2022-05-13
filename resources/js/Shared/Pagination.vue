@@ -12,7 +12,7 @@
                 v-text="link.label"
             >
             </span>
-            <inertia-link
+            <InertiaLink
                 v-else
                 class="
                     hover:bg-white
@@ -28,15 +28,11 @@
                 :href="link.url"
             >
                 <span v-text="link.label" />
-            </inertia-link>
+            </InertiaLink>
         </div>
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        links: { type: Array, required: true },
-    },
-};
+<script setup>
+defineProps({ links: { type: Array, required: true } });
 </script>

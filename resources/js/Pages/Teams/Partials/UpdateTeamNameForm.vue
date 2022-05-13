@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updateTeamName">
+    <JetFormSection @submitted="updateTeamName">
         <template #title> Team Name </template>
 
         <template #description>
@@ -9,7 +9,7 @@
         <template #form>
             <!-- Team Owner Information -->
             <div class="col-span-6">
-                <jet-label value="Team Owner" />
+                <JetLabel value="Team Owner" />
 
                 <div class="flex items-center mt-2">
                     <img
@@ -29,9 +29,9 @@
 
             <!-- Team Name -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="name" value="Team Name" />
+                <JetLabel for="name" value="Team Name" />
 
-                <jet-input
+                <JetInput
                     id="name"
                     v-model="form.name"
                     type="text"
@@ -39,7 +39,7 @@
                     :disabled="!permissions.canUpdateTeam"
                 />
 
-                <jet-input-error :message="form.errors.name" class="mt-2" />
+                <JetInput-error :message="form.errors.name" class="mt-2" />
             </div>
         </template>
 
@@ -48,14 +48,14 @@
                 Saved.
             </jet-action-message>
 
-            <jet-button
+            <JetButton
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
             >
                 Save
-            </jet-button>
+            </JetButton>
         </template>
-    </jet-form-section>
+    </JetFormSection>
 </template>
 
 <script>

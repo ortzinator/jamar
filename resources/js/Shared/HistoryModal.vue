@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="md:mx-7 md:my-5 mx-2 my-4">
-                    <jet-label for="message" value="Message" />
+                    <JetLabel for="message" value="Message" />
                     <textarea
                         id="address"
                         v-model="historyForm.message"
@@ -56,7 +56,7 @@
                         class="block w-full"
                         rows="2"
                     />
-                    <jet-input-error :message="historyForm.errors.message" />
+                    <JetInput-error :message="historyForm.errors.message" />
                 </div>
                 <div
                     class="
@@ -78,7 +78,7 @@
     </Dialog>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import {
@@ -92,82 +92,60 @@ import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
 import HistoryItem from './HistoryItem.vue';
 
-export default {
-    components: {
-        Dialog,
-        DialogOverlay,
-        DialogTitle,
-        DialogDescription,
-        JetLabel,
-        JetInputError,
-        HistoryItem,
-    },
-    props: { policy: { type: Object, required: true } },
-    setup(props) {
-        const isOpen = ref(false);
-        const histories = ref([]);
-        const loading = ref(false);
+const props = defineProps({ policy: { type: Object, required: true } });
+const isOpen = ref(false);
+const histories = ref([]);
+const loading = ref(false);
 
-        let cancelSource = null;
+let cancelSource = null;
 
-        const historyForm = useForm({
-            message: '',
-            policy_id: props.policy.id,
-            event_type: 'note',
-        });
+const historyForm = useForm({
+    message: '',
+    policy_id: props.policy.id,
+    event_type: 'note',
+});
 
-        function loadHistory() {
-            if (cancelSource) {
-                cancelSource.cancel();
+function loadHistory() {
+    if (cancelSource) {
+        cancelSource.cancel();
+    }
+    cancelSource = axios.CancelToken.source();
+
+    loading.value = true;
+
+    axios
+        .get(route('histories.index'), {
+            cancelToken: cancelSource.token,
+            params: {
+                'filter[policy_id]': props.policy.id,
+            },
+        })
+        .then((response) => {
+            if (response) {
+                histories.value = response.data;
+                loading.value = false;
+                cancelSource = null;
             }
-            cancelSource = axios.CancelToken.source();
+        });
+}
 
-            loading.value = true;
+onMounted(loadHistory);
 
-            axios
-                .get(route('histories.index'), {
-                    cancelToken: cancelSource.token,
-                    params: {
-                        'filter[policy_id]': props.policy.id,
-                    },
-                })
-                .then((response) => {
-                    if (response) {
-                        histories.value = response.data;
-                        loading.value = false;
-                        cancelSource = null;
-                    }
-                });
-        }
+function setIsOpen(state) {
+    isOpen.value = state;
+}
 
-        onMounted(loadHistory);
-
-        function setIsOpen(state) {
-            isOpen.value = state;
-        }
-
-        function handleAdd() {
-            historyForm.post('/histories', {
-                onSuccess: () => {
-                    historyForm.reset();
-                    loadHistory();
-                },
-            });
-        }
-
-        function handleClose() {
+function handleAdd() {
+    historyForm.post('/histories', {
+        onSuccess: () => {
             historyForm.reset();
-            setIsOpen(false);
-        }
+            loadHistory();
+        },
+    });
+}
 
-        return {
-            isOpen,
-            setIsOpen,
-            historyForm,
-            histories,
-            handleAdd,
-            handleClose,
-        };
-    },
-};
+function handleClose() {
+    historyForm.reset();
+    setIsOpen(false);
+}
 </script>

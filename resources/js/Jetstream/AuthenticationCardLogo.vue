@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-    <inertia-link :href="'/'">
+    <InertiaLink :href="'/'">
         <svg
             class="w-16 h-16"
             viewBox="0 0 48 48"
@@ -16,6 +16,6 @@
                 fill="#6875F5"
             />
         </svg>
-    </inertia-link>
+    </InertiaLink>
 </template>
 <script></script>

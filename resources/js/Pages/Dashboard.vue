@@ -1,11 +1,11 @@
 <template>
     <div class="font-bold py-5">
-        <inertia-head title="Dashboard" />
+        <InertiaHead title="Dashboard" />
         <h1>Dashboard</h1>
-        <Alert v-if="user.roles.length < 1">
+        <AlertWidget v-if="user.roles.length < 1">
             You have not been assigned any roles yet. Please contact your
             manager or administrator
-        </Alert>
+        </AlertWidget>
     </div>
 
     <div
@@ -18,8 +18,8 @@
             grid-flow-row-dense
         "
     >
-        <EndingSoon class="shadow-sm bg-white p-4 rounded" />
-        <Text class="bg-white lg:col-span-2 rounded shadow-sm">
+        <EndingSoonWidget class="shadow-sm bg-white p-4 rounded" />
+        <TextWidget class="bg-white lg:col-span-2 rounded shadow-sm">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -27,8 +27,8 @@
             posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
             vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh. Lorem
             ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-        <Text class="shadow-sm bg-white rounded">
+        </TextWidget>
+        <TextWidget class="shadow-sm bg-white rounded">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -36,8 +36,8 @@
             posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
             vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh. Lorem
             ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-        <Text class="shadow-sm bg-white rounded">
+        </TextWidget>
+        <TextWidget class="shadow-sm bg-white rounded">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -45,8 +45,8 @@
             posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
             vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh. Lorem
             ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-        <Text class="shadow-sm bg-white rounded">
+        </TextWidget>
+        <TextWidget class="shadow-sm bg-white rounded">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -54,8 +54,8 @@
             posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
             vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh. Lorem
             ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-        <Text class="shadow-sm bg-white rounded">
+        </TextWidget>
+        <TextWidget class="shadow-sm bg-white rounded">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
@@ -63,29 +63,23 @@
             posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
             vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh. Lorem
             ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
+        </TextWidget>
     </div>
 </template>
 
-<script>
+<script setup>
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/inertia-vue3';
 
 import AppLayout from '@/Layouts/NewLayout';
-import EndingSoon from '@/Widgets/EndingSoon';
-import Text from '@/Widgets/Text';
-import Alert from '@/Shared/Alert';
+import EndingSoonWidget from '@/Widgets/EndingSoon';
+import TextWidget from '@/Widgets/Text';
+import AlertWidget from '@/Shared/Alert';
 
-export default {
-    components: {
-        EndingSoon,
-        Text,
-        Alert,
-    },
+defineOptions({
     layout: AppLayout,
-    setup() {
-        const user = computed(() => usePage().props.value.user);
-        return { user };
-    },
-};
+});
+
+const user = computed(() => usePage().props.value.user);
+
 </script>

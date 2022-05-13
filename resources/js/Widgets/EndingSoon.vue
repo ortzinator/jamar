@@ -33,9 +33,9 @@
                     class="border-t border-cool-grey-100"
                 >
                     <td class="py-2 px-4">
-                        <inertia-link :href="route('policies.edit', policy.id)">
+                        <InertiaLink :href="route('policies.edit', policy.id)">
                             {{ policy.number }}
-                        </inertia-link>
+                        </InertiaLink>
                     </td>
                     <td
                         class="py-2"
@@ -61,9 +61,9 @@
             v-if="!loading && results.length > 5"
             class="text-cool-grey-400 text-sm mb-2"
         >
-            <inertia-link :href="route('policies.ending')">
+            <InertiaLink :href="route('policies.ending')">
                 Plus {{ results.length - 5 }} more
-            </inertia-link>
+            </InertiaLink>
         </div>
         <div class="flex items-center">
             <span

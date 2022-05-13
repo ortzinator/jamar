@@ -4,7 +4,7 @@
             <slot />
         </span>
 
-        <jet-dialog-modal :show="confirmingPassword" @close="closeModal">
+        <JetDialogModal :show="confirmingPassword" @close="closeModal">
             <template #title>
                 {{ title }}
             </template>
@@ -13,31 +13,31 @@
                 {{ content }}
 
                 <div class="mt-4">
-                    <jet-input ref="password" v-model="form.password" type="password"
+                    <JetInput ref="password" v-model="form.password" type="password"
                                class="mt-1 block w-3/4"
                                placeholder="Password"
                                @keyup.enter="confirmPassword"
                     />
 
-                    <jet-input-error :message="form.error" class="mt-2" />
+                    <JetInput-error :message="form.error" class="mt-2" />
                 </div>
             </template>
 
             <template #footer>
-                <jet-secondary-button @click="closeModal">
+                <JetSecondaryButton @click="closeModal">
                     Nevermind
-                </jet-secondary-button>
+                </JetSecondaryButton>
 
-                <jet-button
+                <JetButton
                     class="ml-2"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                     @click="confirmPassword"
                 >
                     {{ button }}
-                </jet-button>
+                </JetButton>
             </template>
-        </jet-dialog-modal>
+        </JetDialogModal>
     </span>
 </template>
 

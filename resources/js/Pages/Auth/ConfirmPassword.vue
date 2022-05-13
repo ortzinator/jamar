@@ -13,8 +13,8 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="password" value="Password" />
-                <jet-input
+                <JetLabel for="password" value="Password" />
+                <JetInput
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -26,13 +26,13 @@
             </div>
 
             <div class="flex justify-end mt-4">
-                <jet-button
+                <JetButton
                     class="ml-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Confirm
-                </jet-button>
+                </JetButton>
             </div>
         </form>
     </jet-authentication-card>

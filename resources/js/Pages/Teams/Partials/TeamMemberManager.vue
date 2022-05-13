@@ -4,7 +4,7 @@
             <jet-section-border />
 
             <!-- Add Team Member -->
-            <jet-form-section @submitted="addTeamMember">
+            <JetFormSection @submitted="addTeamMember">
                 <template #title> Add Team Member </template>
 
                 <template #description>
@@ -22,14 +22,14 @@
 
                     <!-- Member Email -->
                     <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="email" value="Email" />
-                        <jet-input
+                        <JetLabel for="email" value="Email" />
+                        <JetInput
                             id="email"
                             v-model="addTeamMemberForm.email"
                             type="email"
                             class="mt-1 block w-full"
                         />
-                        <jet-input-error
+                        <JetInput-error
                             :message="addTeamMemberForm.errors.email"
                             class="mt-2"
                         />
@@ -40,8 +40,8 @@
                         v-if="availableRoles.length > 0"
                         class="col-span-6 lg:col-span-4"
                     >
-                        <jet-label for="roles" value="Role" />
-                        <jet-input-error
+                        <JetLabel for="roles" value="Role" />
+                        <JetInput-error
                             :message="addTeamMemberForm.errors.role"
                             class="mt-2"
                         />
@@ -141,14 +141,14 @@
                         Added.
                     </jet-action-message>
 
-                    <jet-button
+                    <JetButton
                         :class="{ 'opacity-25': addTeamMemberForm.processing }"
                         :disabled="addTeamMemberForm.processing"
                     >
                         Add
-                    </jet-button>
+                    </JetButton>
                 </template>
-            </jet-form-section>
+            </JetFormSection>
         </div>
 
         <div
@@ -160,7 +160,7 @@
             <jet-section-border />
 
             <!-- Team Member Invitations -->
-            <jet-action-section class="mt-10 sm:mt-0">
+            <JetActionSection class="mt-10 sm:mt-0">
                 <template #title> Pending Team Invitations </template>
 
                 <template #description>
@@ -199,14 +199,14 @@
                         </div>
                     </div>
                 </template>
-            </jet-action-section>
+            </JetActionSection>
         </div>
 
         <div v-if="team.users.length > 0">
             <jet-section-border />
 
             <!-- Manage Team Members -->
-            <jet-action-section class="mt-10 sm:mt-0">
+            <JetActionSection class="mt-10 sm:mt-0">
                 <template #title> Team Members </template>
 
                 <template #description>
@@ -283,11 +283,11 @@
                         </div>
                     </div>
                 </template>
-            </jet-action-section>
+            </JetActionSection>
         </div>
 
         <!-- Role Management Modal -->
-        <jet-dialog-modal
+        <JetDialogModal
             :show="currentlyManagingRole"
             @close="currentlyManagingRole = false"
         >
@@ -376,20 +376,20 @@
             </template>
 
             <template #footer>
-                <jet-secondary-button @click="currentlyManagingRole = false">
+                <JetSecondaryButton @click="currentlyManagingRole = false">
                     Cancel
-                </jet-secondary-button>
+                </JetSecondaryButton>
 
-                <jet-button
+                <JetButton
                     class="ml-2"
                     :class="{ 'opacity-25': updateRoleForm.processing }"
                     :disabled="updateRoleForm.processing"
                     @click="updateRole"
                 >
                     Save
-                </jet-button>
+                </JetButton>
             </template>
-        </jet-dialog-modal>
+        </JetDialogModal>
 
         <!-- Leave Team Confirmation Modal -->
         <jet-confirmation-modal
@@ -403,18 +403,18 @@
             </template>
 
             <template #footer>
-                <jet-secondary-button @click="confirmingLeavingTeam = false">
+                <JetSecondaryButton @click="confirmingLeavingTeam = false">
                     Cancel
-                </jet-secondary-button>
+                </JetSecondaryButton>
 
-                <jet-danger-button
+                <JetDangerButton
                     class="ml-2"
                     :class="{ 'opacity-25': leaveTeamForm.processing }"
                     :disabled="leaveTeamForm.processing"
                     @click="leaveTeam"
                 >
                     Leave
-                </jet-danger-button>
+                </JetDangerButton>
             </template>
         </jet-confirmation-modal>
 
@@ -430,18 +430,18 @@
             </template>
 
             <template #footer>
-                <jet-secondary-button @click="teamMemberBeingRemoved = null">
+                <JetSecondaryButton @click="teamMemberBeingRemoved = null">
                     Cancel
-                </jet-secondary-button>
+                </JetSecondaryButton>
 
-                <jet-danger-button
+                <JetDangerButton
                     class="ml-2"
                     :class="{ 'opacity-25': removeTeamMemberForm.processing }"
                     :disabled="removeTeamMemberForm.processing"
                     @click="removeTeamMember"
                 >
                     Remove
-                </jet-danger-button>
+                </JetDangerButton>
             </template>
         </jet-confirmation-modal>
     </div>

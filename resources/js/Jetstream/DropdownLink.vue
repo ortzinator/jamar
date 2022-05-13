@@ -21,7 +21,7 @@
             <slot></slot>
         </button>
 
-        <inertia-link
+        <InertiaLink
             v-else
             :href="href"
             class="
@@ -39,7 +39,7 @@
             "
         >
             <slot></slot>
-        </inertia-link>
+        </InertiaLink>
     </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <date-picker
+    <DatePicker
         v-model="value"
         mode="date"
         :masks="masks"
@@ -92,43 +92,31 @@
                 </div>
             </div>
         </template>
-    </date-picker>
+    </DatePicker>
 </template>
-<script>
+<script setup>
+import { computed, reactive } from 'vue';
 import { DatePicker } from 'v-calendar';
 import { CalendarIcon, ArrowRightIcon } from '@heroicons/vue/outline';
 
-export default {
-    components: {
-        DatePicker,
-        CalendarIcon,
-        ArrowRightIcon,
+const props = defineProps({ modelValue: { type: Object, required: true } });
+const emit = defineEmits(['update:modelValue']);
+const masks = reactive({
+    input: 'MM-DD-YYYY',
+});
+const value = computed({
+    get: () => props.modelValue,
+    set: (val) => {
+        emit('update:modelValue', val);
     },
-    props: { modelValue: { type: Object, required: true } },
-    emits: ['update:modelValue'],
-    data() {
-        return {
-            masks: {
-                input: 'MM-DD-YYYY',
-            },
-        };
+});
+const minDate = computed({
+    get() {
+        const now = new Date();
+        if (new Date(props.modelValue.start) < now) {
+            return props.modelValue.start;
+        }
+        return now;
     },
-    computed: {
-        value: {
-            get() {
-                return this.modelValue;
-            },
-            set(value) {
-                this.$emit('update:modelValue', value);
-            },
-        },
-        minDate() {
-            const now = new Date();
-            if (new Date(this.modelValue.start) < now) {
-                return this.modelValue.start;
-            }
-            return now;
-        },
-    },
-};
+});
 </script>

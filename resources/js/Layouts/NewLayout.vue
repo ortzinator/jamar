@@ -109,7 +109,7 @@
 
                             <div class="py-1">
                                 <MenuItem v-slot="{ active }">
-                                    <inertia-link
+                                    <InertiaLink
                                         :href="route('profile.show')"
                                         :class="[
                                             active
@@ -122,14 +122,14 @@
                                             class="w-5 h-5 inline mr-2"
                                         />
                                         Profile
-                                    </inertia-link>
+                                    </InertiaLink>
                                 </MenuItem>
 
                                 <MenuItem
                                     v-if="$page.props.jetstream.hasApiFeatures"
                                     v-slot="{ active }"
                                 >
-                                    <inertia-link
+                                    <InertiaLink
                                         :href="route('api-tokens.index')"
                                         :class="[
                                             active
@@ -139,7 +139,7 @@
                                         ]"
                                     >
                                         API Tokens
-                                    </inertia-link>
+                                    </InertiaLink>
                                 </MenuItem>
                             </div>
 

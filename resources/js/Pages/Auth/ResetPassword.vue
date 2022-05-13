@@ -8,8 +8,8 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="email" value="Email" />
-                <jet-input
+                <JetLabel for="email" value="Email" />
+                <JetInput
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -19,8 +19,8 @@
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input
+                <JetLabel for="password" value="Password" />
+                <JetInput
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -30,8 +30,8 @@
             </div>
 
             <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input
+                <JetLabel for="password_confirmation" value="Confirm Password" />
+                <JetInput
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
@@ -42,9 +42,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Reset Password
-                </jet-button>
+                </JetButton>
             </div>
         </form>
     </jet-authentication-card>

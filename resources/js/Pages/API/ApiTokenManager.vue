@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Generate API Token -->
-        <jet-form-section @submitted="createApiToken">
+        <JetFormSection @submitted="createApiToken">
             <template #title> Create API Token </template>
 
             <template #description>
@@ -12,15 +12,15 @@
             <template #form>
                 <!-- Token Name -->
                 <div class="col-span-6 sm:col-span-4">
-                    <jet-label for="name" value="Name" />
-                    <jet-input
+                    <JetLabel for="name" value="Name" />
+                    <JetInput
                         id="name"
                         v-model="createApiTokenForm.name"
                         type="text"
                         class="mt-1 block w-full"
                         autofocus
                     />
-                    <jet-input-error
+                    <JetInput-error
                         :message="createApiTokenForm.errors.name"
                         class="mt-2"
                     />
@@ -28,7 +28,7 @@
 
                 <!-- Token Permissions -->
                 <div v-if="availablePermissions.length > 0" class="col-span-6">
-                    <jet-label for="permissions" value="Permissions" />
+                    <JetLabel for="permissions" value="Permissions" />
 
                     <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div
@@ -59,21 +59,21 @@
                     Created.
                 </jet-action-message>
 
-                <jet-button
+                <JetButton
                     :class="{ 'opacity-25': createApiTokenForm.processing }"
                     :disabled="createApiTokenForm.processing"
                 >
                     Create
-                </jet-button>
+                </JetButton>
             </template>
-        </jet-form-section>
+        </JetFormSection>
 
         <div v-if="tokens.length > 0">
             <jet-section-border />
 
             <!-- Manage API Tokens -->
             <div class="mt-10 sm:mt-0">
-                <jet-action-section>
+                <JetActionSection>
                     <template #title> Manage API Tokens </template>
 
                     <template #description>
@@ -130,12 +130,12 @@
                             </div>
                         </div>
                     </template>
-                </jet-action-section>
+                </JetActionSection>
             </div>
         </div>
 
         <!-- Token Value Modal -->
-        <jet-dialog-modal
+        <JetDialogModal
             :show="displayingToken"
             @close="displayingToken = false"
         >
@@ -164,14 +164,14 @@
             </template>
 
             <template #footer>
-                <jet-secondary-button @click="displayingToken = false">
+                <JetSecondaryButton @click="displayingToken = false">
                     Close
-                </jet-secondary-button>
+                </JetSecondaryButton>
             </template>
-        </jet-dialog-modal>
+        </JetDialogModal>
 
         <!-- API Token Permissions Modal -->
-        <jet-dialog-modal
+        <JetDialogModal
             :show="managingPermissionsFor"
             @close="managingPermissionsFor = null"
         >
@@ -197,22 +197,22 @@
             </template>
 
             <template #footer>
-                <jet-secondary-button
+                <JetSecondaryButton
                     @click="managingPermissionsFor = null"
                 >
                     Nevermind
-                </jet-secondary-button>
+                </JetSecondaryButton>
 
-                <jet-button
+                <JetButton
                     class="ml-2"
                     :class="{ 'opacity-25': updateApiTokenForm.processing }"
                     :disabled="updateApiTokenForm.processing"
                     @click="updateApiToken"
                 >
                     Save
-                </jet-button>
+                </JetButton>
             </template>
-        </jet-dialog-modal>
+        </JetDialogModal>
 
         <!-- Delete Token Confirmation Modal -->
         <jet-confirmation-modal
@@ -226,20 +226,20 @@
             </template>
 
             <template #footer>
-                <jet-secondary-button
+                <JetSecondaryButton
                     @click="apiTokenBeingDeleted = null"
                 >
                     Nevermind
-                </jet-secondary-button>
+                </JetSecondaryButton>
 
-                <jet-danger-button
+                <JetDangerButton
                     class="ml-2"
                     :class="{ 'opacity-25': deleteApiTokenForm.processing }"
                     :disabled="deleteApiTokenForm.processing"
                     @click="deleteApiToken"
                 >
                     Delete
-                </jet-danger-button>
+                </JetDangerButton>
             </template>
         </jet-confirmation-modal>
     </div>

@@ -1,8 +1,8 @@
 <template>
     <div class="font-bold py-5">
-        <inertia-head title="Create Policy" />
+        <InertiaHead title="Create Policy" />
         <h1>
-            <inertia-link
+            <InertiaLink
                 class="
                     text-light-blue-vivid-400
                     hover:text-light-blue-vivid-600
@@ -10,7 +10,7 @@
                 :href="route('policies')"
             >
                 Policies
-            </inertia-link>
+            </InertiaLink>
             <span class="text-light-blue-vivid-400 font-medium">/</span>
             New Policy
         </h1>
@@ -23,7 +23,7 @@
                 <template #description> Description of this section </template>
                 <div class="grid gap-4 grid-cols-6">
                     <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="template" value="Policy Type" />
+                        <JetLabel for="template" value="Policy Type" />
                         <div class="flex items-center">
                             <select
                                 v-model="selectedTemplate"
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="agent" value="Assigned Agent" />
+                        <JetLabel for="agent" value="Assigned Agent" />
                         <select
                             v-model="policyForm.agent_id"
                             class="
@@ -65,17 +65,17 @@
                         </select>
                     </div>
                     <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="number" value="Policy Number" />
-                        <jet-input
+                        <JetLabel for="number" value="Policy Number" />
+                        <JetInput
                             id="number"
                             v-model="policyForm.number"
                             type="text"
                             class="block w-full mt-1"
                         />
-                        <jet-input-error :message="policyForm.errors.number" />
+                        <JetInput-error :message="policyForm.errors.number" />
                     </div>
                     <div class="col-span-6 sm:col-span-4">
-                        <jet-label>Period of Insurance</jet-label>
+                        <JetLabel>Period of Insurance</JetLabel>
                         <div
                             :class="{
                                 formError:
@@ -84,12 +84,12 @@
                             }"
                             class="mt-1"
                         >
-                            <date-range v-model="policyForm.period" />
+                            <DateRange v-model="policyForm.period" />
                         </div>
-                        <jet-input-error
+                        <JetInput-error
                             :message="policyForm.errors.period_start"
                         />
-                        <jet-input-error
+                        <JetInput-error
                             :message="policyForm.errors.period_end"
                         />
                     </div>
@@ -99,7 +99,7 @@
                             v-model="policyForm.premium"
                             class="border border-cool-grey-200 mr-5 rounded mt-1"
                         />
-                        <jet-input-error :message="policyForm.errors.premium" />
+                        <JetInput-error :message="policyForm.errors.premium" />
                     </div>
                 </div>
             </FormSection>
@@ -110,7 +110,7 @@
                 <template #header>Policy Fields</template>
                 <template #description> Description of this section </template>
 
-                <policy-fields-list
+                <PolicyFieldsList
                     class="mb-5"
                     :fields="policyForm.fields"
                     @fieldAdded="(field) => policyForm.fields.push(field)"
@@ -123,7 +123,7 @@
             <FormSection>
                 <template #header>Policyholders</template>
                 <template #description> Add policyholders here </template>
-                <contact-list
+                <ContactList
                     :contacts="policyForm.contacts"
                     class="mb-5"
                     removable
@@ -131,11 +131,11 @@
                 >
                     <template #noContacts>
                         <div class="mb-5 text-yellow-vivid-600">
-                            <exclamation-icon class="inline h-5 mr-2 w-5" />
+                            <ExclamationIcon class="inline h-5 mr-2 w-5" />
                             Please add one or more policyholders
                         </div>
                     </template>
-                </contact-list>
+                </ContactList>
                 <SelectContact @selected="contactSelected" />
             </FormSection>
 
@@ -143,27 +143,26 @@
 
             <div class="flex justify-between mt-5">
                 <div>Problems?</div>
-                <loading-button
+                <LoadingButton
                     class="btn btn-primary"
                     type="submit"
                     :loading="policyForm.processing"
                 >
                     Create Policy
-                </loading-button>
+                </LoadingButton>
             </div>
         </div>
     </form>
 </template>
 
-<script>
+<script setup>
 import { ref, watch } from 'vue';
-import { useForm, usePage } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon } from '@heroicons/vue/outline';
 import AppLayout from '@/Layouts/NewLayout';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
-import JetInputError from '@/Jetstream/InputError';
 import LoadingButton from '@/Shared/LoadingButton';
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
 import DateRange from '@/Shared/DateRange';
@@ -172,110 +171,86 @@ import ContactList from '@/Shared/Contact/ContactList';
 import FormSection from '@/Shared/FormSection';
 import CurrencyTextBox from '@/Shared/CurrencyTextBox';
 
-export default {
-    components: {
-        JetInput,
-        JetLabel,
-        JetInputError,
-        LoadingButton,
-        PolicyFieldsList,
-        DateRange,
-        SelectContact,
-        ContactList,
-        ExclamationIcon,
-        FormSection,
-        CurrencyTextBox,
-    },
+defineOptions({
     layout: AppLayout,
-    props: { users: { type: Array, required: true } },
-    setup() {
-        const policyForm = useForm({
-            number: null,
-            contacts: [],
-            period: {
-                start: null,
-                end: null,
-            },
-            fields: [],
-            agent_id: usePage().props.value.user.id,
-            premium: {
-                amount: '0',
-                subunit: 2,
-                currency: 'PHP',
-            },
-        });
+});
 
-        const templates = ref([
-            {
-                id: 1,
-                name: 'none',
-                label: 'None',
-                fields: null,
-            },
-            {
-                id: 2,
-                name: 'vehicle',
-                label: 'Vehicle',
-                fields: [
-                    { id: 1, name: 'license', value: '' },
-                    { id: 2, name: 'vin', value: '' },
-                ],
-            },
-        ]);
-
-        const selectedTemplate = ref(null);
-        watch(selectedTemplate, (selectedTemplate) => {
-            policyForm.fields = [];
-            if (selectedTemplate) {
-                policyForm.fields.push(...selectedTemplate);
-                policyForm.fields.map((field) => {
-                    const item = { ...field };
-                    item.protected = true;
-                    return item;
-                });
-            }
-        });
-
-        function store() {
-            policyForm
-                .transform((data) => ({
-                    ...data,
-                    period_start: data.period.start,
-                    period_end: data.period.end,
-                    premium: data.premium.amount,
-                }))
-                .post(route('policies.store'));
-        }
-
-        function contactExists(contact) {
-            return (
-                _.findIndex(policyForm.contacts, (o) => _.isMatch(o, contact)) > -1
-            );
-        }
-
-        function contactSelected(contact) {
-            if (!contactExists(contact)) {
-                policyForm.contacts.push(contact);
-            }
-        }
-
-        function handleContactClick(contact) {
-            window.open(contact.link, '_blank').focus();
-        }
-
-        function handleFieldDelete(field) {
-            _.pull(policyForm.fields, field);
-        }
-
-        return {
-            policyForm,
-            templates,
-            selectedTemplate,
-            store,
-            contactSelected,
-            handleContactClick,
-            handleFieldDelete,
-        };
+const props = defineProps({ users: { type: Array, required: true } });
+const policyForm = useForm({
+    number: null,
+    contacts: [],
+    period: {
+        start: null,
+        end: null,
     },
-};
+    fields: [],
+    agent_id: props.value.user.id,
+    premium: {
+        amount: '0',
+        subunit: 2,
+        currency: 'PHP',
+    },
+});
+
+const templates = ref([
+    {
+        id: 1,
+        name: 'none',
+        label: 'None',
+        fields: null,
+    },
+    {
+        id: 2,
+        name: 'vehicle',
+        label: 'Vehicle',
+        fields: [
+            { id: 1, name: 'license', value: '' },
+            { id: 2, name: 'vin', value: '' },
+        ],
+    },
+]);
+
+const selectedTemplate = ref(null);
+watch(selectedTemplate, (selectedTemplate) => {
+    policyForm.fields = [];
+    if (selectedTemplate) {
+        policyForm.fields.push(...selectedTemplate);
+        policyForm.fields.map((field) => {
+            const item = { ...field };
+            item.protected = true;
+            return item;
+        });
+    }
+});
+
+function store() {
+    policyForm
+        .transform((data) => ({
+            ...data,
+            period_start: data.period.start,
+            period_end: data.period.end,
+            premium: data.premium.amount,
+        }))
+        .post(route('policies.store'));
+}
+
+function contactExists(contact) {
+    return (
+        _.findIndex(policyForm.contacts, (o) => _.isMatch(o, contact)) > -1
+    );
+}
+
+function contactSelected(contact) {
+    if (!contactExists(contact)) {
+        policyForm.contacts.push(contact);
+    }
+}
+
+function handleContactClick(contact) {
+    window.open(contact.link, '_blank').focus();
+}
+
+function handleFieldDelete(field) {
+    _.pull(policyForm.fields, field);
+}
 </script>

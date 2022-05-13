@@ -1,6 +1,6 @@
 <template>
     <div class="font-bold py-5">
-        <inertia-head title="Policies" />
+        <InertiaHead title="Policies" />
         <h1>Policies</h1>
     </div>
 
@@ -29,13 +29,13 @@
                     Reset
                 </button>
             </div>
-            <inertia-link
+            <InertiaLink
                 class="btn btn-primary"
                 :href="route('policies.create')"
             >
                 <span>Create</span>
                 <span class="hidden md:inline"> Policy</span>
-            </inertia-link>
+            </InertiaLink>
         </div>
         <div class="shadow rounded bg-white overflow-x-auto">
             <DataTable
@@ -62,7 +62,7 @@
                         v-if="row.contacts.length === 0"
                         class="flex text-red-vivid-600 items-center"
                     >
-                        <exclamation-icon class="h-5 mr-2 w-5" />
+                        <ExclamationIcon class="h-5 mr-2 w-5" />
                         No policyholders found
                     </div>
                     <div
@@ -80,7 +80,7 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { watch, computed, ref } from 'vue';
 
 import { ExclamationIcon } from '@heroicons/vue/outline';
@@ -92,63 +92,45 @@ import FilterSelect from '@/Shared/FilterSelect';
 
 import { formatDate, isInPast, highlight } from '@/util.js';
 
-export default {
-    components: {
-        Pagination,
-        ExclamationIcon,
-        DataTable,
-        FilterSelect,
-    },
+defineOptions({
     layout: AppLayout,
-    props: {
-        policies: { type: Object, required: true },
-        filters: { type: Object, required: true },
-    },
-    setup(props) {
-        const searchForm = useForm({
-            search: props.filters.search,
-            trashed: props.filters.trashed,
+});
+const props = defineProps({
+    policies: { type: Object, required: true },
+    filters: { type: Object, required: true },
+});
+const searchForm = useForm({
+    search: props.filters.search,
+    trashed: props.filters.trashed,
+});
+
+const refreshSearch = _.debounce(() => {
+    searchForm
+        .transform((data) => _.pickBy(data))
+        .get('/policies', {
+            only: ['policies'],
+            preserveState: true,
+            preserveScroll: true,
         });
+}, 400);
 
-        const refreshSearch = _.debounce(() => {
-            searchForm
-                .transform((data) => _.pickBy(data))
-                .get('/policies', {
-                    only: ['policies'],
-                    preserveState: true,
-                    preserveScroll: true,
-                });
-        }, 400);
+const formVals = computed(() => ({
+    search: searchForm.search,
+    trashed: searchForm.trashed,
+}));
 
-        const formVals = computed(() => ({
-            search: searchForm.search,
-            trashed: searchForm.trashed,
-        }));
+function reset() {
+    searchForm.search = '';
+    searchForm.trashed = null;
+}
 
-        function reset() {
-            searchForm.search = '';
-            searchForm.trashed = null;
-        }
+watch(formVals, () => refreshSearch());
 
-        watch(formVals, () => refreshSearch());
-
-        const columns = ref([
-            { text: 'Number', value: 'number' },
-            { text: 'Policyholders', value: 'contactNamesPreview' },
-            { text: 'Premium', value: 'premium' },
-            { text: 'Date Issued', value: 'created_at' },
-            { text: 'Ending', value: 'period_end' },
-        ]);
-
-        return {
-            searchForm,
-            refreshSearch,
-            reset,
-            formatDate,
-            isInPast,
-            columns,
-            highlight,
-        };
-    },
-};
+const columns = ref([
+    { text: 'Number', value: 'number' },
+    { text: 'Policyholders', value: 'contactNamesPreview' },
+    { text: 'Premium', value: 'premium' },
+    { text: 'Date Issued', value: 'created_at' },
+    { text: 'Ending', value: 'period_end' },
+]);
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updatePassword">
+    <JetFormSection @submitted="updatePassword">
         <template #title>
             Update Password
         </template>
@@ -10,8 +10,8 @@
 
         <template #form>
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="current_password" value="Current Password" />
-                <jet-input
+                <JetLabel for="current_password" value="Current Password" />
+                <JetInput
                     id="current_password"
                     ref="current_password"
                     v-model="form.current_password"
@@ -19,12 +19,12 @@
                     class="mt-1 block w-full"
                     autocomplete="current-password"
                 />
-                <jet-input-error :message="form.errors.current_password" class="mt-2" />
+                <JetInput-error :message="form.errors.current_password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="password" value="New Password" />
-                <jet-input
+                <JetLabel for="password" value="New Password" />
+                <JetInput
                     id="password"
                     ref="password"
                     v-model="form.password"
@@ -32,19 +32,19 @@
                     class="mt-1 block w-full"
                     autocomplete="new-password"
                 />
-                <jet-input-error :message="form.errors.password" class="mt-2" />
+                <JetInput-error :message="form.errors.password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input
+                <JetLabel for="password_confirmation" value="Confirm Password" />
+                <JetInput
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
                     class="mt-1 block w-full"
                     autocomplete="new-password"
                 />
-                <jet-input-error :message="form.errors.password_confirmation" class="mt-2" />
+                <JetInput-error :message="form.errors.password_confirmation" class="mt-2" />
             </div>
         </template>
 
@@ -53,11 +53,11 @@
                 Saved.
             </jet-action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </jet-button>
+            </JetButton>
         </template>
-    </jet-form-section>
+    </JetFormSection>
 </template>
 
 <script>

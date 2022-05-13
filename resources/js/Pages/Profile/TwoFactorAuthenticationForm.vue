@@ -1,5 +1,5 @@
 <template>
-    <jet-action-section>
+    <JetActionSection>
         <template #title> Two Factor Authentication </template>
 
         <template #description>
@@ -80,49 +80,49 @@
                     <jet-confirms-password
                         @confirmed="enableTwoFactorAuthentication"
                     >
-                        <jet-button
+                        <JetButton
                             type="button"
                             :class="{ 'opacity-25': enabling }"
                             :disabled="enabling"
                         >
                             Enable
-                        </jet-button>
+                        </JetButton>
                     </jet-confirms-password>
                 </div>
 
                 <div v-else>
                     <jet-confirms-password @confirmed="regenerateRecoveryCodes">
-                        <jet-secondary-button
+                        <JetSecondaryButton
                             v-if="recoveryCodes.length > 0"
                             class="mr-3"
                         >
                             Regenerate Recovery Codes
-                        </jet-secondary-button>
+                        </JetSecondaryButton>
                     </jet-confirms-password>
 
                     <jet-confirms-password @confirmed="showRecoveryCodes">
-                        <jet-secondary-button
+                        <JetSecondaryButton
                             v-if="recoveryCodes.length === 0"
                             class="mr-3"
                         >
                             Show Recovery Codes
-                        </jet-secondary-button>
+                        </JetSecondaryButton>
                     </jet-confirms-password>
 
                     <jet-confirms-password
                         @confirmed="disableTwoFactorAuthentication"
                     >
-                        <jet-danger-button
+                        <JetDangerButton
                             :class="{ 'opacity-25': disabling }"
                             :disabled="disabling"
                         >
                             Disable
-                        </jet-danger-button>
+                        </JetDangerButton>
                     </jet-confirms-password>
                 </div>
             </div>
         </template>
-    </jet-action-section>
+    </JetActionSection>
 </template>
 
 <script>
