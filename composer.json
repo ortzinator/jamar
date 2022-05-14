@@ -23,7 +23,6 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
-        "spatie/laravel-ignition": "^1.2",
         "fakerphp/faker": "^1.9.1",
         "laracasts/cypress": "^1.5",
         "laravel/breeze": "^1.9",
@@ -32,7 +31,8 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
-        "protonemedia/inertiajs-events-laravel-dusk": "^1.2"
+        "protonemedia/inertiajs-events-laravel-dusk": "^1.2",
+        "spatie/laravel-ignition": "^1.2"
     },
     "config": {
         "optimize-autoloader": true,
