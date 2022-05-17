@@ -4,14 +4,14 @@ Cypress.Laravel = {
     route: (name, parameters = {}) => {
         assert(
             Cypress.Laravel.routes.hasOwnProperty(name),
-            `Laravel route "${name}" exists.`
+            `Laravel route "${name}" does not exist.`,
         );
 
         return ((uri) => {
             Object.keys(parameters).forEach((parameter) => {
                 uri = uri.replace(
                     new RegExp(`{${parameter}}`),
-                    parameters[parameter]
+                    parameters[parameter],
                 );
             });
 
