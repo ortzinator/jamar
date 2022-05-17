@@ -11,14 +11,13 @@
 		"bmewburn.vscode-intelephense-client",
 		"mikestead.dotenv",
 		"bradlc.vscode-tailwindcss",
-		"Wscats.vue",
 		"amiralizadeh9480.laravel-extra-intellisense",
 		"onecentlin.laravel-blade",
 		"eamodio.gitlens",
 		"dbaeumer.vscode-eslint",
-		"vue.volar",
+		"vue.volar"
 	],
-	"remoteUser": "sail",
+	"remoteUser": "sail"
 	// "forwardPorts": [],
 	// "runServices": [],
 	// "postCreateCommand": "apt-get update && apt-get install -y curl",
