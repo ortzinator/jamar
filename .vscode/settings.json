@@ -1,20 +1,12 @@
 {
-    "workbench.colorTheme": "One Dark",
-    "workbench.iconTheme": "material-icon-theme",
     "files.autoSave": "off",
-    "editor.lineHeight": 26,
-    "explorer.confirmDragAndDrop": false,
-    "diffEditor.ignoreTrimWhitespace": true,
-    "editor.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
-    "editor.fontSize": 13,
-    "editor.fontLigatures": true,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "[javascript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
     "[typescript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
-    "[vue]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
-    "editor.cursorSmoothCaretAnimation": true,
-    "terminal.integrated.fontSize": 12,
+    "[vue]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
     "editor.rulers": [
         120
     ],
@@ -24,6 +16,10 @@
     "eslint.options": {
         "extensions": [".html", ".js", ".ts", ".vue"]
     },
+    "eslint.validate": [
+        "javascript",
+        "vue"
+    ],
     "html.format.enable": false,
     "emmet.triggerExpansionOnTab": true,
     "emmet.includeLanguages": {
@@ -46,5 +42,9 @@
       "files.eol": "\n",
       "files.insertFinalNewline": true,
       "files.trimFinalNewlines": true,
-      "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "volar.autoCompleteRefs": true,
+    "volar.completion.preferredTagNameCase": "pascal",
+    "volar.completion.preferredAttrNameCase": "kebab",
+    "typescript.validate.enable": false,
 }
