@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2500912947d56359fa04853083ee55d6",
+    "content-hash": "d4a264c5774f82f3d7cb7a690a5fa094",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6663,26 +6663,26 @@
         },
         {
             "name": "laracasts/cypress",
-            "version": "1.5.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laracasts/cypress.git",
-                "reference": "3eccf5a02f4ee2aae7773317f4bc8f10198b2195"
+                "reference": "21e438be4896d7f70c58d177c6fb81e7661daf0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/cypress/zipball/3eccf5a02f4ee2aae7773317f4bc8f10198b2195",
-                "reference": "3eccf5a02f4ee2aae7773317f4bc8f10198b2195",
+                "url": "https://api.github.com/repos/laracasts/cypress/zipball/21e438be4896d7f70c58d177c6fb81e7661daf0f",
+                "reference": "21e438be4896d7f70c58d177c6fb81e7661daf0f",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
-                "php": "^7.3|^8.0"
+                "php": "^8.0"
             },
             "require-dev": {
-                "laravel/legacy-factories": "^1.0",
                 "orchestra/testbench": "^6.0|^7.0",
-                "phpunit/phpunit": "^8.0|^9.5.10"
+                "phpunit/phpunit": "^8.0|^9.5.10",
+                "spatie/laravel-ray": "^1.29"
             },
             "type": "library",
             "extra": {
@@ -6716,9 +6716,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laracasts/cypress/issues",
-                "source": "https://github.com/laracasts/cypress/tree/1.5.0"
+                "source": "https://github.com/laracasts/cypress/tree/2.2.1"
             },
-            "time": "2022-02-11T14:48:26+00:00"
+            "time": "2022-02-15T17:52:17+00:00"
         },
         {
             "name": "laravel/breeze",
@@ -6779,16 +6779,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v6.23.1",
+            "version": "v6.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "41f6deb42ae42b9b7dae1c32c03cb35d365d3118"
+                "reference": "7fed3695741787d9998c5f04c94adfd62d70e766"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/41f6deb42ae42b9b7dae1c32c03cb35d365d3118",
-                "reference": "41f6deb42ae42b9b7dae1c32c03cb35d365d3118",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/7fed3695741787d9998c5f04c94adfd62d70e766",
+                "reference": "7fed3695741787d9998c5f04c94adfd62d70e766",
                 "shasum": ""
             },
             "require": {
@@ -6846,9 +6846,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/dusk/issues",
-                "source": "https://github.com/laravel/dusk/tree/v6.23.1"
+                "source": "https://github.com/laravel/dusk/tree/v6.24.0"
             },
-            "time": "2022-05-02T14:01:47+00:00"
+            "time": "2022-05-09T13:43:52+00:00"
         },
         {
             "name": "laravel/sail",
