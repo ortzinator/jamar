@@ -1,4 +1,3 @@
-<!-- eslint-disable max-len -->
 <template>
     <JetActionSection>
         <template #title> Browser Sessions </template>

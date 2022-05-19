@@ -111,7 +111,6 @@ export default {
                 })
                 .catch((error) => {
                     this.form.processing = false;
-                    // eslint-disable-next-line prefer-destructuring
                     this.form.error = error.response.data.errors.password[0];
                     this.$refs.password.focus();
                 });

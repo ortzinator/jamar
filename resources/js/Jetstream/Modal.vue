@@ -89,8 +89,7 @@ export default {
     watch: {
         show: {
             immediate: true,
-            // eslint-disable-next-line object-shorthand,func-names
-            handler: function (show) {
+            handler(show) {
                 if (show) {
                     document.body.style.overflow = 'hidden';
                 } else {

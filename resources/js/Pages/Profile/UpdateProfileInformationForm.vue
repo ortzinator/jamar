@@ -122,7 +122,6 @@ export default {
     methods: {
         updateProfileInformation() {
             if (this.$refs.photo) {
-                // eslint-disable-next-line prefer-destructuring
                 this.form.photo = this.$refs.photo.files[0];
             }
 
