@@ -2,24 +2,26 @@
     "files.autoSave": "off",
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "[javascript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
-    "[typescript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
     "[vue]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
-    "editor.rulers": [
-        120
-    ],
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.rulers": [120],
     "eslint.format.enable": true,
     "eslint.enable": true,
     "eslint.alwaysShowStatus": true,
     "eslint.options": {
         "extensions": [".html", ".js", ".ts", ".vue"]
     },
-    "eslint.validate": [
-        "javascript",
-        "vue"
-    ],
+    "eslint.validate": ["javascript", "vue"],
     "html.format.enable": false,
     "emmet.triggerExpansionOnTab": true,
     "emmet.includeLanguages": {
@@ -28,23 +30,24 @@
     "files.exclude": {
         "**/*.log": true,
         "**/*.log*": true,
-        "**/dist": true,
-      },
-      "files.associations": {
+        "**/dist": true
+    },
+    "files.associations": {
         ".babelrc": "jsonc",
         ".eslintrc": "jsonc",
         ".markdownlintrc": "jsonc",
         "*.config.js": "javascript",
         "*.spec.js": "javascript",
         "*.vue": "vue"
-      },
-      // The default end of line character. Use \n for LF and \r\n for CRLF.
-      "files.eol": "\n",
-      "files.insertFinalNewline": true,
-      "files.trimFinalNewlines": true,
+    },
+    // The default end of line character. Use \n for LF and \r\n for CRLF.
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "volar.autoCompleteRefs": true,
     "volar.completion.preferredTagNameCase": "pascal",
     "volar.completion.preferredAttrNameCase": "kebab",
     "typescript.validate.enable": false,
+    "editor.wordWrapColumn": 100
 }

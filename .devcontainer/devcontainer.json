@@ -1,25 +1,25 @@
 // https://aka.ms/devcontainer.json
 {
-	"name": "Laravel Sail - Jamar",
-	"dockerComposeFile": [
-		"../docker-compose.yml"
-	],
-	"service": "laravel.test",
-	"workspaceFolder": "/var/www/html",
-	"settings": {},
-	"extensions": [
-		"bmewburn.vscode-intelephense-client",
-		"mikestead.dotenv",
-		"bradlc.vscode-tailwindcss",
-		"amiralizadeh9480.laravel-extra-intellisense",
-		"onecentlin.laravel-blade",
-		"eamodio.gitlens",
-		"dbaeumer.vscode-eslint",
-		"vue.volar"
-	],
-	"remoteUser": "sail"
-	// "forwardPorts": [],
-	// "runServices": [],
-	// "postCreateCommand": "apt-get update && apt-get install -y curl",
-	// "shutdownAction": "none",
+    "name": "Laravel Sail - Jamar",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "laravel.test",
+    "workspaceFolder": "/var/www/html",
+    "settings": {},
+    "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "mikestead.dotenv",
+        "bradlc.vscode-tailwindcss",
+        "amiralizadeh9480.laravel-extra-intellisense",
+        "onecentlin.laravel-blade",
+        "eamodio.gitlens",
+        "dbaeumer.vscode-eslint",
+        "vue.volar",
+        "heybourn.headwind",
+        "esbenp.prettier-vscode"
+    ],
+    "remoteUser": "sail"
+    // "forwardPorts": [],
+    // "runServices": [],
+    // "postCreateCommand": "apt-get update && apt-get install -y curl",
+    // "shutdownAction": "none",
 }

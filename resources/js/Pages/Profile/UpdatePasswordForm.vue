@@ -1,8 +1,6 @@
 <template>
     <JetFormSection @submitted="updatePassword">
-        <template #title>
-            Update Password
-        </template>
+        <template #title> Update Password </template>
 
         <template #description>
             Ensure your account is using a long, random password to stay secure.
@@ -16,10 +14,10 @@
                     ref="current_password"
                     v-model="form.current_password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     autocomplete="current-password"
                 />
-                <JetInput-error :message="form.errors.current_password" class="mt-2" />
+                <JetInputError :message="form.errors.current_password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
@@ -29,10 +27,10 @@
                     ref="password"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     autocomplete="new-password"
                 />
-                <JetInput-error :message="form.errors.password" class="mt-2" />
+                <JetInputError :message="form.errors.password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
@@ -41,17 +39,15 @@
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     autocomplete="new-password"
                 />
-                <JetInput-error :message="form.errors.password_confirmation" class="mt-2" />
+                <JetInputError :message="form.errors.password_confirmation" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-                Saved.
-            </jet-action-message>
+            <JetActionMessage :on="form.recentlySuccessful" class="mr-3"> Saved. </JetActionMessage>
 
             <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save

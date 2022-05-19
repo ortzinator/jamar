@@ -1,8 +1,6 @@
 <template>
     <JetFormSection @submitted="updateProfileInformation">
-        <template #title>
-            Profile Information
-        </template>
+        <template #title> Profile Information </template>
 
         <template #description>
             Update your account's profile information and email address.
@@ -12,37 +10,34 @@
             <!-- Profile Photo -->
             <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
-                <input ref="photo" type="file"
-                       class="hidden"
-                       @change="updatePhotoPreview"
-                >
+                <input ref="photo" type="file" class="hidden" @change="updatePhotoPreview" />
 
                 <JetLabel for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
-                <div v-show="! photoPreview" class="mt-2">
+                <div v-show="!photoPreview" class="mt-2">
                     <img
                         :src="user.profile_photo_url"
                         :alt="user.name"
-                        class="rounded-full h-20 w-20 object-cover"
-                    >
+                        class="object-cover w-20 h-20 rounded-full"
+                    />
                 </div>
 
                 <!-- New Profile Photo Preview -->
                 <div v-show="photoPreview" class="mt-2">
-                    <span class="block rounded-full w-20 h-20"
-                          style="background-size: cover; background-repeat: no-repeat;
-                                background-position: center center;"
-                          :style="'background-image: url(\'' + photoPreview + '\');'"
+                    <span
+                        class="block w-20 h-20 rounded-full"
+                        style="
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                        "
+                        :style="'background-image: url(\'' + photoPreview + '\');'"
                     >
                     </span>
                 </div>
 
-                <JetSecondaryButton
-                    class="mt-2 mr-2"
-                    type="button"
-                    @click.prevent="selectNewPhoto"
-                >
+                <JetSecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
                     Select A New Photo
                 </JetSecondaryButton>
 
@@ -55,7 +50,7 @@
                     Remove Photo
                 </JetSecondaryButton>
 
-                <JetInput-error :message="form.errors.photo" class="mt-2" />
+                <JetInputError :message="form.errors.photo" class="mt-2" />
             </div>
 
             <!-- Name -->
@@ -65,24 +60,22 @@
                     id="name"
                     v-model="form.name"
                     type="text"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     autocomplete="name"
                 />
-                <JetInput-error :message="form.errors.name" class="mt-2" />
+                <JetInputError :message="form.errors.name" class="mt-2" />
             </div>
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <JetLabel for="email" value="Email" />
-                <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" />
-                <JetInput-error :message="form.errors.email" class="mt-2" />
+                <JetInput id="email" v-model="form.email" type="email" class="block w-full mt-1" />
+                <JetInputError :message="form.errors.email" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-                Saved.
-            </jet-action-message>
+            <JetActionMessage :on="form.recentlySuccessful" class="mr-3"> Saved. </JetActionMessage>
 
             <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save

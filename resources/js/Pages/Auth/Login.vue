@@ -1,12 +1,12 @@
 <template>
-    <jet-authentication-card>
+    <JetAuthenticationCard>
         <template #logo>
-            <jet-authentication-card-logo />
+            <JetAuthenticationCardLogo />
         </template>
 
-        <jet-validation-errors class="mb-4" />
+        <JetValidationErrors class="mb-4" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
 
@@ -18,7 +18,7 @@
                     v-model="form.email"
                     name="email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     autocomplete="username"
                     required
                     autofocus
@@ -32,7 +32,7 @@
                     v-model="form.password"
                     name="password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     required
                     autocomplete="current-password"
                 />
@@ -40,13 +40,8 @@
 
             <div class="block mt-4">
                 <label class="flex items-center">
-                    <jet-checkbox
-                        v-model:checked="form.remember"
-                        name="remember"
-                    />
-                    <span class="ml-2 text-sm text-cool-grey-600">
-                        Remember me
-                    </span>
+                    <JetCheckbox v-model:checked="form.remember" name="remember" />
+                    <span class="ml-2 text-sm text-cool-grey-600"> Remember me </span>
                 </label>
             </div>
 
@@ -54,11 +49,7 @@
                 <InertiaLink
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="
-                        underline
-                        text-sm text-cool-grey-600
-                        hover:text-cool-grey-900
-                    "
+                    class="text-sm underline text-cool-grey-600 hover:text-cool-grey-900"
                 >
                     Forgot your password?
                 </InertiaLink>
@@ -72,7 +63,7 @@
                 </JetButton>
             </div>
         </form>
-    </jet-authentication-card>
+    </JetAuthenticationCard>
 </template>
 
 <script>

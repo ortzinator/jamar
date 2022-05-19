@@ -1,10 +1,5 @@
 <template>
-    <modal
-        :show="show"
-        :max-width="maxWidth"
-        :closeable="closeable"
-        @close="close"
-    >
+    <Modal :show="show" :max-width="maxWidth" :closeable="closeable" @close="close">
         <div class="px-6 py-4">
             <div class="text-lg">
                 <slot name="title"> </slot>
@@ -15,17 +10,16 @@
             </div>
         </div>
 
-        <div class="px-6 py-4 bg-cool-grey-100 text-right">
+        <div class="px-6 py-4 text-right bg-cool-grey-100">
             <slot name="footer"> </slot>
         </div>
-    </modal>
+    </Modal>
 </template>
 
 <script>
 import Modal from './Modal';
 
 export default {
-
     components: {
         Modal,
     },

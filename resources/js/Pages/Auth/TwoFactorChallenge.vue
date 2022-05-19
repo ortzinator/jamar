@@ -1,22 +1,22 @@
 <template>
-    <jet-authentication-card>
+    <JetAuthenticationCard>
         <template #logo>
-            <jet-authentication-card-logo />
+            <JetAuthenticationCardLogo />
         </template>
 
         <div class="mb-4 text-sm text-cool-grey-600">
             <template v-if="!recovery">
-                Please confirm access to your account by entering the
-                authentication code provided by your authenticator application.
+                Please confirm access to your account by entering the authentication code provided
+                by your authenticator application.
             </template>
 
             <template v-else>
-                Please confirm access to your account by entering one of your
-                emergency recovery codes.
+                Please confirm access to your account by entering one of your emergency recovery
+                codes.
             </template>
         </div>
 
-        <jet-validation-errors class="mb-4" />
+        <JetValidationErrors class="mb-4" />
 
         <form @submit.prevent="submit">
             <div v-if="!recovery">
@@ -27,7 +27,7 @@
                     v-model="form.code"
                     type="text"
                     inputmode="numeric"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     autofocus
                     autocomplete="one-time-code"
                 />
@@ -40,7 +40,7 @@
                     ref="recovery_code"
                     v-model="form.recovery_code"
                     type="text"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     autocomplete="one-time-code"
                 />
             </div>
@@ -48,12 +48,7 @@
             <div class="flex items-center justify-end mt-4">
                 <button
                     type="button"
-                    class="
-                        text-sm text-cool-grey-600
-                        hover:text-cool-grey-900
-                        underline
-                        cursor-pointer
-                    "
+                    class="text-sm underline cursor-pointer text-cool-grey-600 hover:text-cool-grey-900"
                     @click.prevent="toggleRecovery"
                 >
                     <template v-if="!recovery"> Use a recovery code </template>
@@ -70,7 +65,7 @@
                 </JetButton>
             </div>
         </form>
-    </jet-authentication-card>
+    </JetAuthenticationCard>
 </template>
 
 <script>

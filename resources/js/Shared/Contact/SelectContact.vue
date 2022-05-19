@@ -1,36 +1,26 @@
 <template>
-    <div class="bg-white p-2 rounded shadow">
+    <div class="p-2 bg-white rounded shadow">
         <div class="flex items-center">
             <input
                 v-model="searchTerm"
                 type="text"
                 placeholder="Search contacts..."
-                class="border-cool-grey-200 rounded w-full"
+                class="w-full rounded border-cool-grey-200"
             />
-            <icon
+            <Icon
                 v-if="loading"
                 name="spinner"
-                class="
-                    -ml-8
-                    animate-spin
-                    fill-current
-                    h-6
-                    text-cool-grey-400
-                    w-6
-                "
+                class="w-6 h-6 -ml-8 fill-current animate-spin text-cool-grey-400"
             />
         </div>
-        <div class="overflow-auto h-52 mt-2 pr-1">
-            <ul v-if="results.length > 0" class="space-y-2 mt-2">
+        <div class="pr-1 mt-2 overflow-auto h-52">
+            <ul v-if="results.length > 0" class="mt-2 space-y-2">
                 <li
                     v-for="contact in results"
                     :key="contact.id"
                     class="hover:bg-light-blue-vivid-50 odd:bg-cool-grey-50"
                 >
-                    <a
-                        class="cursor-pointer p-2 block"
-                        @click="$emit('selected', contact)"
-                    >
+                    <a class="block p-2 cursor-pointer" @click="$emit('selected', contact)">
                         <div v-text="contact.name"></div>
                         <div v-text="contact.address"></div>
                     </a>

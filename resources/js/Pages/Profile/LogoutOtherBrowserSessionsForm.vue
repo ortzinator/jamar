@@ -4,26 +4,20 @@
         <template #title> Browser Sessions </template>
 
         <template #description>
-            Manage and log out your active sessions on other browsers and
-            devices.
+            Manage and log out your active sessions on other browsers and devices.
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-cool-grey-600">
-                If necessary, you may log out of all of your other browser
-                sessions across all of your devices. Some of your recent
-                sessions are listed below; however, this list may not be
-                exhaustive. If you feel your account has been compromised, you
-                should also update your password.
+                If necessary, you may log out of all of your other browser sessions across all of
+                your devices. Some of your recent sessions are listed below; however, this list may
+                not be exhaustive. If you feel your account has been compromised, you should also
+                update your password.
             </div>
 
             <!-- Other Browser Sessions -->
             <div v-if="sessions.length > 0" class="mt-5 space-y-6">
-                <div
-                    v-for="(session, i) in sessions"
-                    :key="i"
-                    class="flex items-center"
-                >
+                <div v-for="(session, i) in sessions" :key="i" class="flex items-center">
                     <div>
                         <svg
                             v-if="session.agent.is_desktop"
@@ -52,13 +46,7 @@
                             class="w-8 h-8 text-cool-grey-500"
                         >
                             <path d="M0 0h24v24H0z" stroke="none"></path>
-                            <rect
-                                x="7"
-                                y="4"
-                                width="10"
-                                height="16"
-                                rx="1"
-                            ></rect>
+                            <rect x="7" y="4" width="10" height="16" rx="1"></rect>
                             <path d="M11 5h2M12 17v.01"></path>
                         </svg>
                     </div>
@@ -75,9 +63,10 @@
 
                                 <span
                                     v-if="session.is_current_device"
-                                    class="text-green-500 font-semibold"
-                                >This device</span>
-                                <span v-else>Last active {{ session.last_active }}</span>
+                                    class="font-semibold text-green-500"
+                                    >This device</span
+                                >
+                                <span v-else> Last active {{ session.last_active }} </span>
                             </div>
                         </div>
                     </div>
@@ -85,13 +74,11 @@
             </div>
 
             <div class="flex items-center mt-5">
-                <JetButton @click="confirmLogout">
-                    Log Out Other Browser Sessions
-                </JetButton>
+                <JetButton @click="confirmLogout"> Log Out Other Browser Sessions </JetButton>
 
-                <jet-action-message :on="form.recentlySuccessful" class="ml-3">
+                <JetActionMessage :on="form.recentlySuccessful" class="ml-3">
                     Done.
-                </jet-action-message>
+                </JetActionMessage>
             </div>
 
             <!-- Log Out Other Devices Confirmation Modal -->
@@ -99,31 +86,25 @@
                 <template #title> Log Out Other Browser Sessions </template>
 
                 <template #content>
-                    Please enter your password to confirm you would like to log
-                    out of your other browser sessions across all of your
-                    devices.
+                    Please enter your password to confirm you would like to log out of your other
+                    browser sessions across all of your devices.
 
                     <div class="mt-4">
                         <JetInput
                             ref="password"
                             v-model="form.password"
                             type="password"
-                            class="mt-1 block w-3/4"
+                            class="block w-3/4 mt-1"
                             placeholder="Password"
                             @keyup.enter="logoutOtherBrowserSessions"
                         />
 
-                        <JetInput-error
-                            :message="form.errors.password"
-                            class="mt-2"
-                        />
+                        <JetInputError :message="form.errors.password" class="mt-2" />
                     </div>
                 </template>
 
                 <template #footer>
-                    <JetSecondaryButton @click="closeModal">
-                        Nevermind
-                    </JetSecondaryButton>
+                    <JetSecondaryButton @click="closeModal"> Nevermind </JetSecondaryButton>
 
                     <JetButton
                         class="ml-2"
@@ -149,7 +130,6 @@ import JetInputError from '@/Jetstream/InputError';
 import JetSecondaryButton from '@/Jetstream/SecondaryButton';
 
 export default {
-
     components: {
         JetActionMessage,
         JetActionSection,

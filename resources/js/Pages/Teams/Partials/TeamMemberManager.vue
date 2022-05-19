@@ -1,22 +1,21 @@
 <template>
     <div>
         <div v-if="userPermissions.canAddTeamMembers">
-            <jet-section-border />
+            <JetSectionBorder />
 
             <!-- Add Team Member -->
             <JetFormSection @submitted="addTeamMember">
                 <template #title> Add Team Member </template>
 
                 <template #description>
-                    Add a new team member to your team, allowing them to
-                    collaborate with you.
+                    Add a new team member to your team, allowing them to collaborate with you.
                 </template>
 
                 <template #form>
                     <div class="col-span-6">
                         <div class="max-w-xl text-sm text-cool-grey-600">
-                            Please provide the email address of the person you
-                            would like to add to this team.
+                            Please provide the email address of the person you would like to add to
+                            this team.
                         </div>
                     </div>
 
@@ -27,58 +26,27 @@
                             id="email"
                             v-model="addTeamMemberForm.email"
                             type="email"
-                            class="mt-1 block w-full"
+                            class="block w-full mt-1"
                         />
-                        <JetInput-error
-                            :message="addTeamMemberForm.errors.email"
-                            class="mt-2"
-                        />
+                        <JetInputError :message="addTeamMemberForm.errors.email" class="mt-2" />
                     </div>
 
                     <!-- Role -->
-                    <div
-                        v-if="availableRoles.length > 0"
-                        class="col-span-6 lg:col-span-4"
-                    >
+                    <div v-if="availableRoles.length > 0" class="col-span-6 lg:col-span-4">
                         <JetLabel for="roles" value="Role" />
-                        <JetInput-error
-                            :message="addTeamMemberForm.errors.role"
-                            class="mt-2"
-                        />
+                        <JetInputError :message="addTeamMemberForm.errors.role" class="mt-2" />
 
                         <div
-                            class="
-                                relative
-                                z-0
-                                mt-1
-                                border border-cool-grey-200
-                                rounded-lg
-                                cursor-pointer
-                            "
+                            class="relative z-0 mt-1 border rounded-lg cursor-pointer border-cool-grey-200"
                         >
                             <button
                                 v-for="(role, i) in availableRoles"
                                 :key="role.key"
                                 type="button"
-                                class="
-                                    relative
-                                    px-4
-                                    py-3
-                                    inline-flex
-                                    w-full
-                                    rounded-lg
-                                    focus:z-10
-                                    focus:outline-none
-                                    focus:border-blue-300
-                                    focus:ring
-                                    focus:ring-blue-200
-                                "
+                                class="relative inline-flex w-full px-4 py-3 rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200"
                                 :class="{
-                                    'border-t border-cool-grey-200 rounded-t-none':
-                                        i > 0,
-                                    'rounded-b-none':
-                                        i !=
-                                        Object.keys(availableRoles).length - 1
+                                    'border-t border-cool-grey-200 rounded-t-none': i > 0,
+                                    'rounded-b-none': i != Object.keys(availableRoles).length - 1,
                                 }"
                                 @click="addTeamMemberForm.role = role.key"
                             >
@@ -86,7 +54,7 @@
                                     :class="{
                                         'opacity-50':
                                             addTeamMemberForm.role &&
-                                            addTeamMemberForm.role != role.key
+                                            addTeamMemberForm.role != role.key,
                                     }"
                                 >
                                     <!-- Role Name -->
@@ -94,20 +62,15 @@
                                         <div
                                             class="text-sm text-cool-grey-600"
                                             :class="{
-                                                'font-semibold':
-                                                    addTeamMemberForm.role ==
-                                                    role.key
+                                                'font-semibold': addTeamMemberForm.role == role.key,
                                             }"
                                         >
                                             {{ role.name }}
                                         </div>
 
                                         <svg
-                                            v-if="
-                                                addTeamMemberForm.role ==
-                                                    role.key
-                                            "
-                                            class="ml-2 h-5 w-5 text-green-400"
+                                            v-if="addTeamMemberForm.role == role.key"
+                                            class="w-5 h-5 ml-2 text-green-400"
                                             fill="none"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
@@ -122,9 +85,7 @@
                                     </div>
 
                                     <!-- Role Description -->
-                                    <div
-                                        class="mt-2 text-xs text-cool-grey-600"
-                                    >
+                                    <div class="mt-2 text-xs text-cool-grey-600">
                                         {{ role.description }}
                                     </div>
                                 </div>
@@ -134,12 +95,9 @@
                 </template>
 
                 <template #actions>
-                    <jet-action-message
-                        :on="addTeamMemberForm.recentlySuccessful"
-                        class="mr-3"
-                    >
+                    <JetActionMessage :on="addTeamMemberForm.recentlySuccessful" class="mr-3">
                         Added.
-                    </jet-action-message>
+                    </JetActionMessage>
 
                     <JetButton
                         :class="{ 'opacity-25': addTeamMemberForm.processing }"
@@ -151,22 +109,16 @@
             </JetFormSection>
         </div>
 
-        <div
-            v-if="
-                team.team_invitations.length > 0 &&
-                    userPermissions.canAddTeamMembers
-            "
-        >
-            <jet-section-border />
+        <div v-if="team.team_invitations.length > 0 && userPermissions.canAddTeamMembers">
+            <JetSectionBorder />
 
             <!-- Team Member Invitations -->
             <JetActionSection class="mt-10 sm:mt-0">
                 <template #title> Pending Team Invitations </template>
 
                 <template #description>
-                    These people have been invited to your team and have been
-                    sent an invitation email. They may join the team by
-                    accepting the email invitation.
+                    These people have been invited to your team and have been sent an invitation
+                    email. They may join the team by accepting the email invitation.
                 </template>
 
                 <!-- Pending Team Member Invitation List -->
@@ -185,12 +137,7 @@
                                 <!-- Cancel Team Invitation -->
                                 <button
                                     v-if="userPermissions.canRemoveTeamMembers"
-                                    class="
-                                        cursor-pointer
-                                        ml-6
-                                        text-sm text-red-500
-                                        focus:outline-none
-                                    "
+                                    class="ml-6 text-sm text-red-500 cursor-pointer focus:outline-none"
                                     @click="cancelTeamInvitation(invitation)"
                                 >
                                     Cancel
@@ -203,15 +150,13 @@
         </div>
 
         <div v-if="team.users.length > 0">
-            <jet-section-border />
+            <JetSectionBorder />
 
             <!-- Manage Team Members -->
             <JetActionSection class="mt-10 sm:mt-0">
                 <template #title> Team Members </template>
 
-                <template #description>
-                    All of the people that are part of this team.
-                </template>
+                <template #description> All of the people that are part of this team. </template>
 
                 <!-- Team Member List -->
                 <template #content>
@@ -234,14 +179,9 @@
                                 <!-- Manage Team Member Role -->
                                 <button
                                     v-if="
-                                        userPermissions.canAddTeamMembers &&
-                                            availableRoles.length
+                                        userPermissions.canAddTeamMembers && availableRoles.length
                                     "
-                                    class="
-                                        ml-2
-                                        text-sm text-cool-grey-400
-                                        underline
-                                    "
+                                    class="ml-2 text-sm underline text-cool-grey-400"
                                     @click="manageRole(user)"
                                 >
                                     {{ displayableRole(user.membership.role) }}
@@ -257,11 +197,7 @@
                                 <!-- Leave Team -->
                                 <button
                                     v-if="$page.props.user.id === user.id"
-                                    class="
-                                        cursor-pointer
-                                        ml-6
-                                        text-sm text-red-500
-                                    "
+                                    class="ml-6 text-sm text-red-500 cursor-pointer"
                                     @click="confirmLeavingTeam"
                                 >
                                     Leave
@@ -270,11 +206,7 @@
                                 <!-- Remove Team Member -->
                                 <button
                                     v-if="userPermissions.canRemoveTeamMembers"
-                                    class="
-                                        cursor-pointer
-                                        ml-6
-                                        text-sm text-red-500
-                                    "
+                                    class="ml-6 text-sm text-red-500 cursor-pointer"
                                     @click="confirmTeamMemberRemoval(user)"
                                 >
                                     Remove
@@ -287,54 +219,29 @@
         </div>
 
         <!-- Role Management Modal -->
-        <JetDialogModal
-            :show="currentlyManagingRole"
-            @close="currentlyManagingRole = false"
-        >
+        <JetDialogModal :show="currentlyManagingRole" @close="currentlyManagingRole = false">
             <template #title> Manage Role </template>
 
             <template #content>
                 <div v-if="managingRoleFor">
                     <div
-                        class="
-                            relative
-                            z-0
-                            mt-1
-                            border border-cool-grey-200
-                            rounded-lg
-                            cursor-pointer
-                        "
+                        class="relative z-0 mt-1 border rounded-lg cursor-pointer border-cool-grey-200"
                     >
                         <button
                             v-for="(role, i) in availableRoles"
                             :key="role.key"
                             type="button"
-                            class="
-                                relative
-                                px-4
-                                py-3
-                                inline-flex
-                                w-full
-                                rounded-lg
-                                focus:z-10
-                                focus:outline-none
-                                focus:border-blue-300
-                                focus:ring
-                                focus:ring-blue-200
-                            "
+                            class="relative inline-flex w-full px-4 py-3 rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200"
                             :class="{
-                                'border-t border-cool-grey-200 rounded-t-none':
-                                    i > 0,
-                                'rounded-b-none':
-                                    i !== Object.keys(availableRoles).length - 1
+                                'border-t border-cool-grey-200 rounded-t-none': i > 0,
+                                'rounded-b-none': i !== Object.keys(availableRoles).length - 1,
                             }"
                             @click="updateRoleForm.role = role.key"
                         >
                             <div
                                 :class="{
                                     'opacity-50':
-                                        updateRoleForm.role &&
-                                        updateRoleForm.role !== role.key
+                                        updateRoleForm.role && updateRoleForm.role !== role.key,
                                 }"
                             >
                                 <!-- Role Name -->
@@ -342,8 +249,7 @@
                                     <div
                                         class="text-sm text-cool-grey-600"
                                         :class="{
-                                            'font-semibold':
-                                                updateRoleForm.role === role.key
+                                            'font-semibold': updateRoleForm.role === role.key,
                                         }"
                                     >
                                         {{ role.name }}
@@ -351,7 +257,7 @@
 
                                     <svg
                                         v-if="updateRoleForm.role === role.key"
-                                        class="ml-2 h-5 w-5 text-green-400"
+                                        class="w-5 h-5 ml-2 text-green-400"
                                         fill="none"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -392,15 +298,10 @@
         </JetDialogModal>
 
         <!-- Leave Team Confirmation Modal -->
-        <jet-confirmation-modal
-            :show="confirmingLeavingTeam"
-            @close="confirmingLeavingTeam = false"
-        >
+        <JetConfirmationModal :show="confirmingLeavingTeam" @close="confirmingLeavingTeam = false">
             <template #title> Leave Team </template>
 
-            <template #content>
-                Are you sure you would like to leave this team?
-            </template>
+            <template #content> Are you sure you would like to leave this team? </template>
 
             <template #footer>
                 <JetSecondaryButton @click="confirmingLeavingTeam = false">
@@ -416,13 +317,10 @@
                     Leave
                 </JetDangerButton>
             </template>
-        </jet-confirmation-modal>
+        </JetConfirmationModal>
 
         <!-- Remove Team Member Confirmation Modal -->
-        <jet-confirmation-modal
-            :show="teamMemberBeingRemoved"
-            @close="teamMemberBeingRemoved = null"
-        >
+        <JetConfirmationModal :show="teamMemberBeingRemoved" @close="teamMemberBeingRemoved = null">
             <template #title> Remove Team Member </template>
 
             <template #content>
@@ -443,7 +341,7 @@
                     Remove
                 </JetDangerButton>
             </template>
-        </jet-confirmation-modal>
+        </JetConfirmationModal>
     </div>
 </template>
 
@@ -502,23 +400,17 @@ export default {
 
     methods: {
         addTeamMember() {
-            this.addTeamMemberForm.post(
-                route('team-members.store', this.team),
-                {
-                    errorBag: 'addTeamMember',
-                    preserveScroll: true,
-                    onSuccess: () => this.addTeamMemberForm.reset(),
-                },
-            );
+            this.addTeamMemberForm.post(route('team-members.store', this.team), {
+                errorBag: 'addTeamMember',
+                preserveScroll: true,
+                onSuccess: () => this.addTeamMemberForm.reset(),
+            });
         },
 
         cancelTeamInvitation(invitation) {
-            this.$inertia.delete(
-                route('team-invitations.destroy', invitation),
-                {
-                    preserveScroll: true,
-                },
-            );
+            this.$inertia.delete(route('team-invitations.destroy', invitation), {
+                preserveScroll: true,
+            });
         },
 
         manageRole(teamMember) {
@@ -533,7 +425,7 @@ export default {
                 {
                     preserveScroll: true,
                     onSuccess: () => (this.currentlyManagingRole = false),
-                },
+                }
             );
         },
 
@@ -543,10 +435,7 @@ export default {
 
         leaveTeam() {
             this.leaveTeamForm.delete(
-                route('team-members.destroy', [
-                    this.team,
-                    this.$page.props.user,
-                ]),
+                route('team-members.destroy', [this.team, this.$page.props.user])
             );
         },
 
@@ -556,16 +445,13 @@ export default {
 
         removeTeamMember() {
             this.removeTeamMemberForm.delete(
-                route('team-members.destroy', [
-                    this.team,
-                    this.teamMemberBeingRemoved,
-                ]),
+                route('team-members.destroy', [this.team, this.teamMemberBeingRemoved]),
                 {
                     errorBag: 'removeTeamMember',
                     preserveScroll: true,
                     preserveState: true,
                     onSuccess: () => (this.teamMemberBeingRemoved = null),
-                },
+                }
             );
         },
 

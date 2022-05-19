@@ -1,17 +1,15 @@
 <template>
-    <app-layout title="Create Team">
+    <AppLayout title="Create Team">
         <template #header>
-            <h2 class="font-semibold text-xl text-cool-grey-800 leading-tight">
-                Create Team
-            </h2>
+            <h2 class="text-xl font-semibold leading-tight text-cool-grey-800">Create Team</h2>
         </template>
 
         <div>
-            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-                <create-team-form />
+            <div class="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <CreateTeamForm />
             </div>
         </div>
-    </app-layout>
+    </AppLayout>
 </template>
 
 <script>

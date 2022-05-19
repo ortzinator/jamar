@@ -1,41 +1,30 @@
 <template>
     <div>
-        <div
-            v-if="fields.length === 0 && editable"
-            class="bg-yellow-100 p-3 text-sm rounded mb-5"
-        >
+        <div v-if="fields.length === 0 && editable" class="p-3 mb-5 text-sm bg-yellow-100 rounded">
             No policy fields found
         </div>
-        <div v-else class="mr-5 mb-5">
-            <policy-field
-                v-for="field in fields"
-                :key="field.id"
-                :field="field"
-                class=""
-            >
+        <div v-else class="mb-5 mr-5">
+            <PolicyField v-for="field in fields" :key="field.id" :field="field" class="">
                 <template v-if="!field.protected" #delButton>
                     <button
                         v-show="true"
                         class="btn hover:bg-red-vivid-300 hover:text-white"
                         @click="handleFieldDeleted(field)"
                     >
-                        <trash-icon class="w-5 h-5 mx-auto" />
+                        <TrashIcon class="w-5 h-5 mx-auto" />
                     </button>
                 </template>
-            </policy-field>
+            </PolicyField>
         </div>
 
-        <new-policy-field
-            v-if="fieldFormShown"
-            @added="(field) => handleFieldAdded(field)"
-        />
+        <NewPolicyField v-if="fieldFormShown" @added="(field) => handleFieldAdded(field)" />
         <button
             v-if="editable && !fieldFormShown"
             type="button"
-            class="btn btn-sm px-2 py-1 rounded flex items-center"
+            class="flex items-center px-2 py-1 rounded btn btn-sm"
             @click="handleNewFieldClick"
         >
-            <plus-sm-icon class="h-5 w-5 mr-2" /> Field
+            <PlusSmIcon class="w-5 h-5 mr-2" /> Field
         </button>
     </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
-    <div class="font-bold py-5">
+    <div class="py-5 font-bold">
         <h1>API Tokens</h1>
     </div>
 
     <div>
-        <api-token-manager
+        <ApiTokenManager
             :tokens="tokens"
             :available-permissions="availablePermissions"
             :default-permissions="defaultPermissions"

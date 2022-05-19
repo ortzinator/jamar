@@ -1,25 +1,15 @@
 <template>
     <div>
-        <div class="mb-4 md:flex md:space-x-4 md:space-y-0 space-y-4">
+        <div class="mb-4 space-y-4 md:flex md:space-x-4 md:space-y-0">
             <div class="flex-auto">
                 <JetLabel for="number" value="Field Name" />
-                <JetInput
-                    id="name"
-                    v-model="field.name"
-                    type="text"
-                    class="w-full"
-                />
+                <JetInput id="name" v-model="field.name" type="text" class="w-full" />
             </div>
             <div class="flex-auto">
                 <JetLabel for="number" value="Field Value" />
-                <JetInput
-                    id="value"
-                    v-model="field.value"
-                    type="text"
-                    class="w-full"
-                />
+                <JetInput id="value" v-model="field.value" type="text" class="w-full" />
             </div>
-            <button class="font-bold mt-4 hover:underline" type="button" @click="add">
+            <button class="mt-4 font-bold hover:underline" type="button" @click="add">
                 Add Field
             </button>
         </div>

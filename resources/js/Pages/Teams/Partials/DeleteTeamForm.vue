@@ -6,35 +6,29 @@
 
         <template #content>
             <div class="max-w-xl text-sm text-cool-grey-600">
-                Once a team is deleted, all of its resources and data will be
-                permanently deleted. Before deleting this team, please download
-                any data or information regarding this team that you wish to
-                retain.
+                Once a team is deleted, all of its resources and data will be permanently deleted.
+                Before deleting this team, please download any data or information regarding this
+                team that you wish to retain.
             </div>
 
             <div class="mt-5">
-                <JetDangerButton @click="confirmTeamDeletion">
-                    Delete Team
-                </JetDangerButton>
+                <JetDangerButton @click="confirmTeamDeletion"> Delete Team </JetDangerButton>
             </div>
 
             <!-- Delete Team Confirmation Modal -->
-            <jet-confirmation-modal
+            <JetConfirmationModal
                 :show="confirmingTeamDeletion"
                 @close="confirmingTeamDeletion = false"
             >
                 <template #title> Delete Team </template>
 
                 <template #content>
-                    Are you sure you want to delete this team? Once a team is
-                    deleted, all of its resources and data will be permanently
-                    deleted.
+                    Are you sure you want to delete this team? Once a team is deleted, all of its
+                    resources and data will be permanently deleted.
                 </template>
 
                 <template #footer>
-                    <JetSecondaryButton
-                        @click="confirmingTeamDeletion = false"
-                    >
+                    <JetSecondaryButton @click="confirmingTeamDeletion = false">
                         Cancel
                     </JetSecondaryButton>
 
@@ -47,7 +41,7 @@
                         Delete Team
                     </JetDangerButton>
                 </template>
-            </jet-confirmation-modal>
+            </JetConfirmationModal>
         </template>
     </JetActionSection>
 </template>
@@ -59,7 +53,6 @@ import JetDangerButton from '@/Jetstream/DangerButton.vue';
 import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
 
 export default {
-
     components: {
         JetActionSection,
         JetConfirmationModal,

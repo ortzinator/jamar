@@ -1,38 +1,33 @@
 <template>
-    <div class="font-bold py-5">
-        <h1 class="font-semibold text-xl text-cool-grey-800 leading-tight">
-            Profile
-        </h1>
+    <div class="py-5 font-bold">
+        <h1 class="text-xl font-semibold leading-tight text-cool-grey-800">Profile</h1>
     </div>
 
     <div>
         <div v-if="$page.props.jetstream.canUpdateProfileInformation">
-            <update-profile-information-form :user="$page.props.user" />
+            <UpdateProfileInformationForm :user="$page.props.user" />
 
-            <jet-section-border />
+            <JetSectionBorder />
         </div>
 
         <div v-if="$page.props.jetstream.canUpdatePassword">
-            <update-password-form class="mt-10 sm:mt-0" />
+            <UpdatePasswordForm class="mt-10 sm:mt-0" />
 
-            <jet-section-border />
+            <JetSectionBorder />
         </div>
 
         <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
-            <two-factor-authentication-form class="mt-10 sm:mt-0" />
+            <TwoFactorAuthenticationForm class="mt-10 sm:mt-0" />
 
-            <jet-section-border />
+            <JetSectionBorder />
         </div>
 
-        <logout-other-browser-sessions-form
-            :sessions="sessions"
-            class="mt-10 sm:mt-0"
-        />
+        <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0" />
 
         <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
-            <jet-section-border />
+            <JetSectionBorder />
 
-            <delete-user-form class="mt-10 sm:mt-0" />
+            <DeleteUserForm class="mt-10 sm:mt-0" />
         </template>
     </div>
 </template>

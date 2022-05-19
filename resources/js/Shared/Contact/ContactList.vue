@@ -3,7 +3,7 @@
         <h3><slot></slot></h3>
         <ul>
             <li v-for="contact in contacts" :key="contact.id" class="p-2">
-                <div class="group cursor-pointer flex items-center justify-between">
+                <div class="flex items-center justify-between cursor-pointer group">
                     <div @click="$emit('contactClicked', contact)">
                         <div v-text="contact.name"></div>
                         <div v-text="contact.address"></div>
@@ -13,9 +13,7 @@
                         title="Remove policyholder"
                         @click="removeContact(contact)"
                     >
-                        <XIcon
-                            class="h-5 w-5 ml-10 invisible group-hover:visible"
-                        />
+                        <XIcon class="invisible w-5 h-5 ml-10 group-hover:visible" />
                     </div>
                 </div>
             </li>

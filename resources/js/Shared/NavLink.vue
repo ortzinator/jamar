@@ -3,15 +3,7 @@
         <InertiaLink
             :href="href"
             :class="classes"
-            class="
-                flex
-                px-6
-                py-3
-                hover:bg-light-blue-vivid-600
-                hover:border-light-blue-vivid-500
-                hover:text-cool-grey-100
-                hover:border-r-4
-            "
+            class="flex px-6 py-3 hover:bg-light-blue-vivid-600 hover:border-light-blue-vivid-500 hover:text-cool-grey-100 hover:border-r-4"
         >
             <slot></slot>
         </InertiaLink>

@@ -1,10 +1,10 @@
 <template>
-    <jet-authentication-card>
+    <JetAuthenticationCard>
         <template #logo>
-            <jet-authentication-card-logo />
+            <JetAuthenticationCardLogo />
         </template>
 
-        <jet-validation-errors class="mb-4" />
+        <JetValidationErrors class="mb-4" />
 
         <form @submit.prevent="submit">
             <div>
@@ -13,7 +13,7 @@
                     id="name"
                     v-model="form.name"
                     type="text"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     required
                     autofocus
                     autocomplete="name"
@@ -26,7 +26,7 @@
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     required
                 />
             </div>
@@ -37,49 +37,35 @@
                     id="password"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     required
                     autocomplete="new-password"
                 />
             </div>
 
             <div class="mt-4">
-                <JetLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
+                <JetLabel for="password_confirmation" value="Confirm Password" />
                 <JetInput
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     required
                     autocomplete="new-password"
                 />
             </div>
 
-            <div
-                v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature"
-                class="mt-4"
-            >
+            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
                 <JetLabel for="terms">
                     <div class="flex items-center">
-                        <jet-checkbox
-                            id="terms"
-                            v-model:checked="form.terms"
-                            name="terms"
-                        />
+                        <JetCheckbox id="terms" v-model:checked="form.terms" name="terms" />
 
                         <div class="ml-2">
                             I agree to the
                             <a
                                 target="_blank"
                                 :href="route('terms.show')"
-                                class="
-                                    underline
-                                    text-sm text-cool-grey-600
-                                    hover:text-cool-grey-900
-                                "
+                                class="text-sm underline text-cool-grey-600 hover:text-cool-grey-900"
                             >
                                 Terms of Service
                             </a>
@@ -87,11 +73,7 @@
                             <a
                                 target="_blank"
                                 :href="route('policy.show')"
-                                class="
-                                    underline
-                                    text-sm text-cool-grey-600
-                                    hover:text-cool-grey-900
-                                "
+                                class="text-sm underline text-cool-grey-600 hover:text-cool-grey-900"
                             >
                                 Privacy Policy
                             </a>
@@ -103,11 +85,7 @@
             <div class="flex items-center justify-end mt-4">
                 <InertiaLink
                     :href="route('login')"
-                    class="
-                        underline
-                        text-sm text-cool-grey-600
-                        hover:text-cool-grey-900
-                    "
+                    class="text-sm underline text-cool-grey-600 hover:text-cool-grey-900"
                 >
                     Already registered?
                 </InertiaLink>
@@ -121,7 +99,7 @@
                 </JetButton>
             </div>
         </form>
-    </jet-authentication-card>
+    </JetAuthenticationCard>
 </template>
 
 <script>

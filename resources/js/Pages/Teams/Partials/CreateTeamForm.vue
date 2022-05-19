@@ -12,14 +12,14 @@
 
                 <div class="flex items-center mt-2">
                     <img
-                        class="w-12 h-12 rounded-full object-cover"
+                        class="object-cover w-12 h-12 rounded-full"
                         :src="$page.props.user.profile_photo_url"
                         :alt="$page.props.user.name"
                     />
 
                     <div class="ml-4 leading-tight">
                         <div>{{ $page.props.user.name }}</div>
-                        <div class="text-cool-grey-700 text-sm">
+                        <div class="text-sm text-cool-grey-700">
                             {{ $page.props.user.email }}
                         </div>
                     </div>
@@ -32,18 +32,15 @@
                     id="name"
                     v-model="form.name"
                     type="text"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     autofocus
                 />
-                <JetInput-error :message="form.errors.name" class="mt-2" />
+                <JetInputError :message="form.errors.name" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <JetButton
-                :class="{ 'opacity-25': form.processing }"
-                :disabled="form.processing"
-            >
+            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Create
             </JetButton>
         </template>

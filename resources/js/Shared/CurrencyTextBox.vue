@@ -53,8 +53,7 @@ function handlePaste(e) {
 const formattedValue = computed({
     get() {
         if (focused.value === false) {
-            if (errors.value.length > 0
-                        || !(rawValue.value > 0)) {
+            if (errors.value.length > 0 || !(rawValue.value > 0)) {
                 return rawValue.value;
             }
             return createMoneyIntlFormatter().format(getMoney());

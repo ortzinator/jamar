@@ -1,53 +1,31 @@
 <template>
-    <button class="btn btn-secondary ml-auto" @click="setIsOpen(true)">
-        History of facts
-    </button>
-    <Dialog
-        as="div"
-        class="fixed z-10 inset-0 overflow-y-auto"
-        :open="isOpen"
-        @close="setIsOpen"
-    >
+    <button class="ml-auto btn btn-secondary" @click="setIsOpen(true)">History of facts</button>
+    <Dialog as="div" class="fixed inset-0 z-10 overflow-y-auto" :open="isOpen" @close="setIsOpen">
         <div class="flex items-center justify-center min-h-screen">
             <DialogOverlay class="fixed inset-0 bg-black opacity-30" />
 
             <div
-                class="
-                    bg-white
-                    flex flex-col
-                    h-screen
-                    md:h-auto md:max-w-lg md:my-auto md:rounded md:shadow-2xl
-                    relative
-                    w-full
-                "
+                class="relative flex flex-col w-full h-screen bg-white md:h-auto md:max-w-lg md:my-auto md:rounded md:shadow-2xl"
             >
-                <DialogTitle class="md:mx-7 md:my-5 mx-2 my-4">
-                    History of Facts
-                </DialogTitle>
+                <DialogTitle class="mx-2 my-4 md:mx-7 md:my-5"> History of Facts </DialogTitle>
                 <DialogDescription>Displays a history of facts</DialogDescription>
                 <div
                     v-if="histories.length > 0"
-                    class="
-                        grow
-                        md:max-h-96 md:mx-7 md:my-5
-                        mx-2
-                        my-4
-                        overflow-y-scroll
-                    "
+                    class="mx-2 my-4 overflow-y-scroll grow md:max-h-96 md:mx-7 md:my-5"
                 >
-                    <table class="font-mono w-full text-xs table-fixed">
+                    <table class="w-full font-mono text-xs table-fixed">
                         <tr>
                             <th scope="col" class="w-2/12">Date</th>
                             <th scope="col" class="w-6/12">Message</th>
                             <th scope="col" class="w-2/12">Agent</th>
                         </tr>
                         <tr v-for="history in histories" :key="history.id">
-                            <history-item :history="history" />
+                            <HistoryItem :history="history" />
                         </tr>
                     </table>
                 </div>
 
-                <div class="md:mx-7 md:my-5 mx-2 my-4">
+                <div class="mx-2 my-4 md:mx-7 md:my-5">
                     <JetLabel for="message" value="Message" />
                     <textarea
                         id="address"
@@ -56,22 +34,13 @@
                         class="block w-full"
                         rows="2"
                     />
-                    <JetInput-error :message="historyForm.errors.message" />
+                    <JetInputError :message="historyForm.errors.message" />
                 </div>
                 <div
-                    class="
-                        bg-cool-grey-100
-                        md:mt-0
-                        mt-auto
-                        px-4
-                        py-3
-                        sm:flex sm:flex-row-reverse sm:px-6
-                    "
+                    class="px-4 py-3 mt-auto bg-cool-grey-100 md:mt-0 sm:flex sm:flex-row-reverse sm:px-6"
                 >
                     <button class="btn" @click="handleClose">Close</button>
-                    <button class="btn btn-primary" @click="handleAdd">
-                        Add
-                    </button>
+                    <button class="btn btn-primary" @click="handleAdd">Add</button>
                 </div>
             </div>
         </div>
@@ -81,12 +50,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
-import {
-    Dialog,
-    DialogOverlay,
-    DialogTitle,
-    DialogDescription,
-} from '@headlessui/vue';
+import { Dialog, DialogOverlay, DialogTitle, DialogDescription } from '@headlessui/vue';
 
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';

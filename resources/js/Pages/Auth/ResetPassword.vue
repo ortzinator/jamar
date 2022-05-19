@@ -1,10 +1,10 @@
 <template>
-    <jet-authentication-card>
+    <JetAuthenticationCard>
         <template #logo>
-            <jet-authentication-card-logo />
+            <JetAuthenticationCardLogo />
         </template>
 
-        <jet-validation-errors class="mb-4" />
+        <JetValidationErrors class="mb-4" />
 
         <form @submit.prevent="submit">
             <div>
@@ -13,8 +13,9 @@
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="mt-1 block w-full"
-                    required autofocus
+                    class="block w-full mt-1"
+                    required
+                    autofocus
                 />
             </div>
 
@@ -24,8 +25,9 @@
                     id="password"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
-                    required autocomplete="new-password"
+                    class="block w-full mt-1"
+                    required
+                    autocomplete="new-password"
                 />
             </div>
 
@@ -35,7 +37,7 @@
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     required
                     autocomplete="new-password"
                 />
@@ -47,7 +49,7 @@
                 </JetButton>
             </div>
         </form>
-    </jet-authentication-card>
+    </JetAuthenticationCard>
 </template>
 
 <script>

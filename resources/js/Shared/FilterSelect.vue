@@ -1,59 +1,31 @@
 <template>
     <Listbox v-model="value">
         <ListboxButton
-            class="
-                border-0 border-cool-grey-200 border-r
-                px-5
-                rounded-l
-                text-cool-grey-500
-            "
+            class="px-5 border-0 border-r rounded-l border-cool-grey-200 text-cool-grey-500"
         >
             <div class="inline-flex items-center">
                 <span class="hidden md:inline"> Filter </span>
-                <SelectorIcon class="h-4 w-4 md:ml-2" />
+                <SelectorIcon class="w-4 h-4 md:ml-2" />
             </div>
         </ListboxButton>
         <ListboxOptions
-            class="
-                absolute
-                bg-white
-                mt-11
-                py-1
-                shadow-lg
-                space-y-2
-                z-50
-                rounded
-                border
-                cursor-default
-            "
+            class="absolute z-50 py-1 space-y-2 bg-white border rounded shadow-lg cursor-default mt-11"
         >
             <ListboxOption
                 :value="null"
-                class="
-                    hover:bg-wild-blue-yonder-600 hover:text-cool-grey-400
-                    px-4
-                    py-2
-                "
+                class="px-4 py-2 hover:bg-wild-blue-yonder-600 hover:text-cool-grey-400"
             >
                 None
             </ListboxOption>
             <ListboxOption
                 value="with"
-                class="
-                    hover:bg-wild-blue-yonder-600 hover:text-cool-grey-400
-                    px-4
-                    py-2
-                "
+                class="px-4 py-2 hover:bg-wild-blue-yonder-600 hover:text-cool-grey-400"
             >
                 With Trashed
             </ListboxOption>
             <ListboxOption
                 value="only"
-                class="
-                    hover:bg-wild-blue-yonder-600 hover:text-cool-grey-400
-                    px-4
-                    py-2
-                "
+                class="px-4 py-2 hover:bg-wild-blue-yonder-600 hover:text-cool-grey-400"
             >
                 Only Trashed
             </ListboxOption>
@@ -64,12 +36,7 @@
 <script setup>
 import { computed } from 'vue';
 import { SelectorIcon } from '@heroicons/vue/outline';
-import {
-    Listbox,
-    ListboxButton,
-    ListboxOptions,
-    ListboxOption,
-} from '@headlessui/vue';
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue';
 
 const props = defineProps({ modelValue: { type: String, required: true } });
 const emit = defineEmits(['update:modelValue']);

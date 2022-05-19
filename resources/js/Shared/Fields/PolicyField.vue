@@ -4,7 +4,7 @@
         @mouseenter="fieldHover = true"
         @mouseleave="fieldHover = false"
     >
-        <div class="px-4 py-2 rounded col-span-4" v-text="field.name"></div>
+        <div class="col-span-4 px-4 py-2 rounded" v-text="field.name"></div>
         <JetInput
             :id="'input-' + field.name"
             :value="field.value"
@@ -23,5 +23,4 @@ defineProps({
     field: { type: Object, required: true },
 });
 const fieldHover = ref(false);
-
 </script>

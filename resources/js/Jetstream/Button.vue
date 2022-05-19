@@ -1,27 +1,7 @@
 <template>
     <button
         :type="type"
-        class="
-            inline-flex
-            items-center
-            px-4
-            py-2
-            bg-cool-grey-800
-            border border-transparent
-            rounded-md
-            font-semibold
-            text-xs text-white
-            uppercase
-            tracking-widest
-            hover:bg-cool-grey-700
-            active:bg-cool-grey-900
-            focus:outline-none
-            focus:border-cool-grey-900
-            focus:shadow-outline-gray
-            transition
-            ease-in-out
-            duration-150
-        "
+        class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out border border-transparent rounded-md bg-cool-grey-800 hover:bg-cool-grey-700 active:bg-cool-grey-900 focus:outline-none focus:border-cool-grey-900 focus:shadow-outline-gray"
     >
         <slot></slot>
     </button>

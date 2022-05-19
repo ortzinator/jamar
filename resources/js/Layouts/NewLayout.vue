@@ -1,49 +1,29 @@
 <template>
     <div>
         <div class="md:flex md:flex-col bg-cool-grey-50 md:h-screen">
-            <div class="md:flex md:shrink-0 bg-white">
+            <div class="bg-white md:flex md:shrink-0">
                 <div
-                    class="
-                        bg-cool-grey-800
-                        flex
-                        items-center
-                        justify-between
-                        md:shrink-0 md:justify-center md:w-56
-                        px-6
-                        py-4
-                        text-white
-                    "
+                    class="flex items-center justify-between px-6 py-4 text-white bg-cool-grey-800 md:shrink-0 md:justify-center md:w-56"
                 >
                     <Disclosure v-slot="{ open }" as="nav" class="w-full">
-                        <div class="flex md:justify-center justify-between">
+                        <div class="flex justify-between md:justify-center">
                             <div>
-                                <AppLogo class="h-8 fill-current text-white" />
+                                <AppLogo class="h-8 text-white fill-current" />
                             </div>
                             <div class="md:hidden">
                                 <DisclosureButton>
                                     <MenuIcon
                                         v-if="!open"
-                                        class="block h-6 w-6"
+                                        class="block w-6 h-6"
                                         aria-hidden="true"
                                     />
-                                    <XIcon
-                                        v-else
-                                        class="block h-6 w-6"
-                                        aria-hidden="true"
-                                    />
+                                    <XIcon v-else class="block w-6 h-6" aria-hidden="true" />
                                 </DisclosureButton>
                             </div>
                         </div>
 
                         <DisclosurePanel class="flex justify-end w-full">
-                            <ul
-                                class="
-                                    text-light-blue-vivid-300
-                                    space-y-5
-                                    md:hidden
-                                    text-right
-                                "
-                            >
+                            <ul class="space-y-5 text-right text-light-blue-vivid-300 md:hidden">
                                 <NavLink
                                     v-for="nav in navigation"
                                     :key="nav.name"
@@ -57,52 +37,23 @@
                     </Disclosure>
                 </div>
                 <div
-                    class="
-                        bg-white
-                        flex
-                        justify-between
-                        md:px-12 md:py-5
-                        px-6
-                        py-4
-                        w-full
-                        max-w-screen-2xl
-                    "
+                    class="flex justify-between w-full px-6 py-4 bg-white md:px-12 md:py-5 max-w-screen-2xl"
                 >
                     <div>Jamar</div>
                     <Menu as="div" class="relative">
                         <div>
                             <MenuButton class="inline-flex items-center">
                                 {{ $page.props.user.name }}
-                                <ChevronDownIcon class="h-5 w-5 ml-2" />
+                                <ChevronDownIcon class="w-5 h-5 ml-2" />
                             </MenuButton>
                         </div>
 
                         <MenuItems
                             as="div"
-                            class="
-                                absolute
-                                right-0
-                                w-56
-                                mt-2
-                                origin-top-right
-                                bg-white
-                                divide-y divide-cool-grey-100
-                                rounded-md
-                                shadow-lg
-                                ring-1 ring-black ring-opacity-5
-                                focus:outline-none
-                                z-10
-                            "
+                            class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg divide-cool-grey-100 ring-1 ring-black ring-opacity-5 focus:outline-none"
                         >
                             <div class="py-1">
-                                <div
-                                    class="
-                                        block
-                                        px-4
-                                        py-2
-                                        text-xs text-cool-grey-400
-                                    "
-                                >
+                                <div class="block px-4 py-2 text-xs text-cool-grey-400">
                                     Manage Account
                                 </div>
                             </div>
@@ -115,12 +66,10 @@
                                             active
                                                 ? 'bg-cool-grey-100 text-cool-grey-900'
                                                 : 'text-cool-grey-700',
-                                            'block px-4 py-2 text-sm'
+                                            'block px-4 py-2 text-sm',
                                         ]"
                                     >
-                                        <UserCircleIcon
-                                            class="w-5 h-5 inline mr-2"
-                                        />
+                                        <UserCircleIcon class="inline w-5 h-5 mr-2" />
                                         Profile
                                     </InertiaLink>
                                 </MenuItem>
@@ -135,7 +84,7 @@
                                             active
                                                 ? 'bg-cool-grey-100 text-cool-grey-900'
                                                 : 'text-cool-grey-700',
-                                            'block px-4 py-2 text-sm'
+                                            'block px-4 py-2 text-sm',
                                         ]"
                                     >
                                         API Tokens
@@ -150,16 +99,11 @@
                                             active
                                                 ? 'bg-cool-grey-100 text-cool-grey-900'
                                                 : 'text-cool-grey-700',
-                                            'block px-4 py-2 text-sm'
+                                            'block px-4 py-2 text-sm',
                                         ]"
                                     >
-                                        <button
-                                            type="submit flex"
-                                            @click="logout"
-                                        >
-                                            <LogoutIcon
-                                                class="h-5 w-5 mr-2 inline"
-                                            />
+                                        <button type="submit flex" @click="logout">
+                                            <LogoutIcon class="inline w-5 h-5 mr-2" />
                                             Log Out
                                         </button>
                                     </div>
@@ -171,14 +115,9 @@
             </div>
             <div class="md:flex md:grow md:overflow-hidden">
                 <nav
-                    class="
-                        bg-cool-grey-900
-                        overflow-y-auto
-                        hidden
-                        md:flex md:shrink-0 md:justify-center md:w-56
-                    "
+                    class="hidden overflow-y-auto bg-cool-grey-900 md:flex md:shrink-0 md:justify-center md:w-56"
                 >
-                    <ul class="mt-12 space-y-3 w-full text-cool-grey-300">
+                    <ul class="w-full mt-12 space-y-3 text-cool-grey-300">
                         <NavLink
                             v-for="nav in navigation"
                             :key="nav.name"
@@ -189,11 +128,8 @@
                         </NavLink>
                     </ul>
                 </nav>
-                <div
-                    scroll-region
-                    class="md:overflow-y-auto w-full shadow-inner"
-                >
-                    <div class="max-w-screen-2xl md:p-10 p-5">
+                <div scroll-region class="w-full shadow-inner md:overflow-y-auto">
+                    <div class="p-5 max-w-screen-2xl md:p-10">
                         <main>
                             <slot />
                         </main>
@@ -211,7 +147,13 @@ import { usePage } from '@inertiajs/inertia-vue3';
 import { useToast } from 'vue-toastification';
 
 import {
-    Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItems, MenuItem,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Menu,
+    MenuButton,
+    MenuItems,
+    MenuItem,
 } from '@headlessui/vue';
 import {
     MenuIcon,

@@ -1,10 +1,6 @@
 <template>
     <button :disabled="loading" class="flex items-center disabled:opacity-50">
-        <icon
-            v-if="delayedLoading"
-            name="spinner"
-            class="h-5 w-5 mr-2 fill-current animate-spin"
-        />
+        <Icon v-if="delayedLoading" name="spinner" class="w-5 h-5 mr-2 fill-current animate-spin" />
         <slot></slot>
     </button>
 </template>
@@ -27,10 +23,9 @@ watch(loading, (val) => {
         clearTimeout(delayId.value);
     } else {
         clearTimeout(delayId.value);
-        delayId.value = setTimeout(
-            () => { delayedLoading.value = true; },
-            100,
-        );
+        delayId.value = setTimeout(() => {
+            delayedLoading.value = true;
+        }, 100);
     }
 });
 </script>

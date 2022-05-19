@@ -1,48 +1,36 @@
 <template>
-    <div class="font-bold py-5">
+    <div class="py-5 font-bold">
         <InertiaHead title="Policies" />
         <h1>Policies</h1>
     </div>
 
     <div>
-        <div class="flex mb-4 justify-between">
+        <div class="flex justify-between mb-4">
             <div class="flex mr-4">
-                <div class="flex shadow rounded bg-white cursor-default">
-                    <filter-select v-model="searchForm.trashed" />
+                <div class="flex bg-white rounded shadow cursor-default">
+                    <FilterSelect v-model="searchForm.trashed" />
                     <input
                         v-model="searchForm.search"
                         type="text"
                         placeholder="Search..."
-                        class="border-0 rounded-r w-full"
+                        class="w-full border-0 rounded-r"
                     />
                 </div>
                 <button
-                    class="
-                        ml-3
-                        text-sm text-cool-grey-500
-                        hover:text-cool-grey-700
-                        focus:text-light-blue-vivid-500
-                    "
+                    class="ml-3 text-sm text-cool-grey-500 hover:text-cool-grey-700 focus:text-light-blue-vivid-500"
                     type="button"
                     @click="reset"
                 >
                     Reset
                 </button>
             </div>
-            <InertiaLink
-                class="btn btn-primary"
-                :href="route('policies.create')"
-            >
+            <InertiaLink class="btn btn-primary" :href="route('policies.create')">
                 <span>Create</span>
                 <span class="hidden md:inline"> Policy</span>
             </InertiaLink>
         </div>
-        <div class="shadow rounded bg-white overflow-x-auto">
-            <DataTable
-                :columns="columns"
-                :data-source="policies.data"
-                route-name="policies.edit"
-            >
+        <div class="overflow-x-auto bg-white rounded shadow">
+            <DataTable :columns="columns" :data-source="policies.data" route-name="policies.edit">
                 <template #[`column.number`]="{ value }">
                     <span v-html="highlight(value, searchForm.search)" />
                 </template>
@@ -55,28 +43,25 @@
                     {{ formatDate(value) }}
                 </template>
                 <template #[`column.premium`]="{ value }">
-                    <div class="text-right w-full" v-text="value.formatted" />
+                    <div class="w-full text-right" v-text="value.formatted" />
                 </template>
                 <template #[`column.contactNamesPreview`]="{ value, row }">
                     <div
                         v-if="row.contacts.length === 0"
-                        class="flex text-red-vivid-600 items-center"
+                        class="flex items-center text-red-vivid-600"
                     >
-                        <ExclamationIcon class="h-5 mr-2 w-5" />
+                        <ExclamationIcon class="w-5 h-5 mr-2" />
                         No policyholders found
                     </div>
                     <div
                         v-else
-                        class="
-                            text-ellipsis overflow-hidden
-                            whitespace-nowrap
-                        "
+                        class="overflow-hidden text-ellipsis whitespace-nowrap"
                         v-html="highlight(value, searchForm.search)"
                     />
                 </template>
             </DataTable>
         </div>
-        <pagination :links="policies.links" />
+        <Pagination :links="policies.links" />
     </div>
 </template>
 

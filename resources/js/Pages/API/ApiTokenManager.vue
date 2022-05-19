@@ -5,8 +5,8 @@
             <template #title> Create API Token </template>
 
             <template #description>
-                API tokens allow third-party services to authenticate with our
-                application on your behalf.
+                API tokens allow third-party services to authenticate with our application on your
+                behalf.
             </template>
 
             <template #form>
@@ -17,29 +17,21 @@
                         id="name"
                         v-model="createApiTokenForm.name"
                         type="text"
-                        class="mt-1 block w-full"
+                        class="block w-full mt-1"
                         autofocus
                     />
-                    <JetInput-error
-                        :message="createApiTokenForm.errors.name"
-                        class="mt-2"
-                    />
+                    <JetInputError :message="createApiTokenForm.errors.name" class="mt-2" />
                 </div>
 
                 <!-- Token Permissions -->
                 <div v-if="availablePermissions.length > 0" class="col-span-6">
                     <JetLabel for="permissions" value="Permissions" />
 
-                    <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div
-                            v-for="permission in availablePermissions"
-                            :key="permission"
-                        >
+                    <div class="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2">
+                        <div v-for="permission in availablePermissions" :key="permission">
                             <label class="flex items-center">
-                                <jet-checkbox
-                                    v-model:checked="
-                                        createApiTokenForm.permissions
-                                    "
+                                <JetCheckbox
+                                    v-model:checked="createApiTokenForm.permissions"
                                     :value="permission"
                                 />
                                 <span class="ml-2 text-sm text-cool-grey-600">{{
@@ -52,12 +44,9 @@
             </template>
 
             <template #actions>
-                <jet-action-message
-                    :on="createApiTokenForm.recentlySuccessful"
-                    class="mr-3"
-                >
+                <JetActionMessage :on="createApiTokenForm.recentlySuccessful" class="mr-3">
                     Created.
-                </jet-action-message>
+                </JetActionMessage>
 
                 <JetButton
                     :class="{ 'opacity-25': createApiTokenForm.processing }"
@@ -69,7 +58,7 @@
         </JetFormSection>
 
         <div v-if="tokens.length > 0">
-            <jet-section-border />
+            <JetSectionBorder />
 
             <!-- Manage API Tokens -->
             <div class="mt-10 sm:mt-0">
@@ -77,8 +66,7 @@
                     <template #title> Manage API Tokens </template>
 
                     <template #description>
-                        You may delete any of your existing tokens if they are
-                        no longer needed.
+                        You may delete any of your existing tokens if they are no longer needed.
                     </template>
 
                     <!-- API Token List -->
@@ -103,25 +91,14 @@
 
                                     <button
                                         v-if="availablePermissions.length > 0"
-                                        class="
-                                            cursor-pointer
-                                            ml-6
-                                            text-sm text-cool-grey-400
-                                            underline
-                                        "
-                                        @click="
-                                            manageApiTokenPermissions(token)
-                                        "
+                                        class="ml-6 text-sm underline cursor-pointer text-cool-grey-400"
+                                        @click="manageApiTokenPermissions(token)"
                                     >
                                         Permissions
                                     </button>
 
                                     <button
-                                        class="
-                                            cursor-pointer
-                                            ml-6
-                                            text-sm text-red-vivid-500
-                                        "
+                                        class="ml-6 text-sm cursor-pointer text-red-vivid-500"
                                         @click="confirmApiTokenDeletion(token)"
                                     >
                                         Delete
@@ -135,71 +112,47 @@
         </div>
 
         <!-- Token Value Modal -->
-        <JetDialogModal
-            :show="displayingToken"
-            @close="displayingToken = false"
-        >
+        <JetDialogModal :show="displayingToken" @close="displayingToken = false">
             <template #title> API Token </template>
 
             <template #content>
                 <div>
-                    Please copy your new API token. For your security, it won't
-                    be shown again.
+                    Please copy your new API token. For your security, it won't be shown again.
                 </div>
 
                 <div
                     v-if="$page.props.jetstream.flash.token"
-                    class="
-                        mt-4
-                        bg-cool-grey-100
-                        px-4
-                        py-2
-                        rounded
-                        font-mono
-                        text-sm text-cool-grey-500
-                    "
+                    class="px-4 py-2 mt-4 font-mono text-sm rounded bg-cool-grey-100 text-cool-grey-500"
                 >
                     {{ $page.props.jetstream.flash.token }}
                 </div>
             </template>
 
             <template #footer>
-                <JetSecondaryButton @click="displayingToken = false">
-                    Close
-                </JetSecondaryButton>
+                <JetSecondaryButton @click="displayingToken = false"> Close </JetSecondaryButton>
             </template>
         </JetDialogModal>
 
         <!-- API Token Permissions Modal -->
-        <JetDialogModal
-            :show="managingPermissionsFor"
-            @close="managingPermissionsFor = null"
-        >
+        <JetDialogModal :show="managingPermissionsFor" @close="managingPermissionsFor = null">
             <template #title> API Token Permissions </template>
 
             <template #content>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div
-                        v-for="permission in availablePermissions"
-                        :key="permission"
-                    >
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div v-for="permission in availablePermissions" :key="permission">
                         <label class="flex items-center">
-                            <jet-checkbox
+                            <JetCheckbox
                                 v-model:checked="updateApiTokenForm.permissions"
                                 :value="permission"
                             />
-                            <span class="ml-2 text-sm text-cool-grey-600">{{
-                                permission
-                            }}</span>
+                            <span class="ml-2 text-sm text-cool-grey-600">{{ permission }}</span>
                         </label>
                     </div>
                 </div>
             </template>
 
             <template #footer>
-                <JetSecondaryButton
-                    @click="managingPermissionsFor = null"
-                >
+                <JetSecondaryButton @click="managingPermissionsFor = null">
                     Nevermind
                 </JetSecondaryButton>
 
@@ -215,20 +168,13 @@
         </JetDialogModal>
 
         <!-- Delete Token Confirmation Modal -->
-        <jet-confirmation-modal
-            :show="apiTokenBeingDeleted"
-            @close="apiTokenBeingDeleted = null"
-        >
+        <JetConfirmationModal :show="apiTokenBeingDeleted" @close="apiTokenBeingDeleted = null">
             <template #title> Delete API Token </template>
 
-            <template #content>
-                Are you sure you would like to delete this API token?
-            </template>
+            <template #content> Are you sure you would like to delete this API token? </template>
 
             <template #footer>
-                <JetSecondaryButton
-                    @click="apiTokenBeingDeleted = null"
-                >
+                <JetSecondaryButton @click="apiTokenBeingDeleted = null">
                     Nevermind
                 </JetSecondaryButton>
 
@@ -241,7 +187,7 @@
                     Delete
                 </JetDangerButton>
             </template>
-        </jet-confirmation-modal>
+        </JetConfirmationModal>
     </div>
 </template>
 
@@ -316,14 +262,11 @@ export default {
         },
 
         updateApiToken() {
-            this.updateApiTokenForm.put(
-                route('api-tokens.update', this.managingPermissionsFor),
-                {
-                    preserveScroll: true,
-                    preserveState: true,
-                    onSuccess: () => (this.managingPermissionsFor = null),
-                },
-            );
+            this.updateApiTokenForm.put(route('api-tokens.update', this.managingPermissionsFor), {
+                preserveScroll: true,
+                preserveState: true,
+                onSuccess: () => (this.managingPermissionsFor = null),
+            });
         },
 
         confirmApiTokenDeletion(token) {
@@ -331,14 +274,11 @@ export default {
         },
 
         deleteApiToken() {
-            this.deleteApiTokenForm.delete(
-                route('api-tokens.destroy', this.apiTokenBeingDeleted),
-                {
-                    preserveScroll: true,
-                    preserveState: true,
-                    onSuccess: () => (this.apiTokenBeingDeleted = null),
-                },
-            );
+            this.deleteApiTokenForm.delete(route('api-tokens.destroy', this.apiTokenBeingDeleted), {
+                preserveScroll: true,
+                preserveState: true,
+                onSuccess: () => (this.apiTokenBeingDeleted = null),
+            });
         },
     },
 };

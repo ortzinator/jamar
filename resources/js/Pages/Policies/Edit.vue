@@ -1,46 +1,36 @@
 <template>
-    <div class="font-bold py-5">
+    <div class="py-5 font-bold">
         <InertiaHead title="Edit Policy" />
         <h1>
-            <InertiaLink
-                class="
-                    text-light-blue-vivid-400
-                    hover:text-light-blue-vivid-600
-                "
-                href="/"
-            >
+            <InertiaLink class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600" href="/">
                 Policies
             </InertiaLink>
-            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
+            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
             {{ policyForm.number }}
         </h1>
     </div>
 
     <div class="flex max-w-3xl mb-2"><HistoryModal :policy="policy" /></div>
 
-    <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+    <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
         <div
             v-if="policy.deleted_at"
-            class="bg-yellow-200 flex items-center justify-between p-5 pl-8"
+            class="flex items-center justify-between p-5 pl-8 bg-yellow-200"
         >
             <div class="flex">
-                <trash-icon class="h-5 mr-2 w-5" />
+                <TrashIcon class="w-5 h-5 mr-2" />
                 This policy is deleted
             </div>
-            <button class="btn hover:underline" @click="restore">
-                Restore
-            </button>
+            <button class="btn hover:underline" @click="restore">Restore</button>
         </div>
 
         <div
             v-if="policyForm.contacts.length === 0"
-            class="bg-red-vivid-200 flex items-center justify-between p-5 pl-8"
+            class="flex items-center justify-between p-5 pl-8 bg-red-vivid-200"
         >
             <div class="flex items-center">
-                <ExclamationIcon class="h-5 mr-2 w-5" />
-                <div class="text-lg">
-                    This policy does not have any policyholders
-                </div>
+                <ExclamationIcon class="w-5 h-5 mr-2" />
+                <div class="text-lg">This policy does not have any policyholders</div>
             </div>
         </div>
 
@@ -53,12 +43,12 @@
                     type="text"
                     class="block w-full"
                 />
-                <JetInput-error :message="policyForm.errors.number" />
+                <JetInputError :message="policyForm.errors.number" />
             </div>
 
             <div class="mb-5">
                 <JetLabel value="Date Issued" />
-                <date-picker v-model="policyForm.created_at" mode="dateTime">
+                <DatePicker v-model="policyForm.created_at" mode="dateTime">
                     <template #default="{ inputValue }">
                         <JetInput
                             id="created_at"
@@ -68,7 +58,7 @@
                             readonly
                         />
                     </template>
-                </date-picker>
+                </DatePicker>
             </div>
 
             <div class="mb-5">
@@ -76,13 +66,9 @@
                 <select
                     id="agent"
                     v-model="policyForm.agent_id"
-                    class="border border-cool-grey-200 mr-5 rounded mt-1"
+                    class="mt-1 mr-5 border rounded border-cool-grey-200"
                 >
-                    <option
-                        v-for="agent in users"
-                        :key="agent.id"
-                        :value="agent.id"
-                    >
+                    <option v-for="agent in users" :key="agent.id" :value="agent.id">
                         {{ agent.name }}
                     </option>
                 </select>
@@ -93,15 +79,13 @@
                 <CurrencyTextBox
                     id="premium"
                     v-model="policyForm.premium"
-                    class="border border-cool-grey-200 mr-5 rounded mt-1"
+                    class="mt-1 mr-5 border rounded border-cool-grey-200"
                 />
-                <JetInput-error :message="policyForm.errors.premium" />
+                <JetInputError :message="policyForm.errors.premium" />
             </div>
 
             <div class="mb-5">
-                <div class="text-cool-grey-600 text-sm text-left">
-                    Period of Insurance
-                </div>
+                <div class="text-sm text-left text-cool-grey-600">Period of Insurance</div>
                 <DateRange v-model="policyForm.range" />
             </div>
 
@@ -122,11 +106,9 @@
                 Policyholders
             </ContactList>
 
-            <select-contact @selected="contactSelected"></select-contact>
+            <SelectContact @selected="contactSelected"></SelectContact>
         </div>
-        <div
-            class="px-8 py-4 bg-cool-grey-50 flex justify-between items-center"
-        >
+        <div class="flex items-center justify-between px-8 py-4 bg-cool-grey-50">
             <button
                 v-if="!policy.deleted_at"
                 class="text-red-vivid-600 hover:underline"
@@ -137,10 +119,7 @@
                 Delete policy
             </button>
             <div class="flex items-baseline">
-                <div
-                    v-if="policyForm.isDirty"
-                    class="mr-5 text-cool-grey-400 italic"
-                >
+                <div v-if="policyForm.isDirty" class="mr-5 italic text-cool-grey-400">
                     Unsaved Changes
                 </div>
                 <LoadingButton
@@ -182,7 +161,13 @@ defineOptions({
 const props = defineProps({
     errors: { type: Object, required: true },
     policy: { type: Object, required: true },
-    fields: { type: Array, required: false, default() { return []; } },
+    fields: {
+        type: Array,
+        required: false,
+        default() {
+            return [];
+        },
+    },
     users: { type: Array, required: true },
 });
 const policyForm = useForm({

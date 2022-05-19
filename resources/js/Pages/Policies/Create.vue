@@ -1,17 +1,14 @@
 <template>
-    <div class="font-bold py-5">
+    <div class="py-5 font-bold">
         <InertiaHead title="Create Policy" />
         <h1>
             <InertiaLink
-                class="
-                    text-light-blue-vivid-400
-                    hover:text-light-blue-vivid-600
-                "
+                class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600"
                 :href="route('policies')"
             >
                 Policies
             </InertiaLink>
-            <span class="text-light-blue-vivid-400 font-medium">/</span>
+            <span class="font-medium text-light-blue-vivid-400">/</span>
             New Policy
         </h1>
     </div>
@@ -21,18 +18,13 @@
             <FormSection>
                 <template #header>Basics</template>
                 <template #description> Description of this section </template>
-                <div class="grid gap-4 grid-cols-6">
+                <div class="grid grid-cols-6 gap-4">
                     <div class="col-span-6 sm:col-span-4">
                         <JetLabel for="template" value="Policy Type" />
                         <div class="flex items-center">
                             <select
                                 v-model="selectedTemplate"
-                                class="
-                                    border border-cool-grey-200
-                                    mt-1
-                                    rounded
-                                    w-full
-                                "
+                                class="w-full mt-1 border rounded border-cool-grey-200"
                             >
                                 <option
                                     v-for="template in templates"
@@ -48,18 +40,9 @@
                         <JetLabel for="agent" value="Assigned Agent" />
                         <select
                             v-model="policyForm.agent_id"
-                            class="
-                                border border-cool-grey-200
-                                rounded
-                                mt-1
-                                w-full
-                            "
+                            class="w-full mt-1 border rounded border-cool-grey-200"
                         >
-                            <option
-                                v-for="agent in users"
-                                :key="agent.id"
-                                :value="agent.id"
-                            >
+                            <option v-for="agent in users" :key="agent.id" :value="agent.id">
                                 {{ agent.name }}
                             </option>
                         </select>
@@ -72,39 +55,34 @@
                             type="text"
                             class="block w-full mt-1"
                         />
-                        <JetInput-error :message="policyForm.errors.number" />
+                        <JetInputError :message="policyForm.errors.number" />
                     </div>
                     <div class="col-span-6 sm:col-span-4">
                         <JetLabel>Period of Insurance</JetLabel>
                         <div
                             :class="{
                                 formError:
-                                    policyForm.errors.period_start ||
-                                    policyForm.errors.period_end
+                                    policyForm.errors.period_start || policyForm.errors.period_end,
                             }"
                             class="mt-1"
                         >
                             <DateRange v-model="policyForm.period" />
                         </div>
-                        <JetInput-error
-                            :message="policyForm.errors.period_start"
-                        />
-                        <JetInput-error
-                            :message="policyForm.errors.period_end"
-                        />
+                        <JetInputError :message="policyForm.errors.period_start" />
+                        <JetInputError :message="policyForm.errors.period_end" />
                     </div>
                     <div class="col-span-6 sm:col-span-4">
                         <CurrencyTextBox
                             id="premium"
                             v-model="policyForm.premium"
-                            class="border border-cool-grey-200 mr-5 rounded mt-1"
+                            class="mt-1 mr-5 border rounded border-cool-grey-200"
                         />
-                        <JetInput-error :message="policyForm.errors.premium" />
+                        <JetInputError :message="policyForm.errors.premium" />
                     </div>
                 </div>
             </FormSection>
 
-            <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+            <hr class="h-px border-0 bg-cool-grey-100 text-cool-grey-500" />
 
             <FormSection>
                 <template #header>Policy Fields</template>
@@ -118,7 +96,7 @@
                 />
             </FormSection>
 
-            <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+            <hr class="h-px border-0 bg-cool-grey-100 text-cool-grey-500" />
 
             <FormSection>
                 <template #header>Policyholders</template>
@@ -131,7 +109,7 @@
                 >
                     <template #noContacts>
                         <div class="mb-5 text-yellow-vivid-600">
-                            <ExclamationIcon class="inline h-5 mr-2 w-5" />
+                            <ExclamationIcon class="inline w-5 h-5 mr-2" />
                             Please add one or more policyholders
                         </div>
                     </template>
@@ -139,7 +117,7 @@
                 <SelectContact @selected="contactSelected" />
             </FormSection>
 
-            <hr class="bg-cool-grey-100 border-0 h-px text-cool-grey-500" />
+            <hr class="h-px border-0 bg-cool-grey-100 text-cool-grey-500" />
 
             <div class="flex justify-between mt-5">
                 <div>Problems?</div>
@@ -235,9 +213,7 @@ function store() {
 }
 
 function contactExists(contact) {
-    return (
-        _.findIndex(policyForm.contacts, (o) => _.isMatch(o, contact)) > -1
-    );
+    return _.findIndex(policyForm.contacts, (o) => _.isMatch(o, contact)) > -1;
 }
 
 function contactSelected(contact) {

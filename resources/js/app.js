@@ -15,9 +15,7 @@ createInertiaApp({
         page.Layout ??= AppLayout;
         return page;
     },
-    setup({
-        el, App, props, plugin,
-    }) {
+    setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(Toast)

@@ -1,55 +1,35 @@
 <template>
     <InertiaHead title="Edit Contact" />
-    <div class="font-bold py-5">
+    <div class="py-5 font-bold">
         <h1>
             <InertiaLink
-                class="
-                    text-light-blue-vivid-400
-                    hover:text-light-blue-vivid-600
-                "
+                class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600"
                 :href="route('contacts')"
             >
                 Contacts
             </InertiaLink>
-            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
+            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
             {{ form.name }}
         </h1>
     </div>
 
-    <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+    <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
         <div
             v-if="contact.deleted_at"
-            class="
-                bg-yellow-vivid-200
-                flex
-                items-center
-                justify-between
-                p-5
-                pl-8
-            "
+            class="flex items-center justify-between p-5 pl-8 bg-yellow-vivid-200"
         >
             <div class="flex">
-                <TrashIcon class="h-5 mr-2 w-5" />
+                <TrashIcon class="w-5 h-5 mr-2" />
                 This contact is deleted
             </div>
-            <button
-                class="btn hover:underline"
-                @click="confirmingRestore = true"
-            >
-                Restore
-            </button>
+            <button class="btn hover:underline" @click="confirmingRestore = true">Restore</button>
         </div>
         <form @submit.prevent="updateContact">
             <div class="p-8">
                 <div class="mb-5">
                     <JetLabel for="name" value="Name" />
-                    <JetInput
-                        id="name"
-                        v-model="form.name"
-                        type="text"
-                        class="block w-full"
-                    />
-                    <JetInput-error :message="form.errors.name" />
+                    <JetInput id="name" v-model="form.name" type="text" class="block w-full" />
+                    <JetInputError :message="form.errors.name" />
                 </div>
                 <div class="mb-5">
                     <JetLabel for="address" value="Address" />
@@ -66,12 +46,10 @@
                 <div class="mb-5">
                     <Disclosure v-slot="{ open }">
                         <DisclosureButton class="flex items-center">
-                            <label for="notes" class="cursor-pointer">
-                                Agent Notes
-                            </label>
+                            <label for="notes" class="cursor-pointer"> Agent Notes </label>
                             <ChevronRightIcon
                                 :class="open ? 'rotate-90' : ''"
-                                class="h-5 w-5 ml-2"
+                                class="w-5 h-5 ml-2"
                             />
                         </DisclosureButton>
                         <DisclosurePanel class="mt-5">
@@ -87,16 +65,7 @@
                     </Disclosure>
                 </div>
             </div>
-            <div
-                class="
-                    px-8
-                    py-4
-                    bg-cool-grey-50
-                    border-t border-cool-grey-100
-                    flex
-                    items-center
-                "
-            >
+            <div class="flex items-center px-8 py-4 border-t bg-cool-grey-50 border-cool-grey-100">
                 <button
                     v-if="!contact.deleted_at"
                     class="text-red-vivid-600 hover:underline"
@@ -107,7 +76,7 @@
                     Delete contact
                 </button>
                 <LoadingButton
-                    class="btn btn-primary ml-auto"
+                    class="ml-auto btn btn-primary"
                     type="submit"
                     :loading="form.processing"
                 >
@@ -117,45 +86,27 @@
         </form>
     </div>
 
-    <JetConfirmationModal
-        :show="confirmingRestore"
-        @close="confirmingRestore = false"
-    >
+    <JetConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
         <template #title> Restore Contact </template>
 
-        <template #content>
-            Are you sure you want to restore this contact?
-        </template>
+        <template #content> Are you sure you want to restore this contact? </template>
 
         <template #footer>
-            <button class="btn" @click="confirmingRestore = false">
-                Cancel
-            </button>
+            <button class="btn" @click="confirmingRestore = false">Cancel</button>
 
-            <button class="btn btn-danger ml-2" @click="restore">
-                Restore
-            </button>
+            <button class="ml-2 btn btn-danger" @click="restore">Restore</button>
         </template>
     </JetConfirmationModal>
 
-    <JetConfirmationModal
-        :show="confirmingDelete"
-        @close="confirmingDelete = false"
-    >
+    <JetConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
         <template #title> Delete Contact </template>
 
-        <template #content>
-            Are you sure you want to delete the Contact?
-        </template>
+        <template #content> Are you sure you want to delete the Contact? </template>
 
         <template #footer>
-            <button class="btn" @click="confirmingDelete = false">
-                Cancel
-            </button>
+            <button class="btn" @click="confirmingDelete = false">Cancel</button>
 
-            <button class="btn btn-danger ml-2" @click="destroy">
-                Delete Field
-            </button>
+            <button class="ml-2 btn btn-danger" @click="destroy">Delete Field</button>
         </template>
     </JetConfirmationModal>
 </template>
@@ -203,5 +154,4 @@ function restore() {
     form.put(route('contacts.restore', props.contact.id));
     confirmingRestore.value = false;
 }
-
 </script>

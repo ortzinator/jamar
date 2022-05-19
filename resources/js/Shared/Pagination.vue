@@ -1,29 +1,19 @@
 <template>
-    <div class="mt-6 -mb-1 flex flex-wrap">
-        <div
-            v-for="link in links"
-            :key="link.id"
-            class="mr-1 mb-1 text-sm border rounded flex"
-        >
+    <div class="flex flex-wrap mt-6 -mb-1">
+        <div v-for="link in links" :key="link.id" class="flex mb-1 mr-1 text-sm border rounded">
             <span
                 v-if="link.url === null"
                 :class="{ 'ml-auto': link.label === 'Next' }"
-                class="text-cool-grey-400 px-4 py-3"
+                class="px-4 py-3 text-cool-grey-400"
                 v-text="link.label"
             >
             </span>
             <InertiaLink
                 v-else
-                class="
-                    hover:bg-white
-                    focus:border-light-blue-vivid-500
-                    focus:text-light-blue-vivid-500
-                    px-4
-                    py-3
-                "
+                class="px-4 py-3 hover:bg-white focus:border-light-blue-vivid-500 focus:text-light-blue-vivid-500"
                 :class="{
                     'bg-white': link.active,
-                    'ml-auto': link.label === 'Next'
+                    'ml-auto': link.label === 'Next',
                 }"
                 :href="link.url"
             >

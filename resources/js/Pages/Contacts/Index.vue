@@ -1,44 +1,36 @@
 <template>
-    <div class="font-bold py-5">
+    <div class="py-5 font-bold">
         <InertiaHead title="Contacts" />
         <h1>Contacts</h1>
     </div>
 
     <div>
-        <div class="flex mb-4 justify-between">
+        <div class="flex justify-between mb-4">
             <div class="flex mr-4">
-                <div class="flex shadow rounded bg-white cursor-default">
-                    <filter-select v-model="searchForm.trashed" />
+                <div class="flex bg-white rounded shadow cursor-default">
+                    <FilterSelect v-model="searchForm.trashed" />
                     <input
                         v-model="searchForm.search"
                         type="text"
                         placeholder="Search..."
-                        class="border-0 rounded-r w-full"
+                        class="w-full border-0 rounded-r"
                     />
                 </div>
                 <button
-                    class="
-                        ml-3
-                        text-sm text-cool-grey-500
-                        hover:text-cool-grey-700
-                        focus:text-light-blue-vivid-500
-                    "
+                    class="ml-3 text-sm text-cool-grey-500 hover:text-cool-grey-700 focus:text-light-blue-vivid-500"
                     type="button"
                     @click="reset"
                 >
                     Reset
                 </button>
             </div>
-            <InertiaLink
-                class="btn btn-primary"
-                :href="route('contacts.create')"
-            >
+            <InertiaLink class="btn btn-primary" :href="route('contacts.create')">
                 <span>Create</span>
                 <span class="hidden md:inline"> Contact</span>
             </InertiaLink>
         </div>
         <div class="">
-            <div class="shadow rounded bg-white overflow-x-auto">
+            <div class="overflow-x-auto bg-white rounded shadow">
                 <DataTable
                     route-name="contacts.edit"
                     :columns="columns"
@@ -52,7 +44,7 @@
                     </template>
                 </DataTable>
             </div>
-            <pagination :links="contacts.links"></pagination>
+            <Pagination :links="contacts.links"></Pagination>
         </div>
     </div>
 </template>
@@ -108,5 +100,4 @@ function reset() {
 }
 
 watch(formVals, () => refreshSearch());
-
 </script>

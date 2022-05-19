@@ -1,69 +1,58 @@
 <template>
-    <jet-action-section>
+    <JetActionSection>
         <template #title> Delete Account </template>
 
         <template #description> Permanently delete your account. </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-cool-grey-600">
-                Once your account is deleted, all of its resources and data will
-                be permanently deleted. Before deleting your account, please
-                download any data or information that you wish to retain.
+                Once your account is deleted, all of its resources and data will be permanently
+                deleted. Before deleting your account, please download any data or information that
+                you wish to retain.
             </div>
 
             <div class="mt-5">
-                <jet-danger-button @click="confirmUserDeletion">
-                    Delete Account
-                </jet-danger-button>
+                <JetDangerButton @click="confirmUserDeletion"> Delete Account </JetDangerButton>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
-            <jet-dialog-modal
-                :show="confirmingUserDeletion"
-                @close="closeModal"
-            >
+            <JetDialogModal :show="confirmingUserDeletion" @close="closeModal">
                 <template #title> Delete Account </template>
 
                 <template #content>
-                    Are you sure you want to delete your account? Once your
-                    account is deleted, all of its resources and data will be
-                    permanently deleted. Please enter your password to confirm
-                    you would like to permanently delete your account.
+                    Are you sure you want to delete your account? Once your account is deleted, all
+                    of its resources and data will be permanently deleted. Please enter your
+                    password to confirm you would like to permanently delete your account.
 
                     <div class="mt-4">
-                        <jet-input
+                        <JetInput
                             ref="password"
                             v-model="form.password"
                             type="password"
-                            class="mt-1 block w-3/4"
+                            class="block w-3/4 mt-1"
                             placeholder="Password"
                             @keyup.enter="deleteUser"
                         />
 
-                        <jet-input-error
-                            :message="form.errors.password"
-                            class="mt-2"
-                        />
+                        <JetInputError :message="form.errors.password" class="mt-2" />
                     </div>
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button @click="closeModal">
-                        Nevermind
-                    </jet-secondary-button>
+                    <JetSecondaryButton @click="closeModal"> Nevermind </JetSecondaryButton>
 
-                    <jet-danger-button
+                    <JetDangerButton
                         class="ml-2"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
                         Delete Account
-                    </jet-danger-button>
+                    </JetDangerButton>
                 </template>
-            </jet-dialog-modal>
+            </JetDialogModal>
         </template>
-    </jet-action-section>
+    </JetActionSection>
 </template>
 
 <script>

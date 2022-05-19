@@ -1,33 +1,25 @@
 <template>
-    <div class="font-bold py-5">
+    <div class="py-5 font-bold">
         <InertiaHead title="Create Contact" />
         <h1>
             <InertiaLink
-                class="
-                    text-light-blue-vivid-400
-                    hover:text-light-blue-vivid-600
-                "
+                class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600"
                 href="/contacts"
             >
                 Contacts
             </InertiaLink>
-            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
+            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
             New Contact
         </h1>
     </div>
 
     <form @submit.prevent="store">
-        <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+        <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
             <div class="p-5">
                 <div class="mb-5">
                     <JetLabel for="name" value="Name"></JetLabel>
-                    <JetInput
-                        id="name"
-                        v-model="form.name"
-                        type="text"
-                        class="block w-full"
-                    />
-                    <JetInput-error :message="form.errors.name" />
+                    <JetInput id="name" v-model="form.name" type="text" class="block w-full" />
+                    <JetInputError :message="form.errors.name" />
                 </div>
                 <div class="mb-5">
                     <JetLabel for="address" value="Address"></JetLabel>
@@ -39,21 +31,12 @@
                         cols="30"
                         rows="10"
                     />
-                    <JetInput-error :message="form.errors.address" />
+                    <JetInputError :message="form.errors.address" />
                 </div>
             </div>
-            <div
-                class="
-                    px-8
-                    py-4
-                    bg-cool-grey-50
-                    border-t border-cool-grey-100
-                    flex
-                    items-center
-                "
-            >
+            <div class="flex items-center px-8 py-4 border-t bg-cool-grey-50 border-cool-grey-100">
                 <LoadingButton
-                    class="btn btn-primary ml-auto"
+                    class="ml-auto btn btn-primary"
                     type="submit"
                     :loading="form.processing"
                 >
@@ -85,5 +68,4 @@ const form = useForm({
 function store() {
     this.form.post(this.route('contacts.store'));
 }
-
 </script>

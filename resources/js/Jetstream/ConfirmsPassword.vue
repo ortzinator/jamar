@@ -13,20 +13,21 @@
                 {{ content }}
 
                 <div class="mt-4">
-                    <JetInput ref="password" v-model="form.password" type="password"
-                               class="mt-1 block w-3/4"
-                               placeholder="Password"
-                               @keyup.enter="confirmPassword"
+                    <JetInput
+                        ref="password"
+                        v-model="form.password"
+                        type="password"
+                        class="block w-3/4 mt-1"
+                        placeholder="Password"
+                        @keyup.enter="confirmPassword"
                     />
 
-                    <JetInput-error :message="form.error" class="mt-2" />
+                    <JetInputError :message="form.error" class="mt-2" />
                 </div>
             </template>
 
             <template #footer>
-                <JetSecondaryButton @click="closeModal">
-                    Nevermind
-                </JetSecondaryButton>
+                <JetSecondaryButton @click="closeModal"> Nevermind </JetSecondaryButton>
 
                 <JetButton
                     class="ml-2"
@@ -49,7 +50,6 @@ import JetInputError from './InputError';
 import JetSecondaryButton from './SecondaryButton';
 
 export default {
-
     components: {
         JetButton,
         JetDialogModal,
@@ -100,18 +100,21 @@ export default {
         confirmPassword() {
             this.form.processing = true;
 
-            axios.post(route('password.confirm'), {
-                password: this.form.password,
-            }).then(() => {
-                this.form.processing = false;
-                this.closeModal();
-                this.$nextTick(() => this.$emit('confirmed'));
-            }).catch((error) => {
-                this.form.processing = false;
-                // eslint-disable-next-line prefer-destructuring
-                this.form.error = error.response.data.errors.password[0];
-                this.$refs.password.focus();
-            });
+            axios
+                .post(route('password.confirm'), {
+                    password: this.form.password,
+                })
+                .then(() => {
+                    this.form.processing = false;
+                    this.closeModal();
+                    this.$nextTick(() => this.$emit('confirmed'));
+                })
+                .catch((error) => {
+                    this.form.processing = false;
+                    // eslint-disable-next-line prefer-destructuring
+                    this.form.error = error.response.data.errors.password[0];
+                    this.$refs.password.focus();
+                });
         },
 
         closeModal() {
