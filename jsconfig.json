@@ -3,7 +3,11 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["./resources/js/*"]
-        }
+        },
+        "jsx": "preserve"
     },
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "vueCompilerOptions": {
+        "experimentalDisableTemplateSupport": true
+    }
 }
