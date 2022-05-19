@@ -69,8 +69,8 @@ const props = defineProps({
 });
 
 const searchForm = useForm({
-    search: props.filters.search,
-    trashed: props.filters.trashed,
+    search: props.filters.search ?? '',
+    trashed: props.filters.trashed ?? '',
 });
 
 const columns = ref([

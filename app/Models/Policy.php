@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Casts\MoneyIntegerCast;
+use Cknow\Money\Casts\MoneyIntegerCast;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -49,7 +49,8 @@ class Policy extends Model
             ->when($filters['search'] ?? null, function ($query, $search) {
                 $search = $search . '%';
                 $query->where(function ($query) use ($search) {
-                    $query->where('number', 'like', $search)
+                    $query
+                        ->where('number', 'like', $search)
                         ->orWhere('fields', 'like', '%' . $search)
                         ->orWhereHas('contacts', function ($query) use ($search) {
                             $query->where('name', 'like', $search);
@@ -92,13 +93,9 @@ class Policy extends Model
 
     public function getContactNamesPreviewAttribute()
     {
-        return Cache::remember(
-            $this->cacheKey() . ':contact_names',
-            15,
-            function () {
-                return Str::limit($this->contacts->implode('name', ', '), 100);
-            }
-        );
+        return Cache::remember($this->cacheKey() . ':contact_names', 15, function () {
+            return Str::limit($this->contacts->implode('name', ', '), 100);
+        });
     }
 
     /**

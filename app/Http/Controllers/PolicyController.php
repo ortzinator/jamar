@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePolicyRequest;
 use App\Http\Requests\UpdatePolicyReqest;
+use App\Http\Resources\PolicyResource;
 use App\Models\Contact;
 use App\Models\Policy;
 use App\Models\User;
@@ -49,9 +50,7 @@ class PolicyController extends Controller
     {
         return Inertia::render('Policies/Create', [
             'contacts' => Inertia::lazy(
-                fn() => Contact::orderBy('name')->filter(
-                    $request->only('search', 'trashed')
-                )
+                fn() => Contact::orderBy('name')->filter($request->only('search', 'trashed'))
             ),
             'users' => User::all(['id', 'name'])
         ]);
@@ -88,16 +87,8 @@ class PolicyController extends Controller
      */
     public function edit(Policy $policy)
     {
-        $policyData = $policy
-            ->load([
-                'contacts' => function ($query) {
-                    $query->select(['name', 'id', 'address']);
-                }
-            ])
-            ->load('agent');
-
         return Inertia::render('Policies/Edit', [
-            'policy' => $policyData,
+            'policy' => PolicyResource::make($policy),
             'fields' => $policy->fields,
             'users' => User::all(['id', 'name']),
             'histories' => $policy->history
@@ -114,9 +105,7 @@ class PolicyController extends Controller
     public function update(UpdatePolicyReqest $request, Policy $policy)
     {
         if ($request->has('contacts')) {
-            $policy
-                ->contacts()
-                ->sync(Arr::pluck($request->safe()['contacts'], 'id'));
+            $policy->contacts()->sync(Arr::pluck($request->safe()['contacts'], 'id'));
         }
 
         $policy->update($request->safe()->except('contacts'));
@@ -154,12 +143,7 @@ class PolicyController extends Controller
         $end = Carbon::now()->addDays($days);
 
         if ($request->expectsJson()) {
-            return Policy::select([
-                'number',
-                'id',
-                'period_start',
-                'period_end'
-            ])
+            return Policy::select(['number', 'id', 'period_start', 'period_end'])
                 ->orderBy('period_end')
                 ->where('period_end', '>', $start)
                 ->where('period_end', '<', $end)

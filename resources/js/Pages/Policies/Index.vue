@@ -85,8 +85,8 @@ const props = defineProps({
     filters: { type: Object, required: true },
 });
 const searchForm = useForm({
-    search: props.filters.search,
-    trashed: props.filters.trashed,
+    search: props.filters.search ?? '',
+    trashed: props.filters.trashed ?? '',
 });
 
 const refreshSearch = _.debounce(() => {

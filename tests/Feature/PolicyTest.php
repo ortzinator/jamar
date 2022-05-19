@@ -160,37 +160,20 @@ class PolicyTest extends TestCase
             );
     }
 
-    public function test_a_policy_has_an_agent()
-    {
-        $this->signInAdmin();
-        $this->withExceptionHandling();
-
-        $policy = Policy::factory()->create(['number' => '1234']);
-
-        $this->get(route('policies.edit', $policy->id))
-            ->assertOk()
-            ->assertInertia(
-                fn(Assert $page) => $page->where(
-                    'policy.agent.name',
-                    Auth::user()->name
-                )
-            );
-    }
-
     public function test_can_create_policy()
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
 
-        $policy = Policy::factory()->make();
         $contacts = Contact::factory(4)->create();
 
-        $data = $policy->toArray();
-        $data['contacts'] = $contacts->toArray();
-        $amount = $policy->premium->toArray()['amount'];
-        $data['premium'] = $amount;
+        $amount = 12345;
+        $policy = Policy::factory()->make([
+            'contacts' => $contacts->toArray(),
+            'premium' => $amount
+        ]);
 
-        $this->post(route('policies.store'), $data);
+        $this->post(route('policies.store'), $policy->getAttributes());
 
         $policy = Policy::first();
 
@@ -202,8 +185,9 @@ class PolicyTest extends TestCase
                     ->has('policy.period_start')
                     ->has('policy.agent_id')
                     ->has('policy.number')
-                    ->where('policy.premium.amount', $amount)
-                // ->where('policy.premium.formatted', '$123.45')
+                    ->where('policy.premium.amount', strval($amount))
+                    ->where('policy.premium.formatted', '₱123.45')
+                    ->where('policy.premium.subunit', 2)
             );
     }
 
