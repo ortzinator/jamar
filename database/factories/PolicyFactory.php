@@ -28,7 +28,9 @@ class PolicyFactory extends Factory
             'period_end' => now()->addDays(rand(5, 10)),
             'agent_id' => User::first() ?: 1,
             'currency' => 'PHP',
-            'premium' => $this->faker->randomNumber(4)
+            'premium' => $this->faker->randomNumber(4),
+            'created_at' => now(),
+            'updated_at' => now()
         ];
     }
 }

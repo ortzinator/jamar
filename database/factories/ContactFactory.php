@@ -24,7 +24,9 @@ class ContactFactory extends Factory
         return [
             'name' => $this->faker->name,
             'address' => $this->faker->address,
-            'notes' => $this->faker->paragraph
+            'notes' => $this->faker->paragraph,
+            'created_at' => now(),
+            'updated_at' => now()
         ];
     }
 }

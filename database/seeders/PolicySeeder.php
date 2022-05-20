@@ -4,12 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Contact;
 use App\Models\Policy;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Faker\Generator as Faker;
 
 class PolicySeeder extends Seeder
 {
@@ -18,7 +16,7 @@ class PolicySeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
         Schema::disableForeignKeyConstraints();
         Contact::truncate();
@@ -27,30 +25,26 @@ class PolicySeeder extends Seeder
         DB::table('contact_policy')->truncate();
         Schema::enableForeignKeyConstraints();
 
-        $count = 500;
+        $count = 1000;
         $chunkSize = 500;
 
-        $contacts = Contact::factory()
-            ->count($count)
-            ->make([
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-        $agent = User::first(['id'])->id;
+        DB::transaction(function () use ($count, $chunkSize) {
+            $contacts = collect(
+                Contact::factory()
+                    ->count($count)
+                    ->raw()
+            );
 
-        DB::transaction(function () use ($contacts, $faker, $agent, $count, $chunkSize) {
             $contactChunks = $contacts->chunk($chunkSize);
-            $contactChunks->each(function ($chunk) use ($faker, $agent) {
+            $contactChunks->each(function ($chunk) {
                 DB::table('contacts')->insert($chunk->toArray());
             });
 
-            $policies = Collection::times($count, function ($num) use ($faker, $agent) {
-                return array_merge(Policy::factory()->definition(), [
-                    'agent_id' => $agent,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]);
-            });
+            $policies = collect(
+                Policy::factory()
+                    ->count($count)
+                    ->raw()
+            );
             $policyChunks = $policies->chunk($chunkSize);
             $policyChunks->each(function ($chunk) {
                 DB::table('policies')->insert($chunk->toArray());
