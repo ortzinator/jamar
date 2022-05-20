@@ -14,5 +14,6 @@ yarn-error.log
 .ddev/docker-compose.host-docker-internal.yaml
 .env.dusk.local
 cypress/videos/*
+cypress/screenshots/*
 /public/js
 /public/css
