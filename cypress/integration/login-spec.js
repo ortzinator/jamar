@@ -10,9 +10,7 @@ describe('login', () => {
             cy.contains('button', 'Log in').click();
 
             cy.get('input[type="email"]').then(($input) => {
-                expect($input[0].validationMessage).to.eq(
-                    'Please fill out this field.'
-                ); //<input type="email" />
+                expect($input[0].validationMessage).to.eq('Please fill out this field.'); // <input type="email" />
             });
         });
         it('requires a password', () => {
@@ -22,9 +20,7 @@ describe('login', () => {
 
             cy.get('[type="email"]').type('ortzinator@gmail.com');
             cy.get('[type="password"]').then(($input) => {
-                expect($input[0].validationMessage).to.eq(
-                    'Please fill out this field.'
-                );
+                expect($input[0].validationMessage).to.eq('Please fill out this field.');
             });
         });
     });

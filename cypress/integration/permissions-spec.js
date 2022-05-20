@@ -9,7 +9,7 @@ describe('permissions', () => {
         });
         it('can access the dashboard', () => {
             cy.visit('');
-            cy.url().should('equal', Cypress.config().baseUrl + '/dashboard');
+            cy.url().should('equal', `${Cypress.config().baseUrl}/dashboard`);
         });
         it('can access policies', () => {
             cy.visit('/policies').contains('h1', 'Policies');
@@ -22,9 +22,7 @@ describe('permissions', () => {
     context('user has no permissions', () => {
         it('gets an error', () => {
             cy.login({ email: 'pat@startrek.com' });
-            cy.visit('/dashboard').contains(
-                'You have not been assigned any roles yet.'
-            );
+            cy.visit('/dashboard').contains('You have not been assigned any roles yet.');
         });
     });
 });

@@ -12,7 +12,7 @@ describe('policy', () => {
             cy.create(
                 'App\\Models\\Policy',
                 {
-                    number: 'Testing 1234ABC'
+                    number: 'Testing 1234ABC',
                 },
                 ['agent']
             ).then((policy) => {

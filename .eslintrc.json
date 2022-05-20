@@ -6,12 +6,18 @@
         "commonjs": true,
         "vue/setup-compiler-macros": true
     },
-    "extends": ["eslint:recommended", "plugin:vue/vue3-recommended", "airbnb-base", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/vue3-recommended",
+        "plugin:cypress/recommended",
+        "airbnb-base",
+        "prettier"
+    ],
     "parserOptions": {
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": ["vue", "prettier"],
+    "plugins": ["vue", "prettier", "cypress"],
     "globals": { "_": true, "route": true, "axios": true, "confirm": true, "defineOptions": true },
     "overrides": [],
     "rules": {
