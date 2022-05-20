@@ -2,13 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Contact;
-use App\Models\Policy;
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([PermissionSeeder::class]);
+
+        Schema::disableForeignKeyConstraints();
+        User::truncate();
+        Schema::enableForeignKeyConstraints();
 
         User::factory()
             ->create([
@@ -38,12 +38,6 @@ class DatabaseSeeder extends Seeder
             ])
             ->assignRole('Employee');
 
-        $contacts = Contact::factory(800)->create();
-
-        $contacts->map(function ($item, $key) {
-            Policy::factory()
-                ->hasAttached($item)
-                ->create();
-        });
+        $this->call([PolicySeeder::class]);
     }
 }

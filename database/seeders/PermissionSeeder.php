@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -18,6 +19,11 @@ class PermissionSeeder extends Seeder
         app()[
             \Spatie\Permission\PermissionRegistrar::class
         ]->forgetCachedPermissions();
+
+        Schema::disableForeignKeyConstraints();
+        Permission::truncate();
+        Role::truncate();
+        Schema::enableForeignKeyConstraints();
 
         Permission::create(['name' => 'view policies']);
         Permission::create(['name' => 'create policies']);
