@@ -20,6 +20,7 @@ class ContactResource extends JsonResource
             'notes' => $this->notes,
             'id' => $this->id,
             'deleted_at' => $this->deleted_at,
+            'link' => $this->link
         ];
     }
 }

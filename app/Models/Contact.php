@@ -13,8 +13,6 @@ class Contact extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['link'];
-
     protected $hidden = ['pivot'];
 
     protected $withCount = ['policies'];

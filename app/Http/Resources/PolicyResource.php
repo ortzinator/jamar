@@ -26,7 +26,7 @@ class PolicyResource extends JsonResource
             'period_end' => $this->period_end,
             'agent_id' => $this->agent_id,
             'premium' => $premium,
-            'contacts' => $this->contacts,
+            'contacts' => ContactResource::collection($this->contacts),
             'created_at' => $this->created_at,
             'id' => $this->id
         ];
