@@ -37,10 +37,10 @@
                     :data-source="contacts.data"
                 >
                     <template #[`column.name`]="{ value }">
-                        <span v-html="highlight(value, searchForm.search)" />
+                        <Highlighter :text="value" :term="searchForm.search" />
                     </template>
                     <template #[`column.address`]="{ value }">
-                        <span v-html="highlight(value, searchForm.search)" />
+                        <Highlighter :text="value" :term="searchForm.search" />
                     </template>
                 </DataTable>
             </div>
@@ -52,12 +52,12 @@
 <script setup>
 import { watch, computed, ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
-import { highlight } from '@/util.js';
 
 import AppLayout from '@/Layouts/NewLayout';
 import Pagination from '@/Shared/Pagination';
 import FilterSelect from '@/Shared/FilterSelect';
 import DataTable from '@/Shared/DataTable';
+import Highlighter from '@/Shared/Highlighter.vue';
 
 defineOptions({
     layout: AppLayout,

@@ -32,7 +32,7 @@
         <div class="overflow-x-auto bg-white rounded shadow">
             <DataTable :columns="columns" :data-source="policies.data" route-name="policies.edit">
                 <template #[`column.number`]="{ value }">
-                    <span v-html="highlight(value, searchForm.search)" />
+                    <Highlighter :text="value" :term="searchForm.search" />
                 </template>
                 <template #[`column.period_end`]="{ value }">
                     <span :class="{ 'text-red-vivid-500': isInPast(value) }">
@@ -53,11 +53,9 @@
                         <ExclamationIcon class="w-5 h-5 mr-2" />
                         No policyholders found
                     </div>
-                    <div
-                        v-else
-                        class="overflow-hidden text-ellipsis whitespace-nowrap"
-                        v-html="highlight(value, searchForm.search)"
-                    />
+                    <div v-else class="overflow-hidden text-ellipsis whitespace-nowrap">
+                        <Highlighter :text="value" :term="searchForm.search" />
+                    </div>
                 </template>
             </DataTable>
         </div>
@@ -74,8 +72,9 @@ import AppLayout from '@/Layouts/NewLayout';
 import Pagination from '@/Shared/Pagination';
 import DataTable from '@/Shared/DataTable';
 import FilterSelect from '@/Shared/FilterSelect';
+import Highlighter from '@/Shared/Highlighter.vue';
 
-import { formatDate, isInPast, highlight } from '@/util.js';
+import { formatDate, isInPast } from '@/util.js';
 
 defineOptions({
     layout: AppLayout,

@@ -38,7 +38,7 @@ import { computed } from 'vue';
 import { SelectorIcon } from '@heroicons/vue/outline';
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue';
 
-const props = defineProps({ modelValue: { type: String, required: true } });
+const props = defineProps({ modelValue: { type: String, default: '' } });
 const emit = defineEmits(['update:modelValue']);
 const value = computed({
     get: () => props.modelValue,
