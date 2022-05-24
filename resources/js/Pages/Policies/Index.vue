@@ -59,7 +59,7 @@
                 </template>
             </DataTable>
         </div>
-        <Pagination :links="policies.links" />
+        <Pagination :links="policies.meta.links" />
     </div>
 </template>
 

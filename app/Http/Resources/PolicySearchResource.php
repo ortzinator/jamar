@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PolicyResource extends JsonResource
+class PolicySearchResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,15 +16,14 @@ class PolicyResource extends JsonResource
     {
         return [
             'number' => $this->number,
-            'period_start' => $this->period_start,
             'period_end' => $this->period_end,
-            'agent_id' => $this->agent_id,
             'premium' => array_merge($this->premium->toArray(), [
                 'subunit' => $this->subunits
             ]),
             'contacts' => ContactResource::collection($this->contacts),
             'created_at' => $this->created_at,
-            'id' => $this->id
+            'id' => $this->id,
+            'contactNamesPreview' => $this->contactNamesPreview
         ];
     }
 }
