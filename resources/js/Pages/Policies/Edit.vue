@@ -76,9 +76,10 @@
 
             <div class="mb-5">
                 <JetLabel value="Premium" />
-                <CurrencyTextBox
+                <JamarCurrencyTextBox
                     id="premium"
                     v-model="policyForm.premium"
+                    :options="{ currency: 'PHP', valueScaling: 'precision' }"
                     class="mt-1 mr-5 border rounded border-cool-grey-200"
                 />
                 <JetInputError :message="policyForm.errors.premium" />
@@ -136,7 +137,6 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
 import { DatePicker } from 'v-calendar';
@@ -152,7 +152,7 @@ import HistoryModal from '@/Shared/HistoryModal';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
-import CurrencyTextBox from '@/Shared/CurrencyTextBox';
+import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox';
 
 defineOptions({
     layout: AppLayout,
@@ -180,21 +180,12 @@ const policyForm = useForm({
     },
     fields: props.policy.fields ?? [],
     agent_id: props.policy.agent_id,
-    premium: props.policy.premium,
+    premium: Number(props.policy.premium.amount),
 });
 
 function updatePolicy() {
-    policyForm
-        .transform((data) => ({
-            ...data,
-            period_start: data.range.start,
-            period_end: data.range.end,
-            premium: data.premium.amount,
-        }))
-        .put(route('policies.update', props.policy.id));
+    policyForm.put(route('policies.update', props.policy.id));
 }
-const premium = ref(props.policy.premium);
-watch(premium, () => console.log(policyForm.premium.amount));
 
 function destroy() {
     // TODO check if contact is associated with a policy
