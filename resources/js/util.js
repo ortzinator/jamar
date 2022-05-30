@@ -1,17 +1,17 @@
 import dayjs from 'dayjs';
 
-function formatDate(date, format) {
+export function formatDate(date, format) {
     if (format) {
         return dayjs(date).format(format);
     }
     return dayjs(date).format('MM-DD-YYYY');
 }
 
-function isInPast(date) {
+export function isInPast(date) {
     return dayjs(date).isBefore(dayjs());
 }
 
-function addDecimal(amount, subunit) {
+export function addDecimal(amount, subunit) {
     if (typeof amount !== 'string') {
         throw new TypeError('amount must be a string');
     }
@@ -30,7 +30,7 @@ function addDecimal(amount, subunit) {
     return output;
 }
 
-function highlight(text, searchTerm) {
+export function highlight(text, searchTerm) {
     if (!searchTerm) {
         return text;
     }
@@ -39,5 +39,3 @@ function highlight(text, searchTerm) {
 
     return text.replace(escaped, '<mark class="bg-light-blue-vivid-600 text-white">$&</mark>');
 }
-
-export { formatDate, isInPast, addDecimal, highlight };
