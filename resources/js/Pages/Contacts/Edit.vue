@@ -106,7 +106,7 @@
         <template #footer>
             <button class="btn" @click="confirmingDelete = false">Cancel</button>
 
-            <button class="ml-2 btn btn-danger" @click="destroy">Delete Field</button>
+            <button class="ml-2 btn btn-danger" @click="destroy">Delete Contact</button>
         </template>
     </JetConfirmationModal>
 </template>
