@@ -1,3 +1,9 @@
+<script setup>
+defineProps({
+    on: Boolean,
+});
+</script>
+
 <template>
     <div>
         <Transition
@@ -11,9 +17,3 @@
         </Transition>
     </div>
 </template>
-
-<script>
-export default {
-    props: ['on'],
-};
-</script>

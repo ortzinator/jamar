@@ -1,15 +1,38 @@
+<script setup>
+import { Head, useForm } from '@inertiajs/inertia-vue3';
+import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
+import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
+import JetButton from '@/Jetstream/Button.vue';
+import JetInput from '@/Jetstream/Input.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
+
+defineProps({
+    status: String,
+});
+
+const form = useForm({
+    email: '',
+});
+
+const submit = () => {
+    form.post(route('password.email'));
+};
+</script>
+
 <template>
+    <Head title="Forgot Password" />
+
     <JetAuthenticationCard>
         <template #logo>
             <JetAuthenticationCardLogo />
         </template>
 
-        <div class="mb-4 text-sm text-cool-grey-600">
-            Forgot your password? No problem. Just let us know your email address and we will email
-            you a password reset link that will allow you to choose a new one.
+        <div class="mb-4 text-sm text-gray-600">
+            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
         </div>
 
-        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
 
@@ -22,7 +45,7 @@
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="block w-full mt-1"
+                    class="mt-1 block w-full"
                     required
                     autofocus
                 />
@@ -36,41 +59,3 @@
         </form>
     </JetAuthenticationCard>
 </template>
-
-<script>
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard';
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo';
-import JetButton from '@/Jetstream/Button';
-import JetInput from '@/Jetstream/Input';
-import JetLabel from '@/Jetstream/Label';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
-
-export default {
-    components: {
-        JetAuthenticationCard,
-        JetAuthenticationCardLogo,
-        JetButton,
-        JetInput,
-        JetLabel,
-        JetValidationErrors,
-    },
-
-    props: {
-        status: String,
-    },
-
-    data() {
-        return {
-            form: this.$inertia.form({
-                email: '',
-            }),
-        };
-    },
-
-    methods: {
-        submit() {
-            this.form.post(this.route('password.email'));
-        },
-    },
-};
-</script>

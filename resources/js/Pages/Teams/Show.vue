@@ -1,7 +1,21 @@
+<script setup>
+import AppLayout from '@/Layouts/NewLayout.vue';
+import DeleteTeamForm from '@/Pages/Teams/Partials/DeleteTeamForm.vue';
+import JetSectionBorder from '@/Jetstream/SectionBorder.vue';
+import TeamMemberManager from '@/Pages/Teams/Partials/TeamMemberManager.vue';
+import UpdateTeamNameForm from '@/Pages/Teams/Partials/UpdateTeamNameForm.vue';
+
+defineProps({
+    team: Object,
+    availableRoles: Array,
+    permissions: Object,
+});
+</script>
+
 <template>
     <AppLayout title="Team Settings">
         <template #header>
-            <h2 class="text-xl font-semibold leading-tight text-cool-grey-800">Team Settings</h2>
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">Team Settings</h2>
         </template>
 
         <div>
@@ -24,26 +38,3 @@
         </div>
     </AppLayout>
 </template>
-
-<script>
-import AppLayout from '@/Layouts/NewLayout.vue';
-import DeleteTeamForm from '@/Pages/Teams/Partials/DeleteTeamForm.vue';
-import JetSectionBorder from '@/Jetstream/SectionBorder.vue';
-import TeamMemberManager from '@/Pages/Teams/Partials/TeamMemberManager.vue';
-import UpdateTeamNameForm from '@/Pages/Teams/Partials/UpdateTeamNameForm.vue';
-
-export default {
-    components: {
-        DeleteTeamForm,
-        JetSectionBorder,
-        TeamMemberManager,
-        UpdateTeamNameForm,
-        AppLayout,
-    },
-    props: {
-        team: { type: Object, required: true },
-        availableRoles: { type: Array, required: true },
-        permissions: { type: Array, required: true },
-    },
-};
-</script>

@@ -1,26 +1,30 @@
-<template>
-    <div class="py-5 font-bold">
-        <h1>API Tokens</h1>
-    </div>
+<script setup>
+import ApiTokenManager from '@/Pages/API/Partials/ApiTokenManager.vue';
+import AppLayout from '@/Layouts/NewLayout.vue';
 
-    <div>
-        <ApiTokenManager
-            :tokens="tokens"
-            :available-permissions="availablePermissions"
-            :default-permissions="defaultPermissions"
-        />
-    </div>
-</template>
-
-<script>
-import ApiTokenManager from './ApiTokenManager';
-import AppLayout from '@/Layouts/NewLayout';
-
-export default {
-    components: {
-        ApiTokenManager,
-    },
-    layout: AppLayout,
-    props: ['tokens', 'availablePermissions', 'defaultPermissions'],
-};
+defineProps({
+    tokens: Array,
+    availablePermissions: Array,
+    defaultPermissions: Array,
+});
 </script>
+
+<template>
+    <AppLayout title="API Tokens">
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                API Tokens
+            </h2>
+        </template>
+
+        <div>
+            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+                <ApiTokenManager
+                    :tokens="tokens"
+                    :available-permissions="availablePermissions"
+                    :default-permissions="defaultPermissions"
+                />
+            </div>
+        </div>
+    </AppLayout>
+</template>

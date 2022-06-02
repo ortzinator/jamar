@@ -1,4 +1,34 @@
+<script setup>
+import { Head, useForm } from '@inertiajs/inertia-vue3';
+import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
+import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
+import JetButton from '@/Jetstream/Button.vue';
+import JetInput from '@/Jetstream/Input.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
+
+const props = defineProps({
+    email: String,
+    token: String,
+});
+
+const form = useForm({
+    token: props.token,
+    email: props.email,
+    password: '',
+    password_confirmation: '',
+});
+
+const submit = () => {
+    form.post(route('password.update'), {
+        onFinish: () => form.reset('password', 'password_confirmation'),
+    });
+};
+</script>
+
 <template>
+    <Head title="Reset Password" />
+
     <JetAuthenticationCard>
         <template #logo>
             <JetAuthenticationCardLogo />
@@ -13,7 +43,7 @@
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="block w-full mt-1"
+                    class="mt-1 block w-full"
                     required
                     autofocus
                 />
@@ -25,7 +55,7 @@
                     id="password"
                     v-model="form.password"
                     type="password"
-                    class="block w-full mt-1"
+                    class="mt-1 block w-full"
                     required
                     autocomplete="new-password"
                 />
@@ -37,7 +67,7 @@
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
-                    class="block w-full mt-1"
+                    class="mt-1 block w-full"
                     required
                     autocomplete="new-password"
                 />
@@ -51,47 +81,3 @@
         </form>
     </JetAuthenticationCard>
 </template>
-
-<script>
-import JetAuthenticationCard from '@/Jetstream/AuthenticationCard';
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo';
-import JetButton from '@/Jetstream/Button';
-import JetInput from '@/Jetstream/Input';
-import JetLabel from '@/Jetstream/Label';
-import JetValidationErrors from '@/Jetstream/ValidationErrors';
-
-export default {
-    components: {
-        JetAuthenticationCard,
-        JetAuthenticationCardLogo,
-        JetButton,
-        JetInput,
-        JetLabel,
-        JetValidationErrors,
-    },
-
-    props: {
-        email: { type: String, required: true },
-        token: { type: String, required: true },
-    },
-
-    data() {
-        return {
-            form: this.$inertia.form({
-                token: this.token,
-                email: this.email,
-                password: '',
-                password_confirmation: '',
-            }),
-        };
-    },
-
-    methods: {
-        submit() {
-            this.form.post(this.route('password.update'), {
-                onFinish: () => this.form.reset('password', 'password_confirmation'),
-            });
-        },
-    },
-};
-</script>

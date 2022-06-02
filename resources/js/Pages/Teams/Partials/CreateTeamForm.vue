@@ -1,3 +1,23 @@
+<script setup>
+import { useForm } from '@inertiajs/inertia-vue3';
+import JetButton from '@/Jetstream/Button.vue';
+import JetFormSection from '@/Jetstream/FormSection.vue';
+import JetInput from '@/Jetstream/Input.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+
+const form = useForm({
+    name: '',
+});
+
+const createTeam = () => {
+    form.post(route('teams.store'), {
+        errorBag: 'createTeam',
+        preserveScroll: true,
+    });
+};
+</script>
+
 <template>
     <JetFormSection @submitted="createTeam">
         <template #title> Team Details </template>
@@ -19,7 +39,7 @@
 
                     <div class="ml-4 leading-tight">
                         <div>{{ $page.props.user.name }}</div>
-                        <div class="text-sm text-cool-grey-700">
+                        <div class="text-sm text-gray-700">
                             {{ $page.props.user.email }}
                         </div>
                     </div>
@@ -46,38 +66,3 @@
         </template>
     </JetFormSection>
 </template>
-
-<script>
-import JetButton from '@/Jetstream/Button.vue';
-import JetFormSection from '@/Jetstream/FormSection.vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-
-export default {
-    components: {
-        JetButton,
-        JetFormSection,
-        JetInput,
-        JetInputError,
-        JetLabel,
-    },
-
-    data() {
-        return {
-            form: this.$inertia.form({
-                name: '',
-            }),
-        };
-    },
-
-    methods: {
-        createTeam() {
-            this.form.post(route('teams.store'), {
-                errorBag: 'createTeam',
-                preserveScroll: true,
-            });
-        },
-    },
-};
-</script>

@@ -1,3 +1,97 @@
+<script setup>
+import { ref } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+import { useForm, usePage } from '@inertiajs/inertia-vue3';
+import JetActionMessage from '@/Jetstream/ActionMessage.vue';
+import JetActionSection from '@/Jetstream/ActionSection.vue';
+import JetButton from '@/Jetstream/Button.vue';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
+import JetDangerButton from '@/Jetstream/DangerButton.vue';
+import JetDialogModal from '@/Jetstream/DialogModal.vue';
+import JetFormSection from '@/Jetstream/FormSection.vue';
+import JetInput from '@/Jetstream/Input.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
+import JetSectionBorder from '@/Jetstream/SectionBorder.vue';
+
+const props = defineProps({
+    team: Object,
+    availableRoles: Array,
+    userPermissions: Object,
+});
+
+const addTeamMemberForm = useForm({
+    email: '',
+    role: null,
+});
+
+const updateRoleForm = useForm({
+    role: null,
+});
+
+const leaveTeamForm = useForm();
+const removeTeamMemberForm = useForm();
+
+const currentlyManagingRole = ref(false);
+const managingRoleFor = ref(null);
+const confirmingLeavingTeam = ref(false);
+const teamMemberBeingRemoved = ref(null);
+
+const addTeamMember = () => {
+    addTeamMemberForm.post(route('team-members.store', props.team), {
+        errorBag: 'addTeamMember',
+        preserveScroll: true,
+        onSuccess: () => addTeamMemberForm.reset(),
+    });
+};
+
+const cancelTeamInvitation = (invitation) => {
+    Inertia.delete(route('team-invitations.destroy', invitation), {
+        preserveScroll: true,
+    });
+};
+
+const manageRole = (teamMember) => {
+    managingRoleFor.value = teamMember;
+    updateRoleForm.role = teamMember.membership.role;
+    currentlyManagingRole.value = true;
+};
+
+const updateRole = () => {
+    updateRoleForm.put(route('team-members.update', [props.team, managingRoleFor.value]), {
+        preserveScroll: true,
+        onSuccess: () => (currentlyManagingRole.value = false),
+    });
+};
+
+const confirmLeavingTeam = () => {
+    confirmingLeavingTeam.value = true;
+};
+
+const leaveTeam = () => {
+    leaveTeamForm.delete(route('team-members.destroy', [props.team, usePage().props.value.user]));
+};
+
+const confirmTeamMemberRemoval = (teamMember) => {
+    teamMemberBeingRemoved.value = teamMember;
+};
+
+const removeTeamMember = () => {
+    removeTeamMemberForm.delete(
+        route('team-members.destroy', [props.team, teamMemberBeingRemoved.value]),
+        {
+            errorBag: 'removeTeamMember',
+            preserveScroll: true,
+            preserveState: true,
+            onSuccess: () => (teamMemberBeingRemoved.value = null),
+        }
+    );
+};
+
+const displayableRole = (role) => props.availableRoles.find((r) => r.key === role).name;
+</script>
+
 <template>
     <div>
         <div v-if="userPermissions.canAddTeamMembers">
@@ -13,7 +107,7 @@
 
                 <template #form>
                     <div class="col-span-6">
-                        <div class="max-w-xl text-sm text-cool-grey-600">
+                        <div class="max-w-xl text-sm text-gray-600">
                             Please provide the email address of the person you would like to add to
                             this team.
                         </div>
@@ -37,7 +131,7 @@
                         <JetInputError :message="addTeamMemberForm.errors.role" class="mt-2" />
 
                         <div
-                            class="relative z-0 mt-1 border rounded-lg cursor-pointer border-cool-grey-200"
+                            class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer"
                         >
                             <button
                                 v-for="(role, i) in availableRoles"
@@ -45,7 +139,7 @@
                                 type="button"
                                 class="relative inline-flex w-full px-4 py-3 rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200"
                                 :class="{
-                                    'border-t border-cool-grey-200 rounded-t-none': i > 0,
+                                    'border-t border-gray-200 rounded-t-none': i > 0,
                                     'rounded-b-none': i != Object.keys(availableRoles).length - 1,
                                 }"
                                 @click="addTeamMemberForm.role = role.key"
@@ -60,7 +154,7 @@
                                     <!-- Role Name -->
                                     <div class="flex items-center">
                                         <div
-                                            class="text-sm text-cool-grey-600"
+                                            class="text-sm text-gray-600"
                                             :class="{
                                                 'font-semibold': addTeamMemberForm.role == role.key,
                                             }"
@@ -80,12 +174,12 @@
                                         >
                                             <path
                                                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                            ></path>
+                                            />
                                         </svg>
                                     </div>
 
                                     <!-- Role Description -->
-                                    <div class="mt-2 text-xs text-cool-grey-600">
+                                    <div class="mt-2 text-xs text-left text-gray-600">
                                         {{ role.description }}
                                     </div>
                                 </div>
@@ -129,7 +223,7 @@
                             :key="invitation.id"
                             class="flex items-center justify-between"
                         >
-                            <div class="text-cool-grey-600">
+                            <div class="text-gray-600">
                                 {{ invitation.email }}
                             </div>
 
@@ -172,7 +266,9 @@
                                     :src="user.profile_photo_url"
                                     :alt="user.name"
                                 />
-                                <div class="ml-4">{{ user.name }}</div>
+                                <div class="ml-4">
+                                    {{ user.name }}
+                                </div>
                             </div>
 
                             <div class="flex items-center">
@@ -181,7 +277,7 @@
                                     v-if="
                                         userPermissions.canAddTeamMembers && availableRoles.length
                                     "
-                                    class="ml-2 text-sm underline text-cool-grey-400"
+                                    class="ml-2 text-sm text-gray-400 underline"
                                     @click="manageRole(user)"
                                 >
                                     {{ displayableRole(user.membership.role) }}
@@ -189,7 +285,7 @@
 
                                 <div
                                     v-else-if="availableRoles.length"
-                                    class="ml-2 text-sm text-cool-grey-400"
+                                    class="ml-2 text-sm text-gray-400"
                                 >
                                     {{ displayableRole(user.membership.role) }}
                                 </div>
@@ -224,16 +320,14 @@
 
             <template #content>
                 <div v-if="managingRoleFor">
-                    <div
-                        class="relative z-0 mt-1 border rounded-lg cursor-pointer border-cool-grey-200"
-                    >
+                    <div class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
                         <button
                             v-for="(role, i) in availableRoles"
                             :key="role.key"
                             type="button"
                             class="relative inline-flex w-full px-4 py-3 rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200"
                             :class="{
-                                'border-t border-cool-grey-200 rounded-t-none': i > 0,
+                                'border-t border-gray-200 rounded-t-none': i > 0,
                                 'rounded-b-none': i !== Object.keys(availableRoles).length - 1,
                             }"
                             @click="updateRoleForm.role = role.key"
@@ -247,7 +341,7 @@
                                 <!-- Role Name -->
                                 <div class="flex items-center">
                                     <div
-                                        class="text-sm text-cool-grey-600"
+                                        class="text-sm text-gray-600"
                                         :class="{
                                             'font-semibold': updateRoleForm.role === role.key,
                                         }"
@@ -265,14 +359,12 @@
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
                                     >
-                                        <path
-                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                        ></path>
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
 
                                 <!-- Role Description -->
-                                <div class="mt-2 text-xs text-cool-grey-600">
+                                <div class="mt-2 text-xs text-gray-600">
                                     {{ role.description }}
                                 </div>
                             </div>
@@ -287,7 +379,7 @@
                 </JetSecondaryButton>
 
                 <JetButton
-                    class="ml-2"
+                    class="ml-3"
                     :class="{ 'opacity-25': updateRoleForm.processing }"
                     :disabled="updateRoleForm.processing"
                     @click="updateRole"
@@ -309,7 +401,7 @@
                 </JetSecondaryButton>
 
                 <JetDangerButton
-                    class="ml-2"
+                    class="ml-3"
                     :class="{ 'opacity-25': leaveTeamForm.processing }"
                     :disabled="leaveTeamForm.processing"
                     @click="leaveTeam"
@@ -333,7 +425,7 @@
                 </JetSecondaryButton>
 
                 <JetDangerButton
-                    class="ml-2"
+                    class="ml-3"
                     :class="{ 'opacity-25': removeTeamMemberForm.processing }"
                     :disabled="removeTeamMemberForm.processing"
                     @click="removeTeamMember"
@@ -344,120 +436,3 @@
         </JetConfirmationModal>
     </div>
 </template>
-
-<script>
-import JetActionMessage from '@/Jetstream/ActionMessage.vue';
-import JetActionSection from '@/Jetstream/ActionSection.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
-import JetDangerButton from '@/Jetstream/DangerButton.vue';
-import JetDialogModal from '@/Jetstream/DialogModal.vue';
-import JetFormSection from '@/Jetstream/FormSection.vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
-import JetSectionBorder from '@/Jetstream/SectionBorder.vue';
-
-export default {
-    components: {
-        JetActionMessage,
-        JetActionSection,
-        JetButton,
-        JetConfirmationModal,
-        JetDangerButton,
-        JetDialogModal,
-        JetFormSection,
-        JetInput,
-        JetInputError,
-        JetLabel,
-        JetSecondaryButton,
-        JetSectionBorder,
-    },
-
-    props: ['team', 'availableRoles', 'userPermissions'],
-
-    data() {
-        return {
-            addTeamMemberForm: this.$inertia.form({
-                email: '',
-                role: null,
-            }),
-
-            updateRoleForm: this.$inertia.form({
-                role: null,
-            }),
-
-            leaveTeamForm: this.$inertia.form(),
-            removeTeamMemberForm: this.$inertia.form(),
-
-            currentlyManagingRole: false,
-            managingRoleFor: null,
-            confirmingLeavingTeam: false,
-            teamMemberBeingRemoved: null,
-        };
-    },
-
-    methods: {
-        addTeamMember() {
-            this.addTeamMemberForm.post(route('team-members.store', this.team), {
-                errorBag: 'addTeamMember',
-                preserveScroll: true,
-                onSuccess: () => this.addTeamMemberForm.reset(),
-            });
-        },
-
-        cancelTeamInvitation(invitation) {
-            this.$inertia.delete(route('team-invitations.destroy', invitation), {
-                preserveScroll: true,
-            });
-        },
-
-        manageRole(teamMember) {
-            this.managingRoleFor = teamMember;
-            this.updateRoleForm.role = teamMember.membership.role;
-            this.currentlyManagingRole = true;
-        },
-
-        updateRole() {
-            this.updateRoleForm.put(
-                route('team-members.update', [this.team, this.managingRoleFor]),
-                {
-                    preserveScroll: true,
-                    onSuccess: () => (this.currentlyManagingRole = false),
-                }
-            );
-        },
-
-        confirmLeavingTeam() {
-            this.confirmingLeavingTeam = true;
-        },
-
-        leaveTeam() {
-            this.leaveTeamForm.delete(
-                route('team-members.destroy', [this.team, this.$page.props.user])
-            );
-        },
-
-        confirmTeamMemberRemoval(teamMember) {
-            this.teamMemberBeingRemoved = teamMember;
-        },
-
-        removeTeamMember() {
-            this.removeTeamMemberForm.delete(
-                route('team-members.destroy', [this.team, this.teamMemberBeingRemoved]),
-                {
-                    errorBag: 'removeTeamMember',
-                    preserveScroll: true,
-                    preserveState: true,
-                    onSuccess: () => (this.teamMemberBeingRemoved = null),
-                }
-            );
-        },
-
-        displayableRole(role) {
-            return this.availableRoles.find((r) => r.key === role).name;
-        },
-    },
-};
-</script>

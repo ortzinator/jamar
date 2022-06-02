@@ -1,3 +1,47 @@
+<script setup>
+import { ref } from 'vue';
+import { useForm } from '@inertiajs/inertia-vue3';
+import JetActionMessage from '@/Jetstream/ActionMessage.vue';
+import JetActionSection from '@/Jetstream/ActionSection.vue';
+import JetButton from '@/Jetstream/Button.vue';
+import JetDialogModal from '@/Jetstream/DialogModal.vue';
+import JetInput from '@/Jetstream/Input.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import JetSecondaryButton from '@/Jetstream/SecondaryButton.vue';
+
+defineProps({
+    sessions: Array,
+});
+
+const confirmingLogout = ref(false);
+const passwordInput = ref(null);
+
+const form = useForm({
+    password: '',
+});
+
+const confirmLogout = () => {
+    confirmingLogout.value = true;
+
+    setTimeout(() => passwordInput.value.focus(), 250);
+};
+
+const closeModal = () => {
+    confirmingLogout.value = false;
+
+    form.reset();
+};
+
+const logoutOtherBrowserSessions = () => {
+    form.delete(route('other-browser-sessions.destroy'), {
+        preserveScroll: true,
+        onSuccess: () => closeModal(),
+        onError: () => passwordInput.value.focus(),
+        onFinish: () => form.reset(),
+    });
+};
+</script>
+
 <template>
     <JetActionSection>
         <template #title> Browser Sessions </template>
@@ -7,7 +51,7 @@
         </template>
 
         <template #content>
-            <div class="max-w-xl text-sm text-cool-grey-600">
+            <div class="max-w-xl text-sm text-gray-600">
                 If necessary, you may log out of all of your other browser sessions across all of
                 your devices. Some of your recent sessions are listed below; however, this list may
                 not be exhaustive. If you feel your account has been compromised, you should also
@@ -26,11 +70,11 @@
                             stroke-width="2"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
-                            class="w-8 h-8 text-cool-grey-500"
+                            class="w-8 h-8 text-gray-500"
                         >
                             <path
                                 d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                            ></path>
+                            />
                         </svg>
 
                         <svg
@@ -42,22 +86,22 @@
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                            class="w-8 h-8 text-cool-grey-500"
+                            class="w-8 h-8 text-gray-500"
                         >
-                            <path d="M0 0h24v24H0z" stroke="none"></path>
-                            <rect x="7" y="4" width="10" height="16" rx="1"></rect>
-                            <path d="M11 5h2M12 17v.01"></path>
+                            <path d="M0 0h24v24H0z" stroke="none" />
+                            <rect x="7" y="4" width="10" height="16" rx="1" />
+                            <path d="M11 5h2M12 17v.01" />
                         </svg>
                     </div>
 
                     <div class="ml-3">
-                        <div class="text-sm text-cool-grey-600">
-                            {{ session.agent.platform }} -
-                            {{ session.agent.browser }}
+                        <div class="text-sm text-gray-600">
+                            {{ session.agent.platform ? session.agent.platform : 'Unknown' }} -
+                            {{ session.agent.browser ? session.agent.browser : 'Unknown' }}
                         </div>
 
                         <div>
-                            <div class="text-xs text-cool-grey-500">
+                            <div class="text-xs text-gray-500">
                                 {{ session.ip_address }},
 
                                 <span
@@ -65,7 +109,7 @@
                                     class="font-semibold text-green-500"
                                     >This device</span
                                 >
-                                <span v-else> Last active {{ session.last_active }} </span>
+                                <span v-else>Last active {{ session.last_active }}</span>
                             </div>
                         </div>
                     </div>
@@ -90,7 +134,7 @@
 
                     <div class="mt-4">
                         <JetInput
-                            ref="password"
+                            ref="passwordInput"
                             v-model="form.password"
                             type="password"
                             class="block w-3/4 mt-1"
@@ -103,10 +147,10 @@
                 </template>
 
                 <template #footer>
-                    <JetSecondaryButton @click="closeModal"> Nevermind </JetSecondaryButton>
+                    <JetSecondaryButton @click="closeModal"> Cancel </JetSecondaryButton>
 
                     <JetButton
-                        class="ml-2"
+                        class="ml-3"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                         @click="logoutOtherBrowserSessions"
@@ -118,59 +162,3 @@
         </template>
     </JetActionSection>
 </template>
-
-<script>
-import JetActionMessage from '@/Jetstream/ActionMessage';
-import JetActionSection from '@/Jetstream/ActionSection';
-import JetButton from '@/Jetstream/Button';
-import JetDialogModal from '@/Jetstream/DialogModal';
-import JetInput from '@/Jetstream/Input';
-import JetInputError from '@/Jetstream/InputError';
-import JetSecondaryButton from '@/Jetstream/SecondaryButton';
-
-export default {
-    components: {
-        JetActionMessage,
-        JetActionSection,
-        JetButton,
-        JetDialogModal,
-        JetInput,
-        JetInputError,
-        JetSecondaryButton,
-    },
-    props: ['sessions'],
-
-    data() {
-        return {
-            confirmingLogout: false,
-
-            form: this.$inertia.form({
-                password: '',
-            }),
-        };
-    },
-
-    methods: {
-        confirmLogout() {
-            this.confirmingLogout = true;
-
-            setTimeout(() => this.$refs.password.focus(), 250);
-        },
-
-        logoutOtherBrowserSessions() {
-            this.form.delete(route('other-browser-sessions.destroy'), {
-                preserveScroll: true,
-                onSuccess: () => this.closeModal(),
-                onError: () => this.$refs.password.focus(),
-                onFinish: () => this.form.reset(),
-            });
-        },
-
-        closeModal() {
-            this.confirmingLogout = false;
-
-            this.form.reset();
-        },
-    },
-};
-</script>

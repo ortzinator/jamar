@@ -1,12 +1,12 @@
+<script setup>
+defineProps({
+    value: { type: String, required: true },
+});
+</script>
+
 <template>
-    <label class="block font-medium text-sm text-cool-grey-700 md:mt-2">
+    <label class="block text-sm font-medium text-cool-grey-700">
         <span v-if="value">{{ value }}</span>
-        <span v-else><slot></slot></span>
+        <span v-else><slot /></span>
     </label>
 </template>
-
-<script>
-export default {
-    props: ['value'],
-};
-</script>

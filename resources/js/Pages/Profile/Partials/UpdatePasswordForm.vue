@@ -1,3 +1,42 @@
+<script setup>
+import { ref } from 'vue';
+import { useForm } from '@inertiajs/inertia-vue3';
+import JetActionMessage from '@/Jetstream/ActionMessage.vue';
+import JetButton from '@/Jetstream/Button.vue';
+import JetFormSection from '@/Jetstream/FormSection.vue';
+import JetInput from '@/Jetstream/Input.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+
+const passwordInput = ref(null);
+const currentPasswordInput = ref(null);
+
+const form = useForm({
+    current_password: '',
+    password: '',
+    password_confirmation: '',
+});
+
+const updatePassword = () => {
+    form.put(route('user-password.update'), {
+        errorBag: 'updatePassword',
+        preserveScroll: true,
+        onSuccess: () => form.reset(),
+        onError: () => {
+            if (form.errors.password) {
+                form.reset('password', 'password_confirmation');
+                passwordInput.value.focus();
+            }
+
+            if (form.errors.current_password) {
+                form.reset('current_password');
+                currentPasswordInput.value.focus();
+            }
+        },
+    });
+};
+</script>
+
 <template>
     <JetFormSection @submitted="updatePassword">
         <template #title> Update Password </template>
@@ -11,7 +50,7 @@
                 <JetLabel for="current_password" value="Current Password" />
                 <JetInput
                     id="current_password"
-                    ref="current_password"
+                    ref="currentPasswordInput"
                     v-model="form.current_password"
                     type="password"
                     class="block w-full mt-1"
@@ -24,7 +63,7 @@
                 <JetLabel for="password" value="New Password" />
                 <JetInput
                     id="password"
-                    ref="password"
+                    ref="passwordInput"
                     v-model="form.password"
                     type="password"
                     class="block w-full mt-1"
@@ -55,54 +94,3 @@
         </template>
     </JetFormSection>
 </template>
-
-<script>
-import JetActionMessage from '@/Jetstream/ActionMessage';
-import JetButton from '@/Jetstream/Button';
-import JetFormSection from '@/Jetstream/FormSection';
-import JetInput from '@/Jetstream/Input';
-import JetInputError from '@/Jetstream/InputError';
-import JetLabel from '@/Jetstream/Label';
-
-export default {
-    components: {
-        JetActionMessage,
-        JetButton,
-        JetFormSection,
-        JetInput,
-        JetInputError,
-        JetLabel,
-    },
-
-    data() {
-        return {
-            form: this.$inertia.form({
-                current_password: '',
-                password: '',
-                password_confirmation: '',
-            }),
-        };
-    },
-
-    methods: {
-        updatePassword() {
-            this.form.put(route('user-password.update'), {
-                errorBag: 'updatePassword',
-                preserveScroll: true,
-                onSuccess: () => this.form.reset(),
-                onError: () => {
-                    if (this.form.errors.password) {
-                        this.form.reset('password', 'password_confirmation');
-                        this.$refs.password.focus();
-                    }
-
-                    if (this.form.errors.current_password) {
-                        this.form.reset('current_password');
-                        this.$refs.current_password.focus();
-                    }
-                },
-            });
-        },
-    },
-};
-</script>
