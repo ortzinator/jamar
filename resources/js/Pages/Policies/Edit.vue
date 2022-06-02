@@ -21,7 +21,7 @@
                 <TrashIcon class="w-5 h-5 mr-2" />
                 This policy is deleted
             </div>
-            <button class="btn hover:underline" @click="restore">Restore</button>
+            <button class="btn hover:underline" @click="confirmingRestore = true">Restore</button>
         </div>
 
         <div
@@ -94,7 +94,7 @@
                 class="mb-5"
                 :fields="policyForm.fields"
                 :policy="policy"
-                @fieldAdded="(field) => policyForm.fields.push(field)"
+                @field-added="(field) => policyForm.fields.push(field)"
             ></PolicyFieldsList>
 
             <ContactList
@@ -102,7 +102,7 @@
                 :contacts="policyForm.contacts"
                 class="mb-5"
                 removable
-                @contactClicked="handleContactClick"
+                @contact-clicked="handleContactClick"
             >
                 Policyholders
             </ContactList>
@@ -115,7 +115,7 @@
                 class="text-red-vivid-600 hover:underline"
                 tabindex="-1"
                 type="button"
-                @click="destroy"
+                @click="confirmingDelete = true"
             >
                 Delete policy
             </button>
@@ -134,9 +134,34 @@
             </div>
         </div>
     </div>
+
+    <JetConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
+        <template #title> Restore Policy </template>
+
+        <template #content> Are you sure you want to restore this policy? </template>
+
+        <template #footer>
+            <button class="btn" @click="confirmingRestore = false">Cancel</button>
+
+            <button class="ml-2 btn btn-danger" @click="restore">Restore</button>
+        </template>
+    </JetConfirmationModal>
+
+    <JetConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
+        <template #title> Delete Policy </template>
+
+        <template #content> Are you sure you want to delete the policy? </template>
+
+        <template #footer>
+            <button class="btn" @click="confirmingDelete = false">Cancel</button>
+
+            <button class="ml-2 btn btn-danger" @click="destroy">Delete Policy</button>
+        </template>
+    </JetConfirmationModal>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
 import { DatePicker } from 'v-calendar';
@@ -152,6 +177,7 @@ import HistoryModal from '@/Shared/HistoryModal';
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
 import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox';
 
 defineOptions({
@@ -170,6 +196,7 @@ const props = defineProps({
     },
     users: { type: Array, required: true },
 });
+
 const policyForm = useForm({
     number: props.policy.number,
     contacts: props.policy.contacts,
@@ -183,21 +210,22 @@ const policyForm = useForm({
     premium: Number(props.policy.premium.amount),
 });
 
+const confirmingDelete = ref(false);
+const confirmingRestore = ref(false);
+
 function updatePolicy() {
     policyForm.put(route('policies.update', props.policy.id));
 }
 
 function destroy() {
     // TODO check if contact is associated with a policy
-    if (window.confirm('Are you sure you want to delete this policy?')) {
-        policyForm.delete(route('policies.destroy', props.policy.id));
-    }
+    policyForm.delete(route('policies.destroy', props.policy.id));
+    confirmingDelete.value = false;
 }
 
 function restore() {
-    if (window.confirm('Are you sure you want to restore this policy?')) {
-        policyForm.put(route('policies.restore', props.policy.id));
-    }
+    policyForm.put(route('policies.restore', props.policy.id));
+    confirmingRestore.value = false;
 }
 
 function contactSelected(contact) {

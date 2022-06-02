@@ -24,7 +24,8 @@ class PolicyResource extends JsonResource
             ]),
             'contacts' => ContactResource::collection($this->contacts),
             'created_at' => $this->created_at,
-            'id' => $this->id
+            'id' => $this->id,
+            'deleted_at' => $this->deleted_at
         ];
     }
 }
