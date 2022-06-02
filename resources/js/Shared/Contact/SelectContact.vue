@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2 bg-white rounded shadow">
+    <div v-bind="$attrs">
         <div class="flex items-center">
             <input
                 v-model="searchTerm"

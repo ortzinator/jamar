@@ -87,7 +87,7 @@
 
             <div class="mb-5">
                 <div class="text-sm text-left text-cool-grey-600">Period of Insurance</div>
-                <DateRange v-model="policyForm.range" />
+                <DateRange v-model="policyForm.period" />
             </div>
 
             <PolicyFieldsList
@@ -106,8 +106,7 @@
             >
                 Policyholders
             </ContactList>
-
-            <SelectContact @selected="contactSelected"></SelectContact>
+            <button class="btn" @click="showAddContact = true">Add Policyholder</button>
         </div>
         <div class="flex items-center justify-between px-8 py-4 bg-cool-grey-50">
             <button
@@ -158,6 +157,18 @@
             <button class="ml-2 btn btn-danger" @click="destroy">Delete Policy</button>
         </template>
     </JetConfirmationModal>
+
+    <JetDialogModal :show="showAddContact" @close="showAddContact = false">
+        <template #title>Add Policyholder</template>
+
+        <template #content>
+            <SelectContact class="m-4" @selected="contactSelected" />
+        </template>
+
+        <template #footer>
+            <button class="btn" @click="showAddContact = false">Close</button>
+        </template>
+    </JetDialogModal>
 </template>
 
 <script setup>
@@ -178,6 +189,7 @@ import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
 import JetInputError from '@/Jetstream/InputError';
 import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
+import JetDialogModal from '@/Jetstream/DialogModal.vue';
 import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox';
 
 defineOptions({
@@ -201,7 +213,7 @@ const policyForm = useForm({
     number: props.policy.number,
     contacts: props.policy.contacts,
     created_at: props.policy.created_at,
-    range: {
+    period: {
         start: props.policy.period_start,
         end: props.policy.period_end,
     },
@@ -212,9 +224,16 @@ const policyForm = useForm({
 
 const confirmingDelete = ref(false);
 const confirmingRestore = ref(false);
+const showAddContact = ref(false);
 
 function updatePolicy() {
-    policyForm.put(route('policies.update', props.policy.id));
+    policyForm
+        .transform((data) => ({
+            ...data,
+            period_start: data.period.start,
+            period_end: data.period.end,
+        }))
+        .put(route('policies.update', props.policy.id));
 }
 
 function destroy() {
@@ -230,6 +249,7 @@ function restore() {
 
 function contactSelected(contact) {
     policyForm.contacts.push(contact);
+    showAddContact.value = false;
 }
 
 function handleContactClick(contact) {
