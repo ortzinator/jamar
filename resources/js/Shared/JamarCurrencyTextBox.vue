@@ -4,7 +4,7 @@ import { h } from 'vue';
 
 export default {
     props: {
-        modelValue: { type: Number, required: true },
+        modelValue: { type: Number, default: null },
         options: { type: Object, required: true },
     },
     setup(props) {

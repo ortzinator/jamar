@@ -72,9 +72,11 @@
                         <JetInputError :message="policyForm.errors.period_end" />
                     </div>
                     <div class="col-span-6 sm:col-span-4">
-                        <CurrencyTextBox
+                        <JetLabel :value="`Premium (${currency.code})`" />
+                        <JamarCurrencyTextBox
                             id="premium"
                             v-model="policyForm.premium"
+                            :options="{ currency: 'PHP', valueScaling: 'precision' }"
                             class="mt-1 mr-5 border rounded border-cool-grey-200"
                         />
                         <JetInputError :message="policyForm.errors.premium" />
@@ -114,6 +116,7 @@
                         </div>
                     </template>
                 </ContactList>
+                <JetInputError :message="policyForm.errors.contacts" />
                 <SelectContact @selected="contactSelected" />
             </FormSection>
 
@@ -137,23 +140,28 @@
 import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon } from '@heroicons/vue/outline';
+import { Inertia } from '@inertiajs/inertia';
 import AppLayout from '@/Layouts/NewLayout';
 
 import JetInput from '@/Jetstream/Input';
 import JetLabel from '@/Jetstream/Label';
+import JetInputError from '@/Jetstream/InputError.vue';
 import LoadingButton from '@/Shared/LoadingButton';
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
 import DateRange from '@/Shared/DateRange';
 import SelectContact from '@/Shared/Contact/SelectContact';
 import ContactList from '@/Shared/Contact/ContactList';
 import FormSection from '@/Shared/FormSection';
-import CurrencyTextBox from '@/Shared/CurrencyTextBox';
+import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox';
 
 defineOptions({
     layout: AppLayout,
 });
 
-const props = defineProps({ users: { type: Array, required: true } });
+defineProps({
+    users: { type: Array, required: true },
+    currency: { type: Object, required: true },
+});
 const policyForm = useForm({
     number: null,
     contacts: [],
@@ -162,12 +170,8 @@ const policyForm = useForm({
         end: null,
     },
     fields: [],
-    agent_id: props.value.user.id,
-    premium: {
-        amount: '0',
-        subunit: 2,
-        currency: 'PHP',
-    },
+    agent_id: Inertia.page.props.user.id,
+    premium: null,
 });
 
 const templates = ref([
@@ -207,7 +211,6 @@ function store() {
             ...data,
             period_start: data.period.start,
             period_end: data.period.end,
-            premium: data.premium.amount,
         }))
         .post(route('policies.store'));
 }

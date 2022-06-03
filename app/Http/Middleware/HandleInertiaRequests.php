@@ -41,6 +41,10 @@ class HandleInertiaRequests extends Middleware
             'user.roles' => Auth::user()?->roles,
             'flash' => [
                 'message' => fn() => $request->session()->get('message')
+            ],
+            'currency' => [
+                'code' => 'PHP',
+                'symbol' => '₱'
             ]
         ]);
     }
