@@ -17,7 +17,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import JetInput from '@/Jetstream/Input';
+import JetInput from '@/Jetstream/Input.vue';
 
 defineProps({
     field: { type: Object, required: true },

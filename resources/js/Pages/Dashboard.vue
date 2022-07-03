@@ -58,10 +58,10 @@
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/inertia-vue3';
 
-import AppLayout from '@/Layouts/NewLayout';
-import EndingSoonWidget from '@/Widgets/EndingSoon';
-import TextWidget from '@/Widgets/Text';
-import AlertWidget from '@/Shared/Alert';
+import AppLayout from '@/Layouts/NewLayout.vue';
+import EndingSoonWidget from '@/Widgets/EndingSoon.vue';
+import TextWidget from '@/Widgets/Text.vue';
+import AlertWidget from '@/Shared/Alert.vue';
 
 defineOptions({
     layout: AppLayout,

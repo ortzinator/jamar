@@ -116,13 +116,13 @@ import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import AppLayout from '@/Layouts/NewLayout';
-import LoadingButton from '@/Shared/LoadingButton';
+import AppLayout from '@/Layouts/NewLayout.vue';
+import LoadingButton from '@/Shared/LoadingButton.vue';
 
-import JetInput from '@/Jetstream/Input';
-import JetLabel from '@/Jetstream/Label';
-import JetInputError from '@/Jetstream/InputError';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
+import JetInput from '@/Jetstream/Input.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
 
 defineOptions({
     layout: AppLayout,

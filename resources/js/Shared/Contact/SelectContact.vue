@@ -36,7 +36,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 
-import Icon from '@/Shared/Icon';
+import Icon from '@/Shared/Icon.vue';
 
 defineEmits(['selected']);
 

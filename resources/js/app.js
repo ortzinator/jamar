@@ -4,17 +4,16 @@ import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
-import AppLayout from '@/Layouts/NewLayout';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+// import AppLayout from '@/Layouts/NewLayout.vue';
 
-require('./bootstrap');
+import './bootstrap';
+import '../css/app.css';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - Jamar` : 'Jamar'),
-    resolve: async (name) => {
-        const page = (await import(`./Pages/${name}`)).default;
-        page.Layout ??= AppLayout;
-        return page;
-    },
+    resolve: (name) =>
+        resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)

@@ -7,7 +7,7 @@
 
 <script setup>
 import { ref, watch } from 'vue';
-import Icon from '@/Shared/Icon';
+import Icon from '@/Shared/Icon.vue';
 
 const props = defineProps({ loading: { type: Boolean, required: true } });
 

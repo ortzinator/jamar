@@ -162,8 +162,8 @@ import {
     LogoutIcon,
     UserCircleIcon,
 } from '@heroicons/vue/outline';
-import AppLogo from '@/Shared/AppLogo';
-import NavLink from '@/Shared/NavLink';
+import AppLogo from '@/Shared/AppLogo.vue';
+import NavLink from '@/Shared/NavLink.vue';
 
 export default {
     components: {

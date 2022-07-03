@@ -68,10 +68,10 @@ import { watch, computed, ref } from 'vue';
 
 import { ExclamationIcon } from '@heroicons/vue/outline';
 import { useForm } from '@inertiajs/inertia-vue3';
-import AppLayout from '@/Layouts/NewLayout';
-import Pagination from '@/Shared/Pagination';
-import DataTable from '@/Shared/DataTable';
-import FilterSelect from '@/Shared/FilterSelect';
+import AppLayout from '@/Layouts/NewLayout.vue';
+import Pagination from '@/Shared/Pagination.vue';
+import DataTable from '@/Shared/DataTable.vue';
+import FilterSelect from '@/Shared/FilterSelect.vue';
 import Highlighter from '@/Shared/Highlighter.vue';
 
 import { formatDate, isInPast } from '@/util.js';

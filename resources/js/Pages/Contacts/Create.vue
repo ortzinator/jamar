@@ -49,12 +49,12 @@
 
 <script setup>
 import { useForm } from '@inertiajs/inertia-vue3';
-import AppLayout from '@/Layouts/NewLayout';
+import AppLayout from '@/Layouts/NewLayout.vue';
 
-import JetInput from '@/Jetstream/Input';
-import JetLabel from '@/Jetstream/Label';
-import JetInputError from '@/Jetstream/InputError';
-import LoadingButton from '@/Shared/LoadingButton';
+import JetInput from '@/Jetstream/Input.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import LoadingButton from '@/Shared/LoadingButton.vue';
 
 defineOptions({
     layout: AppLayout,

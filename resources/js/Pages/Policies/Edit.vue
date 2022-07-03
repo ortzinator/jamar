@@ -176,21 +176,21 @@ import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
 import { DatePicker } from 'v-calendar';
-import AppLayout from '@/Layouts/NewLayout';
+import AppLayout from '@/Layouts/NewLayout.vue';
 
-import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
-import ContactList from '@/Shared/Contact/ContactList';
-import SelectContact from '@/Shared/Contact/SelectContact';
-import LoadingButton from '@/Shared/LoadingButton';
-import DateRange from '@/Shared/DateRange';
-import HistoryModal from '@/Shared/HistoryModal';
+import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList.vue';
+import ContactList from '@/Shared/Contact/ContactList.vue';
+import SelectContact from '@/Shared/Contact/SelectContact.vue';
+import LoadingButton from '@/Shared/LoadingButton.vue';
+import DateRange from '@/Shared/DateRange.vue';
+import HistoryModal from '@/Shared/HistoryModal.vue';
 
-import JetInput from '@/Jetstream/Input';
-import JetLabel from '@/Jetstream/Label';
-import JetInputError from '@/Jetstream/InputError';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal';
+import JetInput from '@/Jetstream/Input.vue';
+import JetLabel from '@/Jetstream/Label.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
+import JetConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
 import JetDialogModal from '@/Jetstream/DialogModal.vue';
-import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox';
+import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox.vue';
 
 defineOptions({
     layout: AppLayout,

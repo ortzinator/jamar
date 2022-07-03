@@ -33,8 +33,8 @@
 import { ref, computed } from 'vue';
 
 import { PlusSmIcon, TrashIcon } from '@heroicons/vue/outline';
-import NewPolicyField from '@/Shared/Fields/NewPolicyField';
-import PolicyField from '@/Shared/Fields/PolicyField';
+import NewPolicyField from '@/Shared/Fields/NewPolicyField.vue';
+import PolicyField from '@/Shared/Fields/PolicyField.vue';
 
 const props = defineProps({
     fields: { type: Array, required: true },

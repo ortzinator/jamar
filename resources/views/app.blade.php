@@ -5,16 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title inertia>Jamar</title>
 
-        <!-- Fonts are imported via css -->
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
         <!-- Scripts -->
         @routes
-        <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="{{ mix('js/manifest.js') }}" defer></script>
-        <script src="{{ mix('js/vendor.js') }}" defer></script>
+        @vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>
     <body class="font-sans antialiased text-cool-grey-700">
         @inertia

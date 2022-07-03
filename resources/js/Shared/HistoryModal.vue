@@ -52,8 +52,8 @@ import { ref, onMounted } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { Dialog, DialogOverlay, DialogTitle, DialogDescription } from '@headlessui/vue';
 
-import JetLabel from '@/Jetstream/Label';
-import JetInputError from '@/Jetstream/InputError';
+import JetLabel from '@/Jetstream/Label.vue';
+import JetInputError from '@/Jetstream/InputError.vue';
 import HistoryItem from './HistoryItem.vue';
 
 const props = defineProps({ policy: { type: Object, required: true } });

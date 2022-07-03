@@ -53,10 +53,10 @@
 import { watch, computed, ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 
-import AppLayout from '@/Layouts/NewLayout';
-import Pagination from '@/Shared/Pagination';
-import FilterSelect from '@/Shared/FilterSelect';
-import DataTable from '@/Shared/DataTable';
+import AppLayout from '@/Layouts/NewLayout.vue';
+import Pagination from '@/Shared/Pagination.vue';
+import FilterSelect from '@/Shared/FilterSelect.vue';
+import DataTable from '@/Shared/DataTable.vue';
 import Highlighter from '@/Shared/Highlighter.vue';
 
 defineOptions({

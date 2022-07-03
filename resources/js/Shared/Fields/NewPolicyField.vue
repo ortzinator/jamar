@@ -25,8 +25,8 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import JetInput from '@/Jetstream/Input';
-import JetLabel from '@/Jetstream/Label';
+import JetInput from '@/Jetstream/Input.vue';
+import JetLabel from '@/Jetstream/Label.vue';
 
 const emit = defineEmits(['added']);
 

@@ -141,18 +141,18 @@ import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon } from '@heroicons/vue/outline';
 import { Inertia } from '@inertiajs/inertia';
-import AppLayout from '@/Layouts/NewLayout';
+import AppLayout from '@/Layouts/NewLayout.vue';
 
-import JetInput from '@/Jetstream/Input';
-import JetLabel from '@/Jetstream/Label';
+import JetInput from '@/Jetstream/Input.vue';
+import JetLabel from '@/Jetstream/Label.vue';
 import JetInputError from '@/Jetstream/InputError.vue';
-import LoadingButton from '@/Shared/LoadingButton';
-import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList';
-import DateRange from '@/Shared/DateRange';
-import SelectContact from '@/Shared/Contact/SelectContact';
-import ContactList from '@/Shared/Contact/ContactList';
-import FormSection from '@/Shared/FormSection';
-import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox';
+import LoadingButton from '@/Shared/LoadingButton.vue';
+import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList.vue';
+import DateRange from '@/Shared/DateRange.vue';
+import SelectContact from '@/Shared/Contact/SelectContact.vue';
+import ContactList from '@/Shared/Contact/ContactList.vue';
+import FormSection from '@/Shared/FormSection.vue';
+import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox.vue';
 
 defineOptions({
     layout: AppLayout,
