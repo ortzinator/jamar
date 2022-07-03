@@ -8,7 +8,6 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 // import AppLayout from '@/Layouts/NewLayout.vue';
 
 import './bootstrap';
-import '../css/app.css';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - Jamar` : 'Jamar'),
