@@ -37,8 +37,8 @@
         "unplugin-vue-define-options": "^0.6.1",
         "v-calendar": "^3.0.0-alpha.5",
         "vite": "^2.9.13",
-        "vue": "^3.2.11",
-        "vue-loader": "^16.1.2",
+        "vue": "^3.2.37",
+        "vue-loader": "^17.0.0",
         "vue3-popper": "^1.0.2"
     },
     "dependencies": {
