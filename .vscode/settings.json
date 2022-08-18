@@ -52,5 +52,8 @@
     "editor.wordWrapColumn": 100,
     "[php]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///home/brian/jamar/.github/workflows/*.yml"
     }
 }
