@@ -19,7 +19,7 @@ jobs:
           php-version: "8.0"
 
       - name: Deploy
-        uses: deployphp/action@v1
+        uses: deployphp/action@v1.0.17
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           dep: deploy
