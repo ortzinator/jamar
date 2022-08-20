@@ -24,3 +24,4 @@ jobs:
           private-key: ${{ secrets.PRIVATE_KEY }}
           known-hosts: ${{ secrets.KNOWN_HOSTS }}
           dep: deploy -vvv
+          deployer-version: "7.0.0"
