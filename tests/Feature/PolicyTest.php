@@ -186,7 +186,6 @@ class PolicyTest extends TestCase
                     ->has('policy.agent_id')
                     ->has('policy.number')
                     ->where('policy.premium.amount', strval($amount))
-                    ->where('policy.premium.formatted', '₱123.45')
                     ->where('policy.premium.subunit', 2)
             );
     }
