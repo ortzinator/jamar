@@ -14,12 +14,11 @@ class UserSearchResource extends JsonResource
      */
     public function toArray($request)
     {
-        // $roles = $this->getRolesNames();
         return [
             'name' => $this->name,
             'email' => $this->email,
             'id' => $this->id,
-            'role' => $this->roles->pluck('name')[0]
+            'role' => $this->roles->pluck('name')[0] ?? 'none'
         ];
     }
 }
