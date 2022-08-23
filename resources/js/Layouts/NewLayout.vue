@@ -214,6 +214,15 @@ export default {
                     return route().current('contacts');
                 },
             },
+            {
+                name: 'User',
+                get href() {
+                    return route('users.index');
+                },
+                get current() {
+                    return route().current('users.index');
+                },
+            },
         ]);
 
         const toast = useToast();
