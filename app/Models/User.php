@@ -72,4 +72,11 @@ class User extends Authenticatable
                 }
             });
     }
+
+    public function markAsApproved()
+    {
+        return $this->forceFill([
+            'approved_at' => $this->freshTimestamp()
+        ])->save();
+    }
 }

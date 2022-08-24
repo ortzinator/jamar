@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
+use App\Http\Resources\UserResource;
 use App\Http\Resources\UserSearchResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -67,9 +70,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return Inertia::render('Users/Edit', [
+            'editedUser' => UserResource::make($user)
+        ]);
     }
 
     /**
@@ -79,9 +84,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $user->update($request->validated());
+
+        session()->flash('message', 'User updated');
+        return Redirect::back();
     }
 
     /**
