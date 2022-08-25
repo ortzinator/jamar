@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -86,6 +87,8 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        $roles = Role::find($request->collect('roles')->pluck('id'));
+        $user->syncRoles($roles);
         $user->update($request->validated());
 
         session()->flash('message', 'User updated');

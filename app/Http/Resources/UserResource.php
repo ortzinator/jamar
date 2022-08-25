@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Spatie\Permission\Models\Role;
 
 class UserResource extends JsonResource
 {
@@ -14,11 +15,17 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
+        $roles = Role::all();
+        $roles->transform(function ($role) {
+            $role->enabled = $this->hasRole($role);
+            return $role;
+        });
+
         return [
             'name' => $this->name,
             'email' => $this->email,
             'id' => $this->id,
-            'roles' => $this->roles
+            'roles' => $roles
         ];
     }
 }

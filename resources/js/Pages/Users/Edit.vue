@@ -2,11 +2,14 @@
     <div class="py-5 font-bold">
         <InertiaHead title="Edit User" />
         <h1>
-            <InertiaLink class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600" href="/">
+            <InertiaLink
+                class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600"
+                href="/users"
+            >
                 Users
             </InertiaLink>
             <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
-            {{ userForm.number }}
+            {{ userForm.name }}
         </h1>
     </div>
 
@@ -32,6 +35,11 @@
                 <JetLabel for="email" value="Email" />
                 <JetInput id="email" v-model="userForm.email" type="text" class="block w-full" />
                 <JetInputError :message="userForm.errors.email" />
+            </div>
+            <div class="mb-5">
+                <JetLabel for="roles" value="Roles" />
+                <RoleSelector v-model="userForm.roles" />
+                <JetInputError :message="userForm.errors.roles" />
             </div>
         </div>
         <div class="flex items-center justify-between px-8 py-4 bg-cool-grey-50">
@@ -89,9 +97,11 @@
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { TrashIcon } from '@heroicons/vue/outline';
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue';
 import AppLayout from '@/Layouts/NewLayout.vue';
 
 import LoadingButton from '@/Shared/LoadingButton.vue';
+import RoleSelector from '@/Shared/RoleSelector.vue';
 
 import JetInput from '@/Jetstream/Input.vue';
 import JetLabel from '@/Jetstream/Label.vue';
@@ -105,25 +115,25 @@ defineOptions({
 const props = defineProps({
     errors: { type: Object, required: true },
     editedUser: { type: Object, required: true },
-    fields: {
-        type: Array,
-        required: false,
-        default() {
-            return [];
-        },
-    },
+    roles: { type: Array, required: true },
 });
 
 const userForm = useForm({
     name: props.editedUser.name,
     email: props.editedUser.email,
+    roles: props.editedUser.roles,
 });
 
 const confirmingDelete = ref(false);
 const confirmingRestore = ref(false);
 
 function updateUser() {
-    userForm.put(route('users.update', props.editedUser.id));
+    userForm
+        .transform((data) => ({
+            ...data,
+            roles: data.roles.filter((role) => role.enabled),
+        }))
+        .put(route('users.update', props.editedUser.id));
 }
 
 function destroy() {
