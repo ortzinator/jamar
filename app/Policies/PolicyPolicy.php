@@ -30,9 +30,7 @@ class PolicyPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('view policies')) {
-            return true;
-        }
+        return $user->can('view policies');
     }
 
     /**
@@ -44,9 +42,7 @@ class PolicyPolicy
      */
     public function view(User $user, Policy $policy)
     {
-        if ($user->can('view policies')) {
-            return true;
-        }
+        return $user->can('view policies');
     }
 
     /**
@@ -57,9 +53,7 @@ class PolicyPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('create policies')) {
-            return true;
-        }
+        return $user->can('create policies');
     }
 
     /**
@@ -71,9 +65,7 @@ class PolicyPolicy
      */
     public function update(User $user, Policy $policy)
     {
-        if ($user->can('update policies')) {
-            return true;
-        }
+        return $user->can('update policies');
     }
 
     /**
@@ -85,9 +77,7 @@ class PolicyPolicy
      */
     public function delete(User $user, Policy $policy)
     {
-        if ($user->can('delete policies')) {
-            return true;
-        }
+        return $user->can('delete policies');
     }
 
     /**
@@ -99,9 +89,7 @@ class PolicyPolicy
      */
     public function restore(User $user, Policy $policy)
     {
-        if ($user->can('restore policies')) {
-            return true;
-        }
+        return $user->can('restore policies');
     }
 
     /**
@@ -113,8 +101,6 @@ class PolicyPolicy
      */
     public function forceDelete(User $user, Policy $policy)
     {
-        if ($user->can('hard delete policies')) {
-            return true;
-        }
+        return $user->can('hard delete policies');
     }
 }

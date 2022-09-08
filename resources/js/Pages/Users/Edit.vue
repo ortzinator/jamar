@@ -97,7 +97,6 @@
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { TrashIcon } from '@heroicons/vue/outline';
-import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue';
 import AppLayout from '@/Layouts/NewLayout.vue';
 
 import LoadingButton from '@/Shared/LoadingButton.vue';

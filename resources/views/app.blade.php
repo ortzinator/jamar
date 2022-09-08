@@ -6,6 +6,14 @@
         <title inertia>Jamar</title>
 
         <!-- Scripts -->
+        <script>
+            @auth
+                window.Permissions = {!! json_encode(Auth::user()->getPermissions(), true) !!};
+            @else
+                window.Permissions = [];
+            @endauth
+        </script>
+
         @routes
         @vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>

@@ -5,7 +5,6 @@ import { InertiaProgress } from '@inertiajs/progress';
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-// import AppLayout from '@/Layouts/NewLayout.vue';
 
 import './bootstrap';
 

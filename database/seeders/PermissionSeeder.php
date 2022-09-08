@@ -16,32 +16,48 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        app()[
-            \Spatie\Permission\PermissionRegistrar::class
-        ]->forgetCachedPermissions();
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         Schema::disableForeignKeyConstraints();
         Permission::truncate();
         Role::truncate();
         Schema::enableForeignKeyConstraints();
 
-        Permission::create(['name' => 'view policies']);
-        Permission::create(['name' => 'create policies']);
-        Permission::create(['name' => 'update policies']);
-        Permission::create(['name' => 'update policy facts']);
-        Permission::create(['name' => 'view policy facts']);
-        Permission::create(['name' => 'delete policies']);
+        $permissionNames = [
+            'view policies',
+            'create policies',
+            'update policies',
+            'update policy facts',
+            'view policy facts',
+            'delete policies',
 
-        Permission::create(['name' => 'view contacts']);
-        Permission::create(['name' => 'create contacts']);
-        Permission::create(['name' => 'update contacts']);
-        Permission::create(['name' => 'view contact facts']);
-        Permission::create(['name' => 'update contact facts']);
-        Permission::create(['name' => 'delete contacts']);
+            'view contacts',
+            'create contacts',
+            'update contacts',
+            'view contact facts',
+            'update contact facts',
+            'delete contacts',
 
-        Role::create(['name' => 'Super Admin'])->givePermissionTo(
-            Permission::all()
-        );
+            'view users',
+            'create users',
+            'update users',
+            'view user facts',
+            'update user facts',
+            'delete users'
+        ];
+
+        $permissions = collect($permissionNames)->map(function ($permission) {
+            return [
+                'name' => $permission,
+                'guard_name' => 'web',
+                'created_at' => now(),
+                'updated_at' => now()
+            ];
+        });
+
+        Permission::insert($permissions->toArray());
+
+        Role::create(['name' => 'Super Admin']);
         Role::create(['name' => 'Manager'])->syncPermissions([
             'view policies',
             'create policies',
@@ -54,7 +70,13 @@ class PermissionSeeder extends Seeder
             'update contacts',
             'view contact facts',
             'update contact facts',
-            'delete contacts'
+            'delete contacts',
+            'view users',
+            'create users',
+            'update users',
+            'view user facts',
+            'update user facts',
+            'delete users'
         ]);
         Role::create(['name' => 'Employee'])->syncPermissions([
             'view policies',
@@ -62,13 +84,11 @@ class PermissionSeeder extends Seeder
             'update policies',
             'update policy facts',
             'view policy facts',
-            'delete policies',
             'view contacts',
             'create contacts',
             'update contacts',
             'view contact facts',
-            'update contact facts',
-            'delete contacts'
+            'update contact facts'
         ]);
     }
 }
