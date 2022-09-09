@@ -88,4 +88,9 @@ class User extends Authenticatable
         }
         return $this->getAllPermissions();
     }
+
+    public function getAllPermissionNames()
+    {
+        return $this->getPermissions()->pluck('name');
+    }
 }

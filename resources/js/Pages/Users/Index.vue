@@ -8,7 +8,7 @@
         <div class="flex justify-between mb-4">
             <div class="flex mr-4">
                 <div class="flex bg-white rounded shadow cursor-default">
-                    <FilterSelect v-model="searchForm.trashed" />
+                    <FilterSelect v-if="$can('update users')" v-model="searchForm.trashed" />
                     <input
                         v-model="searchForm.search"
                         type="text"
@@ -24,13 +24,17 @@
                     Reset
                 </button>
             </div>
-            <InertiaLink class="btn btn-primary" :href="route('users.create')">
+            <InertiaLink
+                v-if="$can('create users')"
+                class="btn btn-primary"
+                :href="route('users.create')"
+            >
                 <span>Create</span>
                 <span class="hidden md:inline"> New User</span>
             </InertiaLink>
         </div>
         <div class="overflow-x-auto bg-white rounded shadow">
-            <DataTable :columns="columns" :data-source="users.data" route-name="users.edit">
+            <DataTable :columns="columns" :data-source="users.data" route-name="users.show">
             </DataTable>
         </div>
         <Pagination :links="users.meta.links" />
@@ -45,6 +49,7 @@ import AppLayout from '@/Layouts/NewLayout.vue';
 import Pagination from '@/Shared/Pagination.vue';
 import DataTable from '@/Shared/DataTable.vue';
 import FilterSelect from '@/Shared/FilterSelect.vue';
+import $can from '@/permissions.js';
 
 defineOptions({
     layout: AppLayout,

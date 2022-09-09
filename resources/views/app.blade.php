@@ -8,7 +8,7 @@
         <!-- Scripts -->
         <script>
             @auth
-                window.Permissions = {!! json_encode(Auth::user()->getPermissions(), true) !!};
+                window.Permissions = {!! json_encode(Auth::user()->getAllPermissionNames(), true) !!};
             @else
                 window.Permissions = [];
             @endauth

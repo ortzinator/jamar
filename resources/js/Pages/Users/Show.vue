@@ -30,13 +30,14 @@
         </dl>
     </div>
     <div class="flex items-center justify-end px-8 my-4 bg-cool-grey-50">
-        <button v-if="true">Edit</button>
+        <button v-if="$can('update users')">Edit</button>
     </div>
 </template>
 
 <script setup>
 import { computed } from 'vue';
 import AppLayout from '@/Layouts/NewLayout.vue';
+import $can from '@/permissions.js';
 
 defineOptions({
     layout: AppLayout,
