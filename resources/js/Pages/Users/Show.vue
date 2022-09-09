@@ -14,8 +14,8 @@
     </div>
 
     <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
-        <dl class="even:bg-cool-grey-50">
-            <div class="px-4 py-5 sm:grid sm:grid-cols-3">
+        <dl>
+            <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
                 <dt class="font-medium text-gray-500">Photo</dt>
                 <dd class="block w-full sm:col-span-2">
                     <img
@@ -25,15 +25,15 @@
                     />
                 </dd>
             </div>
-            <div class="px-4 py-5 sm:grid sm:grid-cols-3">
+            <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
                 <dt class="font-medium text-gray-500">Name</dt>
                 <dd class="block w-full sm:col-span-2" v-text="viewedUser.name" />
             </div>
-            <div class="px-4 py-5 sm:grid sm:grid-cols-3">
+            <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
                 <dt class="font-medium text-gray-500">Email</dt>
                 <dd class="block w-full sm:col-span-2" v-text="viewedUser.email" />
             </div>
-            <div class="px-4 py-5 sm:grid sm:grid-cols-3">
+            <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
                 <dt class="font-medium text-gray-500">Role</dt>
                 <dd class="block w-full sm:col-span-2" v-text="roleName" />
             </div>

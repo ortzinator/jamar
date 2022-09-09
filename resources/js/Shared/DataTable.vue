@@ -8,7 +8,7 @@
                 v-text="column.text"
             />
         </tr>
-        <tr v-for="row in dataSource" :key="row.id">
+        <tr v-for="row in dataSource" :key="row.id" class="odd:bg-white even:bg-slate-50">
             <td v-for="column in columns" :key="column.value" class="border-t">
                 <InertiaLink
                     :href="route(routeName, row.id)"
