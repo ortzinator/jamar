@@ -13,13 +13,6 @@ class ContactTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
-    public function test_contacts_cannot_be_viewed_by_non_admins()
-    {
-        $this->signIn();
-
-        $this->get(route('contacts'))->assertStatus(403);
-    }
-
     public function test_contacts_can_be_viewed_by_admins()
     {
         $this->signInAdmin();

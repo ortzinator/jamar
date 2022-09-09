@@ -19,8 +19,8 @@ class PermissionSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         Schema::disableForeignKeyConstraints();
-        Permission::truncate();
-        Role::truncate();
+        Permission::query()->delete();
+        Role::query()->delete();
         Schema::enableForeignKeyConstraints();
 
         $permissionNames = [
@@ -88,7 +88,8 @@ class PermissionSeeder extends Seeder
             'create contacts',
             'update contacts',
             'view contact facts',
-            'update contact facts'
+            'update contact facts',
+            'view users'
         ]);
     }
 }

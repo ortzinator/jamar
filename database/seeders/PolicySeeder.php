@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Contact;
+use App\Models\History;
 use App\Models\Policy;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
@@ -19,10 +20,10 @@ class PolicySeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        Contact::truncate();
-        Policy::truncate();
-        DB::table('histories')->truncate();
-        DB::table('contact_policy')->truncate();
+        Contact::query()->delete();
+        Policy::query()->delete();
+        History::query()->delete();
+        DB::table('contact_policy')->delete();
         Schema::enableForeignKeyConstraints();
 
         $count = 1000;
