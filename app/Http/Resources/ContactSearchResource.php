@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserSearchResource extends JsonResource
+class ContactSearchResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,11 @@ class UserSearchResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'email' => $this->email,
+            'address' => $this->address,
             'id' => $this->id,
-            'role' => $this->roles()->pluck('name')[0] ?? 'none'
+            'deleted_at' => $this->deleted_at,
+            'link' => $this->link,
+            'policies_count' => $this->policies_count
         ];
     }
 }

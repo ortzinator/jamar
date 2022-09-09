@@ -16,6 +16,7 @@ class UserTest extends TestCase
      */
     public function test_shows_users()
     {
+        $this->signIn();
         $response = $this->get('/users');
 
         $response->assertStatus(200)->assertInertia(

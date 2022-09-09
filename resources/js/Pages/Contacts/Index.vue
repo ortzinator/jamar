@@ -44,7 +44,7 @@
                     </template>
                 </DataTable>
             </div>
-            <Pagination :links="contacts.links"></Pagination>
+            <Pagination :links="contacts.meta.links"></Pagination>
         </div>
     </div>
 </template>
