@@ -1,7 +1,7 @@
 <template>
     <div class="py-5 font-bold">
-        <InertiaHead title="Users" />
-        <h1>Users</h1>
+        <InertiaHead title="Employees" />
+        <h1>Employees</h1>
     </div>
 
     <div>

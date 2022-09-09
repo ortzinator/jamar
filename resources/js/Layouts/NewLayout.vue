@@ -215,7 +215,7 @@ export default {
                 },
             },
             {
-                name: 'Users',
+                name: 'Employees',
                 get href() {
                     return route('users.index');
                 },

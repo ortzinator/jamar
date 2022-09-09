@@ -6,7 +6,7 @@
                 class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600"
                 href="/users"
             >
-                Users
+                Employees
             </InertiaLink>
             <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
             {{ userForm.name }}
