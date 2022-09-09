@@ -37,7 +37,7 @@
                 <JetInputError :message="userForm.errors.email" />
             </div>
             <div class="mb-5">
-                <JetLabel for="roles" value="Roles" />
+                <JetLabel value="Roles" />
                 <RoleSelector v-model="userForm.roles" />
                 <JetInputError :message="userForm.errors.roles" />
             </div>
@@ -114,7 +114,6 @@ defineOptions({
 const props = defineProps({
     errors: { type: Object, required: true },
     editedUser: { type: Object, required: true },
-    roles: { type: Array, required: true },
 });
 
 const userForm = useForm({

@@ -31,7 +31,6 @@ class UserController extends Controller
                 User::query()
                     ->select(['name', 'created_at', 'updated_at', 'email', 'id'])
                     ->orderBy('users.created_at')
-                    ->with('roles')
                     ->filter($request->only('search', 'trashed'))
                     ->paginate()
             )
