@@ -12,7 +12,7 @@ class History extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'created_at' => 'datetime:Y-m-d'
+        'created_at' => 'datetime:m-d-Y H:i'
     ];
 
     protected $appends = ['user_name'];
