@@ -4,16 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title inertia>Jamar</title>
-
-        <!-- Scripts -->
-        <script>
-            @auth
-                window.Permissions = {!! json_encode(Auth::user()->getAllPermissionNames(), true) !!};
-            @else
-                window.Permissions = [];
-            @endauth
-        </script>
-
         @routes
         @vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>

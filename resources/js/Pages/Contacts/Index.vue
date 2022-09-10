@@ -8,7 +8,10 @@
         <div class="flex justify-between mb-4">
             <div class="flex mr-4">
                 <div class="flex bg-white rounded shadow cursor-default">
-                    <FilterSelect v-if="$can('update contacts')" v-model="searchForm.trashed" />
+                    <FilterSelect
+                        v-if="$attrs.permissions.includes('update contacts')"
+                        v-model="searchForm.trashed"
+                    />
                     <input
                         v-model="searchForm.search"
                         type="text"
@@ -58,7 +61,6 @@ import Pagination from '@/Shared/Pagination.vue';
 import FilterSelect from '@/Shared/FilterSelect.vue';
 import DataTable from '@/Shared/DataTable.vue';
 import Highlighter from '@/Shared/Highlighter.vue';
-import $can from '@/permissions.js';
 
 defineOptions({
     layout: AppLayout,

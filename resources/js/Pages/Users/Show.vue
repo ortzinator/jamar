@@ -40,7 +40,10 @@
         </dl>
     </div>
     <div class="flex items-center justify-end px-8 my-4 bg-cool-grey-50">
-        <InertiaLink v-if="$can('update users')" :href="route('users.edit', viewedUser.id)">
+        <InertiaLink
+            v-if="$attrs.permissions.includes('update users')"
+            :href="route('users.edit', viewedUser.id)"
+        >
             Edit
         </InertiaLink>
     </div>
@@ -49,7 +52,6 @@
 <script setup>
 import { computed } from 'vue';
 import AppLayout from '@/Layouts/NewLayout.vue';
-import $can from '@/permissions.js';
 
 defineOptions({
     layout: AppLayout,

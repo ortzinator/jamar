@@ -8,12 +8,12 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
 import './bootstrap';
 
-createInertiaApp({
+const App = {
     title: (title) => (title ? `${title} - Jamar` : 'Jamar'),
     resolve: (name) =>
         resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
+        window.App = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(Toast)
             .component('InertiaHead', Head)
@@ -21,6 +21,8 @@ createInertiaApp({
             .mixin({ methods: { route } })
             .mount(el);
     },
-});
+};
+
+createInertiaApp(App);
 
 InertiaProgress.init({ color: '#4B5563' });
