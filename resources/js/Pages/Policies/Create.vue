@@ -93,8 +93,8 @@
                 <PolicyFieldsList
                     class="mb-5"
                     :fields="policyForm.fields"
-                    @fieldAdded="(field) => policyForm.fields.push(field)"
-                    @fieldDeleted="handleFieldDelete"
+                    @field-added="(field) => policyForm.fields.push(field)"
+                    @field-deleted="handleFieldDelete"
                 />
             </FormSection>
 
@@ -107,7 +107,7 @@
                     :contacts="policyForm.contacts"
                     class="mb-5"
                     removable
-                    @contactClicked="handleContactClick"
+                    @contact-clicked="handleContactClick"
                 >
                     <template #noContacts>
                         <div class="mb-5 text-yellow-vivid-600">
