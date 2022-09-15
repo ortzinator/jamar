@@ -48,17 +48,7 @@
 
             <div class="mb-5">
                 <JetLabel value="Date Issued" />
-                <DatePicker v-model="policyForm.created_at" mode="dateTime">
-                    <template #default="{ inputValue }">
-                        <JetInput
-                            id="created_at"
-                            :value="inputValue"
-                            type="text"
-                            class="block w-full text-cool-grey-400"
-                            readonly
-                        />
-                    </template>
-                </DatePicker>
+                <Calendar v-model="policyForm.created_at" readonly="true" />
             </div>
 
             <div class="mb-5">
@@ -87,7 +77,7 @@
 
             <div class="mb-5">
                 <div class="text-sm text-left text-cool-grey-600">Period of Insurance</div>
-                <DateRange v-model="policyForm.period" />
+                <Calendar v-model="policyForm.period" selection-mode="range" />
             </div>
 
             <PolicyFieldsList
@@ -175,14 +165,13 @@
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
-import { DatePicker } from 'v-calendar';
+import Calendar from 'primevue/calendar';
 import AppLayout from '@/Layouts/NewLayout.vue';
 
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList.vue';
 import ContactList from '@/Shared/Contact/ContactList.vue';
 import SelectContact from '@/Shared/Contact/SelectContact.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';
-import DateRange from '@/Shared/DateRange.vue';
 import HistoryModal from '@/Shared/HistoryModal.vue';
 
 import JetInput from '@/Jetstream/Input.vue';
@@ -212,11 +201,8 @@ const props = defineProps({
 const policyForm = useForm({
     number: props.policy.number,
     contacts: props.policy.contacts,
-    created_at: props.policy.created_at,
-    period: {
-        start: props.policy.period_start,
-        end: props.policy.period_end,
-    },
+    created_at: new Date(props.policy.created_at),
+    period: [new Date(props.policy.period_start), new Date(props.policy.period_end)],
     fields: props.policy.fields ?? [],
     agent_id: props.policy.agent_id,
     premium: Number(props.policy.premium.amount),
@@ -230,8 +216,8 @@ function updatePolicy() {
     policyForm
         .transform((data) => ({
             ...data,
-            period_start: data.period.start,
-            period_end: data.period.end,
+            period_start: data.period[0],
+            period_end: data.period[1],
         }))
         .put(route('policies.update', props.policy.id));
 }

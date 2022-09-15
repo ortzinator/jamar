@@ -35,7 +35,6 @@
         "prettier": "^2.6.2",
         "tailwindcss": "^3.1.8",
         "unplugin-vue-define-options": "^0.6.1",
-        "v-calendar": "^3.0.0-alpha.5",
         "vite": "^2.9.13",
         "vue": "^3.2.37",
         "vue-loader": "^17.0.0",
@@ -45,6 +44,8 @@
         "@dinero.js/currencies": "^2.0.0-alpha.8",
         "@easymoney/formatter": "^1.1.0",
         "@easymoney/money": "^1.0.2",
+        "primeicons": "^5.0.0",
+        "primevue": "^3.17.0",
         "vue-currency-input": "^2.4.0",
         "vue-toastification": "^2.0.0-rc.1"
     }

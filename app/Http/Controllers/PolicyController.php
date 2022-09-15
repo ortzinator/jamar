@@ -66,10 +66,11 @@ class PolicyController extends Controller
      */
     public function store(CreatePolicyRequest $request)
     {
+        // dd($request['period_start']);
         $policy = Policy::create([
             'number' => $request['number'],
-            'period_start' => new Carbon($request['range.start']),
-            'period_end' => new Carbon($request['range.end']),
+            'period_start' => new Carbon($request['period_start']),
+            'period_end' => new Carbon($request['period_end']),
             'fields' => $request['fields'],
             'agent_id' => $request['agent_id'],
             'premium' => $request['premium']
@@ -89,6 +90,7 @@ class PolicyController extends Controller
      */
     public function edit(Policy $policy)
     {
+        // dd($policy->toArray());
         return Inertia::render('Policies/Edit', [
             'policy' => PolicyResource::make($policy),
             'fields' => $policy->fields,

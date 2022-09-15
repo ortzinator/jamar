@@ -5,6 +5,10 @@ import { InertiaProgress } from '@inertiajs/progress';
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import PrimeVue from 'primevue/config';
+import 'primevue/resources/themes/tailwind-light/theme.css';
+import 'primevue/resources/primevue.min.css';
+import 'primeicons/primeicons.css';
 
 import './bootstrap';
 
@@ -16,6 +20,7 @@ const App = {
         window.App = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(Toast)
+            .use(PrimeVue)
             .component('InertiaHead', Head)
             .component('InertiaLink', Link)
             .mixin({ methods: { route } })
