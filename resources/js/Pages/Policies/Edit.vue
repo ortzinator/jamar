@@ -2,7 +2,10 @@
     <div class="py-5 font-bold">
         <InertiaHead title="Edit Policy" />
         <h1>
-            <InertiaLink class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600" href="/">
+            <InertiaLink
+                class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600"
+                href="/policies"
+            >
                 Policies
             </InertiaLink>
             <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
@@ -48,7 +51,7 @@
 
             <div class="mb-5">
                 <JetLabel value="Date Issued" />
-                <Calendar v-model="policyForm.created_at" readonly="true" />
+                <Calendar v-model="policyForm.created_at" :readonly="true" />
             </div>
 
             <div class="mb-5">
