@@ -30,9 +30,7 @@ class ContactPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('view contacts')) {
-            return true;
-        }
+        return $user->can('view contacts');
     }
 
     /**
@@ -44,9 +42,7 @@ class ContactPolicy
      */
     public function view(User $user, Contact $contact)
     {
-        if ($user->can('view contacts')) {
-            return true;
-        }
+        return $user->can('view contacts');
     }
 
     /**
@@ -57,9 +53,7 @@ class ContactPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('create contacts')) {
-            return true;
-        }
+        return $user->can('create contacts');
     }
 
     /**
@@ -75,9 +69,7 @@ class ContactPolicy
             return false;
         }
 
-        if ($user->can('update contacts')) {
-            return true;
-        }
+        return $user->can('update contacts');
     }
 
     /**
@@ -93,9 +85,7 @@ class ContactPolicy
             return false;
         }
 
-        if ($user->can('delete contacts')) {
-            return true;
-        }
+        return $user->can('delete contacts');
     }
 
     /**
@@ -111,9 +101,7 @@ class ContactPolicy
             return false;
         }
 
-        if ($user->can('restore contacts')) {
-            return true;
-        }
+        return $user->can('restore contacts');
     }
 
     /**
@@ -129,8 +117,6 @@ class ContactPolicy
             return false;
         }
 
-        if ($user->can('hard delete contacts')) {
-            return true;
-        }
+        return $user->can('hard delete contacts');
     }
 }

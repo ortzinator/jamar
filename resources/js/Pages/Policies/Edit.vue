@@ -79,7 +79,7 @@
                 <JamarCurrencyTextBox
                     id="premium"
                     v-model="policyForm.premium"
-                    :options="{ currency: 'PHP', valueScaling: 'precision' }"
+                    :options="{ currency: $attrs.currency.code, valueScaling: 'precision' }"
                     class="mt-1 mr-5 border rounded border-cool-grey-200"
                 />
                 <JetInputError :message="policyForm.errors.premium" />

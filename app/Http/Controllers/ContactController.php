@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Http\Resources\ContactResource;
+use App\Http\Resources\ContactSearchResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -32,10 +33,12 @@ class ContactController extends Controller
 
         return Inertia::render('Contacts/Index', [
             'filters' => $request->all('search', 'trashed'),
-            'contacts' => Contact::orderBy('name')
-                ->filter($request->only('search', 'trashed'))
-                ->with('policies')
-                ->paginate()
+            'contacts' => ContactSearchResource::collection(
+                Contact::orderBy('name')
+                    ->filter($request->only('search', 'trashed'))
+                    ->with('policies')
+                    ->paginate()
+            )
         ]);
     }
 

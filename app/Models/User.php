@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -54,4 +55,42 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = ['profile_photo_url'];
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query
+            ->when($filters['search'] ?? null, function ($query, $search) {
+                $search = $search . '%';
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', $search)->orWhere('email', 'like', '%' . $search);
+                });
+            })
+            ->when($filters['trashed'] ?? null, function ($query, $trashed) {
+                if ($trashed === 'with') {
+                    $query->withTrashed();
+                } elseif ($trashed === 'only') {
+                    $query->onlyTrashed();
+                }
+            });
+    }
+
+    public function markAsApproved()
+    {
+        return $this->forceFill([
+            'approved_at' => $this->freshTimestamp()
+        ])->save();
+    }
+
+    public function getPermissions()
+    {
+        if ($this->hasRole('Super Admin')) {
+            return Permission::getPermissions();
+        }
+        return $this->getAllPermissions();
+    }
+
+    public function getAllPermissionNames()
+    {
+        return $this->getPermissions()->pluck('name');
+    }
 }

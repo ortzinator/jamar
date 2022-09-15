@@ -13,7 +13,7 @@
                 class="w-6 h-6 -ml-8 fill-current animate-spin text-cool-grey-400"
             />
         </div>
-        <div class="pr-1 mt-2 overflow-auto h-52">
+        <div class="px-2 mt-2 overflow-auto bg-white h-52">
             <ul v-if="results.length > 0" class="mt-2 space-y-2">
                 <li
                     v-for="contact in results"

@@ -19,7 +19,7 @@
                 <template #header>Basics</template>
                 <template #description> Description of this section </template>
                 <div class="grid grid-cols-6 gap-4">
-                    <div class="col-span-6 sm:col-span-4">
+                    <div class="col-span-6">
                         <JetLabel for="template" value="Policy Type" />
                         <div class="flex items-center">
                             <select
@@ -36,7 +36,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-span-6 sm:col-span-4">
+                    <div class="col-span-6">
                         <JetLabel for="agent" value="Assigned Agent" />
                         <select
                             v-model="policyForm.agent_id"
@@ -47,7 +47,7 @@
                             </option>
                         </select>
                     </div>
-                    <div class="col-span-6 sm:col-span-4">
+                    <div class="col-span-6">
                         <JetLabel for="number" value="Policy Number" />
                         <JetInput
                             id="number"
@@ -57,7 +57,7 @@
                         />
                         <JetInputError :message="policyForm.errors.number" />
                     </div>
-                    <div class="col-span-6 sm:col-span-4">
+                    <div class="col-span-6">
                         <JetLabel>Period of Insurance</JetLabel>
                         <div
                             :class="{
@@ -66,18 +66,32 @@
                             }"
                             class="mt-1"
                         >
-                            <DateRange v-model="policyForm.period" />
+                            <!-- <DateRange v-model="policyForm.period" /> -->
+                            <div class="grid grid-cols-3 space-y-2">
+                                <div class="flex items-center h-full col-span-1 text-sm">Start</div>
+                                <input
+                                    v-model="policyForm.period.start"
+                                    class="col-span-2"
+                                    type="date"
+                                />
+                                <div class="flex items-center h-full col-span-1 text-sm">End</div>
+                                <input
+                                    v-model="policyForm.period.end"
+                                    class="col-span-2"
+                                    type="date"
+                                />
+                            </div>
                         </div>
                         <JetInputError :message="policyForm.errors.period_start" />
                         <JetInputError :message="policyForm.errors.period_end" />
                     </div>
-                    <div class="col-span-6 sm:col-span-4">
+                    <div class="col-span-6">
                         <JetLabel :value="`Premium (${currency.code})`" />
                         <JamarCurrencyTextBox
                             id="premium"
                             v-model="policyForm.premium"
-                            :options="{ currency: 'PHP', valueScaling: 'precision' }"
-                            class="mt-1 mr-5 border rounded border-cool-grey-200"
+                            :options="{ currency: currency.code, valueScaling: 'precision' }"
+                            class="w-full mt-1 mr-5 border rounded border-cool-grey-200"
                         />
                         <JetInputError :message="policyForm.errors.premium" />
                     </div>
@@ -93,8 +107,8 @@
                 <PolicyFieldsList
                     class="mb-5"
                     :fields="policyForm.fields"
-                    @fieldAdded="(field) => policyForm.fields.push(field)"
-                    @fieldDeleted="handleFieldDelete"
+                    @field-added="(field) => policyForm.fields.push(field)"
+                    @field-deleted="handleFieldDelete"
                 />
             </FormSection>
 
@@ -107,7 +121,7 @@
                     :contacts="policyForm.contacts"
                     class="mb-5"
                     removable
-                    @contactClicked="handleContactClick"
+                    @contact-clicked="handleContactClick"
                 >
                     <template #noContacts>
                         <div class="mb-5 text-yellow-vivid-600">

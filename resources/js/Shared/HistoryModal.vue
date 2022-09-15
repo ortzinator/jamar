@@ -1,19 +1,20 @@
 <template>
     <button class="ml-auto btn btn-secondary" @click="setIsOpen(true)">History of facts</button>
-    <Dialog as="div" class="fixed inset-0 z-10 overflow-y-auto" :open="isOpen" @close="setIsOpen">
+    <Dialog
+        as="div"
+        class="fixed inset-0 z-10 overflow-y-auto md:py-5"
+        :open="isOpen"
+        @close="setIsOpen"
+    >
         <div class="flex items-center justify-center min-h-screen">
             <DialogOverlay class="fixed inset-0 bg-black opacity-30" />
 
             <div
-                class="relative flex flex-col w-full h-screen bg-white md:h-auto md:max-w-lg md:my-auto md:rounded md:shadow-2xl"
+                class="relative flex flex-col w-full h-screen bg-white md:h-[80vh] md:w-5/6 md:rounded md:shadow-2xl"
             >
                 <DialogTitle class="mx-2 my-4 md:mx-7 md:my-5"> History of Facts </DialogTitle>
-                <DialogDescription>Displays a history of facts</DialogDescription>
-                <div
-                    v-if="histories.length > 0"
-                    class="mx-2 my-4 overflow-y-scroll grow md:max-h-96 md:mx-7 md:my-5"
-                >
-                    <table class="w-full font-mono text-xs table-fixed">
+                <div class="mx-2 my-4 overflow-y-scroll grow md:max-h-96 md:mx-7 md:my-5">
+                    <table v-if="histories.length > 0" class="w-full font-mono text-xs table-fixed">
                         <tr>
                             <th scope="col" class="w-2/12">Date</th>
                             <th scope="col" class="w-6/12">Message</th>
@@ -23,6 +24,7 @@
                             <HistoryItem :history="history" />
                         </tr>
                     </table>
+                    <p v-else>There is no history</p>
                 </div>
 
                 <div class="mx-2 my-4 md:mx-7 md:my-5">
@@ -48,9 +50,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3';
-import { Dialog, DialogOverlay, DialogTitle, DialogDescription } from '@headlessui/vue';
+import { Dialog, DialogOverlay, DialogTitle } from '@headlessui/vue';
 
 import JetLabel from '@/Jetstream/Label.vue';
 import JetInputError from '@/Jetstream/InputError.vue';
@@ -93,10 +95,11 @@ function loadHistory() {
         });
 }
 
-onMounted(loadHistory);
-
 function setIsOpen(state) {
     isOpen.value = state;
+    if (state) {
+        loadHistory();
+    }
 }
 
 function handleAdd() {

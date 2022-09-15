@@ -55,5 +55,8 @@
     },
     "yaml.schemas": {
         "https://json.schemastore.org/github-workflow.json": "file:///home/brian/jamar/.github/workflows/*.yml"
+    },
+    "[blade]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }

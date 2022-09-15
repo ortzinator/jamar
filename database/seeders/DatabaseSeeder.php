@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([PermissionSeeder::class]);
 
         Schema::disableForeignKeyConstraints();
-        User::truncate();
+        User::query()->delete();
         Schema::enableForeignKeyConstraints();
 
         User::factory()
