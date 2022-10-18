@@ -16,6 +16,13 @@ class ContactController extends Controller
         $this->authorizeResource(Contact::class, 'contact');
     }
 
+    public function show(Contact $contact)
+    {
+        return Inertia::render('Contacts/Show', [
+            'contact' => ContactResource::make($contact)
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -68,7 +75,7 @@ class ContactController extends Controller
         );
 
         session()->flash('message', 'Contact added');
-        return Redirect::route('contacts');
+        return Redirect::route('contacts.index');
     }
 
     /**

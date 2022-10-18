@@ -24,6 +24,8 @@ class PermissionSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $permissionNames = [
+            'view dashboard',
+
             'view policies',
             'create policies',
             'update policies',
@@ -59,6 +61,7 @@ class PermissionSeeder extends Seeder
 
         Role::create(['name' => 'Super Admin']);
         Role::create(['name' => 'Manager'])->syncPermissions([
+            'view dashboard',
             'view policies',
             'create policies',
             'update policies',
@@ -79,6 +82,7 @@ class PermissionSeeder extends Seeder
             'delete users'
         ]);
         Role::create(['name' => 'Employee'])->syncPermissions([
+            'view dashboard',
             'view policies',
             'create policies',
             'update policies',

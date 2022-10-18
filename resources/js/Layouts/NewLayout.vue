@@ -208,10 +208,10 @@ export default {
             {
                 name: 'Contacts',
                 get href() {
-                    return route('contacts');
+                    return route('contacts.index');
                 },
                 get current() {
-                    return route().current('contacts');
+                    return route().current('contacts.index');
                 },
             },
             {

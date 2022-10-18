@@ -23,33 +23,15 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-Route::get('/test', function () {
-    return '<html><body>testing123</body></html>';
-});
-
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
-    })->name('dashboard');
+    })
+        ->can('view dashboard')
+        ->name('dashboard');
 
     // Contacts
-    Route::get('contacts', [ContactController::class, 'index'])->name('contacts');
-
-    Route::get('contacts/create', [ContactController::class, 'create'])->name('contacts.create');
-
-    Route::post('contacts', [ContactController::class, 'store'])->name('contacts.store');
-
-    Route::get('/contacts/{contact}/edit', [ContactController::class, 'edit'])->name(
-        'contacts.edit'
-    );
-
-    Route::put('/contacts/{contact}', [ContactController::class, 'update'])->name(
-        'contacts.update'
-    );
-
-    Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->name(
-        'contacts.destroy'
-    );
+    Route::resource('contacts', ContactController::class);
 
     Route::put('contacts/{contact}/restore', [ContactController::class, 'restore'])->name(
         'contacts.restore'

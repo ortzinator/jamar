@@ -57,7 +57,7 @@ const search = _.debounce(() => {
     }
 
     axios
-        .get(route('contacts'), {
+        .get(route('contacts.index'), {
             params: { search: searchTerm.value },
             cancelToken: cancelSource.token,
         })

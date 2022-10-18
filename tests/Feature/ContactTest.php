@@ -19,7 +19,7 @@ class ContactTest extends TestCase
 
         Contact::factory(3)->create();
 
-        $this->get(route('contacts'))
+        $this->get(route('contacts.index'))
             ->assertOk()
             ->assertInertia(
                 fn(Assert $page) => $page
@@ -92,7 +92,7 @@ class ContactTest extends TestCase
         $contacts = Contact::factory(4)->create(['name' => 'John Doe']);
         $contacts->first()->delete();
 
-        $this->get(route('contacts'))->assertInertia(
+        $this->get(route('contacts.index'))->assertInertia(
             fn(Assert $page) => $page->has('contacts.data', 3)
         );
     }
@@ -146,7 +146,7 @@ class ContactTest extends TestCase
 
         $this->post(route('contacts.store'), $contact)
             ->assertRedirect(
-                route('contacts')
+                route('contacts.index')
             );
 
         $this->get(route('contacts.edit', Contact::orderBy('id', 'desc')->first()->id))

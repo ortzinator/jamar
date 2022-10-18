@@ -35,7 +35,7 @@
         <div class="">
             <div class="overflow-x-auto bg-white rounded shadow">
                 <DataTable
-                    route-name="contacts.edit"
+                    route-name="contacts.show"
                     :columns="columns"
                     :data-source="contacts.data"
                 >

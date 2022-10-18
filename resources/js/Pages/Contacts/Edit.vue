@@ -4,7 +4,7 @@
         <h1>
             <InertiaLink
                 class="text-light-blue-vivid-400 hover:text-light-blue-vivid-600"
-                :href="route('contacts')"
+                :href="route('contacts.index')"
             >
                 Contacts
             </InertiaLink>
