@@ -1,0 +1,1 @@
+import{h as s}from"./util.e8b714b3.js";import{U as i,r as u,x as n,q as h}from"./app.2e6f92fa.js";const l={props:{text:{type:String,required:!0},term:{type:String,required:!0}},setup(t){const{text:r,term:a}=i(t),e=u(t.text.value);return n(()=>{e.value=s(r.value,a.value)}),()=>h("span",{innerHTML:e.value})}};export{l as _};
