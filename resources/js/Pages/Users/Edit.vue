@@ -27,19 +27,19 @@
 
         <div class="p-8">
             <div class="mb-5">
-                <JetLabel for="name" value="Name" />
-                <JetInput id="name" v-model="userForm.name" type="text" class="block w-full" />
-                <JetInputError :message="userForm.errors.name" />
+                <InputLabel for="name" value="Name" />
+                <TextInput id="name" v-model="userForm.name" type="text" class="block w-full" />
+                <TextInputError :message="userForm.errors.name" />
             </div>
             <div class="mb-5">
-                <JetLabel for="email" value="Email" />
-                <JetInput id="email" v-model="userForm.email" type="text" class="block w-full" />
-                <JetInputError :message="userForm.errors.email" />
+                <InputLabel for="email" value="Email" />
+                <TextInput id="email" v-model="userForm.email" type="text" class="block w-full" />
+                <TextInputError :message="userForm.errors.email" />
             </div>
             <div class="mb-5">
-                <JetLabel value="Roles" />
+                <InputLabel value="Roles" />
                 <RoleSelector v-model="userForm.roles" />
-                <JetInputError :message="userForm.errors.roles" />
+                <TextInputError :message="userForm.errors.roles" />
             </div>
         </div>
         <div class="flex items-center justify-between px-8 py-4 bg-cool-grey-50">
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <JetConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
+    <ConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
         <template #title> Restore User </template>
 
         <template #content> Are you sure you want to restore this user? </template>
@@ -78,9 +78,9 @@
 
             <button class="ml-2 btn btn-danger" @click="restore">Restore</button>
         </template>
-    </JetConfirmationModal>
+    </ConfirmationModal>
 
-    <JetConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
+    <ConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
         <template #title> Delete User </template>
 
         <template #content> Are you sure you want to delete this user? </template>
@@ -90,22 +90,22 @@
 
             <button class="ml-2 btn btn-danger" @click="destroy">Delete User</button>
         </template>
-    </JetConfirmationModal>
+    </ConfirmationModal>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/vue3';
 import { TrashIcon } from '@heroicons/vue/outline';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
 import LoadingButton from '@/Shared/LoadingButton.vue';
 import RoleSelector from '@/Shared/RoleSelector.vue';
 
-import JetInput from '@/Jetstream/Input.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
+import TextInput from '@/Components/TextInput.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
+import ConfirmationModal from '@/Components/ConfirmationModal.vue';
 
 defineOptions({
     layout: AppLayout,

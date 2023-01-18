@@ -39,23 +39,23 @@
 
         <div class="p-8">
             <div class="mb-5">
-                <JetLabel for="number" value="Policy Number" />
-                <JetInput
+                <InputLabel for="number" value="Policy Number" />
+                <TextInput
                     id="number"
                     v-model="policyForm.number"
                     type="text"
                     class="block w-full"
                 />
-                <JetInputError :message="policyForm.errors.number" />
+                <InputError :message="policyForm.errors.number" />
             </div>
 
             <div class="mb-5">
-                <JetLabel value="Date Issued" />
+                <InputLabel value="Date Issued" />
                 <Calendar v-model="policyForm.created_at" :readonly="true" />
             </div>
 
             <div class="mb-5">
-                <JetLabel value="Assigned Agent" />
+                <InputLabel value="Assigned Agent" />
                 <select
                     id="agent"
                     v-model="policyForm.agent_id"
@@ -68,14 +68,14 @@
             </div>
 
             <div class="mb-5">
-                <JetLabel value="Premium" />
+                <InputLabel value="Premium" />
                 <JamarCurrencyTextBox
                     id="premium"
                     v-model="policyForm.premium"
                     :options="{ currency: $attrs.currency.code, valueScaling: 'precision' }"
                     class="mt-1 mr-5 border rounded border-cool-grey-200"
                 />
-                <JetInputError :message="policyForm.errors.premium" />
+                <InputError :message="policyForm.errors.premium" />
             </div>
 
             <div class="mb-5">
@@ -127,7 +127,7 @@
         </div>
     </div>
 
-    <JetConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
+    <ConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
         <template #title> Restore Policy </template>
 
         <template #content> Are you sure you want to restore this policy? </template>
@@ -137,9 +137,9 @@
 
             <button class="ml-2 btn btn-danger" @click="restore">Restore</button>
         </template>
-    </JetConfirmationModal>
+    </ConfirmationModal>
 
-    <JetConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
+    <ConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
         <template #title> Delete Policy </template>
 
         <template #content> Are you sure you want to delete the policy? </template>
@@ -149,9 +149,9 @@
 
             <button class="ml-2 btn btn-danger" @click="destroy">Delete Policy</button>
         </template>
-    </JetConfirmationModal>
+    </ConfirmationModal>
 
-    <JetDialogModal :show="showAddContact" @close="showAddContact = false">
+    <DialogModal :show="showAddContact" @close="showAddContact = false">
         <template #title>Add Policyholder</template>
 
         <template #content>
@@ -161,15 +161,15 @@
         <template #footer>
             <button class="btn" @click="showAddContact = false">Close</button>
         </template>
-    </JetDialogModal>
+    </DialogModal>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/vue3';
 import { ExclamationIcon, TrashIcon } from '@heroicons/vue/outline';
 import Calendar from 'primevue/calendar';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList.vue';
 import ContactList from '@/Shared/Contact/ContactList.vue';
@@ -177,11 +177,11 @@ import SelectContact from '@/Shared/Contact/SelectContact.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';
 import HistoryModal from '@/Shared/HistoryModal.vue';
 
-import JetInput from '@/Jetstream/Input.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
-import JetDialogModal from '@/Jetstream/DialogModal.vue';
+import TextInput from '@/Components/TextInput.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
+import ConfirmationModal from '@/Components/ConfirmationModal.vue';
+import DialogModal from '@/Components/DialogModal.vue';
 import JamarCurrencyTextBox from '@/Shared/JamarCurrencyTextBox.vue';
 
 defineOptions({

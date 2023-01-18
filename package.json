@@ -7,9 +7,6 @@
     "devDependencies": {
         "@headlessui/vue": "^1.4.1",
         "@heroicons/vue": "^1.0.3",
-        "@inertiajs/inertia": "^0.11.0",
-        "@inertiajs/inertia-vue3": "^0.6.0",
-        "@inertiajs/progress": "^0.2.7",
         "@popperjs/core": "^2.9.2",
         "@prettier/plugin-php": "^0.17.6",
         "@tailwindcss/forms": "^0.5.1",
@@ -44,6 +41,7 @@
         "@dinero.js/currencies": "^2.0.0-alpha.8",
         "@easymoney/formatter": "^1.1.0",
         "@easymoney/money": "^1.0.2",
+        "@inertiajs/vue3": "^1.0.0",
         "primeicons": "^5.0.0",
         "primevue": "^3.17.0",
         "vue-currency-input": "^2.4.0",

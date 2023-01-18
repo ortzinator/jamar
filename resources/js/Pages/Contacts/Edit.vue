@@ -27,12 +27,12 @@
         <form @submit.prevent="updateContact">
             <div class="p-8">
                 <div class="mb-5">
-                    <JetLabel for="name" value="Name" />
-                    <JetInput id="name" v-model="form.name" type="text" class="block w-full" />
-                    <JetInputError :message="form.errors.name" />
+                    <InputLabel for="name" value="Name" />
+                    <TextInput id="name" v-model="form.name" type="text" class="block w-full" />
+                    <TextInputError :message="form.errors.name" />
                 </div>
                 <div class="mb-5">
-                    <JetLabel for="address" value="Address" />
+                    <InputLabel for="address" value="Address" />
                     <textarea
                         id="address"
                         v-model="form.address"
@@ -41,7 +41,7 @@
                         cols="30"
                         rows="10"
                     />
-                    <JetInputError :message="form.errors.address" />
+                    <TextInputError :message="form.errors.address" />
                 </div>
                 <div class="mb-5">
                     <Disclosure v-slot="{ open }">
@@ -86,7 +86,7 @@
         </form>
     </div>
 
-    <JetConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
+    <ConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
         <template #title> Restore Contact </template>
 
         <template #content> Are you sure you want to restore this contact? </template>
@@ -96,9 +96,9 @@
 
             <button class="ml-2 btn btn-danger" @click="restore">Restore</button>
         </template>
-    </JetConfirmationModal>
+    </ConfirmationModal>
 
-    <JetConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
+    <ConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
         <template #title> Delete Contact </template>
 
         <template #content> Are you sure you want to delete the Contact? </template>
@@ -108,21 +108,21 @@
 
             <button class="ml-2 btn btn-danger" @click="destroy">Delete Contact</button>
         </template>
-    </JetConfirmationModal>
+    </ConfirmationModal>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/vue3';
 import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';
 
-import JetInput from '@/Jetstream/Input.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
-import JetConfirmationModal from '@/Jetstream/ConfirmationModal.vue';
+import TextInput from '@/Components/TextInput.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
+import ConfirmationModal from '@/Components/ConfirmationModal.vue';
 
 defineOptions({
     layout: AppLayout,

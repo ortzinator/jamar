@@ -99,7 +99,7 @@ import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import { sanitize, formatDate, isInPast } from '@/util.js';
 import DataTable from '@/Shared/DataTable.vue';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
 defineOptions({
     layout: AppLayout,

@@ -1,11 +1,11 @@
 <script setup>
-import { useForm } from '@inertiajs/inertia-vue3';
-import JetActionMessage from '@/Jetstream/ActionMessage.vue';
-import JetButton from '@/Jetstream/Button.vue';
-import JetFormSection from '@/Jetstream/FormSection.vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
-import JetLabel from '@/Jetstream/Label.vue';
+import { useForm } from '@inertiajs/vue3';
+import ActionMessage from '@/Components/ActionMessage.vue';
+import FormSection from '@/Components/FormSection.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
     team: Object,
@@ -25,26 +25,26 @@ const updateTeamName = () => {
 </script>
 
 <template>
-    <JetFormSection @submitted="updateTeamName">
-        <template #title> Team Name </template>
+    <FormSection @submitted="updateTeamName">
+        <template #title>
+            Team Name
+        </template>
 
-        <template #description> The team's name and owner information. </template>
+        <template #description>
+            The team's name and owner information.
+        </template>
 
         <template #form>
             <!-- Team Owner Information -->
             <div class="col-span-6">
-                <JetLabel value="Team Owner" />
+                <InputLabel value="Team Owner" />
 
                 <div class="flex items-center mt-2">
-                    <img
-                        class="object-cover w-12 h-12 rounded-full"
-                        :src="team.owner.profile_photo_url"
-                        :alt="team.owner.name"
-                    />
+                    <img class="w-12 h-12 rounded-full object-cover" :src="team.owner.profile_photo_url" :alt="team.owner.name">
 
                     <div class="ml-4 leading-tight">
-                        <div>{{ team.owner.name }}</div>
-                        <div class="text-sm text-gray-700">
+                        <div class="dark:text-white">{{ team.owner.name }}</div>
+                        <div class="text-gray-700 dark:text-gray-300 text-sm">
                             {{ team.owner.email }}
                         </div>
                     </div>
@@ -53,26 +53,28 @@ const updateTeamName = () => {
 
             <!-- Team Name -->
             <div class="col-span-6 sm:col-span-4">
-                <JetLabel for="name" value="Team Name" />
+                <InputLabel for="name" value="Team Name" />
 
-                <JetInput
+                <TextInput
                     id="name"
                     v-model="form.name"
                     type="text"
-                    class="block w-full mt-1"
-                    :disabled="!permissions.canUpdateTeam"
+                    class="mt-1 block w-full"
+                    :disabled="! permissions.canUpdateTeam"
                 />
 
-                <JetInputError :message="form.errors.name" class="mt-2" />
+                <InputError :message="form.errors.name" class="mt-2" />
             </div>
         </template>
 
         <template v-if="permissions.canUpdateTeam" #actions>
-            <JetActionMessage :on="form.recentlySuccessful" class="mr-3"> Saved. </JetActionMessage>
+            <ActionMessage :on="form.recentlySuccessful" class="mr-3">
+                Saved.
+            </ActionMessage>
 
-            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </JetButton>
+            </PrimaryButton>
         </template>
-    </JetFormSection>
+    </FormSection>
 </template>

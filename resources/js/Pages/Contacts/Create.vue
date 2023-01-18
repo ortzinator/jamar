@@ -17,12 +17,12 @@
         <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
             <div class="p-5">
                 <div class="mb-5">
-                    <JetLabel for="name" value="Name"></JetLabel>
-                    <JetInput id="name" v-model="form.name" type="text" class="block w-full" />
-                    <JetInputError :message="form.errors.name" />
+                    <InputLabel for="name" value="Name" />
+                    <TextInput id="name" v-model="form.name" type="text" class="block w-full" />
+                    <InputError :message="form.errors.name" />
                 </div>
                 <div class="mb-5">
-                    <JetLabel for="address" value="Address"></JetLabel>
+                    <InputLabel for="address" value="Address" />
                     <textarea
                         id="address"
                         v-model="form.address"
@@ -31,7 +31,7 @@
                         cols="30"
                         rows="10"
                     />
-                    <JetInputError :message="form.errors.address" />
+                    <InputError :message="form.errors.address" />
                 </div>
             </div>
             <div class="flex items-center px-8 py-4 border-t bg-cool-grey-50 border-cool-grey-100">
@@ -48,12 +48,12 @@
 </template>
 
 <script setup>
-import { useForm } from '@inertiajs/inertia-vue3';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import { useForm } from '@inertiajs/vue3';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
-import JetInput from '@/Jetstream/Input.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
+import TextInput from '@/Components/TextInput.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';
 
 defineOptions({

@@ -21,7 +21,7 @@
                     <template #description> Description of this section </template>
                     <div class="grid grid-cols-6 gap-4">
                         <div class="col-span-6">
-                            <JetLabel for="template" value="Policy Type" />
+                            <InputLabel for="template" value="Policy Type" />
                             <div class="flex items-center">
                                 <select
                                     v-model="selectedTemplate"
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="col-span-6">
-                            <JetLabel for="agent" value="Assigned Agent" />
+                            <InputLabel for="agent" value="Assigned Agent" />
                             <select
                                 v-model="policyForm.agent_id"
                                 class="w-full mt-1 border rounded border-cool-grey-200"
@@ -49,17 +49,17 @@
                             </select>
                         </div>
                         <div class="col-span-6">
-                            <JetLabel for="number" value="Policy Number" />
-                            <JetInput
+                            <InputLabel for="number" value="Policy Number" />
+                            <TextInput
                                 id="number"
                                 v-model="policyForm.number"
                                 type="text"
                                 class="block w-full mt-1"
                             />
-                            <JetInputError :message="policyForm.errors.number" />
+                            <TextInputError :message="policyForm.errors.number" />
                         </div>
                         <div class="col-span-6">
-                            <JetLabel>Period of Insurance</JetLabel>
+                            <InputLabel>Period of Insurance</InputLabel>
                             <div
                                 :class="{
                                     formError:
@@ -74,18 +74,18 @@
                                     show-button-bar="true"
                                 />
                             </div>
-                            <JetInputError :message="policyForm.errors.period_start" />
-                            <JetInputError :message="policyForm.errors.period_end" />
+                            <TextInputError :message="policyForm.errors.period_start" />
+                            <TextInputError :message="policyForm.errors.period_end" />
                         </div>
                         <div class="col-span-6">
-                            <JetLabel :value="`Premium (${currency.code})`" />
+                            <InputLabel :value="`Premium (${currency.code})`" />
                             <JamarCurrencyTextBox
                                 id="premium"
                                 v-model="policyForm.premium"
                                 :options="{ currency: currency.code, valueScaling: 'precision' }"
                                 class="w-full mt-1 mr-5 border rounded border-cool-grey-200"
                             />
-                            <JetInputError :message="policyForm.errors.premium" />
+                            <TextInputError :message="policyForm.errors.premium" />
                         </div>
                     </div>
                 </FormSection>
@@ -122,7 +122,7 @@
                             </div>
                         </template>
                     </ContactList>
-                    <JetInputError :message="policyForm.errors.contacts" />
+                    <TextInputError :message="policyForm.errors.contacts" />
                     <SelectContact @selected="contactSelected" />
                 </FormSection>
 
@@ -145,15 +145,14 @@
 
 <script setup>
 import { ref, watch } from 'vue';
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm, router } from '@inertiajs/vue3';
 import { ExclamationIcon } from '@heroicons/vue/outline';
-import { Inertia } from '@inertiajs/inertia';
 import Calendar from 'primevue/calendar';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
-import JetInput from '@/Jetstream/Input.vue';
-import JetLabel from '@/Jetstream/Label.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
+import TextInput from '@/Components/TextInput.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';
 import PolicyFieldsList from '@/Shared/Fields/PolicyFieldsList.vue';
 import SelectContact from '@/Shared/Contact/SelectContact.vue';
@@ -174,7 +173,7 @@ const policyForm = useForm({
     contacts: [],
     period: [],
     fields: [],
-    agent_id: Inertia.page.props.user.id,
+    agent_id: router.page.props.user.id,
     premium: null,
 });
 

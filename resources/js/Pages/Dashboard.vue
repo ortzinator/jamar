@@ -56,9 +56,9 @@
 
 <script setup>
 import { computed } from 'vue';
-import { usePage } from '@inertiajs/inertia-vue3';
+import { usePage } from '@inertiajs/vue3';
 
-import AppLayout from '@/Layouts/NewLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import EndingSoonWidget from '@/Widgets/EndingSoon.vue';
 import TextWidget from '@/Widgets/Text.vue';
 import AlertWidget from '@/Shared/Alert.vue';
@@ -67,5 +67,5 @@ defineOptions({
     layout: AppLayout,
 });
 
-const user = computed(() => usePage().props.value.user);
+const user = computed(() => usePage().props.user);
 </script>

@@ -1,6 +1,6 @@
 <script setup>
 import ApiTokenManager from '@/Pages/API/Partials/ApiTokenManager.vue';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
 defineProps({
     tokens: Array,
@@ -12,7 +12,7 @@ defineProps({
 <template>
     <AppLayout title="API Tokens">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 API Tokens
             </h2>
         </template>

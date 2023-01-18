@@ -5,7 +5,7 @@
         @mouseleave="fieldHover = false"
     >
         <div class="col-span-4 px-4 py-2 rounded" v-text="field.name"></div>
-        <JetInput
+        <TextInput
             :id="'input-' + field.name"
             :value="field.value"
             type="text"
@@ -17,7 +17,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import JetInput from '@/Jetstream/Input.vue';
+import TextInput from '@/Components/TextInput.vue';
 
 defineProps({
     field: { type: Object, required: true },

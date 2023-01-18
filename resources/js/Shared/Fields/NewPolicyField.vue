@@ -2,12 +2,12 @@
     <div>
         <div class="mb-4 space-y-4 md:flex md:space-x-4 md:space-y-0">
             <div class="flex-auto">
-                <JetLabel for="number" value="Field Name" />
-                <JetInput id="name" v-model="field.name" type="text" class="w-full" />
+                <InputLabel for="number" value="Field Name" />
+                <TextInput id="name" v-model="field.name" type="text" class="w-full" />
             </div>
             <div class="flex-auto">
-                <JetLabel for="number" value="Field Value" />
-                <JetInput id="value" v-model="field.value" type="text" class="w-full" />
+                <InputLabel for="number" value="Field Value" />
+                <TextInput id="value" v-model="field.value" type="text" class="w-full" />
             </div>
             <button class="mt-4 font-bold hover:underline" type="button" @click="add">
                 Add Field
@@ -25,8 +25,8 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import JetInput from '@/Jetstream/Input.vue';
-import JetLabel from '@/Jetstream/Label.vue';
+import TextInput from '@/Components/TextInput.vue';
+import InputLabel from '@/Components/InputLabel.vue';
 
 const emit = defineEmits(['added']);
 

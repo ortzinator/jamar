@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="mx-2 my-4 md:mx-7 md:my-5">
-                    <JetLabel for="message" value="Message" />
+                    <InputLabel for="message" value="Message" />
                     <textarea
                         id="address"
                         v-model="historyForm.message"
@@ -36,7 +36,7 @@
                         class="block w-full"
                         rows="2"
                     />
-                    <JetInputError :message="historyForm.errors.message" />
+                    <TextInputError :message="historyForm.errors.message" />
                 </div>
                 <div
                     class="px-4 py-3 mt-auto bg-cool-grey-100 md:mt-0 sm:flex sm:flex-row-reverse sm:px-6"
@@ -51,11 +51,11 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/vue3';
 import { Dialog, DialogOverlay, DialogTitle } from '@headlessui/vue';
 
-import JetLabel from '@/Jetstream/Label.vue';
-import JetInputError from '@/Jetstream/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
 import HistoryItem from './HistoryItem.vue';
 
 const props = defineProps({ policy: { type: Object, required: true } });

@@ -47,8 +47,8 @@
 <script setup>
 import { watch, computed, ref } from 'vue';
 
-import { useForm } from '@inertiajs/inertia-vue3';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import { useForm } from '@inertiajs/vue3';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import Pagination from '@/Shared/Pagination.vue';
 import DataTable from '@/Shared/DataTable.vue';
 import FilterSelect from '@/Shared/FilterSelect.vue';

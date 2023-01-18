@@ -51,7 +51,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import AppLayout from '@/Layouts/NewLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
 defineOptions({
     layout: AppLayout,
