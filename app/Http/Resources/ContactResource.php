@@ -21,7 +21,7 @@ class ContactResource extends JsonResource
             'id' => $this->id,
             'deleted_at' => $this->deleted_at,
             'link' => $this->link,
-            'policies' => $this->policies
+            'policies' => $this->loadMissing(['policies'])
         ];
     }
 }
