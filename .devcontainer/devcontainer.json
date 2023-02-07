@@ -4,19 +4,23 @@
     "dockerComposeFile": ["../docker-compose.yml"],
     "service": "laravel.test",
     "workspaceFolder": "/var/www/html",
-    "settings": {},
-    "extensions": [
-        "bmewburn.vscode-intelephense-client",
-        "mikestead.dotenv",
-        "bradlc.vscode-tailwindcss",
-        "amiralizadeh9480.laravel-extra-intellisense",
-        "onecentlin.laravel-blade",
-        "eamodio.gitlens",
-        "dbaeumer.vscode-eslint",
-        "vue.volar",
-        "heybourn.headwind",
-        "esbenp.prettier-vscode"
-    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "mikestead.dotenv",
+                "bradlc.vscode-tailwindcss",
+                "amiralizadeh9480.laravel-extra-intellisense",
+                "onecentlin.laravel-blade",
+                "eamodio.gitlens",
+                "dbaeumer.vscode-eslint",
+                "vue.volar",
+                "heybourn.headwind",
+                "esbenp.prettier-vscode"
+            ],
+            "settings": {}
+        }
+    },
     "remoteUser": "sail",
     "postCreateCommand": "chown -R 1001:1001 /var/www/html"
     // "forwardPorts": [],
