@@ -1,1 +1,0 @@
-import{G as t,H as s,b as a,c as r,d as c,t as o}from"./app.cdfe58ca.js";const n={class:"text-sm text-red-600 dark:text-red-400"},l={__name:"InputError",props:{message:String},setup(e){return(i,m)=>t((a(),r("div",null,[c("p",n,o(e.message),1)],512)),[[s,e.message]])}};export{l as _};
