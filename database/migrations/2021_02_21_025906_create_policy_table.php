@@ -15,7 +15,10 @@ class CreatePolicyTable extends Migration
     {
         Schema::create('policies', function (Blueprint $table) {
             $table->id();
-            $table->string('number')->index()->unique();
+            $table
+                ->string('number')
+                ->index()
+                ->unique();
             $table->timestamp('period_start');
             $table->timestamp('period_end');
             $table->timestamp('cancelled_at')->nullable();
@@ -26,15 +29,5 @@ class CreatePolicyTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('policy');
     }
 }

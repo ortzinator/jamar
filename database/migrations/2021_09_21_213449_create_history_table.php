@@ -24,14 +24,4 @@ class CreateHistoryTable extends Migration
             $table->foreignIdFor(User::class);
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
-    }
 }
