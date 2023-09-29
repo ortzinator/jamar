@@ -8,14 +8,13 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
-        "cknow/laravel-money": "^6.4",
-        "fruitcake/laravel-cors": "^2.0",
+        "php": "^8.1.15",
+        "cknow/laravel-money": "^7.0",
         "guzzlehttp/guzzle": "7.4.5",
-        "inertiajs/inertia-laravel": "^0.5.4",
-        "laravel/framework": "^9.19",
+        "inertiajs/inertia-laravel": "^0.6.10",
+        "laravel/framework": "^10.0",
         "laravel/jetstream": "^2.7",
-        "laravel/sanctum": "^2.15",
+        "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.7",
         "spatie/laravel-permission": "^5.5",
         "spatie/laravel-query-builder": "^5.0.2",
@@ -25,15 +24,15 @@
         "barryvdh/laravel-debugbar": "^3.6",
         "deployer/deployer": "^7.0",
         "fakerphp/faker": "^1.9.1",
-        "laracasts/cypress": "^2.2",
+        "laracasts/cypress": "^3.0",
         "laravel/breeze": "^1.9",
-        "laravel/dusk": "^6.24",
+        "laravel/dusk": "^7.0",
         "laravel/sail": "^1.16",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0",
         "protonemedia/inertiajs-events-laravel-dusk": "^1.2",
-        "spatie/laravel-ignition": "^1.2"
+        "spatie/laravel-ignition": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -57,7 +56,7 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
