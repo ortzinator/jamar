@@ -26,7 +26,7 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response|string
      */
     public function index(Request $request)
     {
@@ -35,7 +35,8 @@ class ContactController extends Controller
                 ->orderBy('name')
                 ->filter($request->only('search', 'trashed'))
                 ->limit(10)
-                ->get();
+                ->get()
+                ->toJson();
         }
 
         return Inertia::render('Contacts/Index', [
@@ -52,7 +53,7 @@ class ContactController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create()
     {
@@ -63,7 +64,7 @@ class ContactController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -82,7 +83,7 @@ class ContactController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function edit(Contact $contact)
     {
@@ -96,7 +97,7 @@ class ContactController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Contact $contact)
     {
@@ -115,7 +116,7 @@ class ContactController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Contact $contact)
     {

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePolicyRequest;
 use App\Http\Requests\UpdatePolicyReqest;
-use App\Http\Resources\PolicyEndingSoonResource;
 use App\Http\Resources\PolicyResource;
 use App\Http\Resources\PolicySearchResource;
 use App\Models\Contact;
@@ -26,7 +25,7 @@ class PolicyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index(Request $request)
     {
@@ -46,7 +45,7 @@ class PolicyController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create(Request $request)
     {
@@ -86,11 +85,10 @@ class PolicyController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Policy  $policy
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function edit(Policy $policy)
     {
-        // dd($policy->toArray());
         return Inertia::render('Policies/Edit', [
             'policy' => PolicyResource::make($policy),
             'fields' => $policy->fields,
@@ -104,7 +102,7 @@ class PolicyController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Policy  $policy
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdatePolicyReqest $request, Policy $policy)
     {
@@ -122,7 +120,7 @@ class PolicyController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Policy  $policy
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Policy $policy)
     {
