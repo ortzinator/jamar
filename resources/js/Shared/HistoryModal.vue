@@ -24,7 +24,7 @@
                             <HistoryItem :history="history" />
                         </tr>
                     </table>
-                    <p v-else>There is no history</p>
+                    <p v-else>There is no history for this policy</p>
                 </div>
 
                 <div class="mx-2 my-4 md:mx-7 md:my-5">

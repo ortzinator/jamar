@@ -17,7 +17,7 @@ class PolicySeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Schema::disableForeignKeyConstraints();
         Contact::query()->delete();
@@ -48,7 +48,11 @@ class PolicySeeder extends Seeder
             );
             $policyChunks = $policies->chunk($chunkSize);
             $policyChunks->each(function ($chunk) {
-                DB::table('policies')->insert($chunk->toArray());
+//                DB::table('policies')->insert($chunk->toArray());
+//                dd($chunk->toArray());
+                $chunk->each(function ($policy) {
+                    Policy::create($policy);
+                });
             });
 
             $pivots = Collection::times($count, function ($num) {

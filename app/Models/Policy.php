@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -33,14 +36,14 @@ class Policy extends Model
             $policy->history()->create([
                 'event_type' => 'policy_created',
                 'policy_id' => $policy->id,
-                'user_id' => Auth::id()
+                'user_id' => Auth::id() ?? 1
             ]);
         });
         static::updated(function (Policy $policy) {
             $policy->history()->create([
                 'event_type' => 'policy_updated',
                 'policy_id' => $policy->id,
-                'user_id' => Auth::id()
+                'user_id' => Auth::id() ?? 1
             ]);
         });
     }
@@ -68,22 +71,22 @@ class Policy extends Model
             });
     }
 
-    public function contacts()
+    public function contacts(): BelongsToMany
     {
         return $this->belongsToMany(Contact::class)->withTimestamps();
     }
 
-    public function agent()
+    public function agent(): BelongsTo
     {
         return $this->belongsTo(User::class, 'agent_id');
     }
 
-    public function history()
+    public function history(): HasMany
     {
         return $this->hasMany(History::class);
     }
 
-    public function cacheKey()
+    public function cacheKey(): string
     {
         return sprintf(
             '%s/%s-%s',
@@ -107,12 +110,12 @@ class Policy extends Model
      *
      * @return void
      */
-    public function attachContact($contactId)
+    public function attachContact(int $contactId): void
     {
         $this->contacts()->attach($contactId);
     }
 
-    public function resolveRouteBinding($id, $field = null)
+    public function resolveRouteBinding($id, $field = null): Policy
     {
         return $this->withTrashed()->findOrFail($id);
     }
