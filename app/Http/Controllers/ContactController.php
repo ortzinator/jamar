@@ -18,6 +18,7 @@ class ContactController extends Controller
 
     public function show(Contact $contact)
     {
+//        dd(ContactResource::make($contact)->toJson());
         return Inertia::render('Contacts/Show', [
             'contact' => ContactResource::make($contact)
         ]);

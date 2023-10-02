@@ -14,6 +14,7 @@ class ContactResource extends JsonResource
      */
     public function toArray($request)
     {
+        $this->loadMissing('policies');
         return [
             'name' => $this->name,
             'address' => $this->address,
@@ -21,7 +22,7 @@ class ContactResource extends JsonResource
             'id' => $this->id,
             'deleted_at' => $this->deleted_at,
             'link' => $this->link,
-            'policies' => $this->loadMissing(['policies'])
+            'policies' => $this->policies,
         ];
     }
 }
