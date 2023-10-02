@@ -36,7 +36,7 @@
                         class="block w-full"
                         rows="2"
                     />
-                    <TextInputError :message="historyForm.errors.message" />
+                    <InputError :message="historyForm.errors.message" />
                 </div>
                 <div
                     class="px-4 py-3 mt-auto bg-cool-grey-100 md:mt-0 sm:flex sm:flex-row-reverse sm:px-6"

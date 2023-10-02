@@ -29,7 +29,7 @@
                 <div class="mb-5">
                     <InputLabel for="name" value="Name" />
                     <TextInput id="name" v-model="form.name" type="text" class="block w-full" />
-                    <TextInputError :message="form.errors.name" />
+                    <InputError :message="form.errors.name" />
                 </div>
                 <div class="mb-5">
                     <InputLabel for="address" value="Address" />
@@ -41,7 +41,7 @@
                         cols="30"
                         rows="10"
                     />
-                    <TextInputError :message="form.errors.address" />
+                    <InputError :message="form.errors.address" />
                 </div>
                 <div class="mb-5">
                     <Disclosure v-slot="{ open }">

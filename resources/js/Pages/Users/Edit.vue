@@ -29,17 +29,17 @@
             <div class="mb-5">
                 <InputLabel for="name" value="Name" />
                 <TextInput id="name" v-model="userForm.name" type="text" class="block w-full" />
-                <TextInputError :message="userForm.errors.name" />
+                <InputError :message="userForm.errors.name" />
             </div>
             <div class="mb-5">
                 <InputLabel for="email" value="Email" />
                 <TextInput id="email" v-model="userForm.email" type="text" class="block w-full" />
-                <TextInputError :message="userForm.errors.email" />
+                <InputError :message="userForm.errors.email" />
             </div>
             <div class="mb-5">
                 <InputLabel value="Roles" />
                 <RoleSelector v-model="userForm.roles" />
-                <TextInputError :message="userForm.errors.roles" />
+                <InputError :message="userForm.errors.roles" />
             </div>
         </div>
         <div class="flex items-center justify-between px-8 py-4 bg-cool-grey-50">

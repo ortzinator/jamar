@@ -56,7 +56,7 @@
                                 type="text"
                                 class="block w-full mt-1"
                             />
-                            <TextInputError :message="policyForm.errors.number" />
+                            <InputError :message="policyForm.errors.number" />
                         </div>
                         <div class="col-span-6">
                             <InputLabel>Period of Insurance</InputLabel>
@@ -74,8 +74,8 @@
                                     show-button-bar="true"
                                 />
                             </div>
-                            <TextInputError :message="policyForm.errors.period_start" />
-                            <TextInputError :message="policyForm.errors.period_end" />
+                            <InputError :message="policyForm.errors.period_start" />
+                            <InputError :message="policyForm.errors.period_end" />
                         </div>
                         <div class="col-span-6">
                             <InputLabel :value="`Premium (${currency.code})`" />
@@ -85,7 +85,7 @@
                                 :options="{ currency: currency.code, valueScaling: 'precision' }"
                                 class="w-full mt-1 mr-5 border rounded border-cool-grey-200"
                             />
-                            <TextInputError :message="policyForm.errors.premium" />
+                            <InputError :message="policyForm.errors.premium" />
                         </div>
                     </div>
                 </FormSection>
@@ -122,7 +122,7 @@
                             </div>
                         </template>
                     </ContactList>
-                    <TextInputError :message="policyForm.errors.contacts" />
+                    <InputError :message="policyForm.errors.contacts" />
                     <SelectContact @selected="contactSelected" />
                 </FormSection>
 
