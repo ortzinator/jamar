@@ -13,7 +13,7 @@
         </h1>
     </div>
 
-    <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
+    <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
         <div
             v-if="editedUser.deleted_at"
             class="flex items-center justify-between p-5 pl-8 bg-yellow-200"
@@ -69,9 +69,9 @@
     </div>
 
     <ConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
-        <template #title> Restore User </template>
+        <template #title> Restore User</template>
 
-        <template #content> Are you sure you want to restore this user? </template>
+        <template #content> Are you sure you want to restore this user?</template>
 
         <template #footer>
             <button class="btn" @click="confirmingRestore = false">Cancel</button>
@@ -81,9 +81,9 @@
     </ConfirmationModal>
 
     <ConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
-        <template #title> Delete User </template>
+        <template #title> Delete User</template>
 
-        <template #content> Are you sure you want to delete this user? </template>
+        <template #content> Are you sure you want to delete this user?</template>
 
         <template #footer>
             <button class="btn" @click="confirmingDelete = false">Cancel</button>

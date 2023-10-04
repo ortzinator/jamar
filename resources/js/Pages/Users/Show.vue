@@ -13,7 +13,7 @@
         </h1>
     </div>
 
-    <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
+    <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
         <dl>
             <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
                 <dt class="font-medium text-gray-500">Photo</dt>

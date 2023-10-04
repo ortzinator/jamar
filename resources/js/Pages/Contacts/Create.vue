@@ -14,7 +14,7 @@
     </div>
 
     <form @submit.prevent="store">
-        <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
+        <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
             <div class="p-5">
                 <div class="mb-5">
                     <InputLabel for="name" value="Name" />

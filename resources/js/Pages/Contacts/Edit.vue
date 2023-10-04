@@ -13,7 +13,7 @@
         </h1>
     </div>
 
-    <div class="max-w-3xl overflow-hidden bg-white rounded shadow">
+    <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
         <div
             v-if="contact.deleted_at"
             class="flex items-center justify-between p-5 pl-8 bg-yellow-vivid-200"
@@ -87,9 +87,9 @@
     </div>
 
     <ConfirmationModal :show="confirmingRestore" @close="confirmingRestore = false">
-        <template #title> Restore Contact </template>
+        <template #title> Restore Contact</template>
 
-        <template #content> Are you sure you want to restore this contact? </template>
+        <template #content> Are you sure you want to restore this contact?</template>
 
         <template #footer>
             <button class="btn" @click="confirmingRestore = false">Cancel</button>
@@ -99,9 +99,9 @@
     </ConfirmationModal>
 
     <ConfirmationModal :show="confirmingDelete" @close="confirmingDelete = false">
-        <template #title> Delete Contact </template>
+        <template #title> Delete Contact</template>
 
-        <template #content> Are you sure you want to delete the Contact? </template>
+        <template #content> Are you sure you want to delete the Contact?</template>
 
         <template #footer>
             <button class="btn" @click="confirmingDelete = false">Cancel</button>
@@ -114,7 +114,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
-import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
+import { ChevronRightIcon, TrashIcon } from '@heroicons/vue/outline';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import LoadingButton from '@/Shared/LoadingButton.vue';

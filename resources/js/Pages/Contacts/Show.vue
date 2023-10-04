@@ -13,7 +13,7 @@
         </h1>
     </div>
 
-    <div class="max-w-3xl">
+    <div class="max-w-6xl">
         <div class="overflow-hidden bg-white rounded shadow">
             <div
                 v-if="contact.deleted_at"
@@ -95,9 +95,9 @@
 
 <script setup>
 import { computed, ref } from 'vue';
-import { TrashIcon, ChevronRightIcon } from '@heroicons/vue/outline';
+import { ChevronRightIcon, TrashIcon } from '@heroicons/vue/outline';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import { sanitize, formatDate, isInPast } from '@/util.js';
+import { formatDate, isInPast, sanitize } from '@/util.js';
 import DataTable from '@/Shared/DataTable.vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 
