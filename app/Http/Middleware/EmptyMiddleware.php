@@ -12,13 +12,13 @@ class EmptyMiddleware
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @return mixed
+     * @return Request
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Request
     {
         $response = $next($request);
         if (is_null($response->original) && $response->status() == 200) {
-            abort('404');
+            abort(404);
         }
         return $response;
     }

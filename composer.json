@@ -8,7 +8,8 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.1.15",
+        "php": "^8.1",
+        "ext-pdo": "^8.1",
         "cknow/laravel-money": "^7.0",
         "guzzlehttp/guzzle": "7.4.5",
         "inertiajs/inertia-laravel": "^0.6.10",
@@ -30,6 +31,8 @@
         "laravel/sail": "^1.16",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
+        "nunomaduro/larastan": "^2.0",
+        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^10.0",
         "protonemedia/inertiajs-events-laravel-dusk": "^1.2",
         "spatie/laravel-ignition": "^2.0"

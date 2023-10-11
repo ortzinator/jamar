@@ -2,19 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Policy;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PolicyFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Policy::class;
-
     /**
      * Define the model's default state.
      *

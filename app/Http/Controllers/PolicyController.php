@@ -10,6 +10,7 @@ use App\Models\Contact;
 use App\Models\Policy;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redirect;
@@ -24,10 +25,8 @@ class PolicyController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
-     * @return \Inertia\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): \Inertia\Response
     {
         return Inertia::render('Policies/Index', [
             'filters' => $request->all('search', 'trashed'),
@@ -44,10 +43,8 @@ class PolicyController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Inertia\Response
      */
-    public function create(Request $request)
+    public function create(Request $request): \Inertia\Response
     {
         return Inertia::render('Policies/Create', [
             'contacts' => Inertia::lazy(
@@ -59,11 +56,8 @@ class PolicyController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(CreatePolicyRequest $request)
+    public function store(CreatePolicyRequest $request): \Illuminate\Http\RedirectResponse
     {
         $policy = Policy::create([
             'number' => $request['number'],
@@ -82,11 +76,8 @@ class PolicyController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Policy  $policy
-     * @return \Inertia\Response
      */
-    public function edit(Policy $policy)
+    public function edit(Policy $policy): \Inertia\Response
     {
         return Inertia::render('Policies/Edit', [
             'policy' => PolicyResource::make($policy),
@@ -98,13 +89,11 @@ class PolicyController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Policy  $policy
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdatePolicyReqest $request, Policy $policy)
-    {
+    public function update(
+        UpdatePolicyReqest $request,
+        Policy $policy
+    ): \Illuminate\Http\RedirectResponse {
         if ($request->has('contacts')) {
             $policy->contacts()->sync(Arr::pluck($request->safe()['contacts'], 'id'));
         }
@@ -117,11 +106,8 @@ class PolicyController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Policy  $policy
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Policy $policy)
+    public function destroy(Policy $policy): \Illuminate\Http\RedirectResponse
     {
         $policy->delete();
 
@@ -129,7 +115,7 @@ class PolicyController extends Controller
         return Redirect::back();
     }
 
-    public function restore(Policy $policy)
+    public function restore(Policy $policy): \Illuminate\Http\RedirectResponse
     {
         $policy->restore();
 
@@ -137,7 +123,7 @@ class PolicyController extends Controller
         return Redirect::back();
     }
 
-    public function endingSoon(Request $request)
+    public function endingSoon(Request $request): \Inertia\Response|Collection
     {
         $days = 7;
         $start = Carbon::createFromTimestamp(1);

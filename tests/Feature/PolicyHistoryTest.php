@@ -12,7 +12,7 @@ class PolicyHistoryTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_create_policy_fields()
+    public function test_can_create_policy_fields(): void
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
@@ -31,6 +31,6 @@ class PolicyHistoryTest extends TestCase
             fn(Assert $page) => $page
                 ->has('histories', 2)
                 ->where('histories.1.message', 'Something happened')
-            );
+        );
     }
 }

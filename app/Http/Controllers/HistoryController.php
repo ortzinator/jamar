@@ -4,34 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\History;
 use App\Models\Policy;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Inertia\Inertia;
-use Spatie\QueryBuilder\AllowedFilter;
-use Spatie\QueryBuilder\QueryBuilder;
 
 class HistoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return QueryBuilder::for(History::class)
-            ->allowedFilters(AllowedFilter::exact('policy_id'))
-            ->get();
-    }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         //TODO: Validation
         $policy = Policy::findOrFail($request['policy_id']);
@@ -48,11 +32,8 @@ class HistoryController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return string
      */
-    public function show(History $history)
+    public function show(History $history): string
     {
         return $history->toJson();
     }

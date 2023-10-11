@@ -6,6 +6,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserSearchResource;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -20,10 +21,8 @@ class UserController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
-     * @return \Inertia\Response
      */
-    public function index(Request $request)
+    public function index(Request $request): \Inertia\Response
     {
         return Inertia::render('Users/Index', [
             'filters' => $request->all('search', 'trashed'),
@@ -39,11 +38,8 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Inertia\Response
      */
-    public function show(User $user)
+    public function show(User $user): \Inertia\Response
     {
         return Inertia::render('Users/Show', [
             'viewedUser' => UserResource::make($user)
@@ -52,11 +48,8 @@ class UserController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Inertia\Response
      */
-    public function edit(User $user)
+    public function edit(User $user): \Inertia\Response
     {
         return Inertia::render('Users/Edit', [
             'editedUser' => UserResource::make($user)
@@ -65,12 +58,8 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $roles = Role::find($request->collect('roles')->pluck('id'));
         $user->syncRoles($roles);

@@ -13,9 +13,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
+/**
+ * App\Models\Policy
+ *
+ * @property mixed $id
+ * @property string $subunits
+ * @property string $contactNamesPreview
+ * @property mixed $created_at
+ * @property \Illuminate\Support\Carbon|null $cancelled_at
+ * @property Money|null $premium
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ */
 class Policy extends Model
 {
     use HasFactory;
@@ -48,7 +58,7 @@ class Policy extends Model
         });
     }
 
-    public function scopeFilter($query, array $filters)
+    public function scopeFilter(Builder $query, array $filters): void
     {
         $query
             ->when($filters['search'] ?? null, function ($query, $search) {
@@ -99,14 +109,12 @@ class Policy extends Model
     protected function contactNamesPreview(): Attribute
     {
         return Attribute::make(
-            get: fn() => Cache::remember($this->cacheKey() . ':contact_names', 15, function () {
-                return Str::limit($this->contacts->implode('name', ', '), 100);
-            })
-        );
+            get: fn() => Str::limit($this->contacts->implode('name', ', '), 100)
+        )->shouldCache();
     }
 
     /**
-     * @param int $contactId The ID of the Contact you want to attach
+     * @param  int  $contactId  The ID of the Contact you want to attach
      *
      * @return void
      */
@@ -149,6 +157,6 @@ class Policy extends Model
     {
         return Attribute::make(
             get: fn() => Money::getCurrencies()->subunitFor($this->premium->getCurrency())
-        );
+        )->shouldCache();
     }
 }

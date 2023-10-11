@@ -59,7 +59,7 @@ class PermissionSeeder extends Seeder
 
         Permission::insert($permissions->toArray());
 
-        Role::create(['name' => 'Super Admin']);
+        Role::create(['name' => 'Super Admin'])->syncPermissions($permissionNames);
         Role::create(['name' => 'Manager'])->syncPermissions([
             'view dashboard',
             'view policies',

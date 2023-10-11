@@ -2,16 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * App\Models\User
+ *
+ * @property mixed $id
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -20,18 +25,19 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    use HasPermissions;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<string>
      */
     protected $fillable = ['name', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -43,7 +49,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime'
@@ -52,11 +58,11 @@ class User extends Authenticatable
     /**
      * The accessors to append to the model's array form.
      *
-     * @var array
+     * @var array<string>
      */
     protected $appends = ['profile_photo_url'];
 
-    public function scopeFilter($query, array $filters)
+    public function scopeFilter(Builder $query, array $filters): void
     {
         $query
             ->when($filters['search'] ?? null, function ($query, $search) {
@@ -81,16 +87,8 @@ class User extends Authenticatable
         ])->save();
     }
 
-    public function getPermissions()
-    {
-        if ($this->hasRole('Super Admin')) {
-            return Permission::getPermissions();
-        }
-        return $this->getAllPermissions();
-    }
-
     public function getAllPermissionNames()
     {
-        return $this->getPermissions()->pluck('name');
+        return $this->getAllPermissions()->pluck('name');
     }
 }

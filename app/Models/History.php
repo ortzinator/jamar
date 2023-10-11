@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property User $user
+ */
 class History extends Model
 {
     use HasFactory;
@@ -20,9 +24,11 @@ class History extends Model
 
     protected $with = ['user'];
 
-    public function getUserNameAttribute()
+    public function userName(): Attribute
     {
-        return $this->user->name;
+        return Attribute::make(
+            get: fn() => $this->user->name,
+        );
     }
 
     public function user(): BelongsTo

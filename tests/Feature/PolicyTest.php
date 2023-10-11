@@ -7,7 +7,6 @@ use App\Models\Policy;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
 
@@ -15,7 +14,7 @@ class PolicyTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_add_contacts_to_a_policy()
+    public function test_can_add_contacts_to_a_policy(): void
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
@@ -39,7 +38,7 @@ class PolicyTest extends TestCase
         );
     }
 
-    public function test_a_number_is_required()
+    public function test_a_number_is_required(): void
     {
         $this->signInAdmin();
 
@@ -50,7 +49,7 @@ class PolicyTest extends TestCase
         ])->assertSessionHasErrors();
     }
 
-    public function test_can_search_policies()
+    public function test_can_search_policies(): void
     {
         $this->signInAdmin();
 
@@ -62,12 +61,12 @@ class PolicyTest extends TestCase
         );
     }
 
-    public function test_can_search_policies_by_contact()
+    public function test_can_search_policies_by_contact(): void
     {
         $this->signInAdmin();
 
         $policy = Policy::factory()
-            ->hasContacts(['name' => 'JamesTKirk'])
+            ->hasContacts(1, ['name' => 'JamesTKirk'])
             ->create(['number' => '1234']);
         Policy::factory(10)->create();
 
@@ -76,7 +75,7 @@ class PolicyTest extends TestCase
         );
     }
 
-    public function test_can_search_policy_fields()
+    public function test_can_search_policy_fields(): void
     {
         $this->signInAdmin();
 
@@ -91,7 +90,7 @@ class PolicyTest extends TestCase
         );
     }
 
-    public function test_can_search_trashed_policies()
+    public function test_can_search_trashed_policies(): void
     {
         $this->signInAdmin();
         $this->withExceptionHandling();
@@ -109,7 +108,7 @@ class PolicyTest extends TestCase
         );
     }
 
-    public function test_ending_soon_or_past_due()
+    public function test_ending_soon_or_past_due(): void
     {
         $this->signInAdmin();
 
@@ -160,7 +159,7 @@ class PolicyTest extends TestCase
             );
     }
 
-    public function test_can_create_policy()
+    public function test_can_create_policy(): void
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
@@ -190,7 +189,7 @@ class PolicyTest extends TestCase
             );
     }
 
-    public function test_can_show_edit_page()
+    public function test_can_show_edit_page(): void
     {
         $this->signInAdmin();
         $policy = Policy::factory()

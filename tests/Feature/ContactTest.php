@@ -13,7 +13,7 @@ class ContactTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
-    public function test_contacts_can_be_viewed_by_admins()
+    public function test_contacts_can_be_viewed_by_admins(): void
     {
         $this->signInAdmin();
 
@@ -28,7 +28,7 @@ class ContactTest extends TestCase
             );
     }
 
-    public function test_contact_is_serialized_properly()
+    public function test_contact_is_serialized_properly(): void
     {
         $this->signInAdmin();
 
@@ -50,7 +50,7 @@ class ContactTest extends TestCase
             );
     }
 
-    public function test_can_search_for_contacts()
+    public function test_can_search_for_contacts(): void
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
@@ -66,7 +66,7 @@ class ContactTest extends TestCase
         );
     }
 
-    public function test_an_admin_can_edit_contacts()
+    public function test_an_admin_can_edit_contacts(): void
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
@@ -85,7 +85,7 @@ class ContactTest extends TestCase
         $this->assertEquals('Jane Doe', $contact->fresh()->name);
     }
 
-    public function test_cannot_view_deleted_contacts()
+    public function test_cannot_view_deleted_contacts(): void
     {
         $this->signInAdmin();
 
@@ -97,7 +97,7 @@ class ContactTest extends TestCase
         );
     }
 
-    public function test_can_search_by_deleted_contacts()
+    public function test_can_search_by_deleted_contacts(): void
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
@@ -110,7 +110,7 @@ class ContactTest extends TestCase
         );
     }
 
-    public function test_contact_can_be_deleted()
+    public function test_contact_can_be_deleted(): void
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
@@ -133,7 +133,7 @@ class ContactTest extends TestCase
         );
     }
 
-    public function test_contact_can_be_created()
+    public function test_contact_can_be_created(): void
     {
         $this->signInAdmin();
         $this->withoutExceptionHandling();
