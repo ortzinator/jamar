@@ -31,7 +31,7 @@
         "laravel/sail": "^1.16",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
-        "nunomaduro/larastan": "^2.0",
+        "larastan/larastan": "^2.0",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^10.0",
         "protonemedia/inertiajs-events-laravel-dusk": "^1.2",
