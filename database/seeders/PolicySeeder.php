@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Contact;
 use App\Models\History;
 use App\Models\Policy;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -43,13 +44,14 @@ class PolicySeeder extends Seeder
 
             $policies = collect(
                 Policy::factory()
+                    ->state([
+                        'agent_id' => User::first()->id
+                    ])
                     ->count($count)
                     ->raw()
             );
             $policyChunks = $policies->chunk($chunkSize);
             $policyChunks->each(function ($chunk) {
-//                DB::table('policies')->insert($chunk->toArray());
-//                dd($chunk->toArray());
                 $chunk->each(function ($policy) {
                     Policy::create($policy);
                 });

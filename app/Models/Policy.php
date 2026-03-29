@@ -46,14 +46,14 @@ class Policy extends Model
             $policy->history()->create([
                 'event_type' => 'policy_created',
                 'policy_id' => $policy->id,
-                'user_id' => Auth::id() ?? 1
+                'user_id' => Auth::id() ?? $policy->agent_id
             ]);
         });
         static::updated(function (Policy $policy) {
             $policy->history()->create([
                 'event_type' => 'policy_updated',
                 'policy_id' => $policy->id,
-                'user_id' => Auth::id() ?? 1
+                'user_id' => Auth::id() ?? $policy->agent_id
             ]);
         });
     }
