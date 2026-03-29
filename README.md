@@ -9,6 +9,7 @@
 $ git clone git@github.com:ortzinator/jamar.git
 $ cd jamar && composer install && npm install
 $ cp .env.example .env
+$ echo "WWWUSER=$(id -u)" >> .env && echo "WWWGROUP=$(id -g)" >> .env
 $ php artisan key:generate
 $ chmod -R 775 storage bootstrap/cache
 $ ./vendor/bin/sail up -d
