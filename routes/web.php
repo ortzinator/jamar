@@ -26,9 +26,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
-    })
-        ->can('view dashboard')
-        ->name('dashboard');
+    })->name('dashboard');
 
     // Contacts
     Route::resource('contacts', ContactController::class);

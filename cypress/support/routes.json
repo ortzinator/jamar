@@ -48,6 +48,15 @@
       "DELETE"
     ]
   },
+  "debugbar.queries.explain": {
+    "name": "debugbar.queries.explain",
+    "domain": null,
+    "action": "Barryvdh\\Debugbar\\Controllers\\QueriesController@explain",
+    "uri": "_debugbar/queries/explain",
+    "method": [
+      "POST"
+    ]
+  },
   "cypress.factory": {
     "name": "cypress.factory",
     "domain": null,
@@ -121,36 +130,6 @@
       "POST"
     ]
   },
-  "dusk.login": {
-    "name": "dusk.login",
-    "domain": null,
-    "action": "Laravel\\Dusk\\Http\\Controllers\\UserController@login",
-    "uri": "_dusk/login/{userId}/{guard?}",
-    "method": [
-      "GET",
-      "HEAD"
-    ]
-  },
-  "dusk.logout": {
-    "name": "dusk.logout",
-    "domain": null,
-    "action": "Laravel\\Dusk\\Http\\Controllers\\UserController@logout",
-    "uri": "_dusk/logout/{guard?}",
-    "method": [
-      "GET",
-      "HEAD"
-    ]
-  },
-  "dusk.user": {
-    "name": "dusk.user",
-    "domain": null,
-    "action": "Laravel\\Dusk\\Http\\Controllers\\UserController@user",
-    "uri": "_dusk/user/{guard?}",
-    "method": [
-      "GET",
-      "HEAD"
-    ]
-  },
   "login": {
     "name": "login",
     "domain": null,
@@ -161,14 +140,13 @@
       "HEAD"
     ]
   },
-  "": {
-    "name": null,
+  "login.store": {
+    "name": "login.store",
     "domain": null,
-    "action": "Closure",
-    "uri": "test",
+    "action": "Laravel\\Fortify\\Http\\Controllers\\AuthenticatedSessionController@store",
+    "uri": "login",
     "method": [
-      "GET",
-      "HEAD"
+      "POST"
     ]
   },
   "logout": {
@@ -228,6 +206,15 @@
       "HEAD"
     ]
   },
+  "register.store": {
+    "name": "register.store",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\RegisteredUserController@store",
+    "uri": "register",
+    "method": [
+      "POST"
+    ]
+  },
   "user-profile-information.update": {
     "name": "user-profile-information.update",
     "domain": null,
@@ -246,6 +233,16 @@
       "PUT"
     ]
   },
+  "password.confirm": {
+    "name": "password.confirm",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\ConfirmablePasswordController@show",
+    "uri": "user/confirm-password",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
   "password.confirmation": {
     "name": "password.confirmation",
     "domain": null,
@@ -256,8 +253,8 @@
       "HEAD"
     ]
   },
-  "password.confirm": {
-    "name": "password.confirm",
+  "password.confirm.store": {
+    "name": "password.confirm.store",
     "domain": null,
     "action": "Laravel\\Fortify\\Http\\Controllers\\ConfirmablePasswordController@store",
     "uri": "user/confirm-password",
@@ -273,6 +270,15 @@
     "method": [
       "GET",
       "HEAD"
+    ]
+  },
+  "two-factor.login.store": {
+    "name": "two-factor.login.store",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\TwoFactorAuthenticatedSessionController@store",
+    "uri": "two-factor-challenge",
+    "method": [
+      "POST"
     ]
   },
   "two-factor.enable": {
@@ -332,6 +338,15 @@
       "HEAD"
     ]
   },
+  "two-factor.regenerate-recovery-codes": {
+    "name": "two-factor.regenerate-recovery-codes",
+    "domain": null,
+    "action": "Laravel\\Fortify\\Http\\Controllers\\RecoveryCodeController@store",
+    "uri": "user/two-factor-recovery-codes",
+    "method": [
+      "POST"
+    ]
+  },
   "profile.show": {
     "name": "profile.show",
     "domain": null,
@@ -358,6 +373,16 @@
     "uri": "user/profile-photo",
     "method": [
       "DELETE"
+    ]
+  },
+  "sanctum.csrf-cookie": {
+    "name": "sanctum.csrf-cookie",
+    "domain": null,
+    "action": "Laravel\\Sanctum\\Http\\Controllers\\CsrfCookieController@show",
+    "uri": "sanctum/csrf-cookie",
+    "method": [
+      "GET",
+      "HEAD"
     ]
   },
   "ignition.healthCheck": {
@@ -388,6 +413,16 @@
       "POST"
     ]
   },
+  "": {
+    "name": null,
+    "domain": null,
+    "action": "Closure",
+    "uri": "/",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
   "dashboard": {
     "name": "dashboard",
     "domain": null,
@@ -398,8 +433,8 @@
       "HEAD"
     ]
   },
-  "contacts": {
-    "name": "contacts",
+  "contacts.index": {
+    "name": "contacts.index",
     "domain": null,
     "action": "App\\Http\\Controllers\\ContactController@index",
     "uri": "contacts",
@@ -427,6 +462,16 @@
       "POST"
     ]
   },
+  "contacts.show": {
+    "name": "contacts.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ContactController@show",
+    "uri": "contacts/{contact}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
   "contacts.edit": {
     "name": "contacts.edit",
     "domain": null,
@@ -443,7 +488,8 @@
     "action": "App\\Http\\Controllers\\ContactController@update",
     "uri": "contacts/{contact}",
     "method": [
-      "PUT"
+      "PUT",
+      "PATCH"
     ]
   },
   "contacts.destroy": {
@@ -614,6 +660,74 @@
     "domain": null,
     "action": "App\\Http\\Controllers\\HistoryController@destroy",
     "uri": "histories/{history}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "users.index": {
+    "name": "users.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@index",
+    "uri": "users",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "users.create": {
+    "name": "users.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@create",
+    "uri": "users/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "users.store": {
+    "name": "users.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@store",
+    "uri": "users",
+    "method": [
+      "POST"
+    ]
+  },
+  "users.show": {
+    "name": "users.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@show",
+    "uri": "users/{user}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "users.edit": {
+    "name": "users.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@edit",
+    "uri": "users/{user}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "users.update": {
+    "name": "users.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@update",
+    "uri": "users/{user}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "users.destroy": {
+    "name": "users.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@destroy",
+    "uri": "users/{user}",
     "method": [
       "DELETE"
     ]
