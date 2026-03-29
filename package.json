@@ -19,7 +19,7 @@
         "cypress": "^15.13.0",
         "dayjs": "^1.10.6",
         "dinero.js": "^2.0.0-alpha.8",
-        "eslint": "^7.32.0",
+        "eslint": "^8.57.1",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-cypress": "^2.12.1",
@@ -35,6 +35,9 @@
         "vue": "^3.5.31",
         "vue-loader": "^17.0.0",
         "vue3-popper": "^1.0.2"
+    },
+    "overrides": {
+        "flat-cache": "^6.1.22"
     },
     "dependencies": {
         "@dinero.js/currencies": "^2.0.0-alpha.8",
