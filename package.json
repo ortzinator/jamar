@@ -15,7 +15,7 @@
         "@vue/compiler-sfc": "^3.5.31",
         "alpinejs": "^2.7.3",
         "autoprefixer": "^10.4.7",
-        "axios": "^0.21",
+        "axios": "^1.8.2",
         "cypress": "^15.13.0",
         "dayjs": "^1.10.6",
         "dinero.js": "^2.0.0-alpha.8",

@@ -63,7 +63,7 @@ const isOpen = ref(false);
 const histories = ref([]);
 const loading = ref(false);
 
-let cancelSource = null;
+let abortController = null;
 
 const historyForm = useForm({
     message: '',
@@ -72,16 +72,16 @@ const historyForm = useForm({
 });
 
 function loadHistory() {
-    if (cancelSource) {
-        cancelSource.cancel();
+    if (abortController) {
+        abortController.abort();
     }
-    cancelSource = axios.CancelToken.source();
+    abortController = new AbortController();
 
     loading.value = true;
 
     axios
         .get(route('histories.index'), {
-            cancelToken: cancelSource.token,
+            signal: abortController.signal,
             params: {
                 'filter[policy_id]': props.policy.id,
             },
@@ -90,7 +90,7 @@ function loadHistory() {
             if (response) {
                 histories.value = response.data;
                 loading.value = false;
-                cancelSource = null;
+                abortController = null;
             }
         });
 }

@@ -44,12 +44,12 @@ const searchTerm = ref('');
 const results = ref([]);
 const loading = ref(false);
 
-let cancelSource = null;
+let abortController = null;
 const search = _.debounce(() => {
-    if (cancelSource) {
-        cancelSource.cancel();
+    if (abortController) {
+        abortController.abort();
     }
-    cancelSource = axios.CancelToken.source();
+    abortController = new AbortController();
 
     if (searchTerm.value === '') {
         results.value = [];
@@ -59,13 +59,13 @@ const search = _.debounce(() => {
     axios
         .get(route('contacts.index'), {
             params: { search: searchTerm.value },
-            cancelToken: cancelSource.token,
+            signal: abortController.signal,
         })
         .then((response) => {
             loading.value = false;
             if (response) {
                 results.value = response.data;
-                cancelSource = null;
+                abortController = null;
             }
         });
 }, 400);

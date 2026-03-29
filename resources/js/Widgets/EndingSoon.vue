@@ -69,24 +69,24 @@ export default {
         const loading = ref(true);
         const results = ref([]);
 
-        let cancelSource = null;
+        let abortController = null;
         onMounted(() => {
-            if (cancelSource) {
-                cancelSource.cancel();
+            if (abortController) {
+                abortController.abort();
             }
-            cancelSource = axios.CancelToken.source();
+            abortController = new AbortController();
 
             loading.value = true;
 
             axios
                 .get(route('policies.ending'), {
-                    cancelToken: cancelSource.token,
+                    signal: abortController.signal,
                 })
                 .then((response) => {
                     if (response) {
                         results.value = response.data;
                         loading.value = false;
-                        cancelSource = null;
+                        abortController = null;
                     }
                 });
         });
