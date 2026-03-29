@@ -33,7 +33,6 @@
         "tailwindcss": "^3.1.8",
         "vite": "^7.3.1",
         "vue": "^3.5.31",
-        "vue-loader": "^17.0.0",
         "vue3-popper": "^1.0.2"
     },
     "overrides": {
