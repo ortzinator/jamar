@@ -1,12 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/laravel/jetstream/**/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:is([data-mode="flobs"] *));
+
+@theme {
+  --font-sans:
+    Inter, Nunito, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-light-blue-vivid-50: #e3f8ff;
+  --color-light-blue-vivid-100: #b3ecff;
+  --color-light-blue-vivid-200: #81defd;
+  --color-light-blue-vivid-300: #5ed0fa;
+  --color-light-blue-vivid-400: #40c3f7;
+  --color-light-blue-vivid-500: #2bb0ed;
+  --color-light-blue-vivid-600: #1992d4;
+  --color-light-blue-vivid-700: #127fbf;
+  --color-light-blue-vivid-800: #0b69a3;
+  --color-light-blue-vivid-900: #035388;
+
+  --color-cool-grey-50: #f5f7fa;
+  --color-cool-grey-100: #e4e7eb;
+  --color-cool-grey-200: #cbd2d9;
+  --color-cool-grey-300: #9aa5b1;
+  --color-cool-grey-400: #7b8794;
+  --color-cool-grey-500: #616e7c;
+  --color-cool-grey-600: #52606d;
+  --color-cool-grey-700: #3e4c59;
+  --color-cool-grey-800: #323f4b;
+  --color-cool-grey-900: #1f2933;
+
+  --color-pink-vivid-50: #ffe3ec;
+  --color-pink-vivid-100: #ffb8d2;
+  --color-pink-vivid-200: #ff8cba;
+  --color-pink-vivid-300: #f364a2;
+  --color-pink-vivid-400: #e8368f;
+  --color-pink-vivid-500: #da127d;
+  --color-pink-vivid-600: #bc0a6f;
+  --color-pink-vivid-700: #a30664;
+  --color-pink-vivid-800: #870557;
+  --color-pink-vivid-900: #620042;
+
+  --color-red-vivid-50: #ffe3e3;
+  --color-red-vivid-100: #ffbdbd;
+  --color-red-vivid-200: #ff9b9b;
+  --color-red-vivid-300: #f86a6a;
+  --color-red-vivid-400: #ef4e4e;
+  --color-red-vivid-500: #e12d39;
+  --color-red-vivid-600: #cf1124;
+  --color-red-vivid-700: #ab091e;
+  --color-red-vivid-800: #8a041a;
+  --color-red-vivid-900: #610316;
+
+  --color-yellow-vivid-50: #fffbea;
+  --color-yellow-vivid-100: #fff3c4;
+  --color-yellow-vivid-200: #fce588;
+  --color-yellow-vivid-300: #fadb5f;
+  --color-yellow-vivid-400: #f7c948;
+  --color-yellow-vivid-500: #f0b429;
+  --color-yellow-vivid-600: #de911d;
+  --color-yellow-vivid-700: #cb6e17;
+  --color-yellow-vivid-800: #b44d12;
+  --color-yellow-vivid-900: #8d2b0b;
+
+  --color-teal-50: #effcf6;
+  --color-teal-100: #c6f7e2;
+  --color-teal-200: #8eedc7;
+  --color-teal-300: #65d6ad;
+  --color-teal-400: #3ebd93;
+  --color-teal-500: #27ab83;
+  --color-teal-600: #199473;
+  --color-teal-700: #147d64;
+  --color-teal-800: #0c6b58;
+  --color-teal-900: #014d40;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility btn {
+  @apply font-semibold px-4 py-2 rounded-sm relative items-center;
+}
+
+@utility btn-sm {
+  @apply bg-cool-grey-100 hover:bg-cool-grey-300 px-2 py-1 rounded-sm text-sm;
+}
+
+@utility btn-primary {
+  @apply bg-light-blue-vivid-700 text-white hover:bg-light-blue-vivid-700 shadow-sm focus:outline-hidden focus:ring-2 focus:ring-light-blue-vivid-400/75;
+}
+
+@utility btn-secondary {
+  @apply bg-cool-grey-100 text-cool-grey-900 hover:bg-light-blue-vivid-700 hover:text-white shadow-xs focus:outline-hidden focus:ring-2 focus:ring-light-blue-vivid-400/75;
+}
+
+@utility btn-danger {
+  @apply bg-red-vivid-500 text-white hover:bg-red-vivid-700 shadow-md focus:outline-hidden focus:ring-2 focus:ring-light-blue-vivid-400/75;
+}
+
+@utility table-show {
+  empty-cells: show;
+}
+
+@utility text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@utility text-shadow-md {
+  text-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+@utility text-shadow-lg {
+  text-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.11),
+    0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+@utility text-shadow-none {
+  text-shadow: none;
+}
 
 @layer base {
     textarea {
-        @apply border border-cool-grey-200 rounded;
+        @apply border border-cool-grey-200 rounded-sm;
     }
 
     h1 {
@@ -22,51 +164,5 @@
     h5,
     h6 {
         @apply text-lg font-bold leading-loose;
-    }
-}
-
-@layer components {
-    .btn {
-        @apply font-semibold px-4 py-2 rounded relative items-center;
-    }
-
-    .btn-sm {
-        @apply bg-cool-grey-100 hover:bg-cool-grey-300 px-2 py-1 rounded text-sm;
-    }
-
-    .btn-primary {
-        @apply bg-light-blue-vivid-700 text-white hover:bg-light-blue-vivid-700 shadow focus:outline-none focus:ring-2 focus:ring-light-blue-vivid-400 focus:ring-opacity-75;
-    }
-
-    .btn-secondary {
-        @apply bg-cool-grey-100 text-cool-grey-900 hover:bg-light-blue-vivid-700 hover:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-light-blue-vivid-400 focus:ring-opacity-75;
-    }
-
-    .btn-danger {
-        @apply bg-red-vivid-500 text-white hover:bg-red-vivid-700 shadow-md focus:outline-none focus:ring-2 focus:ring-light-blue-vivid-400 focus:ring-opacity-75;
-    }
-}
-
-@layer utilities {
-    .table-show {
-        empty-cells: show;
-    }
-
-    .text-shadow {
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .text-shadow-md {
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12),
-            0 2px 4px rgba(0, 0, 0, 0.08);
-    }
-
-    .text-shadow-lg {
-        text-shadow: 0 15px 30px rgba(0, 0, 0, 0.11),
-            0 5px 15px rgba(0, 0, 0, 0.08);
-    }
-
-    .text-shadow-none {
-        text-shadow: none;
     }
 }
