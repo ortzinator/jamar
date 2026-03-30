@@ -1,5 +1,6 @@
 {
     "phpVersion": "8.0",
     "singleQuote": true,
-    "trailingCommaPHP": false
+    "trailingCommaPHP": false,
+    "plugins": ["prettier-plugin-tailwindcss"]
 }

@@ -14,8 +14,6 @@
                 "onecentlin.laravel-blade",
                 "eamodio.gitlens",
                 "dbaeumer.vscode-eslint",
-                "vue.volar",
-                "heybourn.headwind",
                 "esbenp.prettier-vscode"
             ],
             "settings": {}
