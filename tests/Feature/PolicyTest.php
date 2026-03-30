@@ -208,4 +208,153 @@ class PolicyTest extends TestCase
                     ->has('policy.premium.formatted')
             );
     }
+
+    public function test_can_view_create_form(): void
+    {
+        $this->signInAdmin();
+
+        $this->get(route('policies.create'))
+            ->assertOk()
+            ->assertInertia(fn(Assert $page) => $page->component('Policies/Create'));
+    }
+
+    public function test_can_delete_policy(): void
+    {
+        $this->signInAdmin();
+        $this->withoutExceptionHandling();
+
+        $policy = Policy::factory()->create();
+
+        $this->delete(route('policies.destroy', $policy->id))
+            ->assertRedirect();
+
+        $this->assertSoftDeleted('policies', ['id' => $policy->id]);
+    }
+
+    public function test_can_restore_policy(): void
+    {
+        $this->signInAdmin();
+        $this->withoutExceptionHandling();
+
+        $policy = Policy::factory()->create();
+        $policy->delete();
+
+        $this->put(route('policies.restore', $policy->id))
+            ->assertRedirect();
+
+        $this->assertNotSoftDeleted('policies', ['id' => $policy->id]);
+    }
+
+    public function test_contacts_required_on_create(): void
+    {
+        $this->signInAdmin();
+
+        $policy = Policy::factory()->make();
+
+        $this->post(route('policies.store'), array_merge($policy->getAttributes(), [
+            'contacts' => []
+        ]))->assertSessionHasErrors('contacts');
+    }
+
+    public function test_invalid_dates_rejected_on_create(): void
+    {
+        $this->signInAdmin();
+
+        $contacts = Contact::factory(1)->create();
+        $policy = Policy::factory()->make();
+
+        $this->post(route('policies.store'), array_merge($policy->getAttributes(), [
+            'contacts' => $contacts->toArray(),
+            'period_start' => 'not-a-date',
+            'period_end' => 'not-a-date',
+        ]))->assertSessionHasErrors(['period_start', 'period_end']);
+    }
+
+    public function test_agent_must_exist_on_create(): void
+    {
+        $this->signInAdmin();
+
+        $contacts = Contact::factory(1)->create();
+        $policy = Policy::factory()->make();
+
+        $this->post(route('policies.store'), array_merge($policy->getAttributes(), [
+            'contacts' => $contacts->toArray(),
+            'agent_id' => 99999,
+        ]))->assertSessionHasErrors('agent_id');
+    }
+
+    public function test_premium_must_be_integer_on_create(): void
+    {
+        $this->signInAdmin();
+
+        $contacts = Contact::factory(1)->create();
+        $policy = Policy::factory()->make();
+
+        $this->post(route('policies.store'), array_merge($policy->getAttributes(), [
+            'contacts' => $contacts->toArray(),
+            'premium' => 'not-a-number',
+        ]))->assertSessionHasErrors('premium');
+    }
+
+    public function test_invalid_date_rejected_on_update(): void
+    {
+        $this->signInAdmin();
+
+        $policy = Policy::factory()->create();
+
+        $this->put(route('policies.update', $policy->id), [
+            'number' => $policy->number,
+            'period_end' => 'not-a-date',
+        ])->assertSessionHasErrors('period_end');
+    }
+
+    public function test_agent_must_exist_on_update(): void
+    {
+        $this->signInAdmin();
+
+        $policy = Policy::factory()->create();
+
+        $this->put(route('policies.update', $policy->id), [
+            'number' => $policy->number,
+            'agent_id' => 99999,
+        ])->assertSessionHasErrors('agent_id');
+    }
+
+    public function test_policy_created_history_event_is_recorded(): void
+    {
+        $this->signInAdmin();
+        $this->withoutExceptionHandling();
+
+        $contacts = Contact::factory(1)->create();
+        $policy = Policy::factory()->make(['contacts' => $contacts->toArray()]);
+
+        $this->post(route('policies.store'), $policy->getAttributes());
+
+        $created = Policy::first();
+
+        $this->assertDatabaseHas('histories', [
+            'policy_id' => $created->id,
+            'event_type' => 'policy_created',
+        ]);
+    }
+
+    public function test_policy_updated_history_event_is_recorded(): void
+    {
+        $this->signInAdmin();
+        $this->withoutExceptionHandling();
+
+        $policy = Policy::factory()->create();
+        $historyCountBefore = $policy->history()->count();
+
+        $this->put(route('policies.update', $policy->id), [
+            'number' => 'UPDATED-NUMBER',
+        ]);
+
+        $this->assertDatabaseHas('histories', [
+            'policy_id' => $policy->id,
+            'event_type' => 'policy_updated',
+        ]);
+
+        $this->assertGreaterThan($historyCountBefore, $policy->history()->count());
+    }
 }
