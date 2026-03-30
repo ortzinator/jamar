@@ -158,4 +158,120 @@ class ContactTest extends TestCase
                     ->has('contact.notes')
             );
     }
+
+    public function test_can_view_create_form(): void
+    {
+        $this->signInAdmin();
+
+        $this->get(route('contacts.create'))
+            ->assertOk()
+            ->assertInertia(fn(Assert $page) => $page->component('Contacts/Create'));
+    }
+
+    public function test_can_view_contact_show_page(): void
+    {
+        $this->signInAdmin();
+
+        $contact = Contact::factory()->create();
+
+        $this->get(route('contacts.show', $contact->id))
+            ->assertOk()
+            ->assertInertia(
+                fn(Assert $page) => $page
+                    ->component('Contacts/Show')
+                    ->has('contact.name')
+                    ->has('contact.id')
+            );
+    }
+
+    public function test_can_restore_contact(): void
+    {
+        $this->signInAdmin();
+        $this->withoutExceptionHandling();
+
+        $contact = Contact::factory()->create();
+        $contact->delete();
+
+        $this->assertSoftDeleted('contacts', ['id' => $contact->id]);
+
+        $this->put(route('contacts.restore', $contact->id))
+            ->assertRedirect();
+
+        $this->assertNotSoftDeleted('contacts', ['id' => $contact->id]);
+    }
+
+    public function test_name_is_required_on_create(): void
+    {
+        $this->signInAdmin();
+
+        $this->post(route('contacts.store'), [
+            'name' => '',
+            'address' => $this->faker->address(),
+        ])->assertSessionHasErrors('name');
+    }
+
+    public function test_name_must_be_at_least_3_chars_on_create(): void
+    {
+        $this->signInAdmin();
+
+        $this->post(route('contacts.store'), [
+            'name' => 'ab',
+            'address' => $this->faker->address(),
+        ])->assertSessionHasErrors('name');
+    }
+
+    public function test_address_is_required_on_create(): void
+    {
+        $this->signInAdmin();
+
+        $this->post(route('contacts.store'), [
+            'name' => $this->faker->name(),
+            'address' => '',
+        ])->assertSessionHasErrors('address');
+    }
+
+    public function test_address_must_be_at_least_3_chars_on_create(): void
+    {
+        $this->signInAdmin();
+
+        $this->post(route('contacts.store'), [
+            'name' => $this->faker->name(),
+            'address' => 'ab',
+        ])->assertSessionHasErrors('address');
+    }
+
+    public function test_name_is_required_on_update(): void
+    {
+        $this->signInAdmin();
+
+        $contact = Contact::factory()->create();
+
+        $this->put(route('contacts.update', $contact->id), [
+            'name' => '',
+            'address' => $contact->address,
+        ])->assertSessionHasErrors('name');
+    }
+
+    public function test_address_is_required_on_update(): void
+    {
+        $this->signInAdmin();
+
+        $contact = Contact::factory()->create();
+
+        $this->put(route('contacts.update', $contact->id), [
+            'name' => $contact->name,
+            'address' => '',
+        ])->assertSessionHasErrors('address');
+    }
+
+    public function test_index_returns_json_for_api_requests(): void
+    {
+        $this->signInAdmin();
+
+        Contact::factory(5)->create();
+
+        $this->getJson(route('contacts.index'))
+            ->assertOk()
+            ->assertJsonCount(5);
+    }
 }
