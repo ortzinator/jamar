@@ -21,7 +21,7 @@ class HistoryController extends Controller
         $policy = Policy::findOrFail($request['policy_id']);
 
         $policy->history()->create(
-            array_merge($request->only('message', 'value', 'event_type'), [
+            array_merge($request->only('message', 'event_type'), [
                 'user_id' => Auth::id()
             ])
         );
