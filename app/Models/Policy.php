@@ -62,13 +62,14 @@ class Policy extends Model
     {
         $query
             ->when($filters['search'] ?? null, function ($query, $search) {
-                $search = $search . '%';
-                $query->where(function ($query) use ($search) {
+                $prefix = $search . '%';
+                $substring = '%' . $search . '%';
+                $query->where(function ($query) use ($prefix, $substring) {
                     $query
-                        ->where('number', 'like', $search)
-                        ->orWhere('fields', 'like', '%' . $search)
-                        ->orWhereHas('contacts', function ($query) use ($search) {
-                            $query->where('name', 'like', $search);
+                        ->where('number', 'like', $prefix)
+                        ->orWhere('fields', 'like', $substring)
+                        ->orWhereHas('contacts', function ($query) use ($prefix) {
+                            $query->where('name', 'like', $prefix);
                         });
                 });
             })
