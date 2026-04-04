@@ -97,6 +97,45 @@ class PolicyTest extends TestCase
         $this->assertCount(1, $list);
     }
 
+    public function test_filter_scope_matches_fields_mid_string()
+    {
+        Policy::factory()->create([
+            'number' => 'NOMATCH',
+            'fields' => ['description' => 'some mid-string value xyz789 here'],
+        ]);
+
+        Policy::factory()->create([
+            'number' => 'NOMATCH2',
+            'fields' => ['description' => 'unrelated content'],
+        ]);
+
+        $results = Policy::filter(['search' => 'xyz789'])->get();
+
+        $this->assertCount(1, $results);
+    }
+
+    public function test_filter_scope_does_not_match_fields_as_prefix_only()
+    {
+        // 'number' is prefix-matched (term%), but 'fields' is substring-matched (%term%).
+        // A value that appears mid-string in fields should match; the same value as a
+        // number prefix would not match if it only appears mid-string in the number.
+        Policy::factory()->create([
+            'number' => 'XMIDVALUEX',
+            'fields' => ['note' => 'no match here'],
+        ]);
+
+        Policy::factory()->create([
+            'number' => 'NOMATCH',
+            'fields' => ['note' => 'contains MIDVALUE somewhere inside'],
+        ]);
+
+        $results = Policy::filter(['search' => 'MIDVALUE'])->get();
+
+        // Only the fields match should be found; number 'XMIDVALUEX' does not start with 'MIDVALUE'
+        $this->assertCount(1, $results);
+        $this->assertEquals('NOMATCH', $results->first()->number);
+    }
+
     public function test_has_a_history_of_facts()
     {
         $policy = Policy::factory()
