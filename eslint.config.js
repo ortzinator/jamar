@@ -4,9 +4,6 @@ import pluginVue from 'eslint-plugin-vue';
 import pluginCypress from 'eslint-plugin-cypress';
 import pluginPrettier from 'eslint-plugin-prettier/recommended';
 import prettierConfig from 'eslint-config-prettier';
-import { FlatCompat } from '@eslint/eslintrc';
-
-const compat = new FlatCompat();
 
 export default [
     {
@@ -14,8 +11,6 @@ export default [
     },
 
     js.configs.recommended,
-
-    ...compat.extends('airbnb-base'),
 
     ...pluginVue.configs['flat/recommended'],
 
@@ -52,9 +47,6 @@ export default [
                     ignores: [],
                 },
             ],
-            'import/no-unresolved': 'off',
-            'import/extensions': 'off',
-            'import/no-extraneous-dependencies': 'off',
             'no-shadow': 'off',
             'no-return-assign': 'off',
             'prettier/prettier': 'error',
