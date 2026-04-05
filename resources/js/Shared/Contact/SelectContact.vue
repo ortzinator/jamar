@@ -5,28 +5,28 @@
                 v-model="searchTerm"
                 type="text"
                 placeholder="Search contacts..."
-                class="w-full rounded border-cool-grey-200"
+                class="border-cool-grey-200 w-full rounded"
             />
             <Icon
                 v-if="loading"
                 name="spinner"
-                class="w-6 h-6 -ml-8 fill-current animate-spin text-cool-grey-400"
+                class="text-cool-grey-400 -ml-8 h-6 w-6 animate-spin fill-current"
             />
         </div>
-        <div class="px-2 mt-2 overflow-auto bg-white h-52">
+        <div class="mt-2 h-52 overflow-auto bg-white px-2">
             <ul v-if="results.length > 0" class="mt-2 space-y-2">
                 <li
                     v-for="contact in results"
                     :key="contact.id"
                     class="hover:bg-light-blue-vivid-50 odd:bg-cool-grey-50"
                 >
-                    <a class="block p-2 cursor-pointer" @click="$emit('selected', contact)">
+                    <a class="block cursor-pointer p-2" @click="$emit('selected', contact)">
                         <div v-text="contact.name"></div>
                         <div v-text="contact.address"></div>
                     </a>
                 </li>
             </ul>
-            <ul v-else-if="searchTerm" class="italic text-cool-grey-400">
+            <ul v-else-if="searchTerm" class="text-cool-grey-400 italic">
                 <li>None found</li>
             </ul>
         </div>

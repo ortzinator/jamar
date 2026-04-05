@@ -11,7 +11,6 @@ class UserSearchResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  Request  $request
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
@@ -20,7 +19,7 @@ class UserSearchResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'id' => $this->id,
-            'role' => $this->roles()->pluck('name')[0] ?? 'none'
+            'role' => $this->roles()->pluck('name')[0] ?? 'none',
         ];
     }
 }

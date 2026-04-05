@@ -9,10 +9,6 @@ class EmptyMiddleware
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return Request
      */
     public function handle(Request $request, Closure $next): Request
     {
@@ -20,6 +16,7 @@ class EmptyMiddleware
         if (is_null($response->original) && $response->status() == 200) {
             abort(404);
         }
+
         return $response;
     }
 }

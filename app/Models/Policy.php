@@ -37,7 +37,7 @@ class Policy extends Model
         'fields' => 'array',
         'period_start' => 'datetime',
         'period_end' => 'datetime',
-        'premium' => MoneyIntegerCast::class . ':currency'
+        'premium' => MoneyIntegerCast::class . ':currency',
     ];
 
     protected static function booted()
@@ -46,14 +46,14 @@ class Policy extends Model
             $policy->history()->create([
                 'event_type' => 'policy_created',
                 'policy_id' => $policy->id,
-                'user_id' => Auth::id() ?? $policy->agent_id
+                'user_id' => Auth::id() ?? $policy->agent_id,
             ]);
         });
         static::updated(function (Policy $policy) {
             $policy->history()->create([
                 'event_type' => 'policy_updated',
                 'policy_id' => $policy->id,
-                'user_id' => Auth::id() ?? $policy->agent_id
+                'user_id' => Auth::id() ?? $policy->agent_id,
             ]);
         });
     }
@@ -110,14 +110,12 @@ class Policy extends Model
     protected function contactNamesPreview(): Attribute
     {
         return Attribute::make(
-            get: fn() => Str::limit($this->contacts->implode('name', ', '), 100)
+            get: fn () => Str::limit($this->contacts->implode('name', ', '), 100)
         )->shouldCache();
     }
 
     /**
      * @param  int  $contactId  The ID of the Contact you want to attach
-     *
-     * @return void
      */
     public function attachContact(int $contactId): void
     {
@@ -157,7 +155,7 @@ class Policy extends Model
     protected function subunits(): Attribute
     {
         return Attribute::make(
-            get: fn() => Money::getCurrencies()->subunitFor($this->premium->getCurrency())
+            get: fn () => Money::getCurrencies()->subunitFor($this->premium->getCurrency())
         )->shouldCache();
     }
 }

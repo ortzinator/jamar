@@ -8,22 +8,22 @@
             >
                 Policies
             </InertiaLink>
-            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
+            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
             {{ policyForm.number }}
         </h1>
     </div>
 
-    <div class="flex max-w-6xl mb-2">
+    <div class="mb-2 flex max-w-6xl">
         <HistoryModal :policy="policy" />
     </div>
 
-    <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
+    <div class="max-w-6xl overflow-hidden rounded bg-white shadow">
         <div
             v-if="policy.deleted_at"
-            class="flex items-center justify-between p-5 pl-8 bg-yellow-200"
+            class="flex items-center justify-between bg-yellow-200 p-5 pl-8"
         >
             <div class="flex">
-                <TrashIcon class="w-5 h-5 mr-2" />
+                <TrashIcon class="mr-2 h-5 w-5" />
                 This policy is deleted
             </div>
             <button class="btn hover:underline" @click="confirmingRestore = true">Restore</button>
@@ -31,10 +31,10 @@
 
         <div
             v-if="policyForm.contacts.length === 0"
-            class="flex items-center justify-between p-5 pl-8 bg-red-vivid-200"
+            class="bg-red-vivid-200 flex items-center justify-between p-5 pl-8"
         >
             <div class="flex items-center">
-                <ExclamationIcon class="w-5 h-5 mr-2" />
+                <ExclamationIcon class="mr-2 h-5 w-5" />
                 <div class="text-lg">This policy does not have any policyholders</div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                 <select
                     id="agent"
                     v-model="policyForm.agent_id"
-                    class="mt-1 mr-5 border rounded border-cool-grey-200"
+                    class="border-cool-grey-200 mt-1 mr-5 rounded border"
                 >
                     <option v-for="agent in users" :key="agent.id" :value="agent.id">
                         {{ agent.name }}
@@ -75,13 +75,13 @@
                     id="premium"
                     v-model="policyForm.premium"
                     :options="{ currency: $attrs.currency.code, valueScaling: 'precision' }"
-                    class="mt-1 mr-5 border rounded border-cool-grey-200"
+                    class="border-cool-grey-200 mt-1 mr-5 rounded border"
                 />
                 <InputError :message="policyForm.errors.premium" />
             </div>
 
             <div class="mb-5">
-                <div class="text-sm text-left text-cool-grey-600">Period of Insurance</div>
+                <div class="text-cool-grey-600 text-left text-sm">Period of Insurance</div>
                 <Calendar v-model="policyForm.period" selection-mode="range" />
             </div>
 
@@ -103,7 +103,7 @@
             </ContactList>
             <button class="btn" @click="showAddContact = true">Add Policyholder</button>
         </div>
-        <div class="flex items-center justify-between px-8 py-4 bg-cool-grey-50">
+        <div class="bg-cool-grey-50 flex items-center justify-between px-8 py-4">
             <button
                 v-if="!policy.deleted_at"
                 class="text-red-vivid-600 hover:underline"
@@ -114,7 +114,7 @@
                 Delete policy
             </button>
             <div class="flex items-baseline">
-                <div v-if="policyForm.isDirty" class="mr-5 italic text-cool-grey-400">
+                <div v-if="policyForm.isDirty" class="text-cool-grey-400 mr-5 italic">
                     Unsaved Changes
                 </div>
                 <LoadingButton
@@ -137,7 +137,7 @@
         <template #footer>
             <button class="btn" @click="confirmingRestore = false">Cancel</button>
 
-            <button class="ml-2 btn btn-danger" @click="restore">Restore</button>
+            <button class="btn btn-danger ml-2" @click="restore">Restore</button>
         </template>
     </ConfirmationModal>
 
@@ -149,7 +149,7 @@
         <template #footer>
             <button class="btn" @click="confirmingDelete = false">Cancel</button>
 
-            <button class="ml-2 btn btn-danger" @click="destroy">Delete Policy</button>
+            <button class="btn btn-danger ml-2" @click="destroy">Delete Policy</button>
         </template>
     </ConfirmationModal>
 

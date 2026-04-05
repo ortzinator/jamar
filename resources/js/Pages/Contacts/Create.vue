@@ -8,13 +8,13 @@
             >
                 Contacts
             </InertiaLink>
-            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
+            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
             New Contact
         </h1>
     </div>
 
     <form @submit.prevent="store">
-        <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
+        <div class="max-w-6xl overflow-hidden rounded bg-white shadow">
             <div class="p-5">
                 <div class="mb-5">
                     <InputLabel for="name" value="Name" />
@@ -34,9 +34,9 @@
                     <InputError :message="form.errors.address" />
                 </div>
             </div>
-            <div class="flex items-center px-8 py-4 border-t bg-cool-grey-50 border-cool-grey-100">
+            <div class="bg-cool-grey-50 border-cool-grey-100 flex items-center border-t px-8 py-4">
                 <LoadingButton
-                    class="ml-auto btn btn-primary"
+                    class="btn btn-primary ml-auto"
                     type="submit"
                     :loading="form.processing"
                 >

@@ -5,9 +5,9 @@
     </div>
 
     <div>
-        <div class="flex justify-between mb-4">
-            <div class="flex mr-4">
-                <div class="flex bg-white rounded shadow cursor-default">
+        <div class="mb-4 flex justify-between">
+            <div class="mr-4 flex">
+                <div class="flex cursor-default rounded bg-white shadow">
                     <FilterSelect
                         v-if="$attrs.permissions.includes('update users')"
                         v-model="searchForm.trashed"
@@ -16,11 +16,11 @@
                         v-model="searchForm.search"
                         type="text"
                         placeholder="Search..."
-                        class="w-full border-0 rounded-r"
+                        class="w-full rounded-r border-0"
                     />
                 </div>
                 <button
-                    class="ml-3 text-sm text-cool-grey-500 hover:text-cool-grey-700 focus:text-light-blue-vivid-500"
+                    class="text-cool-grey-500 hover:text-cool-grey-700 focus:text-light-blue-vivid-500 ml-3 text-sm"
                     type="button"
                     @click="reset"
                 >
@@ -36,7 +36,7 @@
                 <span class="hidden md:inline"> New User</span>
             </InertiaLink>
         </div>
-        <div class="overflow-x-auto bg-white rounded shadow">
+        <div class="overflow-x-auto rounded bg-white shadow">
             <DataTable :columns="columns" :data-source="users.data" route-name="users.show">
             </DataTable>
         </div>

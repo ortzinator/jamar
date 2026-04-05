@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(UrlGenerator $url): void
     {
         JsonResource::withoutWrapping();
-        Model::preventLazyLoading(!app()->isProduction());
+        Model::preventLazyLoading(! app()->isProduction());
         if (Str::contains(env('APP_URL'), 'gitpod.io')) {
             $url->forceScheme('https');
         }

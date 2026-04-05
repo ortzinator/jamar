@@ -1,10 +1,10 @@
 <template>
     <div
-        class="grid grid-cols-9 gap-5 mb-5"
+        class="mb-5 grid grid-cols-9 gap-5"
         @mouseenter="fieldHover = true"
         @mouseleave="fieldHover = false"
     >
-        <div class="col-span-4 px-4 py-2 rounded" v-text="field.name"></div>
+        <div class="col-span-4 rounded px-4 py-2" v-text="field.name"></div>
         <TextInput
             :id="'input-' + field.name"
             :value="field.value"

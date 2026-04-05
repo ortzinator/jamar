@@ -26,12 +26,13 @@ abstract class TestCase extends BaseTestCase
     public function signIn($admin = false)
     {
         $this->seed(PermissionSeeder::class);
-        $user = User::factory()->create(); //User factory defaults password to "password"
+        $user = User::factory()->create(); // User factory defaults password to "password"
         if ($admin) {
             $user->assignRole('Super Admin');
         } else {
             $user->assignRole('Employee');
         }
+
         return $this->actingAs($user);
     }
 

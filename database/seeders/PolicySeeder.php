@@ -15,8 +15,6 @@ class PolicySeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run(): void
     {
@@ -45,7 +43,7 @@ class PolicySeeder extends Seeder
             $policies = collect(
                 Policy::factory()
                     ->state([
-                        'agent_id' => User::first()->id
+                        'agent_id' => User::first()->id,
                     ])
                     ->count($count)
                     ->raw()
@@ -62,7 +60,7 @@ class PolicySeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now(),
                     'contact_id' => $num,
-                    'policy_id' => $num
+                    'policy_id' => $num,
                 ];
             });
             $pivotChunks = $pivots->chunk($chunkSize);

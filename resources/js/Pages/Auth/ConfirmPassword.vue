@@ -46,7 +46,7 @@ const submit = () => {
                     ref="passwordInput"
                     v-model="form.password"
                     type="password"
-                    class="block w-full mt-1"
+                    class="mt-1 block w-full"
                     required
                     autocomplete="current-password"
                     autofocus
@@ -54,7 +54,7 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="flex justify-end mt-4">
+            <div class="mt-4 flex justify-end">
                 <PrimaryButton
                     class="ml-4"
                     :class="{ 'opacity-25': form.processing }"

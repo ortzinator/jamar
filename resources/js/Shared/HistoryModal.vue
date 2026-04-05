@@ -1,20 +1,20 @@
 <template>
-    <button class="ml-auto btn btn-secondary" @click="setIsOpen(true)">History of facts</button>
+    <button class="btn btn-secondary ml-auto" @click="setIsOpen(true)">History of facts</button>
     <Dialog
         as="div"
         class="fixed inset-0 z-10 overflow-y-auto md:py-5"
         :open="isOpen"
         @close="setIsOpen"
     >
-        <div class="flex items-center justify-center min-h-screen">
+        <div class="flex min-h-screen items-center justify-center">
             <DialogOverlay class="fixed inset-0 bg-black opacity-30" />
 
             <div
-                class="relative flex flex-col w-full h-screen bg-white md:h-[80vh] md:w-5/6 md:rounded md:shadow-2xl"
+                class="relative flex h-screen w-full flex-col bg-white md:h-[80vh] md:w-5/6 md:rounded md:shadow-2xl"
             >
                 <DialogTitle class="mx-2 my-4 md:mx-7 md:my-5"> History of Facts </DialogTitle>
-                <div class="mx-2 my-4 overflow-y-scroll grow md:max-h-96 md:mx-7 md:my-5">
-                    <table v-if="histories.length > 0" class="w-full font-mono text-xs table-fixed">
+                <div class="mx-2 my-4 grow overflow-y-scroll md:mx-7 md:my-5 md:max-h-96">
+                    <table v-if="histories.length > 0" class="w-full table-fixed font-mono text-xs">
                         <tr>
                             <th scope="col" class="w-2/12">Date</th>
                             <th scope="col" class="w-6/12">Message</th>
@@ -39,7 +39,7 @@
                     <InputError :message="historyForm.errors.message" />
                 </div>
                 <div
-                    class="px-4 py-3 mt-auto bg-cool-grey-100 md:mt-0 sm:flex sm:flex-row-reverse sm:px-6"
+                    class="bg-cool-grey-100 mt-auto px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 md:mt-0"
                 >
                     <button class="btn" @click="handleClose">Close</button>
                     <button class="btn btn-primary" @click="handleAdd">Add</button>

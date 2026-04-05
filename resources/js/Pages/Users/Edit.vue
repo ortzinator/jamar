@@ -8,18 +8,18 @@
             >
                 Employees
             </InertiaLink>
-            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
+            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
             {{ userForm.name }}
         </h1>
     </div>
 
-    <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
+    <div class="max-w-6xl overflow-hidden rounded bg-white shadow">
         <div
             v-if="editedUser.deleted_at"
-            class="flex items-center justify-between p-5 pl-8 bg-yellow-200"
+            class="flex items-center justify-between bg-yellow-200 p-5 pl-8"
         >
             <div class="flex">
-                <TrashIcon class="w-5 h-5 mr-2" />
+                <TrashIcon class="mr-2 h-5 w-5" />
                 This user is deleted
             </div>
             <button class="btn hover:underline" @click="confirmingRestore = true">Restore</button>
@@ -42,7 +42,7 @@
                 <InputError :message="userForm.errors.roles" />
             </div>
         </div>
-        <div class="flex items-center justify-between px-8 py-4 bg-cool-grey-50">
+        <div class="bg-cool-grey-50 flex items-center justify-between px-8 py-4">
             <button
                 v-if="!editedUser.deleted_at"
                 class="text-red-vivid-600 hover:underline"
@@ -53,7 +53,7 @@
                 Delete user
             </button>
             <div class="flex items-baseline">
-                <div v-if="userForm.isDirty" class="mr-5 italic text-cool-grey-400">
+                <div v-if="userForm.isDirty" class="text-cool-grey-400 mr-5 italic">
                     Unsaved Changes
                 </div>
                 <LoadingButton
@@ -76,7 +76,7 @@
         <template #footer>
             <button class="btn" @click="confirmingRestore = false">Cancel</button>
 
-            <button class="ml-2 btn btn-danger" @click="restore">Restore</button>
+            <button class="btn btn-danger ml-2" @click="restore">Restore</button>
         </template>
     </ConfirmationModal>
 
@@ -88,7 +88,7 @@
         <template #footer>
             <button class="btn" @click="confirmingDelete = false">Cancel</button>
 
-            <button class="ml-2 btn btn-danger" @click="destroy">Delete User</button>
+            <button class="btn btn-danger ml-2" @click="destroy">Delete User</button>
         </template>
     </ConfirmationModal>
 </template>

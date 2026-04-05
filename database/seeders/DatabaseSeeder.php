@@ -24,17 +24,17 @@ class DatabaseSeeder extends Seeder
         User::factory()
             ->create([
                 'name' => 'Brian Ortiz',
-                'email' => 'ortzinator@gmail.com'
+                'email' => 'ortzinator@gmail.com',
             ])
             ->assignRole('Super Admin');
         User::factory()
             ->create([
-                'email' => 'manager@jamar.com'
+                'email' => 'manager@jamar.com',
             ])
             ->assignRole('Manager');
         User::factory()
             ->create([
-                'email' => 'employee@jamar.com'
+                'email' => 'employee@jamar.com',
             ])
             ->assignRole('Employee');
 

@@ -33,7 +33,7 @@ class Contact extends Model
     public function link(): Attribute
     {
         return Attribute::make(
-            get: fn() => url("/contacts/{$this->id}/edit"),
+            get: fn () => url("/contacts/{$this->id}/edit"),
         );
     }
 

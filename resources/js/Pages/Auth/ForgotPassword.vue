@@ -44,14 +44,14 @@ const submit = () => {
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="block w-full mt-1"
+                    class="mt-1 block w-full"
                     required
                     autofocus
                 />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="mt-4 flex items-center justify-end">
                 <PrimaryButton
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"

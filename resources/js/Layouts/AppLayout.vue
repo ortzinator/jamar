@@ -1,29 +1,29 @@
 <template>
     <div>
-        <div class="md:flex md:flex-col bg-cool-grey-50 md:h-screen">
+        <div class="bg-cool-grey-50 md:flex md:h-screen md:flex-col">
             <div class="bg-white md:flex md:shrink-0">
                 <div
-                    class="flex items-center justify-between px-6 py-4 text-white bg-cool-grey-800 md:shrink-0 md:justify-center md:w-56"
+                    class="bg-cool-grey-800 flex items-center justify-between px-6 py-4 text-white md:w-56 md:shrink-0 md:justify-center"
                 >
                     <Disclosure v-slot="{ open }" as="nav" class="w-full">
                         <div class="flex justify-between md:justify-center">
                             <div>
-                                <AppLogo class="h-8 text-white fill-current" />
+                                <AppLogo class="h-8 fill-current text-white" />
                             </div>
                             <div class="md:hidden">
                                 <DisclosureButton>
                                     <MenuIcon
                                         v-if="!open"
-                                        class="block w-6 h-6"
+                                        class="block h-6 w-6"
                                         aria-hidden="true"
                                     />
-                                    <XIcon v-else class="block w-6 h-6" aria-hidden="true" />
+                                    <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
                                 </DisclosureButton>
                             </div>
                         </div>
 
-                        <DisclosurePanel class="flex justify-end w-full">
-                            <ul class="space-y-5 text-right text-light-blue-vivid-300 md:hidden">
+                        <DisclosurePanel class="flex w-full justify-end">
+                            <ul class="text-light-blue-vivid-300 space-y-5 text-right md:hidden">
                                 <NavLink
                                     v-for="nav in navigation"
                                     :key="nav.name"
@@ -37,23 +37,23 @@
                     </Disclosure>
                 </div>
                 <div
-                    class="flex justify-between w-full px-6 py-4 bg-white md:px-12 md:py-5 max-w-screen-2xl"
+                    class="flex w-full max-w-screen-2xl justify-between bg-white px-6 py-4 md:px-12 md:py-5"
                 >
                     <div>Jamar</div>
                     <Menu as="div" class="relative">
                         <div>
                             <MenuButton class="inline-flex items-center">
                                 {{ $page.props.user.name }}
-                                <ChevronDownIcon class="w-5 h-5 ml-2" />
+                                <ChevronDownIcon class="ml-2 h-5 w-5" />
                             </MenuButton>
                         </div>
 
                         <MenuItems
                             as="div"
-                            class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y rounded-md shadow-lg divide-cool-grey-100 ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            class="divide-cool-grey-100 ring-opacity-5 absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y rounded-md bg-white shadow-lg ring-1 ring-black focus:outline-none"
                         >
                             <div class="py-1">
-                                <div class="block px-4 py-2 text-xs text-cool-grey-400">
+                                <div class="text-cool-grey-400 block px-4 py-2 text-xs">
                                     Manage Account
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                             'block px-4 py-2 text-sm',
                                         ]"
                                     >
-                                        <UserCircleIcon class="inline w-5 h-5 mr-2" />
+                                        <UserCircleIcon class="mr-2 inline h-5 w-5" />
                                         Profile
                                     </InertiaLink>
                                 </MenuItem>
@@ -103,7 +103,7 @@
                                         ]"
                                     >
                                         <button type="submit flex" @click="logout">
-                                            <LogoutIcon class="inline w-5 h-5 mr-2" />
+                                            <LogoutIcon class="mr-2 inline h-5 w-5" />
                                             Log Out
                                         </button>
                                     </div>
@@ -115,9 +115,9 @@
             </div>
             <div class="md:flex md:grow md:overflow-hidden">
                 <nav
-                    class="hidden overflow-y-auto bg-cool-grey-900 md:flex md:shrink-0 md:justify-center md:w-56"
+                    class="bg-cool-grey-900 hidden overflow-y-auto md:flex md:w-56 md:shrink-0 md:justify-center"
                 >
-                    <ul class="w-full mt-12 space-y-3 text-cool-grey-300">
+                    <ul class="text-cool-grey-300 mt-12 w-full space-y-3">
                         <NavLink
                             v-for="nav in navigation"
                             :key="nav.name"
@@ -129,7 +129,7 @@
                     </ul>
                 </nav>
                 <div scroll-region class="w-full shadow-inner md:overflow-y-auto">
-                    <div class="p-5 max-w-screen-2xl md:p-10">
+                    <div class="max-w-screen-2xl p-5 md:p-10">
                         <main>
                             <slot />
                         </main>

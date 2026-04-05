@@ -11,12 +11,12 @@ class ContactResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  Request  $request
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
     {
         $this->loadMissing('policies');
+
         return [
             'name' => $this->name,
             'address' => $this->address,

@@ -31,7 +31,7 @@ class UpdatePolicyReqest extends FormRequest
             'period_end' => ['sometimes', 'required', 'date'],
             'contacts' => ['sometimes'],
             'agent_id' => ['sometimes', 'exists:users,id'],
-            'premium' => ['sometimes', 'required', 'numeric']
+            'premium' => ['sometimes', 'required', 'numeric'],
         ];
     }
 }

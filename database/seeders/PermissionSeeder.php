@@ -45,7 +45,7 @@ class PermissionSeeder extends Seeder
             'update users',
             'view user facts',
             'update user facts',
-            'delete users'
+            'delete users',
         ];
 
         $permissions = collect($permissionNames)->map(function ($permission) {
@@ -53,7 +53,7 @@ class PermissionSeeder extends Seeder
                 'name' => $permission,
                 'guard_name' => 'web',
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ];
         });
 
@@ -79,7 +79,7 @@ class PermissionSeeder extends Seeder
             'update users',
             'view user facts',
             'update user facts',
-            'delete users'
+            'delete users',
         ]);
         Role::create(['name' => 'Employee'])->syncPermissions([
             'view dashboard',
@@ -93,7 +93,7 @@ class PermissionSeeder extends Seeder
             'update contacts',
             'view contact facts',
             'update contact facts',
-            'view users'
+            'view users',
         ]);
     }
 }

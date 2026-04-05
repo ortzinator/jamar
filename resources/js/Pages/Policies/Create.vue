@@ -9,7 +9,7 @@
                 >
                     Policies
                 </InertiaLink>
-                <span class="font-medium text-light-blue-vivid-400">/</span>
+                <span class="text-light-blue-vivid-400 font-medium">/</span>
                 New Policy
             </h1>
         </div>
@@ -25,7 +25,7 @@
                             <div class="flex items-center">
                                 <select
                                     v-model="selectedTemplate"
-                                    class="w-full mt-1 border rounded border-cool-grey-200"
+                                    class="border-cool-grey-200 mt-1 w-full rounded border"
                                 >
                                     <option
                                         v-for="template in templates"
@@ -41,7 +41,7 @@
                             <InputLabel for="agent" value="Assigned Agent" />
                             <select
                                 v-model="policyForm.agent_id"
-                                class="w-full mt-1 border rounded border-cool-grey-200"
+                                class="border-cool-grey-200 mt-1 w-full rounded border"
                             >
                                 <option v-for="agent in users" :key="agent.id" :value="agent.id">
                                     {{ agent.name }}
@@ -54,7 +54,7 @@
                                 id="number"
                                 v-model="policyForm.number"
                                 type="text"
-                                class="block w-full mt-1"
+                                class="mt-1 block w-full"
                             />
                             <InputError :message="policyForm.errors.number" />
                         </div>
@@ -83,14 +83,14 @@
                                 id="premium"
                                 v-model="policyForm.premium"
                                 :options="{ currency: currency.code, valueScaling: 'precision' }"
-                                class="w-full mt-1 mr-5 border rounded border-cool-grey-200"
+                                class="border-cool-grey-200 mt-1 mr-5 w-full rounded border"
                             />
                             <InputError :message="policyForm.errors.premium" />
                         </div>
                     </div>
                 </FormSection>
 
-                <hr class="h-px border-0 bg-cool-grey-100 text-cool-grey-500" />
+                <hr class="bg-cool-grey-100 text-cool-grey-500 h-px border-0" />
 
                 <FormSection>
                     <template #header>Policy Fields</template>
@@ -104,7 +104,7 @@
                     />
                 </FormSection>
 
-                <hr class="h-px border-0 bg-cool-grey-100 text-cool-grey-500" />
+                <hr class="bg-cool-grey-100 text-cool-grey-500 h-px border-0" />
 
                 <FormSection>
                     <template #header>Policyholders</template>
@@ -116,8 +116,8 @@
                         @contact-clicked="handleContactClick"
                     >
                         <template #noContacts>
-                            <div class="mb-5 text-yellow-vivid-600">
-                                <ExclamationIcon class="inline w-5 h-5 mr-2" />
+                            <div class="text-yellow-vivid-600 mb-5">
+                                <ExclamationIcon class="mr-2 inline h-5 w-5" />
                                 Please add one or more policyholders
                             </div>
                         </template>
@@ -126,9 +126,9 @@
                     <SelectContact @selected="contactSelected" />
                 </FormSection>
 
-                <hr class="h-px border-0 bg-cool-grey-100 text-cool-grey-500" />
+                <hr class="bg-cool-grey-100 text-cool-grey-500 h-px border-0" />
 
-                <div class="flex justify-between mt-5">
+                <div class="mt-5 flex justify-between">
                     <div>Problems?</div>
                     <LoadingButton
                         class="btn btn-primary"

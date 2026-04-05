@@ -11,7 +11,6 @@ class ContactSearchResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
@@ -22,7 +21,7 @@ class ContactSearchResource extends JsonResource
             'id' => $this->id,
             'deleted_at' => $this->deleted_at,
             'link' => $this->link,
-            'policies_count' => $this->policies_count
+            'policies_count' => $this->policies_count,
         ];
     }
 }

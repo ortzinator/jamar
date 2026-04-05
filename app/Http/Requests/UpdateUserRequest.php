@@ -26,14 +26,14 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'roles' => ['required', 'array', 'min:1']
+            'roles' => ['required', 'array', 'min:1'],
         ];
     }
 
     public function messages()
     {
         return [
-            'roles.required' => 'At least one role must be selected'
+            'roles.required' => 'At least one role must be selected',
         ];
     }
 }

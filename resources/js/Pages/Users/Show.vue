@@ -8,38 +8,38 @@
             >
                 Employees
             </InertiaLink>
-            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
+            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
             {{ viewedUser.name }}
         </h1>
     </div>
 
-    <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
+    <div class="max-w-6xl overflow-hidden rounded bg-white shadow">
         <dl>
-            <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
+            <div class="px-4 py-5 odd:bg-white even:bg-slate-50 sm:grid sm:grid-cols-3">
                 <dt class="font-medium text-gray-500">Photo</dt>
                 <dd class="block w-full sm:col-span-2">
                     <img
                         :src="viewedUser.profile_photo_url"
                         :alt="viewedUser.name"
-                        class="object-cover w-20 h-20 rounded-full"
+                        class="h-20 w-20 rounded-full object-cover"
                     />
                 </dd>
             </div>
-            <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
+            <div class="px-4 py-5 odd:bg-white even:bg-slate-50 sm:grid sm:grid-cols-3">
                 <dt class="font-medium text-gray-500">Name</dt>
                 <dd class="block w-full sm:col-span-2" v-text="viewedUser.name" />
             </div>
-            <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
+            <div class="px-4 py-5 odd:bg-white even:bg-slate-50 sm:grid sm:grid-cols-3">
                 <dt class="font-medium text-gray-500">Email</dt>
                 <dd class="block w-full sm:col-span-2" v-text="viewedUser.email" />
             </div>
-            <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
+            <div class="px-4 py-5 odd:bg-white even:bg-slate-50 sm:grid sm:grid-cols-3">
                 <dt class="font-medium text-gray-500">Role</dt>
                 <dd class="block w-full sm:col-span-2" v-text="roleName" />
             </div>
         </dl>
     </div>
-    <div class="flex items-center justify-end px-8 my-4 bg-cool-grey-50">
+    <div class="bg-cool-grey-50 my-4 flex items-center justify-end px-8">
         <InertiaLink
             v-if="$attrs.permissions.includes('update users')"
             :href="route('users.edit', viewedUser.id)"

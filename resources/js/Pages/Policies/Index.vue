@@ -5,19 +5,19 @@
     </div>
 
     <div>
-        <div class="flex justify-between mb-4">
-            <div class="flex mr-4">
-                <div class="flex bg-white rounded shadow cursor-default">
+        <div class="mb-4 flex justify-between">
+            <div class="mr-4 flex">
+                <div class="flex cursor-default rounded bg-white shadow">
                     <FilterSelect v-model="searchForm.trashed" />
                     <input
                         v-model="searchForm.search"
                         type="text"
                         placeholder="Search..."
-                        class="w-full border-0 rounded-r"
+                        class="w-full rounded-r border-0"
                     />
                 </div>
                 <button
-                    class="ml-3 text-sm text-cool-grey-500 hover:text-cool-grey-700 focus:text-light-blue-vivid-500"
+                    class="text-cool-grey-500 hover:text-cool-grey-700 focus:text-light-blue-vivid-500 ml-3 text-sm"
                     type="button"
                     @click="reset"
                 >
@@ -29,7 +29,7 @@
                 <span class="hidden md:inline"> Policy</span>
             </InertiaLink>
         </div>
-        <div class="overflow-x-auto bg-white rounded shadow">
+        <div class="overflow-x-auto rounded bg-white shadow">
             <DataTable :columns="columns" :data-source="policies.data" route-name="policies.edit">
                 <template #[`column.number`]="{ value }">
                     <Highlighter :text="value" :term="searchForm.search" />
@@ -48,9 +48,9 @@
                 <template #[`column.contactNamesPreview`]="{ value, row }">
                     <div
                         v-if="row.contacts.length === 0"
-                        class="flex items-center text-red-vivid-600"
+                        class="text-red-vivid-600 flex items-center"
                     >
-                        <ExclamationIcon class="w-5 h-5 mr-2" />
+                        <ExclamationIcon class="mr-2 h-5 w-5" />
                         No policyholders found
                     </div>
                     <div v-else class="overflow-hidden text-ellipsis whitespace-nowrap">

@@ -22,7 +22,7 @@ class ContactTest extends TestCase
         $this->get(route('contacts.index'))
             ->assertOk()
             ->assertInertia(
-                fn(Assert $page) => $page
+                fn (Assert $page) => $page
                     ->component('Contacts/Index')
                     ->has('contacts.data', 3)
             );
@@ -34,13 +34,13 @@ class ContactTest extends TestCase
 
         $contact = Contact::factory()->create();
         $this->assertDatabaseHas('contacts', [
-            'id' => $contact->id
+            'id' => $contact->id,
         ]);
 
         $this->get(route('contacts.edit', $contact->id))
             ->assertOk()
             ->assertInertia(
-                fn(Assert $page) => $page
+                fn (Assert $page) => $page
                     ->component('Contacts/Edit')
                     ->has('contact.name')
                     ->has('contact.address')
@@ -59,7 +59,7 @@ class ContactTest extends TestCase
         Contact::factory()->create(['name' => 'Jane Doe']);
 
         $this->get('contacts?search=John')->assertInertia(
-            fn(Assert $page) => $page
+            fn (Assert $page) => $page
                 ->where('filters.search', 'John')
                 ->has('contacts.data', 1)
                 ->where('contacts.data.0.address', $contact->address)
@@ -74,12 +74,12 @@ class ContactTest extends TestCase
         $contact = Contact::factory()->create(['name' => 'John Doe']);
 
         $this->get(route('contacts.edit', $contact->id))->assertInertia(
-            fn(Assert $page) => $page->component('Contacts/Edit')
+            fn (Assert $page) => $page->component('Contacts/Edit')
         );
 
         $this->put(route('contacts.update', $contact->id), [
             'name' => 'Jane Doe',
-            'address' => $contact->address
+            'address' => $contact->address,
         ])->assertRedirect(route('contacts.edit', $contact->id));
 
         $this->assertEquals('Jane Doe', $contact->fresh()->name);
@@ -93,7 +93,7 @@ class ContactTest extends TestCase
         $contacts->first()->delete();
 
         $this->get(route('contacts.index'))->assertInertia(
-            fn(Assert $page) => $page->has('contacts.data', 3)
+            fn (Assert $page) => $page->has('contacts.data', 3)
         );
     }
 
@@ -106,7 +106,7 @@ class ContactTest extends TestCase
         $contacts->first()->delete();
 
         $this->get('contacts?trashed=with')->assertInertia(
-            fn(Assert $page) => $page->has('contacts.data', 4)
+            fn (Assert $page) => $page->has('contacts.data', 4)
         );
     }
 
@@ -126,9 +126,9 @@ class ContactTest extends TestCase
         );
 
         $this->get($path)->assertInertia(
-            fn(Assert $page) => $page->where(
+            fn (Assert $page) => $page->where(
                 'contact.deleted_at',
-                fn($val) => !is_null($val)
+                fn ($val) => ! is_null($val)
             )
         );
     }
@@ -141,7 +141,7 @@ class ContactTest extends TestCase
         $contact = [
             'name' => $this->faker->name(),
             'address' => $this->faker->address(),
-            'notes' => $this->faker->paragraph()
+            'notes' => $this->faker->paragraph(),
         ];
 
         $this->post(route('contacts.store'), $contact)
@@ -151,7 +151,7 @@ class ContactTest extends TestCase
 
         $this->get(route('contacts.edit', Contact::orderBy('id', 'desc')->first()->id))
             ->assertInertia(
-                fn(Assert $page) => $page
+                fn (Assert $page) => $page
                     ->component('Contacts/Edit')
                     ->has('contact.name')
                     ->has('contact.address')
@@ -165,7 +165,7 @@ class ContactTest extends TestCase
 
         $this->get(route('contacts.create'))
             ->assertOk()
-            ->assertInertia(fn(Assert $page) => $page->component('Contacts/Create'));
+            ->assertInertia(fn (Assert $page) => $page->component('Contacts/Create'));
     }
 
     public function test_can_view_contact_show_page(): void
@@ -177,7 +177,7 @@ class ContactTest extends TestCase
         $this->get(route('contacts.show', $contact->id))
             ->assertOk()
             ->assertInertia(
-                fn(Assert $page) => $page
+                fn (Assert $page) => $page
                     ->component('Contacts/Show')
                     ->has('contact.name')
                     ->has('contact.id')

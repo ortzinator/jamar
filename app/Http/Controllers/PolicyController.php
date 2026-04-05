@@ -37,7 +37,7 @@ class PolicyController extends Controller
                     ->with('contacts:name,id')
                     ->filter($request->only('search', 'trashed'))
                     ->paginate()
-            )
+            ),
         ]);
     }
 
@@ -48,9 +48,9 @@ class PolicyController extends Controller
     {
         return Inertia::render('Policies/Create', [
             'contacts' => Inertia::lazy(
-                fn() => Contact::orderBy('name')->filter($request->only('search', 'trashed'))
+                fn () => Contact::orderBy('name')->filter($request->only('search', 'trashed'))
             ),
-            'users' => User::all(['id', 'name'])
+            'users' => User::all(['id', 'name']),
         ]);
     }
 
@@ -65,7 +65,7 @@ class PolicyController extends Controller
             'period_end' => new Carbon($request['period_end']),
             'fields' => $request['fields'],
             'agent_id' => $request['agent_id'],
-            'premium' => $request['premium']
+            'premium' => $request['premium'],
         ]);
 
         $contacts = Arr::pluck($request['contacts'], 'id');
@@ -83,7 +83,7 @@ class PolicyController extends Controller
             'policy' => PolicyResource::make($policy),
             'fields' => $policy->fields,
             'users' => User::all(['id', 'name']),
-            'histories' => $policy->history
+            'histories' => $policy->history,
         ]);
     }
 
@@ -101,6 +101,7 @@ class PolicyController extends Controller
         $policy->update($request->safe()->except('contacts'));
 
         session()->flash('message', 'Policy updated');
+
         return Redirect::back();
     }
 
@@ -112,6 +113,7 @@ class PolicyController extends Controller
         $policy->delete();
 
         session()->flash('message', 'Policy deleted');
+
         return Redirect::back();
     }
 
@@ -120,6 +122,7 @@ class PolicyController extends Controller
         $policy->restore();
 
         session()->flash('message', 'Policy restored');
+
         return Redirect::back();
     }
 
@@ -144,7 +147,7 @@ class PolicyController extends Controller
                 ->with('contacts')
                 ->where('period_end', '>', $start)
                 ->where('period_end', '<', $end)
-                ->paginate()
+                ->paginate(),
         ]);
     }
 }

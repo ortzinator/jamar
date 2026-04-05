@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Gate;
 
 class CreatePolicyRequest extends FormRequest
 {
@@ -31,14 +30,14 @@ class CreatePolicyRequest extends FormRequest
             'period_end' => ['required', 'date'],
             'agent_id' => ['required', 'exists:users,id'],
             'contacts' => ['required'],
-            'premium' => ['required', 'integer']
+            'premium' => ['required', 'integer'],
         ];
     }
 
     public function messages()
     {
         return [
-            'contacts.required' => 'At least one policyholder must be added'
+            'contacts.required' => 'At least one policyholder must be added',
         ];
     }
 }

@@ -8,18 +8,18 @@
             >
                 Contacts
             </InertiaLink>
-            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
+            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
             {{ form.name }}
         </h1>
     </div>
 
-    <div class="max-w-6xl overflow-hidden bg-white rounded shadow">
+    <div class="max-w-6xl overflow-hidden rounded bg-white shadow">
         <div
             v-if="contact.deleted_at"
-            class="flex items-center justify-between p-5 pl-8 bg-yellow-vivid-200"
+            class="bg-yellow-vivid-200 flex items-center justify-between p-5 pl-8"
         >
             <div class="flex">
-                <TrashIcon class="w-5 h-5 mr-2" />
+                <TrashIcon class="mr-2 h-5 w-5" />
                 This contact is deleted
             </div>
             <button class="btn hover:underline" @click="confirmingRestore = true">Restore</button>
@@ -49,7 +49,7 @@
                             <label for="notes" class="cursor-pointer"> Agent Notes </label>
                             <ChevronRightIcon
                                 :class="open ? 'rotate-90' : ''"
-                                class="w-5 h-5 ml-2"
+                                class="ml-2 h-5 w-5"
                             />
                         </DisclosureButton>
                         <DisclosurePanel class="mt-5">
@@ -65,7 +65,7 @@
                     </Disclosure>
                 </div>
             </div>
-            <div class="flex items-center px-8 py-4 border-t bg-cool-grey-50 border-cool-grey-100">
+            <div class="bg-cool-grey-50 border-cool-grey-100 flex items-center border-t px-8 py-4">
                 <button
                     v-if="!contact.deleted_at"
                     class="text-red-vivid-600 hover:underline"
@@ -76,7 +76,7 @@
                     Delete contact
                 </button>
                 <LoadingButton
-                    class="ml-auto btn btn-primary"
+                    class="btn btn-primary ml-auto"
                     type="submit"
                     :loading="form.processing"
                 >
@@ -94,7 +94,7 @@
         <template #footer>
             <button class="btn" @click="confirmingRestore = false">Cancel</button>
 
-            <button class="ml-2 btn btn-danger" @click="restore">Restore</button>
+            <button class="btn btn-danger ml-2" @click="restore">Restore</button>
         </template>
     </ConfirmationModal>
 
@@ -106,7 +106,7 @@
         <template #footer>
             <button class="btn" @click="confirmingDelete = false">Cancel</button>
 
-            <button class="ml-2 btn btn-danger" @click="destroy">Delete Contact</button>
+            <button class="btn btn-danger ml-2" @click="destroy">Delete Contact</button>
         </template>
     </ConfirmationModal>
 </template>

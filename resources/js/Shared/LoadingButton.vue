@@ -1,6 +1,6 @@
 <template>
     <button :disabled="loading" class="flex items-center disabled:opacity-50">
-        <Icon v-if="delayedLoading" name="spinner" class="w-5 h-5 mr-2 fill-current animate-spin" />
+        <Icon v-if="delayedLoading" name="spinner" class="mr-2 h-5 w-5 animate-spin fill-current" />
         <slot></slot>
     </button>
 </template>

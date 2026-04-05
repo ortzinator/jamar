@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
 use App\Http\Resources\ContactResource;
 use App\Http\Resources\ContactSearchResource;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -18,9 +18,9 @@ class ContactController extends Controller
 
     public function show(Contact $contact)
     {
-//        dd(ContactResource::make($contact)->toJson());
+        //        dd(ContactResource::make($contact)->toJson());
         return Inertia::render('Contacts/Show', [
-            'contact' => ContactResource::make($contact)
+            'contact' => ContactResource::make($contact),
         ]);
     }
 
@@ -47,7 +47,7 @@ class ContactController extends Controller
                     ->filter($request->only('search', 'trashed'))
                     ->with('policies')
                     ->paginate()
-            )
+            ),
         ]);
     }
 
@@ -64,7 +64,6 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -72,51 +71,49 @@ class ContactController extends Controller
         Contact::create(
             $request->validate([
                 'name' => ['required', 'min:3'],
-                'address' => ['required', 'min:3']
+                'address' => ['required', 'min:3'],
             ])
         );
 
         session()->flash('message', 'Contact added');
+
         return Redirect::route('contacts.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Contact  $contact
      * @return \Inertia\Response
      */
     public function edit(Contact $contact)
     {
         return Inertia::render('Contacts/Edit', [
-            'contact' => ContactResource::make($contact)
+            'contact' => ContactResource::make($contact),
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Contact $contact)
     {
         $request->validate([
             'name' => ['required'],
-            'address' => ['required']
+            'address' => ['required'],
         ]);
 
         $contact->update($request->only(['name', 'address']));
 
         session()->flash('message', 'Contact updated');
+
         return Redirect::back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Contact $contact)
@@ -124,6 +121,7 @@ class ContactController extends Controller
         $contact->delete();
 
         session()->flash('message', 'Contact deleted');
+
         return Redirect::back();
     }
 
@@ -132,6 +130,7 @@ class ContactController extends Controller
         $contact->restore();
 
         session()->flash('message', 'Contact restored');
+
         return Redirect::back();
     }
 }

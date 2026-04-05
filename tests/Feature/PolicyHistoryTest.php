@@ -23,12 +23,11 @@ class PolicyHistoryTest extends TestCase
             'policy_id' => $policy->id,
             'message' => 'Something happened',
             'event_type' => 'note',
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
         ])->assertRedirect();
 
-        // prettier-ignore
         $this->get(route('policies.edit', $policy->id))->assertInertia(
-            fn(Assert $page) => $page
+            fn (Assert $page) => $page
                 ->has('histories', 2)
                 ->where('histories.1.message', 'Something happened')
         );

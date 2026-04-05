@@ -21,11 +21,11 @@ class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
+    use HasPermissions;
     use HasProfilePhoto;
+    use HasRoles;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasRoles;
-    use HasPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'two_factor_recovery_codes',
-        'two_factor_secret'
+        'two_factor_secret',
     ];
 
     /**
@@ -52,7 +52,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime'
+        'email_verified_at' => 'datetime',
     ];
 
     /**
@@ -83,7 +83,7 @@ class User extends Authenticatable
     public function markAsApproved()
     {
         return $this->forceFill([
-            'approved_at' => $this->freshTimestamp()
+            'approved_at' => $this->freshTimestamp(),
         ])->save();
     }
 

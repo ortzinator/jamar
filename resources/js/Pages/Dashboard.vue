@@ -8,10 +8,10 @@
     </div>
 
     <div
-        class="grid grid-flow-row-dense grid-cols-1 gap-4 overflow-hidden lg:grid-cols-3 sm:rounded-lg"
+        class="grid grid-flow-row-dense grid-cols-1 gap-4 overflow-hidden sm:rounded-lg lg:grid-cols-3"
     >
-        <EndingSoonWidget class="p-4 bg-white rounded shadow-sm" />
-        <TextWidget class="bg-white rounded shadow-sm lg:col-span-2">
+        <EndingSoonWidget class="rounded bg-white p-4 shadow-sm" />
+        <TextWidget class="rounded bg-white shadow-sm lg:col-span-2">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum
@@ -19,7 +19,7 @@
             auctor sit amet aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </TextWidget>
-        <TextWidget class="bg-white rounded shadow-sm">
+        <TextWidget class="rounded bg-white shadow-sm">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum
@@ -27,7 +27,7 @@
             auctor sit amet aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </TextWidget>
-        <TextWidget class="bg-white rounded shadow-sm">
+        <TextWidget class="rounded bg-white shadow-sm">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum
@@ -35,7 +35,7 @@
             auctor sit amet aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </TextWidget>
-        <TextWidget class="bg-white rounded shadow-sm">
+        <TextWidget class="rounded bg-white shadow-sm">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum
@@ -43,7 +43,7 @@
             auctor sit amet aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </TextWidget>
-        <TextWidget class="bg-white rounded shadow-sm">
+        <TextWidget class="rounded bg-white shadow-sm">
             <template #header>Header</template>
 
             Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ante ipsum

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="mb-4 space-y-4 md:flex md:space-x-4 md:space-y-0">
+        <div class="mb-4 space-y-4 md:flex md:space-y-0 md:space-x-4">
             <div class="flex-auto">
                 <InputLabel for="number" value="Field Name" />
                 <TextInput id="name" v-model="field.name" type="text" class="w-full" />
@@ -37,7 +37,7 @@ const field = reactive({
 let errors = ref([]);
 
 function validate() {
-    errors = [];
+    errors.value = [];
 
     if (field.name) {
         return true;

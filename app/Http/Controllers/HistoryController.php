@@ -11,22 +11,22 @@ use Illuminate\Support\Facades\Redirect;
 
 class HistoryController extends Controller
 {
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
     {
-        //TODO: Validation
+        // TODO: Validation
         $policy = Policy::findOrFail($request['policy_id']);
 
         $policy->history()->create(
             array_merge($request->only('message', 'event_type'), [
-                'user_id' => Auth::id()
+                'user_id' => Auth::id(),
             ])
         );
 
         session()->flash('message', 'History updated');
+
         return Redirect::back();
     }
 

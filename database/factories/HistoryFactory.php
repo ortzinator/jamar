@@ -27,7 +27,7 @@ class HistoryFactory extends Factory
             'message' => $this->faker->sentence(),
             'policy_id' => Policy::factory(),
             'user_id' => User::factory(),
-            'event_type' => 'note'
+            'event_type' => 'note',
         ];
     }
 }

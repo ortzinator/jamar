@@ -17,7 +17,7 @@ class History extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'created_at' => 'datetime:m-d-Y H:i'
+        'created_at' => 'datetime:m-d-Y H:i',
     ];
 
     protected $appends = ['user_name'];
@@ -27,7 +27,7 @@ class History extends Model
     public function userName(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->user->name,
+            get: fn () => $this->user->name,
         );
     }
 

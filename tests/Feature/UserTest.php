@@ -13,8 +13,6 @@ class UserTest extends TestCase
 
     /**
      * A basic feature test example.
-     *
-     * @return void
      */
     public function test_shows_users(): void
     {
@@ -23,8 +21,8 @@ class UserTest extends TestCase
         $response = $this->get('/users');
 
         $response->assertStatus(200)->assertInertia(
-            fn(Assert $page) => $page->has('users.data', 1)
-        );;
+            fn (Assert $page) => $page->has('users.data', 1)
+        );
     }
 
     public function test_show_user(): void
@@ -38,7 +36,7 @@ class UserTest extends TestCase
         $response = $this->get("/users/{$id}");
 
         $response->assertStatus(200)->assertInertia(
-            fn(Assert $page) => $page->has('viewedUser')
+            fn (Assert $page) => $page->has('viewedUser')
         );
     }
 }

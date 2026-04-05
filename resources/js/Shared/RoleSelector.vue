@@ -3,11 +3,11 @@
         <Switch
             v-model="role.enabled"
             :class="role.enabled ? 'bg-light-blue-vivid-900' : 'bg-light-blue-vivid-700'"
-            class="relative inline-flex items-center h-6 rounded-full w-11"
+            class="relative inline-flex h-6 w-11 items-center rounded-full"
         >
             <span
                 :class="role.enabled ? 'translate-x-6' : 'translate-x-1'"
-                class="inline-block w-4 h-4 transform bg-white rounded-full"
+                class="inline-block h-4 w-4 transform rounded-full bg-white"
             />
         </Switch>
         <span class="ml-4">{{ role.name }}</span>

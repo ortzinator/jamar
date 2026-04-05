@@ -13,7 +13,7 @@ class PolicyTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         Auth::shouldReceive('id')->andReturn(1);
@@ -46,13 +46,13 @@ class PolicyTest extends TestCase
         Policy::factory()->create([
             'number' => 'valid',
             'period_start' => now()->subDays(10),
-            'period_end' => now()->addDays(2)
+            'period_end' => now()->addDays(2),
         ]);
 
         Policy::factory()->create([
             'number' => 'expired',
             'period_start' => now()->subDays(10),
-            'period_end' => now()->subDays(1)
+            'period_end' => now()->subDays(1),
         ]);
 
         $list = Policy::expired()->get();
@@ -64,12 +64,12 @@ class PolicyTest extends TestCase
     {
         Policy::factory()->create([
             'period_start' => now()->subDays(100),
-            'period_end' => now()->addDays(1)
+            'period_end' => now()->addDays(1),
         ]);
 
         Policy::factory()->create([
             'period_start' => now()->subDays(100),
-            'period_end' => now()->addDays(10)
+            'period_end' => now()->addDays(10),
         ]);
 
         $list = Policy::expiringSoon()->get();

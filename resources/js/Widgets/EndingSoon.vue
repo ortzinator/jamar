@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <h3 class="mb-4 font-bold">Policies ending soon</h3>
-        <table class="w-full mb-2 text-sm table-show">
+        <table class="table-show mb-2 w-full text-sm">
             <thead class="sr-only">
                 <th class="py-2">Number</th>
                 <th class="py-2">Date Ending</th>
@@ -10,12 +10,12 @@
                 <tr
                     v-for="index in 5"
                     :key="index"
-                    class="border-t border-cool-grey-100 animate-pulse"
+                    class="border-cool-grey-100 animate-pulse border-t"
                 >
                     <td v-for="windex in 2" :key="windex" class="px-4 py-2">
                         <span>
                             <div
-                                class="rounded-lg bg-cool-grey-200"
+                                class="bg-cool-grey-200 rounded-lg"
                                 :style="`width: ${Math.floor(Math.random() * 51) + 50}%;`"
                             >
                                 &nbsp;
@@ -28,7 +28,7 @@
                 <tr
                     v-for="policy in results.slice(0, 5)"
                     :key="policy.id"
-                    class="border-t border-cool-grey-100"
+                    class="border-cool-grey-100 border-t"
                 >
                     <td class="px-4 py-2">
                         <InertiaLink :href="route('policies.edit', policy.id)">
@@ -48,13 +48,13 @@
                 </tr>
             </tbody>
         </table>
-        <div v-if="!loading && results.length > 5" class="mb-2 text-sm text-cool-grey-400">
+        <div v-if="!loading && results.length > 5" class="text-cool-grey-400 mb-2 text-sm">
             <InertiaLink :href="route('policies.ending')">
                 Plus {{ results.length - 5 }} more
             </InertiaLink>
         </div>
         <div class="flex items-center">
-            <span class="w-3 h-3 mr-2 border-2 border-cool-grey-800 bg-red-vivid-500"></span>
+            <span class="border-cool-grey-800 bg-red-vivid-500 mr-2 h-3 w-3 border-2"></span>
             = Overdue
         </div>
     </div>

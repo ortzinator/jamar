@@ -12,7 +12,6 @@ class UserResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
@@ -20,6 +19,7 @@ class UserResource extends JsonResource
         $roles = Role::all();
         $roles->transform(function ($role) {
             $role['enabled'] = $this->hasRole($role);
+
             return $role;
         });
 
@@ -29,7 +29,7 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'roles' => $roles,
             'can' => $this->getAllPermissions(),
-            'profile_photo_url' => $this->profile_photo_url
+            'profile_photo_url' => $this->profile_photo_url,
         ];
     }
 }

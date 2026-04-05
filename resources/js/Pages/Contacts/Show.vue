@@ -8,34 +8,34 @@
             >
                 Contacts
             </InertiaLink>
-            <span class="font-medium text-light-blue-vivid-400">&nbsp;/</span>
+            <span class="text-light-blue-vivid-400 font-medium">&nbsp;/</span>
             {{ contact.name }}
         </h1>
     </div>
 
     <div class="max-w-6xl">
-        <div class="overflow-hidden bg-white rounded shadow">
+        <div class="overflow-hidden rounded bg-white shadow">
             <div
                 v-if="contact.deleted_at"
-                class="flex items-center justify-between p-5 pl-8 bg-yellow-vivid-200"
+                class="bg-yellow-vivid-200 flex items-center justify-between p-5 pl-8"
             >
                 <div class="flex">
-                    <TrashIcon class="w-5 h-5 mr-2" />
+                    <TrashIcon class="mr-2 h-5 w-5" />
                     This contact is deleted
                 </div>
             </div>
             <dl>
-                <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
+                <div class="px-4 py-5 odd:bg-white even:bg-slate-50 sm:grid sm:grid-cols-3">
                     <dt class="font-medium text-gray-500">Name</dt>
                     <dd class="block w-full sm:col-span-2" v-text="contact.name" />
                 </div>
-                <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
+                <div class="px-4 py-5 odd:bg-white even:bg-slate-50 sm:grid sm:grid-cols-3">
                     <dt class="font-medium text-gray-500">Address</dt>
                     <dd class="block w-full sm:col-span-2">
                         <address v-html="formattedAddress" />
                     </dd>
                 </div>
-                <div class="px-4 py-5 sm:grid sm:grid-cols-3 odd:bg-white even:bg-slate-50">
+                <div class="px-4 py-5 odd:bg-white even:bg-slate-50 sm:grid sm:grid-cols-3">
                     <dt class="font-medium text-gray-500">Policies</dt>
                     <dd class="block w-full sm:col-span-2">
                         <DataTable
@@ -65,7 +65,7 @@
                             <label for="notes" class="cursor-pointer"> Agent Notes </label>
                             <ChevronRightIcon
                                 :class="open ? 'rotate-90' : ''"
-                                class="w-5 h-5 ml-2"
+                                class="ml-2 h-5 w-5"
                             />
                         </DisclosureButton>
                         <DisclosurePanel class="mt-5">
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-end px-8 my-4 bg-cool-grey-50">
+        <div class="bg-cool-grey-50 my-4 flex items-center justify-end px-8">
             <InertiaLink
                 v-if="$attrs.permissions.includes('update contacts')"
                 :href="route('contacts.edit', contact.id)"

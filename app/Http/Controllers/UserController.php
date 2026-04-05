@@ -32,7 +32,7 @@ class UserController extends Controller
                     ->orderBy('users.created_at')
                     ->filter($request->only('search', 'trashed'))
                     ->paginate()
-            )
+            ),
         ]);
     }
 
@@ -42,7 +42,7 @@ class UserController extends Controller
     public function show(User $user): \Inertia\Response
     {
         return Inertia::render('Users/Show', [
-            'viewedUser' => UserResource::make($user)
+            'viewedUser' => UserResource::make($user),
         ]);
     }
 
@@ -52,7 +52,7 @@ class UserController extends Controller
     public function edit(User $user): \Inertia\Response
     {
         return Inertia::render('Users/Edit', [
-            'editedUser' => UserResource::make($user)
+            'editedUser' => UserResource::make($user),
         ]);
     }
 
@@ -66,6 +66,7 @@ class UserController extends Controller
         $user->update($request->validated());
 
         session()->flash('message', 'User updated');
+
         return Redirect::back();
     }
 }

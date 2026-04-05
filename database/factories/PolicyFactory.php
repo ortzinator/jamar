@@ -22,7 +22,7 @@ class PolicyFactory extends Factory
             'currency' => 'PHP',
             'premium' => $this->faker->randomNumber(4),
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ];
     }
 }

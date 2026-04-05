@@ -12,7 +12,7 @@
             <td v-for="column in columns" :key="column.value" class="border-t">
                 <InertiaLink
                     :href="route(routeName, row.id)"
-                    class="flex items-center px-6 py-4 focus:text-light-blue-vivid-500"
+                    class="focus:text-light-blue-vivid-500 flex items-center px-6 py-4"
                 >
                     <slot :name="'column.' + column.value" :value="row[column.value]" :row="row">
                         {{ row[column.value] }}
@@ -22,7 +22,7 @@
         </tr>
         <tr v-if="dataSource.length === 0">
             <slot name="noneFound">
-                <td class="px-6 py-4 border-t" colspan="4">No data found.</td>
+                <td class="border-t px-6 py-4" colspan="4">No data found.</td>
             </slot>
         </tr>
     </table>
