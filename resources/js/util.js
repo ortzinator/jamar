@@ -4,7 +4,7 @@ export function formatDate(date, format) {
     if (format) {
         return dayjs(date).format(format);
     }
-    return dayjs(date).format('MM-DD-YYYY');
+    return dayjs(date).format('MM/DD/YYYY');
 }
 
 export function isInPast(date) {
